@@ -11,7 +11,7 @@ from setuptools import setup, find_packages
 def get_version():
     pattern = re.compile(r'__version__\s+=\s+(.*)')
 
-    with open('sigauth/version.py', 'rb') as src:
+    with open('directory_components/version.py', 'rb') as src:
         return str(ast.literal_eval(
             pattern.search(src.read().decode('utf-8')).group(1)
         ))
@@ -25,12 +25,12 @@ def get_requirements():
 
 
 setup(
-    name='sigauth',
+    name='directory_components',
     version=get_version(),
-    url='https://github.com/uktrade/directory-signature-auth',
+    url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
-    description='Signature authentication library for Export Directory.',
+    description='Shared components library for Export Directory.',
     packages=find_packages(),
     long_description=open('README.md').read(),
     include_package_data=True,

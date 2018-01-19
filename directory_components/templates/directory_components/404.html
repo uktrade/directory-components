@@ -1,0 +1,16 @@
+{% extends 'directory_components/base.html' %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <h1>This page cannot be found</h1>
+            <ul>
+                <li>If you entered a web address please check it’s correct.</li>
+                <li>If you followed a link here, <a href="{{ directory_components_urls.FEEDBACK_URL }}">let us know</a>.</li>
+                <li><a href="/">Go to the homepage</a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block feedback_reporter %}{% endblock %}
