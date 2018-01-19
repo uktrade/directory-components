@@ -39,8 +39,10 @@
         {% block head_other %}{% endblock %}
 
         {% block head_sharing_metadata %}
-              <meta property="og:image" content="{% static_absolute 'images/icons/opengraph-image.png' %}">
-              <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+            {% if request %}
+                <meta property="og:image" content="{% static_absolute 'directory_components/images/opengraph-image.png' %}">
+                <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+            {% endif %}
         {% endblock %}
     </head>
 
