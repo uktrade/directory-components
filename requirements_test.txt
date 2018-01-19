@@ -9,7 +9,6 @@ chardet==3.0.4            # via requests
 codecov==2.0.9
 coverage==4.4.1           # via codecov, pytest-cov
 django==1.11.5
-djangorestframework==3.4.7
 flake8==3.0.4
 idna==2.5                 # via requests
 mccabe==0.5.3             # via flake8

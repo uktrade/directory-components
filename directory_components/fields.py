@@ -1,6 +1,3 @@
-from directory_validators import enrolment as shared_enrolment_validators
-import phonenumbers
-
 from django import forms
 
 

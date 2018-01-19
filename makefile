@@ -8,7 +8,7 @@ test_requirements:
 	pip install -r requirements_test.txt
 
 flake8:
-	flake8 . --exclude=.venv,setup.py,sigauth/version.py
+	flake8 . --exclude=.venv,setup.py,directory_components/version.py
 
 pytest:
 	pytest . --cov=. --cov-config=.coveragerc $(pytest_args)

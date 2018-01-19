@@ -9,7 +9,7 @@ def test_analytics(settings):
     actual = context_processors.analytics(None)
 
     assert actual == {
-        'analytics': {
+        'directory_components_analytics': {
             'GOOGLE_TAG_MANAGER_ID': '123',
             'GOOGLE_TAG_MANAGER_ENV': '?thing=1',
             'UTM_COOKIE_DOMAIN': '.thing.com',
@@ -17,25 +17,13 @@ def test_analytics(settings):
     }
 
 
-def test_external_service_urls(settings):
+def test_urls(settings):
     settings.EXTERNAL_SERVICE_FEEDBACK_URL = 'http://example.com/feedback'
 
-    actual = context_processors.external_service_urls(None)
+    actual = context_processors.urls(None)
 
     assert actual == {
-        'external_services': {
+        'directory_components_urls': {
             'FEEDBACK_URL': 'http://example.com/feedback',
         }
     }
-
-
-def test_analytics_installed(settings):
-    processors = settings.TEMPLATES[0]['OPTIONS']['context_processors']
-
-    assert 'core.context_processors.analytics' in processors
-
-
-def test_external_service_urls_installed(settings):
-    processors = settings.TEMPLATES[0]['OPTIONS']['context_processors']
-
-    assert 'core.context_processors.external_service_urls' in processors
