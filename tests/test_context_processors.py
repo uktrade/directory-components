@@ -15,15 +15,3 @@ def test_analytics(settings):
             'UTM_COOKIE_DOMAIN': '.thing.com',
         }
     }
-
-
-def test_urls(settings):
-    settings.EXTERNAL_SERVICE_FEEDBACK_URL = 'http://example.com/feedback'
-
-    actual = context_processors.urls(None)
-
-    assert actual == {
-        'directory_components_urls': {
-            'FEEDBACK_URL': 'http://example.com/feedback',
-        }
-    }

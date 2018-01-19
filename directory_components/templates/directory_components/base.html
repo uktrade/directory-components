@@ -1,5 +1,7 @@
 {% load static from staticfiles %}
 
+{% load static_absolute from directory_components_tags %}
+
 <!DOCTYPE html>
     <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
     <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
@@ -21,9 +23,25 @@
             <!--[if IE]> <link rel="icon" href="{% static 'directory_components/images/favicon.ico' %}" type="image/x-icon" /> <![endif]-->
         {% endblock %}
 
+        <style type="text/css">
+            .js-disabled-only { display: none; }
+        </style>
+        <noscript>
+            <style type="text/css">
+                .navigation-toggle { display: block; }
+                .js-disabled-only { display: block; }
+                .js-enabled-only { display: none; }
+            </style>
+        </noscript>
+
         {% block head_css %}{% endblock %}
         {% block head_js %}{% endblock %}
         {% block head_other %}{% endblock %}
+
+        {% block head_sharing_metadata %}
+              <meta property="og:image" content="{% static_absolute 'images/icons/opengraph-image.png' %}">
+              <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+        {% endblock %}
     </head>
 
     <body>

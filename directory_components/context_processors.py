@@ -9,11 +9,3 @@ def analytics(request):
             'UTM_COOKIE_DOMAIN': settings.UTM_COOKIE_DOMAIN,
         }
     }
-
-
-def urls(request):
-    return {
-        'directory_components_urls': {
-            'FEEDBACK_URL': settings.EXTERNAL_SERVICE_FEEDBACK_URL
-        }
-    }
