@@ -10,4 +10,6 @@ def test_static_absolute(rf):
     context = Context({'request': rf.get('/')})
     html = template.render(context)
 
-    assert html == 'http://testserver/directory_components/images/favicon.ico'
+    assert html == (
+        'http://testserver/static/directory_components/images/favicon.ico'
+    )
