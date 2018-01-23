@@ -46,7 +46,7 @@
         {% endblock %}
     </head>
 
-    <body {% body_attributes %}{% endblock %}>
+    <body {% block body_attributes %}{% endblock %}>
         {% block body_google_tag_manager %}
             {% include 'directory_components/google_tag_manager_body.html' %}
         {% endblock %}
