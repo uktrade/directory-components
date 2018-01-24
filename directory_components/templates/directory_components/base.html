@@ -34,7 +34,10 @@
             </style>
         </noscript>
 
-        {% block head_css %}{% endblock %}
+        {% block head_css %}
+            <link href="{% static 'export_elements/styleshseets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
+        {% endblock %}
+
         {% block head_js %}{% endblock %}
         {% block head_other %}{% endblock %}
 
