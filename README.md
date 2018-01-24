@@ -22,6 +22,15 @@ pip install -e git+https://git@github.com/uktrade/directory-components.git@v1.0.
     $ make
 
 
+## Demo
+
+To view the components in the browser run the following command:
+
+    $ ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
+
+and go to `localhost:9000` in your browser
+
+
 [code-climate-image]: https://codeclimate.com/github/uktrade/directory-components/badges/issue_count.svg
 [code-climate]: https://codeclimate.com/github/uktrade/directory-components
 
