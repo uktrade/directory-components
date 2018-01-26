@@ -27,7 +27,7 @@
 
   export_readiness:
     id: "export-readiness-links"
-    title: "Export Readiness"
+    title: "Export readiness"
     items:
       -
         url: "https://great.gov.uk/new/"
