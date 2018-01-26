@@ -1,0 +1,48 @@
+{% load static %}
+<footer id="footer" class="static-header-footer">
+  <nav class="container">
+    <div class="link-group"><img id="footer-dit-logo" src="{% static 'images/DfIT_WHITE_AW.png' %}" height="70px" alt="Department for International Trade"/><img id="footer-eig-logo" src="{% static 'images/eig-logo-stacked.svg' %}" height="82px" alt="Exporting is Great"/>
+    </div>
+    <div class="link-group">
+      <div>
+        <a href="{{ header_footer_urls.custom.url }}">
+          <p class="list-heading" id="footer-{{ header_footer_urls.custom.id }}">{{ header_footer_urls.custom.title }}</p>
+        </a>
+      </div>
+      <div>
+        <p id="footer-{{ header_footer_urls.export_readiness.id }}" class="list-heading">{{ header_footer_urls.export_readiness.title }}</p>
+        <ul aria-labelledby="footer-{{ header_footer_urls.export_readiness.id }}" class="navigation">
+          {% for item in header_footer_urls.export_readiness.items %}
+          <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="link-group">
+      <p id="footer-{{ header_footer_urls.guidance.id }}" class="list-heading">{{ header_footer_urls.guidance.title }}</p>
+      <ul aria-labelledby="footer-{{ header_footer_urls.guidance.id }}" class="navigation">
+        {% for item in header_footer_urls.guidance.items %}
+        <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="link-group">
+      <p id="footer-{{ header_footer_urls.services.id }}" class="list-heading">{{ header_footer_urls.guidance.title }}</p>
+      <ul aria-labelledby="footer-{{ header_footer_urls.guidance.id }}" class="navigation">
+        {% for item in header_footer_urls.services.items %}
+        <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+  <div class="site-links container">
+    <ul class="navigation">
+      {% for item in header_footer_urls.site_links %}
+      <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="global-footer">
+    <p class="container"><span id="footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</span></p>
+  </div>
+</footer>

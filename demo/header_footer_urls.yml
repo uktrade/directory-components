@@ -1,0 +1,119 @@
+---
+  register:
+    title: "Register"
+    id: "register-link"
+
+  signin:
+    title: "Sign in"
+    id: "sign-in-link"
+
+  profile:
+    title: "Profile"
+    id: "profile-link"
+
+  signout:
+    title: "Sign out"
+    id: "sign-out-link"
+
+  home:
+    title: "Home"
+    id: "home-link"
+    url: "https://great.gov.uk/"
+
+  custom:
+    title: "Your export journey"
+    id: "custom-page-link"
+    url: "https://great.gov.uk/custom/"
+
+  export_readiness:
+    id: "export-readiness-links"
+    title: "Export Readiness"
+    items:
+      -
+        url: "https://great.gov.uk/new/"
+        title: "I'm new to exporting"
+        id: "export-readiness-new"
+      -
+        url: "https://great.gov.uk/occasional/"
+        title: "I export occasionally"
+        id: "export-readiness-occasional"
+      -
+        url: "https://great.gov.uk/regular/"
+        title: "I'm a regular exporter"
+        id: "export-readiness-regular"
+
+  guidance:
+    id: "guidance-links"
+    title: "Guidance"
+    items:
+      -
+        url: "https://great.gov.uk/market-research/"
+        title: "Market research"
+        id: "guidance-market-research"
+      -
+        url: "https://great.gov.uk/customer-insight/"
+        title: "Customer insight"
+        id: "guidance-customer-insight"
+      -
+        url: "https://great.gov.uk/finance/"
+        title: "Finance"
+        id: "guidance-finance"
+      -
+        url: "https://great.gov.uk/business-planning/"
+        title: "Business planning"
+        id: "guidance-business-planning"
+      -
+        url: "https://great.gov.uk/getting-paid/"
+        title: "Getting paid"
+        id: "guidance-getting-paid"
+      -
+        url: "https://great.gov.uk/operations-and-compliance/"
+        title: "Operations and compliance"
+        id: "guidance-operations-and-compliance"
+
+  services:
+    id: "services-links"
+    title: "Services"
+    items:
+      -
+        url: "https://find-a-buyer.export.great.gov.uk/"
+        title: "Create an export profile"
+        description: "Get promoted internationally with a great.gov.uk trade profile"
+      -
+        url: "https://selling-online-overseas.export.great.gov.uk/"
+        title: "Sell online overseas"
+        description: "Find the right marketplace for your business and access special offers for sellers"
+      -
+        url: "https://opportunities.export.great.gov.uk/"
+        title: "Find export opportunities"
+        description: "Find and apply for overseas opportunities"
+      -
+        url: "https://great.gov.uk/get-finance/"
+        title: "Get finance"
+        description: "Get the finance you need to compete and grow"
+      -
+        url: "https://events.trade.gov.uk/"
+        title: "Find events and visits"
+        description: "Attend events and see how visits by ministers can support your trade deals"
+
+  site_links:
+    -
+      url: "https://great.gov.uk/about/"
+      id: "site-links-about"
+      title: "About"
+    -
+      url: "https://contact-us.export.great.gov.uk/directory/"
+      id: "site-links-contact"
+      title: "Contact us"
+    -
+      url: "https://great.gov.uk/privacy-and-cookies/"
+      id: "site-links-privacy-and-cookies"
+      title: "Privacy and cookies"
+    -
+      url: "https://great.gov.uk/terms-and-conditions/"
+      id: "site-links-t-and-c"
+      title: "Terms and conditions"
+    -
+      url: "https://www.gov.uk/government/organisations/department-for-international-trade/"
+      id: "site-links-dit"
+      title: "Department for International Trade on GOV.UK"

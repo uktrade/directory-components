@@ -29,5 +29,7 @@ compile_test_requirements:
 
 compile_all_requirements: compile_requirements compile_test_requirements
 
+run:
+	./manage.py runserver --settings=demo.settings
 
 .PHONY: build clean test_requirements flake8 pytest test
