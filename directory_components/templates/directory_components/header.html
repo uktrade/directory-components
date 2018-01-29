@@ -1,63 +1,60 @@
 {% load static %}
-<header id="header" class="static-header-footer"><a id="skip-link" href="#content" class="verbose">Skip to main content</a>
+<header id="header"><a id="skip-link" href="#content">Skip to main content</a>
   <div id="header-bar">
-    <div class="container top-bar">
-      <div class="account-locale-links">
-        <ul aria-label="Account links" class="navigation account-links">
-          {% block login_state %}
-          {% if not sso_is_logged_in %}
-          <li class="anonymous">
-            <a id="header-{{ header_footer_urls.register.id }}" href="{{ sso_register_url }}" class="register">{{ header_footer_urls.register.title }}</a>
-          </li>
-          <li class="anonymous">
-            <a id="header-{{ header_footer_urls.signin.id }}" href="{{ sso_login_url }}" class="signin">{{ header_footer_urls.signin.title }}</a>
-          </li>
-          {% else %}
-          <li class="authenticated">
-            <a id="header-{{ header_footer_urls.profile.id }}" href="{{ sso_profile_url }}" class="profile">{{ header_footer_urls.profile.title }}</a>
-          </li>
-          <li class="authenticated">
-            <a id="header-{{ header_footer_urls.signout.id }}" href="{{ sso_logout_url }}" class="signout">{{ header_footer_urls.signout.title }}</a>
-          </li>
-          {% endif %}
-          {% endblock %}
-        </ul><span class="greeting"></span>
-      </div>
-    </div>
     <div class="container">
-      <a id="header-dit-logo" class="dit-logo" href="{{ header_footer_urls.home.url }}">
-        <img src="{% static 'images/DfIT_WHITE_AW.png' %}" alt="{{ header_footer_urls.home.title }}">
+      <ul aria-label="Account links" class="account-links">
+        {% block login_state %}
+        {% if not sso_is_logged_in %}
+        <li class="anonymous">
+          <a id="header-{{ header_footer_urls.register.id }}" href="{{ sso_register_url }}" class="register">{{ header_footer_urls.register.title }}</a>
+        </li>
+        <li class="anonymous">
+          <a id="header-{{ header_footer_urls.signin.id }}" href="{{ sso_login_url }}" class="signin">{{ header_footer_urls.signin.title }}</a>
+        </li>
+        {% else %}
+        <li class="authenticated">
+          <a id="header-{{ header_footer_urls.profile.id }}" href="{{ sso_profile_url }}" class="profile">{{ header_footer_urls.profile.title }}</a>
+        </li>
+        <li class="authenticated">
+          <a id="header-{{ header_footer_urls.signout.id }}" href="{{ sso_logout_url }}" class="signout">{{ header_footer_urls.signout.title }}</a>
+        </li>
+        {% endif %}
+        {% endblock %}
+      </ul><span id="header-greeting"></span>
+
+      <a id="header-dit-logo" href="{{ header_footer_urls.home.url }}">
+        <img src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="{{ header_footer_urls.home.title }}">
       </a>
     </div>
   </div>
   <div id="header-menu">
     <div class="container">
       <nav id="menu">
-        <ul class="navigation level-1">
+        <ul>
           <li>
-            <a href="{{ header_footer_urls.home.url }}" id="header-{{ header_footer_urls.home.id }}">{{ header_footer_urls.home.title }}</a>
+            <a class="navigation " href="{{ header_footer_urls.home.url }}" id="header-{{ header_footer_urls.home.id }}">{{ header_footer_urls.home.title }}</a>
           </li>
           <li>
-            <a href="{{ header_footer_urls.custom.url }}" id="header-{{ header_footer_urls.custom.id }}">{{ header_footer_urls.custom.title }}</a>
+            <a class="navigation " href="{{ header_footer_urls.custom.url }}" id="header-{{ header_footer_urls.custom.id }}">{{ header_footer_urls.custom.title }}</a>
           </li>
-          <li><a href="#export-readiness-links-list" id="{{ header_footer_urls.export_readiness.id }}" class="list-header">{{ header_footer_urls.export_readiness.title }}</a>
-            <ul id="export-readiness-links-list" aria-labelledby="export-readiness-links" class="navigation level-2">
+          <li><a class="navigation links-list-heading" href="#export-readiness-links-list" id="{{ header_footer_urls.export_readiness.id }}">{{ header_footer_urls.export_readiness.title }}</a>
+            <ul id="export-readiness-links-list" aria-labelledby="export-readiness-links" class="container links-list">
               {% for item in header_footer_urls.export_readiness.items %}
-              <li class="items-3"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+              <li class="links-list-item column-third"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
               {% endfor %}
             </ul>
           </li>
-          <li><a href="#guidance-links-list" id="header-{{ header_footer_urls.guidance.id }}" class="list-header">{{ header_footer_urls.guidance.title }}</a>
-            <ul id="guidance-links-list" aria-labelledby="header-guidance-links" class="navigation level-2">
+          <li><a class="navigation links-list-heading" href="#guidance-links-list" id="header-{{ header_footer_urls.guidance.id }}">{{ header_footer_urls.guidance.title }}</a>
+            <ul id="guidance-links-list" aria-labelledby="header-guidance-links" class="container links-list">
               {% for item in header_footer_urls.guidance.items %}
-              <li class="items-6"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+              <li class="links-list-item column-sixth"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
               {% endfor %}
             </ul>
           </li>
-          <li><a href="#services-links-list" id="header-{{ header_footer_urls.services.id }}" class="list-header">{{ header_footer_urls.services.title }}</a>
-            <ul id="services-links-list" aria-labelledby="header-services-links" class="navigation level-2">
+          <li><a class="navigation links-list-heading" href="#services-links-list" id="header-{{ header_footer_urls.services.id }}">{{ header_footer_urls.services.title }}</a>
+            <ul id="services-links-list" aria-labelledby="header-services-links" class="container links-list">
               {% for item in header_footer_urls.services.items %}
-              <li class="items-5"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a><span class="description">{{ item.description }}</span>
+              <li class="links-list-item column-fifth"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a><p>{{ item.description }}</p>
               </li>
               {% endfor %}
             </ul>

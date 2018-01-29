@@ -77,22 +77,27 @@
     items:
       -
         url: "https://find-a-buyer.export.great.gov.uk/"
+        id: "services-find-a-buyer"
         title: "Create an export profile"
         description: "Get promoted internationally with a great.gov.uk trade profile"
       -
         url: "https://selling-online-overseas.export.great.gov.uk/"
+        id: "services-selling-online-overseas"
         title: "Sell online overseas"
         description: "Find the right marketplace for your business and access special offers for sellers"
       -
         url: "https://opportunities.export.great.gov.uk/"
+        id: "services-export-opportunities"
         title: "Find export opportunities"
         description: "Find and apply for overseas opportunities"
       -
         url: "https://great.gov.uk/get-finance/"
+        id: "services-get-finance"
         title: "Get finance"
         description: "Get the finance you need to compete and grow"
       -
         url: "https://events.trade.gov.uk/"
+        id: "services-events"
         title: "Find events and visits"
         description: "Attend events and see how visits by ministers can support your trade deals"
 
