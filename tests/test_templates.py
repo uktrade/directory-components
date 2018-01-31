@@ -33,3 +33,22 @@ def test_google_tag_manager():
     # sanity check
     assert 'www.googletagmanager.com' in expected_head
     assert 'www.googletagmanager.com' in expected_body
+
+
+def test_google_tag_manager_env():
+
+    context = {
+        'directory_components_analytics': {
+            'GOOGLE_TAG_MANAGER_ID': '123456',
+            'GOOGLE_TAG_MANAGER_ENV': '&gtm_auth=hello'
+        }
+    }
+    head_html = render_to_string(
+        'directory_components/google_tag_manager_head.html', context
+    )
+    body_html = render_to_string(
+        'directory_components/google_tag_manager_body.html', context
+    )
+
+    assert '&gtm_auth=hello' in head_html
+    assert '&gtm_auth=hello' in body_html
