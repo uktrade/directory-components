@@ -4,26 +4,26 @@
     <div class="link-group"><img id="footer-dit-logo" src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="Department for International Trade"/><img id="footer-eig-logo" src="{% static 'directory_components/images/eig-logo-stacked.svg' %}" alt="Exporting is Great"/>
     </div>
     <div class="link-group">
-      <a class="links-list-heading custom-page-link" id="footer-{{ header_footer_urls.custom.id }}" href="{{ header_footer_urls.custom.url }}">{{ header_footer_urls.custom.title }}</a>
-      <h4 class="links-list-heading" id="footer-{{ header_footer_urls.export_readiness.id }}">{{ header_footer_urls.export_readiness.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_urls.export_readiness.id }}" class="links-list">
-        {% for item in header_footer_urls.export_readiness.items %}
+      <a class="links-list-heading custom-page-link" id="footer-{{ header_footer_links.custom.id }}" href="{{ header_footer_links.custom.url }}">{{ header_footer_links.custom.title }}</a>
+      <h4 class="links-list-heading" id="footer-{{ header_footer_links.export_readiness.id }}">{{ header_footer_links.export_readiness.title }}</h4>
+      <ul aria-labelledby="footer-{{ header_footer_links.export_readiness.id }}" class="links-list">
+        {% for item in header_footer_links.export_readiness.items %}
         <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
     <div class="link-group">
-      <h4 class="links-list-heading" id="footer-{{ header_footer_urls.guidance.id }}">{{ header_footer_urls.guidance.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_urls.guidance.id }}" class="links-list">
-        {% for item in header_footer_urls.guidance.items %}
+      <h4 class="links-list-heading" id="footer-{{ header_footer_links.guidance.id }}">{{ header_footer_links.guidance.title }}</h4>
+      <ul aria-labelledby="footer-{{ header_footer_links.guidance.id }}" class="links-list">
+        {% for item in header_footer_links.guidance.items %}
         <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
     <div class="link-group">
-      <h4 class="links-list-heading" id="footer-{{ header_footer_urls.services.id }}">{{ header_footer_urls.guidance.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_urls.guidance.id }}" class="links-list">
-        {% for item in header_footer_urls.services.items %}
+      <h4 class="links-list-heading" id="footer-{{ header_footer_links.services.id }}">{{ header_footer_links.guidance.title }}</h4>
+      <ul aria-labelledby="footer-{{ header_footer_links.guidance.id }}" class="links-list">
+        {% for item in header_footer_links.services.items %}
         <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
         {% endfor %}
       </ul>
@@ -31,7 +31,7 @@
   </nav>
   <div class="container site-links">
     <ul>
-      {% for item in header_footer_urls.site_links %}
+      {% for item in header_footer_links.site_links %}
       <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
       {% endfor %}
     </ul>
