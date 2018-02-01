@@ -31,7 +31,7 @@
   </nav>
   <div class="container site-links">
     <ul>
-      {% for item in header_footer_links.site_links %}
+      {% for item in header_footer_links.site_links.items %}
       <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
       {% endfor %}
     </ul>
