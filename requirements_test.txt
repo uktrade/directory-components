@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements_test.txt requirements_test.in
 #
--e git+https://git@github.com/uktrade/export-elements.git@v0.3.0#egg=export-elements
+-e git+https://git@github.com/uktrade/export-elements.git@v0.3.0#egg=export_elements
 certifi==2017.4.17        # via requests
 chardet==3.0.4            # via requests
 codecov==2.0.9
@@ -20,6 +20,5 @@ pytest-cov==2.3.1
 pytest-django==3.0.0
 pytest==3.0.3
 pytz==2017.2              # via django
-pyyaml==3.12
 requests==2.18.1          # via codecov
 urllib3==1.21.1           # via requests
