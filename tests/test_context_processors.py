@@ -118,26 +118,30 @@ def test_urls_processor(rf, settings):
         'export_readiness': [
             'http://export.com/new',
             'http://export.com/occasional',
-            'http://export.com/regular'],
+            'http://export.com/regular'
+            ],
         'guidance': [
             'http://market-research.com',
             'http://customer-insight.com',
             'http://finance.com',
             'http://business-planning.com',
             'http://getting-paid.com',
-            'http://compliance.com'],
+            'http://compliance.com'
+            ],
         'services': [
             'http://fab.com',
             'http://soo.com',
             'http://exopps.com',
             'http://export.com/get-finance',
-            'http://events.com'],
+            'http://events.com'
+            ],
         'site_links': [
             'http://about.com',
             'http://contact.com',
             'http://privacy-and-cookies.com',
             'http://terms-and-conditions.com',
-            'http://dit.com']
+            'http://dit.com'
+            ]
         }
     sections = exp_urls.keys()
     for section in sections:
@@ -152,26 +156,30 @@ def test_urls_processor_defaults(rf, settings):
         'export_readiness': [
             default_urls.EXPORTING_NEW,
             default_urls.EXPORTING_OCCASIONAL,
-            default_urls.EXPORTING_REGULAR],
+            default_urls.EXPORTING_REGULAR
+            ],
         'guidance': [
             default_urls.GUIDANCE_MARKET_RESEARCH,
             default_urls.GUIDANCE_CUSTOMER_INSIGHT,
             default_urls.GUIDANCE_FINANCE,
             default_urls.GUIDANCE_BUSINESS_PLANNING,
             default_urls.GUIDANCE_GETTING_PAID,
-            default_urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE],
+            default_urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE
+            ],
         'services': [
             default_urls.SERVICES_FAB,
             default_urls.SERVICES_SOO,
             default_urls.SERVICES_EXOPPS,
             default_urls.SERVICES_GET_FINANCE,
-            default_urls.SERVICES_EVENTS],
+            default_urls.SERVICES_EVENTS
+            ],
         'site_links': [
             default_urls.INFO_ABOUT,
             default_urls.INFO_CONTACT_US,
             default_urls.INFO_PRIVACY_AND_COOKIES,
             default_urls.INFO_TERMS_AND_CONDITIONS,
-            default_urls.INFO_DIT]
+            default_urls.INFO_DIT
+            ]
         }
     actual_urls = context_processors.urls_processor(
         None)['header_footer_links']
@@ -211,26 +219,30 @@ def test_urls_processor_defaults_explicitly_none(rf, settings):
         'export_readiness': [
             default_urls.EXPORTING_NEW,
             default_urls.EXPORTING_OCCASIONAL,
-            default_urls.EXPORTING_REGULAR],
+            default_urls.EXPORTING_REGULAR
+            ],
         'guidance': [
             default_urls.GUIDANCE_MARKET_RESEARCH,
             default_urls.GUIDANCE_CUSTOMER_INSIGHT,
             default_urls.GUIDANCE_FINANCE,
             default_urls.GUIDANCE_BUSINESS_PLANNING,
             default_urls.GUIDANCE_GETTING_PAID,
-            default_urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE],
+            default_urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE
+            ],
         'services': [
             default_urls.SERVICES_FAB,
             default_urls.SERVICES_SOO,
             default_urls.SERVICES_EXOPPS,
             default_urls.SERVICES_GET_FINANCE,
-            default_urls.SERVICES_EVENTS],
+            default_urls.SERVICES_EVENTS
+            ],
         'site_links': [
             default_urls.INFO_ABOUT,
             default_urls.INFO_CONTACT_US,
             default_urls.INFO_PRIVACY_AND_COOKIES,
             default_urls.INFO_TERMS_AND_CONDITIONS,
-            default_urls.INFO_DIT]
+            default_urls.INFO_DIT
+            ]
         }
     actual_urls = context_processors.urls_processor(
         None)['header_footer_links']
