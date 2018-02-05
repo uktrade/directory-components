@@ -1,2 +1,1 @@
 -e git+https://github.com/uktrade/export-elements.git@v0.2.0#egg=export_elements
-pyyaml==3.12
