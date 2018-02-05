@@ -29,7 +29,7 @@ compile_test_requirements:
 
 compile_all_requirements: compile_requirements compile_test_requirements
 
-run:
+run_demo:
 	./manage.py collectstatic --noinput --settings=demo.settings && ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
 
 .PHONY: build clean test_requirements flake8 pytest test
