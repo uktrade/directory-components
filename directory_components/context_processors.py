@@ -111,7 +111,8 @@ def urls_processor(request):
                     "title": "Operations and compliance",
                     "id": "guidance-operations-and-compliance",
                     "url": get_url("GUIDANCE_OPERATIONS_AND_COMPLIANCE")
-                }]
+                }
+            ]
         },
         "services": {
             "id": "services-links",
@@ -154,7 +155,8 @@ def urls_processor(request):
                     "description": (
                         "Attend events and see how visits by "
                         "ministers can support your trade deals")
-                }]
+                }
+            ]
         },
         "site_links": {
             "items": [
@@ -183,7 +185,8 @@ def urls_processor(request):
                     "title": "Department for International Trade on GOV.UK",
                     "url": get_url("INFO_DIT"),
                 }
-            ]}
+            ]
+        }
     }
     return {
         'header_footer_links': header_footer_links
