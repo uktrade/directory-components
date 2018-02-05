@@ -1,0 +1,66 @@
+{% load static %}
+<header id="header"><a id="skip-link" href="#content">Skip to main content</a>
+  <div id="header-bar">
+    <div class="container">
+      <ul aria-label="Account links" class="account-links">
+        {% block login_state %}
+        {% if not sso_is_logged_in %}
+        <li class="anonymous">
+          <a id="header-{{ header_footer_links.register.id }}" href="{{ sso_register_url }}" class="register">{{ header_footer_links.register.title }}</a>
+        </li>
+        <li class="anonymous">
+          <a id="header-{{ header_footer_links.signin.id }}" href="{{ sso_login_url }}" class="signin">{{ header_footer_links.signin.title }}</a>
+        </li>
+        {% else %}
+        <li class="authenticated">
+          <a id="header-{{ header_footer_links.profile.id }}" href="{{ sso_profile_url }}" class="profile">{{ header_footer_links.profile.title }}</a>
+        </li>
+        <li class="authenticated">
+          <a id="header-{{ header_footer_links.signout.id }}" href="{{ sso_logout_url }}" class="signout">{{ header_footer_links.signout.title }}</a>
+        </li>
+        {% endif %}
+        {% endblock %}
+      </ul><span id="header-greeting"></span>
+
+      <a id="header-dit-logo" href="{{ header_footer_links.home.url }}">
+        <img src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="{{ header_footer_links.home.title }}">
+      </a>
+    </div>
+  </div>
+  <div id="header-menu">
+    <div class="container">
+      <nav id="menu">
+        <ul>
+          <li>
+            <a class="navigation " href="{{ header_footer_links.home.url }}" id="header-{{ header_footer_links.home.id }}">{{ header_footer_links.home.title }}</a>
+          </li>
+          <li>
+            <a class="navigation " href="{{ header_footer_links.custom.url }}" id="header-{{ header_footer_links.custom.id }}">{{ header_footer_links.custom.title }}</a>
+          </li>
+          <li><a class="navigation links-list-heading" href="#export-readiness-links-list" id="{{ header_footer_links.export_readiness.id }}">{{ header_footer_links.export_readiness.title }}</a>
+            <ul id="export-readiness-links-list" aria-labelledby="export-readiness-links" class="container links-list">
+              {% for item in header_footer_links.export_readiness.items %}
+              <li class="links-list-item column-third"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a class="navigation links-list-heading" href="#guidance-links-list" id="header-{{ header_footer_links.guidance.id }}">{{ header_footer_links.guidance.title }}</a>
+            <ul id="guidance-links-list" aria-labelledby="header-guidance-links" class="container links-list">
+              {% for item in header_footer_links.guidance.items %}
+              <li class="links-list-item column-sixth"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a class="navigation links-list-heading" href="#services-links-list" id="header-{{ header_footer_links.services.id }}">{{ header_footer_links.services.title }}</a>
+            <ul id="services-links-list" aria-labelledby="header-services-links" class="container links-list">
+              {% for item in header_footer_links.services.items %}
+              <li class="links-list-item column-fifth"><a id="header-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a><p>{{ item.description }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

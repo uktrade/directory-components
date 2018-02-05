@@ -1,0 +1,19 @@
+{% extends 'directory_components/header.html' %}
+
+{% block login_state %}
+  <ul aria-label="Account links" class="navigation account-links">
+    <li class="anonymous" id="login-state-register"><a href="{{ sso_register_url }}" class="register">Register</a></li>
+    <li class="anonymous" id="login-state-sign-in"><a href="{{ sso_login_url }}" class="signin">Sign in</a></li>
+    <li class="authenticated" id="login-state-profile" style="display: none;"><a href="{{ sso_profile_url }}" class="profile">Profile</a></li>
+    <li class="authenticated" id="login-state-sign-out" style="display: none;"><a href="{{ sso_logout_url }}" class="signout">Sign out</a></li>
+  </ul>
+  <script type="text/javascript">
+    var isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
+    var anonymousStyle = isAnonymous ? 'inline-block' : 'none';
+    var authenticatedStyle = isAnonymous ? 'none' : 'inline-block';
+    document.getElementById('login-state-profile').style.display = authenticatedStyle;
+    document.getElementById('login-state-sign-out').style.display = authenticatedStyle;
+    document.getElementById('login-state-register').style.display = anonymousStyle;
+    document.getElementById('login-state-sign-in').style.display = anonymousStyle;
+  </script>
+{% endblock %}
