@@ -62,7 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.i18n',
-                'directory_components.context_processors.header_footer_urls',
+                'directory_components.context_processors.urls_processor',
             ],
         },
     },
