@@ -4,6 +4,5 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
--e git+https://git@github.com/uktrade/export-elements.git@v0.3.0#egg=export_elements
 django==1.11.5
 pytz==2017.2              # via django

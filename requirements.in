@@ -1,2 +1,1 @@
 Django==1.11.5
--e git+https://git@github.com/uktrade/export-elements.git@v0.3.0#egg=export_elements

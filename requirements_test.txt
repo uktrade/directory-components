@@ -4,7 +4,6 @@
 #
 #    pip-compile --output-file requirements_test.txt requirements_test.in
 #
--e git+https://git@github.com/uktrade/export-elements.git@v0.3.0#egg=export_elements
 certifi==2017.4.17        # via requests
 chardet==3.0.4            # via requests
 codecov==2.0.9
