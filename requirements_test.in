@@ -6,3 +6,4 @@ pytest-django==3.0.0
 flake8==3.0.4
 codecov==2.0.9
 beautifulsoup4==4.6.0
+ansicolors==1.1.8
