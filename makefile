@@ -33,3 +33,8 @@ run_demo:
 	./manage.py collectstatic --noinput --settings=demo.settings && ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
 
 .PHONY: build clean test_requirements flake8 pytest test
+
+update:
+	bash ./scripts/header_footer_git_make_branch.sh
+	python ./scripts/upgrade_header_footer.py
+	bash ./scripts/header_footer_git_push_changes.sh
