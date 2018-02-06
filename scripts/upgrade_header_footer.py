@@ -57,7 +57,9 @@ def get_file_string(filepath):
 
 def get_update_info():
     """Get update version from user input."""
-    new_version = input(color("Version to upgrade to: ", fg='blue', style='bold'))
+    new_version = input(color(
+        "Version to upgrade to: ",
+        fg='blue', style='bold'))
     replace_in_dirs(new_version)
 
 
