@@ -36,6 +36,9 @@
 
         {% block head_css %}
             <link href="{% static 'export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
+        {% endblock %}
+
+        {% block header_footer_css %}
             <link href="{% static 'export_elements/stylesheets/components/main.min.css' %}" media="all" rel="stylesheet" />
         {% endblock %}
 
