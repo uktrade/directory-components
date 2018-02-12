@@ -38,9 +38,11 @@
             <link href="{% static 'export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
         {% endblock %}
 
-        <link href="{% static 'export_elements/stylesheets/components/main.min.css' %}" media="all" rel="stylesheet" />
-        <script src="{% static 'directory_components/js/third-party.js' %}"></script>
-        <script src="{% static 'directory_components/js/script.js' %}"></script>
+        {% block header_footer %}
+            <link href="{% static 'export_elements/stylesheets/components/main.min.css' %}" media="all" rel="stylesheet" />
+            <script src="{% static 'directory_components/js/third-party.js' %}"></script>
+            <script src="{% static 'directory_components/js/script.js' %}"></script>
+        {% endblock %}
 
         {% block head_js %}{% endblock %}
         {% block head_other %}{% endblock %}
