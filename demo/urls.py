@@ -8,4 +8,9 @@ urlpatterns = [
         views.HelloWorld.as_view(),
         name='hello-world',
     ),
+    url(
+        r'^404/$',
+        views.NotFound.as_view(),
+        name='404',
+    ),
 ]
