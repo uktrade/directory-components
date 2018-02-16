@@ -1,6 +1,24 @@
 {% extends 'demo/base.html' %}
 
 {% block content %}
-	<br>
-	<p>hello, world</p>
+<section>
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <h1 class="heading-xlarge">directory-components</h1>
+
+        <p>Hello, world! This is the demo page for directory-components. From here you can preview all the component templates that can be used when you import this module.</p>
+        <p>All pages use the great.gov.uk header and footer with default production links.</p>
+
+        <h2 class="heading-small">Contents:</h2>
+        <ul class="list list-bullet">
+          <li><a href="{% url '404' %}">Error page</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
