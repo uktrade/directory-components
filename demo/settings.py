@@ -62,7 +62,8 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.i18n',
-                'directory_components.context_processors.urls_processor',
+                ('directory_components.context_processors'
+                    '.header_footer_processor'),
             ],
         },
     },
@@ -139,3 +140,11 @@ LOGGING = {
 X_FRAME_OPTIONS = 'DENY'
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+HEADER_FOOTER_URLS_GREAT_HOME = os.getenv('HEADER_FOOTER_URLS_GREAT_HOME')
+HEADER_FOOTER_URLS_FAB = os.getenv('HEADER_FOOTER_URLS_FAB')
+HEADER_FOOTER_URLS_SOO = os.getenv('HEADER_FOOTER_URLS_SOO')
+HEADER_FOOTER_URLS_EXOPPS = os.getenv('HEADER_FOOTER_URLS_EXOPPS')
+HEADER_FOOTER_URLS_EVENTS = os.getenv('HEADER_FOOTER_URLS_EVENTS')
+HEADER_FOOTER_URLS_CONTACT_US = os.getenv('HEADER_FOOTER_URLS_CONTACT_US')
+HEADER_FOOTER_URLS_DIT = os.getenv('HEADER_FOOTER_URLS_DIT')
