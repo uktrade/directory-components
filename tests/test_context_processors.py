@@ -1,6 +1,6 @@
 from unittest.mock import Mock
 import pytest
-
+from urllib.parse import urljoin
 from directory_components import context_processors
 import directory_components.urls as default_urls
 
@@ -87,60 +87,98 @@ def test_sso_user(request_logged_in, sso_user):
     assert context['sso_user'] == sso_user
 
 
-def test_urls_processor(rf, settings):
-    settings.GREAT_HOME = 'http://home.com'
-    settings.CUSTOM_PAGE = 'http://custom.com'
-    settings.EXPORTING_NEW = 'http://export.com/new'
-    settings.EXPORTING_OCCASIONAL = 'http://export.com/occasional'
-    settings.EXPORTING_REGULAR = 'http://export.com/regular'
-    settings.GUIDANCE_MARKET_RESEARCH = 'http://market-research.com'
-    settings.GUIDANCE_CUSTOMER_INSIGHT = 'http://customer-insight.com'
-    settings.GUIDANCE_FINANCE = 'http://finance.com'
-    settings.GUIDANCE_BUSINESS_PLANNING = 'http://business-planning.com'
-    settings.GUIDANCE_GETTING_PAID = 'http://getting-paid.com'
-    settings.GUIDANCE_OPERATIONS_AND_COMPLIANCE = 'http://compliance.com'
-    settings.SERVICES_FAB = 'http://fab.com'
-    settings.SERVICES_SOO = 'http://soo.com'
-    settings.SERVICES_EXOPPS = 'http://exopps.com'
-    settings.SERVICES_GET_FINANCE = 'http://export.com/get-finance'
-    settings.SERVICES_EVENTS = 'http://events.com'
-    settings.INFO_ABOUT = 'http://about.com'
-    settings.INFO_CONTACT_US = 'http://contact.com'
-    settings.INFO_PRIVACY_AND_COOKIES = 'http://privacy-and-cookies.com'
-    settings.INFO_TERMS_AND_CONDITIONS = 'http://terms-and-conditions.com'
-    settings.INFO_DIT = 'http://dit.com'
-
-    actual_urls = context_processors.urls_processor(
-        None)['header_footer_links']
-    assert actual_urls['home']['url'] == 'http://home.com'
-    assert actual_urls['custom']['url'] == 'http://custom.com'
-    exp_urls = {
+@pytest.fixture
+def exp_default_urls():
+    return {
         'export_readiness': [
-            'http://export.com/new',
-            'http://export.com/occasional',
-            'http://export.com/regular'
+            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'new/'),
+            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'occasional/'),
+            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'regular/'),
             ],
         'guidance': [
-            'http://market-research.com',
-            'http://customer-insight.com',
-            'http://finance.com',
-            'http://business-planning.com',
-            'http://getting-paid.com',
-            'http://compliance.com'
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'guidance/market-research/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'guidance/customer-insight/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'guidance/finance/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'guidance/business-planning/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'guidance/getting-paid/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'guidance/operations-and-compliance/'),
             ],
         'services': [
-            'http://fab.com',
-            'http://soo.com',
-            'http://exopps.com',
-            'http://export.com/get-finance',
-            'http://events.com'
+            default_urls.HEADER_FOOTER_URLS_FAB,
+            default_urls.HEADER_FOOTER_URLS_SOO,
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'export-opportunities/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'get-finance/'),
+            default_urls.HEADER_FOOTER_URLS_EVENTS,
             ],
         'site_links': [
-            'http://about.com',
-            'http://contact.com',
-            'http://privacy-and-cookies.com',
-            'http://terms-and-conditions.com',
-            'http://dit.com'
+            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'about/'),
+            default_urls.HEADER_FOOTER_URLS_CONTACT_US,
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'privacy-and-cookies/'),
+            urljoin(
+                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+                'terms-and-conditions/'),
+            default_urls.HEADER_FOOTER_URLS_DIT,
+            ]
+        }
+
+
+def test_header_footer_processor(settings):
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
+    settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
+    settings.HEADER_FOOTER_URLS_SOO = 'http://soo.com/'
+    settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
+    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
+    settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
+
+    actual_urls = context_processors.header_footer_processor(
+        None)['header_footer_elements']
+    assert actual_urls['home']['url'] == 'http://home.com/'
+    assert actual_urls['custom']['url'] == 'http://home.com/custom/'
+    exp_urls = {
+        'export_readiness': [
+            'http://home.com/new/',
+            'http://home.com/occasional/',
+            'http://home.com/regular/'
+            ],
+        'guidance': [
+            'http://home.com/guidance/market-research/',
+            'http://home.com/guidance/customer-insight/',
+            'http://home.com/guidance/finance/',
+            'http://home.com/guidance/business-planning/',
+            'http://home.com/guidance/getting-paid/',
+            'http://home.com/guidance/operations-and-compliance/'
+            ],
+        'services': [
+            'http://fab.com/',
+            'http://soo.com/',
+            'http://home.com/export-opportunities/',
+            'http://home.com/get-finance/',
+            'http://events.com/'
+            ],
+        'site_links': [
+            'http://home.com/about/',
+            'http://contact.com/',
+            'http://home.com/privacy-and-cookies/',
+            'http://home.com/terms-and-conditions/',
+            'http://dit.com/'
             ]
         }
     sections = exp_urls.keys()
@@ -151,106 +189,106 @@ def test_urls_processor(rf, settings):
             assert exp == actual['url']
 
 
-def test_urls_processor_defaults(rf, settings):
-    exp_urls = {
-        'export_readiness': [
-            default_urls.EXPORTING_NEW,
-            default_urls.EXPORTING_OCCASIONAL,
-            default_urls.EXPORTING_REGULAR
-            ],
-        'guidance': [
-            default_urls.GUIDANCE_MARKET_RESEARCH,
-            default_urls.GUIDANCE_CUSTOMER_INSIGHT,
-            default_urls.GUIDANCE_FINANCE,
-            default_urls.GUIDANCE_BUSINESS_PLANNING,
-            default_urls.GUIDANCE_GETTING_PAID,
-            default_urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE
-            ],
-        'services': [
-            default_urls.SERVICES_FAB,
-            default_urls.SERVICES_SOO,
-            default_urls.SERVICES_EXOPPS,
-            default_urls.SERVICES_GET_FINANCE,
-            default_urls.SERVICES_EVENTS
-            ],
-        'site_links': [
-            default_urls.INFO_ABOUT,
-            default_urls.INFO_CONTACT_US,
-            default_urls.INFO_PRIVACY_AND_COOKIES,
-            default_urls.INFO_TERMS_AND_CONDITIONS,
-            default_urls.INFO_DIT
-            ]
-        }
-    actual_urls = context_processors.urls_processor(
-        None)['header_footer_links']
-    assert actual_urls['home']['url'] == default_urls.GREAT_HOME
-    assert actual_urls['custom']['url'] == default_urls.CUSTOM_PAGE
-    sections = exp_urls.keys()
+def test_header_footer_processor_defaults(settings, exp_default_urls):
+    actual_urls = context_processors.header_footer_processor(
+        None)['header_footer_elements']
+
+    exp_home = default_urls.HEADER_FOOTER_URLS_GREAT_HOME
+    assert actual_urls['home']['url'] == exp_home
+    assert actual_urls['custom']['url'] == urljoin(
+        default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'custom/')
+
+    sections = exp_default_urls.keys()
     for section in sections:
         for exp, actual in zip(
-                exp_urls[section],
-                actual_urls[section]['items']):
+             exp_default_urls[section], actual_urls[section]['items']):
             assert exp == actual['url']
 
 
-def test_urls_processor_defaults_explicitly_none(rf, settings):
-    settings.GREAT_HOME = None
-    settings.EXPORTING_NEW = None
-    settings.EXPORTING_OCCASIONAL = None
-    settings.EXPORTING_REGULAR = None
-    settings.GUIDANCE_MARKET_RESEARCH = None
-    settings.GUIDANCE_CUSTOMER_INSIGHT = None
-    settings.GUIDANCE_BUSINESS_PLANNING = None
-    settings.GUIDANCE_GETTING_PAID = None
-    settings.GUIDANCE_OPERATIONS_AND_COMPLIANCE = None
-    settings.SERVICES_FAB = None
-    settings.SERVICES_SOO = None
-    settings.SERVICES_EXOPPS = None
-    settings.SERVICES_GET_FINANCE = None
-    settings.SERVICES_EVENTS = None
-    settings.INFO_ABOUT = None
+def test_header_footer_processor_defaults_explicitly_none(
+     settings, exp_default_urls):
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = None
+    settings.HEADER_FOOTER_URLS_FAB = None
+    settings.HEADER_FOOTER_URLS_SOO = None
+    settings.HEADER_FOOTER_URLS_EVENTS = None
     settings.INFO_CONTACT_US = None
-    settings.INFO_PRIVACY_AND_COOKIES = None
-    settings.INFO_TERMS_AND_CONDITIONS = None
     settings.INFO_DIT = None
-    settings.CUSTOM_PAGE = None
 
-    exp_urls = {
-        'export_readiness': [
-            default_urls.EXPORTING_NEW,
-            default_urls.EXPORTING_OCCASIONAL,
-            default_urls.EXPORTING_REGULAR
-            ],
-        'guidance': [
-            default_urls.GUIDANCE_MARKET_RESEARCH,
-            default_urls.GUIDANCE_CUSTOMER_INSIGHT,
-            default_urls.GUIDANCE_FINANCE,
-            default_urls.GUIDANCE_BUSINESS_PLANNING,
-            default_urls.GUIDANCE_GETTING_PAID,
-            default_urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE
-            ],
-        'services': [
-            default_urls.SERVICES_FAB,
-            default_urls.SERVICES_SOO,
-            default_urls.SERVICES_EXOPPS,
-            default_urls.SERVICES_GET_FINANCE,
-            default_urls.SERVICES_EVENTS
-            ],
-        'site_links': [
-            default_urls.INFO_ABOUT,
-            default_urls.INFO_CONTACT_US,
-            default_urls.INFO_PRIVACY_AND_COOKIES,
-            default_urls.INFO_TERMS_AND_CONDITIONS,
-            default_urls.INFO_DIT
-            ]
-        }
-    actual_urls = context_processors.urls_processor(
-        None)['header_footer_links']
-    assert actual_urls['home']['url'] == default_urls.GREAT_HOME
-    assert actual_urls['custom']['url'] == default_urls.CUSTOM_PAGE
-    sections = exp_urls.keys()
+    actual_urls = context_processors.header_footer_processor(
+        None)['header_footer_elements']
+
+    exp_home = default_urls.HEADER_FOOTER_URLS_GREAT_HOME
+    exp_custom = urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'custom/')
+    assert actual_urls['home']['url'] == exp_home
+    assert actual_urls['custom']['url'] == exp_custom
+    sections = exp_default_urls.keys()
     for section in sections:
         for exp, actual in zip(
-                exp_urls[section],
+                exp_default_urls[section],
                 actual_urls[section]['items']):
             assert exp == actual['url']
+
+
+def test_urls_processor(settings):
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
+    settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
+    settings.HEADER_FOOTER_URLS_SOO = 'http://soo.com/'
+    settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
+    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
+    settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
+
+    actual_urls = context_processors.urls_processor(
+        None)['directory_components_urls']
+
+    exp_urls = {
+        'home': 'http://home.com/',
+        'fab': 'http://fab.com/',
+        'soo': 'http://soo.com/',
+        'events': 'http://events.com/',
+        'contact_us': 'http://contact.com/',
+        'dit': 'http://dit.com/',
+    }
+
+    for exp, actual in zip(exp_urls, actual_urls):
+        assert exp == actual
+
+
+def test_urls_processor_defaults(settings, exp_default_urls):
+    actual_urls = context_processors.urls_processor(
+        None)['directory_components_urls']
+
+    exp_urls = {
+        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
+        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
+        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
+        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
+        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
+    }
+
+    for exp, actual in zip(exp_urls, actual_urls):
+        assert exp == actual
+
+
+def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = None
+    settings.HEADER_FOOTER_URLS_FAB = None
+    settings.HEADER_FOOTER_URLS_SOO = None
+    settings.HEADER_FOOTER_URLS_EVENTS = None
+    settings.INFO_CONTACT_US = None
+    settings.INFO_DIT = None
+
+    actual_urls = context_processors.urls_processor(
+        None)['directory_components_urls']
+
+    exp_urls = {
+        'home': 'http://home.com/',
+        'fab': 'http://fab.com/',
+        'soo': 'http://soo.com/',
+        'events': 'http://events.com/',
+        'contact_us': 'http://contact.com/',
+        'dit': 'http://dit.com/',
+    }
+
+    for exp, actual in zip(exp_urls, actual_urls):
+        assert exp == actual
