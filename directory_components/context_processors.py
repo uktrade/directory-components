@@ -1,6 +1,7 @@
 from django.conf import settings
 from directory_components.helpers import add_next
 import directory_components.urls as default_urls
+from urllib.parse import urljoin
 
 
 def get_url(url_name):
@@ -56,7 +57,7 @@ def header_footer_processor(request):
         "custom": {
             "title": "Your export journey",
             "id": "custom-page-link",
-            "url": "{}custom/".format(get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+            "url": urljoin(get_url("HEADER_FOOTER_URLS_GREAT_HOME"), 'custom/')
         },
         "export_readiness": {
             "id": "export-readiness-links",
@@ -65,20 +66,22 @@ def header_footer_processor(request):
                 {
                     "title": "I'm new to exporting",
                     "id": "export-readiness-new",
-                    "url": "{}new/".format(get_url(
-                        "HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"), 'new/')
                 },
                 {
                     "title": "I export occasionally",
                     "id": "export-readiness-occasional",
-                    "url": "{}occasional/".format(get_url(
-                        "HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'occasional/')
                 },
                 {
                     "title": "I'm a regular exporter",
                     "id": "export-readiness-regular",
-                    "url": "{}regular/".format(get_url(
-                        "HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'regular/')
                 }
             ]
         },
@@ -89,38 +92,44 @@ def header_footer_processor(request):
                 {
                     "title": "Market research",
                     "id": "guidance-market-research",
-                    "url": "{}guidance/market-research/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'guidance/market-research/')
                 },
                 {
                     "title": "Customer insight",
                     "id": "guidance-customer-insight",
-                    "url": "{}guidance/customer-insight/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'guidance/customer-insight/')
                 },
                 {
                     "title": "Finance",
                     "id": "guidance-finance",
-                    "url": "{}guidance/finance/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'guidance/finance/')
                 },
                 {
                     "title": "Business planning",
                     "id": "guidance-business-planning",
-                    "url": "{}guidance/business-planning/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'guidance/business-planning/')
                 },
                 {
                     "title": "Getting paid",
                     "id": "guidance-getting-paid",
-                    "url": "{}guidance/getting-paid/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'guidance/getting-paid/')
                 },
                 {
                     "title": "Operations and compliance",
                     "id": "guidance-operations-and-compliance",
-                    "url": "{}guidance/operations-and-compliance/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'guidance/operations-and-compliance/')
                 }
             ]
         },
@@ -147,15 +156,17 @@ def header_footer_processor(request):
                 {
                     "id": "services-export-opportunities",
                     "title": "Find export opportunities",
-                    "url": "{}export-opportunities/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME")),
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'export-opportunities/'),
                     "description": "Find and apply for overseas opportunities"
                 },
                 {
                     "id": "services-get-finance",
                     "title": "Get finance",
-                    "url": "{}get-finance/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME")),
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'get-finance/'),
                     "description": (
                         "Get the finance you "
                         "need to compete and grow")
@@ -175,8 +186,9 @@ def header_footer_processor(request):
                 {
                     "id": "site-links-about",
                     "title": "About",
-                    "url": "{}about/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'about/')
                 },
                 {
                     "id": "site-links-contact",
@@ -186,14 +198,16 @@ def header_footer_processor(request):
                 {
                     "id": "site-links-privacy-and-cookies",
                     "title": "Privacy and cookies",
-                    "url": "{}privacy-and-cookies/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'privacy-and-cookies/')
                 },
                 {
                     "id": "site-links-t-and-c",
                     "title": "Terms and conditions",
-                    "url": "{}terms-and-conditions/".format(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"))
+                    "url": urljoin(
+                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
+                        'terms-and-conditions/')
                 },
                 {
                     "id": "site-links-dit",
@@ -210,7 +224,7 @@ def header_footer_processor(request):
 
 def urls_processor(request):
     """For links to other services used outside of header/footer templates."""
-    header_footer_urls = {
+    directory_components_urls = {
         "home": get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
         "fab": get_url("HEADER_FOOTER_URLS_FAB"),
         "soo": get_url("HEADER_FOOTER_URLS_SOO"),
@@ -219,5 +233,5 @@ def urls_processor(request):
         "dit": get_url("HEADER_FOOTER_URLS_DIT"),
     }
     return {
-        'header_footer_urls': header_footer_urls
+        'directory_components_urls': directory_components_urls
     }
