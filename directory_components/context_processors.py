@@ -30,6 +30,7 @@ def analytics(request):
 
 
 def header_footer_processor(request):
+    """Context processor specifically for the header and footer templates."""
     header_footer_elements = {
         "register": {
             "title": "Register",
@@ -208,6 +209,7 @@ def header_footer_processor(request):
 
 
 def urls_processor(request):
+    """For links to other services used outside of header/footer templates."""
     header_footer_urls = {
         "home": get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
         "fab": get_url("HEADER_FOOTER_URLS_FAB"),
