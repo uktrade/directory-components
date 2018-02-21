@@ -29,8 +29,12 @@ compile_test_requirements:
 
 compile_all_requirements: compile_requirements compile_test_requirements
 
+DEMO_SET_ENV_VARS := \
+	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
+	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
+
 run_demo:
-	./manage.py collectstatic --noinput --settings=demo.settings && ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
+	$(DEMO_SET_ENV_VARS) && ./manage.py collectstatic --noinput --settings=demo.settings && ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
 
 .PHONY: build clean test_requirements flake8 pytest test
 
