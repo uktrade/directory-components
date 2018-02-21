@@ -1,4 +1,5 @@
 from django.template.loader import render_to_string
+from directory_components.context_processors import urls_processor
 
 
 def test_google_tag_manager_project_id():
@@ -52,3 +53,22 @@ def test_google_tag_manager_env():
 
     assert '&gtm_auth=hello' in head_html
     assert '&gtm_auth=hello' in body_html
+
+
+def test_404_links(settings):
+    """Test 404 page has links to home and contact-us."""
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com'
+    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
+    context = urls_processor(None)
+    html = render_to_string('directory_components/404.html', context)
+
+    assert 'http://home.com' in html
+    assert 'http://contact.com' in html
+
+
+def test_404_content(settings):
+    """Test 404 page has correct content."""
+    context = urls_processor(None)
+    html = render_to_string('directory_components/404.html', context)
+
+    assert 'If you entered a web address please check it’s correct.' in html
