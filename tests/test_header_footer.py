@@ -150,33 +150,33 @@ def test_header_ids_match_urls_and_text(settings):
                 {
                     "title": "Market research",
                     "id": "guidance-market-research",
-                    "url": "http://home.com/guidance/market-research/"
+                    "url": "http://home.com/market-research/"
                 },
                 {
                     "title": "Customer insight",
                     "id": "guidance-customer-insight",
-                    "url": "http://home.com/guidance/customer-insight/"
+                    "url": "http://home.com/customer-insight/"
                 },
                 {
                     "title": "Finance",
                     "id": "guidance-finance",
-                    "url": "http://home.com/guidance/finance/"
+                    "url": "http://home.com/finance/"
                 },
                 {
                     "title": "Business planning",
                     "id": "guidance-business-planning",
-                    "url": "http://home.com/guidance/business-planning/"
+                    "url": "http://home.com/business-planning/"
                 },
                 {
                     "title": "Getting paid",
                     "id": "guidance-getting-paid",
-                    "url": "http://home.com/guidance/getting-paid/"
+                    "url": "http://home.com/getting-paid/"
                 },
                 {
                     "title": "Operations and compliance",
                     "id": "guidance-operations-and-compliance",
                     "url": (
-                        "http://home.com/guidance/operations-and-compliance/")
+                        "http://home.com/operations-and-compliance/")
                 }
             ]
         },
@@ -276,33 +276,33 @@ def test_footer_ids_match_urls_and_text(settings):
                 {
                     "title": "Market research",
                     "id": "guidance-market-research",
-                    "url": "http://home.com/guidance/market-research/"
+                    "url": "http://home.com/market-research/"
                 },
                 {
                     "title": "Customer insight",
                     "id": "guidance-customer-insight",
-                    "url": "http://home.com/guidance/customer-insight/"
+                    "url": "http://home.com/customer-insight/"
                 },
                 {
                     "title": "Finance",
                     "id": "guidance-finance",
-                    "url": "http://home.com/guidance/finance/"
+                    "url": "http://home.com/finance/"
                 },
                 {
                     "title": "Business planning",
                     "id": "guidance-business-planning",
-                    "url": "http://home.com/guidance/business-planning/"
+                    "url": "http://home.com/business-planning/"
                 },
                 {
                     "title": "Getting paid",
                     "id": "guidance-getting-paid",
-                    "url": "http://home.com/guidance/getting-paid/"
+                    "url": "http://home.com/getting-paid/"
                 },
                 {
                     "title": "Operations and compliance",
                     "id": "guidance-operations-and-compliance",
                     "url": (
-                        "http://home.com/guidance/operations-and-compliance/")
+                        "http://home.com/operations-and-compliance/")
                 }
             ]
         },
