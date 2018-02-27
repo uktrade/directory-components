@@ -56,6 +56,14 @@ def test_google_tag_manager_env():
     assert '&gtm_auth=hello' in body_html
 
 
+def test_base_page_links(settings):
+    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
+    context = urls_processor(None)
+    html = render_to_string('directory_components/base.html', context)
+
+    assert 'http://contact.com' in html
+
+
 def test_404_links(settings):
     """Test 404 page has links to home and contact-us."""
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com'
