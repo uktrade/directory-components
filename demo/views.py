@@ -7,3 +7,7 @@ class HelloWorld(TemplateView):
 
 class NotFound(TemplateView):
     template_name = 'demo/404.html'
+
+
+class ServerError(TemplateView):
+    template_name = 'demo/500.html'
