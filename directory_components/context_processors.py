@@ -54,6 +54,13 @@ def header_footer_processor(request):
             "id": "home-link",
             "url": get_url("HEADER_FOOTER_URLS_GREAT_HOME")
         },
+        "international": {
+            "title": "Go to our international site",
+            "id": "international-link",
+            "url": urljoin(get_url(
+                "HEADER_FOOTER_URLS_GREAT_HOME"),
+                'international/')
+        },
         "custom": {
             "title": "Your export journey",
             "id": "custom-page-link",
