@@ -13,4 +13,9 @@ urlpatterns = [
         views.NotFound.as_view(),
         name='404',
     ),
+    url(
+        r'^500/$',
+        views.ServerError.as_view(),
+        name='500',
+    ),
 ]
