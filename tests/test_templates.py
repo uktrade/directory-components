@@ -1,6 +1,7 @@
 from django.template.loader import render_to_string
 from directory_components.context_processors import urls_processor
 from directory_components.context_processors import header_footer_processor
+from bs4 import BeautifulSoup
 
 
 def test_google_tag_manager_project_id():
@@ -81,6 +82,14 @@ def test_404_content(settings):
     html = render_to_string('404.html', context)
 
     assert 'If you entered a web address please check it’s correct.' in html
+
+
+def test_404_title_exists(settings):
+    context = urls_processor(None)
+    html = render_to_string('404.html', context)
+    soup = BeautifulSoup(html, 'html.parser')
+    title = soup.title.string
+    assert len(title) > 0
 
 
 def test_footer():
