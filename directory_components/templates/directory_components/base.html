@@ -23,21 +23,22 @@
             <!--[if IE]> <link rel="icon" href="{% static 'directory_components/images/favicon.ico' %}" type="image/x-icon" /> <![endif]-->
         {% endblock %}
 
+        {% block head_css %}
+            <link href="{% static 'export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
+            <link href="{% static 'export_elements/stylesheets/elements-components.min.css' %}" media="all" rel="stylesheet" />
+        {% endblock %}
+
         <style type="text/css">
             .js-disabled-only { display: none; }
         </style>
         <noscript>
+          <link href="{% static 'export_elements/stylesheets/elements-components-no-js.min.css' %}" media="all" rel="stylesheet" />
             <style type="text/css">
                 .navigation-toggle { display: block; }
                 .js-disabled-only { display: block; }
                 .js-enabled-only { display: none; }
             </style>
         </noscript>
-
-        {% block head_css %}
-            <link href="{% static 'export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
-            <link href="{% static 'export_elements/stylesheets/elements-components.min.css' %}" media="all" rel="stylesheet" />
-        {% endblock %}
 
         {% block head_js %}
             <script src="{% static 'directory_components/js/third-party.js' %}"></script>
