@@ -1,5 +1,7 @@
 {% extends 'demo/base.html' %}
 
+{% block head_title %}directory-components{% endblock %}
+
 {% block content %}
 <section>
   <div class="container">
@@ -13,7 +15,7 @@
 
         <h2 class="heading-small">Contents:</h2>
         <ul class="list list-bullet">
-          <li><a class="link" href="{% url '404' %}">Error page</a></li>
+          <li><a class="link" href="{% url '404' %}">404 error page</a></li>
         </ul>
 
       </div>

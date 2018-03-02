@@ -1,6 +1,7 @@
 from django.template.loader import render_to_string
 from directory_components.context_processors import urls_processor
 from directory_components.context_processors import header_footer_processor
+from bs4 import BeautifulSoup
 
 
 def test_google_tag_manager_project_id():
@@ -69,7 +70,7 @@ def test_404_links(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com'
     settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
     context = urls_processor(None)
-    html = render_to_string('directory_components/404.html', context)
+    html = render_to_string('404.html', context)
 
     assert 'http://home.com' in html
     assert 'http://contact.com' in html
@@ -78,9 +79,17 @@ def test_404_links(settings):
 def test_404_content(settings):
     """Test 404 page has correct content."""
     context = urls_processor(None)
-    html = render_to_string('directory_components/404.html', context)
+    html = render_to_string('404.html', context)
 
     assert 'If you entered a web address please check it’s correct.' in html
+
+
+def test_404_title_exists(settings):
+    context = urls_processor(None)
+    html = render_to_string('404.html', context)
+    soup = BeautifulSoup(html, 'html.parser')
+    title = soup.title.string
+    assert len(title) > 0
 
 
 def test_footer():
