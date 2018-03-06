@@ -12,14 +12,13 @@
 ## Installation
 
 ```shell
-pip install -e git+https://git@github.com/uktrade/directory-components.git@v1.0.0#egg=directory-components
+pip install directory-components
 ```
 
 ## Development
 
     $ git clone https://github.com/uktrade/directory-components
     $ cd directory-components
-    $ make
 
 
 ## Demo
@@ -29,6 +28,21 @@ To view the components in the browser run the following command:
     $ ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
 
 and go to `localhost:9000` in your browser
+
+
+## Publish to PyPI
+
+The package should be published to PyPI on merge to master. If you need to do it locally then get the credentials from rattic and add the environment variables to your host machine:
+
+| Setting                     |
+| --------------------------- |
+| DIRECTORY_PYPI_USERNAME     |
+| DIRECTORY_PYPI_PASSWORD     |
+
+
+Then run the following command:
+
+    make publish
 
 
 [code-climate-image]: https://codeclimate.com/github/uktrade/directory-components/badges/issue_count.svg
