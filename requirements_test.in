@@ -7,3 +7,5 @@ flake8==3.0.4
 codecov==2.0.9
 beautifulsoup4==4.6.0
 ansicolors==1.1.8
+twine==1.9.1
+wheel==0.30.0

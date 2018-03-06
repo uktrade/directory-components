@@ -36,9 +36,14 @@ DEMO_SET_ENV_VARS := \
 run_demo:
 	$(DEMO_SET_ENV_VARS) && ./manage.py collectstatic --noinput --settings=demo.settings && ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
 
-.PHONY: build clean test_requirements flake8 pytest test
+publish:
+	rm -rf build dist; \
+	python setup.py bdist_wheel; \
+	twine upload --username $$DIRECTORY_PYPI_USERNAME --password $$DIRECTORY_PYPI_PASSWORD dist/*
 
 update:
 	bash ./scripts/header_footer_git_make_branch.sh
 	python ./scripts/upgrade_header_footer.py
 	bash ./scripts/header_footer_git_push_changes.sh
+
+.PHONY: build clean test_requirements flake8 pytest test publish
