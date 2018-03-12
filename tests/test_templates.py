@@ -3,6 +3,8 @@ from directory_components.context_processors import urls_processor
 from directory_components.context_processors import header_footer_processor
 from bs4 import BeautifulSoup
 
+from directory_components import helpers
+
 
 def test_google_tag_manager_project_id():
     context = {
@@ -114,4 +116,20 @@ def test_footer():
             'department-for-international-trade/')
     ]
     for url in exp_urls:
+        assert url in html
+
+
+def test_social_share_links():
+    social_links_builder = helpers.SocialLinkBuilder(
+        url='http://testserver/',
+        page_title='Do research first',
+        app_title='Export Readiness',
+    )
+    template_name = 'directory_components/social_share_links.html'
+    context = {
+        'social_links': social_links_builder.links
+    }
+    html = render_to_string(template_name, context)
+
+    for url in social_links_builder.links.values():
         assert url in html

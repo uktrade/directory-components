@@ -11,7 +11,7 @@ flake8:
 	flake8 . --exclude=.venv,setup.py,directory_components/version.py
 
 pytest:
-	pytest . --cov=. --cov-config=.coveragerc $(pytest_args)
+	pytest . --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no
 
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
