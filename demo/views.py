@@ -1,7 +1,6 @@
 from django.views.generic import TemplateView
 from .forms import DemoForm
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 
 
 class HelloWorld(TemplateView):

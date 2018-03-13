@@ -1,4 +1,3 @@
-from django.utils.safestring import mark_safe
 from django.forms import widgets
 from django import forms
 
