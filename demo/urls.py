@@ -13,4 +13,9 @@ urlpatterns = [
         views.NotFound.as_view(),
         name='404',
     ),
+    url(
+        r'^widgets/$',
+        views.demo_form,
+        name='widgets',
+    ),
 ]
