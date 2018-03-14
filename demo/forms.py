@@ -4,7 +4,7 @@ from directory_components.widgets import CheckboxWithInlineLabel
 
 
 class DemoForm(forms.Form):
-    COLOURS_CHOICES = (
+    DEMO_CHOICES = (
         ('1', 'One'),
         ('2', 'Two'),
         ('3', 'Three'),
@@ -36,5 +36,5 @@ class DemoForm(forms.Form):
         label_suffix='',
         required=False,
         widget=CheckboxSelectInlineLabelMultiple(),
-        choices=COLOURS_CHOICES,
+        choices=DEMO_CHOICES,
     )
