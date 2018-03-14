@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .forms import DemoForm
+from demo.forms import DemoForm
 from django.shortcuts import render
 
 
