@@ -15,7 +15,7 @@ class DemoForm(forms.Form):
         label_suffix='',
         widget=CheckboxWithInlineLabel(
             label='Label text',
-            help_text='This is some hint text. This hint text is very long so '
+            help_text='This is some help text. This help text is very long so '
             'you can see how it wraps next to the form elements. Very very '
             'long boring text that doesn\'t say anything. Why are you '
             'reading this?',
@@ -27,12 +27,12 @@ class DemoForm(forms.Form):
         label='',
         label_suffix='',
         widget=CheckboxWithInlineLabel(
-            label='Label text with no hint text',
+            label='Label text with no help text',
         )
     )
     multiple_choice = forms.MultipleChoiceField(
         label='Multiple choice field',
-        help_text='This is some hint text.',
+        help_text='This is some help text.',
         label_suffix='',
         required=False,
         widget=CheckboxSelectInlineLabelMultiple(),
