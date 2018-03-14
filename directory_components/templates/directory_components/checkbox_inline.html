@@ -1,0 +1,9 @@
+<div class="multiple-choice">
+  {% include "django/forms/widgets/input.html" %}
+  <label for="{{ widget.attrs.id }}">
+    <span class="form-label">{{ label }}</span>
+    {% if help_text %}
+      <span class="form-hint">{{ help_text|safe }}</span>
+    {% endif %}
+  </label>
+</div>
