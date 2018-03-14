@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from demo.forms import DemoForm
 from django.shortcuts import render
+from django.views.generic.edit import FormView
 
 
 class HelloWorld(TemplateView):
@@ -11,6 +12,6 @@ class NotFound(TemplateView):
     template_name = 'demo/404.html'
 
 
-def demo_form(request):
-    form = DemoForm()
-    return render(request, 'demo/widgets.html', {'form': form})
+class DemoFormView(FormView):
+    template_name = 'demo/widgets.html'
+    form_class = DemoForm

@@ -15,7 +15,7 @@ urlpatterns = [
     ),
     url(
         r'^widgets/$',
-        views.demo_form,
+        views.DemoFormView.as_view(),
         name='widgets',
     ),
 ]
