@@ -101,42 +101,42 @@ def header_footer_processor(request):
                     "id": "guidance-market-research",
                     "url": urljoin(
                         get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'guidance/market-research/')
+                        'market-research/')
                 },
                 {
                     "title": "Customer insight",
                     "id": "guidance-customer-insight",
                     "url": urljoin(
                         get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'guidance/customer-insight/')
+                        'customer-insight/')
                 },
                 {
                     "title": "Finance",
                     "id": "guidance-finance",
                     "url": urljoin(
                         get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'guidance/finance/')
+                        'finance/')
                 },
                 {
                     "title": "Business planning",
                     "id": "guidance-business-planning",
                     "url": urljoin(
                         get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'guidance/business-planning/')
+                        'business-planning/')
                 },
                 {
                     "title": "Getting paid",
                     "id": "guidance-getting-paid",
                     "url": urljoin(
                         get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'guidance/getting-paid/')
+                        'getting-paid/')
                 },
                 {
                     "title": "Operations and compliance",
                     "id": "guidance-operations-and-compliance",
                     "url": urljoin(
                         get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'guidance/operations-and-compliance/')
+                        'operations-and-compliance/')
                 }
             ]
         },

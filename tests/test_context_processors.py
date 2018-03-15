@@ -98,22 +98,22 @@ def exp_default_urls():
         'guidance': [
             urljoin(
                 default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'guidance/market-research/'),
+                'market-research/'),
             urljoin(
                 default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'guidance/customer-insight/'),
+                'customer-insight/'),
             urljoin(
                 default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'guidance/finance/'),
+                'finance/'),
             urljoin(
                 default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'guidance/business-planning/'),
+                'business-planning/'),
             urljoin(
                 default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'guidance/getting-paid/'),
+                'getting-paid/'),
             urljoin(
                 default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'guidance/operations-and-compliance/'),
+                'operations-and-compliance/'),
             ],
         'services': [
             default_urls.HEADER_FOOTER_URLS_FAB,
@@ -159,12 +159,12 @@ def test_header_footer_processor(settings):
             'http://home.com/regular/'
             ],
         'guidance': [
-            'http://home.com/guidance/market-research/',
-            'http://home.com/guidance/customer-insight/',
-            'http://home.com/guidance/finance/',
-            'http://home.com/guidance/business-planning/',
-            'http://home.com/guidance/getting-paid/',
-            'http://home.com/guidance/operations-and-compliance/'
+            'http://home.com/market-research/',
+            'http://home.com/customer-insight/',
+            'http://home.com/finance/',
+            'http://home.com/business-planning/',
+            'http://home.com/getting-paid/',
+            'http://home.com/operations-and-compliance/'
             ],
         'services': [
             'http://fab.com/',

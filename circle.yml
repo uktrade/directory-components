@@ -5,6 +5,13 @@ machine:
 dependencies:
   override:
     - make test_requirements
+
 test:
   override:
     - make test
+
+deployment:
+  build_package:
+    branch: master
+    commands:
+      - make publish

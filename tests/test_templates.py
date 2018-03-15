@@ -1,5 +1,9 @@
 from django.template.loader import render_to_string
 from directory_components.context_processors import urls_processor
+from directory_components.context_processors import header_footer_processor
+from bs4 import BeautifulSoup
+
+from directory_components import helpers
 
 
 def test_google_tag_manager_project_id():
@@ -55,12 +59,20 @@ def test_google_tag_manager_env():
     assert '&gtm_auth=hello' in body_html
 
 
+def test_base_page_links(settings):
+    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
+    context = urls_processor(None)
+    html = render_to_string('directory_components/base.html', context)
+
+    assert 'http://contact.com' in html
+
+
 def test_404_links(settings):
     """Test 404 page has links to home and contact-us."""
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com'
     settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
     context = urls_processor(None)
-    html = render_to_string('directory_components/404.html', context)
+    html = render_to_string('404.html', context)
 
     assert 'http://home.com' in html
     assert 'http://contact.com' in html
@@ -69,6 +81,55 @@ def test_404_links(settings):
 def test_404_content(settings):
     """Test 404 page has correct content."""
     context = urls_processor(None)
-    html = render_to_string('directory_components/404.html', context)
+    html = render_to_string('404.html', context)
 
     assert 'If you entered a web address please check it’s correct.' in html
+
+
+def test_404_title_exists(settings):
+    context = urls_processor(None)
+    html = render_to_string('404.html', context)
+    soup = BeautifulSoup(html, 'html.parser')
+    title = soup.title.string
+    assert len(title) > 0
+
+
+def test_footer():
+    template_name = 'directory_components/footer.html'
+    context = header_footer_processor(None)
+    html = render_to_string(template_name, context)
+    exp_urls = [
+        'https://great.gov.uk/custom/',
+        'https://great.gov.uk/new/',
+        'https://great.gov.uk/regular/',
+        'https://great.gov.uk/occasional/',
+        'https://great.gov.uk/market-research/',
+        'https://great.gov.uk/customer-insight/',
+        'https://great.gov.uk/finance/',
+        'https://great.gov.uk/business-planning/',
+        'https://great.gov.uk/getting-paid/',
+        'https://great.gov.uk/operations-and-compliance/',
+        'https://find-a-buyer.export.great.gov.uk/',
+        'https://selling-online-overseas.export.great.gov.uk/',
+        'https://contact-us.export.great.gov.uk/directory/',
+        ('https://www.gov.uk/government/organisations/'
+            'department-for-international-trade/')
+    ]
+    for url in exp_urls:
+        assert url in html
+
+
+def test_social_share_links():
+    social_links_builder = helpers.SocialLinkBuilder(
+        url='http://testserver/',
+        page_title='Do research first',
+        app_title='Export Readiness',
+    )
+    template_name = 'directory_components/social_share_links.html'
+    context = {
+        'social_links': social_links_builder.links
+    }
+    html = render_to_string(template_name, context)
+
+    for url in social_links_builder.links.values():
+        assert url in html

@@ -31,8 +31,20 @@ setup(
     license='MIT',
     author='Department for International Trade',
     description='Shared components library for Export Directory.',
-    packages=find_packages(),
+    packages=find_packages(exclude=["tests.*", "tests", "scripts", "demo"]),
     long_description=open('README.md').read(),
     include_package_data=True,
-    install_requires=get_requirements()
+    install_requires=get_requirements(),
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Framework :: Django :: 1.11',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3.5',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ]
 )
