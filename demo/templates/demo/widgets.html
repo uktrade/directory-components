@@ -18,12 +18,12 @@
             {% for field in form %}
             <div class="form-group">
                 {% if field.label %}
-                  <label class="form-label" for="{{ field.id }}">
+                  <legend class="form-label"{% if field.id %} for="{{ field.id }}" id="{{ field.id }}-label"{% endif %}>
                     <span class="form-label">{{ field.label }}</span>
                     {% if field.help_text %}
                         <span class="form-hint">{{ field.help_text|safe }}</span>
                     {% endif %}
-                  </label>
+                  </legend>
                 {% endif %}
                 {{ field }}
               </div>

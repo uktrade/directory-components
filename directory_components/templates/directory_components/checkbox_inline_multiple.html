@@ -1,4 +1,2 @@
-<div class="multiple-choice">
-  {% include "django/forms/widgets/input.html" %}
-  <label for="{{ widget.attrs.id }}">{{ widget.label }}</label>
-</div>
+{% include "django/forms/widgets/input.html" %}
+<label id="{{ widget.attrs.id }}-label" for="{{ widget.attrs.id }}">{{ widget.label }}</label>
