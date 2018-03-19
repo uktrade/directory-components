@@ -7,8 +7,8 @@ class ChoiceWidget(widgets.ChoiceWidget):
 
     def id_for_label(self, id_, value):
         """
-        Patch to use the field value as an id suffix instead
-        of using an incremented zero-based index.
+        Use field value as an id suffix instead of index.
+
         e.g. prefix-fieldname-value
         use hyphens not underscores
         """
@@ -19,9 +19,7 @@ class ChoiceWidget(widgets.ChoiceWidget):
     def create_option(
             self, name, value, label, selected, index,
             subindex=None, attrs=None):
-        """
-        Patch to use nicer ids.
-        """
+        """Patch to use nicer ids."""
         index = str(index) if subindex is None else "%s-%s" % (index, subindex)
         if attrs is None:
             attrs = {}
@@ -67,9 +65,8 @@ class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
 
 
 class CheckboxSelectMultiple(ChoiceWidget):
-    """
-    Inherit from our patched ChoiceWidget and change nothing else.
-    """
+    """Inherit from our patched ChoiceWidget and change nothing else."""
+
     pass
 
 
