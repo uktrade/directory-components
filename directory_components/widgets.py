@@ -3,7 +3,6 @@ from django import forms
 
 
 class ChoiceWidget(widgets.ChoiceWidget):
-    add_id_value = True
 
     def id_for_label(self, id_, value):
         """
@@ -12,7 +11,7 @@ class ChoiceWidget(widgets.ChoiceWidget):
         e.g. prefix-fieldname-value
         use hyphens not underscores
         """
-        if id_ and self.add_id_value:
+        if id_:
             id_ = '%s-%s' % (id_, value)
         return id_
 
