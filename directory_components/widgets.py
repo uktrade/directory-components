@@ -4,7 +4,7 @@ from django import forms
 
 class ChoiceWidget(widgets.ChoiceWidget):
 
-    def id_for_label(self, id_, value):
+    def id_for_label(self, id_, label):
         """
         Use field value as an id suffix instead of index.
 
@@ -12,7 +12,7 @@ class ChoiceWidget(widgets.ChoiceWidget):
         use hyphens not underscores
         """
         if id_:
-            id_ = '%s-%s' % (id_, value)
+            id_ = '%s-%s' % (id_, label.lower())
         return id_
 
     def create_option(
@@ -27,7 +27,7 @@ class ChoiceWidget(widgets.ChoiceWidget):
         if selected:
             option_attrs.update(self.checked_attribute)
         if 'id' in option_attrs:
-            option_attrs['id'] = self.id_for_label(option_attrs['id'], value)
+            option_attrs['id'] = self.id_for_label(option_attrs['id'], label)
         return {
             'name': name,
             'value': value,
