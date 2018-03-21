@@ -21,9 +21,12 @@ CODECOV := \
 test: flake8 pytest
 	$(CODECOV)
 
-DEMO_SET_ENV_VARS := \
-	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
-	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
+DOCKER_SET_ENV_VARS := \
+	export DIRECTORY_COMPONENTS_SECRET_KEY=debug; \
+	export DIRECTORY_COMPONENTS_DEBUG=true; \
+	export DIRECTORY_COMPONENTS_PORT=9000; \
+	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
+	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
 
 publish:
 	rm -rf build dist; \
@@ -51,16 +54,16 @@ docker_run:
 	$(DOCKER_COMPOSE_REMOVE_AND_PULL) && \
 	docker-compose up --build
 
-DOCKER_SET_DEBUG_ENV_VARS := \
+DOCKER_SET_ENV_VARS := \
 	export DIRECTORY_COMPONENTS_SECRET_KEY=debug; \
-	export DIRECTORY_COMPONENTS_DEBUG=true; \
+	export DIRECTORY_COMPONENTS_DEBUG=false; \
 	export DIRECTORY_COMPONENTS_PORT=9000; \
 	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
 	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
 
 
 docker_test_env_files:
-	$(DOCKER_SET_DEBUG_ENV_VARS) && \
+	$(DOCKER_SET_ENV_VARS) && \
 	$(DOCKER_COMPOSE_CREATE_ENVS)
 
 DOCKER_REMOVE_ALL := \
@@ -71,13 +74,6 @@ DOCKER_REMOVE_ALL := \
 
 docker_remove_all:
 	$(DOCKER_REMOVE_ALL)
-
-docker_debug: docker_remove_all
-	$(DOCKER_SET_DEBUG_ENV_VARS) && \
-	$(DOCKER_COMPOSE_CREATE_ENVS) && \
-	docker-compose pull && \
-	docker-compose build && \
-	docker-compose run --service-ports demo make django_webserver
 
 docker_webserver_bash:
 	docker exec -it directoryui_webserver_1 sh
@@ -99,5 +95,12 @@ django_webserver:
 run_demo:
 	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
+
+docker_webserver: docker_remove_all
+	$(DOCKER_SET_ENV_VARS) && \
+	$(DOCKER_COMPOSE_CREATE_ENVS) && \
+	$(DOCKER_COMPOSE_REMOVE_AND_PULL) && \
+	docker-compose build && \
+	docker-compose run --service-ports demo make django_webserver
 
 .PHONY: build clean test_requirements flake8 pytest test publish
