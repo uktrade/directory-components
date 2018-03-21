@@ -9,4 +9,4 @@ services:
     command: ./docker/cmd-webserver.sh
     env_file: ./docker/.env
     ports: ["9000:9000"]
-    restart: "no"
+    restart: "always"
