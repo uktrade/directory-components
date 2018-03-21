@@ -25,9 +25,9 @@ pip install directory-components
 
 To view the components in the browser run the following command:
 
-    $ ./manage.py runserver --settings=demo.settings 0.0.0.0:9000
+    $ make run_demo
 
-and go to `localhost:9000` in your browser
+and go to `0.0.0.0:9000` in your browser
 
 
 ## Publish to PyPI
