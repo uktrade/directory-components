@@ -20,13 +20,24 @@
         </li>
         {% endif %}
         {% endblock %}
-      </ul><span id="header-greeting"></span>
+
+        {% block international_link_js_disabled %}
+        {% endblock %}
+
+      </ul>
+      <span id="header-greeting"></span>
 
       <a id="header-dit-logo" href="{{ header_footer_elements.home.url }}">
         <img src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="{{ header_footer_elements.home.title }}">
       </a>
     </div>
   </div>
+
+  <div class="js-disabled-only">
+  {% block no_js_header_beta_banner %}
+  {% endblock %}
+  </div>
+
   <div id="header-menu">
     <div class="container">
       <nav id="menu">
