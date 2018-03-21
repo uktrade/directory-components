@@ -8,3 +8,4 @@ HEADER_FOOTER_URLS_CONTACT_US = (
 HEADER_FOOTER_URLS_DIT = (
     'https://www.gov.uk/government/organisations/'
     'department-for-international-trade/')
+COMPONENTS_URLS_FAS = 'https://trade.great.gov.uk/'
