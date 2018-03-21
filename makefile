@@ -25,9 +25,6 @@ DEMO_SET_ENV_VARS := \
 	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
 	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
 
-run_demo:
-	$(DEMO_SET_ENV_VARS) && ./manage.py collectstatic --noinput --settings=demo.config.settings && ./manage.py runserver --settings=demo.config.settings 0.0.0.0:9000
-
 publish:
 	rm -rf build dist; \
 	python setup.py bdist_wheel; \
@@ -40,6 +37,7 @@ update:
 
 
 DEMO_SET_ENV_VARS := \
+	export SECRET_KEY=debug; \
 	export DEBUG=true; \
 	export PORT=9000; \
 	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
@@ -54,6 +52,7 @@ docker_run:
 	docker-compose up --build
 
 DOCKER_SET_DEBUG_ENV_VARS := \
+	export DIRECTORY_COMPONENTS_SECRET_KEY=debug; \
 	export DIRECTORY_COMPONENTS_DEBUG=true; \
 	export DIRECTORY_COMPONENTS_PORT=9000; \
 	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
