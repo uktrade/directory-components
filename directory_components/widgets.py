@@ -1,5 +1,6 @@
 from django.forms import widgets
 from django import forms
+from django.utils.text import slugify
 
 
 class ChoiceWidget(widgets.ChoiceWidget):
@@ -12,7 +13,7 @@ class ChoiceWidget(widgets.ChoiceWidget):
         use hyphens not underscores
         """
         if id_:
-            id_ = '%s-%s' % (id_, label.lower())
+            id_ = '%s-%s' % (id_, slugify(label.lower()))
         return id_
 
     def create_option(

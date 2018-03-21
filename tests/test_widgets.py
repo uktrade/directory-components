@@ -87,3 +87,22 @@ def test_checkbox_inline_class_has_attrs():
 def test_choice_widget_id():
     choice = ChoiceWidget()
     assert choice.id_for_label('id', 'value') == 'id-value'
+
+
+def test_widget_id_handles_spaces_and_uppercase():
+    TEST_CHOICES = (
+        ('cyan', 'Cyan colour'),
+        ('magenta', 'Magenta colour'),
+        ('yellow', 'Yellow colour'),
+    )
+    widget = RadioSelect(
+        attrs={'id': 'radio-test'},
+        choices=TEST_CHOICES
+    )
+    html = widget.render('name', 'value')
+    soup = BeautifulSoup(html, 'html.parser')
+    exp_ids = ['cyan-colour', 'magenta-colour', 'yellow-colour']
+
+    inputs = soup.find_all('input')
+    for input, exp_id in zip(inputs, exp_ids):
+        assert input.attrs['id'] == 'radio-test-{}'.format(exp_id)
