@@ -12,6 +12,6 @@ RUN apt-get update && apt-get install -y gettext && apt-get clean && rm -rf /var
 
 COPY . /usr/src/app
 
-CMD ["/usr/src/app/demo/docker/cmd-webserver.sh"]
+CMD ["/usr/src/app/docker/cmd-webserver.sh"]
 
 EXPOSE 8000
