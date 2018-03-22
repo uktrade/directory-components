@@ -234,6 +234,7 @@ def urls_processor(request):
     directory_components_urls = {
         "home": get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
         "fab": get_url("HEADER_FOOTER_URLS_FAB"),
+        "fas": get_url("COMPONENTS_URLS_FAS"),
         "soo": get_url("HEADER_FOOTER_URLS_SOO"),
         "events": get_url("HEADER_FOOTER_URLS_EVENTS"),
         "contact_us": get_url("HEADER_FOOTER_URLS_CONTACT_US"),

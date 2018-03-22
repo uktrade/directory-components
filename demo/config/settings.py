@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(PROJECT_ROOT)
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "debug"
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if (os.getenv('DEBUG') == 'true') else False
 
 # As the app is running behind a host-based router supplied by Heroku or other
 # PaaS, we can open ALLOWED_HOSTS
@@ -48,9 +48,10 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'demo.urls'
+ROOT_URLCONF = 'demo.config.urls'
 
 TEMPLATES = [
     {
@@ -78,6 +79,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Static files served with Whitenoise and AWS Cloudfront
+# http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
+# http://whitenoise.evans.io/en/stable/django.html#restricting-cloudfront-to-static-files
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_HOST = os.environ.get('STATIC_HOST', '')
+STATIC_URL = STATIC_HOST + '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

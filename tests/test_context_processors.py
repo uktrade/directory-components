@@ -232,6 +232,7 @@ def test_header_footer_processor_defaults_explicitly_none(
 def test_urls_processor(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
     settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
+    settings.COMPONENTS_URLS_FAS = 'http://fas.com/'
     settings.HEADER_FOOTER_URLS_SOO = 'http://soo.com/'
     settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
     settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
@@ -243,6 +244,7 @@ def test_urls_processor(settings):
     exp_urls = {
         'home': 'http://home.com/',
         'fab': 'http://fab.com/',
+        'fas': 'http://fas.com/',
         'soo': 'http://soo.com/',
         'events': 'http://events.com/',
         'contact_us': 'http://contact.com/',
@@ -260,6 +262,7 @@ def test_urls_processor_defaults(settings, exp_default_urls):
     exp_urls = {
         'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
         'fab': default_urls.HEADER_FOOTER_URLS_FAB,
+        'fas': default_urls.COMPONENTS_URLS_FAS,
         'soo': default_urls.HEADER_FOOTER_URLS_SOO,
         'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
         'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
@@ -277,6 +280,7 @@ def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
     settings.HEADER_FOOTER_URLS_EVENTS = None
     settings.INFO_CONTACT_US = None
     settings.INFO_DIT = None
+    settings.COMPONENTS_URLS_FAS = None
 
     actual_urls = context_processors.urls_processor(
         None)['directory_components_urls']
@@ -284,6 +288,7 @@ def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
     exp_urls = {
         'home': 'http://home.com/',
         'fab': 'http://fab.com/',
+        'fas': 'http://fas.com/',
         'soo': 'http://soo.com/',
         'events': 'http://events.com/',
         'contact_us': 'http://contact.com/',
