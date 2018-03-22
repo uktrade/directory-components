@@ -69,6 +69,7 @@ class DemoForm(forms.Form):
         label_suffix='',
         help_text='Some help text.',
         widget=RadioSelect(
+            use_nice_ids=True,
             attrs={'id': 'radio-one'}),
         choices=DEMO_CHOICES
     )
@@ -77,6 +78,7 @@ class DemoForm(forms.Form):
         label_suffix='',
         help_text='Some help text.',
         widget=RadioSelect(
+            use_nice_ids=True,
             attrs={'id': 'radio-two'}),
         choices=DEMO_GROUPS
     )

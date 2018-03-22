@@ -1,8 +1,19 @@
 from directory_components.widgets import CheckboxWithInlineLabel
 from directory_components.widgets import CheckboxSelectInlineLabelMultiple
 from directory_components.widgets import RadioSelect
-from directory_components.widgets import ChoiceWidget
 from bs4 import BeautifulSoup
+
+TEST_CHOICES = (
+    ('cyan', 'Cyan'),
+    ('magenta', 'Magenta'),
+    ('yellow', 'Yellow'),
+)
+
+TEST_CHOICES_WITH_SPACES = (
+    ('cyan', 'Cyan colour'),
+    ('magenta', 'Magenta colour'),
+    ('yellow', 'Yellow colour'),
+)
 
 
 def test_checkbox_inline_label_widget():
@@ -37,11 +48,6 @@ def test_checkbox_inline_label_multiple_widget():
 
 
 def test_radio_select_widget():
-    TEST_CHOICES = (
-        ('cyan', 'Cyan'),
-        ('magenta', 'Magenta'),
-        ('yellow', 'Yellow'),
-    )
     widget = RadioSelect(
         attrs={'id': 'radio-test'},
         choices=TEST_CHOICES
@@ -55,11 +61,39 @@ def test_radio_select_widget():
     list_element = soup.find('ul')
     assert list_element['id'] == 'radio-test'
 
+
+def test_radio_nice_ids():
+    widget = RadioSelect(
+        use_nice_ids=True,
+        attrs={'id': 'radio-test'},
+        choices=TEST_CHOICES
+    )
+    html = widget.render('name', 'value')
+    soup = BeautifulSoup(html, 'html.parser')
+
     list_items = soup.find_all('input')
     exp_ids = [
         'radio-test-cyan',
         'radio-test-magenta',
         'radio-test-yellow',
+    ]
+    for item, exp_id in zip(list_items, exp_ids):
+        assert item.attrs['id'] == exp_id
+
+
+def test_radio_default_ids():
+    widget = RadioSelect(
+        attrs={'id': 'radio-test'},
+        choices=TEST_CHOICES
+    )
+    html = widget.render('name', 'value')
+    soup = BeautifulSoup(html, 'html.parser')
+
+    list_items = soup.find_all('input')
+    exp_ids = [
+        'radio-test_0',
+        'radio-test_1',
+        'radio-test_2',
     ]
     for item, exp_id in zip(list_items, exp_ids):
         assert item.attrs['id'] == exp_id
@@ -84,20 +118,11 @@ def test_checkbox_inline_class_has_attrs():
     assert context['help_text'] == 'Test helptext'
 
 
-def test_choice_widget_id():
-    choice = ChoiceWidget()
-    assert choice.id_for_label('id', 'value') == 'id-value'
-
-
 def test_widget_id_handles_spaces_and_uppercase():
-    TEST_CHOICES = (
-        ('cyan', 'Cyan colour'),
-        ('magenta', 'Magenta colour'),
-        ('yellow', 'Yellow colour'),
-    )
     widget = RadioSelect(
+        use_nice_ids=True,
         attrs={'id': 'radio-test'},
-        choices=TEST_CHOICES
+        choices=TEST_CHOICES_WITH_SPACES
     )
     html = widget.render('name', 'value')
     soup = BeautifulSoup(html, 'html.parser')
