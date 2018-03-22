@@ -9,10 +9,14 @@ class DemoForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(DemoForm, self).__init__(auto_id='demo-%s', *args, **kwargs)
 
-    DEMO_CHOICES = (
+    DEMO_COLOURS = (
         ('red', 'Red'),
         ('green', 'Green'),
         ('blue', 'Blue'),
+    )
+    DEMO_CHOICES = (
+        (True, 'Yes'),
+        (False, 'No'),
     )
     DEMO_GROUPS = (
         ('Colours',
@@ -58,13 +62,14 @@ class DemoForm(forms.Form):
         widget=CheckboxSelectInlineLabelMultiple(
             attrs={'id': 'checkbox-multiple'}
         ),
-        choices=DEMO_CHOICES,
+        choices=DEMO_COLOURS,
     )
     radio = forms.ChoiceField(
         label='Radio select',
         label_suffix='',
         help_text='Some help text.',
         widget=RadioSelect(
+            use_nice_ids=True,
             attrs={'id': 'radio-one'}),
         choices=DEMO_CHOICES
     )
@@ -73,6 +78,7 @@ class DemoForm(forms.Form):
         label_suffix='',
         help_text='Some help text.',
         widget=RadioSelect(
+            use_nice_ids=True,
             attrs={'id': 'radio-two'}),
         choices=DEMO_GROUPS
     )

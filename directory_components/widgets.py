@@ -1,25 +1,24 @@
 from django.forms import widgets
 from django import forms
+from django.utils.text import slugify
 
 
 class ChoiceWidget(widgets.ChoiceWidget):
-
-    def id_for_label(self, id_, value):
-        """
-        Use field value as an id suffix instead of index.
-
-        e.g. prefix-fieldname-value
-        use hyphens not underscores
-        """
-        if id_:
-            id_ = '%s-%s' % (id_, value)
-        return id_
+    # Retain django's default behaviour if use_nice_ids is False
+    def __init__(self, use_nice_ids=False, *args, **kwargs):
+        self.use_nice_ids = use_nice_ids
+        self.id_separator = '_'
+        if use_nice_ids:
+            self.add_id_index = False
+            self.id_separator = '-'
+        super().__init__(*args, **kwargs)
 
     def create_option(
             self, name, value, label, selected, index,
             subindex=None, attrs=None):
         """Patch to use nicer ids."""
-        index = str(index) if subindex is None else "%s-%s" % (index, subindex)
+        index = str(index) if subindex is None else "%s%s%s" % (
+            index, self.id_separator, subindex)
         if attrs is None:
             attrs = {}
         option_attrs = self.build_attrs(
@@ -27,7 +26,15 @@ class ChoiceWidget(widgets.ChoiceWidget):
         if selected:
             option_attrs.update(self.checked_attribute)
         if 'id' in option_attrs:
-            option_attrs['id'] = self.id_for_label(option_attrs['id'], value)
+            if self.use_nice_ids:
+                option_attrs['id'] = "%s%s%s" % (
+                    option_attrs['id'],
+                    self.id_separator,
+                    slugify(label.lower())
+                    )
+            else:
+                option_attrs['id'] = self.id_for_label(
+                    option_attrs['id'], index)
         return {
             'name': name,
             'value': value,
