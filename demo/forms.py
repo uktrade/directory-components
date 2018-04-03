@@ -1,84 +1,101 @@
-from django import forms
-from directory_components.widgets import CheckboxSelectInlineLabelMultiple
-from directory_components.widgets import CheckboxWithInlineLabel
-from directory_components.widgets import RadioSelect
+from directory_components import forms, fields, widgets
 
 
-class DemoForm(forms.Form):
-
+class PrefixIdMixin:
     def __init__(self, *args, **kwargs):
-        super(DemoForm, self).__init__(auto_id='demo-%s', *args, **kwargs)
+        super().__init__(auto_id='demo-%s', *args, **kwargs)
 
-    DEMO_COLOURS = (
-        ('red', 'Red'),
-        ('green', 'Green'),
-        ('blue', 'Blue'),
+
+class TextBoxForm(PrefixIdMixin, forms.Form):
+    text_field1 = fields.CharField(
+        label='Q1: Simple text field',
+        help_text='Some help text'
     )
-    DEMO_CHOICES = (
-        (True, 'Yes'),
-        (False, 'No'),
+    url_field = fields.URLField(
+        label='Q2: URL field',
+        help_text='Some help text'
     )
-    DEMO_GROUPS = (
-        ('Colours',
-            (
-                ('red', 'Red'),
-                ('green', 'Green'),
-                ('blue', 'Blue'),
-            )),
-        ('Numbers',
-            (
-                ('4', 'Four'),
-                ('5', 'Five'),
-                ('6', 'Six'),
-            )),
+    email_field = fields.ChoiceField(
+        label='Q3: select field',
+        help_text='Some help text',
+        choices=[
+            ('red', 'Red'),
+            ('green', 'Green'),
+            ('blue', 'Blue'),
+        ]
     )
-    checkbox1 = forms.BooleanField(
-        required=False,
-        label='',
-        label_suffix='',
-        widget=CheckboxWithInlineLabel(
-            label='Label text',
-            help_text='This is some help text. This help text is very long so '
+
+
+class CheckboxForm(PrefixIdMixin, forms.Form):
+    checkbox1 = fields.BooleanField(
+        label='Q1: Label text',
+        help_text=(
+            'This is some help text. This help text is very long so '
             'you can see how it wraps next to the form elements. Very very '
             'long boring text that doesn\'t say anything. Why are you '
-            'reading this?',
+            'reading this?'
+        ),
+        widget=widgets.CheckboxWithInlineLabel(
             attrs={'id': 'checkbox-one'}
         )
     )
-    checkbox2 = forms.BooleanField(
-        required=False,
-        label='',
-        label_suffix='',
-        widget=CheckboxWithInlineLabel(
-            label='Label text with no help text',
+    checkbox2 = fields.BooleanField(
+        label='Q2: Label text with no help text',
+        widget=widgets.CheckboxWithInlineLabel(
             attrs={'id': 'checkbox-two'}
         )
     )
-    multiple_choice = forms.MultipleChoiceField(
-        label='Multiple choice checkboxes',
+
+
+class MultipleChoiceForm(PrefixIdMixin, forms.Form):
+    multiple_choice = fields.MultipleChoiceField(
+        label='Q1: Multiple choice checkboxes',
         help_text='This is some help text.',
-        label_suffix='',
-        required=False,
-        widget=CheckboxSelectInlineLabelMultiple(
+        widget=widgets.CheckboxSelectInlineLabelMultiple(
             attrs={'id': 'checkbox-multiple'}
         ),
-        choices=DEMO_COLOURS,
+        choices=(
+            ('red', 'Red'),
+            ('green', 'Green'),
+            ('blue', 'Blue'),
+        ),
     )
-    radio = forms.ChoiceField(
-        label='Radio select',
+
+
+class RadioForm(PrefixIdMixin, forms.Form):
+    radio = fields.ChoiceField(
+        label='Q1: Radio select',
         label_suffix='',
         help_text='Some help text.',
-        widget=RadioSelect(
+        widget=widgets.RadioSelect(
             use_nice_ids=True,
-            attrs={'id': 'radio-one'}),
-        choices=DEMO_CHOICES
+            attrs={'id': 'radio-one'}
+        ),
+        choices=(
+            (True, 'Yes'),
+            (False, 'No'),
+        )
     )
-    radio_group = forms.ChoiceField(
-        label='Radio select with option groups',
+    radio_group = fields.ChoiceField(
+        label='Q2: Radio select with option groups',
         label_suffix='',
         help_text='Some help text.',
-        widget=RadioSelect(
+        widget=widgets.RadioSelect(
             use_nice_ids=True,
-            attrs={'id': 'radio-two'}),
-        choices=DEMO_GROUPS
+            attrs={'id': 'radio-two'}
+        ),
+        choices=(
+            ('Colours',
+                (
+                    ('red', 'Red'),
+                    ('green', 'Green'),
+                    ('blue', 'Blue'),
+                )),
+            ('Numbers',
+                (
+                    ('4', 'Four'),
+                    ('5', 'Five'),
+                    ('6', 'Six'),
+                )),
+        )
     )

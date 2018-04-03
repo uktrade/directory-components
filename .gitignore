@@ -1,4 +1,4 @@
-demo/staticfiles
+demo/config/staticfiles
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

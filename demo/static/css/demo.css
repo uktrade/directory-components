@@ -2,3 +2,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
+code {
+	white-space: pre;
+}
+
+article.grid-row {
+	margin-bottom: 100px;
+}

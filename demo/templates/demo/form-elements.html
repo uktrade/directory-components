@@ -1,0 +1,87 @@
+{% extends 'demo/base.html' %}
+
+{% load view_instance_code from demo_tags %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+      <h1 class="heading-xlarge">Form widgets examples</h1>
+
+        <article class="grid-row"> <h2 class="heading-large">Text fields</h2>
+          <div class="column-one-half">
+            <form>
+              {% csrf_token %}
+              {{ text_form.as_p }}
+              <input class="button" type="submit" value="Submit" />
+            </form>
+          </div>
+          <div class="column-one-half">
+            <code>
+from directory_components import forms, fields
+
+{{ text_form|view_instance_code }}
+            </code>
+          </div>
+        </article>
+
+        <article class="grid-row">
+          <h2 class="heading-large">Checkboxes</h2>
+          <div class="column-one-half">
+            <form>
+              {% csrf_token %}
+              {{ checkbox_form.as_p }}
+              <input class="button" type="submit" value="Submit" />
+            </form>
+          </div>
+          <div class="column-one-half">
+            <code>
+from directory_components import forms, fields, widgets
+
+{{ checkbox_form|view_instance_code }}
+            </code>
+          </div>
+        </article>
+
+        <article class="grid-row">
+          <h2 class="heading-large">Multiple choice checkboxes</h2>
+          <div class="column-one-half">
+            <form>
+              {% csrf_token %}
+              {{ multiple_choice_form.as_p }}
+              <input class="button" type="submit" value="Submit" />
+            </form>
+          </div>
+          <div class="column-one-half">
+            <code>
+from directory_components import forms, fields, widgets
+
+{{ multiple_choice_form|view_instance_code }}
+            </code>
+          </div>
+        </article>
+
+        <article class="grid-row">
+          <h2 class="heading-large">Radios</h2>
+          <div class="column-one-half">
+            <form>
+              {% csrf_token %}
+              {{ radio_form.as_p }}
+              <input class="button" type="submit" value="Submit" />
+            </form>
+          </div>
+          <div class="column-one-half">
+            <code>
+from directory_components import forms, fields, widgets
+
+{{ radio_form|view_instance_code }}
+            </code>
+          </div>
+        </article>
+
+    <a href="/" class="link link-back">Go back</a>
+  </div>
+</section>
+
+{% endblock %}

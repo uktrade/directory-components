@@ -1,3 +1,4 @@
+<fieldset>
 {% with id=widget.attrs.id %}
 <ul{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
   {% for group, options, index in widget.optgroups %}
@@ -15,3 +16,4 @@
   {% endfor %}
 </ul>
 {% endwith %}
+</fieldset>
