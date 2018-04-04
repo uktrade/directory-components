@@ -31,7 +31,7 @@ setup(
     license='MIT',
     author='Department for International Trade',
     description='Shared components library for Export Directory.',
-    packages=find_packages(exclude=["tests.*", "tests", "scripts", "demo"]),
+    packages=find_packages(exclude=["tests.*", "tests", "scripts", "demo.*"]),
     long_description=open('README.md').read(),
     include_package_data=True,
     install_requires=get_requirements(),

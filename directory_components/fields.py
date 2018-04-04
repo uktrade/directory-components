@@ -23,7 +23,9 @@ class DirectoryComponentsFieldMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not hasattr(self.widget, 'css_class_name'):
-            self.widget.attrs['class'] = 'form-control'
+            self.widget.attrs['class'] = (
+                self.widget.attrs.get('class', '') + ' form-control'
+            )
         self.label_suffix = ''
 
     def get_bound_field(self, form, field_name):
