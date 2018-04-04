@@ -15,8 +15,12 @@ class TextBoxForm(PrefixIdMixin, forms.Form):
         label='Q2: URL field',
         help_text='Some help text'
     )
-    email_field = fields.ChoiceField(
-        label='Q3: select field',
+    email_field = fields.EmailField(
+        label='Q3: Email field',
+        help_text='Some email field help text',
+    )
+    choice_field = fields.ChoiceField(
+        label='Q4: select field',
         help_text='Some help text',
         choices=[
             ('red', 'Red'),
