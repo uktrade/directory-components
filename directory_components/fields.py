@@ -36,6 +36,10 @@ class CharField(DirectoryComponentsFieldMixin, forms.CharField):
     pass
 
 
+class EmailField(DirectoryComponentsFieldMixin, forms.EmailField):
+    pass
+
+
 class URLField(DirectoryComponentsFieldMixin, forms.URLField):
     pass
 
