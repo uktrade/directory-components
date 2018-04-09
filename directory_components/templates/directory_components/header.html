@@ -2,8 +2,8 @@
 <header id="header"><a id="skip-link" href="#content">Skip to main content</a>
   <div id="header-bar">
     <div class="container">
+      {% block login_state %}
       <ul aria-label="Account links" class="account-links">
-        {% block login_state %}
         {% if not sso_is_logged_in %}
         <li class="anonymous">
           <a id="header-{{ header_footer_elements.register.id }}" href="{{ sso_register_url }}" class="register">{{ header_footer_elements.register.title }}</a>
@@ -19,12 +19,12 @@
           <a id="header-{{ header_footer_elements.signout.id }}" href="{{ sso_logout_url }}" class="signout">{{ header_footer_elements.signout.title }}</a>
         </li>
         {% endif %}
-        {% endblock %}
 
         {% block international_link_js_disabled %}
         {% endblock %}
 
       </ul>
+      {% endblock %}
       <span id="header-greeting"></span>
 
       <a id="header-dit-logo" href="{{ header_footer_elements.home.url }}">
