@@ -21,8 +21,8 @@
       </ul>
     </div>
     <div class="link-group">
-      <h4 class="links-list-heading" id="footer-{{ header_footer_elements.services.id }}">{{ header_footer_elements.guidance.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_elements.guidance.id }}" class="links-list">
+      <h4 class="links-list-heading" id="footer-{{ header_footer_elements.services.id }}">{{ header_footer_elements.services.title }}</h4>
+      <ul aria-labelledby="footer-{{ header_footer_elements.services.id }}" class="links-list">
         {% for item in header_footer_elements.services.items %}
         <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
         {% endfor %}
