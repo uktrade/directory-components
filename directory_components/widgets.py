@@ -3,7 +3,7 @@ from django import forms
 from django.utils.text import slugify
 
 
-class ChoiceWidget(widgets.ChoiceWidget):
+class ComponentsChoiceWidget(widgets.ChoiceWidget):
     # Retain django's default behaviour if use_nice_ids is False
     def __init__(self, use_nice_ids=False, *args, **kwargs):
         self.use_nice_ids = use_nice_ids
@@ -48,7 +48,7 @@ class ChoiceWidget(widgets.ChoiceWidget):
             }
 
 
-class RadioSelect(ChoiceWidget):
+class RadioSelect(ComponentsChoiceWidget):
     template_name = 'directory_components/multiple_input.html'
     option_template_name = 'directory_components/radio_option.html'
     css_class_name = 'select-multiple'
@@ -69,19 +69,17 @@ class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
         context['help_text'] = self.help_text
         return context
 
-
-class CheckboxSelectMultiple(ChoiceWidget):
-    """Inherit from our patched ChoiceWidget and change nothing else."""
-
-    pass
+# change to inherit from ComponentsChoiceWidget instead of django's
+CheckboxSelectMultiple = widgets.CheckboxSelectMultiple
+CheckboxSelectMultiple.__bases__ = (ComponentsChoiceWidget,)
 
 
-class CheckboxSelectInlineLabelMultiple(CheckboxSelectMultiple):
+class CheckboxSelectInlineLabelMultiple(widgets.CheckboxSelectMultiple):
     template_name = 'directory_components/multiple_input.html'
     option_template_name = 'directory_components/checkbox_inline_multiple.html'
     css_class_name = 'select-multiple'
     input_type = 'checkbox'
 
-    def __init__(self, attrs=None):
-        super().__init__(attrs=attrs)
+    def __init__(self, attrs=None, use_nice_ids=False):
+        super().__init__(attrs=attrs, use_nice_ids=use_nice_ids)
         self.attrs['class'] = self.attrs.get('class', self.css_class_name)
