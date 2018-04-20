@@ -56,7 +56,8 @@ class MultipleChoiceForm(PrefixIdMixin, forms.Form):
         label='Q1: Multiple choice checkboxes',
         help_text='This is some help text.',
         widget=widgets.CheckboxSelectInlineLabelMultiple(
-            attrs={'id': 'checkbox-multiple'}
+            attrs={'id': 'checkbox-multiple'},
+            use_nice_ids=True,
         ),
         choices=(
             ('red', 'Red'),
