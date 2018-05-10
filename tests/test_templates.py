@@ -1,9 +1,11 @@
-from django.template.loader import render_to_string
-from directory_components.context_processors import urls_processor
-from directory_components.context_processors import header_footer_processor
 from bs4 import BeautifulSoup
+import pytest
+
+from django.template.loader import render_to_string
 
 from directory_components import helpers
+from directory_components.context_processors import urls_processor
+from directory_components.context_processors import header_footer_processor
 
 
 def test_google_tag_manager_project_id():
@@ -133,3 +135,18 @@ def test_social_share_links():
 
     for url in social_links_builder.links.values():
         assert url in html
+
+
+@pytest.mark.parametrize('title,expected', (
+    ('Custom title', 'Custom title'),
+    (None, 'Share'),
+    ('', 'Share')
+))
+def test_social_share_title(title, expected):
+    template_name = 'directory_components/social_share_links.html'
+    context = {
+        'title': title
+    }
+    html = render_to_string(template_name, context)
+
+    assert '<span class="label">{title}</span>'.format(title=expected) in html

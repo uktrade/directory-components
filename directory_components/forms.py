@@ -2,6 +2,9 @@ from django import forms
 
 
 class DirectoryComponentsFormMixin:
+
+    use_required_attribute = False
+
     def as_p(self):
         return self._html_output(
             normal_row=(
