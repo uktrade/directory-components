@@ -1,7 +1,7 @@
 {% load static from staticfiles %}
 
 <ul class="sharing-links" data-component="sharing-links">
-    <span class="label">Share</span>
+    <span class="label">{{ title|default:'Share' }}</span>
     <li>
         <a id="share-twitter" rel="noopener noreferrer" target="_blank" href="{{ social_links.twitter|safe }}">
             <img alt="share with Twitter" height="36px" src="{% static 'directory_components/icons/twitter.svg' %}" width="36px">
