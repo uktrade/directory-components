@@ -1,0 +1,13 @@
+{% with large_title|yesno:'hero-title,hero-title-compact' as title_class_name %}
+{% with large_title|yesno:'heading-hero-generic,heading-hero-generic-compact' as heading_class_name %}
+<section class="hero hero-generic"{% if background_image_url %} style="background-image: url({{ background_image_url }})"{% endif%}>
+  <div class="container">
+    <div class="{{ title_class_name }}">
+      <h1 class="{{ heading_class_name }}">
+        {{ hero_text }}
+      </h1>
+    </div>
+  </div>
+</section>
+{% endwith %}
+{% endwith %}

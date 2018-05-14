@@ -18,4 +18,9 @@ urlpatterns = [
         views.DemoFormView.as_view(),
         name='widgets',
     ),
+    url(
+        r'^components/$',
+        views.ComponentsView.as_view(),
+        name='components',
+    ),
 ]

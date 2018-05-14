@@ -1,4 +1,4 @@
 django==1.11.5
-export_elements==0.10.2
+export_elements==0.10.6
 gunicorn==19.5.0
 whitenoise==3.1

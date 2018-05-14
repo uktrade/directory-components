@@ -1,0 +1,85 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1 class="heading-xlarge">Components</h1>
+  <h2 class="heading-large">Hero banners</h2>
+</div>
+
+{% static 'images/hero02.png' as hero_image %}
+{% static 'images/hero01.jpg' as hero_image_domestic %}
+<section>
+  {% include 'directory_components/hero.html' with background_image_url=hero_image hero_text="Very very long text that will wrap" %}
+</section>
+
+<section>
+  {% include 'directory_components/hero.html' with hero_text="Large text" large_title=True %}
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="heading-large">Cards</h2>
+    <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
+
+    <h3 class="heading-medium">Half width</h3>
+    <div class="grid-row">
+      <div class="column-half">
+        {% static 'images/card_image01.jpg' as card_image01 %}
+        {% static 'images/card_image02.jpg' as card_image02 %}
+        {% include 'directory_components/card.html' with img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
+      </div>
+    </div>
+
+    <h3 class="heading-medium">Cards in a grid row</h3>
+    <div class="grid-row">
+      <div class="column-third">
+        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+      </div>
+      <div class="column-third">
+        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
+      </div>
+      <div class="column-third">
+        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-third">
+        {% include 'directory_components/card.html' with img_src=card_image01 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+      </div>
+      <div class="column-third">
+        {% include 'directory_components/card.html' with img_src=card_image01 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+      </div>
+      <div class="column-third">
+        {% include 'directory_components/card.html' with img_src=card_image01 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <h3 class="heading-medium">Labelled cards</h3>
+
+      <div class="grid-row">
+        <div class="column-quarter">
+          {% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        </div>
+        <div class="column-quarter">
+          {% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        </div>
+        <div class="column-quarter">
+          {% include 'directory_components/labelled_card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
+        </div>
+        <div class="column-quarter">
+          {% include 'directory_components/labelled_card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

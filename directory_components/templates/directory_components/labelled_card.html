@@ -1,0 +1,11 @@
+<a class="labelled-card" href="{{ url }}">
+  <div class="card-header">
+    <h3 class="title">{{ title }}</h3>
+  </div>
+  {% if img %}
+  <img src="{{ img }}" alt="{{ img_alt }}">
+  {% endif %}
+  <div class="card-inner">
+    <p class="description">{{ description }}</p>
+  </div>
+</a>

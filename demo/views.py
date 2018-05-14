@@ -21,3 +21,7 @@ class DemoFormView(TemplateView):
             radio_form=forms.RadioForm(),
             *args, **kwargs
         )
+
+
+class ComponentsView(TemplateView):
+    template_name = 'demo/components.html'

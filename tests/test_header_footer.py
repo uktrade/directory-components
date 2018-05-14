@@ -5,9 +5,9 @@ from directory_components import context_processors
 
 
 @pytest.mark.parametrize('template_name', [
-    'directory_components/header.html',
-    'directory_components/footer.html',
-    'directory_components/header_static.html',
+    'directory_components/header_footer/header.html',
+    'directory_components/header_footer/footer.html',
+    'directory_components/header_footer/header_static.html',
 ])
 def test_templates_rendered(template_name):
     html = render_to_string(template_name)
@@ -17,7 +17,7 @@ def test_templates_rendered(template_name):
 
 
 def test_header_logged_in():
-    template_name = 'directory_components/header.html'
+    template_name = 'directory_components/header_footer/header.html'
     context = {
         'sso_is_logged_in': True,
         'sso_login_url': 'login.com',
@@ -32,7 +32,7 @@ def test_header_logged_in():
 
 
 def test_header_logged_out():
-    template_name = 'directory_components/header.html'
+    template_name = 'directory_components/header_footer/header.html'
     context = {
         'sso_is_logged_in': False,
         'sso_login_url': 'login.com',
@@ -47,7 +47,7 @@ def test_header_logged_out():
 
 
 def test_urls_exist_in_header():
-    template_name = 'directory_components/header.html'
+    template_name = 'directory_components/header_footer/header.html'
     context = context_processors.header_footer_processor(None)
 
     html = render_to_string(template_name, context)
@@ -67,7 +67,7 @@ def test_urls_exist_in_header():
 
 
 def test_urls_exist_in_footer():
-    template_name = 'directory_components/footer.html'
+    template_name = 'directory_components/header_footer/footer.html'
     context = context_processors.header_footer_processor(None)
     html = render_to_string(template_name, context)
     header_footer_elements = context['header_footer_elements']
@@ -83,7 +83,7 @@ def test_urls_exist_in_footer():
 
 
 def test_ids_rendered_in_header():
-    template_name = 'directory_components/header.html'
+    template_name = 'directory_components/header_footer/header.html'
     context = context_processors.header_footer_processor(None)
     html = render_to_string(template_name, context)
 
@@ -102,7 +102,7 @@ def test_ids_rendered_in_header():
 
 
 def test_ids_rendered_in_footer():
-    template_name = 'directory_components/footer.html'
+    template_name = 'directory_components/header_footer/footer.html'
     context = context_processors.header_footer_processor(None)
     html = render_to_string(template_name, context)
 
@@ -224,7 +224,7 @@ def test_header_ids_match_urls_and_text(settings):
         }
     }
 
-    template_name = 'directory_components/header.html'
+    template_name = 'directory_components/header_footer/header.html'
     context = context_processors.header_footer_processor(None)
 
     html = render_to_string(template_name, context)
@@ -379,7 +379,7 @@ def test_footer_ids_match_urls_and_text(settings):
         }
     }
 
-    template_name = 'directory_components/footer.html'
+    template_name = 'directory_components/header_footer/footer.html'
     context = context_processors.header_footer_processor(None)
 
     html = render_to_string(template_name, context)

@@ -52,14 +52,15 @@ class ChoiceWidget(PrettyIDsMixin, widgets.ChoiceWidget):
 
 
 class RadioSelect(ChoiceWidget):
-    template_name = 'directory_components/multiple_input.html'
-    option_template_name = 'directory_components/radio_option.html'
+    template_name = 'directory_components/form_widgets/multiple_input.html'
+    option_template_name = (
+        'directory_components/form_widgets/radio_option.html')
     css_class_name = 'select-multiple'
     input_type = 'radio'
 
 
 class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
-    template_name = 'directory_components/checkbox_inline.html'
+    template_name = 'directory_components/form_widgets/checkbox_inline.html'
 
     def __init__(self, label='', help_text=None, *args, **kwargs):
         self.label = label
@@ -77,8 +78,9 @@ class CheckboxSelectInlineLabelMultiple(
     PrettyIDsMixin,
     widgets.CheckboxSelectMultiple
 ):
-    template_name = 'directory_components/multiple_input.html'
-    option_template_name = 'directory_components/checkbox_inline_multiple.html'
+    template_name = 'directory_components/form_widgets/multiple_input.html'
+    option_template_name = (
+        'directory_components/form_widgets/checkbox_inline_multiple.html')
     css_class_name = 'select-multiple'
     input_type = 'checkbox'
 
