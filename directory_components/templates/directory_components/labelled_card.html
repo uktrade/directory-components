@@ -1,13 +1,11 @@
-<div class="labelled-card">
+<a class="labelled-card" href="{{ url }}">
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
   </div>
-  <a href="{{ url }}">
-    {% if img %}
-      <img src="{{ img }}" alt="{% if img_alt %}{{ img_alt }}{% endif %}">
-    {% endif %}
-    <div class="card-inner">
-      <p class="description">{{ description }}</p>
-    </div>
-  </a>
-</div>
+  {% if img %}
+  <img src="{{ img }}" alt="{% if img_alt %}{{ img_alt }}{% endif %}">
+  {% endif %}
+  <div class="card-inner">
+    <p class="description">{{ description }}</p>
+  </div>
+</a>
