@@ -1,0 +1,13 @@
+<div class="card">
+  <a href="{{ url }}">
+    {% if img_src %}
+      <img src="{{ img_src }}" alt="{% if img_alt %}{{ img_alt }}{% endif %}">
+    {% endif %}
+    <div class="card-inner">
+      {% if title %}
+        <h3 class="title">{{ title }}</h3>
+      {% endif %}
+      <p class="description">{{ description }}</p>
+    </div>
+  </a>
+</div>

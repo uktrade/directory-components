@@ -97,7 +97,7 @@ def test_404_title_exists(settings):
 
 
 def test_footer():
-    template_name = 'directory_components/footer.html'
+    template_name = 'directory_components/header_footer/footer.html'
     context = header_footer_processor(None)
     html = render_to_string(template_name, context)
     exp_urls = [

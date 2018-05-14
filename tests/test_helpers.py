@@ -14,7 +14,7 @@ def test_add_next(target, expected):
     assert helpers.add_next(target, next_url) == expected
 
 
-def test_build_twitter_link(rf):
+def test_build_social_links(rf):
     social_links_builder = helpers.SocialLinkBuilder(
         url='http://testserver/',
         page_title='Do research first',
