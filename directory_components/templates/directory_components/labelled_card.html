@@ -3,7 +3,7 @@
     <h3 class="title">{{ title }}</h3>
   </div>
   {% if img %}
-  <img src="{{ img }}" alt="{% if img_alt %}{{ img_alt }}{% endif %}">
+  <img src="{{ img }}" alt="{{ img_alt }}">
   {% endif %}
   <div class="card-inner">
     <p class="description">{{ description }}</p>
