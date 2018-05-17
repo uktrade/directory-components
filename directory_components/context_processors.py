@@ -1,7 +1,10 @@
+from urllib.parse import urljoin
+
 from django.conf import settings
+from django.utils.functional import lazy
+
 from directory_components.helpers import add_next
 import directory_components.urls as default_urls
-from urllib.parse import urljoin
 
 
 def get_url(url_name):
@@ -28,6 +31,23 @@ def analytics(request):
             'UTM_COOKIE_DOMAIN': settings.UTM_COOKIE_DOMAIN,
         }
     }
+
+
+@lazy
+def lazy_build_url(url_name, path):
+    return urljoin(get_url(url_name), path)
+
+
+TERMS_AND_CONDITIONS_URL = lazy_build_url(
+    'HEADER_FOOTER_URLS_GREAT_HOME',
+    'terms-and-conditions/'
+)
+
+
+PRIVACY_URL = lazy_build_url(
+    'HEADER_FOOTER_URLS_GREAT_HOME',
+    'privacy-and-cookies/'
+)
 
 
 def header_footer_processor(request):
@@ -205,16 +225,12 @@ def header_footer_processor(request):
                 {
                     "id": "site-links-privacy-and-cookies",
                     "title": "Privacy and cookies",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'privacy-and-cookies/')
+                    "url": PRIVACY_URL,
                 },
                 {
                     "id": "site-links-t-and-c",
                     "title": "Terms and conditions",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'terms-and-conditions/')
+                    "url": TERMS_AND_CONDITIONS_URL,
                 },
                 {
                     "id": "site-links-dit",
@@ -239,6 +255,8 @@ def urls_processor(request):
         "events": get_url("HEADER_FOOTER_URLS_EVENTS"),
         "contact_us": get_url("HEADER_FOOTER_URLS_CONTACT_US"),
         "dit": get_url("HEADER_FOOTER_URLS_DIT"),
+        "terms": TERMS_AND_CONDITIONS_URL,
+        "privacy": PRIVACY_URL,
     }
     return {
         'directory_components_urls': directory_components_urls
