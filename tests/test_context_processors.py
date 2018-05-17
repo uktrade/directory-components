@@ -241,7 +241,7 @@ def test_urls_processor(settings):
     actual_urls = context_processors.urls_processor(
         None)['directory_components_urls']
 
-    exp_urls = {
+    expected_urls = {
         'home': 'http://home.com/',
         'fab': 'http://fab.com/',
         'fas': 'http://fas.com/',
@@ -249,17 +249,18 @@ def test_urls_processor(settings):
         'events': 'http://events.com/',
         'contact_us': 'http://contact.com/',
         'dit': 'http://dit.com/',
+        'terms': 'http://home.com/terms-and-conditions/',
+        'privacy': 'http://home.com/privacy-and-cookies/',
     }
 
-    for exp, actual in zip(exp_urls, actual_urls):
-        assert exp == actual
+    assert actual_urls == expected_urls
 
 
 def test_urls_processor_defaults(settings, exp_default_urls):
     actual_urls = context_processors.urls_processor(
         None)['directory_components_urls']
 
-    exp_urls = {
+    expected_urls = {
         'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
         'fab': default_urls.HEADER_FOOTER_URLS_FAB,
         'fas': default_urls.COMPONENTS_URLS_FAS,
@@ -267,10 +268,17 @@ def test_urls_processor_defaults(settings, exp_default_urls):
         'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
         'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
         'dit': default_urls.HEADER_FOOTER_URLS_DIT,
+        'terms': urljoin(
+            default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+            'terms-and-conditions/'
+        ),
+        'privacy': urljoin(
+            default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+            'privacy-and-cookies/'
+        ),
     }
 
-    for exp, actual in zip(exp_urls, actual_urls):
-        assert exp == actual
+    assert actual_urls == expected_urls
 
 
 def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
@@ -285,15 +293,19 @@ def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
     actual_urls = context_processors.urls_processor(
         None)['directory_components_urls']
 
-    exp_urls = {
-        'home': 'http://home.com/',
-        'fab': 'http://fab.com/',
-        'fas': 'http://fas.com/',
-        'soo': 'http://soo.com/',
-        'events': 'http://events.com/',
-        'contact_us': 'http://contact.com/',
-        'dit': 'http://dit.com/',
+    expected_urls = {
+        'home': 'https://great.gov.uk/',
+        'fab': 'https://find-a-buyer.export.great.gov.uk/',
+        'fas': 'https://trade.great.gov.uk/',
+        'soo': 'https://selling-online-overseas.export.great.gov.uk/',
+        'events': 'https://events.trade.gov.uk/',
+        'contact_us': 'https://contact-us.export.great.gov.uk/directory/',
+        'dit': (
+            'https://www.gov.uk/government/organisations/'
+            'department-for-international-trade/'
+        ),
+        'terms': 'https://great.gov.uk/terms-and-conditions/',
+        'privacy': 'https://great.gov.uk/privacy-and-cookies/',
     }
 
-    for exp, actual in zip(exp_urls, actual_urls):
-        assert exp == actual
+    assert actual_urls == expected_urls
