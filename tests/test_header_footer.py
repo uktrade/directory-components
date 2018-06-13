@@ -184,7 +184,7 @@ def test_header_ids_match_urls_and_text(settings):
             "items": [
                 {
                     "id": "services-find-a-buyer",
-                    "title": "Create an export profile",
+                    "title": "Create a trade profile",
                     "url": "http://fab.com/",
                     "description": (
                         "Get promoted internationally with a great.gov.uk "
@@ -310,7 +310,7 @@ def test_footer_ids_match_urls_and_text(settings):
             "items": [
                 {
                     "id": "services-find-a-buyer",
-                    "title": "Create an export profile",
+                    "title": "Create a trade profile",
                     "url": "http://fab.com/",
                     "description": (
                         "Get promoted internationally with a great.gov.uk "
