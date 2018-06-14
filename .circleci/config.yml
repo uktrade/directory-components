@@ -13,6 +13,8 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - checkout
       - run:
+          command: make test_requirements
+      - run:
           command: make test
   deploy_to_dev:
     docker:
