@@ -1,0 +1,61 @@
+{% load static %}
+
+<style type="text/css">
+  #header-menu {
+    margin-top: -2px;
+  }
+  #header-menu .navigation.active {
+    border-bottom: 3px solid #e41f13;
+    background-color: inherit;
+  }
+  #header-menu a:hover {
+    background: inherit;
+  }
+  #header-menu a:hover:before {
+    background: none;
+  }
+</style>
+
+<header id="header"><a id="skip-link" href="#content">Skip to main content</a>
+  <div id="header-bar">
+    <div class="container">
+        <a id="header-dit-logo" href="{{ header_footer_elements.home.url }}">
+        <img src="{% static 'directory_components/images/UK_Gov_STACK_WHITE_AW.png' %}" alt="{{ header_footer_elements.home.title }}">
+      </a>
+    </div>
+  </div>
+
+  <div class="js-disabled-only">
+  {% block no_js_header_beta_banner %}
+  {% endblock %}
+  </div>
+
+  <div id="header-menu">
+    <div class="container">
+      <nav id="menu">
+        <ul>
+          <li>
+            <a class="navigation active" href="#" id="header-{{ header_footer_elements.home.id }}">Home</a>
+          </li>
+          <li>
+            <a class="navigation " href="#" id="header-{{ header_footer_elements.custom.id }}">Industries</a>
+          </li>
+          <li>
+            <a class="navigation " href="#" id="header-{{ header_footer_elements.custom.id }}">UK Setup Guide</a>
+          </li>
+          <li>
+            <a class="navigation " href="#" id="header-{{ header_footer_elements.custom.id }}">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="phase-banner">
+    <p>
+      <strong class="phase-tag">BETA</strong>
+      <span>This is a new service – your <a class="link" href="{{ directory_components_urls.contact_us }}">feedback</a> will help us to improve it.</span>
+    </p>
+  </div>
+</div>

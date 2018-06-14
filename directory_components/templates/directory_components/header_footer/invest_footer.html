@@ -1,0 +1,61 @@
+{% load static %}
+<style type="text/css">
+  #footer .site-links {
+    padding: 15px; 
+    font-size: 13px;
+    border-top: 2px solid rgba(255,255,255,0.5);
+  }
+  #footer .invest-site-links {
+    padding: 5px;
+    border-top: 0;
+    margin-top: -60px;
+    padding-bottom: 10px;
+  }
+  #footer .invest-site-links ul {
+    float: right;
+  }
+  #footer .invest-site-links ul li {
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0;
+  }
+  #footer .invest-site-links ul li a {
+    color: #dfd5c5;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  #footer .invest-site-links ul li ~ li {
+    border-left: 2px solid #dfd5c5;
+  }
+
+</style>
+<footer id="footer">
+  <nav class="container">
+      <div class="link-group"><img id="footer-dit-logo" src="{% static 'directory_components/images/UK_Gov_STACK_WHITE_AW.png' %}" alt="Department for International Trade"/><img id="footer-eig-logo" src="{% static 'directory_components/images/IIG_Invest_in_GREAT_White_WITH_Flag.png' %}" alt="Exporting is Great"/>
+      </div>
+  </nav>
+
+  <div class="container site-links invest-site-links">
+    <ul>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Home</a></li>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Industries</a></li>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">UK Setup Guide</a></li>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="container site-links">
+    <ul>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Part of Great.gov.uk</a></li>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Terms and conditions</a></li>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Privacy and cookies</a></li>
+        <li><a class="link" id="footer-{{ item.id }}" href="{{ item.url }}">Department for International Trade</a></li>
+    </ul>
+  </div>
+  <div id="footer-copyright">
+    <p class="container"><span id="footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</span></p>
+  </div>
+</footer>
