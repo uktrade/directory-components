@@ -19,7 +19,9 @@ jobs:
       - image: circleci/python:3.5.5
     steps:
       - run:
-          command: make heroku_deploy_dev
+          command: |
+            make publish
+            make heroku_deploy_dev
 
 workflows:
   version: 2
