@@ -166,7 +166,7 @@ def header_footer_processor(request):
             "items": [
                 {
                     "id": "services-find-a-buyer",
-                    "title": "Create an export profile",
+                    "title": "Create a trade profile",
                     "url": get_url("HEADER_FOOTER_URLS_FAB"),
                     "description": (
                         "Get promoted internationally with a great.gov.uk "
