@@ -1,0 +1,32 @@
+{% extends 'directory_components/base.html' %}
+{% load static %}
+
+{% block head_css %}
+  {{ block.super }}
+  <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
+{% endblock %}
+
+{% block head_js %}
+	{{ block.super }}
+  <script src="{% static 'directory_components/js/invest-header.js' %}"></script>
+{% endblock %}
+
+{% block body_header %}
+    {% include 'directory_components/header_footer/invest_header.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h1 class="heading-xlarge">Invest header and footer</h1>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer/invest_footer.html' %}
+{% endblock %}

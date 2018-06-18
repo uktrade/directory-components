@@ -25,3 +25,7 @@ class DemoFormView(TemplateView):
 
 class ComponentsView(TemplateView):
     template_name = 'demo/components.html'
+
+
+class InvestHeaderFooterView(TemplateView):
+    template_name = 'demo/invest_header_footer.html'

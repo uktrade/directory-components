@@ -23,4 +23,9 @@ urlpatterns = [
         views.ComponentsView.as_view(),
         name='components',
     ),
+    url(
+        r'^invest/$',
+        views.InvestHeaderFooterView.as_view(),
+        name='invest-header-footer',
+    ),
 ]

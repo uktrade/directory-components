@@ -1,0 +1,51 @@
+{% load static %}
+<footer id="invest-footer">
+  <div class="container">
+
+    <div class="footer-branding">
+      <img src="{% static 'directory_components/images/UK-Gov_STACK_WHITE_AW.png' %}" width="176" height="74" alt="UK Government" />
+      <img src="{% static 'directory_components/images/IIG_Invest_in_GREAT_White_WITH_Flag.png' %}" width="148" height="107" alt="Invest logo" />
+    </div>
+
+    <div class="footer-main-links-list">
+      <ul>
+        <li>
+          <a href="/" role="menuitem">Home</a>
+        </li>
+        <li>
+          <a href="/industries/" role="menuitem">Industries</a>
+        </li>
+        <li>
+          <a href="/uk-setup-guide/" role="menuitem">UK Setup Guide</a>
+        </li>
+        <li>
+          <a href="/contact/" role="menuitem">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-sub-links-list container">
+    <ul>
+      <li>
+        <a href="https://great.gov.uk" >Part of Great.gov.uk</a>
+      </li>
+      <li>
+        <a href="/terms-and-conditions/">Terms and conditions</a>
+      </li>
+      <li>
+        <a href="/privacy-and-cookies/">Privacy and cookies</a>
+      </li>
+      <li>
+        <a href="https://www.gov.uk/government/organisations/department-for-international-trade" >Department for International Trade</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer-copyright">
+    <div class="container">
+      &copy; Crown copyright {% now 'Y' %}. All rights reserved.
+    </div>
+  </div>
+</footer>

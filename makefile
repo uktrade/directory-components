@@ -42,7 +42,7 @@ update:
 DEMO_SET_ENV_VARS := \
 	export SECRET_KEY=debug; \
 	export DEBUG=true; \
-	export PORT=9000; \
+	export PORT=9013; \
 	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
 	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
 
