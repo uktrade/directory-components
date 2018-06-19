@@ -21,6 +21,8 @@ jobs:
       - checkout
       - run:
           command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
             make test_requirements
             make publish
             make heroku_deploy_dev
