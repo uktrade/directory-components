@@ -51,72 +51,56 @@ def test_urls_exist_in_header():
     context = context_processors.header_footer_processor(None)
 
     html = render_to_string(template_name, context)
-    header_footer_elements = context['header_footer_elements']
-
-    assert header_footer_elements['home']['url'] in html
-    assert header_footer_elements['custom']['url'] in html
-
-    for link in header_footer_elements['export_readiness']['items']:
-        assert link['url'] in html
-
-    for link in header_footer_elements['guidance']['items']:
-        assert link['url'] in html
-
-    for link in header_footer_elements['services']['items']:
-        assert link['url'] in html
+    header_urls = [
+        'https://great.gov.uk/',
+        'https://great.gov.uk/custom/',
+        'https://great.gov.uk/new/',
+        'https://great.gov.uk/occasional/',
+        'https://great.gov.uk/regular/',
+        'https://great.gov.uk/market-research/',
+        'https://great.gov.uk/customer-insight/',
+        'https://great.gov.uk/finance/',
+        'https://great.gov.uk/business-planning/',
+        'https://great.gov.uk/getting-paid/',
+        'https://great.gov.uk/operations-and-compliance/',
+        'https://great.gov.uk/export-opportunities/',
+        'https://great.gov.uk/get-finance/',
+    ]
+    for url in header_urls:
+        assert url in html
 
 
 def test_urls_exist_in_footer():
     template_name = 'directory_components/header_footer/footer.html'
     context = context_processors.header_footer_processor(None)
+
     html = render_to_string(template_name, context)
-    header_footer_elements = context['header_footer_elements']
-
-    assert header_footer_elements['custom']['url'] in html
-
-    for link in header_footer_elements['export_readiness']['items']:
-        assert link['url'] in html
-    for link in header_footer_elements['guidance']['items']:
-        assert link['url'] in html
-    for link in header_footer_elements['services']['items']:
-        assert link['url'] in html
-
-
-def test_ids_rendered_in_header():
-    template_name = 'directory_components/header_footer/header.html'
-    context = context_processors.header_footer_processor(None)
-    html = render_to_string(template_name, context)
-
-    assert context['header_footer_elements']['register']['id'] in html
-    assert context['header_footer_elements']['signin']['id'] in html
-    assert context['header_footer_elements']['home']['id'] in html
-    assert context['header_footer_elements']['custom']['id'] in html
-
-    exred = context['header_footer_elements']['export_readiness']['items']
-    for exp_id in exred:
-        assert exp_id['id'] in html
-    for exp_id in context['header_footer_elements']['guidance']['items']:
-        assert exp_id['id'] in html
-    for exp_id in context['header_footer_elements']['services']['items']:
-        assert exp_id['id'] in html
-
-
-def test_ids_rendered_in_footer():
-    template_name = 'directory_components/header_footer/footer.html'
-    context = context_processors.header_footer_processor(None)
-    html = render_to_string(template_name, context)
-
-    assert context['header_footer_elements']['custom']['id'] in html
-
-    exred = context['header_footer_elements']['export_readiness']['items']
-    for exp_id in exred:
-        assert exp_id['id'] in html
-    for exp_id in context['header_footer_elements']['guidance']['items']:
-        assert exp_id['id'] in html
-    for exp_id in context['header_footer_elements']['services']['items']:
-        assert exp_id['id'] in html
-    for exp_id in context['header_footer_elements']['site_links']['items']:
-        assert exp_id['id'] in html
+    footer_urls = [
+        'https://great.gov.uk/',
+        'https://great.gov.uk/custom/',
+        'https://great.gov.uk/new/',
+        'https://great.gov.uk/occasional/',
+        'https://great.gov.uk/regular/',
+        'https://great.gov.uk/market-research/',
+        'https://great.gov.uk/customer-insight/',
+        'https://great.gov.uk/finance/',
+        'https://great.gov.uk/business-planning/',
+        'https://great.gov.uk/getting-paid/',
+        'https://great.gov.uk/operations-and-compliance/',
+        'https://great.gov.uk/export-opportunities/',
+        'https://great.gov.uk/get-finance/',
+        'https://great.gov.uk/about/',
+        'https://great.gov.uk/privacy-and-cookies/',
+        'https://great.gov.uk/terms-and-conditions/',
+        'https://find-a-buyer.export.great.gov.uk/',
+        'https://selling-online-overseas.export.great.gov.uk/',
+        'https://events.trade.gov.uk/',
+        'https://contact-us.export.great.gov.uk/directory/',
+        ('https://www.gov.uk/government/organisations/'
+            'department-for-international-trade/'),
+    ]
+    for url in footer_urls:
+        assert url in html
 
 
 def test_header_ids_match_urls_and_text(settings):

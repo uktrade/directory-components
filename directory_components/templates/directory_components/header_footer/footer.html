@@ -1,39 +1,86 @@
 {% load static %}
 <footer id="footer">
   <nav class="container">
-    <div class="link-group"><img id="footer-dit-logo" src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="Department for International Trade"/><img id="footer-eig-logo" src="{% static 'directory_components/images/eig-logo-stacked.svg' %}" alt="Exporting is Great"/>
+    <div class="link-group">
+      <img id="footer-dit-logo" src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="Department for International Trade"/>
+      <img id="footer-eig-logo" src="{% static 'directory_components/images/eig-logo-stacked.svg' %}" alt="Exporting is Great"/>
     </div>
     <div class="link-group">
-      <a class="links-list-heading custom-page-link" id="footer-{{ header_footer_elements.custom.id }}" href="{{ header_footer_elements.custom.url }}">{{ header_footer_elements.custom.title }}</a>
-      <h4 class="links-list-heading" id="footer-{{ header_footer_elements.export_readiness.id }}">{{ header_footer_elements.export_readiness.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_elements.export_readiness.id }}" class="links-list">
-        {% for item in header_footer_elements.export_readiness.items %}
-        <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
+      <a class="links-list-heading custom-page-link" id="footer-custom-page-link" href="{{ header_footer_urls.custom }}">Your export journey</a>
+      <h4 class="links-list-heading" id="footer-export-readiness-links">Export readiness</h4>
+      <ul aria-labelledby="footer-export-readiness-links" class="links-list">
+        <li>
+          <a id="footer-export-readiness-new" href="{{ header_footer_urls.exporting_new }}">I'm new to exporting</a>
+        </li>
+        <li>
+          <a id="footer-export-readiness-occasional" href="{{ header_footer_urls.exporting_occasional }}">I export occasionally</a>
+        </li>
+        <li>
+          <a id="footer-export-readiness-regular" href="{{ header_footer_urls.exporting_regular }}">I'm a regular exporter</a>
+        </li>
       </ul>
     </div>
     <div class="link-group">
-      <h4 class="links-list-heading" id="footer-{{ header_footer_elements.guidance.id }}">{{ header_footer_elements.guidance.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_elements.guidance.id }}" class="links-list">
-        {% for item in header_footer_elements.guidance.items %}
-        <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
+      <h4 class="links-list-heading" id="footer-guidance-links">Guidance</h4>
+      <ul aria-labelledby="footer-guidance-links" class="links-list">
+        <li>
+          <a id="footer-guidance-market-research" href="{{ header_footer_urls.market_research }}">Market research</a>
+        </li>
+        <li>
+          <a id="footer-guidance-customer-insight" href="{{ header_footer_urls.customer_insight }}">Customer insight</a>
+        </li>
+        <li>
+          <a id="footer-guidance-finance" href="{{ header_footer_urls.finance }}">Finance</a>
+        </li>
+        <li>
+          <a id="footer-guidance-business-planning" href="{{ header_footer_urls.business_planning }}">Business planning</a>
+        </li>
+        <li>
+          <a id="footer-guidance-getting-paid" href="{{ header_footer_urls.getting_paid }}">Getting paid</a>
+        </li>
+        <li>
+          <a id="footer-guidance-operations-and-compliance" href="{{ header_footer_urls.operations_and_compliance }}">Operations and compliance</a>
+        </li>
       </ul>
     </div>
     <div class="link-group">
-      <h4 class="links-list-heading" id="footer-{{ header_footer_elements.services.id }}">{{ header_footer_elements.services.title }}</h4>
-      <ul aria-labelledby="footer-{{ header_footer_elements.services.id }}" class="links-list">
-        {% for item in header_footer_elements.services.items %}
-        <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
+      <h4 class="links-list-heading" id="footer-services-links">Services</h4>
+      <ul aria-labelledby="footer-services-links" class="links-list">
+        <li>
+          <a id="footer-services-find-a-buyer" href="{{ header_footer_urls.fab }}">Create a trade profile</a>
+        </li>
+        <li>
+          <a id="footer-services-selling-online-overseas" href="{{ header_footer_urls.soo }}">Sell online overseas</a>
+        </li>
+        <li>
+          <a id="footer-services-export-opportunities" href="{{ header_footer_urls.exopps }}">Find export opportunities</a>
+        </li>
+        <li>
+          <a id="footer-services-get-finance" href="{{ header_footer_urls.get_finance }}">Get finance</a>
+        </li>
+        <li>
+          <a id="footer-services-events" href="{{ header_footer_urls.events }}">Find events and visits</a>
+        </li>
       </ul>
     </div>
   </nav>
   <div class="container site-links">
     <ul>
-      {% for item in header_footer_elements.site_links.items %}
-      <li><a id="footer-{{ item.id }}" href="{{ item.url }}">{{ item.title }}</a></li>
-      {% endfor %}
+      <li>
+        <a id="footer-site-links-about" href="{{ header_footer_urls.about }}">About</a>
+      </li>
+      <li>
+        <a id="footer-site-links-contact" href="{{ header_footer_urls.contact_us }}">Contact us</a>
+      </li>
+      <li>
+        <a id="footer-site-links-privacy-and-cookies" href="{{ header_footer_urls.privacy_and_cookies }}">Privacy and cookies</a>
+      </li>
+      <li>
+        <a id="footer-site-links-t-and-c" href="{{ header_footer_urls.terms_and_conditions }}">Terms and conditions</a>
+      </li>
+      <li>
+        <a id="footer-site-links-dit" href="{{ header_footer_urls.dit }}">Department for International Trade on GOV.UK</a>
+      </li>
     </ul>
   </div>
   <div id="footer-copyright">

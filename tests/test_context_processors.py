@@ -149,60 +149,68 @@ def test_header_footer_processor(settings):
     settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
 
     actual_urls = context_processors.header_footer_processor(
-        None)['header_footer_elements']
-    assert actual_urls['home']['url'] == 'http://home.com/'
-    assert actual_urls['custom']['url'] == 'http://home.com/custom/'
+        None)['header_footer_urls']
     exp_urls = {
-        'export_readiness': [
-            'http://home.com/new/',
-            'http://home.com/occasional/',
-            'http://home.com/regular/'
-            ],
-        'guidance': [
-            'http://home.com/market-research/',
-            'http://home.com/customer-insight/',
-            'http://home.com/finance/',
-            'http://home.com/business-planning/',
-            'http://home.com/getting-paid/',
-            'http://home.com/operations-and-compliance/'
-            ],
-        'services': [
-            'http://fab.com/',
-            'http://soo.com/',
-            'http://home.com/export-opportunities/',
-            'http://home.com/get-finance/',
-            'http://events.com/'
-            ],
-        'site_links': [
-            'http://home.com/about/',
-            'http://contact.com/',
-            'http://home.com/privacy-and-cookies/',
-            'http://home.com/terms-and-conditions/',
-            'http://dit.com/'
-            ]
+        'home': 'http://home.com/',
+        'custom': 'http://home.com/custom/',
+        'exporting_new': 'http://home.com/new/',
+        'exporting_occasional': 'http://home.com/occasional/',
+        'exporting_regular': 'http://home.com/regular/',
+        'market_research': 'http://home.com/market-research/',
+        'customer_insight': 'http://home.com/customer-insight/',
+        'finance': 'http://home.com/finance/',
+        'business_planning': 'http://home.com/business-planning/',
+        'getting_paid': 'http://home.com/getting-paid/',
+        'operations_and_compliance': (
+            'http://home.com/operations-and-compliance/'),
+        'exopps': 'http://home.com/export-opportunities/',
+        'get_finance': 'http://home.com/get-finance/',
+        'about': 'http://home.com/about/',
+        'privacy_and_cookies': 'http://home.com/privacy-and-cookies/',
+        'terms_and_conditions': 'http://home.com/terms-and-conditions/',
+        'fab': 'http://fab.com/',
+        'soo': 'http://soo.com/',
+        'events': 'http://events.com/',
+        'contact_us': 'http://contact.com/',
+        'dit': 'http://dit.com/'
         }
-    sections = exp_urls.keys()
-    for section in sections:
-        for exp, actual in zip(
-                exp_urls[section],
-                actual_urls[section]['items']):
-            assert exp == actual['url']
+    for exp, actual in zip(exp_urls, actual_urls):
+        assert exp == actual
 
 
 def test_header_footer_processor_defaults(settings, exp_default_urls):
     actual_urls = context_processors.header_footer_processor(
-        None)['header_footer_elements']
+        None)['header_footer_urls']
 
-    exp_home = default_urls.HEADER_FOOTER_URLS_GREAT_HOME
-    assert actual_urls['home']['url'] == exp_home
-    assert actual_urls['custom']['url'] == urljoin(
-        default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'custom/')
-
-    sections = exp_default_urls.keys()
-    for section in sections:
-        for exp, actual in zip(
-             exp_default_urls[section], actual_urls[section]['items']):
-            assert exp == actual['url']
+    expected_urls = {
+        'home': 'https://great.gov.uk/',
+        'custom': 'https://great.gov.uk/custom/',
+        'exporting_new': 'https://great.gov.uk/new/',
+        'exporting_occasional': 'https://great.gov.uk/occasional/',
+        'exporting_regular': 'https://great.gov.uk/regular/',
+        'market_research': 'https://great.gov.uk/market-research/',
+        'customer_insight': 'https://great.gov.uk/customer-insight/',
+        'finance': 'https://great.gov.uk/finance/',
+        'business_planning': 'https://great.gov.uk/business-planning/',
+        'getting_paid': 'https://great.gov.uk/getting-paid/',
+        'operations_and_compliance': (
+            'https://great.gov.uk/operations-and-compliance/'),
+        'exopps': 'https://great.gov.uk/export-opportunities/',
+        'get_finance': 'https://great.gov.uk/get-finance/',
+        'about': 'https://great.gov.uk/about/',
+        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+        'fab': 'https://find-a-buyer.export.great.gov.uk/',
+        'soo': 'https://selling-online-overseas.export.great.gov.uk/',
+        'events': 'https://events.trade.gov.uk/',
+        'contact_us': 'https://contact-us.export.great.gov.uk/directory/',
+        'dit': (
+            'https://www.gov.uk/government/organisations/'
+            'department-for-international-trade/'
+        ),
+    }
+    for exp, actual in zip(expected_urls, actual_urls):
+        assert exp == actual
 
 
 def test_header_footer_processor_defaults_explicitly_none(
@@ -215,18 +223,36 @@ def test_header_footer_processor_defaults_explicitly_none(
     settings.INFO_DIT = None
 
     actual_urls = context_processors.header_footer_processor(
-        None)['header_footer_elements']
+        None)['header_footer_urls']
 
-    exp_home = default_urls.HEADER_FOOTER_URLS_GREAT_HOME
-    exp_custom = urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'custom/')
-    assert actual_urls['home']['url'] == exp_home
-    assert actual_urls['custom']['url'] == exp_custom
-    sections = exp_default_urls.keys()
-    for section in sections:
-        for exp, actual in zip(
-                exp_default_urls[section],
-                actual_urls[section]['items']):
-            assert exp == actual['url']
+    expected_urls = {
+        'home': 'https://great.gov.uk/',
+        'custom': 'https://great.gov.uk/custom/',
+        'exporting_new': 'https://great.gov.uk/new/',
+        'exporting_occasional': 'https://great.gov.uk/occasional/',
+        'exporting_regular': 'https://great.gov.uk/regular/',
+        'market_research': 'https://great.gov.uk/market-research/',
+        'customer_insight': 'https://great.gov.uk/customer-insight/',
+        'finance': 'https://great.gov.uk/finance/',
+        'business_planning': 'https://great.gov.uk/business-planning/',
+        'getting_paid': 'https://great.gov.uk/getting-paid/',
+        'operations_and_compliance': (
+            'https://great.gov.uk/operations-and-compliance/'),
+        'exopps': 'https://great.gov.uk/export-opportunities/',
+        'get_finance': 'https://great.gov.uk/get-finance/',
+        'about': 'https://great.gov.uk/about/',
+        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+        'fab': 'https://find-a-buyer.export.great.gov.uk/',
+        'soo': 'https://selling-online-overseas.export.great.gov.uk/',
+        'events': 'https://events.trade.gov.uk/',
+        'contact_us': 'https://contact-us.export.great.gov.uk/directory/',
+        'dit': (
+            'https://www.gov.uk/government/organisations/'
+            'department-for-international-trade/'
+        ),
+    }
+    assert actual_urls == expected_urls
 
 
 def test_urls_processor(settings):

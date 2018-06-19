@@ -52,196 +52,57 @@ PRIVACY_URL = lazy_build_url(
 
 def header_footer_processor(request):
     """Context processor specifically for the header and footer templates."""
-    header_footer_elements = {
-        "register": {
-            "title": "Register",
-            "id": "register-link"
-        },
-        "signin": {
-            "title": "Sign in",
-            "id": "sign-in-link"
-        },
-        "profile": {
-            "title": "Profile",
-            "id": "profile-link"
-        },
-        "signout": {
-            "title": "Sign out",
-            "id": "sign-out-link"
-        },
-        "home": {
-            "title": "Home",
-            "id": "home-link",
-            "url": get_url("HEADER_FOOTER_URLS_GREAT_HOME")
-        },
-        "international": {
-            "title": "Go to our international site",
-            "id": "international-link",
-            "url": urljoin(get_url(
-                "HEADER_FOOTER_URLS_GREAT_HOME"),
-                'international/')
-        },
-        "custom": {
-            "title": "Your export journey",
-            "id": "custom-page-link",
-            "url": urljoin(get_url("HEADER_FOOTER_URLS_GREAT_HOME"), 'custom/')
-        },
-        "export_readiness": {
-            "id": "export-readiness-links",
-            "title": "Export readiness",
-            "items": [
-                {
-                    "title": "I'm new to exporting",
-                    "id": "export-readiness-new",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"), 'new/')
-                },
-                {
-                    "title": "I export occasionally",
-                    "id": "export-readiness-occasional",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'occasional/')
-                },
-                {
-                    "title": "I'm a regular exporter",
-                    "id": "export-readiness-regular",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'regular/')
-                }
-            ]
-        },
-        "guidance": {
-            "id": "guidance-links",
-            "title": "Guidance",
-            "items": [
-                {
-                    "title": "Market research",
-                    "id": "guidance-market-research",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'market-research/')
-                },
-                {
-                    "title": "Customer insight",
-                    "id": "guidance-customer-insight",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'customer-insight/')
-                },
-                {
-                    "title": "Finance",
-                    "id": "guidance-finance",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'finance/')
-                },
-                {
-                    "title": "Business planning",
-                    "id": "guidance-business-planning",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'business-planning/')
-                },
-                {
-                    "title": "Getting paid",
-                    "id": "guidance-getting-paid",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'getting-paid/')
-                },
-                {
-                    "title": "Operations and compliance",
-                    "id": "guidance-operations-and-compliance",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'operations-and-compliance/')
-                }
-            ]
-        },
-        "services": {
-            "id": "services-links",
-            "title": "Services",
-            "items": [
-                {
-                    "id": "services-find-a-buyer",
-                    "title": "Create a trade profile",
-                    "url": get_url("HEADER_FOOTER_URLS_FAB"),
-                    "description": (
-                        "Get promoted internationally with a great.gov.uk "
-                        "trade profile")
-                },
-                {
-                    "id": "services-selling-online-overseas",
-                    "title": "Sell online overseas",
-                    "url": get_url("HEADER_FOOTER_URLS_SOO"),
-                    "description": (
-                        "Find the right marketplace for your business "
-                        "and access special offers for sellers")
-                },
-                {
-                    "id": "services-export-opportunities",
-                    "title": "Find export opportunities",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'export-opportunities/'),
-                    "description": "Find and apply for overseas opportunities"
-                },
-                {
-                    "id": "services-get-finance",
-                    "title": "Get finance",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'get-finance/'),
-                    "description": (
-                        "Get the finance you "
-                        "need to compete and grow")
-                },
-                {
-                    "id": "services-events",
-                    "title": "Find events and visits",
-                    "url": get_url("HEADER_FOOTER_URLS_EVENTS"),
-                    "description": (
-                        "Attend events and see how visits by "
-                        "ministers can support your trade deals")
-                }
-            ]
-        },
-        "site_links": {
-            "items": [
-                {
-                    "id": "site-links-about",
-                    "title": "About",
-                    "url": urljoin(
-                        get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-                        'about/')
-                },
-                {
-                    "id": "site-links-contact",
-                    "title": "Contact us",
-                    "url": get_url("HEADER_FOOTER_URLS_CONTACT_US"),
-                },
-                {
-                    "id": "site-links-privacy-and-cookies",
-                    "title": "Privacy and cookies",
-                    "url": PRIVACY_URL,
-                },
-                {
-                    "id": "site-links-t-and-c",
-                    "title": "Terms and conditions",
-                    "url": TERMS_AND_CONDITIONS_URL,
-                },
-                {
-                    "id": "site-links-dit",
-                    "title": "Department for International Trade on GOV.UK",
-                    "url": get_url("HEADER_FOOTER_URLS_DIT"),
-                }
-            ]
-        }
+    header_footer_urls = {
+        'home': get_url('HEADER_FOOTER_URLS_GREAT_HOME'),
+        'custom': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'custom/'),
+        'exporting_new': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'new/'),
+        'exporting_occasional': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'occasional/'),
+        'exporting_regular': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'regular/'),
+        'market_research': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'market-research/'),
+        'customer_insight': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'customer-insight/'),
+        'finance': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'finance/'),
+        'business_planning': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'business-planning/'),
+        'getting_paid': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'getting-paid/'),
+        'operations_and_compliance': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'operations-and-compliance/'),
+        'exopps': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'export-opportunities/'),
+        'get_finance': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'get-finance/'),
+        'about': lazy_build_url(
+            'HEADER_FOOTER_URLS_GREAT_HOME',
+            'about/'),
+        'privacy_and_cookies': PRIVACY_URL,
+        'terms_and_conditions': TERMS_AND_CONDITIONS_URL,
+        'fab': get_url('HEADER_FOOTER_URLS_FAB'),
+        'soo': get_url('HEADER_FOOTER_URLS_SOO'),
+        'events': get_url('HEADER_FOOTER_URLS_EVENTS'),
+        'contact_us': get_url('HEADER_FOOTER_URLS_CONTACT_US'),
+        'dit': get_url('HEADER_FOOTER_URLS_DIT'),
     }
     return {
-        'header_footer_elements': header_footer_elements
+        'header_footer_urls': header_footer_urls
     }
 
 

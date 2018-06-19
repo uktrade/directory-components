@@ -5,7 +5,6 @@ from django.template.loader import render_to_string
 
 from directory_components import helpers
 from directory_components.context_processors import urls_processor
-from directory_components.context_processors import header_footer_processor
 
 
 def test_google_tag_manager_project_id():
@@ -94,31 +93,6 @@ def test_404_title_exists(settings):
     soup = BeautifulSoup(html, 'html.parser')
     title = soup.title.string
     assert len(title) > 0
-
-
-def test_footer():
-    template_name = 'directory_components/header_footer/footer.html'
-    context = header_footer_processor(None)
-    html = render_to_string(template_name, context)
-    exp_urls = [
-        'https://great.gov.uk/custom/',
-        'https://great.gov.uk/new/',
-        'https://great.gov.uk/regular/',
-        'https://great.gov.uk/occasional/',
-        'https://great.gov.uk/market-research/',
-        'https://great.gov.uk/customer-insight/',
-        'https://great.gov.uk/finance/',
-        'https://great.gov.uk/business-planning/',
-        'https://great.gov.uk/getting-paid/',
-        'https://great.gov.uk/operations-and-compliance/',
-        'https://find-a-buyer.export.great.gov.uk/',
-        'https://selling-online-overseas.export.great.gov.uk/',
-        'https://contact-us.export.great.gov.uk/directory/',
-        ('https://www.gov.uk/government/organisations/'
-            'department-for-international-trade/')
-    ]
-    for url in exp_urls:
-        assert url in html
 
 
 def test_social_share_links():
