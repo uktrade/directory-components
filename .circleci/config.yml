@@ -21,6 +21,7 @@ jobs:
       - checkout
       - run:
           command: |
+            make test_requirements
             make publish
             make heroku_deploy_dev
 
