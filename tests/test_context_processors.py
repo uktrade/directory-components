@@ -168,6 +168,7 @@ def test_header_footer_processor(settings):
         'about': 'http://home.com/about/',
         'privacy_and_cookies': 'http://home.com/privacy-and-cookies/',
         'terms_and_conditions': 'http://home.com/terms-and-conditions/',
+        'performance': 'http://home.com/performance/',
         'fab': 'http://fab.com/',
         'soo': 'http://soo.com/',
         'events': 'http://events.com/',
@@ -200,6 +201,7 @@ def test_header_footer_processor_defaults(settings, exp_default_urls):
         'about': 'https://great.gov.uk/about/',
         'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
         'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+        'performance': 'https://great.gov.uk/performance/',
         'fab': 'https://find-a-buyer.export.great.gov.uk/',
         'soo': 'https://selling-online-overseas.export.great.gov.uk/',
         'events': 'https://events.trade.gov.uk/',
@@ -243,6 +245,7 @@ def test_header_footer_processor_defaults_explicitly_none(
         'about': 'https://great.gov.uk/about/',
         'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
         'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+        'performance': 'https://great.gov.uk/performance/',
         'fab': 'https://find-a-buyer.export.great.gov.uk/',
         'soo': 'https://selling-online-overseas.export.great.gov.uk/',
         'events': 'https://events.trade.gov.uk/',
@@ -277,6 +280,7 @@ def test_urls_processor(settings):
         'dit': 'http://dit.com/',
         'terms': 'http://home.com/terms-and-conditions/',
         'privacy': 'http://home.com/privacy-and-cookies/',
+        'performance': 'http://home.com/performance/',
     }
 
     assert actual_urls == expected_urls
@@ -301,6 +305,10 @@ def test_urls_processor_defaults(settings, exp_default_urls):
         'privacy': urljoin(
             default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
             'privacy-and-cookies/'
+        ),
+        'performance': urljoin(
+            default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+            'performance/'
         ),
     }
 
@@ -332,6 +340,7 @@ def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
         ),
         'terms': 'https://great.gov.uk/terms-and-conditions/',
         'privacy': 'https://great.gov.uk/privacy-and-cookies/',
+        'performance': 'https://great.gov.uk/performance/',
     }
 
     assert actual_urls == expected_urls

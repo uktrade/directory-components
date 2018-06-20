@@ -49,6 +49,11 @@ PRIVACY_URL = lazy_build_url(
     'privacy-and-cookies/'
 )
 
+PERFORMANCE_URL = lazy_build_url(
+    'HEADER_FOOTER_URLS_GREAT_HOME',
+    'performance/'
+)
+
 
 def header_footer_processor(request):
     """Context processor specifically for the header and footer templates."""
@@ -95,6 +100,7 @@ def header_footer_processor(request):
             'about/'),
         'privacy_and_cookies': PRIVACY_URL,
         'terms_and_conditions': TERMS_AND_CONDITIONS_URL,
+        'performance': PERFORMANCE_URL,
         'fab': get_url('HEADER_FOOTER_URLS_FAB'),
         'soo': get_url('HEADER_FOOTER_URLS_SOO'),
         'events': get_url('HEADER_FOOTER_URLS_EVENTS'),
@@ -118,6 +124,7 @@ def urls_processor(request):
         "dit": get_url("HEADER_FOOTER_URLS_DIT"),
         "terms": TERMS_AND_CONDITIONS_URL,
         "privacy": PRIVACY_URL,
+        "performance": PERFORMANCE_URL,
     }
     return {
         'directory_components_urls': directory_components_urls
