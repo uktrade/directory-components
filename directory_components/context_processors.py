@@ -51,7 +51,7 @@ PRIVACY_URL = lazy_build_url(
 
 PERFORMANCE_URL = lazy_build_url(
     'HEADER_FOOTER_URLS_GREAT_HOME',
-    'performance/'
+    'performance-dashboard/'
 )
 
 
