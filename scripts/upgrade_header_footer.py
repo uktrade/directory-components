@@ -20,7 +20,7 @@ class Utils:
         project_root / ".." / "navigator",
     ]
 
-    exp = r'(?:directory-components\.git@v)(\d*\.\d*\.\d)'
+    exp = r'(?:directory-components==)(\d*\.\d*\.\d)'
     get_version = r'\d*\.\d*\.\d'
 
 
@@ -62,7 +62,7 @@ def replace_in_dirs(version):
         "Upgrading directory-components dependency in all repos...",
         fg='blue', style='bold'))
     for dirname in Utils.dirs:
-        replace = "directory-components.git@v{}".format(version)
+        replace = "directory-components=={}".format(version)
         replace_in_files(dirname, replace)
     done(version)
 
