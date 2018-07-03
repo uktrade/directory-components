@@ -20,13 +20,6 @@ class Utils:
         project_root / ".." / "navigator",
     ]
 
-    req_files = [
-        "requirements.txt",
-        "requirements.in",
-        "requirements_test.txt",
-        "requirements_test.in",
-    ]
-
     exp = r'(?:directory-components\.git@v)(\d*\.\d*\.\d)'
     get_version = r'\d*\.\d*\.\d'
 
@@ -76,15 +69,14 @@ def replace_in_dirs(version):
 
 def replace_in_files(dirname, replace):
     """Replace current version with new version in requirements files."""
-    for filename in Utils.req_files:
-        filepath = os.path.abspath(dirname / filename)
-        if os.path.isfile(filepath) and header_footer_exists(filepath):
-            replaced = re.sub(Utils.exp, replace, get_file_string(filepath))
-            with open(filepath, "w") as f:
-                f.write(replaced)
-            print(color(
-                "Written to file: {}".format(filepath),
-                fg='magenta', style='bold'))
+    filepath = os.path.abspath(dirname / "requirements.in")
+    if os.path.isfile(filepath) and header_footer_exists(filepath):
+        replaced = re.sub(Utils.exp, replace, get_file_string(filepath))
+        with open(filepath, "w") as f:
+            f.write(replaced)
+        print(color(
+            "Written to file: {}".format(filepath),
+            fg='magenta', style='bold'))
 
 
 def header_footer_exists(filepath):

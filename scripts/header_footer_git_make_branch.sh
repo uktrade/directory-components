@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 REPOS="
 ../directory-sso
 ../directory-sso-profile

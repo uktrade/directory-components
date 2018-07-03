@@ -168,11 +168,11 @@ def test_header_ids_match_urls_and_text(settings):
             "items": [
                 {
                     "id": "services-find-a-buyer",
-                    "title": "Create a trade profile",
+                    "title": "Create a business profile",
                     "url": "http://fab.com/",
                     "description": (
                         "Get promoted internationally with a great.gov.uk "
-                        "trade profile")
+                        "business profile")
                 },
                 {
                     "id": "services-selling-online-overseas",
@@ -294,11 +294,11 @@ def test_footer_ids_match_urls_and_text(settings):
             "items": [
                 {
                     "id": "services-find-a-buyer",
-                    "title": "Create a trade profile",
+                    "title": "Create a business profile",
                     "url": "http://fab.com/",
                     "description": (
                         "Get promoted internationally with a great.gov.uk "
-                        "trade profile")
+                        "business profile")
                 },
                 {
                     "id": "services-selling-online-overseas",
