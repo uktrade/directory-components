@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 REPOS="
 ../directory-sso
 ../directory-sso-profile
@@ -16,8 +17,10 @@ IFS= read -r -p "$(echo -e $BOLD$BLUE"Enter JIRA ticket number (e.g. ED-1234): "
 for dir in $REPOS; do
   echo -e $BOLD$MAGENTA"Switching to repo $dir"$RESET
 	cd $dir
-	git add -A
+	python3 -m piptools compile requirements.in
+	python3 -m piptools compile requirements_test.in
+	git add requirements.txt requirements.in requirements_test.txt
 	git commit -m "$commitmsg"
 	git push -u origin $(git rev-parse --abbrev-ref HEAD)
-	git pull-request -b master -m "$(printf "$(git rev-parse --abbrev-ref HEAD)\n\nhttps://uktrade.atlassian.net/browse/$ticketnum")"
+	hub pull-request -b master -m "$(printf "$(git rev-parse --abbrev-ref HEAD)\n\nhttps://uktrade.atlassian.net/browse/$ticketnum")"
 done

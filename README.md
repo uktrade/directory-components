@@ -29,6 +29,11 @@ To view the components in the browser run the following command:
 
 and go to `0.0.0.0:9000` in your browser
 
+## Auto update services dependency
+
+To automatically update the dependences of services that use this library call the following command:
+
+    $ make update
 
 ## Publish to PyPI
 
