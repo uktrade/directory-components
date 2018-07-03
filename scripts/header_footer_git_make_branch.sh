@@ -18,6 +18,5 @@ for dir in $REPOS; do
 	git stash
 	git checkout master
 	git pull
-	git branch $branch
-	git checkout $branch
+	git checkout -b $branch
 done
