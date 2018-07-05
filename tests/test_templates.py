@@ -124,3 +124,17 @@ def test_social_share_title(title, expected):
     html = render_to_string(template_name, context)
 
     assert '<span class="label">{title}</span>'.format(title=expected) in html
+
+
+@pytest.mark.parametrize('prevent_site_indexing,should_show_disallow', (
+    (True, True),
+    (False, False),
+))
+def test_robots_site_indexing(prevent_site_indexing, should_show_disallow):
+    template_name = 'robots.txt'
+    context = {
+        'FEATURE_SEARCH_ENGINE_INDEXING_DISABLED': prevent_site_indexing
+    }
+    html = render_to_string(template_name, context)
+
+    assert ('Disallow: /' in html) is should_show_disallow
