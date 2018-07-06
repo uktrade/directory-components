@@ -7,6 +7,7 @@ def pytest_configure():
         SSO_PROXY_LOGOUT_URL='http://logout.com',
         SSO_PROFILE_URL='http://profile.com',
         FEATURE_SEARCH_ENGINE_INDEXING_DISABLED=True,
+        FEATURE_MAINTENANCE_MODE_ENABLED=False,
         INSTALLED_APPS=[
             'django.contrib.staticfiles',
             'directory_components',
