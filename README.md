@@ -29,6 +29,38 @@ To view the components in the browser run the following command:
 
 and go to `0.0.0.0:9000` in your browser
 
+## Features
+
+### Environment variables
+
+| Environment variable | Notes |
+|----------------------|-------|
+| `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` | Controls `RobotsIndexControlHeaderMiddlware`. |
+| `FEATURE_MAINTENANCE_MODE_ENABLED` | Controls `MaintenanceModeMiddleware`. |
+| `FEATURE_FLAGS` | Place to store the service's feature flags. |
+
+### Middleware
+
+Middleware can be found in `directory_components.middleware.FooBar`.
+
+| Middleware | Notes |
+|------------|-------|
+| `RobotsIndexControlHeaderMiddlware` | Informs the webcrawlers to not index the service if `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` is `true`. |
+| `MaintenanceModeMiddleware` | Redirects to http://sorry.great.gov.uk if `FEATURE_MAINTENANCE_MODE_ENABLED` is `true`.|
+| `NoCacheMiddlware` | Prevents any page in the service from caching pages of logged in users. |
+
+### Context processors
+
+Middleware can be found in `directory_components.context_processors.foo_bar`.
+
+| Processor | Context variable name | Notes |
+|-----------|-----------------------|-------|
+| `sso_processor` | | Exposes the state of the SSO user. | 
+| `analytics` | `directory_components_analytics` | GA details. Used by base template. |
+| `header_footer_processor` | `header_footer_urls` | Urls used by base template's header and footer. |
+| `urls_processor` | `directory_components_urls` | More urls used by base template's header and footer. |
+| `feature_flags` | `feature_flags` | Exposes the service's feature flags. |
+
 ## Auto update services dependency
 
 To automatically update the dependences of services that use this library call the following command:
@@ -39,10 +71,10 @@ To automatically update the dependences of services that use this library call t
 
 The package should be published to PyPI on merge to master. If you need to do it locally then get the credentials from rattic and add the environment variables to your host machine:
 
-| Setting                     |
-| --------------------------- |
-| DIRECTORY_PYPI_USERNAME     |
-| DIRECTORY_PYPI_PASSWORD     |
+| Setting                      |
+| ----------------------------- |
+| `DIRECTORY_PYPI_USERNAME`     |
+| `DIRECTORY_PYPI_PASSWORD`     |
 
 
 Then run the following command:

@@ -129,3 +129,9 @@ def urls_processor(request):
     return {
         'directory_components_urls': directory_components_urls
     }
+
+
+def feature_flags(request):
+    return {
+        'features': settings.FEATURE_FLAGS
+    }
