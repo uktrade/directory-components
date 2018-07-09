@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
     <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
-    <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+    <!--[if gt IE 8]><!--><html lang="{% if html_lang_code %}{{ html_lang_code }}{% else %}en{% endif %}"><!--<![endif]-->
     <head>
         {% block head_google_tag_manager %}
             {% if directory_components_analytics %}
