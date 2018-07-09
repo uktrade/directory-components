@@ -344,3 +344,17 @@ def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
     }
 
     assert actual_urls == expected_urls
+
+
+def test_feature_returns_expected_features(settings):
+    settings.FEATURE_FLAGS = {
+        'COMPANIES_HOUSE_OAUTH2_ENABLED': True
+    }
+
+    actual = context_processors.feature_flags(None)
+
+    assert actual == {
+        'features': {
+            'COMPANIES_HOUSE_OAUTH2_ENABLED': True,
+        }
+    }
