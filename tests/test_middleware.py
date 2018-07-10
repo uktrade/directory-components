@@ -19,7 +19,7 @@ def test_robots_index_control_middlware_sso_user(rf):
 
 
 def test_maintenance_mode_middleware_feature_flag_on(rf, settings):
-    settings.FEATURE_MAINTENANCE_MODE_ENABLED = True
+    settings.FEATURE_FLAGS['MAINTENANCE_MODE_ON'] = True
     request = rf.get('/')
 
     response = middleware.MaintenanceModeMiddleware().process_request(request)
@@ -28,7 +28,9 @@ def test_maintenance_mode_middleware_feature_flag_on(rf, settings):
     assert response.url == middleware.MaintenanceModeMiddleware.maintenance_url
 
 
-def test_maintenance_mode_middleware_feature_flag_off(rf):
+def test_maintenance_mode_middleware_feature_flag_off(rf, settings):
+    settings.FEATURE_FLAGS['MAINTENANCE_MODE_ON'] = False
+
     request = rf.get('/')
 
     response = middleware.MaintenanceModeMiddleware().process_request(request)
