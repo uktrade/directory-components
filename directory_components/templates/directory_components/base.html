@@ -3,8 +3,8 @@
 {% load static_absolute from directory_components_tags %}
 
 <!DOCTYPE html>
-    <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
-    <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+    <!--[if lt IE 9]><html class="lte-ie8" lang={{ directory_components_html_lang_attribute|default:'en' }}><![endif]-->
+    <!--[if gt IE 8]><!--><html lang={{ directory_components_html_lang_attribute|default:'en' }}><!--<![endif]-->
     <head>
         {% block head_google_tag_manager %}
             {% if directory_components_analytics %}
