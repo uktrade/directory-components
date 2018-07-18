@@ -6,6 +6,9 @@
       <h1 class="{{ heading_class_name }}">
         {{ hero_text }}
       </h1>
+      {% if description %}
+      <p class="hero-description">{{ description }}</p>
+      {% endif %}
     </div>
   </div>
 </section>

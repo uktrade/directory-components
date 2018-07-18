@@ -7,27 +7,35 @@
 
 {% block content %}
 
-<div class="container">
-  <h1 class="heading-xlarge">Components</h1>
-  <h2 class="heading-large">Hero banners</h2>
-</div>
-
 {% static 'images/hero02.png' as hero_image %}
 {% static 'images/hero01.jpg' as hero_image_domestic %}
-<section>
-  {% include 'directory_components/hero.html' with background_image_url=hero_image hero_text="Very very long text that will wrap" %}
-</section>
 
-<section>
-  {% include 'directory_components/hero.html' with hero_text="Large text" large_title=True %}
-</section>
+{% include 'directory_components/hero.html' with background_image_url=hero_image_domestic hero_text="Components" large_title=True %}
+
+<div class="container">
+  <h2 class="heading-large">Hero banners</h2>
+  <p>Above:</p>
+  <code>{% verbatim %}{% include 'directory_components/hero.html' with background_image_url=hero_image_domestic hero_text="Components" large_title=True %}{% endverbatim %}</code>
+</div>
+
+{% include 'directory_components/hero.html' with hero_text="Hero banner with a description" background_image_url=hero_image description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+
+<div class="container">
+  <code>{% verbatim %}{% include 'directory_components/hero.html' with hero_text="Hero banner with a description" description='Lorem ipsum...' %}{% endverbatim %}</code>
+</div>
+
+{% include 'directory_components/hero.html' with hero_text="Hero banner with no background image" %}
+
+<div class="container">
+  <code>{% verbatim %}{% include 'directory_components/hero.html' with hero_text="Hero banner with no background image" %}{% endverbatim %}</code>
+</div>
 
 <section>
   <div class="container">
     <h2 class="heading-large">Cards</h2>
-    <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
+    <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens. Cards have a default min-height of 450px which can be overriden.</p>
 
-    <h3 class="heading-medium">Half width</h3>
+    <h3 class="heading-medium">Linked card with image and description</h3>
     <div class="grid-row">
       <div class="column-half">
         {% static 'images/card_image01.jpg' as card_image01 %}
@@ -35,61 +43,67 @@
         {% include 'directory_components/card.html' with img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
       </div>
     </div>
+    <code>{% verbatim %}{% include 'directory_components/card.html' with img_src=card_image02 url='#' description='Lorem ipsum...' %}{% endverbatim %}</code>
 
-    <h3 class="heading-medium">Cards in a grid row</h3>
+    <h3 class="heading-medium">Unlinked card with image and html content</h3>
     <div class="grid-row">
-      <div class="column-third">
-        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+      <div class="column-half">
+        {% static 'images/card_image01.jpg' as card_image01 %}
+        {% static 'images/card_image02.jpg' as card_image02 %}
+        {% include 'directory_components/card.html' with img_src=card_image02 title='Card title' html_content='<h4>Card title</h4><p>Cards can also have html content</p><a class="button button-blue">Button</a>' %}
       </div>
-      <div class="column-third">
+    </div>
+    <code>{% verbatim %}{% include 'directory_components/card.html' with img_src=card_image02 title='Card title' html_content='...' %}{% endverbatim %}</code>
+
+    <h3 class="heading-medium">Linked card with title, description, no image</h3>
+    <div class="grid-row">
+      <div class="column-half">
         {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
       </div>
+    </div>
+    <code>{% verbatim %}{% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum...' %}{% endverbatim %}</code>
+
+    <h3 class="heading-medium">Labelled linked card with image, title and description</h3>
+
+    <div class="grid-row">
+      <div class="column-half">
+        {% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+      </div>
+    </div>
+    <code>{% verbatim %}{% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
+
+    <h3 class="heading-medium">Labelled linked card with image and title</h3>
+
+    <div class="grid-row">
+      <div class="column-half">
+        {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' %}
+      </div>
+    </div>
+    <code>{% verbatim %}{% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' %}{% endverbatim %}</code>
+
+    <h3 class="heading-medium">Cards in a grid</h3>
+    <div class="grid-row">
+      {% for i in "x"|rjust:"3" %}
       <div class="column-third">
         {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
       </div>
+      {% endfor %}
     </div>
 
     <div class="grid-row">
-      <div class="column-third">
-        {% include 'directory_components/card.html' with img_src=card_image01 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-      </div>
-      <div class="column-third">
+      {% for i in "x"|rjust:"2" %}
+      <div class="column-half">
         {% include 'directory_components/card.html' with img_src=card_image01 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
       </div>
-      <div class="column-third">
-        {% include 'directory_components/card.html' with img_src=card_image01 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
-      </div>
+      {% endfor %}
     </div>
 
     <div class="grid-row">
-      <h3 class="heading-medium">Labelled cards</h3>
-
-      <div class="grid-row">
-        <div class="column-quarter">
-          {% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        </div>
-        <div class="column-quarter">
-          {% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        </div>
-        <div class="column-quarter">
-          {% include 'directory_components/labelled_card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
-        </div>
-        <div class="column-quarter">
-          {% include 'directory_components/labelled_card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
-        </div>
+      {% for i in "x"|rjust:"4" %}
+      <div class="column-quarter">
+        {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' %}
       </div>
-
-      <div class="grid-row">
-        <div class="column-third">
-          {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' %}
-        </div>
-        <div class="column-third">
-          {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' %}
-        </div>
-        <div class="column-third">
-          {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='' url='#' title='Card title' %}
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
   </div>
