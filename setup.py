@@ -28,6 +28,7 @@ setup(
     install_requires=[
         'django>=1.9,<2.0a1',
         'export_elements>=0.15.1<=1.0.0',
+        'beautifulsoup4>=4.6.0<5.0.0',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
