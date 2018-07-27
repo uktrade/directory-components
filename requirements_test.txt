@@ -1,6 +1,5 @@
 -e .
 ansicolors==1.1.8
-beautifulsoup4==4.6.0
 certifi==2017.4.17        # via requests
 chardet==3.0.4            # via requests
 codecov==2.0.9
