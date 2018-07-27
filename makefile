@@ -11,7 +11,7 @@ flake8:
 	flake8 . --exclude=.venv,setup.py,directory_components/version.py
 
 pytest:
-	pytest . --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no
+	pytest . --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no -vv --last-fail
 
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
@@ -96,7 +96,6 @@ django_webserver:
 
 run_demo:
 	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
-
 
 docker_webserver: docker_remove_all
 	$(DOCKER_SET_ENV_VARS) && \
