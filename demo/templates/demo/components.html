@@ -13,6 +13,11 @@
 {% include 'directory_components/hero.html' with background_image_url=hero_image_domestic hero_text="Components" large_title=True %}
 
 <div class="container">
+  <h2 class="heading-large">Cookie notice</h2>
+  <p>The cookie notice is displayed at the top of every page. When dismissed it will set the cookie 'hide_cookie_notice'. The JavaScript 'cookie-notice.js' will look for that cookie when the page loads. If it finds it, the cookie notice will not display. This JS requires jQuery to run. When JS is disabled in the browser the cookie notice will always be displayed.</p>
+</div>
+
+<div class="container">
   <h2 class="heading-large">Hero banners</h2>
   <p>Above:</p>
   <code>{% verbatim %}{% include 'directory_components/hero.html' with background_image_url=hero_image_domestic hero_text="Components" large_title=True %}{% endverbatim %}</code>
