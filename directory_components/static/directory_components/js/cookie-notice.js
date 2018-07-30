@@ -1,5 +1,7 @@
 
-function setCookie(name, value, days) {
+var componentsCookieNotice = {} || componentsCookieNotice;
+
+componentsCookieNotice.setCookie = function(name, value, days) {
   if (days) {
     var date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -8,7 +10,7 @@ function setCookie(name, value, days) {
   document.cookie = name + "=" + value + "; path=/";
 }
 
-function getCookie(name) {
+componentsCookieNotice.getCookie = function(name) {
   if (document.cookie.length > 0) {
     var start = document.cookie.indexOf(name + "=");
     if (start !== -1) {
@@ -23,15 +25,15 @@ function getCookie(name) {
   return "";
 }
 
-function hideNoticeAndSetCookie() {
+componentsCookieNotice.hideNoticeAndSetCookie = function() {
   $('#header-cookie-notice').hide();
-  setCookie('hide_cookie_notice', true, 30);
+  componentsCookieNotice.setCookie('hide_cookie_notice', true, 30);
 }
 
-var showCookieNotice = !getCookie('hide_cookie_notice');
+componentsCookieNotice.showCookieNotice = !componentsCookieNotice.getCookie('hide_cookie_notice');
 
 $(function() {
-  if (showCookieNotice) {
+  if (componentsCookieNotice.showCookieNotice) {
     // Cookie notice is hidden by default to avoid it flashing as page loads
     // Show it again here if no cookie was found
     $('#header-cookie-notice').show();
