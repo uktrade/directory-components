@@ -1,9 +1,8 @@
 # directory-components
 
-[![code-climate-image]][code-climate]
 [![circle-ci-image]][circle-ci]
 [![codecov-image]][codecov]
-[![gemnasium-image]][gemnasium]
+[![snyk-image]][snyk]
 
 **Reusable components used across the directory applications for the Department for International Trade.**
 
@@ -91,5 +90,5 @@ Then run the following command:
 [codecov-image]: https://codecov.io/gh/uktrade/directory-components/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/uktrade/directory-components
 
-[gemnasium-image]: https://gemnasium.com/badges/github.com/uktrade/directory-components.svg
-[gemnasium]: https://gemnasium.com/github.com/uktrade/directory-components
+[snyk-image]: https://snyk.io/test/github/uktrade/directory-components/badge.svg
+[snyk]: https://snyk.io/test/github/uktrade/directory-components
