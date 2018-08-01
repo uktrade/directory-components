@@ -43,6 +43,7 @@
         {% block head_js %}
             <script src="{% static 'directory_components/js/third-party.js' %}"></script>
             <script src="{% static 'directory_components/js/script.js' %}"></script>
+            <script src="{% static 'directory_components/js/cookie-notice.js' %}"></script>
         {% endblock %}
 
         {% block head_other %}{% endblock %}
@@ -60,6 +61,14 @@
             {% include 'directory_components/google_tag_manager_body.html' %}
         {% endblock %}
         <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+        {% block skip_link %}
+          <a id="skip-link" href="#content">Skip to main content</a>
+        {% endblock %}
+
+        {% block cookie_notice %}
+            {% include 'directory_components/cookie_notice.html' %}
+        {% endblock %}
 
         {% block body_header %}
             {% include 'directory_components/header_footer/header.html' %}

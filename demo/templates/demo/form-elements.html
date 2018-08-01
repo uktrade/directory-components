@@ -33,7 +33,9 @@ from directory_components import forms, fields
             <form>
               {% csrf_token %}
               {{ checkbox_form.as_p }}
-              <input class="button" type="submit" value="Submit" />
+              <div class="form-group">
+                <input class="button" type="submit" value="Submit" />
+              </div>
             </form>
           </div>
           <div class="column-one-half">
