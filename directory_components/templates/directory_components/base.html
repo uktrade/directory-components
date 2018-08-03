@@ -1,10 +1,11 @@
 {% load static from staticfiles %}
-
+{% load i18n %}
 {% load static_absolute from directory_components_tags %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
 
 <!DOCTYPE html>
-    <!--[if lt IE 9]><html class="lte-ie8" lang={{ directory_components_html_lang_attribute|default:'en' }}><![endif]-->
-    <!--[if gt IE 8]><!--><html lang={{ directory_components_html_lang_attribute|default:'en' }}><!--<![endif]-->
+    <!--[if lt IE 9]><html class="lte-ie8" lang={{ directory_components_html_lang_attribute|default:'en-gb' }}><![endif]-->
+    <!--[if gt IE 8]><!--><html dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr' }}" lang={{ directory_components_html_lang_attribute|default:'en-gb' }}><!--<![endif]-->
     <head>
         {% block head_google_tag_manager %}
             {% if directory_components_analytics %}
