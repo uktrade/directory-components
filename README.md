@@ -2,7 +2,7 @@
 
 [![circle-ci-image]][circle-ci]
 [![codecov-image]][codecov]
-[![snyk-image]][snyk]
+[![pypi-image]][pypi]
 
 **Reusable components used across the directory applications for the Department for International Trade.**
 
@@ -90,5 +90,5 @@ Then run the following command:
 [codecov-image]: https://codecov.io/gh/uktrade/directory-components/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/uktrade/directory-components
 
-[snyk-image]: https://snyk.io/test/github/uktrade/directory-components/badge.svg
-[snyk]: https://snyk.io/test/github/uktrade/directory-components
+[pypi-image]: https://badge.fury.io/py/directory-components.svg
+[pypi]: https://badge.fury.io/py/directory-components
