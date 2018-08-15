@@ -66,6 +66,7 @@ TEMPLATES = [
                 ('directory_components.context_processors'
                     '.header_footer_processor'),
                 'directory_components.context_processors.urls_processor',
+                'directory_components.context_processors.cookie_notice',
             ],
         },
     },
@@ -156,3 +157,4 @@ HEADER_FOOTER_URLS_FAB = os.getenv('HEADER_FOOTER_URLS_FAB')
 HEADER_FOOTER_URLS_SOO = os.getenv('HEADER_FOOTER_URLS_SOO')
 HEADER_FOOTER_URLS_EVENTS = os.getenv('HEADER_FOOTER_URLS_EVENTS')
 HEADER_FOOTER_URLS_CONTACT_US = os.getenv('HEADER_FOOTER_URLS_CONTACT_US')
+PRIVACY_COOKIE_DOMAIN = os.getenv('PRIVACY_COOKIE_DOMAIN')
