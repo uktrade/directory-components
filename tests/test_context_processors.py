@@ -21,6 +21,18 @@ def test_analytics(settings):
     }
 
 
+def test_cookie_notice(settings):
+    settings.PRIVACY_COOKIE_DOMAIN = '.thing.com'
+
+    actual = context_processors.cookie_notice(None)
+
+    assert actual == {
+        'directory_components_cookie_notice': {
+            'PRIVACY_COOKIE_DOMAIN': '.thing.com',
+        }
+    }
+
+
 @pytest.fixture
 def sso_user():
     return Mock(
