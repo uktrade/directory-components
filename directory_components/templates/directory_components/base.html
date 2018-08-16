@@ -13,6 +13,9 @@
             {% endif %}
             {% include 'directory_components/google_tag_manager_head.html' %}
         {% endblock %}
+        {% block cookie_domain_meta %}
+          <meta id="privacyCookieDomain" value="{{ directory_components_cookie_notice.PRIVACY_COOKIE_DOMAIN }}" />
+        {% endblock %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>

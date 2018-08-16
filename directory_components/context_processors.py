@@ -33,6 +33,14 @@ def analytics(request):
     }
 
 
+def cookie_notice(request):
+    return {
+        'directory_components_cookie_notice': {
+            'PRIVACY_COOKIE_DOMAIN': settings.PRIVACY_COOKIE_DOMAIN
+        }
+    }
+
+
 @lazy
 def lazy_build_url(url_name, path):
     return urljoin(get_url(url_name), path)
