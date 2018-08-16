@@ -26,7 +26,15 @@ To view the components in the browser run the following command:
 
     $ make run_demo
 
-and go to `0.0.0.0:9000` in your browser
+and go to `0.0.0.0:9013` in your browser
+
+To test cookies locally add this to your /etc/hosts:
+
+```
+127.0.0.1       components.trade.great
+```
+
+Then visit the demo at `components.trade.great:9013`
 
 ## Features
 
@@ -54,7 +62,7 @@ Middleware can be found in `directory_components.context_processors.foo_bar`.
 
 | Processor | Context variable name | Notes |
 |-----------|-----------------------|-------|
-| `sso_processor` | | Exposes the state of the SSO user. | 
+| `sso_processor` | | Exposes the state of the SSO user. |
 | `analytics` | `directory_components_analytics` | GA details. Used by base template. |
 | `header_footer_processor` | `header_footer_urls` | Urls used by base template's header and footer. |
 | `urls_processor` | `directory_components_urls` | More urls used by base template's header and footer. |
