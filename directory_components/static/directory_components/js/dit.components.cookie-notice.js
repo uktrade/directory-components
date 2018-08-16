@@ -32,7 +32,7 @@ dit.components.cookieNotice = (new function() {
       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
       value += '; expires=' + date.toGMTString();
     }
-    document.cookie = name + '=' + value + '; path=' + COOKIE_DOMAIN;
+    document.cookie = name + '=' + value + '; domain=' + COOKIE_DOMAIN + ';path=/;';
   }
 
   getCookie = function(name) {
