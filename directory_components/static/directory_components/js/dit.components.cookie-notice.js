@@ -6,7 +6,7 @@ dit.components.cookieNotice = (new function() {
 
   var COOKIE_NOTICE_ID = 'header-cookie-notice';
   var COOKIE_CLOSE_BUTTON_ID = 'dismiss-cookie-notice';
-  var COOKIE_DOMAIN = $('#privacyCookieDomain').val();
+  var COOKIE_DOMAIN = $('#privacyCookieDomain').attr('value');
 
   function viewInhibitor(activate) {
     var rule = '#header-cookie-notice { display: none; }';
