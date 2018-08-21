@@ -2,9 +2,7 @@
   {% if url %}
   <a class="card-link" href="{{ url }}">
   {% endif %}
-    {% if img_src %}
-      <img src="{{ img_src }}" alt="{{ img_alt }}">
-    {% endif %}
+    {% if img_src %}<div class="card-image" style="background-image: url({{ img_src }});"></div>{% endif %}
     <div class="card-inner">
       {% if html_content %}
       {{ html_content }}

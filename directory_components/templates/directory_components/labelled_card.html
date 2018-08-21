@@ -2,9 +2,7 @@
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
   </div>
-  {% if img_src %}
-  <img src="{{ img_src }}" alt="{{ img_alt }}">
-  {% endif %}
+  {% if img_src %}<div class="card-image" style="background-image: url({{ img_src }});"></div>{% endif %}
   <div class="card-inner">
     <p class="description">{{ description }}</p>
   </div>
