@@ -2,5 +2,12 @@
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
   </div>
-  <img src="{{ img_src }}" alt="{{ img_alt }}">
+    <div
+      class="card-image"
+      role="image"
+      {% if img_src %}style="background-image: url({{ img_src }});"{% endif %}
+      {% if img_alt %}aria-label="{{ img_alt }}"
+      title="{{ img_alt }}"{% endif %}>
+      {% if img_alt %}<p class="visually-hidden">{{ img_alt }}</p>{% endif %}
+    </div>
 </a>
