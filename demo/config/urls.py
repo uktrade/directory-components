@@ -28,4 +28,9 @@ urlpatterns = [
         views.InvestHeaderFooterView.as_view(),
         name='invest-header-footer',
     ),
+    url(
+        r'^template-tags/$',
+        views.TemplateTagsView.as_view(),
+        name='template-tags',
+    ),
 ]
