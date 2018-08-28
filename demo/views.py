@@ -29,3 +29,7 @@ class ComponentsView(TemplateView):
 
 class InvestHeaderFooterView(TemplateView):
     template_name = 'demo/invest_header_footer.html'
+
+
+class TemplateTagsView(TemplateView):
+    template_name = 'demo/template_tags.html'
