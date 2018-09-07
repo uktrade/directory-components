@@ -1,0 +1,13 @@
+<div class="breadcrumbs">
+  <ol>
+    <li>
+      <a href="{{ parent_site.url }}">{{ parent_site.title }}</a>
+    </li>
+    {% for section in parent_sections %}
+      <li>
+        <a href="{{ section.url }}">{{ section.title }}</a>
+      </li>
+    {% endfor %}
+    <li aria-current="page">{{ current_page.title }}</li>
+  </ol>
+</div>
