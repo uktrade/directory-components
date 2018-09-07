@@ -3,22 +3,32 @@
 {% block head_title %}directory-components{% endblock %}
 
 {% block content %}
-<section>
+<section class="hello-world">
   <div class="container">
     <div class="grid-row">
-      <div class="column-two-thirds">
+      <div class="column-two-thirds-l column-full">
 
         <h1 class="heading-xlarge">directory-components</h1>
 
         <p>Hello, world! This is the demo page for directory-components. From here you can preview all the component templates that can be used when you import this module.</p>
         <p>All pages use the great.gov.uk header and footer with default production links.</p>
 
-        <h2 class="heading-small">Contents:</h2>
-        <ul class="list list-bullet">
+        <h2 class="heading-medium">Contents</h2>
+        <ul class="list list-bullet" aria-labelledby="core-components">
+          <h3 class="heading-small" id="core-components">Core components:</h3>
           <li><a class="link" href="{% url '404' %}">404 error page</a></li>
           <li><a class="link" href="{% url 'widgets' %}">Form widgets</a></li>
           <li><a class="link" href="{% url 'components' %}">Components</a></li>
+          <li><a class="link" href="{% url 'responsive-grid' %}">Responsive grid</a></li>
+        </ul>
+        <ul class="list list-bullet" aria-labelledby="invest">
+          <h3 class="heading-small" id="invest">Invest</h3>
           <li><a class="link" href="{% url 'invest-header-footer' %}">Invest header and footer</a></li>
+        </ul>
+        <ul class="list list-bullet" aria-labelledby="prototype-pages">
+          <h3 class="heading-small" id="prototype-pages">Prototype pages</h3>
+          <li><a class="link" href="{% url 'prototype-guidance-list' %}">Guidance list page</a></li>
+          <li><a class="link" href="{% url 'prototype-article' %}">Article page</a></li>
         </ul>
 
       </div>

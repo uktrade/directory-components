@@ -12,7 +12,7 @@
       <p class="visually-hidden">{{ img_alt }}</p>
     </div>
   {% endif %}
-  <div class="card-inner">
+  <div class="card-inner {% if img_src %}with-image{% endif %}">
     <p class="description">{{ description }}</p>
   </div>
 </a>

@@ -24,8 +24,23 @@ urlpatterns = [
         name='components',
     ),
     url(
+        r'^responsive-grid/$',
+        views.ResponsiveGridView.as_view(),
+        name='responsive-grid',
+    ),
+    url(
         r'^invest/$',
         views.InvestHeaderFooterView.as_view(),
         name='invest-header-footer',
+    ),
+    url(
+        r'^prototype/prototype-article$',
+        views.PrototypeArticlePageView.as_view(),
+        name='prototype-article',
+    ),
+    url(
+        r'^prototype/prototype-guidance-list$',
+        views.PrototypeGuidanceListView.as_view(),
+        name='prototype-guidance-list',
     ),
 ]

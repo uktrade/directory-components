@@ -3,13 +3,14 @@ body {
   padding: 0;
 }
 
-#content {
-  padding-top: 0;
+.background-stone {
+  background-color: #f5f2ed;
 }
 
 code {
-	white-space: pre;
-  overflow-x: scroll;
+  white-space: pre-wrap;
+  overflow: auto;
+  height: auto;
   display: block;
   padding: 15px;
   margin: 30px 0;
@@ -19,5 +20,53 @@ code {
 }
 
 article.grid-row {
-	margin-bottom: 100px;
+  margin-bottom: 100px;
+}
+
+.article-content {
+  margin-left: calc(100% / 9 * 2);
+  padding-top: 2em;
+}
+
+article header .column-seven-twelfths {
+  padding-bottom: 1em;
+}
+
+article header .heading-xlarge {
+  margin-top: 0.2em;
+}
+
+.related-content {
+  background-color: #F5F2ED;
+  padding-top: 30px;
+}
+
+.related-content .container {
+  overflow: auto;
+}
+
+#content.guidance-list,
+#content.article,
+#content.components {
+  padding-top: 0;
+}
+
+.guidance-list-cards {
+  padding: 3em 0;
+}
+
+@media (max-width: 860px) {
+  .guidance-list .column-third {
+    width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .guidance-list .column-third {
+    width: 100%;
+  }
+
+  .article-content {
+    margin-left: 0;
+  }
 }
