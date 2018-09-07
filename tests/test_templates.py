@@ -123,7 +123,8 @@ def test_social_share_title(title, expected):
     }
     html = render_to_string(template_name, context)
 
-    assert '<span class="label">{title}</span>'.format(title=expected) in html
+    assert '<span class="visually-hidden">{title}</span>'.format(
+        title=expected) in html
 
 
 def test_robots_site_indexing():
