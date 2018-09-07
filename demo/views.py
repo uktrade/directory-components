@@ -39,6 +39,10 @@ class InvestHeaderFooterView(TemplateView):
     template_name = 'demo/invest_header_footer.html'
 
 
+class TemplateTagsView(TemplateView):
+    template_name = 'demo/template_tags.html'
+
+
 class PrototypeArticlePageView(TemplateView):
     template_name = 'demo/prototype_article.html'
     parent_sections = [

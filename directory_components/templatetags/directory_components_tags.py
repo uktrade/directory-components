@@ -43,6 +43,8 @@ def add_export_elements_classes(value):
         ('h2', 'heading-large'),
         ('h3', 'heading-medium'),
         ('h4', 'heading-small'),
+        ('h5', 'heading-small'),
+        ('h6', 'heading-small'),
         ('ul', 'list list-bullet'),
         ('ol', 'list list-number'),
         ('p', 'body-text'),

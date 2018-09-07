@@ -43,4 +43,9 @@ urlpatterns = [
         views.PrototypeGuidanceListView.as_view(),
         name='prototype-guidance-list',
     ),
+    url(
+        r'^template-tags/$',
+        views.TemplateTagsView.as_view(),
+        name='template-tags',
+    ),
 ]

@@ -1,0 +1,49 @@
+{% extends 'demo/base.html' %}
+{% load add_export_elements_classes from directory_components_tags %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        {% filter add_export_elements_classes %}
+
+        <h1>Template tags</h1>
+
+        <p>This page uses html tags with no style classes so you can see how the add_export_elements_classes template tag works.</p>
+
+        <h2>Heading level 2</h2>
+
+        <h3>Heading level 3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h3>Heading level 3</h3>
+        <ul>
+          <li>List item</li>
+          <li>List item</li>
+          <li>List item</li>
+        </ul>
+
+        <h3>Heading level 3</h3>
+
+        <h4>Heading level 4</h4>
+
+        <h5>Heading level 5</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h6>Heading level 6</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        {% endfilter %}
+
+        <a href="/" class="link link-back">Go back</a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
