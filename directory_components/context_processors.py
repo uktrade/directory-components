@@ -51,7 +51,6 @@ TERMS_AND_CONDITIONS_URL = lazy_build_url(
     'terms-and-conditions/'
 )
 
-
 PRIVACY_URL = lazy_build_url(
     'HEADER_FOOTER_URLS_GREAT_HOME',
     'privacy-and-cookies/'
@@ -117,6 +116,27 @@ def header_footer_processor(request):
     }
     return {
         'header_footer_urls': header_footer_urls
+    }
+
+
+def invest_header_footer_processor(request):
+    invest_header_footer_urls = {
+        'home': get_url('INVEST_BASE_URL'),
+        'industries': lazy_build_url(
+            'INVEST_BASE_URL',
+            'industries/'),
+        'uk_setup_guide': lazy_build_url(
+            'INVEST_BASE_URL',
+            'uk-setup-guide/'),
+        'contact_us': lazy_build_url(
+            'INVEST_BASE_URL',
+            'contact/'),
+        'part_of_great': get_url('HEADER_FOOTER_URLS_GREAT_HOME'),
+        'privacy_and_cookies': PRIVACY_URL,
+        'terms_and_conditions': TERMS_AND_CONDITIONS_URL,
+    }
+    return {
+        'invest_header_footer_urls': invest_header_footer_urls
     }
 
 

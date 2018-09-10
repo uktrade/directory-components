@@ -1,4 +1,5 @@
 
+INVEST_BASE_URL = 'https://invest.great.gov.uk/'
 HEADER_FOOTER_URLS_GREAT_HOME = 'https://great.gov.uk/'
 HEADER_FOOTER_URLS_FAB = 'https://find-a-buyer.export.great.gov.uk/'
 HEADER_FOOTER_URLS_SOO = 'https://selling-online-overseas.export.great.gov.uk/'

@@ -99,59 +99,6 @@ def test_sso_user(request_logged_in, sso_user):
     assert context['sso_user'] == sso_user
 
 
-@pytest.fixture
-def exp_default_urls():
-    return {
-        'export_readiness': [
-            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'new/'),
-            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'occasional/'),
-            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'regular/'),
-            ],
-        'guidance': [
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'market-research/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'customer-insight/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'finance/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'business-planning/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'getting-paid/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'operations-and-compliance/'),
-            ],
-        'services': [
-            default_urls.HEADER_FOOTER_URLS_FAB,
-            default_urls.HEADER_FOOTER_URLS_SOO,
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'export-opportunities/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'get-finance/'),
-            default_urls.HEADER_FOOTER_URLS_EVENTS,
-            ],
-        'site_links': [
-            urljoin(default_urls.HEADER_FOOTER_URLS_GREAT_HOME, 'about/'),
-            default_urls.HEADER_FOOTER_URLS_CONTACT_US,
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'privacy-and-cookies/'),
-            urljoin(
-                default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-                'terms-and-conditions/'),
-            default_urls.HEADER_FOOTER_URLS_DIT,
-            ]
-        }
-
-
 def test_header_footer_processor(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
     settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
@@ -191,7 +138,7 @@ def test_header_footer_processor(settings):
         assert exp == actual
 
 
-def test_header_footer_processor_defaults(settings, exp_default_urls):
+def test_header_footer_processor_defaults(settings):
     actual_urls = context_processors.header_footer_processor(
         None)['header_footer_urls']
 
@@ -227,8 +174,7 @@ def test_header_footer_processor_defaults(settings, exp_default_urls):
         assert exp == actual
 
 
-def test_header_footer_processor_defaults_explicitly_none(
-     settings, exp_default_urls):
+def test_header_footer_processor_defaults_explicitly_none(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = None
     settings.HEADER_FOOTER_URLS_FAB = None
     settings.HEADER_FOOTER_URLS_SOO = None
@@ -270,6 +216,61 @@ def test_header_footer_processor_defaults_explicitly_none(
     assert actual_urls == expected_urls
 
 
+def test_invest_header_footer_processor(settings):
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
+    settings.INVEST_BASE_URL = 'http://invest.com/'
+
+    actual_urls = context_processors.invest_header_footer_processor(
+        None)['invest_header_footer_urls']
+    exp_urls = {
+        'home': 'http://invest.com/',
+        'industries': 'http://invest.com/industries/',
+        'uk_setup_guide': 'http://invest.com/uk-setup-guide/',
+        'contact_us': 'http://invest.com/contact/',
+        'part_of_great': 'http://home.com/',
+        'privacy_and_cookies': 'http://home.com/privacy-and-cookies/',
+        'terms_and_conditions': 'http://home.com/terms-and-conditions/',
+        }
+    for exp, actual in zip(exp_urls, actual_urls):
+        assert exp == actual
+
+
+def test_invest_header_footer_processor_defaults(settings):
+    actual_urls = context_processors.invest_header_footer_processor(
+        None)['invest_header_footer_urls']
+
+    expected_urls = {
+        'home': 'https://invest.great.gov.uk/',
+        'industries': 'https://invest.great.gov.uk/industries/',
+        'uk_setup_guide': 'https://invest.great.gov.uk/uk-setup-guide/',
+        'contact_us': 'https://invest.great.gov.uk/contact/',
+        'part_of_great': 'https://great.gov.uk/',
+        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+    }
+    for exp, actual in zip(expected_urls, actual_urls):
+        assert exp == actual
+
+
+def test_invest_header_footer_processor_defaults_explicitly_none(settings):
+    settings.INVEST_BASE_URL = None
+    settings.HEADER_FOOTER_URLS_GREAT_HOME = None
+
+    actual_urls = context_processors.invest_header_footer_processor(
+        None)['invest_header_footer_urls']
+
+    expected_urls = {
+        'home': 'https://invest.great.gov.uk/',
+        'industries': 'https://invest.great.gov.uk/industries/',
+        'uk_setup_guide': 'https://invest.great.gov.uk/uk-setup-guide/',
+        'contact_us': 'https://invest.great.gov.uk/contact/',
+        'part_of_great': 'https://great.gov.uk/',
+        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+    }
+    assert actual_urls == expected_urls
+
+
 def test_urls_processor(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
     settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
@@ -298,7 +299,7 @@ def test_urls_processor(settings):
     assert actual_urls == expected_urls
 
 
-def test_urls_processor_defaults(settings, exp_default_urls):
+def test_urls_processor_defaults(settings):
     actual_urls = context_processors.urls_processor(
         None)['directory_components_urls']
 
@@ -327,7 +328,7 @@ def test_urls_processor_defaults(settings, exp_default_urls):
     assert actual_urls == expected_urls
 
 
-def test_urls_processor_defaults_explicitly_none(settings, exp_default_urls):
+def test_urls_processor_defaults_explicitly_none(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = None
     settings.HEADER_FOOTER_URLS_FAB = None
     settings.HEADER_FOOTER_URLS_SOO = None
