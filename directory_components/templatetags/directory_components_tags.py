@@ -64,45 +64,19 @@ def render_form(form):
 
 @register.inclusion_tag('directory_components/card.html')
 def card(**kwargs):
-    return {
-        'title': kwargs.get('title', ''),
-        'url': kwargs.get('url', ''),
-        'description': kwargs.get('description', ''),
-        'img_src': kwargs.get('img_src', ''),
-        'img_alt': kwargs.get('img_alt', ''),
-        'html_content': kwargs.get('html_content', ''),
-    }
+    return kwargs
 
 
 @register.inclusion_tag('directory_components/card_with_icon.html')
 def card_with_icon(**kwargs):
-    return {
-        'title': kwargs.get('title', ''),
-        'url': kwargs.get('url', ''),
-        'description': kwargs.get('description', ''),
-        'img_src': kwargs.get('img_src', ''),
-        'img_alt': kwargs.get('img_alt', ''),
-        'html_content': kwargs.get('html_content', ''),
-    }
+    return kwargs
 
 
 @register.inclusion_tag('directory_components/labelled_card.html')
 def labelled_card(**kwargs):
-    return {
-        'title': kwargs.get('title', ''),
-        'url': kwargs.get('url', ''),
-        'description': kwargs.get('description', ''),
-        'img_src': kwargs.get('img_src', ''),
-        'img_alt': kwargs.get('img_alt', ''),
-    }
+    return kwargs
 
 
 @register.inclusion_tag('directory_components/labelled_image_card.html')
 def labelled_image_card(**kwargs):
-    return {
-        'title': kwargs.get('title', ''),
-        'url': kwargs.get('url', ''),
-        'description': kwargs.get('description', ''),
-        'img_src': kwargs.get('img_src', ''),
-        'img_alt': kwargs.get('img_alt', ''),
-    }
+    return kwargs
