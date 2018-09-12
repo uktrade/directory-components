@@ -19,6 +19,11 @@ urlpatterns = [
         name='widgets',
     ),
     url(
+        r'^form-errors/$',
+        views.DemoFormErrorsView.as_view(),
+        name='form-errors',
+    ),
+    url(
         r'^components/$',
         views.ComponentsView.as_view(),
         name='components',

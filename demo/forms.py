@@ -104,3 +104,51 @@ class RadioForm(PrefixIdMixin, forms.Form):
                 )),
         )
     )
+
+
+class DemoFormErrors(PrefixIdMixin, forms.Form):
+
+    text_field1 = fields.CharField(
+        label='Simple text field',
+        help_text='Some help text',
+        required=True
+    )
+    checkbox1 = fields.BooleanField(
+        label='Label text',
+        required=True,
+        help_text=(
+            'Some help text.'
+        ),
+        widget=widgets.CheckboxWithInlineLabel(
+            attrs={'id': 'checkbox-one'}
+        )
+    )
+    multiple_choice = fields.MultipleChoiceField(
+        label='Multiple choice checkboxes',
+        required=True,
+        help_text='Some help text.',
+        widget=widgets.CheckboxSelectInlineLabelMultiple(
+            attrs={'id': 'checkbox-multiple'},
+            use_nice_ids=True,
+        ),
+        choices=(
+            ('red', 'Red'),
+            ('green', 'Green'),
+            ('blue', 'Blue'),
+        ),
+    )
+
+    radio = fields.ChoiceField(
+        label='Radio select',
+        required=True,
+        label_suffix='',
+        help_text='Some help text.',
+        widget=widgets.RadioSelect(
+            use_nice_ids=True,
+            attrs={'id': 'radio-one'}
+        ),
+        choices=(
+            (True, 'Yes'),
+            (False, 'No'),
+        )
+    )
