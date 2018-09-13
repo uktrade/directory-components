@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
+{% load card labelled_card labelled_image_card from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -41,22 +42,24 @@
   <div class="container">
     <h2 class="heading-large">Cards</h2>
     <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
+    <p>Load these template tags to use cards.</p>
+    <code>{% verbatim %}{% load card labelled_card labelled_image_card from directory_components_tags %}{% endverbatim %}</code>
 
     <div class="grid-row">
       <div class="column-half">
         <h3 class="heading-medium">Linked card with image and description</h3>
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
-        {% include 'directory_components/card.html' with img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
-        <code>{% verbatim %}{% include 'directory_components/card.html' with img_src=card_image02 url='#' description='Lorem ipsum...' %}{% endverbatim %}</code>
+        {% card img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
+        <code>{% verbatim %}{% card img_src=card_image02 url='#' description='Lorem ipsum...' %}{% endverbatim %}</code>
       </div>
 
       <div class="column-half">
         <h3 class="heading-medium">Linked card with image and title</h3>
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
-        {% include 'directory_components/card.html' with img_src=card_image02 url='#' title='Lorem ipsum' %}
-        <code>{% verbatim %}{% include 'directory_components/card.html' with img_src=card_image02 url='#' title='Lorem ipsum' %}{% endverbatim %}</code>
+        {% card img_src=card_image02 url='#' title='Lorem ipsum' %}
+        <code>{% verbatim %}{% card img_src=card_image02 url='#' title='Lorem ipsum' %}{% endverbatim %}</code>
       </div>
     </div>
 
@@ -65,43 +68,43 @@
         <h3 class="heading-medium">Unlinked card with image and html content</h3>
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
-        {% include 'directory_components/card.html' with img_src=card_image02 img_alt='Card image description' title='Card title' html_content='<h4>Card title</h4><p>Cards can also have html content</p><a class="button button-blue">Button</a>' %}
-        <code>{% verbatim %}{% include 'directory_components/card.html' with img_src=card_image02 title='Card title' html_content='...' %}{% endverbatim %}</code>
+        {% card img_src=card_image02 img_alt='Card image description' title='Card title' html_content='<h4>Card title</h4><p>Cards can also have html content</p><a class="button button-blue">Button</a>' %}
+        <code>{% verbatim %}{% card img_src=card_image02 title='Card title' html_content='...' %}{% endverbatim %}</code>
       </div>
 
       <div class="column-half">
         <h3 class="heading-medium">Linked card with title, description, no image</h3>
-        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
-        <code>{% verbatim %}{% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum...' %}{% endverbatim %}</code>
+        {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
+        <code>{% verbatim %}{% card url='#' title='Card title' description='Lorem ipsum...' %}{% endverbatim %}</code>
       </div>
     </div>
 
     <div class="grid-row">
       <div class="column-half">
         <h3 class="heading-medium">Labelled linked card with image, title and description</h3>
-        {% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        <code>{% verbatim %}{% include 'directory_components/labelled_card.html' with img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
+        {% labelled_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        <code>{% verbatim %}{% labelled_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
       </div>
 
       <div class="column-half">
       <h3 class="heading-medium">Labelled linked card with title and description</h3>
-        {% include 'directory_components/labelled_card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        <code>{% verbatim %}{% include 'directory_components/labelled_card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
+        {% labelled_card url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        <code>{% verbatim %}{% labelled_card url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
       </div>
     </div>
 
     <div class="grid-row">
       <div class="column-half">
         <h3 class="heading-medium">Labelled linked card with image and title</h3>
-        {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='Card title' url='#' title='Card title' %}
-        <code>{% verbatim %}{% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}{% endverbatim %}</code>
+        {% labelled_image_card img_src=card_image02 img_alt='Card title' url='#' title='Card title' %}
+        <code>{% verbatim %}{% labelled_image_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}{% endverbatim %}</code>
       </div>
 
       <div class="column-half">
         <h3 class="heading-medium">Labelled linked card with title (if no image is set)</h3>
         <p>This is so that if an image is missing the layout of card grids does not break.</p>
-        {% include 'directory_components/labelled_image_card.html' with url='#' title='Card title' %}
-        <code>{% verbatim %}{% include 'directory_components/labelled_image_card.html' with url='#' title='Card title' %}{% endverbatim %}</code>
+        {% labelled_image_card url='#' title='Card title' %}
+        <code>{% verbatim %}{% labelled_image_card url='#' title='Card title' %}{% endverbatim %}</code>
       </div>
     </div>
 
@@ -109,22 +112,22 @@
     <p>Use the 'card-grid' class to align the heights of cards in a grid.</p>
     <div class="card-grid">
       <div class="column-third">
-        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+        {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
       </div>
       <div class="column-two-thirds">
-        {% include 'directory_components/card.html' with img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+        {% card img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
       </div>
     </div>
 
     <div class="card-grid">
       <div class="column-quarter">
-        {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}
+        {% labelled_image_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}
       </div>
       <div class="column-quarter">
-        {% include 'directory_components/labelled_image_card.html' with img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}
+        {% labelled_image_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}
       </div>
       <div class="column-half">
-        {% include 'directory_components/card.html' with url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+        {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
       </div>
     </div>
 

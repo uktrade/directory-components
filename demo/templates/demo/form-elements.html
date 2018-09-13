@@ -1,20 +1,31 @@
 {% extends 'demo/base.html' %}
 
 {% load view_instance_code from demo_tags %}
+{% load render_form from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
 {% block content %}
 <section>
   <div class="container">
-      <h1 class="heading-xlarge">Form widgets examples</h1>
+    <h1 class="heading-xlarge">Forms</h1>
+    <p>A form can be rendered with this template tag:</p>
+    <code>{% verbatim %}{% load render_form from directory_components_tags %}
+&lt;form&gt;
+  {% csrf_token %}
+  {% render_form form %}
+&lt;input class="button" type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+{% endverbatim %}</code>
 
-        <h2 class="heading-large">Text fields</h2>
+      <h2 class="heading-large">Form widgets examples</h2>
+
+        <h3 class="heading-medium">Text fields</h3>
         <article class="grid-row">
           <div class="column-one-half">
             <form>
               {% csrf_token %}
-              {{ text_form.as_p }}
+              {% render_form text_form %}
               <input class="button" type="submit" value="Submit" />
             </form>
           </div>
@@ -27,12 +38,12 @@ from directory_components import forms, fields
           </div>
         </article>
 
-        <h2 class="heading-large">Checkboxes</h2>
+        <h3 class="heading-medium">Checkboxes</h3>
         <article class="grid-row">
           <div class="column-one-half">
             <form>
               {% csrf_token %}
-              {{ checkbox_form.as_p }}
+              {% render_form form=checkbox_form %}
               <div class="form-group">
                 <input class="button" type="submit" value="Submit" />
               </div>
@@ -47,12 +58,12 @@ from directory_components import forms, fields, widgets
           </div>
         </article>
 
-        <h2 class="heading-large">Multiple choice checkboxes</h2>
+        <h3 class="heading-medium">Multiple choice checkboxes</h3>
         <article class="grid-row">
           <div class="column-one-half">
             <form>
               {% csrf_token %}
-              {{ multiple_choice_form.as_p }}
+              {% render_form form=multiple_choice_form %}
               <input class="button" type="submit" value="Submit" />
             </form>
           </div>
@@ -65,12 +76,12 @@ from directory_components import forms, fields, widgets
           </div>
         </article>
 
-        <h2 class="heading-large">Radios</h2>
+        <h3 class="heading-medium">Radios</h3>
         <article class="grid-row">
           <div class="column-one-half">
             <form>
               {% csrf_token %}
-              {{ radio_form.as_p }}
+              {% render_form form=radio_form %}
               <input class="button" type="submit" value="Submit" />
             </form>
           </div>

@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from demo import forms
 from django.urls import reverse_lazy, reverse
 from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.views.generic.edit import FormView
 
 from directory_components.helpers import SocialLinkBuilder
 
@@ -12,6 +13,12 @@ class HelloWorld(TemplateView):
 
 class NotFound(TemplateView):
     template_name = 'demo/404.html'
+
+
+class DemoFormErrorsView(FormView):
+    template_name = 'demo/form-errors.html'
+    form_class = forms.DemoFormErrors
+    success_url = reverse_lazy('form-errors')
 
 
 class DemoFormView(TemplateView):

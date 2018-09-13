@@ -55,3 +55,28 @@ def add_export_elements_classes(value):
         for element in soup.findAll(tag_name):
             element.attrs['class'] = class_name
     return mark_safe(str(soup))
+
+
+@register.inclusion_tag('directory_components/form_widgets/form.html')
+def render_form(form):
+    return {'form': form}
+
+
+@register.inclusion_tag('directory_components/card.html')
+def card(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/card_with_icon.html')
+def card_with_icon(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/labelled_card.html')
+def labelled_card(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/labelled_image_card.html')
+def labelled_image_card(**kwargs):
+    return kwargs
