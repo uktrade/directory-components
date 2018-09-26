@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
+{% load card_with_icon from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -24,7 +25,7 @@
       <div class="card-grid">
         {% for section in page.guidance_sections %}
           <div class="column-third">
-            {% include 'directory_components/card_with_icon.html' with img_src=section.icon_url url=section.article_url title=section.title description=section.description %}
+            {% card_with_icon card_id=section.id img_src=section.icon_url url=section.article_url title=section.title description=section.description %}
           </div>
         {% endfor %}
       </div>
