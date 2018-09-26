@@ -1,4 +1,7 @@
-<a class="labelled-image-card" href="{{ url }}">
+<a
+  class="labelled-image-card"
+  href="{{ url }}"
+  {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
   </div>
@@ -7,7 +10,8 @@
       role="image"
       {% if img_src %}style="background-image: url({{ img_src }});"{% endif %}
       {% if img_alt %}aria-label="{{ img_alt }}"
-      title="{{ img_alt }}"{% endif %}>
+      title="{{ img_alt }}"{% endif %}
+      {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
       {% if img_alt %}<p class="visually-hidden">{{ img_alt }}</p>{% endif %}
     </div>
 </a>

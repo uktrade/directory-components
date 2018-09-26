@@ -44,22 +44,23 @@
     <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
     <p>Load these template tags to use cards.</p>
     <code>{% verbatim %}{% load card labelled_card labelled_image_card from directory_components_tags %}{% endverbatim %}</code>
+    <p>A custom ID can be assigned to the card which also creates IDs for the link and image with the suffixes '-link' and '-image' respectively. See examples below.</p>
 
     <div class="grid-row">
       <div class="column-half">
         <h3 class="heading-medium">Linked card with image and description</h3>
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
-        {% card img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
-        <code>{% verbatim %}{% card img_src=card_image02 url='#' description='Lorem ipsum...' %}{% endverbatim %}</code>
+        {% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
+        <code>{% verbatim %}{% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet...' %}{% endverbatim %}</code>
       </div>
 
       <div class="column-half">
         <h3 class="heading-medium">Linked card with image and title</h3>
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
-        {% card img_src=card_image02 url='#' title='Lorem ipsum' %}
-        <code>{% verbatim %}{% card img_src=card_image02 url='#' title='Lorem ipsum' %}{% endverbatim %}</code>
+        {% card card_id="card-example-image-title" img_src=card_image02 url='#' title='Lorem ipsum' %}
+        <code>{% verbatim %}{% card card_id="card-example-image-title" img_src=card_image02 url='#' title='Lorem ipsum' %}{% endverbatim %}</code>
       </div>
     </div>
 
@@ -82,8 +83,8 @@
     <div class="grid-row">
       <div class="column-half">
         <h3 class="heading-medium">Labelled linked card with image, title and description</h3>
-        {% labelled_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        <code>{% verbatim %}{% labelled_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
+        {% labelled_card card_id="labelled-card-example-image-title-description" img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        <code>{% verbatim %}{% labelled_card card_id="labelled-card-example-image-title-description" img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code>
       </div>
 
       <div class="column-half">

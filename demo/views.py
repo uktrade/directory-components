@@ -102,6 +102,7 @@ class PrototypeGuidanceListView(TemplateView):
         'guidance_sections': [
             {
                 'title': 'Market research',
+                'id': 'market research',
                 'description': (
                     'Research is an essential first step to selling in a new '
                     'market. Making decisions based on market data will help '
@@ -111,6 +112,7 @@ class PrototypeGuidanceListView(TemplateView):
             },
             {
                 'title': 'Customer insight',
+                'id': 'customer-insight',
                 'description': (
                     'Find out about potential customers to target them '
                     'effectively. Once you have overseas customers, nurture '
@@ -121,6 +123,7 @@ class PrototypeGuidanceListView(TemplateView):
             },
             {
                 'title': 'Finance',
+                'id': 'finance',
                 'description': (
                     'Finding the right financial products for your business '
                     'can give you a competitive edge in overseas markets and '
@@ -130,6 +133,7 @@ class PrototypeGuidanceListView(TemplateView):
             },
             {
                 'title': 'Business planning',
+                'id': 'business-planning',
                 'description': (
                     'Having a well thought out export plan will make it '
                     'easier to get financial support and make informed '
@@ -140,6 +144,7 @@ class PrototypeGuidanceListView(TemplateView):
             },
             {
                 'title': 'Getting paid',
+                'id': 'getting-paid',
                 'description': (
                     'Think about what currency to invoice in, what to include '
                     'on a commercial invoice and if you need to insure '
@@ -149,6 +154,7 @@ class PrototypeGuidanceListView(TemplateView):
             },
             {
                 'title': 'Operations and compliance',
+                'id': 'operations-and-compliance',
                 'description': (
                     'How you market your website, deliver your products and '
                     'protect your brand all need consideration when your '
