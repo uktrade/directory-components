@@ -19,6 +19,11 @@ urlpatterns = [
         name='great-header-footer',
     ),
     url(
+        r'^elements/$',
+        views.Elements.as_view(),
+        name='elements',
+    ),
+    url(
         r'^widgets/$',
         views.DemoFormView.as_view(),
         name='widgets',

@@ -252,7 +252,6 @@ def test_labelled_image_card():
 
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
-    print(html)
 
     card_link = soup.select('.labelled-image-card')[0]
     assert 'url' in card_link['href']
@@ -303,3 +302,168 @@ def test_card_with_icon():
 
     card_description = soup.select('p.description')[0]
     assert card_description.string == 'description'
+
+
+def test_message_box_default():
+    box_content = {
+        'heading': 'heading',
+        'description': 'description',
+    }
+    string = (
+        "{{% load message_box from directory_components_tags %}}"
+        "{{% message_box heading='{heading}' "
+        "description='{description}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_heading = soup.select('h3.heading-medium')[0]
+    assert box_heading.string == 'heading'
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+
+def test_message_box_custom():
+    box_content = {
+        'heading': 'heading',
+        'heading_level': 'h4',
+        'heading_class': 'great-red-text',
+        'description': 'description',
+        'box_class': 'border-great-red background-offwhite',
+    }
+    string = (
+        "{{% load message_box from directory_components_tags %}}"
+        "{{% message_box heading='{heading}' heading_level='{heading_level}' "
+        "heading_class='{heading_class}' description='{description}' "
+        "box_class='{box_class}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_heading = soup.select('h4.great-red-text')[0]
+    assert box_heading.string == 'heading'
+
+    box = soup.select('.message-box')[0]
+    assert 'border-great-red' in box['class']
+    assert 'background-offwhite' in box['class']
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+
+def test_cta_box_default():
+    box_content = {
+        'box_id': 'box_id',
+        'heading': 'heading',
+        'description': 'description',
+        'button_text': 'button_text',
+        'button_url': 'button_url',
+    }
+    string = (
+        "{{% load cta_box from directory_components_tags %}}"
+        "{{% cta_box box_id='{box_id}' heading='{heading}' "
+        "description='{description}' "
+        "button_text='{button_text}' button_url='{button_url}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_id = soup.find(id='box_id')
+    assert box_id['id'] == 'box_id'
+
+    box_heading = soup.select('h3.heading-medium')[0]
+    assert box_heading.string == 'heading'
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+    box_button = soup.select('a.button')[0]
+    assert box_button.string == 'button_text'
+    assert box_button['href'] == 'button_url'
+
+
+def test_cta_box_custom():
+    box_content = {
+        'box_id': 'box_id',
+        'box_class': 'background-great-blue white-text',
+        'heading': 'heading',
+        'heading_level': 'h4',
+        'heading_class': 'heading-small',
+        'description': 'description',
+        'button_text': 'button_text',
+        'button_url': 'button_url',
+    }
+    string = (
+        "{{% load cta_box from directory_components_tags %}}"
+        "{{% cta_box box_id='{box_id}' heading='{heading}' "
+        "box_class='{box_class}' heading_level='{heading_level}' "
+        "heading_class='{heading_class}' description='{description}' "
+        "button_text='{button_text}' button_url='{button_url}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box = soup.select('.cta-box')[0]
+    assert box['id'] == 'box_id'
+
+    assert 'background-great-blue' in box['class']
+    assert 'white-text' in box['class']
+
+    box_heading = soup.select('h4.heading-small')[0]
+    assert box_heading.string == 'heading'
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+    box_button = soup.select('a.button')[0]
+    assert box_button.string == 'button_text'
+    assert box_button['href'] == 'button_url'
+    assert box_button['id'] == 'box_id-button'
+
+
+def test_banner():
+    banner_content = {
+        'badge_content': 'Badge content',
+        'banner_content': '<p>Banner content with a <a href="#">link</a></p>',
+    }
+    string = (
+        "{{% load banner from directory_components_tags %}}"
+        "{{% banner badge_content='{badge_content}' "
+        "banner_content='{banner_content}' %}}"
+        ).format(**banner_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    banner = soup.select('.information-banner')[0]
+    assert banner['id'] == 'information-banner'
+
+    badge = soup.select('.banner-badge span')[0]
+    assert badge.string == 'Badge content'
+
+    exp_banner_content = (
+        '<div><p class="body-text">Banner content with a '
+        '<a class="link" href="#">link</a></p></div>')
+
+    banner_content = soup.select('.banner-content div:nth-of-type(2)')[0]
+    assert str(banner_content) == exp_banner_content
