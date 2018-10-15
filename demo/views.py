@@ -11,6 +11,10 @@ class HelloWorld(TemplateView):
     template_name = 'demo/hello-world.html'
 
 
+class GreatHeaderFooter(TemplateView):
+    template_name = 'demo/great-header-footer.html'
+
+
 class NotFound(TemplateView):
     template_name = 'demo/404.html'
 
