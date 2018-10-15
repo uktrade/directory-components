@@ -2,6 +2,10 @@
 
 {% load static from staticfiles %}
 
+{% block body_header %}
+    {% include 'demo/includes/header.html' %}
+{% endblock %}
+
 {% block head_css %}
   {% if use_local_styles %}
     <link href="{{ elements_local_url }}" media="all" rel="stylesheet" />
@@ -11,4 +15,8 @@
     <link href="{% static 'export_elements/stylesheets/elements-components.min.css' %}" media="all" rel="stylesheet" />
   {% endif %}
     <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'demo/includes/footer.html' %}
 {% endblock %}
