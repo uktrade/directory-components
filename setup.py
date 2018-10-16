@@ -27,7 +27,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'django>=1.9,<2.0a1',
-        'export_elements>=0.21.0<=1.0.0',
+        'export_elements>=0.22.0<=1.0.0',
         'beautifulsoup4>=4.6.0<5.0.0',
     ],
     classifiers=[
