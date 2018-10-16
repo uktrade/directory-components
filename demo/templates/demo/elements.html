@@ -1,0 +1,221 @@
+{% extends 'demo/base.html' %}
+
+{% load view_instance_code from demo_tags %}
+{% load render_form from directory_components_tags %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <h1 class="heading-xlarge">Elements & utility classes</h1>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <h2 class="heading-large">Headings</h2>
+        <p>Use these heading classes to change the size of headings while still keeping HTML semantic. These are all <code>h3</code> headings with different heading classes.</p>
+        <h3 class="heading-xlarge">.heading-xlarge</h3>
+        <h3 class="heading-large">.heading-large</h3>
+        <h3 class="heading-medium">.heading-medium</h3>
+        <h3 class="heading-small">.heading-small</h3>
+
+        <h2 class="heading-large">Font style</h2>
+        <p>These classes can be used to change font size and weight and are mobile responsive.</p>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="column-half">
+        <p class="font-xxlarge">.font-xxlarge</p>
+        <p class="font-xlarge">.font-xlarge</p>
+        <p class="font-large">.font-large</p>
+        <p class="font-medium">.font-medium</p>
+        <p class="font-small">.font-small</p>
+        <p class="font-xsmall">.font-xsmall</p>
+      </div>
+      <div class="column-half">
+        <p class="bold-xxlarge">.bold-xxlarge</p>
+        <p class="bold-xlarge">.bold-xlarge</p>
+        <p class="bold-large">.bold-large</p>
+        <p class="bold-medium">.bold-medium</p>
+        <p class="bold-small">.bold-small</p>
+        <p class="bold-xsmall">.bold-xsmall</p>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <h3 class="heading-medium">Text transform</h3>
+        <p>Use <code>.uppercase</code> to make text <span class="uppercase">all caps.</span></p>
+
+        <h2 class="heading-large">Lists</h2>
+
+        <h3 class="heading-medium">ul .list</h3>
+        <ul class="list">
+          <li><a href="#" class="link">Related link</a></li>
+          <li><a href="#" class="link">Another related link</a></li>
+          <li><a href="#" class="link">And another link</a></li>
+          <li><a href="#" class="link bold-xsmall">More</a></li>
+        </ul>
+
+        <h3 class="heading-medium">ul .list .list-bullet</h3>
+        <ul class="list list-bullet">
+          <li>here is a bulleted list</li>
+          <li>this is another item in the list</li>
+          <li>and another item with a bit more text</li>
+        </ul>
+
+        <h3 class="heading-medium">ol .list .list-number</h3>
+        <ol class="list list-number">
+          <li>Understand that this is a numbered list.</li>
+          <li>Follow the second step in this numbered list.</li>
+          <li>Make sure each item is a full sentence ending with a full stop.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h2 class="heading-large">Colour</h2>
+        <h3 class="heading-medium">Core colours</h3>
+        <ul class="list list-bullet">
+          <li><span class="background-great-red white-text">GREAT Red</span> should only be used for the GREAT logo.</li>
+          <li><span class="background-great-blue white-text">GREAT Blue</span> is used for type where possible, if not black can be used.</li>
+          <li><span class="background-flag-red white-text">Flag Red</span> is used for red lines and can be used in type.</li>
+          <li><span class="background-stone">Stone</span> has been introduced for use as a pale background colour on pages and tables.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="heading-medium">Background colour</h3>
+    <div class="grid-row">
+      <div class="column-half colour-examples white-text">
+        <p class="background-purple">.background-purple</p>
+        <p class="background-great-blue">.background-great-blue</p>
+        <p class="background-dark-navy">.background-dark-navy</p>
+        <p class="background-mid-blue">.background-mid-blue</p>
+        <p class="background-active-blue">.background-active-blue</p>
+        <p class="background-light-blue">.background-light-blue</p>
+        <p class="background-aqua">.background-aqua</p>
+        <p class="background-teal">.background-teal</p>
+        <p class="background-flag-red">.background-flag-red</p>
+        <p class="background-great-red">.background-great-red</p>
+        <p class="background-focus-yellow">.background-focus-yellow</p>
+      </div>
+      <div class="column-half colour-examples black-text">
+        <p class="background-black white-text">.background-black</p>
+        <p class="background-grey white-text">.background-grey</p>
+        <p class="background-mid-grey white-text">.background-mid-grey</p>
+        <p class="background-light-grey">.background-light-grey</p>
+        <p class="background-offwhite">.background-offwhite</p>
+        <p class="background-white">.background-white</p>
+        <p class="background-stone-10">.background-stone-10</p>
+        <p class="background-stone-20">.background-stone-20</p>
+        <p class="background-stone-30">.background-stone-30</p>
+        <p class="background-stone-40">.background-stone-40</p>
+        <p class="background-stone-50">.background-stone-50</p>
+        <p class="background-stone-60">.background-stone-60</p>
+        <p class="background-stone-70">.background-stone-70</p>
+        <p class="background-stone-80">.background-stone-80</p>
+        <p class="background-stone-90">.background-stone-90</p>
+        <p class="background-stone">.background-stone</p>
+      </div>
+    </div>
+
+    <h3 class="heading-medium">Text colour</h3>
+    <div class="grid-row">
+      <div class="column-half colour-examples">
+        <p class="purple-text">.purple-text</p>
+        <p class="great-blue-text">.great-blue-text</p>
+        <p class="dark-navy-text">.dark-navy-text</p>
+        <p class="mid-blue-text">.mid-blue-text</p>
+        <p class="active-blue-text">.active-blue-text</p>
+        <p class="light-blue-text">.light-blue-text</p>
+        <p class="aqua-text">.aqua-text</p>
+        <p class="teal-text">.teal-text</p>
+        <p class="flag-red-text">.flag-red-text</p>
+        <p class="great-red-text">.great-red-text</p>
+        <p class="focus-yellow-text">.focus-yellow-text</p>
+      </div>
+      <div class="column-half colour-examples">
+        <p class="black-text">.black-text</p>
+        <p class="grey-text">.grey-text</p>
+        <p class="mid-grey-text">.mid-grey-text</p>
+        <p class="light-grey-text background-black">.light-grey-text</p>
+        <p class="offwhite-text background-black">.offwhite-text</p>
+        <p class="white-text background-black">.white-text</p>
+      </div>
+    </div>
+
+    <h3 class="heading-medium">Border colour</h3>
+    <div class="grid-row">
+      <div class="column-half colour-examples">
+        <p class="border-medium border-purple">.border-purple</p>
+        <p class="border-medium border-great-blue">.border-great-blue</p>
+        <p class="border-medium border-dark-navy">.border-dark-navy</p>
+        <p class="border-medium border-mid-blue">.border-mid-blue</p>
+        <p class="border-medium border-active-blue">.border-active-blue</p>
+        <p class="border-medium border-light-blue">.border-light-blue</p>
+        <p class="border-medium border-aqua">.border-aqua</p>
+        <p class="border-medium border-teal">.border-teal</p>
+        <p class="border-medium border-flag-red">.border-flag-red</p>
+        <p class="border-medium border-great-red">.border-great-red</p>
+        <p class="border-medium border-focus-yellow">.border-focus-yellow</p>
+      </div>
+      <div class="column-half colour-examples">
+        <p class="border-medium border-black">.border-black</p>
+        <p class="border-medium border-grey">.border-grey</p>
+        <p class="border-medium border-mid-grey">.border-mid-grey</p>
+        <p class="border-medium border-light-grey">.border-light-grey</p>
+        <p class="border-medium border-offwhite">.border-offwhite</p>
+        <p class="border-medium border-white">.border-white</p>
+        <p class="border-medium border-stone-10">.border-stone-10</p>
+        <p class="border-medium border-stone-20">.border-stone-20</p>
+        <p class="border-medium border-stone-30">.border-stone-30</p>
+        <p class="border-medium border-stone-40">.border-stone-40</p>
+        <p class="border-medium border-stone-50">.border-stone-50</p>
+        <p class="border-medium border-stone-60">.border-stone-60</p>
+        <p class="border-medium border-stone-70">.border-stone-70</p>
+        <p class="border-medium border-stone-80">.border-stone-80</p>
+        <p class="border-medium border-stone-90">.border-stone-90</p>
+        <p class="border-medium border-stone">.border-stone</p>
+      </div>
+    </div>
+    <h3 class="heading-medium">Border thickness</h3>
+    <div class="grid-row">
+      <div class="column-half">
+        <p class="border-thin border-black">.border-thin</p>
+        <p class="border-medium border-black">.border-medium</p>
+        <p class="border-thick border-black">.border-thick</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="background-great-blue white-text">
+  <div class="container">
+    <h2 class="heading-large">Buttons</h2>
+    <div class="grid-row">
+      <div class="column-third">
+        <a href="#" class="button">.button-blue</a>
+      </div>
+      <div class="column-third">
+        <a href="#" class="button button-ghost-blue">.button-ghost-blue</a>
+      </div>
+      <div class="column-third">
+        <a href="#" class="button button-ghost-white">.button-ghost-white</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <a href="/" class="link link-back">Go back</a>
+  </div>
+</section>
+
+{% endblock %}

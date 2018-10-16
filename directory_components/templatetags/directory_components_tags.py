@@ -62,6 +62,26 @@ def render_form(form):
     return {'form': form}
 
 
+@register.inclusion_tag('directory_components/cta_box.html')
+def cta_box(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/message_box.html')
+def message_box(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/banner.html')
+def banner(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/hero.html')
+def hero(**kwargs):
+    return kwargs
+
+
 @register.inclusion_tag('directory_components/card.html')
 def card(**kwargs):
     return kwargs

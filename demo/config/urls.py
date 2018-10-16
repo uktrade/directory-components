@@ -14,6 +14,16 @@ urlpatterns = [
         name='404',
     ),
     url(
+        r'^great-header-footer/$',
+        views.GreatHeaderFooter.as_view(),
+        name='great-header-footer',
+    ),
+    url(
+        r'^elements/$',
+        views.Elements.as_view(),
+        name='elements',
+    ),
+    url(
         r'^widgets/$',
         views.DemoFormView.as_view(),
         name='widgets',

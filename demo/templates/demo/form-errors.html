@@ -8,9 +8,12 @@
 {% block content %}
 <section>
   <div class="container">
-
-      <h1 class="heading-xlarge">Form error examples</h1>
-      <p>All the following fields are required. Try submitting the form to see the error messages.</p>
+    <div class="grid-row">
+      <div class="column-half">
+        <h1 class="heading-xlarge">Form error examples</h1>
+        <p>All the following fields are required. Try submitting the form to see the error messages.</p>
+      </div>
+    </div>
 
       <section>
           <form method="post" action="{% url 'form-errors' %}">

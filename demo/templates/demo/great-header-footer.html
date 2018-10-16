@@ -1,0 +1,22 @@
+{% extends 'demo/base.html' %}
+
+{% block body_header %}
+    {% include 'directory_components/header_footer/header.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h1 class="heading-xlarge">Great.gov.uk header and footer</h1>
+        <a href="{% url 'hello-world' %}" class="link-back link">Go back</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer/footer.html' %}
+{% endblock %}
