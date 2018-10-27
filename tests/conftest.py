@@ -31,6 +31,7 @@ def pytest_configure():
             },
         ],
         FEATURE_URL_PREFIX_ENABLED=True,
+        URL_PREFIX_DOMAIN='',
     )
 
 

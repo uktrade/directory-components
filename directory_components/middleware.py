@@ -1,4 +1,5 @@
 import abc
+import urllib.parse
 
 from django.conf import settings
 from django.shortcuts import redirect
@@ -53,4 +54,10 @@ class AbstractPrefixUrlMiddleware(abc.ABC):
                 except Resolver404:
                     pass
                 else:
-                    return redirect(prefixer.full_path)
+                    if settings.URL_PREFIX_DOMAIN:
+                        url = urllib.parse.urljoin(
+                            settings.URL_PREFIX_DOMAIN, prefixer.full_path
+                        )
+                    else:
+                        url = prefixer.full_path
+                    return redirect(url)
