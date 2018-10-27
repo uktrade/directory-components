@@ -19,6 +19,7 @@ pytest==3.0.3
 requests-toolbelt==0.8.0  # via twine
 requests==2.18.1          # via codecov, requests-toolbelt, twine
 tqdm==4.19.6              # via twine
-twine==1.9.1
 urllib3==1.21.1           # via requests
-wheel==0.30.0
+twine>=1.11.0,<2.0.0
+wheel>=0.31.0,<1.0.0
+setuptools>=38.6.0,<39.0.0
