@@ -1,3 +1,8 @@
+import pytest
+
+from django.urls import set_urlconf
+
+
 def pytest_configure():
     from django.conf import settings
     settings.configure(
@@ -24,5 +29,11 @@ def pytest_configure():
                     ],
                 },
             },
-        ]
+        ],
+        FEATURE_URL_PREFIX_ENABLED=True,
     )
+
+
+@pytest.fixture(autouse=True)
+def reset_urlsconf():
+    set_urlconf('tests.urls')

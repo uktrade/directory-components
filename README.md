@@ -55,7 +55,7 @@ Middleware can be found in `directory_components.middleware.FooBar`.
 | `RobotsIndexControlHeaderMiddlware` | Informs the webcrawlers to not index the service if `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` is `true`. |
 | `MaintenanceModeMiddleware` | Redirects to http://sorry.great.gov.uk if `FEATURE_MAINTENANCE_MODE_ENABLED` is `true`.|
 | `NoCacheMiddlware` | Prevents any page in the service from caching pages of logged in users. |
-
+| `PrefixUrlMiddleware` | Redirects use from unprefixed url to prefixed url if `FEATURE_URL_PREFIX_ENABLED` is `true`. |
 ### Context processors
 
 Middleware can be found in `directory_components.context_processors.foo_bar`.

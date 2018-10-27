@@ -15,4 +15,9 @@ urlpatterns = [
         View.as_view(),
         name='sitemap'
     ),
+    url(
+        r"^some/path/$",
+        View.as_view(),
+        name='some-path'
+    ),
 ]
