@@ -106,7 +106,26 @@ def test_prefix_url_middleware_not_starts_with_url_known_url(
     rf, settings, url, expected
 ):
     set_urlconf('tests.urls_prefixed')
-    # settings.FEATURE_URL_PREFIX_ENABLED = True
+
+    request = rf.get(url)
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response.status_code == 302
+    assert response.url == expected
+
+
+@pytest.mark.parametrize('url,expected', (
+    ('/some/path/', 'https://example.com/components/some/path/'),
+    ('/some/path', 'https://example.com/components/some/path/'),
+    ('/some/path/?a=b', 'https://example.com/components/some/path/?a=b'),
+    ('/some/path?a=b', 'https://example.com/components/some/path/?a=b'),
+))
+def test_prefix_url_middleware_not_starts_with_url_known_url_domain_set(
+    rf, settings, url, expected
+):
+    settings.URL_PREFIX_DOMAIN = 'https://example.com'
+    set_urlconf('tests.urls_prefixed')
 
     request = rf.get(url)
 
