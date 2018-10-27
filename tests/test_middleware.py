@@ -1,8 +1,15 @@
 from unittest.mock import Mock
 
+import pytest
+
 from django.http import HttpResponse
+from django.urls import set_urlconf
 
 from directory_components import middleware
+
+
+class PrefixUrlMiddleware(middleware.AbstractPrefixUrlMiddleware):
+    prefix = '/components/'
 
 
 def test_robots_index_control_middlware_sso_user(rf):
@@ -68,3 +75,42 @@ def test_no_cache_middleware_sso_user_not_in_request(rf):
 
     assert output == response
     assert 'Cache-Control' not in output
+
+
+def xtest_prefix_url_middleware_feature_off(rf, settings):
+    settings.FEATURE_URL_PREFIX_ENABLED = False
+
+    request = rf.get('/')
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response is None
+
+
+def xtest_prefix_url_middleware_not_starts_with_url_unknown_url(rf, settings):
+    settings.FEATURE_URL_PREFIX_ENABLED = True
+    request = rf.get('/some-unknown-url/')
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response is None
+
+
+@pytest.mark.parametrize('url,expected', (
+    ('/some/path/', '/components/some/path/'),
+    ('/some/path', '/components/some/path/'),
+    ('/some/path/?a=b', '/components/some/path/?a=b'),
+    ('/some/path?a=b', '/components/some/path/?a=b'),
+))
+def test_prefix_url_middleware_not_starts_with_url_known_url(
+    rf, settings, url, expected
+):
+    set_urlconf('tests.urls_prefixed')
+    # settings.FEATURE_URL_PREFIX_ENABLED = True
+
+    request = rf.get(url)
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response.status_code == 302
+    assert response.url == expected

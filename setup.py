@@ -24,6 +24,7 @@ setup(
     description='Shared components library for Export Directory.',
     packages=find_packages(exclude=["tests.*", "tests", "scripts", "demo.*"]),
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
         'django>=1.9,<2.0a1',

@@ -1,5 +1,7 @@
 import urllib.parse
 
+from django.utils.encoding import iri_to_uri
+
 
 def add_next(destination_url, current_url):
     if 'next=' in destination_url:
@@ -44,3 +46,31 @@ class SocialLinkBuilder:
             name: template.format(url=self.url, body=self.body)
             for name, template in self.templates
         }
+
+
+class UrlPrefixer:
+
+    def __init__(self, request, prefix):
+        self.prefix = prefix
+        self.request = request
+
+    @property
+    def is_path_prefixed(self):
+        return self.request.path.startswith(self.prefix)
+
+    @property
+    def path(self):
+        canonical_path = urllib.parse.urljoin(
+            self.prefix, self.request.path.lstrip('/')
+        )
+        if not canonical_path.endswith('/'):
+            canonical_path += '/'
+        return canonical_path
+
+    @property
+    def full_path(self):
+        path = self.path
+        querystring = self.request.META.get('QUERY_STRING', '')
+        if querystring:
+            path += ('?' + iri_to_uri(querystring))
+        return path
