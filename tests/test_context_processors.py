@@ -106,6 +106,7 @@ def test_header_footer_processor(settings):
     settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
     settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
     settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
+    settings.HEADER_FOOTER_URLS_FEEDBACK = 'https://feedback.com'
 
     actual_urls = context_processors.header_footer_processor(
         None)['header_footer_urls']
@@ -132,8 +133,9 @@ def test_header_footer_processor(settings):
         'soo': 'http://soo.com/',
         'events': 'http://events.com/',
         'contact_us': 'http://contact.com/',
+        'feedback': 'https://feedback.com',
         'dit': 'http://dit.com/'
-        }
+    }
     for exp, actual in zip(exp_urls, actual_urls):
         assert exp == actual
 
@@ -143,32 +145,33 @@ def test_header_footer_processor_defaults(settings):
         None)['header_footer_urls']
 
     expected_urls = {
-        'home': 'https://great.gov.uk/',
-        'custom': 'https://great.gov.uk/custom/',
+        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+        'custom': 'https://www.great.gov.uk/custom/',
         'exporting_new': 'https://great.gov.uk/new/',
-        'exporting_occasional': 'https://great.gov.uk/occasional/',
-        'exporting_regular': 'https://great.gov.uk/regular/',
-        'market_research': 'https://great.gov.uk/market-research/',
-        'customer_insight': 'https://great.gov.uk/customer-insight/',
-        'finance': 'https://great.gov.uk/finance/',
-        'business_planning': 'https://great.gov.uk/business-planning/',
-        'getting_paid': 'https://great.gov.uk/getting-paid/',
+        'exporting_occasional': 'https://www.great.gov.uk/occasional/',
+        'exporting_regular': 'https://www.great.gov.uk/regular/',
+        'market_research': 'https://www.great.gov.uk/market-research/',
+        'customer_insight': 'https://www.great.gov.uk/customer-insight/',
+        'finance': 'https://www.great.gov.uk/finance/',
+        'business_planning': 'https://www.great.gov.uk/business-planning/',
+        'getting_paid': 'https://www.great.gov.uk/getting-paid/',
         'operations_and_compliance': (
-            'https://great.gov.uk/operations-and-compliance/'),
-        'exopps': 'https://great.gov.uk/export-opportunities/',
-        'get_finance': 'https://great.gov.uk/get-finance/',
-        'about': 'https://great.gov.uk/about/',
-        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
-        'performance': 'https://great.gov.uk/performance-dashboard/',
-        'fab': 'https://find-a-buyer.export.great.gov.uk/',
-        'soo': 'https://selling-online-overseas.export.great.gov.uk/',
-        'events': 'https://events.trade.gov.uk/',
-        'contact_us': 'https://contact-us.export.great.gov.uk/directory/',
-        'dit': (
-            'https://www.gov.uk/government/organisations/'
-            'department-for-international-trade/'
+            'https://www.great.gov.uk/operations-and-compliance/'
         ),
+        'exopps': 'https://www.great.gov.uk/export-opportunities/',
+        'get_finance': 'https://www.great.gov.uk/get-finance/',
+        'about': 'https://www.great.gov.uk/about/',
+        'privacy_and_cookies': 'https://www.great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': (
+            'https://www.great.gov.uk/terms-and-conditions/'
+        ),
+        'performance': 'https://www.great.gov.uk/performance-dashboard/',
+        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
+        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
+        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
+        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
+        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
+        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
     }
     for exp, actual in zip(expected_urls, actual_urls):
         assert exp == actual
@@ -186,32 +189,32 @@ def test_header_footer_processor_defaults_explicitly_none(settings):
         None)['header_footer_urls']
 
     expected_urls = {
-        'home': 'https://great.gov.uk/',
-        'custom': 'https://great.gov.uk/custom/',
-        'exporting_new': 'https://great.gov.uk/new/',
-        'exporting_occasional': 'https://great.gov.uk/occasional/',
-        'exporting_regular': 'https://great.gov.uk/regular/',
-        'market_research': 'https://great.gov.uk/market-research/',
-        'customer_insight': 'https://great.gov.uk/customer-insight/',
-        'finance': 'https://great.gov.uk/finance/',
-        'business_planning': 'https://great.gov.uk/business-planning/',
-        'getting_paid': 'https://great.gov.uk/getting-paid/',
+        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+        'custom': 'https://www.great.gov.uk/custom/',
+        'exporting_new': 'https://www.great.gov.uk/new/',
+        'exporting_occasional': 'https://www.great.gov.uk/occasional/',
+        'exporting_regular': 'https://www.great.gov.uk/regular/',
+        'market_research': 'https://www.great.gov.uk/market-research/',
+        'customer_insight': 'https://www.great.gov.uk/customer-insight/',
+        'finance': 'https://www.great.gov.uk/finance/',
+        'business_planning': 'https://www.great.gov.uk/business-planning/',
+        'getting_paid': 'https://www.great.gov.uk/getting-paid/',
         'operations_and_compliance': (
-            'https://great.gov.uk/operations-and-compliance/'),
-        'exopps': 'https://great.gov.uk/export-opportunities/',
-        'get_finance': 'https://great.gov.uk/get-finance/',
-        'about': 'https://great.gov.uk/about/',
-        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
-        'performance': 'https://great.gov.uk/performance-dashboard/',
-        'fab': 'https://find-a-buyer.export.great.gov.uk/',
-        'soo': 'https://selling-online-overseas.export.great.gov.uk/',
-        'events': 'https://events.trade.gov.uk/',
-        'contact_us': 'https://contact-us.export.great.gov.uk/directory/',
-        'dit': (
-            'https://www.gov.uk/government/organisations/'
-            'department-for-international-trade/'
+            'https://www.great.gov.uk/operations-and-compliance/'),
+        'exopps': 'https://www.great.gov.uk/export-opportunities/',
+        'get_finance': 'https://www.great.gov.uk/get-finance/',
+        'about': 'https://www.great.gov.uk/about/',
+        'privacy_and_cookies': 'https://www.great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': (
+            'https://www.great.gov.uk/terms-and-conditions/'
         ),
+        'performance': 'https://www.great.gov.uk/performance-dashboard/',
+        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
+        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
+        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
+        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
+        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
+        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
     }
     assert actual_urls == expected_urls
 
@@ -240,7 +243,7 @@ def test_invest_header_footer_processor_defaults(settings):
         None)['invest_header_footer_urls']
 
     expected_urls = {
-        'home': 'https://invest.great.gov.uk/',
+        'home': default_urls.INVEST_BASE_URL,
         'industries': 'https://invest.great.gov.uk/industries/',
         'uk_setup_guide': 'https://invest.great.gov.uk/uk-setup-guide/',
         'contact_us': 'https://invest.great.gov.uk/contact/',
@@ -260,13 +263,15 @@ def test_invest_header_footer_processor_defaults_explicitly_none(settings):
         None)['invest_header_footer_urls']
 
     expected_urls = {
-        'home': 'https://invest.great.gov.uk/',
+        'home': default_urls.INVEST_BASE_URL,
         'industries': 'https://invest.great.gov.uk/industries/',
         'uk_setup_guide': 'https://invest.great.gov.uk/uk-setup-guide/',
         'contact_us': 'https://invest.great.gov.uk/contact/',
-        'part_of_great': 'https://great.gov.uk/',
-        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+        'part_of_great': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+        'privacy_and_cookies': 'https://www.great.gov.uk/privacy-and-cookies/',
+        'terms_and_conditions': (
+            'https://www.great.gov.uk/terms-and-conditions/'
+        ),
     }
     assert actual_urls == expected_urls
 
@@ -279,6 +284,7 @@ def test_urls_processor(settings):
     settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
     settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
     settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
+    settings.HEADER_FOOTER_URLS_FEEDBACK = 'https://feedback.com'
 
     actual_urls = context_processors.urls_processor(
         None)['directory_components_urls']
@@ -290,6 +296,7 @@ def test_urls_processor(settings):
         'soo': 'http://soo.com/',
         'events': 'http://events.com/',
         'contact_us': 'http://contact.com/',
+        'feedback': 'https://feedback.com',
         'dit': 'http://dit.com/',
         'terms': 'http://home.com/terms-and-conditions/',
         'privacy': 'http://home.com/privacy-and-cookies/',
@@ -310,6 +317,7 @@ def test_urls_processor_defaults(settings):
         'soo': default_urls.HEADER_FOOTER_URLS_SOO,
         'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
         'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
+        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
         'dit': default_urls.HEADER_FOOTER_URLS_DIT,
         'terms': urljoin(
             default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
@@ -341,19 +349,17 @@ def test_urls_processor_defaults_explicitly_none(settings):
         None)['directory_components_urls']
 
     expected_urls = {
-        'home': 'https://great.gov.uk/',
-        'fab': 'https://find-a-buyer.export.great.gov.uk/',
-        'fas': 'https://trade.great.gov.uk/',
-        'soo': 'https://selling-online-overseas.export.great.gov.uk/',
-        'events': 'https://events.trade.gov.uk/',
-        'contact_us': 'https://contact-us.export.great.gov.uk/directory/',
-        'dit': (
-            'https://www.gov.uk/government/organisations/'
-            'department-for-international-trade/'
-        ),
-        'terms': 'https://great.gov.uk/terms-and-conditions/',
-        'privacy': 'https://great.gov.uk/privacy-and-cookies/',
-        'performance': 'https://great.gov.uk/performance-dashboard/',
+        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
+        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
+        'fas': default_urls.COMPONENTS_URLS_FAS,
+        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
+        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
+        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
+        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
+        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
+        'terms': 'https://www.great.gov.uk/terms-and-conditions/',
+        'privacy': 'https://www.great.gov.uk/privacy-and-cookies/',
+        'performance': 'https://www.great.gov.uk/performance-dashboard/',
     }
 
     assert actual_urls == expected_urls

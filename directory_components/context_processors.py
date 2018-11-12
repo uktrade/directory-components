@@ -112,6 +112,7 @@ def header_footer_processor(request):
         'soo': get_url('HEADER_FOOTER_URLS_SOO'),
         'events': get_url('HEADER_FOOTER_URLS_EVENTS'),
         'contact_us': get_url('HEADER_FOOTER_URLS_CONTACT_US'),
+        'feedback': get_url('HEADER_FOOTER_URLS_FEEDBACK'),
         'dit': get_url('HEADER_FOOTER_URLS_DIT'),
     }
     return {
@@ -149,6 +150,7 @@ def urls_processor(request):
         "soo": get_url("HEADER_FOOTER_URLS_SOO"),
         "events": get_url("HEADER_FOOTER_URLS_EVENTS"),
         "contact_us": get_url("HEADER_FOOTER_URLS_CONTACT_US"),
+        "feedback": get_url('HEADER_FOOTER_URLS_FEEDBACK'),
         "dit": get_url("HEADER_FOOTER_URLS_DIT"),
         "terms": TERMS_AND_CONDITIONS_URL,
         "privacy": PRIVACY_URL,
