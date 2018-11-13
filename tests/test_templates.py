@@ -61,11 +61,11 @@ def test_google_tag_manager_env():
 
 
 def test_base_page_links(settings):
-    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
+    settings.HEADER_FOOTER_URLS_FEEDBACK = 'http://feedback.com'
     context = urls_processor(None)
     html = render_to_string('directory_components/base.html', context)
 
-    assert 'http://contact.com' in html
+    assert 'http://feedback.com' in html
 
 
 def test_404_links(settings):
