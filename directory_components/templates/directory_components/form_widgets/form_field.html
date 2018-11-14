@@ -1,4 +1,4 @@
-<div class="form-group{% if field.errors %} form-group-error{% endif %}">
+<div class="{{ field.css_classes }}">
   {% if field.label %}{{ field.label_tag }}{% endif %}
   {% if field.errors %}
     <div class="error-message">{{ field.errors }}</div>

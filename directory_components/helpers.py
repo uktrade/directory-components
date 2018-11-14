@@ -60,16 +60,15 @@ class UrlPrefixer:
 
     @property
     def path(self):
-        canonical_path = urllib.parse.urljoin(
+        return urllib.parse.urljoin(
             self.prefix, self.request.path.lstrip('/')
         )
-        if not canonical_path.endswith('/'):
-            canonical_path += '/'
-        return canonical_path
 
     @property
     def full_path(self):
         path = self.path
+        if not path.endswith('/'):
+            path += '/'
         querystring = self.request.META.get('QUERY_STRING', '')
         if querystring:
             path += ('?' + iri_to_uri(querystring))
