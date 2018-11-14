@@ -77,7 +77,7 @@ def test_no_cache_middleware_sso_user_not_in_request(rf):
     assert 'Cache-Control' not in output
 
 
-def xtest_prefix_url_middleware_feature_off(rf, settings):
+def test_prefix_url_middleware_feature_off(rf, settings):
     settings.FEATURE_URL_PREFIX_ENABLED = False
 
     request = rf.get('/')
@@ -87,7 +87,7 @@ def xtest_prefix_url_middleware_feature_off(rf, settings):
     assert response is None
 
 
-def xtest_prefix_url_middleware_not_starts_with_url_unknown_url(rf, settings):
+def test_prefix_url_middleware_unknown_url(rf, settings):
     settings.FEATURE_URL_PREFIX_ENABLED = True
     request = rf.get('/some-unknown-url/')
 
@@ -102,7 +102,7 @@ def xtest_prefix_url_middleware_not_starts_with_url_unknown_url(rf, settings):
     ('/some/path/?a=b', '/components/some/path/?a=b'),
     ('/some/path?a=b', '/components/some/path/?a=b'),
 ))
-def test_prefix_url_middleware_not_starts_with_url_known_url(
+def test_prefix_url_middleware_starts_with_known_url(
     rf, settings, url, expected
 ):
     set_urlconf('tests.urls_prefixed')
@@ -116,15 +116,15 @@ def test_prefix_url_middleware_not_starts_with_url_known_url(
 
 
 @pytest.mark.parametrize('url,expected', (
-    ('/some/path/', 'https://example.com/components/some/path/'),
-    ('/some/path', 'https://example.com/components/some/path/'),
-    ('/some/path/?a=b', 'https://example.com/components/some/path/?a=b'),
-    ('/some/path?a=b', 'https://example.com/components/some/path/?a=b'),
+    ('/some/path/', 'http://foo.com/components/some/path/'),
+    ('/some/path', 'http://foo.com/components/some/path/'),
+    ('/some/path/?a=b', 'http://foo.com/components/some/path/?a=b'),
+    ('/some/path?a=b', 'http://foo.com/components/some/path/?a=b'),
 ))
-def test_prefix_url_middleware_not_starts_with_url_known_url_domain_set(
+def test_prefix_url_middleware_starts_with_known_url_domain_set(
     rf, settings, url, expected
 ):
-    settings.URL_PREFIX_DOMAIN = 'https://example.com'
+    settings.URL_PREFIX_DOMAIN = 'http://foo.com'
     set_urlconf('tests.urls_prefixed')
 
     request = rf.get(url)
@@ -133,3 +133,59 @@ def test_prefix_url_middleware_not_starts_with_url_known_url_domain_set(
 
     assert response.status_code == 302
     assert response.url == expected
+
+
+def test_prefix_url_middleware_unknown_url_wrong_domain(rf, settings):
+    settings.FEATURE_URL_PREFIX_ENABLED = True
+    settings.URL_PREFIX_DOMAIN = 'http://foo.com'
+
+    request = rf.get('/some-unknown-url/', HTTP_HOST='wrong.com')
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response is None
+
+
+@pytest.mark.parametrize('url,expected', (
+    ('/some/path/', 'http://foo.com/components/some/path/'),
+    ('/some/path', 'http://foo.com/components/some/path/'),
+    ('/some/path/?a=b', 'http://foo.com/components/some/path/?a=b'),
+    ('/some/path?a=b', 'http://foo.com/components/some/path/?a=b'),
+    ('/components/some/path/', 'http://foo.com/components/some/path/'),
+    ('/components/some/path', 'http://foo.com/components/some/path/'),
+    ('/components/some/path/?a=b', 'http://foo.com/components/some/path/?a=b'),
+    ('/components/some/path?a=b', 'http://foo.com/components/some/path/?a=b'),
+))
+def test_prefix_url_middleware_starts_with_known_url_wrong_domain(
+    rf, settings, url, expected
+):
+    settings.URL_PREFIX_DOMAIN = 'http://foo.com'
+
+    set_urlconf('tests.urls_prefixed')
+
+    request = rf.get(url, HTTP_HOST='wrong.com')
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response.status_code == 302
+    assert response.url == expected
+
+
+@pytest.mark.parametrize('url', (
+    '/components/some/path/',
+    '/components/some/path',
+    '/components/some/path/?a=b',
+    '/components/some/path?a=b',
+))
+def test_prefix_url_middleware_starts_with_known_url_correct_domain(
+    rf, settings, url
+):
+    settings.URL_PREFIX_DOMAIN = 'http://foo.com'
+
+    set_urlconf('tests.urls_prefixed')
+
+    request = rf.get(url, HTTP_HOST='foo.com')
+
+    response = PrefixUrlMiddleware().process_request(request)
+
+    assert response is None

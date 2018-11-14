@@ -6,6 +6,7 @@ from django.urls import set_urlconf
 def pytest_configure():
     from django.conf import settings
     settings.configure(
+        ALLOWED_HOSTS=['*'],
         ROOT_URLCONF='tests.urls',
         SSO_PROXY_LOGIN_URL='http://login.com',
         SSO_PROXY_SIGNUP_URL='http://signup.com',
