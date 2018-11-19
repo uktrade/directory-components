@@ -3,7 +3,7 @@ import pytest
 
 from django.template.loader import render_to_string
 
-from directory_components import helpers
+from directory_components import forms, fields, helpers
 from directory_components.context_processors import urls_processor
 
 
@@ -129,3 +129,19 @@ def test_social_share_title(title, expected):
 
 def test_robots_site_indexing():
     assert render_to_string('robots.txt', {})
+
+
+def test_form_field_container():
+
+    class Form(forms.Form):
+        field = fields.CharField()
+
+    form = Form()
+
+    template_name = 'directory_components/form_widgets/form_field.html'
+    context = {
+        'field': form['field']
+    }
+    html = render_to_string(template_name, context)
+
+    assert 'id="id_field-container' in html
