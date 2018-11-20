@@ -15,7 +15,7 @@ class DirectoryComponentsBoundField(BoundField):
         )
 
     def css_classes(self, *args, **kwargs):
-        return super().css_classes(*args, **kwargs) + ' form-group'
+        return ' '.join([super().css_classes(*args, **kwargs), 'form-group'])
 
 
 class DirectoryComponentsFieldMixin:

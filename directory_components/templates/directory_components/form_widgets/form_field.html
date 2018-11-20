@@ -1,4 +1,4 @@
-<div class="{{ field.css_classes }}">
+<div class="{{ field.css_classes }}" id="{{ field.id_for_label }}-container">
   {% if field.label %}{{ field.label_tag }}{% endif %}
   {% if field.errors %}
     <div class="error-message">{{ field.errors }}</div>
