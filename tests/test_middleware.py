@@ -3,9 +3,9 @@ from unittest.mock import Mock
 import pytest
 
 from django.http import HttpResponse
-from django.urls import set_urlconf
+from django.urls import reverse, set_urlconf
 
-from directory_components import middleware
+from directory_components import constants, middleware
 
 
 class PrefixUrlMiddleware(middleware.AbstractPrefixUrlMiddleware):
@@ -189,3 +189,138 @@ def test_prefix_url_middleware_starts_with_known_url_correct_domain(
     response = PrefixUrlMiddleware().process_request(request)
 
     assert response is None
+
+
+@pytest.mark.parametrize(
+    'address_retriever,allowed_ips,get_kwargs',
+    (
+        # IPWARE should use REMOTE_ADDR
+        (
+            constants.IP_RETRIEVER_NAME_IPWARE,
+            ['1.2.3.4'],
+            dict(
+                REMOTE_ADDR='8.8.8.8',
+            ),
+        ),
+        # GOV_UK should not authorise using on REMOTE_ADDR
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                REMOTE_ADDR='1.2.3.4',
+            ),
+        ),
+        # GOV_UK should not authorise using last IP of X_FORWARDED_FOR
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                HTTP_X_FORWARDED_FOR='8.8.8.8, 1.2.3.4',
+            ),
+        ),
+        # GOV_UK should not authorise using first IP of X_FORWARDED_FOR
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 8.8.8.8',
+            ),
+        ),
+    ),
+)
+def test_if_not_from_authorized_ip_then_admin_404(
+    address_retriever, allowed_ips, get_kwargs, settings, client
+):
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
+    settings.ALLOWED_ADMIN_IPS = allowed_ips
+    settings.RESTRICT_ADMIN = True
+    response = client.get(reverse('admin:thing'), **get_kwargs)
+    assert response.status_code == 404
+
+
+@pytest.mark.parametrize(
+    'address_retriever,allowed_ips,get_kwargs',
+    (
+        # IPWARE should authorise using REMOTE_ADDR
+        (
+            constants.IP_RETRIEVER_NAME_IPWARE,
+            ['1.2.3.4'],
+            dict(
+                REMOTE_ADDR='1.2.3.4',
+            ),
+        ),
+        # GOV_UK should authorise using on second-to-last IP of
+        # X-Forwarded-For if there are two
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 8.8.8.8',
+            ),
+        ),
+        # GOV_UK should authorise using second-to-last IP of
+        # X-Forwarded-For if there are three
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                HTTP_X_FORWARDED_FOR='5.4.3.2, 1.2.3.4, 8.8.8.8',
+            ),
+        ),
+    ),
+)
+def test_if_from_authorized_ip_then_admin_302(
+    address_retriever, allowed_ips, get_kwargs, settings, client
+):
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
+    settings.ALLOWED_ADMIN_IPS = allowed_ips
+    settings.RESTRICT_ADMIN = True
+    response = client.get(reverse('admin:thing'), **get_kwargs)
+    assert response.status_code == 302
+
+
+# Test that non-admin URLs do not incorrectly give a 404, even if the IP is
+# not authorised to perform admin
+@pytest.mark.parametrize(
+    'address_retriever,allowed_ips,get_kwargs',
+    (
+        (
+            constants.IP_RETRIEVER_NAME_IPWARE,
+            ['1.2.3.4'],
+            dict(
+                REMOTE_ADDR='8.8.8.8',
+            ),
+        ),
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                HTTP_X_FORWARDED_FOR='8.8.8.8, 1.2.3.4',
+            ),
+        ),
+        (
+            constants.IP_RETRIEVER_NAME_GOV_UK,
+            ['1.2.3.4'],
+            dict(
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 8.8.8.8',
+            ),
+        ),
+    ),
+)
+def test_if_from_unauthorized_ip_then_non_admin_200(
+    address_retriever, allowed_ips, get_kwargs, settings, client
+):
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
+    settings.ALLOWED_ADMIN_IPS = allowed_ips
+    settings.RESTRICT_ADMIN = True
+    response = client.get(reverse('robots'), **get_kwargs)
+    assert response.status_code == 200

@@ -1,12 +1,19 @@
 import abc
 import urllib.parse
+import logging
+
+import admin_ip_restrictor.middleware
 
 from django.conf import settings
+from django.http import Http404
 from django.shortcuts import redirect
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
 
 from directory_components import helpers
+
+
+logger = logging.getLogger(__name__)
 
 
 class RobotsIndexControlHeaderMiddlware:
@@ -71,6 +78,19 @@ class AbstractPrefixUrlMiddleware(abc.ABC):
                 settings.URL_PREFIX_DOMAIN
             ):
                 return settings.URL_PREFIX_DOMAIN
+
+
+class IPRestrictorMiddleware(
+    admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware
+):
+    MESSAGE_UNABLE_TO_DETERMINE_IP_ADDRESS = 'Unable to determine remote IP'
+
+    def get_ip(self, request):
+        try:
+            return helpers.RemoteIPAddressRetriver().get_ip_address(request)
+        except LookupError:
+            logger.exception(self.MESSAGE_UNABLE_TO_DETERMINE_IP_ADDRESS)
+            raise Http404()
 
 
 def is_path_resolvable(path):
