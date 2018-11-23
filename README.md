@@ -41,10 +41,11 @@ Then visit the demo at `components.trade.great:9013`
 ### Environment variables
 
 | Environment variable | Notes |
-|----------------------|-------|
+|-------------------------------------------|-----------------------------------------------|
 | `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` | Controls `RobotsIndexControlHeaderMiddlware`. |
-| `FEATURE_MAINTENANCE_MODE_ENABLED` | Controls `MaintenanceModeMiddleware`. |
-| `FEATURE_FLAGS` | Place to store the service's feature flags. |
+| `FEATURE_MAINTENANCE_MODE_ENABLED`        | Controls `MaintenanceModeMiddleware`.         |
+| `FEATURE_FLAGS`                           | Place to store the service's feature flags.   |
+| `IP_RETRIEVER_NAME_GOV_UK`                | Method for determining client IP address: 'govuk-paas' or 'ipware'
 
 ### Middleware
 
@@ -53,9 +54,12 @@ Middleware can be found in `directory_components.middleware.FooBar`.
 | Middleware | Notes |
 |------------|-------|
 | `RobotsIndexControlHeaderMiddlware` | Informs the webcrawlers to not index the service if `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` is `true`. |
-| `MaintenanceModeMiddleware` | Redirects to http://sorry.great.gov.uk if `FEATURE_MAINTENANCE_MODE_ENABLED` is `true`.|
-| `NoCacheMiddlware` | Prevents any page in the service from caching pages of logged in users. |
-| `PrefixUrlMiddleware` | Redirects use from unprefixed url to prefixed url if `FEATURE_URL_PREFIX_ENABLED` is `true`. |
+| `MaintenanceModeMiddleware`         | Redirects to http://sorry.great.gov.uk if `FEATURE_MAINTENANCE_MODE_ENABLED` is `true`.|
+| `NoCacheMiddlware`                  | Prevents any page in the service from caching pages of logged in users. |
+| `PrefixUrlMiddleware`               | Redirects use from unprefixed url to prefixed url if `FEATURE_URL_PREFIX_ENABLED` is `true`. |
+| `IPRestrictorMiddleware`            | Convinience wrapper around (django-admin-ip-restrictor)[pypi.org/project/django-admin-ip-restrictor/]. |
+
+
 ### Context processors
 
 Middleware can be found in `directory_components.context_processors.foo_bar`.
