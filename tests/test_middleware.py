@@ -1,5 +1,6 @@
 from unittest.mock import Mock
 
+from mohawk import Sender
 import pytest
 
 from django.http import HttpResponse
@@ -324,3 +325,45 @@ def test_if_from_unauthorized_ip_then_non_admin_200(
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('robots'), **get_kwargs)
     assert response.status_code == 200
+
+
+def test_signature_check_skip_valid(
+    client, settings
+):
+    settings.RESTRICT_ADMIN = True
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
+
+    sender = Sender(
+        {
+            'id': settings.IP_RESTRICTOR_SKIP_CHECK_SENDER_ID,
+            'key': settings.IP_RESTRICTOR_SKIP_CHECK_SECRET,
+            'algorithm': 'sha256',
+        },
+        '/',
+        '',
+        always_hash_content=False
+    )
+
+    client.cookies['ip-restrict-signature'] = sender.request_header
+
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    response = client.get(reverse('robots'), REMOTE_ADDR='8.8.8.8')
+    assert response.status_code == 200
+
+
+def test_signature_check_skip_invalid(
+    client, settings
+):
+    settings.RESTRICT_ADMIN = True
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
+    settings.RESTRICTED_APP_NAMES = ['admin', '']
+
+    client.cookies['ip-restrict-signature'] = '123'
+
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    response = client.get(reverse('robots'), REMOTE_ADDR='8.8.8.8')
+    assert response.status_code == 404

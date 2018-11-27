@@ -92,6 +92,12 @@ class IPRestrictorMiddleware(
             logger.exception(self.MESSAGE_UNABLE_TO_DETERMINE_IP_ADDRESS)
             raise Http404()
 
+    def process_view(self, request, *args, **kwargs):
+        cookie = request.COOKIES.get('ip-restrict-signature')
+        if cookie and helpers.is_skip_ip_check_signature_valid(cookie):
+            return None
+        return super().process_view(request, *args, **kwargs)
+
 
 def is_path_resolvable(path):
     if not path.endswith('/'):

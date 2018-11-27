@@ -33,6 +33,9 @@ def pytest_configure():
         ],
         FEATURE_URL_PREFIX_ENABLED=True,
         URL_PREFIX_DOMAIN='',
+        IP_RESTRICTOR_SKIP_CHECK_SENDER_ID='sender-debug',
+        IP_RESTRICTOR_SKIP_CHECK_SECRET='secret-debug',
+        ALLOWED_ADMIN_IPS=[],
     )
 
 
