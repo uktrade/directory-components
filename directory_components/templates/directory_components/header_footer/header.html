@@ -27,7 +27,7 @@
       {% endblock %}
       <span id="header-greeting"></span>
 
-      <a id="header-dit-logo" href="{{ header_footer_urls.home }}">
+      <a id="header-dit-logo" href="{{ services_urls.exred }}">
         <img src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="Home">
       </a>
     </div>
@@ -43,7 +43,7 @@
       <nav id="menu">
         <ul>
           <li>
-            <a class="navigation " href="{{ header_footer_urls.home }}" id="header-home-link">Home</a>
+            <a class="navigation " href="{{ services_urls.exred }}" id="header-home-link">Home</a>
           </li>
           <li>
             <a class="navigation " href="{{ header_footer_urls.custom }}" id="header-custom-page-link">Your export journey</a>
@@ -68,19 +68,19 @@
           <li><a class="navigation links-list-heading" href="#services-links-list" id="header-services-links">Services</a>
             <ul id="services-links-list" aria-labelledby="header-services-links" class="container links-list">
               <li class="links-list-item column-fifth">
-                <a id="header-services-find-a-buyer" href="{{ header_footer_urls.fab }}">
+                <a id="header-services-find-a-buyer" href="{{ services_urls.fab }}">
                   <span>Create a business profile</span>
                   <p>Get promoted internationally with a great.gov.uk business profile</p>
                 </a>
               </li>
               <li class="links-list-item column-fifth">
-                <a id="header-services-" href="{{ header_footer_urls.soo }}">
+                <a id="header-services-" href="{{ services_urls.soo }}">
                   <span>Sell online overseas</span>
                   <p>Find the right marketplace for your business and access special offers for sellers</p>
                 </a>
               </li>
               <li class="links-list-item column-fifth">
-                <a id="header-services-export-opportunities" href="{{ header_footer_urls.exopps }}">
+                <a id="header-services-export-opportunities" href="{{ services_urls.exopps }}">
                   <span>Find export opportunities</span>
                   <p>Find and apply for overseas opportunities</p>
                 </a>
@@ -92,7 +92,7 @@
                 </a>
               </li>
               <li class="links-list-item column-fifth">
-                <a id="header-services-events" href="{{ header_footer_urls.events }}" rel="noopener noreferrer" target="_blank">
+                <a id="header-services-events" href="{{ services_urls.events }}" rel="noopener noreferrer" target="_blank">
                   <span>Find events and visits</span>
                   <p>Attend events and see how visits by ministers can support your trade deals</p>
                 </a>

@@ -1,8 +1,9 @@
 from unittest.mock import Mock
+
 import pytest
-from urllib.parse import urljoin
+
+from directory_constants.constants import urls
 from directory_components import context_processors
-import directory_components.urls as default_urls
 
 
 def test_analytics(settings):
@@ -100,269 +101,56 @@ def test_sso_user(request_logged_in, sso_user):
 
 
 def test_header_footer_processor(settings):
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
-    settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
-    settings.HEADER_FOOTER_URLS_SOO = 'http://soo.com/'
-    settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
-    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
-    settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
-    settings.HEADER_FOOTER_URLS_FEEDBACK = 'https://feedback.com'
-
-    actual_urls = context_processors.header_footer_processor(
-        None)['header_footer_urls']
-    exp_urls = {
-        'home': 'http://home.com/',
-        'custom': 'http://home.com/custom/',
-        'exporting_new': 'http://home.com/new/',
-        'exporting_occasional': 'http://home.com/occasional/',
-        'exporting_regular': 'http://home.com/regular/',
-        'market_research': 'http://home.com/market-research/',
-        'customer_insight': 'http://home.com/customer-insight/',
-        'finance': 'http://home.com/finance/',
-        'business_planning': 'http://home.com/business-planning/',
-        'getting_paid': 'http://home.com/getting-paid/',
+    context = context_processors.header_footer_processor(None)
+    assert context['header_footer_urls'] == {
+        'about': 'https://exred.com/about/',
+        'business_planning': 'https://exred.com/business-planning/',
+        'custom': 'https://exred.com/custom/',
+        'customer_insight': 'https://exred.com/customer-insight/',
+        'dit': urls.DIT,
+        'exporting_new': 'https://exred.com/new',
+        'exporting_occasional': 'https://exred.com/occasional/',
+        'exporting_regular': 'https://exred.com/regular/',
+        'finance': 'https://exred.com/finance/',
+        'get_finance': 'https://exred.com/get-finance/',
+        'getting_paid': 'https://exred.com/getting-paid/',
+        'market_research': 'https://exred.com/market-research/',
         'operations_and_compliance': (
-            'http://home.com/operations-and-compliance/'),
-        'exopps': 'http://home.com/export-opportunities/',
-        'get_finance': 'http://home.com/get-finance/',
-        'about': 'http://home.com/about/',
-        'privacy_and_cookies': 'http://home.com/privacy-and-cookies/',
-        'terms_and_conditions': 'http://home.com/terms-and-conditions/',
-        'performance': 'http://home.com/performance-dashboard/',
-        'fab': 'http://fab.com/',
-        'soo': 'http://soo.com/',
-        'events': 'http://events.com/',
-        'contact_us': 'http://contact.com/',
-        'feedback': 'https://feedback.com',
-        'dit': 'http://dit.com/'
-    }
-    for exp, actual in zip(exp_urls, actual_urls):
-        assert exp == actual
-
-
-def test_header_footer_processor_defaults(settings):
-    actual_urls = context_processors.header_footer_processor(
-        None)['header_footer_urls']
-
-    expected_urls = {
-        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-        'custom': 'https://www.great.gov.uk/custom/',
-        'exporting_new': 'https://great.gov.uk/new/',
-        'exporting_occasional': 'https://www.great.gov.uk/occasional/',
-        'exporting_regular': 'https://www.great.gov.uk/regular/',
-        'market_research': 'https://www.great.gov.uk/market-research/',
-        'customer_insight': 'https://www.great.gov.uk/customer-insight/',
-        'finance': 'https://www.great.gov.uk/finance/',
-        'business_planning': 'https://www.great.gov.uk/business-planning/',
-        'getting_paid': 'https://www.great.gov.uk/getting-paid/',
-        'operations_and_compliance': (
-            'https://www.great.gov.uk/operations-and-compliance/'
+            'https://exred.com/operations-and-compliance/'
         ),
-        'exopps': 'https://www.great.gov.uk/export-opportunities/',
-        'get_finance': 'https://www.great.gov.uk/get-finance/',
-        'about': 'https://www.great.gov.uk/about/',
-        'privacy_and_cookies': 'https://www.great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': (
-            'https://www.great.gov.uk/terms-and-conditions/'
-        ),
-        'performance': 'https://www.great.gov.uk/performance-dashboard/',
-        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
-        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
-        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
-        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
-        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
-        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
+        'performance': 'https://exred.com/performance-dashboard/',
+        'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
+        'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
     }
-    for exp, actual in zip(expected_urls, actual_urls):
-        assert exp == actual
-
-
-def test_header_footer_processor_defaults_explicitly_none(settings):
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = None
-    settings.HEADER_FOOTER_URLS_FAB = None
-    settings.HEADER_FOOTER_URLS_SOO = None
-    settings.HEADER_FOOTER_URLS_EVENTS = None
-    settings.INFO_CONTACT_US = None
-    settings.INFO_DIT = None
-
-    actual_urls = context_processors.header_footer_processor(
-        None)['header_footer_urls']
-
-    expected_urls = {
-        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-        'custom': 'https://www.great.gov.uk/custom/',
-        'exporting_new': 'https://www.great.gov.uk/new/',
-        'exporting_occasional': 'https://www.great.gov.uk/occasional/',
-        'exporting_regular': 'https://www.great.gov.uk/regular/',
-        'market_research': 'https://www.great.gov.uk/market-research/',
-        'customer_insight': 'https://www.great.gov.uk/customer-insight/',
-        'finance': 'https://www.great.gov.uk/finance/',
-        'business_planning': 'https://www.great.gov.uk/business-planning/',
-        'getting_paid': 'https://www.great.gov.uk/getting-paid/',
-        'operations_and_compliance': (
-            'https://www.great.gov.uk/operations-and-compliance/'),
-        'exopps': 'https://www.great.gov.uk/export-opportunities/',
-        'get_finance': 'https://www.great.gov.uk/get-finance/',
-        'about': 'https://www.great.gov.uk/about/',
-        'privacy_and_cookies': 'https://www.great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': (
-            'https://www.great.gov.uk/terms-and-conditions/'
-        ),
-        'performance': 'https://www.great.gov.uk/performance-dashboard/',
-        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
-        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
-        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
-        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
-        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
-        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
-    }
-    assert actual_urls == expected_urls
 
 
 def test_invest_header_footer_processor(settings):
     settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
     settings.INVEST_BASE_URL = 'http://invest.com/'
 
-    actual_urls = context_processors.invest_header_footer_processor(
-        None)['invest_header_footer_urls']
-    exp_urls = {
-        'home': 'http://invest.com/',
-        'industries': 'http://invest.com/industries/',
-        'uk_setup_guide': 'http://invest.com/uk-setup-guide/',
-        'contact_us': 'http://invest.com/contact/',
-        'part_of_great': 'http://home.com/',
-        'privacy_and_cookies': 'http://home.com/privacy-and-cookies/',
-        'terms_and_conditions': 'http://home.com/terms-and-conditions/',
-        }
-    for exp, actual in zip(exp_urls, actual_urls):
-        assert exp == actual
-
-
-def test_invest_header_footer_processor_defaults(settings):
-    actual_urls = context_processors.invest_header_footer_processor(
-        None)['invest_header_footer_urls']
-
-    expected_urls = {
-        'home': default_urls.INVEST_BASE_URL,
-        'industries': 'https://invest.great.gov.uk/industries/',
-        'uk_setup_guide': 'https://invest.great.gov.uk/uk-setup-guide/',
-        'contact_us': 'https://invest.great.gov.uk/contact/',
-        'part_of_great': 'https://great.gov.uk/',
-        'privacy_and_cookies': 'https://great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': 'https://great.gov.uk/terms-and-conditions/',
+    context = context_processors.invest_header_footer_processor(None)
+    assert context['invest_header_footer_urls'] == {
+        'industries': 'https://invest.com/industries',
+        'uk_setup_guide': 'https://invest.com/uk-setup-guide/',
     }
-    for exp, actual in zip(expected_urls, actual_urls):
-        assert exp == actual
-
-
-def test_invest_header_footer_processor_defaults_explicitly_none(settings):
-    settings.INVEST_BASE_URL = None
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = None
-
-    actual_urls = context_processors.invest_header_footer_processor(
-        None)['invest_header_footer_urls']
-
-    expected_urls = {
-        'home': default_urls.INVEST_BASE_URL,
-        'industries': 'https://invest.great.gov.uk/industries/',
-        'uk_setup_guide': 'https://invest.great.gov.uk/uk-setup-guide/',
-        'contact_us': 'https://invest.great.gov.uk/contact/',
-        'part_of_great': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-        'privacy_and_cookies': 'https://www.great.gov.uk/privacy-and-cookies/',
-        'terms_and_conditions': (
-            'https://www.great.gov.uk/terms-and-conditions/'
-        ),
-    }
-    assert actual_urls == expected_urls
 
 
 def test_urls_processor(settings):
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
-    settings.HEADER_FOOTER_URLS_FAB = 'http://fab.com/'
-    settings.COMPONENTS_URLS_FAS = 'http://fas.com/'
-    settings.HEADER_FOOTER_URLS_SOO = 'http://soo.com/'
-    settings.HEADER_FOOTER_URLS_EVENTS = 'http://events.com/'
-    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com/'
-    settings.HEADER_FOOTER_URLS_DIT = 'http://dit.com/'
-    settings.HEADER_FOOTER_URLS_FEEDBACK = 'https://feedback.com'
 
-    actual_urls = context_processors.urls_processor(
-        None)['directory_components_urls']
+    context = context_processors.urls_processor(None)
 
-    expected_urls = {
-        'home': 'http://home.com/',
-        'fab': 'http://fab.com/',
-        'fas': 'http://fas.com/',
-        'soo': 'http://soo.com/',
-        'events': 'http://events.com/',
-        'contact_us': 'http://contact.com/',
-        'feedback': 'https://feedback.com',
-        'dit': 'http://dit.com/',
-        'terms': 'http://home.com/terms-and-conditions/',
-        'privacy': 'http://home.com/privacy-and-cookies/',
-        'performance': 'http://home.com/performance-dashboard/',
+    assert context['directory_components_urls'] == {
+        'contact_us': 'https://contact.com',
+        'events': 'https://events.com',
+        'exopps': 'https://exopps.com',
+        'exred': 'https://exred.com',
+        'fab': 'https://fab.com',
+        'fas': 'https://fas.com',
+        'feedback': 'https://contact.com/directory/FeedbackForm',
+        'invest': 'https://invest.com',
+        'soo': 'https://soo.com',
+        'sso': 'https://sso.com',
     }
-
-    assert actual_urls == expected_urls
-
-
-def test_urls_processor_defaults(settings):
-    actual_urls = context_processors.urls_processor(
-        None)['directory_components_urls']
-
-    expected_urls = {
-        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
-        'fas': default_urls.COMPONENTS_URLS_FAS,
-        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
-        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
-        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
-        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
-        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
-        'terms': urljoin(
-            default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-            'terms-and-conditions/'
-        ),
-        'privacy': urljoin(
-            default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-            'privacy-and-cookies/'
-        ),
-        'performance': urljoin(
-            default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-            'performance-dashboard/'
-        ),
-    }
-
-    assert actual_urls == expected_urls
-
-
-def test_urls_processor_defaults_explicitly_none(settings):
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = None
-    settings.HEADER_FOOTER_URLS_FAB = None
-    settings.HEADER_FOOTER_URLS_SOO = None
-    settings.HEADER_FOOTER_URLS_EVENTS = None
-    settings.INFO_CONTACT_US = None
-    settings.INFO_DIT = None
-    settings.COMPONENTS_URLS_FAS = None
-
-    actual_urls = context_processors.urls_processor(
-        None)['directory_components_urls']
-
-    expected_urls = {
-        'home': default_urls.HEADER_FOOTER_URLS_GREAT_HOME,
-        'fab': default_urls.HEADER_FOOTER_URLS_FAB,
-        'fas': default_urls.COMPONENTS_URLS_FAS,
-        'soo': default_urls.HEADER_FOOTER_URLS_SOO,
-        'events': default_urls.HEADER_FOOTER_URLS_EVENTS,
-        'contact_us': default_urls.HEADER_FOOTER_URLS_CONTACT_US,
-        'feedback': default_urls.HEADER_FOOTER_URLS_FEEDBACK,
-        'dit': default_urls.HEADER_FOOTER_URLS_DIT,
-        'terms': 'https://www.great.gov.uk/terms-and-conditions/',
-        'privacy': 'https://www.great.gov.uk/privacy-and-cookies/',
-        'performance': 'https://www.great.gov.uk/performance-dashboard/',
-    }
-
-    assert actual_urls == expected_urls
 
 
 def test_feature_returns_expected_features(settings):
