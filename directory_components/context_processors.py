@@ -1,6 +1,6 @@
-from django.conf import settings
-
 from directory_constants.constants import urls
+
+from django.conf import settings
 
 from directory_components.helpers import add_next
 
@@ -70,7 +70,7 @@ def urls_processor(request):
         'contact_us': urls.SERVICES_CONTACT_US,
         'events': urls.SERVICES_EVENTS,
         'exopps': urls.SERVICES_EXOPPS,
-        'exred': urls.GREAT_HOME,
+        'exred': urls.SERVICE_EXPORT_READINESS,
         'fab': urls.SERVICES_FAB,
         'fas': urls.SERVICES_FAS,
         'feedback': urls.FEEDBACK_FORM_DIRECTORY,

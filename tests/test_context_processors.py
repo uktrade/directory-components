@@ -108,7 +108,7 @@ def test_header_footer_processor(settings):
         'custom': 'https://exred.com/custom/',
         'customer_insight': 'https://exred.com/customer-insight/',
         'dit': urls.DIT,
-        'exporting_new': 'https://exred.com/new',
+        'exporting_new': 'https://exred.com/new/',
         'exporting_occasional': 'https://exred.com/occasional/',
         'exporting_regular': 'https://exred.com/regular/',
         'finance': 'https://exred.com/finance/',
@@ -124,13 +124,10 @@ def test_header_footer_processor(settings):
     }
 
 
-def test_invest_header_footer_processor(settings):
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com/'
-    settings.INVEST_BASE_URL = 'http://invest.com/'
-
+def test_invest_header_footer_processor():
     context = context_processors.invest_header_footer_processor(None)
     assert context['invest_header_footer_urls'] == {
-        'industries': 'https://invest.com/industries',
+        'industries': 'https://invest.com/industries/',
         'uk_setup_guide': 'https://invest.com/uk-setup-guide/',
     }
 
@@ -139,7 +136,7 @@ def test_urls_processor(settings):
 
     context = context_processors.urls_processor(None)
 
-    assert context['directory_components_urls'] == {
+    assert context['services_urls'] == {
         'contact_us': 'https://contact.com',
         'events': 'https://events.com',
         'exopps': 'https://exopps.com',
