@@ -46,6 +46,8 @@ Then visit the demo at `components.trade.great:9013`
 | `FEATURE_MAINTENANCE_MODE_ENABLED`        | Controls `MaintenanceModeMiddleware`.         |
 | `FEATURE_FLAGS`                           | Place to store the service's feature flags.   |
 | `IP_RETRIEVER_NAME_GOV_UK`                | Method for determining client IP address: 'govuk-paas' or 'ipware'
+| `IP_RESTRICTOR_SKIP_SENDER_ID`            | The shared sender id for skipping IP check     |
+| `IP_RESTRICTOR_SKIP_SECRET`               | The shared secret for skipping IP check        |
 
 ### Middleware
 

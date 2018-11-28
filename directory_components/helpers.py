@@ -1,9 +1,11 @@
 import urllib.parse
 
+from ipware.ip2 import get_client_ip
+from mohawk import Receiver
+from mohawk.exc import HawkFail
+
 from django.conf import settings
 from django.utils.encoding import iri_to_uri
-
-from ipware.ip2 import get_client_ip
 
 from directory_components import constants
 
@@ -146,3 +148,23 @@ class RemoteIPAddressRetriver:
         elif value == constants.IP_RETRIEVER_NAME_IPWARE:
             return IpwareRemoteIPAddressRetriver()
         raise NotImplementedError()
+
+
+def is_skip_ip_check_signature_valid(signature):
+    credentials = {
+        'id': settings.IP_RESTRICTOR_SKIP_CHECK_SENDER_ID,
+        'key': settings.IP_RESTRICTOR_SKIP_CHECK_SECRET,
+        'algorithm': 'sha256'
+    }
+    try:
+        Receiver(
+            lambda x: credentials,
+            signature,
+            '/',
+            '',
+            accept_untrusted_content=True
+        )
+    except HawkFail:
+        return False
+    else:
+        return True
