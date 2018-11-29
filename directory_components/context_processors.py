@@ -1,14 +1,8 @@
-from urllib.parse import urljoin
+from directory_constants.constants import urls
 
 from django.conf import settings
-from django.utils.functional import lazy
 
 from directory_components.helpers import add_next
-import directory_components.urls as default_urls
-
-
-def get_url(url_name):
-    return getattr(settings, url_name, None) or getattr(default_urls, url_name)
 
 
 def sso_processor(request):
@@ -41,127 +35,51 @@ def cookie_notice(request):
     }
 
 
-@lazy
-def lazy_build_url(url_name, path):
-    return urljoin(get_url(url_name), path)
-
-
-TERMS_AND_CONDITIONS_URL = lazy_build_url(
-    'HEADER_FOOTER_URLS_GREAT_HOME',
-    'terms-and-conditions/'
-)
-
-PRIVACY_URL = lazy_build_url(
-    'HEADER_FOOTER_URLS_GREAT_HOME',
-    'privacy-and-cookies/'
-)
-
-PERFORMANCE_URL = lazy_build_url(
-    'HEADER_FOOTER_URLS_GREAT_HOME',
-    'performance-dashboard/'
-)
-
-
 def header_footer_processor(request):
-    """Context processor specifically for the header and footer templates."""
     header_footer_urls = {
-        'home': get_url('HEADER_FOOTER_URLS_GREAT_HOME'),
-        'custom': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'custom/'),
-        'exporting_new': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'new/'),
-        'exporting_occasional': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'occasional/'),
-        'exporting_regular': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'regular/'),
-        'market_research': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'market-research/'),
-        'customer_insight': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'customer-insight/'),
-        'finance': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'finance/'),
-        'business_planning': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'business-planning/'),
-        'getting_paid': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'getting-paid/'),
-        'operations_and_compliance': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'operations-and-compliance/'),
-        'exopps': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'export-opportunities/'),
-        'get_finance': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'get-finance/'),
-        'about': lazy_build_url(
-            'HEADER_FOOTER_URLS_GREAT_HOME',
-            'about/'),
-        'privacy_and_cookies': PRIVACY_URL,
-        'terms_and_conditions': TERMS_AND_CONDITIONS_URL,
-        'performance': PERFORMANCE_URL,
-        'fab': get_url('HEADER_FOOTER_URLS_FAB'),
-        'soo': get_url('HEADER_FOOTER_URLS_SOO'),
-        'events': get_url('HEADER_FOOTER_URLS_EVENTS'),
-        'contact_us': get_url('HEADER_FOOTER_URLS_CONTACT_US'),
-        'feedback': get_url('HEADER_FOOTER_URLS_FEEDBACK'),
-        'dit': get_url('HEADER_FOOTER_URLS_DIT'),
+        'about': urls.ABOUT,
+        'business_planning': urls.GUIDANCE_BUSINESS_PLANNING,
+        'custom': urls.CUSTOM_PAGE,
+        'customer_insight': urls.GUIDANCE_CUSTOMER_INSIGHT,
+        'dit': urls.DIT,
+        'exporting_new': urls.EXPORTING_NEW,
+        'exporting_occasional': urls.EXPORTING_OCCASIONAL,
+        'exporting_regular': urls.EXPORTING_REGULAR,
+        'finance': urls.GUIDANCE_FINANCE,
+        'get_finance': urls.GET_FINANCE,
+        'getting_paid': urls.GUIDANCE_GETTING_PAID,
+        'market_research': urls.GUIDANCE_MARKET_RESEARCH,
+        'operations_and_compliance': urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
+        'performance': urls.PERFORMANCE_DASHBOARD,
+        'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
+        'terms_and_conditions': urls.TERMS_AND_CONDITIONS,
     }
-    return {
-        'header_footer_urls': header_footer_urls
-    }
+    return {'header_footer_urls': header_footer_urls}
 
 
 def invest_header_footer_processor(request):
     invest_header_footer_urls = {
-        'home': get_url('INVEST_BASE_URL'),
-        'industries': lazy_build_url(
-            'INVEST_BASE_URL',
-            'industries/'),
-        'uk_setup_guide': lazy_build_url(
-            'INVEST_BASE_URL',
-            'uk-setup-guide/'),
-        'contact_us': lazy_build_url(
-            'INVEST_BASE_URL',
-            'contact/'),
-        'part_of_great': get_url('HEADER_FOOTER_URLS_GREAT_HOME'),
-        'privacy_and_cookies': PRIVACY_URL,
-        'terms_and_conditions': TERMS_AND_CONDITIONS_URL,
+        'industries': urls.INVEST_INDUSTRIES,
+        'uk_setup_guide': urls.INVEST_SETUP_GUIDE,
     }
-    return {
-        'invest_header_footer_urls': invest_header_footer_urls
-    }
+    return {'invest_header_footer_urls': invest_header_footer_urls}
 
 
 def urls_processor(request):
-    """For links to other services used outside of header/footer templates."""
-    directory_components_urls = {
-        "home": get_url("HEADER_FOOTER_URLS_GREAT_HOME"),
-        "fab": get_url("HEADER_FOOTER_URLS_FAB"),
-        "fas": get_url("COMPONENTS_URLS_FAS"),
-        "soo": get_url("HEADER_FOOTER_URLS_SOO"),
-        "events": get_url("HEADER_FOOTER_URLS_EVENTS"),
-        "contact_us": get_url("HEADER_FOOTER_URLS_CONTACT_US"),
-        "feedback": get_url('HEADER_FOOTER_URLS_FEEDBACK'),
-        "dit": get_url("HEADER_FOOTER_URLS_DIT"),
-        "terms": TERMS_AND_CONDITIONS_URL,
-        "privacy": PRIVACY_URL,
-        "performance": PERFORMANCE_URL,
+    services_urls = {
+        'contact_us': urls.SERVICES_CONTACT_US,
+        'events': urls.SERVICES_EVENTS,
+        'exopps': urls.SERVICES_EXOPPS,
+        'exred': urls.SERVICE_EXPORT_READINESS,
+        'fab': urls.SERVICES_FAB,
+        'fas': urls.SERVICES_FAS,
+        'feedback': urls.FEEDBACK_FORM_DIRECTORY,
+        'invest': urls.SERVICES_INVEST,
+        'soo': urls.SERVICES_SOO,
+        'sso': urls.SERVICES_SSO,
     }
-    return {
-        'directory_components_urls': directory_components_urls
-    }
+    return {'services_urls': services_urls}
 
 
 def feature_flags(request):
-    return {
-        'features': settings.FEATURE_FLAGS
-    }
+    return {'features': settings.FEATURE_FLAGS}

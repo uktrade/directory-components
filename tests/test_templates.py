@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 
 from directory_components import forms, fields, helpers
 from directory_components.context_processors import urls_processor
+from directory_constants.constants import urls
 
 
 def test_google_tag_manager_project_id():
@@ -61,22 +62,19 @@ def test_google_tag_manager_env():
 
 
 def test_base_page_links(settings):
-    settings.HEADER_FOOTER_URLS_FEEDBACK = 'http://feedback.com'
     context = urls_processor(None)
     html = render_to_string('directory_components/base.html', context)
 
-    assert 'http://feedback.com' in html
+    assert urls.FEEDBACK_FORM_DIRECTORY in html
 
 
 def test_404_links(settings):
     """Test 404 page has links to home and contact-us."""
-    settings.HEADER_FOOTER_URLS_GREAT_HOME = 'http://home.com'
-    settings.HEADER_FOOTER_URLS_CONTACT_US = 'http://contact.com'
     context = urls_processor(None)
     html = render_to_string('404.html', context)
 
-    assert 'http://home.com' in html
-    assert 'http://contact.com' in html
+    assert urls.SERVICE_EXPORT_READINESS in html
+    assert urls.SERVICES_CONTACT_US in html
 
 
 def test_404_content(settings):
@@ -97,7 +95,7 @@ def test_404_title_exists(settings):
 
 def test_social_share_links():
     social_links_builder = helpers.SocialLinkBuilder(
-        url='http://testserver/',
+        url='https://testserver/',
         page_title='Do research first',
         app_title='Export Readiness',
     )

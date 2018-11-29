@@ -9,7 +9,7 @@
 
   <div class="header-bar">
     <div class="container">
-      <a class="header-logo" href="{{ invest_header_footer_urls.home }}">
+      <a class="header-logo" href="{{ services_urls.invest }}">
         <img src="{% static 'directory_components/images/UK-Gov_STACK_WHITE_AW.png' %}" height="74" alt="" />
       </a>
       <div class="language-toggle" id="language-selector-activator">
@@ -31,10 +31,10 @@
       <button class="header-menu-activator" aria-expanded="false" aria-label="Toggle navigation">Menu<span></span></button>
       <nav class="header-links-list">
         <ul>
-          <li><a href="{{ invest_header_footer_urls.home }}"{% if active_view_name == 'index' %} class="active"{% endif %}>Home</a></li>
+          <li><a href="{{ services_urls.invest }}"{% if active_view_name == 'index' %} class="active"{% endif %}>Home</a></li>
           <li><a href="{{ invest_header_footer_urls.industries }}"{% if active_view_name == 'industries' %} class="active"{% endif %}>Industries</a></li>
           <li><a href="{{ invest_header_footer_urls.uk_setup_guide }}"{% if active_view_name == 'setup-guide' %} class="active"{% endif %}>UK setup guide</a></li>
-          <li><a href="{{ invest_header_footer_urls.contact_us }}"{% if active_view_name == 'contact' %} class="active"{% endif %}>Contact us</a></li>
+          <li><a href="{{ services_urls.contact_us }}"{% if active_view_name == 'contact' %} class="active"{% endif %}>Contact us</a></li>
         </ul>
       </nav>
     </div>

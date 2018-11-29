@@ -36,6 +36,15 @@ def pytest_configure():
         IP_RESTRICTOR_SKIP_CHECK_SENDER_ID='sender-debug',
         IP_RESTRICTOR_SKIP_CHECK_SECRET='secret-debug',
         ALLOWED_ADMIN_IPS=[],
+        DIRECTORY_CONSTANTS_URL_EXPORT_READINESS='https://exred.com',
+        DIRECTORY_CONSTANTS_URL_EXPORT_OPPORTUNITIES='https://exopps.com',
+        DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS='https://soo.com',
+        DIRECTORY_CONSTANTS_URL_EVENTS='https://events.com',
+        DIRECTORY_CONSTANTS_URL_CONTACT_US='https://contact.com',
+        DIRECTORY_CONSTANTS_URL_INVEST='https://invest.com',
+        DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER='https://fas.com',
+        DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON='https://sso.com',
+        DIRECTORY_CONSTANTS_URL_FIND_A_BUYER='https://fab.com',
     )
 
 
