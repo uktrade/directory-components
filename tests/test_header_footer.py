@@ -97,7 +97,7 @@ def test_urls_exist_in_header(url, context):
     urls.SERVICES_FAB,
     urls.SERVICES_SOO,
     urls.SERVICES_EVENTS,
-    urls.SERVICES_CONTACT_US,
+    urls.CONTACT_US,
     urls.DIT,
 ])
 def test_urls_exist_in_footer(url, context):
@@ -279,7 +279,7 @@ def test_header_ids_match_urls_and_text(title, element_id, url, context):
     (
         'Contact us',
         'footer-site-links-contact',
-        urls.SERVICES_CONTACT_US,
+        urls.CONTACT_US,
     ),
     (
         'Privacy and cookies',

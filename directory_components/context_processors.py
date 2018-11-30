@@ -67,13 +67,13 @@ def invest_header_footer_processor(request):
 
 def urls_processor(request):
     services_urls = {
-        'contact_us': urls.SERVICES_CONTACT_US,
+        'contact_us': urls.CONTACT_US,
         'events': urls.SERVICES_EVENTS,
         'exopps': urls.SERVICES_EXOPPS,
         'exred': urls.SERVICE_EXPORT_READINESS,
         'fab': urls.SERVICES_FAB,
         'fas': urls.SERVICES_FAS,
-        'feedback': urls.FEEDBACK_FORM_DIRECTORY,
+        'feedback': urls.FEEDBACK,
         'invest': urls.SERVICES_INVEST,
         'soo': urls.SERVICES_SOO,
         'sso': urls.SERVICES_SSO,

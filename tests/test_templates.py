@@ -65,7 +65,7 @@ def test_base_page_links(settings):
     context = urls_processor(None)
     html = render_to_string('directory_components/base.html', context)
 
-    assert urls.FEEDBACK_FORM_DIRECTORY in html
+    assert urls.FEEDBACK in html
 
 
 def test_404_links(settings):
@@ -74,7 +74,7 @@ def test_404_links(settings):
     html = render_to_string('404.html', context)
 
     assert urls.SERVICE_EXPORT_READINESS in html
-    assert urls.SERVICES_CONTACT_US in html
+    assert urls.CONTACT_US in html
 
 
 def test_404_content(settings):

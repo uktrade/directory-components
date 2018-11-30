@@ -137,13 +137,13 @@ def test_urls_processor(settings):
     context = context_processors.urls_processor(None)
 
     assert context['services_urls'] == {
-        'contact_us': 'https://contact.com',
+        'contact_us': 'https://exred.com/contact/',
         'events': 'https://events.com',
         'exopps': 'https://exopps.com',
         'exred': 'https://exred.com',
         'fab': 'https://fab.com',
         'fas': 'https://fas.com',
-        'feedback': 'https://contact.com/directory/FeedbackForm',
+        'feedback': 'https://exred.com/contact/feedback/',
         'invest': 'https://invest.com',
         'soo': 'https://soo.com',
         'sso': 'https://sso.com',
