@@ -7,18 +7,20 @@
     </div>
     <div class="link-group">
       <a class="links-list-heading custom-page-link" id="footer-custom-page-link" href="{{ header_footer_urls.custom }}">Your export journey</a>
-      <h4 class="links-list-heading" id="footer-export-readiness-links">Export readiness</h4>
-      <ul aria-labelledby="footer-export-readiness-links" class="links-list">
-        <li>
-          <a id="footer-export-readiness-new" href="{{ header_footer_urls.exporting_new }}">I'm new to exporting</a>
-        </li>
-        <li>
-          <a id="footer-export-readiness-occasional" href="{{ header_footer_urls.exporting_occasional }}">I export occasionally</a>
-        </li>
-        <li>
-          <a id="footer-export-readiness-regular" href="{{ header_footer_urls.exporting_regular }}">I'm a regular exporter</a>
-        </li>
-      </ul>
+      {% if not features.EXPORT_JOURNEY_OFF %}
+        <h4 class="links-list-heading" id="footer-export-readiness-links">Export readiness</h4>
+        <ul aria-labelledby="footer-export-readiness-links" class="links-list">
+          <li>
+            <a id="footer-export-readiness-new" href="{{ header_footer_urls.exporting_new }}">I'm new to exporting</a>
+          </li>
+          <li>
+            <a id="footer-export-readiness-occasional" href="{{ header_footer_urls.exporting_occasional }}">I export occasionally</a>
+          </li>
+          <li>
+            <a id="footer-export-readiness-regular" href="{{ header_footer_urls.exporting_regular }}">I'm a regular exporter</a>
+          </li>
+        </ul>
+      {% endif %}
     </div>
     <div class="link-group">
       <h4 class="links-list-heading" id="footer-guidance-links">Guidance</h4>

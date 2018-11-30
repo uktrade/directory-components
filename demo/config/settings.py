@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import environ
+
+
+env = environ.Env()
+env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -23,10 +28,10 @@ BASE_DIR = os.path.dirname(PROJECT_ROOT)
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if (os.getenv('DEBUG') == 'true') else False
+DEBUG = env.bool('DEBUG', False)
 
 # As the app is running behind a host-based router supplied by Heroku or other
 # PaaS, we can open ALLOWED_HOSTS
@@ -86,7 +91,7 @@ DATABASES = {
 # http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#restricting-cloudfront-to-static-files
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_HOST = os.environ.get('STATIC_HOST', '')
+STATIC_HOST = env.str('STATIC_HOST', '')
 STATIC_URL = STATIC_HOST + '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -104,10 +109,6 @@ USE_L10N = True
 USE_TZ = True
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_HOST = os.environ.get('STATIC_HOST', '')
-STATIC_URL = STATIC_HOST + '/static/'
 
 # Logging for development
 LOGGING = {
@@ -153,11 +154,11 @@ X_FRAME_OPTIONS = 'DENY'
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-HEADER_FOOTER_URLS_GREAT_HOME = os.getenv('HEADER_FOOTER_URLS_GREAT_HOME')
-HEADER_FOOTER_URLS_FAB = os.getenv('HEADER_FOOTER_URLS_FAB')
-HEADER_FOOTER_URLS_SOO = os.getenv('HEADER_FOOTER_URLS_SOO')
-HEADER_FOOTER_URLS_EVENTS = os.getenv('HEADER_FOOTER_URLS_EVENTS')
-HEADER_FOOTER_URLS_CONTACT_US = os.getenv('HEADER_FOOTER_URLS_CONTACT_US')
-PRIVACY_COOKIE_DOMAIN = os.getenv('PRIVACY_COOKIE_DOMAIN')
+HEADER_FOOTER_URLS_GREAT_HOME = env.str('HEADER_FOOTER_URLS_GREAT_HOME', '')
+HEADER_FOOTER_URLS_FAB = env.str('HEADER_FOOTER_URLS_FAB', '')
+HEADER_FOOTER_URLS_SOO = env.str('HEADER_FOOTER_URLS_SOO', '')
+HEADER_FOOTER_URLS_EVENTS = env.str('HEADER_FOOTER_URLS_EVENTS', '')
+HEADER_FOOTER_URLS_CONTACT_US = env.str('HEADER_FOOTER_URLS_CONTACT_US', '')
+PRIVACY_COOKIE_DOMAIN = env.str('PRIVACY_COOKIE_DOMAIN', '')
 USE_LOCAL_STYLES = os.getenv('USE_LOCAL_STYLES') == 'true'
 LOCAL_STYLES_URL = 'http://localhost:3000/'
