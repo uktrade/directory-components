@@ -21,14 +21,6 @@ CODECOV := \
 test: flake8 pytest
 	$(CODECOV)
 
-DOCKER_SET_ENV_VARS := \
-	export DIRECTORY_COMPONENTS_SECRET_KEY=debug; \
-	export DIRECTORY_COMPONENTS_DEBUG=true; \
-	export DIRECTORY_COMPONENTS_PRIVACY_COOKIE_DOMAIN=.trade.great; \
-	export DIRECTORY_COMPONENTS_PORT=9000; \
-	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
-	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/
-
 publish:
 	rm -rf build dist; \
 	python setup.py bdist_wheel; \
@@ -49,47 +41,6 @@ DEMO_SET_ENV_VARS := \
 	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/; \
 	export INVEST_BASE_URL=http://invest.trade.great:8012/
 
-DOCKER_COMPOSE_REMOVE_AND_PULL := docker-compose -f ./docker-compose.yml rm -f && docker-compose -f ./docker-compose.yml pull
-DOCKER_COMPOSE_CREATE_ENVS := python ./docker/env_writer.py ./docker/env.json
-
-docker_run:
-	$(DOCKER_COMPOSE_CREATE_ENVS) && \
-	$(DOCKER_COMPOSE_REMOVE_AND_PULL) && \
-	docker-compose up --build
-
-DOCKER_SET_ENV_VARS := \
-	export DIRECTORY_COMPONENTS_SECRET_KEY=debug; \
-	export DIRECTORY_COMPONENTS_DEBUG=false; \
-	export DIRECTORY_COMPONENTS_PORT=9000; \
-	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
-	export DIRECTORY_COMPONENTS_HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/; \
-	export DIRECTORY_COMPONENTS_INVEST_BASE_URL=http://invest.trade.great:8012/
-
-
-docker_test_env_files:
-	$(DOCKER_SET_ENV_VARS) && \
-	$(DOCKER_COMPOSE_CREATE_ENVS)
-
-DOCKER_REMOVE_ALL := \
-	docker ps -a | \
-	grep directoryui_ | \
-	awk '{print $$1 }' | \
-	xargs -I {} docker rm -f {}
-
-docker_remove_all:
-	$(DOCKER_REMOVE_ALL)
-
-docker_webserver_bash:
-	docker exec -it directoryui_webserver_1 sh
-
-docker_build:
-	docker build -t ukti/directory-components:latest .
-
-heroku_deploy_dev:
-	./docker/install_heroku_cli.sh
-	docker login --username=$$HEROKU_EMAIL --password=$$HEROKU_TOKEN registry.heroku.com
-	~/bin/heroku-cli/bin/heroku container:push web --app directory-components-dev
-	~/bin/heroku-cli/bin/heroku container:release web --app directory-components-dev
 
 DJANGO_WEBSERVER := \
 	./manage.py collectstatic --noinput --settings=demo.config.settings && \
@@ -101,11 +52,5 @@ django_webserver:
 run_demo:
 	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
-docker_webserver: docker_remove_all
-	$(DOCKER_SET_ENV_VARS) && \
-	$(DOCKER_COMPOSE_CREATE_ENVS) && \
-	$(DOCKER_COMPOSE_REMOVE_AND_PULL) && \
-	docker-compose build && \
-	docker-compose run --service-ports demo make django_webserver
 
 .PHONY: build clean test_requirements flake8 pytest test publish

@@ -77,15 +77,6 @@ TEMPLATES = [
     },
 ]
 
-# # Database
-# hard to get rid of this
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Static files served with Whitenoise and AWS Cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#restricting-cloudfront-to-static-files
