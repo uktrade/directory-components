@@ -32,7 +32,6 @@ jobs:
             . .venv/bin/activate
             make test_requirements
             make publish
-            make heroku_deploy_dev
 
 workflows:
   version: 2
