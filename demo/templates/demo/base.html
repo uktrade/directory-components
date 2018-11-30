@@ -7,13 +7,8 @@
 {% endblock %}
 
 {% block head_css %}
-  {% if use_local_styles %}
-    <link href="{{ elements_local_url }}" media="all" rel="stylesheet" />
-    <link href="{{ components_local_url }}" media="all" rel="stylesheet" />
-  {% else %}
     <link href="{% static 'export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
     <link href="{% static 'export_elements/stylesheets/elements-components.min.css' %}" media="all" rel="stylesheet" />
-  {% endif %}
     <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
