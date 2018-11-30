@@ -40,7 +40,7 @@ setup(
             "gunicorn==19.5.0",
             "whitenoise==3.1",
             "pip==9.0.1",
-            "beautifulsoup4>=4.6.0<5.0.0",
+            "beautifulsoup4>=4.6.0,<5.0.0",
         ]
     },
     classifiers=[
