@@ -45,16 +45,18 @@
           <li>
             <a class="navigation " href="{{ services_urls.exred }}" id="header-home-link">Home</a>
           </li>
-          <li>
-            <a class="navigation " href="{{ header_footer_urls.custom }}" id="header-custom-page-link">Your export journey</a>
-          </li>
-          <li><a class="navigation links-list-heading" href="#export-readiness-links-list" id="export-readiness-links">Export readiness</a>
-            <ul id="export-readiness-links-list" aria-labelledby="export-readiness-links" class="container links-list">
-              <li class="links-list-item column-third"><a id="header-export-readiness-new" href="{{ header_footer_urls.exporting_new }}">I'm new to exporting</a></li>
-              <li class="links-list-item column-third"><a id="header-export-readiness-occasional" href="{{ header_footer_urls.exporting_occasional }}">I export occasionally</a></li>
-              <li class="links-list-item column-third"><a id="header-export-readiness-regular" href="{{ header_footer_urls.exporting_regular }}">I'm a regular exporter</a></li>
-            </ul>
-          </li>
+          {% if not features.EXPORT_JOURNEY_OFF %}
+            <li>
+              <a class="navigation " href="{{ header_footer_urls.custom }}" id="header-custom-page-link">Your export journey</a>
+            </li>
+            <li><a class="navigation links-list-heading" href="#export-readiness-links-list" id="export-readiness-links">Export readiness</a>
+              <ul id="export-readiness-links-list" aria-labelledby="export-readiness-links" class="container links-list">
+                <li class="links-list-item column-third"><a id="header-export-readiness-new" href="{{ header_footer_urls.exporting_new }}">I'm new to exporting</a></li>
+                <li class="links-list-item column-third"><a id="header-export-readiness-occasional" href="{{ header_footer_urls.exporting_occasional }}">I export occasionally</a></li>
+                <li class="links-list-item column-third"><a id="header-export-readiness-regular" href="{{ header_footer_urls.exporting_regular }}">I'm a regular exporter</a></li>
+              </ul>
+            </li>
+          {% endif %}
           <li><a class="navigation links-list-heading" href="#guidance-links-list" id="header-guidance-links">Guidance</a>
             <ul id="guidance-links-list" aria-labelledby="header-guidance-links" class="container links-list">
               <li class="links-list-item column-sixth"><a id="header-guidance-market-research" href="{{ header_footer_urls.market_research }}">Market research</a></li>

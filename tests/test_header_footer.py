@@ -307,3 +307,61 @@ def test_footer_ids_match_urls_and_text(title, element_id, url, context):
     assert element.attrs['href'] == url
     if title:
         assert element.string == title
+
+
+def test_header_export_journey_on():
+    context = {
+        'features': {'EXPORT_JOURNEY_OFF': False}
+    }
+    html = render_to_string(
+        'directory_components/header_footer/header.html', context)
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find(id='header-custom-page-link')
+    assert soup.find(id='export-readiness-links')
+    assert soup.find(id='header-export-readiness-new')
+    assert soup.find(id='header-export-readiness-regular')
+    assert soup.find(id='header-export-readiness-occasional')
+
+
+def test_footer_export_journey_on():
+    context = {
+        'features': {'EXPORT_JOURNEY_OFF': False}
+    }
+    html = render_to_string(
+        'directory_components/header_footer/footer.html', context)
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find(id='footer-export-readiness-links')
+    assert soup.find(id='footer-export-readiness-new')
+    assert soup.find(id='footer-export-readiness-regular')
+    assert soup.find(id='footer-export-readiness-occasional')
+
+
+def test_header_export_journey_off():
+    context = {
+        'features': {'EXPORT_JOURNEY_OFF': True}
+    }
+    html = render_to_string(
+        'directory_components/header_footer/header.html', context)
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert not soup.find(id='header-custom-page-link')
+    assert not soup.find(id='export-readiness-links')
+    assert not soup.find(id='header-export-readiness-new')
+    assert not soup.find(id='header-export-readiness-regular')
+    assert not soup.find(id='header-export-readiness-occasional')
+
+
+def test_footer_export_journey_off():
+    context = {
+        'features': {'EXPORT_JOURNEY_OFF': True}
+    }
+    html = render_to_string(
+        'directory_components/header_footer/footer.html', context)
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert not soup.find(id='footer-export-readiness-links')
+    assert not soup.find(id='footer-export-readiness-new')
+    assert not soup.find(id='footer-export-readiness-regular')
+    assert not soup.find(id='footer-export-readiness-occasional')

@@ -47,8 +47,7 @@ DEMO_SET_ENV_VARS := \
 	export PORT=9013; \
 	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
 	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/; \
-	export INVEST_BASE_URL=http://invest.trade.great:8012/; \
-	export USE_LOCAL_STYLES=true
+	export INVEST_BASE_URL=http://invest.trade.great:8012/
 
 DOCKER_COMPOSE_REMOVE_AND_PULL := docker-compose -f ./docker-compose.yml rm -f && docker-compose -f ./docker-compose.yml pull
 DOCKER_COMPOSE_CREATE_ENVS := python ./docker/env_writer.py ./docker/env.json
