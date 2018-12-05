@@ -93,7 +93,7 @@ class IPRestrictorMiddleware(
             raise Http404()
 
     def _is_blocked_multiple_addresses(self, ips):
-        """Determine two IP addresses should be considered blocked."""
+        """Determine if two IP addresses should be considered blocked."""
         blocked = True
         ip_second_allowed = ips.second in self.allowed_admin_ips
         ip_third_allowed = ips.third in self.allowed_admin_ips
@@ -104,7 +104,9 @@ class IPRestrictorMiddleware(
         for allowed_range in self.allowed_admin_ip_ranges:
             network_range = ip_network(allowed_range)
             ip_second_in_range = ip_address(ips.second) in network_range
-            ip_third_in_range = ip_address(ips.third) in network_range
+            ip_third_in_range = ip_address(
+                ips.third
+            ) in network_range if ips.third else None
             if any((ip_second_in_range, ip_third_in_range)):
                 blocked = False
 
