@@ -1,4 +1,5 @@
 import urllib.parse
+from collections import namedtuple
 
 from ipware.ip2 import get_client_ip
 from mohawk import Receiver
@@ -103,7 +104,8 @@ class GovukPaaSRemoteIPAddressRetriver:
     @classmethod
     def get_ip_address(cls, request):
         """
-        Returns the IP of the client making a HTTP request, using the
+        Returns the second AND third from the right
+        IP addresses of the client making a HTTP request, using the
         second-to-last IP address in the X-Forwarded-For header. This
         should not be able to be spoofed in GovukPaaS, but it is not
         safe to use in other environments.
@@ -118,6 +120,8 @@ class GovukPaaSRemoteIPAddressRetriver:
             LookupError: The X-Forwarded-For header is not present, or
             does not contain enough IPs
         """
+        IPs = namedtuple('IPs', ['second', 'third'])
+
         if 'HTTP_X_FORWARDED_FOR' not in request.META:
             raise LookupError(cls.MESSAGE_MISSING_HEADER)
 
@@ -126,10 +130,14 @@ class GovukPaaSRemoteIPAddressRetriver:
         if len(ip_addesses) < 2:
             raise LookupError(cls.MESSAGE_INVALID_IP_COUNT)
 
-        return ip_addesses[-2].strip()
+        if len(ip_addesses) == 3:
+            ips = IPs(ip_addesses[-2].strip(), ip_addesses[-3].strip())
+        else:
+            ips = IPs(ip_addesses[-2].strip(), None)
+        return ips
 
 
-class RemoteIPAddressRetriver:
+class RemoteIPAddressRetriever:
     """
     Different environments retrieve the remote IP address differently. This
     class negotiates that.

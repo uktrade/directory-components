@@ -46,7 +46,7 @@ def test_build_social_links(rf):
 
 
 def test_remote_ip_address_retriver_paas_default(settings):
-    retriever = helpers.RemoteIPAddressRetriver()
+    retriever = helpers.RemoteIPAddressRetriever()
 
     assert isinstance(retriever, helpers.GovukPaaSRemoteIPAddressRetriver)
 
@@ -54,7 +54,7 @@ def test_remote_ip_address_retriver_paas_default(settings):
 def test_remote_ip_address_retriver_paas(settings):
     settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
 
-    retriever = helpers.RemoteIPAddressRetriver()
+    retriever = helpers.RemoteIPAddressRetriever()
 
     assert isinstance(retriever, helpers.IpwareRemoteIPAddressRetriver)
 
@@ -63,7 +63,7 @@ def test_remote_ip_address_retriver_other(settings):
     settings.REMOTE_IP_ADDRESS_RETRIEVER = 'hello there'
 
     with pytest.raises(NotImplementedError):
-        helpers.RemoteIPAddressRetriver()
+        helpers.RemoteIPAddressRetriever()
 
 
 @mock.patch(
