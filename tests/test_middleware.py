@@ -224,7 +224,7 @@ def test_prefix_url_middleware_starts_with_known_url_correct_domain(
             constants.IP_RETRIEVER_NAME_GOV_UK,
             ['1.2.3.4'],
             dict(
-                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 8.8.8.8',
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 2.2.2.2, 8.8.8.8',
             ),
         ),
     ),
