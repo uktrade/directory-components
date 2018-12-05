@@ -1,4 +1,5 @@
 import urllib.parse
+from collections import namedtuple
 
 from ipware.ip2 import get_client_ip
 from mohawk import Receiver
@@ -8,6 +9,9 @@ from django.conf import settings
 from django.utils.encoding import iri_to_uri
 
 from directory_components import constants
+
+
+IPs = namedtuple('IPs', ['second', 'third'])
 
 
 def add_next(destination_url, current_url):
@@ -103,7 +107,8 @@ class GovukPaaSRemoteIPAddressRetriver:
     @classmethod
     def get_ip_address(cls, request):
         """
-        Returns the IP of the client making a HTTP request, using the
+        Returns the second AND third FROM THE RIGHT
+        IP addresses of the client making a HTTP request, using the
         second-to-last IP address in the X-Forwarded-For header. This
         should not be able to be spoofed in GovukPaaS, but it is not
         safe to use in other environments.
@@ -126,10 +131,14 @@ class GovukPaaSRemoteIPAddressRetriver:
         if len(ip_addesses) < 2:
             raise LookupError(cls.MESSAGE_INVALID_IP_COUNT)
 
-        return ip_addesses[-2].strip()
+        if len(ip_addesses) >= 3:
+            ips = IPs(ip_addesses[-2].strip(), ip_addesses[-3].strip())
+        else:
+            ips = IPs(ip_addesses[-2].strip(), None)
+        return ips
 
 
-class RemoteIPAddressRetriver:
+class RemoteIPAddressRetriever:
     """
     Different environments retrieve the remote IP address differently. This
     class negotiates that.

@@ -46,7 +46,7 @@ def test_build_social_links(rf):
 
 
 def test_remote_ip_address_retriver_paas_default(settings):
-    retriever = helpers.RemoteIPAddressRetriver()
+    retriever = helpers.RemoteIPAddressRetriever()
 
     assert isinstance(retriever, helpers.GovukPaaSRemoteIPAddressRetriver)
 
@@ -54,7 +54,7 @@ def test_remote_ip_address_retriver_paas_default(settings):
 def test_remote_ip_address_retriver_paas(settings):
     settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
 
-    retriever = helpers.RemoteIPAddressRetriver()
+    retriever = helpers.RemoteIPAddressRetriever()
 
     assert isinstance(retriever, helpers.IpwareRemoteIPAddressRetriver)
 
@@ -63,7 +63,7 @@ def test_remote_ip_address_retriver_other(settings):
     settings.REMOTE_IP_ADDRESS_RETRIEVER = 'hello there'
 
     with pytest.raises(NotImplementedError):
-        helpers.RemoteIPAddressRetriver()
+        helpers.RemoteIPAddressRetriever()
 
 
 @mock.patch(
@@ -98,4 +98,39 @@ def test_ipware_remote_ip_retriever_routable(rf):
     request = rf.get(reverse('robots'))
     retriever = helpers.IpwareRemoteIPAddressRetriver()
 
-    retriever.get_ip_address(request) == '8.8.8.8'
+    assert retriever.get_ip_address(request) == '8.8.8.8'
+
+
+def test_govuk_retriever_missing_header(rf):
+    retriever = helpers.GovukPaaSRemoteIPAddressRetriver
+    with pytest.raises(LookupError) as e:
+        retriever.get_ip_address(rf.request())
+    assert retriever.MESSAGE_MISSING_HEADER in str(e.value)
+
+
+def test_govuk_retriever_one_ip_address(rf):
+    retriever = helpers.GovukPaaSRemoteIPAddressRetriver
+    request = rf.request(**{'HTTP_X_FORWARDED_FOR': '8.8.8.8'})
+    with pytest.raises(LookupError) as e:
+        retriever.get_ip_address(request)
+    assert retriever.MESSAGE_INVALID_IP_COUNT in str(e.value)
+
+
+def test_govuk_retriever_two_ip_address(rf):
+    retriever = helpers.GovukPaaSRemoteIPAddressRetriver
+    request = rf.request(**{'HTTP_X_FORWARDED_FOR': '8.8.8.8, 1.1.1.1'})
+    ips = retriever.get_ip_address(request)
+    assert isinstance(ips, tuple)
+    assert ips.second == '8.8.8.8'
+    assert ips.third is None
+
+
+def test_govuk_retriever_three_ip_address(rf):
+    retriever = helpers.GovukPaaSRemoteIPAddressRetriver
+    request = rf.request(
+        **{'HTTP_X_FORWARDED_FOR': '8.8.8.8, 1.1.1.1, 2.2.2.2'}
+    )
+    ips = retriever.get_ip_address(request)
+    assert isinstance(ips, tuple)
+    assert ips.second == '1.1.1.1'
+    assert ips.third == '8.8.8.8'

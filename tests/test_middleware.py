@@ -224,7 +224,7 @@ def test_prefix_url_middleware_starts_with_known_url_correct_domain(
             constants.IP_RETRIEVER_NAME_GOV_UK,
             ['1.2.3.4'],
             dict(
-                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 8.8.8.8',
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 2.2.2.2, 8.8.8.8',
             ),
         ),
     ),
@@ -240,6 +240,71 @@ def test_if_not_from_authorized_ip_then_admin_404(
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('admin:thing'), **get_kwargs)
     assert response.status_code == 404
+
+
+@pytest.mark.parametrize(
+    'allowed_ip_ranges,get_kwargs',
+    (
+        # GOV_UK should not authorise using last IP of X_FORWARDED_FOR
+        (
+            ['192.168.0.0/24'],
+            dict(
+                HTTP_X_FORWARDED_FOR='8.8.8.8, 192.168.0.1',
+            ),
+        ),
+        # GOV_UK should not authorise using first IP of X_FORWARDED_FOR
+        (
+            ['192.168.0.0/24'],
+            dict(
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 3.3.3.3, 2.2.2.2, 8.8.8.8',
+            ),
+        ),
+    ),
+)
+def test_if_not_from_authorized_ip_then_admin_404_ip_range_gov_paas(
+        allowed_ip_ranges, get_kwargs, settings, client
+):
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_GOV_UK
+    settings.ALLOWED_ADMIN_IP_RANGES = allowed_ip_ranges
+    settings.RESTRICT_ADMIN = True
+    response = client.get(reverse('admin:thing'), **get_kwargs)
+    assert response.status_code == 404
+
+
+@pytest.mark.parametrize(
+    'allowed_ip_ranges,get_kwargs',
+    (
+        # GOV_UK should authorise using second from right IP of X_FORWARDED_FOR
+        (
+            ['74.125.224.72/32'],
+            dict(
+                HTTP_X_FORWARDED_FOR='74.125.224.72, 1.2.3.4',
+            ),
+        ),
+        # GOV_UK should authorise using third from right IP
+        # of X_FORWARDED_FOR
+        (
+            ['74.125.224.72/32'],
+            dict(
+                HTTP_X_FORWARDED_FOR='8.8.8., 74.125.224.72, 2.2.2.2, 8.8.8.8',
+            ),
+        ),
+    ),
+)
+def test_if_from_authorized_ip_then_admin_302_ip_range_gov_paas(
+        allowed_ip_ranges, get_kwargs, settings, client
+):
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_GOV_UK
+    settings.ALLOWED_ADMIN_IP_RANGES = allowed_ip_ranges
+    settings.RESTRICT_ADMIN = True
+    response = client.get(reverse('admin:thing'), **get_kwargs)
+    assert response.status_code == 302
 
 
 @pytest.mark.parametrize(
