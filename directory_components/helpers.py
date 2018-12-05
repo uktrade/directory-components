@@ -104,7 +104,7 @@ class GovukPaaSRemoteIPAddressRetriver:
     @classmethod
     def get_ip_address(cls, request):
         """
-        Returns the second AND third from the right
+        Returns the second AND third FROM THE RIGHT
         IP addresses of the client making a HTTP request, using the
         second-to-last IP address in the X-Forwarded-For header. This
         should not be able to be spoofed in GovukPaaS, but it is not
