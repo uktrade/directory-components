@@ -11,6 +11,9 @@ from django.utils.encoding import iri_to_uri
 from directory_components import constants
 
 
+IPs = namedtuple('IPs', ['second', 'third'])
+
+
 def add_next(destination_url, current_url):
     if 'next=' in destination_url:
         return destination_url
@@ -120,8 +123,6 @@ class GovukPaaSRemoteIPAddressRetriver:
             LookupError: The X-Forwarded-For header is not present, or
             does not contain enough IPs
         """
-        IPs = namedtuple('IPs', ['second', 'third'])
-
         if 'HTTP_X_FORWARDED_FOR' not in request.META:
             raise LookupError(cls.MESSAGE_MISSING_HEADER)
 
@@ -130,7 +131,7 @@ class GovukPaaSRemoteIPAddressRetriver:
         if len(ip_addesses) < 2:
             raise LookupError(cls.MESSAGE_INVALID_IP_COUNT)
 
-        if len(ip_addesses) == 3:
+        if len(ip_addesses) >= 3:
             ips = IPs(ip_addesses[-2].strip(), ip_addesses[-3].strip())
         else:
             ips = IPs(ip_addesses[-2].strip(), None)
