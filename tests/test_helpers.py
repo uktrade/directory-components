@@ -52,15 +52,16 @@ def test_remote_ip_address_retriver_paas_default(settings):
 
 
 def test_remote_ip_address_retriver_paas(settings):
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
-
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = (
+        constants.IP_RETRIEVER_NAME_IPWARE
+    )
     retriever = helpers.RemoteIPAddressRetriever()
 
     assert isinstance(retriever, helpers.IpwareRemoteIPAddressRetriver)
 
 
 def test_remote_ip_address_retriver_other(settings):
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = 'hello there'
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = 'hello there'
 
     with pytest.raises(NotImplementedError):
         helpers.RemoteIPAddressRetriever()

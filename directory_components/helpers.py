@@ -149,7 +149,7 @@ class RemoteIPAddressRetriever:
     def __new__(cls, *args, **kwargs):
         value = getattr(
             settings,
-            'REMOTE_IP_ADDRESS_RETRIEVER',
+            'IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER',
             constants.IP_RETRIEVER_NAME_GOV_UK
         )
         if value == constants.IP_RETRIEVER_NAME_GOV_UK:
@@ -160,6 +160,9 @@ class RemoteIPAddressRetriever:
 
 
 def is_skip_ip_check_signature_valid(signature):
+    if not getattr(settings, 'IP_RESTRICTOR_SKIP_CHECK_ENABLED', False):
+        return False
+
     credentials = {
         'id': settings.IP_RESTRICTOR_SKIP_CHECK_SENDER_ID,
         'key': settings.IP_RESTRICTOR_SKIP_CHECK_SECRET,
