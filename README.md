@@ -41,13 +41,15 @@ Then visit the demo at `components.trade.great:9013`
 ### Environment variables
 
 | Environment variable | Notes |
-|-------------------------------------------|-----------------------------------------------|
-| `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` | Controls `RobotsIndexControlHeaderMiddlware`. |
-| `FEATURE_MAINTENANCE_MODE_ENABLED`        | Controls `MaintenanceModeMiddleware`.         |
-| `FEATURE_FLAGS`                           | Place to store the service's feature flags.   |
-| `IP_RETRIEVER_NAME_GOV_UK`                | Method for determining client IP address: 'govuk-paas' or 'ipware'
-| `IP_RESTRICTOR_SKIP_SENDER_ID`            | The shared sender id for skipping IP check     |
-| `IP_RESTRICTOR_SKIP_SECRET`               | The shared secret for skipping IP check        |
+|-------------------------------------------- |-----------------------------------------------|
+| `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED`   | Controls `RobotsIndexControlHeaderMiddlware`. |
+| `FEATURE_MAINTENANCE_MODE_ENABLED`          | Controls `MaintenanceModeMiddleware`.         |
+| `FEATURE_FLAGS`                             | Place to store the service's feature flags.   |
+| `IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER` | Method for determining client IP address: 'govuk-paas' or 'ipware'
+| `IP_RESTRICTOR_SKIP_CHECK_ENABLED`          | Flag to enable skipping IP check if cookie is valid |
+| `IP_RESTRICTOR_SKIP_CHECK_SENDER_ID`        | The shared sender id for skipping IP check     |
+| `IP_RESTRICTOR_SKIP_CHECK_SECRET`           | The shared secret for skipping IP check        |
+
 
 ### Middleware
 

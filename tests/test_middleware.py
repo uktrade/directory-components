@@ -235,7 +235,7 @@ def test_if_not_from_authorized_ip_then_admin_404(
     settings.MIDDLEWARE_CLASSES = [
         'directory_components.middleware.IPRestrictorMiddleware'
     ]
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
     settings.ALLOWED_ADMIN_IPS = allowed_ips
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('admin:thing'), **get_kwargs)
@@ -267,7 +267,9 @@ def test_if_not_from_authorized_ip_then_admin_404_ip_range_gov_paas(
     settings.MIDDLEWARE_CLASSES = [
         'directory_components.middleware.IPRestrictorMiddleware'
     ]
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_GOV_UK
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = (
+        constants.IP_RETRIEVER_NAME_GOV_UK
+    )
     settings.ALLOWED_ADMIN_IP_RANGES = allowed_ip_ranges
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('admin:thing'), **get_kwargs)
@@ -300,7 +302,9 @@ def test_if_from_authorized_ip_then_admin_302_ip_range_gov_paas(
     settings.MIDDLEWARE_CLASSES = [
         'directory_components.middleware.IPRestrictorMiddleware'
     ]
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_GOV_UK
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = (
+        constants.IP_RETRIEVER_NAME_GOV_UK
+    )
     settings.ALLOWED_ADMIN_IP_RANGES = allowed_ip_ranges
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('admin:thing'), **get_kwargs)
@@ -344,7 +348,7 @@ def test_if_from_authorized_ip_then_admin_302(
     settings.MIDDLEWARE_CLASSES = [
         'directory_components.middleware.IPRestrictorMiddleware'
     ]
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
     settings.ALLOWED_ADMIN_IPS = allowed_ips
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('admin:thing'), **get_kwargs)
@@ -385,19 +389,19 @@ def test_if_from_unauthorized_ip_then_non_admin_200(
     settings.MIDDLEWARE_CLASSES = [
         'directory_components.middleware.IPRestrictorMiddleware'
     ]
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = address_retriever
     settings.ALLOWED_ADMIN_IPS = allowed_ips
     settings.RESTRICT_ADMIN = True
     response = client.get(reverse('robots'), **get_kwargs)
     assert response.status_code == 200
 
 
-def test_signature_check_skip_valid(
-    client, settings
-):
+def test_signature_check_skip_valid(client, settings):
+    settings.IP_RESTRICTOR_SKIP_CHECK_ENABLED = True
     settings.RESTRICT_ADMIN = True
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
-
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = (
+        constants.IP_RETRIEVER_NAME_IPWARE
+    )
     sender = Sender(
         {
             'id': settings.IP_RESTRICTOR_SKIP_CHECK_SENDER_ID,
@@ -418,17 +422,42 @@ def test_signature_check_skip_valid(
     assert response.status_code == 200
 
 
-def test_signature_check_skip_invalid(
-    client, settings
-):
+def test_signature_check_skip_valid_disabled(client, settings):
+    settings.IP_RESTRICTOR_SKIP_CHECK_ENABLED = False
     settings.RESTRICT_ADMIN = True
-    settings.REMOTE_IP_ADDRESS_RETRIEVER = constants.IP_RETRIEVER_NAME_IPWARE
-    settings.RESTRICTED_APP_NAMES = ['admin', '']
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = (
+        constants.IP_RETRIEVER_NAME_IPWARE
+    )
+    sender = Sender(
+        {
+            'id': settings.IP_RESTRICTOR_SKIP_CHECK_SENDER_ID,
+            'key': settings.IP_RESTRICTOR_SKIP_CHECK_SECRET,
+            'algorithm': 'sha256',
+        },
+        '/',
+        '',
+        always_hash_content=False
+    )
 
+    client.cookies['ip-restrict-signature'] = sender.request_header
+
+    settings.MIDDLEWARE_CLASSES = [
+        'directory_components.middleware.IPRestrictorMiddleware'
+    ]
+    response = client.get(reverse('admin:thing'), REMOTE_ADDR='8.8.8.8')
+    assert response.status_code == 404
+
+
+def test_signature_check_skip_invalid(client, settings):
+    settings.IP_RESTRICTOR_SKIP_CHECK_ENABLED = True
+    settings.RESTRICT_ADMIN = True
+    settings.IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER = (
+        constants.IP_RETRIEVER_NAME_IPWARE
+    )
     client.cookies['ip-restrict-signature'] = '123'
 
     settings.MIDDLEWARE_CLASSES = [
         'directory_components.middleware.IPRestrictorMiddleware'
     ]
-    response = client.get(reverse('robots'), REMOTE_ADDR='8.8.8.8')
+    response = client.get(reverse('admin:thing'), REMOTE_ADDR='8.8.8.8')
     assert response.status_code == 404

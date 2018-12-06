@@ -35,6 +35,7 @@ def pytest_configure():
         URL_PREFIX_DOMAIN='',
         IP_RESTRICTOR_SKIP_CHECK_SENDER_ID='sender-debug',
         IP_RESTRICTOR_SKIP_CHECK_SECRET='secret-debug',
+        RESTRICTED_APP_NAMES=['admin'],
         ALLOWED_ADMIN_IPS=[],
         DIRECTORY_CONSTANTS_URL_EXPORT_READINESS='https://exred.com',
         DIRECTORY_CONSTANTS_URL_EXPORT_OPPORTUNITIES='https://exopps.com',
