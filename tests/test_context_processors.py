@@ -104,20 +104,31 @@ def test_header_footer_processor(settings):
     context = context_processors.header_footer_processor(None)
     assert context['header_footer_urls'] == {
         'about': 'https://exred.com/about/',
-        'business_planning': 'https://exred.com/business-planning/',
-        'custom': 'https://exred.com/custom/',
-        'customer_insight': 'https://exred.com/customer-insight/',
+        'create_an_export_plan': (
+            'https://exred.com/advice/create-an-export-plan/'),
+        'find_an_export_market': (
+            'https://exred.com/advice/find-an-export-market/'),
+        'define_route_to_market': (
+            'https://exred.com/advice/define-route-to-market/'),
+        'get_export_finance_and_funding': (
+            'https://exred.com/advice/get-export-finance-and-funding/'),
+        'manage_payment_for_export_orders': (
+            'https://exred.com/advice/manage-payment-for-export-orders/'),
+        'prepare_to_do_business_in_a_foreign_country': (
+            'https://exred.com/advice/'
+            'prepare-to-do-business-in-a-foreign-country/'),
+        'manage_legal_and_ethical_compliance': (
+            'https://exred.com/advice/manage-legal-and-ethical-compliance/'),
+        'prepare_for_export_procedures_and_logistics': (
+            'https://exred.com/advice/'
+            'prepare-for-export-procedures-and-logistics/'),
         'dit': urls.DIT,
-        'exporting_new': 'https://exred.com/new/',
-        'exporting_occasional': 'https://exred.com/occasional/',
-        'exporting_regular': 'https://exred.com/regular/',
-        'finance': 'https://exred.com/finance/',
+        'get_finance': urls.GET_FINANCE,
+        'performance': urls.PERFORMANCE_DASHBOARD,
+        'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
+        'terms_and_conditions': urls.TERMS_AND_CONDITIONS,
+
         'get_finance': 'https://exred.com/get-finance/',
-        'getting_paid': 'https://exred.com/getting-paid/',
-        'market_research': 'https://exred.com/market-research/',
-        'operations_and_compliance': (
-            'https://exred.com/operations-and-compliance/'
-        ),
         'performance': 'https://exred.com/performance-dashboard/',
         'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
         'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
