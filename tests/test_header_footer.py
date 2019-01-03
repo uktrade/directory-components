@@ -59,16 +59,14 @@ def test_header_logged_out():
 
 @pytest.mark.parametrize('url', [
     urls.SERVICE_EXPORT_READINESS,
-    urls.CUSTOM_PAGE,
-    urls.EXPORTING_NEW,
-    urls.EXPORTING_OCCASIONAL,
-    urls.EXPORTING_REGULAR,
-    urls.GUIDANCE_MARKET_RESEARCH,
-    urls.GUIDANCE_CUSTOMER_INSIGHT,
-    urls.GUIDANCE_FINANCE,
-    urls.GUIDANCE_BUSINESS_PLANNING,
-    urls.GUIDANCE_GETTING_PAID,
-    urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
+    urls.ADVICE_CREATE_AN_EXPORT_PLAN,
+    urls.ADVICE_FIND_AN_EXPORT_MARKET,
+    urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
+    urls.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
+    urls.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
+    urls.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
+    urls.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
+    urls.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
     urls.SERVICES_EXOPPS,
     urls.GET_FINANCE,
 ])
@@ -79,16 +77,14 @@ def test_urls_exist_in_header(url, context):
 
 @pytest.mark.parametrize('url', [
     urls.SERVICE_EXPORT_READINESS,
-    urls.CUSTOM_PAGE,
-    urls.EXPORTING_NEW,
-    urls.EXPORTING_OCCASIONAL,
-    urls.EXPORTING_REGULAR,
-    urls.GUIDANCE_MARKET_RESEARCH,
-    urls.GUIDANCE_CUSTOMER_INSIGHT,
-    urls.GUIDANCE_FINANCE,
-    urls.GUIDANCE_BUSINESS_PLANNING,
-    urls.GUIDANCE_GETTING_PAID,
-    urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
+    urls.ADVICE_CREATE_AN_EXPORT_PLAN,
+    urls.ADVICE_FIND_AN_EXPORT_MARKET,
+    urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
+    urls.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
+    urls.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
+    urls.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
+    urls.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
+    urls.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
     urls.SERVICES_EXOPPS,
     urls.GET_FINANCE,
     urls.ABOUT,
@@ -107,54 +103,44 @@ def test_urls_exist_in_footer(url, context):
 
 @pytest.mark.parametrize('title,element_id,url', (
     (
-        'I\'m new to exporting',
-        'header-export-readiness-new',
-        urls.EXPORTING_NEW,
+        'Create an export plan',
+        'header-advice-create-an-export-plan',
+        urls.ADVICE_CREATE_AN_EXPORT_PLAN,
     ),
     (
-        'I export occasionally',
-        'header-export-readiness-occasional',
-        urls.EXPORTING_OCCASIONAL,
+        'Find an export market',
+        'header-advice-find-an-export-market',
+        urls.ADVICE_FIND_AN_EXPORT_MARKET,
     ),
     (
-        'I\'m a regular exporter',
-        'header-export-readiness-regular',
-        urls.EXPORTING_REGULAR,
+        'Define route to market',
+        'header-advice-define-route-to-market',
+        urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
     ),
     (
-        'Your export journey',
-        'header-custom-page-link',
-        urls.CUSTOM_PAGE,
+        'Get export finance and funding',
+        'header-advice-get-export-finance-and-funding',
+        urls.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
     ),
     (
-        'Market research',
-        'header-guidance-market-research',
-        urls.GUIDANCE_MARKET_RESEARCH,
+        'Manage payment for export orders',
+        'header-advice-manage-payment-for-export-orders',
+        urls.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
     ),
     (
-        'Customer insight',
-        'header-guidance-customer-insight',
-        urls.GUIDANCE_CUSTOMER_INSIGHT,
+        'Prepare to do business in a foreign country',
+        'header-advice-prepare-to-do-business-in-a-foreign-country',
+        urls.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
     ),
     (
-        'Finance',
-        'header-guidance-finance',
-        urls.GUIDANCE_FINANCE,
+        'Manage legal and ethical compliance',
+        'header-advice-manage-legal-and-ethical-compliance',
+        urls.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
     ),
     (
-        'Business planning',
-        'header-guidance-business-planning',
-        urls.GUIDANCE_BUSINESS_PLANNING,
-    ),
-    (
-        'Getting paid',
-        'header-guidance-getting-paid',
-        urls.GUIDANCE_GETTING_PAID,
-    ),
-    (
-        'Operations and compliance',
-        'header-guidance-operations-and-compliance',
-        urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
+        'Prepare for export procedures and logistics',
+        'header-advice-prepare-for-export-procedures-and-logistics',
+        urls.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
     ),
     (
         None,
@@ -197,54 +183,44 @@ def test_header_ids_match_urls_and_text(title, element_id, url, context):
 
 @pytest.mark.parametrize('title,element_id,url', (
     (
-        'I\'m new to exporting',
-        'footer-export-readiness-new',
-        urls.EXPORTING_NEW
+        'Create an export plan',
+        'footer-advice-create-an-export-plan',
+        urls.ADVICE_CREATE_AN_EXPORT_PLAN,
     ),
     (
-        'I export occasionally',
-        'footer-export-readiness-occasional',
-        urls.EXPORTING_OCCASIONAL
+        'Find an export market',
+        'footer-advice-find-an-export-market',
+        urls.ADVICE_FIND_AN_EXPORT_MARKET,
     ),
     (
-        'I\'m a regular exporter',
-        'footer-export-readiness-regular',
-        urls.EXPORTING_REGULAR
+        'Define route to market',
+        'footer-advice-define-route-to-market',
+        urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
     ),
     (
-        'Your export journey',
-        'footer-custom-page-link',
-        urls.CUSTOM_PAGE
+        'Get export finance and funding',
+        'footer-advice-get-export-finance-and-funding',
+        urls.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
     ),
     (
-        'Market research',
-        'footer-guidance-market-research',
-        urls.GUIDANCE_MARKET_RESEARCH,
+        'Manage payment for export orders',
+        'footer-advice-manage-payment-for-export-orders',
+        urls.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
     ),
     (
-        'Customer insight',
-        'footer-guidance-customer-insight',
-        urls.GUIDANCE_CUSTOMER_INSIGHT,
+        'Prepare to do business in a foreign country',
+        'footer-advice-prepare-to-do-business-in-a-foreign-country',
+        urls.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
     ),
     (
-        'Finance',
-        'footer-guidance-finance',
-        urls.GUIDANCE_FINANCE,
+        'Manage legal and ethical compliance',
+        'footer-advice-manage-legal-and-ethical-compliance',
+        urls.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
     ),
     (
-        'Business planning',
-        'footer-guidance-business-planning',
-        urls.GUIDANCE_BUSINESS_PLANNING,
-    ),
-    (
-        'Getting paid',
-        'footer-guidance-getting-paid',
-        urls.GUIDANCE_GETTING_PAID,
-    ),
-    (
-        'Operations and compliance',
-        'footer-guidance-operations-and-compliance',
-        urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
+        'Prepare for export procedures and logistics',
+        'footer-advice-prepare-for-export-procedures-and-logistics',
+        urls.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
     ),
     (
         None,
@@ -309,36 +285,7 @@ def test_footer_ids_match_urls_and_text(title, element_id, url, context):
         assert element.string == title
 
 
-def test_header_export_journey_on():
-    context = {
-        'features': {'EXPORT_JOURNEY_OFF': False}
-    }
-    html = render_to_string(
-        'directory_components/header_footer/header.html', context)
-
-    soup = BeautifulSoup(html, 'html.parser')
-    assert soup.find(id='header-custom-page-link')
-    assert soup.find(id='export-readiness-links')
-    assert soup.find(id='header-export-readiness-new')
-    assert soup.find(id='header-export-readiness-regular')
-    assert soup.find(id='header-export-readiness-occasional')
-
-
-def test_footer_export_journey_on():
-    context = {
-        'features': {'EXPORT_JOURNEY_OFF': False}
-    }
-    html = render_to_string(
-        'directory_components/header_footer/footer.html', context)
-
-    soup = BeautifulSoup(html, 'html.parser')
-    assert soup.find(id='footer-export-readiness-links')
-    assert soup.find(id='footer-export-readiness-new')
-    assert soup.find(id='footer-export-readiness-regular')
-    assert soup.find(id='footer-export-readiness-occasional')
-
-
-def test_header_export_journey_off():
+def test_header_export_journey_links():
     context = {
         'features': {'EXPORT_JOURNEY_OFF': True}
     }
@@ -353,7 +300,7 @@ def test_header_export_journey_off():
     assert not soup.find(id='header-export-readiness-occasional')
 
 
-def test_footer_export_journey_off():
+def test_footer_export_journey_links():
     context = {
         'features': {'EXPORT_JOURNEY_OFF': True}
     }
