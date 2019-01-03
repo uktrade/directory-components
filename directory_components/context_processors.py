@@ -37,19 +37,22 @@ def cookie_notice(request):
 
 def header_footer_processor(request):
     header_footer_urls = {
+        'create_an_export_plan': urls.ADVICE_CREATE_AN_EXPORT_PLAN,
+        'find_an_export_market': urls.ADVICE_FIND_AN_EXPORT_MARKET,
+        'define_route_to_market': urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
+        'get_export_finance_and_funding':
+            urls.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
+        'manage_payment_for_export_orders':
+            urls.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
+        'prepare_to_do_business_in_a_foreign_country':
+            urls.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
+        'manage_legal_and_ethical_compliance':
+            urls.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
+        'prepare_for_export_procedures_and_logistics':
+            urls.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
         'about': urls.ABOUT,
-        'business_planning': urls.GUIDANCE_BUSINESS_PLANNING,
-        'custom': urls.CUSTOM_PAGE,
-        'customer_insight': urls.GUIDANCE_CUSTOMER_INSIGHT,
         'dit': urls.DIT,
-        'exporting_new': urls.EXPORTING_NEW,
-        'exporting_occasional': urls.EXPORTING_OCCASIONAL,
-        'exporting_regular': urls.EXPORTING_REGULAR,
-        'finance': urls.GUIDANCE_FINANCE,
         'get_finance': urls.GET_FINANCE,
-        'getting_paid': urls.GUIDANCE_GETTING_PAID,
-        'market_research': urls.GUIDANCE_MARKET_RESEARCH,
-        'operations_and_compliance': urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
         'performance': urls.PERFORMANCE_DASHBOARD,
         'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
         'terms_and_conditions': urls.TERMS_AND_CONDITIONS,
