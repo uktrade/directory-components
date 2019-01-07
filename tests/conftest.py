@@ -15,6 +15,7 @@ def pytest_configure():
         FEATURE_FLAGS={
             'SEARCH_ENGINE_INDEXING_OFF': True,
             'MAINTENANCE_MODE_ON': False,
+            'EXPORT_JOURNEY_ON': True,
         },
         INSTALLED_APPS=[
             'django.contrib.staticfiles',
