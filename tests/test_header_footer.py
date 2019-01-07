@@ -62,7 +62,7 @@ def test_header_logged_out():
     urls.SERVICES_EXOPPS,
     urls.GET_FINANCE,
 ])
-def test_urls_exist_in_header_export_journey_off(url, context, settings):
+def test_urls_exist_in_header_export_journey_off(url, settings):
     settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
     context = {
         **context_processors.header_footer_processor(None),
