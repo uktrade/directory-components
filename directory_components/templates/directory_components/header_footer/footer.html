@@ -1,10 +1,51 @@
 {% load static %}
 <footer id="footer">
   <nav class="container">
-    <div class="link-group footer-logos">
+    <div class="link-group {% if not features.EXPORT_JOURNEY_ON %}footer-logos{% endif %}">
       <img id="footer-dit-logo" src="{% static 'directory_components/images/dfit-logo-white.png' %}" alt="Department for International Trade"/>
       <img id="footer-eig-logo" src="{% static 'directory_components/images/eig-logo-stacked.svg' %}" alt="Exporting is Great"/>
     </div>
+
+    {% if features.EXPORT_JOURNEY_ON %}
+    <div class="link-group">
+      <a class="links-list-heading custom-page-link" id="footer-custom-page-link" href="{{ header_footer_urls.custom }}">Your export journey</a>
+      <h4 class="links-list-heading" id="footer-export-readiness-links">Export readiness</h4>
+      <ul aria-labelledby="footer-export-readiness-links" class="links-list">
+        <li>
+          <a id="footer-export-readiness-new" href="{{ header_footer_urls.exporting_new }}">I'm new to exporting</a>
+        </li>
+        <li>
+          <a id="footer-export-readiness-occasional" href="{{ header_footer_urls.exporting_occasional }}">I export occasionally</a>
+        </li>
+        <li>
+          <a id="footer-export-readiness-regular" href="{{ header_footer_urls.exporting_regular }}">I'm a regular exporter</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="link-group">
+      <h4 class="links-list-heading" id="footer-guidance-links">Guidance</h4>
+      <ul aria-labelledby="footer-guidance-links" class="links-list">
+        <li>
+          <a id="footer-guidance-market-research" href="{{ header_footer_urls.market_research }}">Market research</a>
+        </li>
+        <li>
+         <a id="footer-guidance-customer-insight" href="{{ header_footer_urls.customer_insight }}">Customer insight</a>
+        </li>
+        <li>
+         <a id="footer-guidance-finance" href="{{ header_footer_urls.finance }}">Finance</a>
+        </li>
+        <li>
+         <a id="footer-guidance-business-planning" href="{{ header_footer_urls.business_planning }}">Business planning</a>
+        </li>
+        <li>
+         <a id="footer-guidance-getting-paid" href="{{ header_footer_urls.getting_paid }}">Getting paid</a>
+        </li>
+        <li>
+         <a id="footer-guidance-operations-and-compliance" href="{{ header_footer_urls.operations_and_compliance }}">Operations and compliance</a>
+        </li>
+      </div>
+    {% else %}
     <div class="link-group">
       <h4 class="links-list-heading" id="footer-advice-links">Advice</h4>
       <ul aria-labelledby="footer-advice-links" class="links-list">
@@ -34,6 +75,7 @@
         </li>
       </ul>
     </div>
+    {% endif %}
     <div class="link-group">
       <h4 class="links-list-heading" id="footer-services-links">Services</h4>
       <ul aria-labelledby="footer-services-links" class="links-list">

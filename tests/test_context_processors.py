@@ -100,8 +100,11 @@ def test_sso_user(request_logged_in, sso_user):
     assert context['sso_user'] == sso_user
 
 
-def test_header_footer_processor(settings):
+def test_header_footer_processor_export_journey_off(settings):
+    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
+
     context = context_processors.header_footer_processor(None)
+
     assert context['header_footer_urls'] == {
         'create_an_export_plan': (
             'https://exred.com/advice/create-an-export-plan/'),
