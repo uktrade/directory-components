@@ -94,6 +94,11 @@
         <li>
           <a id="footer-services-events" href="{{ services_urls.events }}">Find events and visits</a>
         </li>
+        {% if features.MARKET_ACCESS_ON %}
+          <li>
+            <a id="footer-services-market-access" href="{{ header_footer_urls.market_access }}">Trade barriers</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
