@@ -72,6 +72,7 @@ TEMPLATES = [
                     '.header_footer_processor'),
                 'directory_components.context_processors.urls_processor',
                 'directory_components.context_processors.cookie_notice',
+                'directory_components.context_processors.feature_flags',
             ],
         },
     },
@@ -150,3 +151,7 @@ HEADER_FOOTER_URLS_SOO = env.str('HEADER_FOOTER_URLS_SOO', '')
 HEADER_FOOTER_URLS_EVENTS = env.str('HEADER_FOOTER_URLS_EVENTS', '')
 HEADER_FOOTER_URLS_CONTACT_US = env.str('HEADER_FOOTER_URLS_CONTACT_US', '')
 PRIVACY_COOKIE_DOMAIN = env.str('PRIVACY_COOKIE_DOMAIN', '')
+
+FEATURE_FLAGS = {
+    'EXPORT_JOURNEY_ON': False
+}
