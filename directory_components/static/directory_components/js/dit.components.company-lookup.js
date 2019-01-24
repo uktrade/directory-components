@@ -303,7 +303,7 @@ dit.components = (new function() {
     var service = new Service(url);
     SelectiveLookup.call(this,
       $input,
-      service
+      service,
       options,
     );
 
