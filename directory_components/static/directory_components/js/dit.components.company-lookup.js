@@ -1,4 +1,5 @@
-var dit = {};
+var dit = dit || {};
+dit.components = dit.components || {};
 
 /*
   General utility methods
@@ -56,9 +57,11 @@ dit.data = (new function() {
     }
   }
 
+  this.Service = Service;
+
 });
 
-dit.components = (new function() {
+dit.components.lookup = (new function() {
 
   /* Performs a data lookup and displays multiple choice results
    * to populate the input value with user choice.
@@ -300,7 +303,7 @@ dit.components = (new function() {
   this.CompaniesHouseNameLookup = CompaniesHouseNameLookup;
   function CompaniesHouseNameLookup($input, $field, url, options) {
     var instance = this;
-    var service = new Service(url);
+    var service = new dit.data.Service(url);
     SelectiveLookup.call(this,
       $input,
       service,
