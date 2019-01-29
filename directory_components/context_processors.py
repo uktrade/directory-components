@@ -70,6 +70,7 @@ def header_footer_processor(request):
         'performance': urls.PERFORMANCE_DASHBOARD,
         'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
         'terms_and_conditions': urls.TERMS_AND_CONDITIONS,
+        'market_access': urls.build_great_url('market-access/')
     }
     if settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON']:
         header_footer_urls = {**header_footer_urls, **export_journey_urls}

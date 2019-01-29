@@ -1,4 +1,5 @@
 {% load static %}
+{% with menu_width=features.MARKET_ACCESS_ON|yesno:"sixth,fifth,fifth" %}
 <header id="header">
   <div id="header-bar">
     <div class="container">
@@ -109,36 +110,43 @@
           {% endif %}
           <li><a class="navigation links-list-heading" href="#services-links-list" id="header-services-links">Services</a>
             <ul id="services-links-list" aria-labelledby="header-services-links" class="container links-list">
-              <li class="links-list-item column-fifth">
+              <li class="links-list-item column-{{ menu_width }}">
                 <a id="header-services-find-a-buyer" href="{{ services_urls.fab }}">
                   <span>Create a business profile</span>
                   <p>Get promoted internationally with a great.gov.uk business profile</p>
                 </a>
               </li>
-              <li class="links-list-item column-fifth">
+              <li class="links-list-item column-{{ menu_width }}">
                 <a id="header-services-selling-online-overseas" href="{{ services_urls.soo }}">
                   <span>Sell online overseas</span>
                   <p>Find the right marketplace for your business and access special offers for sellers</p>
                 </a>
               </li>
-              <li class="links-list-item column-fifth">
+              <li class="links-list-item column-{{ menu_width }}">
                 <a id="header-services-export-opportunities" href="{{ services_urls.exopps }}">
                   <span>Find export opportunities</span>
                   <p>Find and apply for overseas opportunities</p>
                 </a>
               </li>
-              <li class="links-list-item column-fifth">
+              <li class="links-list-item column-{{ menu_width }}">
                 <a id="header-services-get-finance" href="{{ header_footer_urls.get_finance }}">
                   <span>Get finance</span>
                   <p>Get the finance you need to compete and grow</p>
                 </a>
               </li>
-              <li class="links-list-item column-fifth">
+              <li class="links-list-item column-{{ menu_width }}">
                 <a id="header-services-events" href="{{ services_urls.events }}" rel="noopener noreferrer" target="_blank">
                   <span>Find events and visits</span>
                   <p>Attend events and see how visits by ministers can support your trade deals</p>
                 </a>
               </li>
+              {% if features.MARKET_ACCESS_ON %}
+              <li class="links-list-item column-{{ menu_width }}">
+                <a id="header-services-market-access" href="{{ header_footer_urls.market_access }}" rel="noopener noreferrer">
+                  <span> Trade barriers </span>
+                </a>
+              </li>
+              {% endif %}
             </ul>
           </li>
         </ul>
@@ -146,3 +154,4 @@
     </div>
   </div>
 </header>
+{% endwith %}

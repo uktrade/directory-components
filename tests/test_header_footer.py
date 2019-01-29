@@ -612,3 +612,57 @@ def test_footer_export_journey_links():
     assert not soup.find(id='footer-export-readiness-new')
     assert not soup.find(id='footer-export-readiness-regular')
     assert not soup.find(id='footer-export-readiness-occasional')
+
+
+@pytest.mark.parametrize('template, link_id', (
+    (
+        'directory_components/header_footer/header.html',
+        'header-services-market-access'
+    ),
+    (
+        'directory_components/header_footer/footer.html',
+        'footer-services-market-access'
+    )
+))
+@pytest.mark.parametrize('feature_status', [True, False])
+def test_market_access_journey_feature_flag_shows_and_hides_links(
+    template, link_id, feature_status,
+):
+    context = {
+        **context_processors.header_footer_processor(None),
+        "features": {'MARKET_ACCESS_ON': feature_status}
+    }
+    html = render_to_string(template, context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    if feature_status is True:
+        assert not soup.find(id=link_id) is False
+        assert soup.find(
+            id=link_id
+        ).attrs['href'] == urls.build_great_url('market-access/')
+    else:
+        assert not soup.find(id=link_id) is True
+
+
+@pytest.mark.parametrize('feature_status', [True, False])
+def test_service_header_adjusted_width_according_to_market_access_feature(
+    feature_status
+):
+    context = {
+        **context_processors.header_footer_processor(None),
+        "features": {'MARKET_ACCESS_ON': feature_status}
+    }
+    html = render_to_string(
+        'directory_components/header_footer/header.html',
+        context
+    )
+    soup = BeautifulSoup(html, 'html.parser')
+
+    if feature_status is True:
+        assert 'column-sixth' in soup.find(
+            id='services-links-list'
+        ).findChildren("li", recursive=False)[0].attrs['class']
+    else:
+        assert 'column-fifth' in soup.find(
+            id='services-links-list'
+        ).findChildren("li", recursive=False)[0].attrs['class']
