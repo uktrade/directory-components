@@ -1,0 +1,84 @@
+{% extends 'directory_components/header_footer_v2/header.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block header_language_selector %}
+  {% if language_switcher.show %}
+    {% include 'directory_components/header_footer_v2/language_selector.html' %}
+  {% endif %}
+{% endblock %}
+
+{% block global_header_class %}domestic{% endblock %}
+{% block header_menu_class %}domestic{% endblock %}
+{% block header_nav_class %}domestic{% endblock %}
+
+{% block global_header_logo %}
+<img id="great-global-header-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
+{% endblock %}
+
+{% block global_footer_logo %}
+<img id="great-global-footer-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
+{% endblock %}
+
+{% block header_logo %}
+<img src="{% static 'directory_components/images/eig-logo-stacked.svg' %}" alt="Exporting is Great" height="80">
+{% endblock %}
+
+{% block header_logo_url %}{{ services_urls.exred }}{% endblock %}
+
+{% block header_extra_links %}
+  {% block login_state %}
+    {% if not sso_is_logged_in %}
+    <li class="anonymous">
+      <a id="header-sign-in-link" href="{{ sso_login_url }}" class="account-link signin">Sign in</a>
+    </li>
+    {% else %}
+    <li class="authenticated">
+      <a id="header-profile-link" href="{{ sso_profile_url }}" class="account-link profile">Account</a>
+    </li>
+    <li class="authenticated">
+      <a id="header-sign-out-link" href="{{ sso_logout_url }}" class="account-link signout">Sign out</a>
+    </li>
+    {% endif %}
+  {% endblock %}
+{% endblock %}
+
+{% block header_nav %}
+
+<li class="column-quarter js-menuitem">
+  <a href="{{ header_footer_urls.advice }}" class="link-heading" id="great-header-advice-link">Advice</a>
+</li>
+
+<li class="column-quarter js-menuitem">
+  <a href="{{ header_footer_urls.markets }}" class="link-heading" id="great-header-markets-link">Markets</a>
+</li>
+
+<li class="column-quarter js-top-level-list">
+  <span class="link-heading js-link-heading" id="header-services-links-heading">Services</span>
+  <ul class="js-collapsible-menu" aria-labelledby="header-services-links-heading" id="header-services-links-list">
+    <li class="js-menuitem">
+      <a class="link" id="header-services-business-profile" href="{{ services_urls.fab }}">Create a business profile</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-services-selling-online-overseas" href="{{ services_urls.soo }}">Sell online overseas</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-services-export-opportunities" href="{{ services_urls.exopps }}">Find export opportunities</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-services-get-finance" href="{{ header_footer_urls.get_finance }}">Get finance</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-services-events" href="{{ services_urls.events }}">Find events and visits</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-services-ukef" href="#">UK Export Finance</a>
+    </li>
+  </ul>
+</li>
+
+<li class="column-quarter js-menuitem">
+  <a href="#bar" class="link-heading" id="great-header-news-events-link">News and events</a>
+</li>
+
+{% endblock %}

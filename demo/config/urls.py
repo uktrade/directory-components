@@ -22,6 +22,21 @@ urlpatterns = [
         name='great-header-footer',
     ),
     url(
+        r'^great-domestic-header-footer/$',
+        views.GreatDomesticHeaderFooter.as_view(),
+        name='great-domestic-header-footer',
+    ),
+    url(
+        r'^great-domestic-header-footer-search/$',
+        views.GreatDomesticHeaderFooterSearch.as_view(),
+        name='great-domestic-header-footer-search',
+    ),
+    url(
+        r'^great-international-header-footer/$',
+        views.GreatInternationalHeaderFooter.as_view(),
+        name='great-international-header-footer',
+    ),
+    url(
         r'^elements/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/elements.html'},

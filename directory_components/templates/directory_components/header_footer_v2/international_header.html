@@ -1,0 +1,62 @@
+{% extends 'directory_components/header_footer_v2/header.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block header_country_selector %}
+  {% include 'directory_components/header_footer_v2/header_country_select.html' %}
+{% endblock %}
+
+{% block global_header_class %}international{% endblock %}
+{% block header_menu_class %}international{% endblock %}
+{% block header_nav_class %}international{% endblock %}
+
+{% block global_header_logo %}
+<img id="great-global-header-logo" class="great-global-header-footer-logo" alt="HM Government" height="24" src="{% static 'directory_components/images/hm-government.svg' %}">
+{% endblock %}
+
+{% block header_logo %}
+<img src="{% static 'directory_components/images/great.svg' %}" alt="Great Britain and Northern Ireland" width="180" height="auto">
+{% endblock %}
+
+{% block header_logo_url %}/{% endblock %}
+
+{% block header_extra_links %}
+  {% if not country_switcher.show %}
+    <li>
+      <a href="#" class="CountrySelectorDialog-Tracker great-header-country" id="header-country-selector-activator">
+        <span class="text">Change country</span> <span class="country">Brazil</span>
+      </a>
+    </li>
+  {% endif %}
+{% endblock %}
+
+{% block header_nav %}
+
+<li class="column-quarter js-top-level-list">
+  <span class="link-heading js-link-heading" id="header-invest-links-heading">Invest</span>
+  <ul class="js-collapsible-menu" aria-labelledby="header-invest-links-heading" id="header-invest-links-list">
+    <li class="js-menuitem">
+      <a class="link" id="header-invest-expand-to-the-uk" href="{{ services_urls.invest }}">Expand to the UK</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-invest-ukan" href="#">UK Advisory Network</a>
+    </li>
+    <li class="js-menuitem">
+      <a class="link" id="header-invest-capital-investment" href="#">Capital investment in the UK</a>
+    </li>
+  </ul>
+</li>
+
+<li class="column-quarter js-menuitem">
+  <a href="{{ services_urls.fas }}" class="link-heading" id="great-header-fas-link">Find a UK supplier</a>
+</li>
+
+<li class="column-quarter js-menuitem">
+  <a href="#" class="link-heading" id="great-header-trade-info-link">Find tariffs, quotas and trade information</a>
+</li>
+
+<li class="column-quarter js-menuitem">
+  <a href="#" class="link-heading" id="great-header-news-events-link">News and events</a>
+</li>
+
+{% endblock %}

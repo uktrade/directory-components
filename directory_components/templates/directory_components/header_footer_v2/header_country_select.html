@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load render_form from directory_components_tags %}
+
+<section role="dialog" dir="ltr" data-component="country-selector-dialog" class="country-selector-dialog">
+  <div class="container">
+    <div data-node="countries" class="countries">
+      <h2 class="font-large margin-vertical-30">{% trans "Select country" %}</h2>
+      <form class="form-group">
+        <select class="form-control" name="country" id="js-country-select">
+          {% for country in countries %}
+            <option value="{{ country.0 }}">{{ country.1 }}</option>
+          {% endfor %}
+        </select>
+        <div class="form-group margin-top-30">
+          <button class="button button-blue" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

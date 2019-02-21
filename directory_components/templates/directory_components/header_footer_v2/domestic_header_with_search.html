@@ -1,0 +1,14 @@
+{% extends 'directory_components/header_footer_v2/domestic_header.html' %}
+
+{% block header_class %}with-search{% endblock %}
+
+{% block header_search %}
+<div class="great-header-search-wrapper">
+  <div class="great-header-search-container">
+    <form class="great-header-search" action="/search" method="GET">
+      <input type="text" name="q" value="" placeholder="Search" >
+      <button type="submit" class="button" style="background-image: url('/static/directory_components/images/search.svg');">Search</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
