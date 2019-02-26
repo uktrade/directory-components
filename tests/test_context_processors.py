@@ -130,7 +130,7 @@ def test_header_footer_processor_export_journey_off(settings):
         'performance': 'https://exred.com/performance-dashboard/',
         'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
         'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
-        'market_access': 'https://exred.com/market-access/'
+        'market_access': 'https://exred.com/report-trade-barrier/'
     }
 
 

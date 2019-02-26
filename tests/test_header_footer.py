@@ -639,7 +639,7 @@ def test_market_access_journey_feature_flag_shows_and_hides_links(
         assert not soup.find(id=link_id) is False
         assert soup.find(
             id=link_id
-        ).attrs['href'] == urls.build_great_url('market-access/')
+        ).attrs['href'] == urls.build_great_url('report-trade-barrier/')
     else:
         assert not soup.find(id=link_id) is True
 
