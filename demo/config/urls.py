@@ -5,22 +5,26 @@ from demo import views
 urlpatterns = [
     url(
         r'^$',
-        views.HelloWorld.as_view(),
-        name='hello-world',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/index.html'},
+        name='index',
     ),
     url(
         r'^404/$',
-        views.NotFound.as_view(),
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/404.html'},
         name='404',
     ),
     url(
         r'^great-header-footer/$',
-        views.GreatHeaderFooter.as_view(),
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/great-header-footer.html'},
         name='great-header-footer',
     ),
     url(
         r'^elements/$',
-        views.Elements.as_view(),
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/elements.html'},
         name='elements',
     ),
     url(
@@ -35,32 +39,50 @@ urlpatterns = [
     ),
     url(
         r'^components/$',
-        views.ComponentsView.as_view(),
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/components.html'},
         name='components',
     ),
     url(
-        r'^responsive-grid/$',
-        views.ResponsiveGridView.as_view(),
-        name='responsive-grid',
+        r'^buttons/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/buttons.html'},
+        name='buttons',
+    ),
+    url(
+        r'^hero-banner/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/hero-banner.html'},
+        name='hero-banner',
+    ),
+    url(
+        r'^banners/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/banners.html'},
+        name='banners',
+    ),
+    url(
+        r'^cards/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/cards.html'},
+        name='cards',
+    ),
+    url(
+        r'^responsive/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/responsive.html'},
+        name='responsive',
     ),
     url(
         r'^invest/$',
-        views.InvestHeaderFooterView.as_view(),
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/invest_header_footer.html'},
         name='invest-header-footer',
     ),
     url(
-        r'^prototype/prototype-article$',
-        views.PrototypeArticlePageView.as_view(),
-        name='prototype-article',
-    ),
-    url(
-        r'^prototype/prototype-guidance-list$',
-        views.PrototypeGuidanceListView.as_view(),
-        name='prototype-guidance-list',
-    ),
-    url(
         r'^template-tags/$',
-        views.TemplateTagsView.as_view(),
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/template_tags.html'},
         name='template-tags',
     ),
 ]
