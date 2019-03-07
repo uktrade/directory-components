@@ -31,7 +31,7 @@ def build_anchor_id(element, suffix):
 
 
 def get_label(element):
-    return re.sub(r'^.* \- ', '', element.texts[0])
+    return re.sub(r'^.* \- ', '', element.contents[0])
 
 
 @register.filter
