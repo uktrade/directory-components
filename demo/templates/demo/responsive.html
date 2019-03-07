@@ -1,0 +1,129 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block content %}
+
+<section class="padding-top-30">
+  <div class="container">
+    <h1 class="heading-xlarge">Responsive classes</h1>
+    <p>All classes are mobile first.</p>
+  </div>
+</section>
+
+<section class="background-stone-30">
+  <div class="container">
+
+    <h2 class="heading-large">Grid</h2>
+    <p class="width-two-thirds">By default all column classes collapse to <code>.column-full</code> on mobile. Using multiple columns in a mobile layout is not recommended.</p>
+
+    <h3 class="heading-medium">.grid-row</h3>
+    <div class="grid-row">
+      <div class="column-third-m column-half-l column-quarter-xl">
+        {% include 'directory_components/card.html' with html_content='<p>column-third-m</p><p>column-half-l</p><p>column-quarter-xl</p>' %}
+      </div>
+      <div class="column-half-xl column-quarter-l column-third">
+        {% include 'directory_components/card.html' with html_content='<p>column-half-xl</p><p>column-quarter-l</p><p>column-third</p>' %}
+      </div>
+      <div class="column-quarter">
+        {% include 'directory_components/card.html' with html_content='<p>column-quarter</p>' %}
+      </div>
+    </div>
+
+    <h3 class="heading-medium">.card-grid</h3>
+    <div class="card-grid">
+      <div class="column-third-m column-half-l column-quarter-xl">
+        {% include 'directory_components/card.html' with html_content='<p>column-third-m</p><p>column-half-l</p><p>column-quarter-xl</p>' %}
+      </div>
+      <div class="column-third-m column-half-l column-quarter-xl">
+        {% include 'directory_components/card.html' with html_content='<p>column-third-m</p><p>column-half-l</p><p>column-quarter-xl</p>' %}
+      </div>
+      <div class="column-third-m column-half-l column-quarter-xl">
+        {% include 'directory_components/card.html' with html_content='<p>column-third-m</p><p>column-half-l</p><p>column-quarter-xl</p>' %}
+      </div>
+      <div class="column-third-m column-half-l column-quarter-xl">
+        {% include 'directory_components/card.html' with html_content='<p>column-third-m</p><p>column-half-l</p><p>column-quarter-xl</p>' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="heading-large">Other responsive clases</h2>
+
+    <p id="list-description" class="margin-top-30">Add the following suffixes to apply the styles below only to specific screen sizes:</p>
+
+    <dl aria-labelledby="list-description">
+      <dt class="heading-small">Tablet and up</dt>
+      <dt class="margin-left-15"><code>-m</code></dt>
+      <dt class="heading-small">Desktop and up</dt>
+      <dt class="margin-left-15"><code>-l</code></dt>
+      <dt class="heading-small">Extra large screens</dt>
+      <dt class="margin-left-15"><code>-xl</code></dt>
+    </dl>
+
+
+    <h3 class="heading-medium">Width</h3>
+
+    <p class="width-two-thirds">A shortcut to using <code>.grid-row</code> and column classes. For when there is only one column of content. Like column classes, expands to full with on mobile.</p>
+    <div class="background-stone-30 width-sixth">
+      <h4 class="heading-small">.width-sixth</h4>
+      <p>{% lorem 5 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-quarter">
+      <h4 class="heading-small">.width-quarter</h4>
+      <p>{% lorem 10 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-third">
+      <h4 class="heading-small">.width-third</h4>
+      <p>{% lorem 20 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-half">
+      <h4 class="heading-small">.width-half</h4>
+      <p>{% lorem 30 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-two-thirds">
+      <h4 class="heading-small">.width-two-thirds</h4>
+      <p>{% lorem 40 w random %}</p>
+    </div>
+
+    <h3 class="heading-medium">Padding and margin</h3>
+
+    <div class="flex-grid">
+      <div class="column-half padding-bottom-15">
+        <div class="background-stone-30 border-stone border-thin overflow-auto">
+          <h4 class="heading-small background-stone margin-90 padding-90">.margin-90 .padding-90</h4>
+        </div>
+      </div>
+      <div class="column-half padding-bottom-15">
+        <div class="background-stone-30 border-stone border-thin overflow-auto">
+          <h4 class="heading-small background-stone margin-60 padding-60">.margin-60 .padding-60</h4>
+        </div>
+      </div>
+    </div>
+    <div class="flex-grid">
+      <div class="column-half padding-bottom-15">
+        <div class="background-stone-30 border-stone border-thin overflow-auto">
+          <h4 class="heading-small background-stone margin-45 padding-45">.margin-45 .padding-45</h4>
+        </div>
+      </div>
+      <div class="column-quarter padding-bottom-15">
+        <div class="background-stone-30 border-stone border-thin overflow-auto">
+          <h4 class="heading-small background-stone margin-30 padding-30">.margin-30 .padding-30</h4>
+        </div>
+      </div>
+      <div class="column-quarter padding-bottom-15">
+        <div class="background-stone-30 border-stone border-thin overflow-auto">
+          <h4 class="heading-small background-stone margin-15 padding-15">.margin-15 .padding-15</h4>
+        </div>
+      </div>
+    </div>
+
+    <a href="{% url 'index' %}" class="link link-back margin-top-30">Go back</a>
+  </div>
+</section>
+{% endblock %}

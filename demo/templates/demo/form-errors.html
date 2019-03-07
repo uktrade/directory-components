@@ -6,7 +6,7 @@
 {% load render_form from directory_components_tags %}
 
 {% block content %}
-<section>
+<section class="padding-top-30">
   <div class="container">
     <div class="grid-row">
       <div class="column-half">
@@ -14,16 +14,13 @@
         <p>All the following fields are required. Try submitting the form to see the error messages.</p>
       </div>
     </div>
+    <form method="post" action="{% url 'form-errors' %}">
+      {% csrf_token %}
+      {% render_form form %}
+      <input class="button" type="submit" value="Submit" />
+    </form>
 
-      <section>
-          <form method="post" action="{% url 'form-errors' %}">
-            {% csrf_token %}
-            {% render_form form %}
-            <input class="button" type="submit" value="Submit" />
-          </form>
-      </section>
-
-    <a href="{% url 'hello-world' %}" class="link link-back">Go back</a>
+    <a href="{% url 'index' %}" class="link link-back">Go back</a>
   </div>
 </section>
 

@@ -5,18 +5,20 @@
 
 {% block head_title %}directory-components{% endblock %}
 
+{% block css_layout_class %}forms{% endblock %}
+
 {% block content %}
-<section>
+<section class="padding-top-30">
   <div class="container">
     <h1 class="heading-xlarge">Form widgets</h1>
     <p>A form can be rendered with this template tag:</p>
-    <code>{% verbatim %}{% load render_form from directory_components_tags %}
+<pre><code>{% verbatim %}{% load render_form from directory_components_tags %}
 &lt;form&gt;
   {% csrf_token %}
   {% render_form form %}
 &lt;input class="button" type="submit" value="Submit" /&gt;
 &lt;/form&gt;
-{% endverbatim %}</code>
+{% endverbatim %}</code></pre>
 
       <h2 class="heading-large">Form widgets examples</h2>
 
@@ -30,11 +32,10 @@
             </form>
           </div>
           <div class="column-one-half">
-            <code>
-from directory_components import forms, fields
+<pre><code>from directory_components import forms, fields
 
 {{ text_form|view_instance_code }}
-            </code>
+</code></pre>
           </div>
         </article>
 
@@ -50,11 +51,10 @@ from directory_components import forms, fields
             </form>
           </div>
           <div class="column-one-half">
-            <code>
-from directory_components import forms, fields, widgets
+<pre><code>from directory_components import forms, fields, widgets
 
 {{ checkbox_form|view_instance_code }}
-            </code>
+</code></pre>
           </div>
         </article>
 
@@ -68,11 +68,10 @@ from directory_components import forms, fields, widgets
             </form>
           </div>
           <div class="column-one-half">
-            <code>
-from directory_components import forms, fields, widgets
+<pre><code>from directory_components import forms, fields, widgets
 
 {{ multiple_choice_form|view_instance_code }}
-            </code>
+</code></pre>
           </div>
         </article>
 
@@ -86,15 +85,14 @@ from directory_components import forms, fields, widgets
             </form>
           </div>
           <div class="column-one-half">
-            <code>
-from directory_components import forms, fields, widgets
+<pre><code>from directory_components import forms, fields, widgets
 
 {{ radio_form|view_instance_code }}
-            </code>
+</code></pre>
           </div>
         </article>
 
-    <a href="/" class="link link-back">Go back</a>
+    <a href="{% url 'index' %}" class="link-back link">Go back</a>
   </div>
 </section>
 
