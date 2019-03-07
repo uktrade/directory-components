@@ -22,11 +22,14 @@
       {% if html_content %}
       {{ html_content }}
       {% else %}
-        {% if title %}
-          <h3 class="heading-large">{{ title }}</h3>
+        {% if subheading %}
+          <p class="subheading">{{ subheading }}</p>
+        {% endif %}
+        {% if title or heading %}
+          <h3 class="heading-large">{% firstof title heading %}</h3>
         {% endif %}
         {% if description %}
-        <p class="description">{{ description }}</p>
+          <p class="description">{{ description }}</p>
         {% endif %}
       {% endif %}
     </div>

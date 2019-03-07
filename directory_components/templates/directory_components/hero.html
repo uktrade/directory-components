@@ -6,9 +6,16 @@
   id="hero">
   <div class="container">
     <div class="{{ title_class_name }}">
-      <h1 class="{{ heading_class_name }}" id="hero-heading">
-        {{ hero_text }}
-      </h1>
+      {% if hero_subheading %}
+        <h1 id="hero-heading" class="{{ heading_class_name }} with-subheading">
+          <span class="hero-subheading">{{ hero_subheading }}</span>
+          <span>{{ hero_text }}</span>
+        </h1>
+      {% else %}
+        <h1 class="{{ heading_class_name }}" id="hero-heading">
+          {{ hero_text }}
+        </h1>
+      {% endif %}
       {% if description %}
       <p class="hero-description" id="hero-description">{{ description }}</p>
       {% endif %}
