@@ -5,6 +5,7 @@ from django import forms
 from django.template import Context, Template
 
 from directory_components import fields
+from directory_components.templatetags import directory_components_tags
 
 REQUIRED_MESSAGE = fields.PaddedCharField.default_error_messages['required']
 
@@ -548,3 +549,25 @@ def test_split_lines():
         '<span>adipisicing elit,</span><br>'
         '<span>sed do eiusmod.</span><br>'
     )
+
+
+@pytest.mark.parametrize('template_tag', (
+    directory_components_tags.cta_box,
+    directory_components_tags.message_box,
+    directory_components_tags.banner,
+    directory_components_tags.hero,
+    directory_components_tags.card,
+    directory_components_tags.card_with_icon,
+    directory_components_tags.labelled_card,
+    directory_components_tags.labelled_image_card,
+    directory_components_tags.image_with_caption,
+    directory_components_tags.cta_card,
+    directory_components_tags.cta_link,
+))
+def test_template_tag_kwargs(template_tag):
+    test_kwargs = {
+        'foo': 'foo',
+        'bar': 'bar',
+    }
+    actual = template_tag(**test_kwargs)
+    assert actual == test_kwargs
