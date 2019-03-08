@@ -3,7 +3,7 @@ import re
 
 from django import template
 from django.templatetags import static
-from django.utils.text import slugify, mark_safe
+from django.utils.text import slugify, mark_safe, wrap
 
 register = template.Library()
 
@@ -17,6 +17,13 @@ class FullStaticNode(static.StaticNode):
 @register.tag
 def static_absolute(parser, token):
     return FullStaticNode.handle_token(parser, token)
+
+
+@register.filter
+def split_lines(text, length):
+    lines = wrap(text, length).split('\n')
+    output = ''.join(['<span>' + line + '</span><br>' for line in lines])
+    return mark_safe(output)
 
 
 def build_anchor_id(element, suffix):
@@ -99,4 +106,19 @@ def labelled_card(**kwargs):
 
 @register.inclusion_tag('directory_components/labelled_image_card.html')
 def labelled_image_card(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/image_with_caption.html')
+def image_with_caption(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/cta_card.html')
+def cta_card(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/cta_link.html')
+def cta_link(**kwargs):
     return kwargs

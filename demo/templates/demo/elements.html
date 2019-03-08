@@ -6,23 +6,20 @@
 {% block head_title %}directory-components{% endblock %}
 
 {% block content %}
-<section>
+<section class="padding-top-30">
   <div class="container">
     <h1 class="heading-xlarge">Elements & utility classes</h1>
+    <h2 class="heading-large">Headings</h2>
 
-    <div class="grid-row">
-      <div class="column-two-thirds">
+    <div class="width-two-thirds">
+      <p>Use these heading classes to change the size of headings while still keeping HTML semantic. These are all <code>h3</code> headings with different heading classes.</p>
+      <h3 class="heading-xlarge">.heading-xlarge</h3>
+      <h3 class="heading-large">.heading-large</h3>
+      <h3 class="heading-medium">.heading-medium</h3>
+      <h3 class="heading-small">.heading-small</h3>
 
-        <h2 class="heading-large">Headings</h2>
-        <p>Use these heading classes to change the size of headings while still keeping HTML semantic. These are all <code>h3</code> headings with different heading classes.</p>
-        <h3 class="heading-xlarge">.heading-xlarge</h3>
-        <h3 class="heading-large">.heading-large</h3>
-        <h3 class="heading-medium">.heading-medium</h3>
-        <h3 class="heading-small">.heading-small</h3>
-
-        <h2 class="heading-large">Font style</h2>
-        <p>These classes can be used to change font size and weight and are mobile responsive.</p>
-      </div>
+      <h2 class="heading-large">Font style</h2>
+      <p>These classes can be used to change font size and weight and are mobile responsive.</p>
     </div>
     <div class="grid-row">
       <div class="column-half">
@@ -43,52 +40,73 @@
       </div>
     </div>
 
-    <div class="grid-row">
-      <div class="column-two-thirds">
+    <div class="width-two-thirds">
+      <h3 class="heading-medium">Text transform</h3>
+      <p>Use <code>.uppercase</code> to make text <span class="uppercase">all caps.</span></p>
 
-        <h3 class="heading-medium">Text transform</h3>
-        <p>Use <code>.uppercase</code> to make text <span class="uppercase">all caps.</span></p>
+      <h2 class="heading-large">Lists</h2>
 
-        <h2 class="heading-large">Lists</h2>
+      <h3 class="heading-medium">ul .list</h3>
+      <ul class="list">
+        <li><a href="#" class="link">Related link</a></li>
+        <li><a href="#" class="link">Another related link</a></li>
+        <li><a href="#" class="link">And another link</a></li>
+        <li><a href="#" class="link bold-xsmall">More</a></li>
+      </ul>
 
-        <h3 class="heading-medium">ul .list</h3>
-        <ul class="list">
-          <li><a href="#" class="link">Related link</a></li>
-          <li><a href="#" class="link">Another related link</a></li>
-          <li><a href="#" class="link">And another link</a></li>
-          <li><a href="#" class="link bold-xsmall">More</a></li>
-        </ul>
+      <h3 class="heading-medium">ul .list .list-bullet</h3>
+      <ul class="list list-bullet">
+        <li>here is a bulleted list</li>
+        <li>this is another item in the list</li>
+        <li>and another item with a bit more text</li>
+      </ul>
 
-        <h3 class="heading-medium">ul .list .list-bullet</h3>
-        <ul class="list list-bullet">
-          <li>here is a bulleted list</li>
-          <li>this is another item in the list</li>
-          <li>and another item with a bit more text</li>
-        </ul>
-
-        <h3 class="heading-medium">ol .list .list-number</h3>
-        <ol class="list list-number">
-          <li>Understand that this is a numbered list.</li>
-          <li>Follow the second step in this numbered list.</li>
-          <li>Make sure each item is a full sentence ending with a full stop.</li>
-        </ol>
-      </div>
+      <h3 class="heading-medium">ol .list .list-number</h3>
+      <ol class="list list-number">
+        <li>Understand that this is a numbered list.</li>
+        <li>Follow the second step in this numbered list.</li>
+        <li>Make sure each item is a full sentence ending with a full stop.</li>
+      </ol>
     </div>
   </div>
 </section>
 <section>
   <div class="container">
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <h2 class="heading-large">Colour</h2>
-        <h3 class="heading-medium">Core colours</h3>
-        <ul class="list list-bullet">
-          <li><span class="background-great-red white-text">GREAT Red</span> should only be used for the GREAT logo.</li>
-          <li><span class="background-great-blue white-text">GREAT Blue</span> is used for type where possible, if not black can be used.</li>
-          <li><span class="background-flag-red white-text">Flag Red</span> is used for red lines and can be used in type.</li>
-          <li><span class="background-stone">Stone</span> has been introduced for use as a pale background colour on pages and tables.</li>
-        </ul>
-      </div>
+    <div class="width-two-thirds">
+      <h2 class="heading-large">Colour</h2>
+      <p>When using colour, always be sure to check colour contrast meets accessibility requirements. <a href="https://wave.webaim.org/" class="link">WAVE</a> is useful for automatically checking for contrast and other accessibility issues. <a href="https://wave.webaim.org/extension/" class="link">Browser extensions for WAVE are also available</a> so it can be used in the local dev environment.</p>
+      <p>Text and background colour combinations that have low contrast have been flagged. Please avoid these.</p>
+      <h3 class="heading-medium">Core colours</h3>
+      <ul class="list list-bullet">
+        <li><span class="background-great-red white-text">GREAT Red</span> should only be used for the GREAT logo.</li>
+        <li><span class="background-great-blue white-text">GREAT Blue</span> is used for type where possible, if not black can be used.</li>
+        <li><span class="background-flag-red white-text">Flag Red</span> is used for red lines and can be used in type.</li>
+        <li><span class="background-stone">Stone</span> has been introduced for use as a pale background colour on pages and tables.</li>
+      </ul>
+    </div>
+
+    <h3 class="heading-medium">Width</h3>
+
+    <p class="width-two-thirds">A shortcut to using <code>.grid-row</code> and column classes. For when there is only one column of content. Like column classes, expands to full width on mobile.</p>
+    <div class="background-stone-30 width-sixth">
+      <h4 class="heading-small">.width-sixth</h4>
+      <p>{% lorem 5 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-quarter">
+      <h4 class="heading-small">.width-quarter</h4>
+      <p>{% lorem 10 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-third">
+      <h4 class="heading-small">.width-third</h4>
+      <p>{% lorem 20 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-half">
+      <h4 class="heading-small">.width-half</h4>
+      <p>{% lorem 30 w random %}</p>
+    </div>
+    <div class="background-stone-30 width-two-thirds">
+      <h4 class="heading-small">.width-two-thirds</h4>
+      <p>{% lorem 40 w random %}</p>
     </div>
 
     <h3 class="heading-medium">Background colour</h3>
@@ -99,12 +117,12 @@
         <p class="background-dark-navy">.background-dark-navy</p>
         <p class="background-mid-blue">.background-mid-blue</p>
         <p class="background-active-blue">.background-active-blue</p>
-        <p class="background-light-blue">.background-light-blue</p>
+        <p class="background-light-blue">.background-light-blue <span class="background-great-red white-text bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
         <p class="background-aqua">.background-aqua</p>
-        <p class="background-teal">.background-teal</p>
+        <p class="background-teal">.background-teal <span class="background-great-red white-text bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
         <p class="background-flag-red">.background-flag-red</p>
         <p class="background-great-red">.background-great-red</p>
-        <p class="background-focus-yellow">.background-focus-yellow</p>
+        <p class="background-focus-yellow black-text">.background-focus-yellow</p>
       </div>
       <div class="column-half colour-examples black-text">
         <p class="background-black white-text">.background-black</p>
@@ -134,12 +152,12 @@
         <p class="dark-navy-text">.dark-navy-text</p>
         <p class="mid-blue-text">.mid-blue-text</p>
         <p class="active-blue-text">.active-blue-text</p>
-        <p class="light-blue-text">.light-blue-text</p>
+        <p class="light-blue-text">.light-blue-text <span class="background-great-red white-text bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
         <p class="aqua-text">.aqua-text</p>
-        <p class="teal-text">.teal-text</p>
+        <p class="teal-text">.teal-text <span class="background-great-red white-text bold-small padding-horizontal-15 margin-left-15">low contrast!</span></p>
         <p class="flag-red-text">.flag-red-text</p>
         <p class="great-red-text">.great-red-text</p>
-        <p class="focus-yellow-text">.focus-yellow-text</p>
+        <p class="focus-yellow-text background-great-blue">.focus-yellow-text</p>
       </div>
       <div class="column-half colour-examples">
         <p class="black-text">.black-text</p>
@@ -196,25 +214,41 @@
   </div>
 </section>
 
-<section class="background-great-blue white-text">
+<section class="underline-white background-great-blue white-text">
   <div class="container">
-    <h2 class="heading-large">Buttons</h2>
-    <div class="grid-row">
-      <div class="column-third">
-        <a href="#" class="button">.button-blue</a>
-      </div>
-      <div class="column-third">
-        <a href="#" class="button button-ghost-blue">.button-ghost-blue</a>
-      </div>
-      <div class="column-third">
-        <a href="#" class="button button-ghost-white">.button-ghost-white</a>
-      </div>
-    </div>
+    <h2 class="heading-large">Section styles</h2>
+    <h3 class="heading-medium">.underline-white</h3>
   </div>
 </section>
+
+<section class="with-flag background-great-blue white-text">
+  <div class="container">
+    <h3 class="heading-medium">.with-flag</h3>
+    <p>Adds a half flag image to the bottom left of the section.</p>
+  </div>
+</section>
+
+<section class="underline-active-blue">
+  <div class="container">
+    <h3 class="heading-medium">.underline-active-blue</h3>
+  </div>
+</section>
+
+<section class="underline-flag-red">
+  <div class="container">
+    <h3 class="heading-medium">.underline-flag-red</h3>
+  </div>
+</section>
+
+<section class="underline-great-red">
+  <div class="container">
+    <h3 class="heading-medium">.underline-great-red</h3>
+  </div>
+</section>
+
 <section>
   <div class="container">
-    <a href="/" class="link link-back">Go back</a>
+    <a href="{% url 'index' %}" class="link-back link">Go back</a>
   </div>
 </section>
 

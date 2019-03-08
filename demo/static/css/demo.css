@@ -4,22 +4,25 @@ body {
 }
 
 pre {
-  display: block;
   background-color: #fcfbf9;
   border: 1px solid #dfd5c5;
-  margin: 30px 0;
   border-radius: 5px;
+  display: block;
+  margin: 30px 0;
   padding: 15px;
-    white-space: pre-wrap;
+  white-space: pre-wrap;
+}
+
+code {
+  white-space: pre-wrap;
 }
 
 .colour-examples p {
   margin: 0;
 }
 
-#content {
+main {
   margin-top: -4px;
-  padding-top: 2em;
 }
 
 .demo-header {
@@ -89,61 +92,5 @@ pre {
 
   .demo-footer .copyright p {
     margin-top: 15px;
-  }
-}
-
-/* Prototype pages
-===================
-*/
-
-article.grid-row {
-  margin-bottom: 100px;
-}
-
-.article-content {
-  margin-left: calc(100% / 9 * 2);
-  padding-top: 2em;
-  line-height: 1.75;
-}
-
-article header .column-seven-twelfths {
-  padding-bottom: 1em;
-}
-
-article header .heading-xlarge {
-  margin-top: 0.2em;
-}
-
-.related-content {
-  background-color: #F5F2ED;
-  padding-top: 30px;
-}
-
-.related-content .container {
-  overflow: auto;
-}
-
-#content.guidance-list,
-#content.article {
-  padding-top: 0;
-}
-
-.guidance-list-cards {
-  padding: 3em 0;
-}
-
-@media (max-width: 860px) {
-  .guidance-list .column-third {
-    width: 50%;
-  }
-}
-
-@media (max-width: 640px) {
-  .guidance-list .column-third {
-    width: 100%;
-  }
-
-  .article-content {
-    margin-left: 0;
   }
 }
