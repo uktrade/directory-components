@@ -2,24 +2,24 @@
 {% load i18n %}
 {% get_current_language as lang_code %}
 
-<header id="great-header" class="great-header {% block header_class %}{% endblock %}">
+{% block header_country_selector %}
+{% endblock %}
+
+{% block header_language_selector %}
+{% endblock %}
+
+<header id="great-header" class="great-header country-selector-dialog-visible{% block header_class %}{% endblock %}">
 
   <div id="great-global-header" class="great-global-header-footer great-global-header {% block global_header_class %}{% endblock %}">
     <div class="container">
       {% block global_header_logo %}
       {% endblock %}
       <div class="great-domestic-international-links">
-        <a href="#foo" id="great-global-header-domestic-link" class="domestic">For UK businesses</a>
-        <a href="#foo" id="great-global-header-international-link" class="international">For international businesses</a>
+        <a href="{{ services_urls.exred }}" id="great-global-header-domestic-link" class="domestic">For UK businesses</a>
+        <a href="{{ services_urls.exred }}/international" id="great-global-header-international-link" class="international">For international businesses</a>
       </div>
     </div>
   </div>
-
-  {% block header_country_selector %}
-  {% endblock %}
-
-  {% block header_language_selector %}
-  {% endblock %}
 
   <div id="great-header-menu" class="great-header-menu {% block header_menu_class %}{% endblock %}">
     <div class="container">
