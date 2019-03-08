@@ -3,13 +3,13 @@
 {% block head_title %}directory-components{% endblock %}
 
 {% block content %}
-<section class="hello-world padding-top-30">
+<section class="index padding-top-30">
   <div class="container">
     <div class="width-two-thirds">
 
       <h1 class="heading-xlarge">directory-components</h1>
 
-      <p>Hello, world! This is the demo page for <a href="https://github.com/uktrade/directory-components" class="link" title="Go to directory-components on GitHub" target="_blank" rel="noopener noreferrer">directory-components</a>. From here you can preview all the components that can be used when you import this module and its CSS counterpart <a class="link" href="https://github.com/uktrade/export-elements" title="Go to export-elements on GitHub" target="_blank" rel="noopener noreferrer">export-elements</a>.</p>
+      <p>Hello, world! This is the demo page for <a href="https://github.com/uktrade/directory-components" class="link" title="Go to directory-components on GitHub" target="_blank" rel="noopener noreferrer">directory-components</a>. From here you can preview all the components and styling that can be used when you import this module.</p>
 
       <h2 class="heading-medium">Contents</h2>
 
@@ -41,7 +41,9 @@
 
       <ul class="list list-bullet" aria-labelledby="header-footer">
         <h3 class="heading-small" id="header-footer">Headers and footers</h3>
-        <li><a class="link" href="{% url 'great-header-footer' %}">Great.gov.uk header and footer</a></li>
+        <li><a class="link" href="{% url 'great-international-header-footer' %}">Great.gov.uk international header and footer</a></li>
+        <li><a class="link" href="{% url 'great-domestic-header-footer' %}">Great.gov.uk domestic header and footer</a></li>
+        <li><a class="link" href="{% url 'great-domestic-header-footer-search' %}">Great.gov.uk domestic header and footer with search box</a></li>
         <li><a class="link" href="{% url 'invest-header-footer' %}">Invest header and footer</a></li>
       </ul>
 
