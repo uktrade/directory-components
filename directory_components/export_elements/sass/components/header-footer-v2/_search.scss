@@ -1,0 +1,153 @@
+
+// SEARCH COMPONENT
+// =================
+
+// base styling. JS disabled
+
+.great-header-search-wrapper {
+  width: 100%;
+  background-color: $white;
+}
+
+.great-header-search {
+  float: right;
+
+  input {
+    height: 40px;
+    width: 200px;
+    font-family: $brand-font-alternative;
+    padding: 0 15px;
+    border-left: 2px solid $black;
+    border-top: 2px solid $black;
+    border-bottom: 2px solid $black;
+  }
+
+  button {
+    font-size: 0; // hide button text visually but not for screenreaders
+    margin-left: -4px;
+    height: 40px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: $active-blue;
+    background-size: 20px;
+    padding: 0;
+
+    &:active {
+      top: 0;
+    }
+  }
+}
+
+.great-header-search-container {
+  @include float-clear;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+// JS enabled
+
+body.js-enabled {
+  .great-header.with-search {
+    .great-header-nav {
+      margin-right: 260px;
+    }
+  }
+
+  .great-header-search-wrapper {
+    @include float-clear;
+    background: transparent;
+  }
+
+  .great-header-search {
+    width: 240px;
+    float: right;
+    margin-left: 15px;
+    margin-top: -58px;
+    padding: 8px 0;
+
+    input {
+      border: 0;
+    }
+  }
+}
+
+@media (max-width: 1260px) {
+  .great-header-search-container {
+    margin: 0 30px;
+  }
+}
+
+@media (max-width: 900px) {
+  body.js-enabled {
+    .great-header.with-search {
+      .great-header-menu > .container {
+        overflow: visible;
+      }
+
+      .great-header-nav {
+        float: none;
+      }
+
+      .great-header-nav.domestic .js-menu-control.expanded:after {
+        top: 145px;
+      }
+    }
+  }
+
+  .great-header-search-container {
+    margin: 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.js-enabled {
+    .great-header.with-search {
+      .great-header-menu > .container {
+        overflow: visible;
+      }
+
+      .great-header-nav {
+        margin-right: 0;
+      }
+
+      &.menu-expanded {
+        .great-header-nav-container {
+          margin-top: 50px;
+        }
+
+        .great-header-search-wrapper {
+          display: none;
+        }
+      }
+    }
+
+    .great-header-search {
+      width: 100%;
+      float: none;
+      margin-left: 0;
+      margin-top: 0;
+      padding: 20px 0;
+
+      input {
+        width: calc(100% - 40px);
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .great-header-search-container {
+    margin: 0 20px;
+  }
+
+  .great-header-search {
+    float: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .great-header-search-container {
+    margin: 0 20px;
+  }
+}

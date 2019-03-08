@@ -1,0 +1,22 @@
+@import '!elements/breadcrumbs';
+@import '../../sass/partials/mixins';
+@import '../../sass/partials/colours';
+
+.breadcrumbs {
+  padding: 1.5em 0;
+
+  li {
+    padding-left: 0;
+    background-image: none;
+  }
+
+  li:after {
+    @include chevron(-45deg, $light-grey);
+    margin: 0;
+    top: .45em;
+  }
+
+  ol li:last-child:after {
+    display: none;
+  }
+}
