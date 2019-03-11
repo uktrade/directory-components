@@ -8,10 +8,10 @@ test_requirements:
 	pip install -e .[test]
 
 flake8:
-	flake8 . --exclude=.venv,setup.py,directory_components/version.py
+	flake8 . --exclude=.venv,setup.py,directory_components/version.py,node_modules
 
 pytest:
-	pytest . --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no -vv --last-failed --cov-report=html
+	pytest . --ignore=node_modules --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no -vv --last-failed --cov-report=html
 
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
@@ -37,8 +37,7 @@ DEMO_SET_ENV_VARS := \
 	export DEBUG=true; \
 	export PRIVACY_COOKIE_DOMAIN=.trade.great; \
 	export PORT=9013; \
-	export HEADER_FOOTER_URLS_CONTACT_US=http://contact.trade.great:8009/directory/; \
-	export HEADER_FOOTER_URLS_GREAT_HOME=http://exred.trade.great:8007/; \
+	export DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC=http://exred.trade.great:8007/; \
 	export INVEST_BASE_URL=http://invest.trade.great:8012/
 
 
