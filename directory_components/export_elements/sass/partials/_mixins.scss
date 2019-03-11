@@ -85,11 +85,6 @@
   padding: 10px 30px;
   text-decoration: none;
   line-height: 30px;
-  // Bottom edge effect
-  @include box-shadow(none);
-  @include ie-lte(8) {
-    border-bottom: 0;
-  }
 
   &:focus:active,
   &:active {

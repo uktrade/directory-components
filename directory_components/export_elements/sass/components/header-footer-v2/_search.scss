@@ -7,34 +7,46 @@
 .great-header-search-wrapper {
   width: 100%;
   background-color: $white;
-}
 
-.great-header-search {
-  float: right;
+  form {
+    float: right;
 
-  input {
-    height: 40px;
-    width: 200px;
-    font-family: $brand-font-alternative;
-    padding: 0 15px;
-    border-left: 2px solid $black;
-    border-top: 2px solid $black;
-    border-bottom: 2px solid $black;
-  }
+    & > * {
+      float: left;
+    }
 
-  button {
-    font-size: 0; // hide button text visually but not for screenreaders
-    margin-left: -4px;
-    height: 40px;
-    width: 40px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-color: $active-blue;
-    background-size: 20px;
-    padding: 0;
+    input {
+      height: 40px;
+      width: 200px;
+      font-family: $brand-font-alternative;
+      padding: 0 15px;
+      border-left: 2px solid $black;
+      border-top: 2px solid $black;
+      border-bottom: 2px solid $black;
+    }
 
-    &:active {
-      top: 0;
+    button {
+      @include button-reset;
+      border: 0;
+      font-size: 0; // hide button text visually but not for screenreaders
+      height: 40px;
+      width: 40px;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-color: $active-blue;
+      background-image: url('/static/directory_components/images/search.svg');
+      background-size: 20px;
+      padding: 0;
+
+      &:focus,
+      &:focus:active {
+        @include focus;
+      }
+
+      &:active {
+        background-color: $focus-yellow;
+      }
+
     }
   }
 }
@@ -57,17 +69,17 @@ body.js-enabled {
   .great-header-search-wrapper {
     @include float-clear;
     background: transparent;
-  }
 
-  .great-header-search {
-    width: 240px;
-    float: right;
-    margin-left: 15px;
-    margin-top: -58px;
-    padding: 8px 0;
+    form {
+      width: 240px;
+      float: right;
+      margin-left: 15px;
+      margin-top: -58px;
+      padding: 8px 0;
 
-    input {
-      border: 0;
+      input {
+        border: 0;
+      }
     }
   }
 }
@@ -82,11 +94,13 @@ body.js-enabled {
   body.js-enabled {
     .great-header.with-search {
       .great-header-menu > .container {
-        overflow: visible;
+        padding-bottom: 0;
       }
 
       .great-header-nav {
         float: none;
+        margin-right: 0;
+        margin-top: 0;
       }
 
       .great-header-nav.domestic .js-menu-control.expanded:after {
@@ -104,7 +118,7 @@ body.js-enabled {
   body.js-enabled {
     .great-header.with-search {
       .great-header-menu > .container {
-        overflow: visible;
+        padding-bottom: 20px;
       }
 
       .great-header-nav {
@@ -112,25 +126,21 @@ body.js-enabled {
       }
 
       &.menu-expanded {
-        .great-header-nav-container {
-          margin-top: 50px;
-        }
-
         .great-header-search-wrapper {
           display: none;
         }
       }
-    }
 
-    .great-header-search {
-      width: 100%;
-      float: none;
-      margin-left: 0;
-      margin-top: 0;
-      padding: 20px 0;
+      .great-header-search-wrapper form {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 20px;
 
-      input {
-        width: calc(100% - 40px);
+        input {
+          width: calc(100% - 40px);
+        }
       }
     }
   }
@@ -141,7 +151,7 @@ body.js-enabled {
     margin: 0 20px;
   }
 
-  .great-header-search {
+  .great-header-search-wrapper form {
     float: none;
   }
 }
