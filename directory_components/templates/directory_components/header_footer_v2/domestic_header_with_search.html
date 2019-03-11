@@ -5,10 +5,12 @@
 {% block header_search %}
 <div class="great-header-search-wrapper">
   <div class="great-header-search-container">
-    <form class="great-header-search" action="/search" method="GET">
-      <input type="text" name="q" value="" placeholder="Search" >
-      <button type="submit" class="button" style="background-image: url('/static/directory_components/images/search.svg');">Search</button>
-    </form>
+    {% block header_search_form %}
+      <form action="/" method="GET">
+        <input id="search-box" type="text" name="search" placeholder="Search">
+        <button type="submit">Search</button>
+      </form>
+    {% endblock %}
   </div>
 </div>
 {% endblock %}

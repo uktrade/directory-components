@@ -70,6 +70,11 @@ def header_footer_processor(request):
         'performance': urls.PERFORMANCE_DASHBOARD,
         'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
         'terms_and_conditions': urls.TERMS_AND_CONDITIONS,
+        'fas_search': urls.FAS_SEARCH,
+        'doing_business_with_the_uk':
+            urls.GREAT_INTERNATIONAL_DOING_BUSINESS_WITH_THE_UK,
+        'industries':
+            urls.GREAT_INTERNATIONAL_INDUSTRIES,
         'market_access': urls.build_great_url('report-trade-barrier/')
     }
     if settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON']:
@@ -92,9 +97,12 @@ def urls_processor(request):
         'contact_us': urls.CONTACT_US,
         'events': urls.SERVICES_EVENTS,
         'exopps': urls.SERVICES_EXOPPS,
-        'exred': urls.SERVICE_EXPORT_READINESS,
+        'exred': urls.SERVICES_GREAT_DOMESTIC,
+        'great_domestic': urls.SERVICES_GREAT_DOMESTIC,
+        'great_international': urls.GREAT_INTERNATIONAL,
         'fab': urls.SERVICES_FAB,
         'fas': urls.SERVICES_FAS,
+        'fas_search': urls.FAS_SEARCH,
         'feedback': urls.FEEDBACK,
         'invest': urls.SERVICES_INVEST,
         'soo': urls.SERVICES_SOO,
