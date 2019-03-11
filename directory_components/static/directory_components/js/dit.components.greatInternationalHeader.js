@@ -60,24 +60,6 @@ dit.components.greatHeader = (new function() {
     $menu.before($control);
     $menu.addClass(COLLAPSED_CLASS);
 
-    // change the invest heading to a link
-    var $invest = $('#header-invest-links-heading');
-    var attrs = {};
-    attrs.href = $('#headerInvestURL').attr('value');
-
-    $.each($invest[0].attributes, function(index, attr) {
-      attrs[attr.nodeName] = attr.nodeValue;
-    });
-
-    $invest.replaceWith(function () {
-      return $('<a />', attrs).append($(this).contents());
-    });
-
-    // hide submenu items
-    $(COLLAPSIBLE_MENUS)
-      .attr('aria-hidden', 'true')
-      .hide();
-
     var _expanders = [];
 
     _expanders.push(new dit.classes.Dropdown($menu, {
@@ -86,27 +68,8 @@ dit.components.greatHeader = (new function() {
       hover: false,
       mode: self.mode,
       cleanup: function() {
-        // reassign because the element changed
-        $invest = $('#header-invest-links-heading');
-
-        // change link back to a span
-        $.each($invest[0].attributes, function(idx, attr) {
-            attrs[attr.nodeName] = attr.nodeValue;
-        });
-
-        delete attrs.href;
-
-        $invest.replaceWith(function () {
-          return $('<span />', attrs).append($(this).contents());
-        });
-
         // remove the menu button
         $control.remove();
-
-        // show submenu items again
-        $(COLLAPSIBLE_MENUS)
-          .attr('aria-hidden', 'false')
-          .show();
       }
     }));
 
@@ -126,41 +89,6 @@ dit.components.greatHeader = (new function() {
     setupResponsiveView();
   }
 
-  /* Find and enhance any Country Selector Dialog view
-   **/
-  function enhanceCountrySelector() {
-    var $dialog = $("[data-component='country-selector-dialog']");
-    dit.components.countrySelector.enhanceDialog($dialog, {
-      $controlContainer: $(EXTRA_LINKS)
-    });
-
-    countrySelectorViewInhibitor(false);
-  }
-
-  /* Because non-JS view is to show all, we might see a brief glimpse of
-   * the open language selector before JS has kicked in to add functionality.
-   * We are preventing this by immediately calling a view inhibitor function,
-   * and then the enhanceCountrySelector() function will switch of the
-   * inhibitor by calling when component has been enhanced and is ready.
-   **/
-  countrySelectorViewInhibitor(true);
-  function countrySelectorViewInhibitor(activate) {
-    var rule = "[data-component='country-selector-dialog'] { display: none; }";
-    var style;
-    if (arguments.length && activate) {
-      // Hide it.
-      style = document.createElement("style");
-      style.setAttribute("type", "text/css");
-      style.setAttribute("id", "country-dialog-view-inhibitor");
-      style.appendChild(document.createTextNode(rule));
-      document.head.appendChild(style);
-    }
-    else {
-      // Reveal it.
-      document.head.removeChild(document.getElementById("country-dialog-view-inhibitor"));
-    }
-  }
-
   this.init = function() {
     dit.responsive.init({
       'desktop': 'min-width: 769px',
@@ -170,11 +98,11 @@ dit.components.greatHeader = (new function() {
 
     setupResponsiveListener();
     setupResponsiveView();
-    enhanceCountrySelector();
     delete this.init; // Run once
   }
 });
 
 $(document).ready(function() {
   dit.components.greatHeader.init();
+  dit.components.countrySelector.init();
 });

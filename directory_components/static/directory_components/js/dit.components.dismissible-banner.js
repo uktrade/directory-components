@@ -7,11 +7,11 @@ dit.components.dismissableBanner = (new function() {
   var BANNER_ID = 'information-banner';
   var BANNER_CLOSE_BUTTON_ID = 'dismiss-banner';
 
-  hideBanner = function() {
+  this.hideBanner = function() {
     $('#information-banner').hide();
   }
 
-  createBannerCloseButton = function() {
+  this.createBannerCloseButton = function() {
     var $container = $('#information-banner .banner-content');
     var $buttonContainer = $('<div></div>');
     var $closeButton = $('<a>', {
@@ -26,24 +26,24 @@ dit.components.dismissableBanner = (new function() {
     return $closeButton;
   }
 
-  bannerCloseButtonEventHandler = function() {
-    var $button = createBannerCloseButton();
+  this.bannerCloseButtonEventHandler = function() {
+    var $button = this.createBannerCloseButton();
 
     $button.on('keydown', function(e) {
       // Close on enter or space
       if(e.which === 13 || e.which === 32) {
-        hideBanner();
+        this.hideBanner();
       }
     });
 
     $button.on('click', function(e) {
-      hideBanner();
+      this.hideBanner();
       e.preventDefault();
     });
   }
 
   this.init = function() {
-    bannerCloseButtonEventHandler();
+    this.bannerCloseButtonEventHandler();
   }
 
 });
