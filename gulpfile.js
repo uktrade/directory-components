@@ -19,7 +19,7 @@ const FLAGS_SRC = [
   `${PROJECT_DIR}/node_modules/flag-icon-css/**/*.svg`,
   `${PROJECT_DIR}/node_modules/flag-icon-css/**/*.min.css`,
 ];
-const FLAGS_DEST = `${PROJECT_DIR}/directory_components/static/vendor/flag-icons`;
+const FLAGS_DEST = `${PROJECT_DIR}/directory_components/static/directory_components/vendor/flag-icons`;
 
 // Sass lint -----------------------------
 
