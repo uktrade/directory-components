@@ -584,7 +584,9 @@ def test_convert_headings_to(heading):
 
 
 def test_convert_headings_to_does_not_convert_non_headings():
-    actual = directory_components_tags.convert_headings_to('<span></span>', 'figure')
+    actual = directory_components_tags.convert_headings_to(
+        '<span></span>', 'figure'
+    )
     expected = '<span></span>'
     assert actual == expected
 
