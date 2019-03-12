@@ -64,6 +64,25 @@ def add_export_elements_classes(value):
     return mark_safe(str(soup))
 
 
+@register.filter
+def convert_headings_to(value, heading):
+    soup = BeautifulSoup(value, 'html.parser')
+    for element in soup.findAll(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
+        element.name = heading
+    return str(soup)
+
+
+@register.filter
+def override_elements_css_class(value, element_and_override):
+    arguments = element_and_override.split(',')
+    element_type = arguments[0]
+    override = arguments[1]
+    soup = BeautifulSoup(value, 'html.parser')
+    for element in soup.findAll(element_type):
+        element.attrs['class'] = override
+    return str(soup)
+
+
 @register.inclusion_tag('directory_components/form_widgets/form.html')
 def render_form(form):
     return {'form': form}
