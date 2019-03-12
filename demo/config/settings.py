@@ -43,16 +43,16 @@ APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.staticfiles",
-    "export_elements",
-    "demo",
-    "directory_components",
+    'django.contrib.staticfiles',
+    'demo',
+    'directory_components',
 ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'directory_components.middleware.CountryMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -152,6 +152,5 @@ HEADER_FOOTER_URLS_EVENTS = env.str('HEADER_FOOTER_URLS_EVENTS', '')
 HEADER_FOOTER_URLS_CONTACT_US = env.str('HEADER_FOOTER_URLS_CONTACT_US', '')
 PRIVACY_COOKIE_DOMAIN = env.str('PRIVACY_COOKIE_DOMAIN', '')
 
-FEATURE_FLAGS = {
-    'EXPORT_JOURNEY_ON': False
-}
+# Country cookie
+COUNTRY_COOKIE_NAME = 'country'

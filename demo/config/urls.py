@@ -17,7 +17,7 @@ urlpatterns = [
     ),
     url(
         r'^great-international-header-footer/$',
-        views.BasePageView.as_view(),
+        views.InternationalHeaderView.as_view(),
         {'template_name': 'demo/great-international-header-footer.html'},
         name='great-international-header-footer',
     ),
