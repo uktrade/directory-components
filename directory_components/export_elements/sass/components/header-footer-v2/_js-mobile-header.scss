@@ -65,6 +65,11 @@
       margin: 0 30px;
       width: auto;
 
+      a,
+      a.link-heading {
+        text-decoration: underline;
+      }
+
       .column-quarter {
         width: auto;
         float: none;
