@@ -313,13 +313,14 @@ dit.constants.key = {
   }
 
   Dropdown.prototype.destroy = function() {
-    var events = this.events.CLICK + ' ' + this.events.BLUR + ' ' + this.events.FOCUS + ' ' + this.events.KEY + ' ' + this.events.ONMOUSEOUT + ' ' + this.events.ONMOUSEOVER;
+    var events = this.events.CLICK + ' ' + this.events.BLUR + ' ' + this.events.FOCUS + ' ' + this.events.KEYDOWN + ' ' + this.events.ONMOUSEOUT + ' ' + this.events.ONMOUSEOVER;
 
     this.$target.removeClass('collapsed');
 
     // not mobile view
     if (!this.config.$control) {
       this.$control.off(events);
+      this.$control.add(this.$target).off(events);
       this.$control.removeAttr('tabindex');
       this.$control.removeAttr('aria-controls');
       this.$control.removeAttr('aria-hidden');

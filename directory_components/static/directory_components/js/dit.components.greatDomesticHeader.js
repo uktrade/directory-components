@@ -37,13 +37,16 @@ dit.components.greatHeader = (new function() {
   }
 
   function setupDesktopHeader() {
+    var _expanders = [];
     self.config.mode = self.mode;
     self.config.hover = true;
     self.config.blur = true;
 
     $(COLLAPSIBLE_MENUS).each(function() {
-      expanders.push(new dit.classes.Dropdown($(this), self.config));
+      _expanders.push(new dit.classes.Dropdown($(this), self.config));
     });
+
+    expanders.push.apply(expanders, _expanders);
   }
 
   function setupMobileHeader() {
