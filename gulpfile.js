@@ -68,8 +68,6 @@ gulp.task('styles:govuk', function() {
     .pipe(sass({
       includePaths: [
         'node_modules/govuk_frontend_toolkit/stylesheets',
-        'node_modules',
-        'directory_components/export_elements',
       ],
       importer: require('./sass-importer.js')
     }).on('error', sass.logError))
@@ -139,8 +137,7 @@ gulp.task('build', cb => {
 
 gulp.task('watch', () => {
   return gulp.watch([
-    './directory_components/export_elements/**/*.scss',
-    './demo/sass/**/*.scss'
+    './directory_components/export_elements/**/*.scss'
   ], ['styles']);
 });
 
