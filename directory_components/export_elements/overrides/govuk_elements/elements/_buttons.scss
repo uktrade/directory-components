@@ -1,4 +1,6 @@
-@import 'sass/partials/mixins';
+@import '!elements/buttons';
+@import '../../sass/partials/mixins';
+@import '../../sass/partials/colours';
 
 .button {
   @include great-button;
