@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import url("https://fonts.googleapis.com/css?family=Overpass:600,700");
 .grid-row:after, #content:after, .notice:after, .panel:after, .panel-vertical-wide:after, .panel-vertical-narrow:after, fieldset:after, .form-section:after,
@@ -982,16 +981,16 @@ p,
   margin-top: 15px;
   margin-bottom: 15px;
   padding-left: 14px;
-  color: #000000;
+  color: #0b0c0c;
   text-decoration: none;
-  border-bottom: 1px solid #000000; }
+  border-bottom: 1px solid #0b0c0c; }
   @media (min-width: 641px) {
     .link-back {
       font-size: 16px;
       line-height: 1.25; } }
   .link-back:link, .link-back:visited, .link-back:hover,
   .link-back a.link-back:focus, .link-back:active {
-    color: #000000; }
+    color: #0b0c0c; }
   .link-back::before {
     content: '';
     display: block;
@@ -1100,182 +1099,6 @@ body {
   color: #666666;
   line-height: 1.5;
   margin: 0; }
-
-.button {
-  border: 0;
-  margin: 0;
-  width: auto;
-  overflow: visible;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  line-height: normal;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  -webkit-appearance: none;
-  font-size: 19px;
-  white-space: nowrap;
-  display: inline-block;
-  font-weight: 700;
-  font-family: "Overpass", "Roboto", arial, helvetica, verdana;
-  background-color: #006ccc;
-  color: #ffffff;
-  padding: 10px 30px;
-  text-decoration: none;
-  line-height: 30px; }
-  .button:focus:active, .button:active {
-    color: #000000;
-    background-color: #ffbf47; }
-  .button:focus {
-    outline: #ffbf47 solid 3px;
-    outline-offset: 0; }
-  .button:hover {
-    background-color: #005fb3; }
-  .button:after {
-    line-height: 50px; }
-  @media (max-width: 640px) {
-    .button {
-      width: 100%;
-      margin-bottom: 15px; } }
-
-.button-ghost-blue {
-  border: 0;
-  margin: 0;
-  width: auto;
-  overflow: visible;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  line-height: normal;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  -webkit-appearance: none;
-  font-size: 19px;
-  white-space: nowrap;
-  display: inline-block;
-  font-weight: 700;
-  font-family: "Overpass", "Roboto", arial, helvetica, verdana;
-  background-color: #006ccc;
-  color: #ffffff;
-  padding: 10px 30px;
-  text-decoration: none;
-  line-height: 30px;
-  background-color: transparent;
-  border: 2px solid #006ccc;
-  color: #006ccc; }
-  .button-ghost-blue:focus:active, .button-ghost-blue:active {
-    color: #000000;
-    background-color: #ffbf47; }
-  .button-ghost-blue:focus {
-    outline: #ffbf47 solid 3px;
-    outline-offset: 0; }
-  .button-ghost-blue:hover {
-    background-color: #005fb3; }
-  .button-ghost-blue:after {
-    line-height: 50px; }
-  @media (max-width: 640px) {
-    .button-ghost-blue {
-      width: 100%;
-      margin-bottom: 15px; } }
-  .button-ghost-blue:hover, .button-ghost-blue:focus {
-    background-color: #006ccc; }
-  .button-ghost-blue:focus {
-    outline: #ffbf47 solid 3px;
-    outline-offset: 0; }
-  .button-ghost-blue:focus:active, .button-ghost-blue:active {
-    color: #000000;
-    background-color: #ffbf47;
-    border-color: #ffbf47; }
-  .button-ghost-blue:focus, .button-ghost-blue:hover {
-    color: #ffffff; }
-  .button-ghost-blue:focus:active {
-    color: #000000; }
-
-.button-ghost-white {
-  border: 0;
-  margin: 0;
-  width: auto;
-  overflow: visible;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  line-height: normal;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  -webkit-appearance: none;
-  font-size: 19px;
-  white-space: nowrap;
-  display: inline-block;
-  font-weight: 700;
-  font-family: "Overpass", "Roboto", arial, helvetica, verdana;
-  background-color: #006ccc;
-  color: #ffffff;
-  padding: 10px 30px;
-  text-decoration: none;
-  line-height: 30px;
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  color: #ffffff; }
-  .button-ghost-white:focus:active, .button-ghost-white:active {
-    color: #000000;
-    background-color: #ffbf47; }
-  .button-ghost-white:focus {
-    outline: #ffbf47 solid 3px;
-    outline-offset: 0; }
-  .button-ghost-white:hover {
-    background-color: #005fb3; }
-  .button-ghost-white:after {
-    line-height: 50px; }
-  @media (max-width: 640px) {
-    .button-ghost-white {
-      width: 100%;
-      margin-bottom: 15px; } }
-  .button-ghost-white:hover, .button-ghost-white:focus {
-    background-color: #ffffff; }
-  .button-ghost-white:focus {
-    outline: #ffbf47 solid 3px;
-    outline-offset: 0; }
-  .button-ghost-white:focus:active, .button-ghost-white:active {
-    color: #000000;
-    background-color: #ffbf47;
-    border-color: #ffbf47; }
-  .button-ghost-white:focus, .button-ghost-white:hover {
-    color: #000000;
-    background-color: #ffffff; }
-
-.button-large {
-  text-align: center;
-  min-width: 300px;
-  font-size: 24px;
-  padding: 15px 30px; }
-  .button-large:after {
-    height: 60px;
-    line-height: 60px; }
-
-@media (max-width: 640px) {
-  .button-large {
-    width: 100%; } }
-
-.button-arrow-small, .button-arrow-large {
-  text-align: inherit;
-  padding-right: 70px;
-  position: relative;
-  font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
-  .button-arrow-small:after, .button-arrow-large:after {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 55px; }
-
-.button-arrow-small:after {
-  content: '➞'; }
-
-.button-arrow-large:after {
-  content: '➔'; }
 
 .icon {
   display: inline-block;
@@ -1596,25 +1419,6 @@ table {
 .table-font-xsmall th,
 .table-font-xsmall td {
   padding: 0.75em 1.25em 0.5625em 0; }
-
-details {
-  display: block;
-  clear: both; }
-  details summary {
-    display: inline-block;
-    color: #006ccc;
-    cursor: pointer;
-    position: relative;
-    margin-bottom: 0.26316em; }
-    details summary:hover {
-      color: #2b8cc4; }
-    details summary:focus {
-      outline: 3px solid #ffbf47; }
-  details .summary {
-    text-decoration: underline; }
-  details .arrow {
-    margin-right: .35em;
-    font-style: normal; }
 
 .panel {
   -webkit-box-sizing: border-box;

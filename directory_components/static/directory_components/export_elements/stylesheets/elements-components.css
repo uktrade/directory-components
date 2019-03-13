@@ -979,6 +979,9 @@ body.js-enabled .great-header-nav {
     body.js-enabled .great-header-nav .js-nav-list {
       margin: 0 30px;
       width: auto; }
+      body.js-enabled .great-header-nav .js-nav-list a,
+      body.js-enabled .great-header-nav .js-nav-list a.link-heading {
+        text-decoration: underline; }
       body.js-enabled .great-header-nav .js-nav-list .column-quarter {
         width: auto;
         float: none; }
@@ -1119,6 +1122,9 @@ body.js-enabled .great-header-nav {
     body.js-enabled .great-header-nav .js-nav-list {
       margin: 0 30px;
       width: auto; }
+      body.js-enabled .great-header-nav .js-nav-list a,
+      body.js-enabled .great-header-nav .js-nav-list a.link-heading {
+        text-decoration: underline; }
       body.js-enabled .great-header-nav .js-nav-list .column-quarter {
         width: auto;
         float: none; }
