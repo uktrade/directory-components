@@ -3,7 +3,7 @@ from directory_constants.constants.choices import COUNTRY_CHOICES
 from directory_components import helpers, forms
 
 
-class RegionalContentMixin:
+class CountryDisplayMixin:
     country_form_class = forms.CountryForm
 
     def get_context_data(self, *args, **kwargs):

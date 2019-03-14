@@ -3,7 +3,7 @@ from demo import forms
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 
-from directory_components.mixins import RegionalContentMixin
+from directory_components.mixins import CountryDisplayMixin
 
 
 class BasePageView(TemplateView):
@@ -13,7 +13,7 @@ class BasePageView(TemplateView):
         return self.kwargs.get('template_name')
 
 
-class InternationalHeaderView(RegionalContentMixin, BasePageView):
+class InternationalHeaderView(CountryDisplayMixin, BasePageView):
     pass
 
 
