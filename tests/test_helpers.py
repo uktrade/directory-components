@@ -4,6 +4,8 @@ import pytest
 
 from django.urls import reverse
 
+from directory_constants.constants.choices import COUNTRY_CHOICES
+
 from directory_components import constants, helpers
 
 
@@ -135,3 +137,22 @@ def test_govuk_retriever_three_ip_address(rf):
     assert isinstance(ips, tuple)
     assert ips.second == '1.1.1.1'
     assert ips.third == '8.8.8.8'
+
+
+@pytest.mark.parametrize('country_code,country_name', COUNTRY_CHOICES)
+def test_get_country_from_querystring(country_code, country_name, rf):
+    url = reverse('index')
+    request = rf.get(url, {'country': country_code})
+
+    actual = helpers.get_country_from_querystring(request)
+
+    assert actual == country_code
+
+
+def test_get_country_from_querystring_invalid_code(rf):
+    url = reverse('index')
+    request = rf.get(url, {'country': 'foo'})
+
+    actual = helpers.get_country_from_querystring(request)
+
+    assert not actual

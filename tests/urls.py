@@ -15,6 +15,11 @@ admin_urls = [
 
 urlpatterns = [
     url(
+        r'^$',
+        View.as_view(),
+        name='index',
+    ),
+    url(
         r'^admin/',
         include(admin_urls, namespace='admin', app_name='admin')
     ),
