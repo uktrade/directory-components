@@ -1239,6 +1239,7 @@ body.js-enabled .great-header-nav {
       -webkit-font-smoothing: inherit;
       -moz-osx-font-smoothing: inherit;
       -webkit-appearance: none;
+      color: #ffffff;
       border: 0;
       font-size: 0;
       height: 40px;
@@ -1264,7 +1265,7 @@ body.js-enabled .great-header-nav {
     clear: both; }
 
 body.js-enabled .great-header.with-search .great-header-nav {
-  margin-right: 260px; }
+  margin-right: 280px; }
 
 body.js-enabled .great-header-search-wrapper {
   background: transparent; }

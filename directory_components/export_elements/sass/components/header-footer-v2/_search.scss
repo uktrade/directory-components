@@ -27,6 +27,7 @@
 
     button {
       @include button-reset;
+      color: $white;
       border: 0;
       font-size: 0; // hide button text visually but not for screenreaders
       height: 40px;
@@ -62,7 +63,7 @@
 body.js-enabled {
   .great-header.with-search {
     .great-header-nav {
-      margin-right: 260px;
+      margin-right: 280px;
     }
   }
 
