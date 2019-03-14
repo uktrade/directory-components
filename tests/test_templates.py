@@ -3,7 +3,9 @@ import pytest
 
 from django.template.loader import render_to_string
 
-from directory_components import forms, fields, helpers
+from directory_components.helpers import SocialLinkBuilder
+from directory_components.forms import Form as ComponentsForm
+from directory_components.fields import CharField as ComponentsCharField
 from directory_components.context_processors import urls_processor
 from directory_constants.constants import urls
 
@@ -73,7 +75,7 @@ def test_404_links(settings):
     context = urls_processor(None)
     html = render_to_string('404.html', context)
 
-    assert urls.SERVICE_EXPORT_READINESS in html
+    assert urls.SERVICES_GREAT_DOMESTIC in html
     assert urls.CONTACT_US in html
 
 
@@ -94,7 +96,7 @@ def test_404_title_exists(settings):
 
 
 def test_social_share_links():
-    social_links_builder = helpers.SocialLinkBuilder(
+    social_links_builder = SocialLinkBuilder(
         url='https://testserver/',
         page_title='Do research first',
         app_title='Export Readiness',
@@ -131,8 +133,8 @@ def test_robots_site_indexing():
 
 def test_form_field_container():
 
-    class Form(forms.Form):
-        field = fields.CharField()
+    class Form(ComponentsForm):
+        field = ComponentsCharField()
 
     form = Form()
 

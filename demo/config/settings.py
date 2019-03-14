@@ -72,7 +72,6 @@ TEMPLATES = [
                     '.header_footer_processor'),
                 'directory_components.context_processors.urls_processor',
                 'directory_components.context_processors.cookie_notice',
-                'directory_components.context_processors.feature_flags',
             ],
         },
     },

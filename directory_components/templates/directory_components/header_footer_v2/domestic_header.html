@@ -2,12 +2,6 @@
 {% load static %}
 {% load i18n %}
 
-{% block header_language_selector %}
-  {% if language_switcher.show %}
-    {% include 'directory_components/header_footer_v2/language_selector.html' %}
-  {% endif %}
-{% endblock %}
-
 {% block global_header_class %}domestic{% endblock %}
 {% block header_menu_class %}domestic{% endblock %}
 {% block header_nav_class %}domestic{% endblock %}
@@ -46,11 +40,11 @@
 {% block header_nav %}
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.advice }}" class="link-heading" id="great-header-advice-link">Advice</a>
+  <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice">Advice</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.markets }}" class="link-heading" id="great-header-markets-link">Markets</a>
+  <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets">Markets</a>
 </li>
 
 <li class="column-quarter js-top-level-list">
@@ -72,13 +66,13 @@
       <a class="link" id="header-services-events" href="{{ services_urls.events }}">Find events and visits</a>
     </li>
     <li class="js-menuitem">
-      <a class="link" id="header-services-events" href="https://www.gov.uk/eori">Get an EORI number</a>
+      <a class="link" id="header-services-eori" href="https://www.gov.uk/eori">Get an EORI number</a>
     </li>
   </ul>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ services_urls.exred }}/news" class="link-heading" id="great-header-news-events-link">News and events</a>
+  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
 </li>
 
 {% endblock %}

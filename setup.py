@@ -17,7 +17,7 @@ setup(
         'beautifulsoup4>=4.6.0<5.0.0',
         'django-admin-ip-restrictor>=1.0.0,<2.0.0',
         'mohawk>=0.3.4,<1.0.0',
-        'directory-constants>=14.0.0,<15.0.0',
+        'directory-constants>=14.2.0,<15.0.0',
     ],
     extras_require={
         'test': [

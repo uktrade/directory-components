@@ -18,7 +18,7 @@
 <img src="{% static 'directory_components/images/great.svg' %}" alt="Great Britain and Northern Ireland" width="180" height="auto">
 {% endblock %}
 
-{% block header_logo_url %}{{ services_urls.great_international }}{% endblock %}
+{% block header_logo_url %}{{ header_footer_urls.great_international }}{% endblock %}
 
 {% block header_extra_links %}
 <div id="country-select-activator-container">
@@ -35,23 +35,23 @@
 {% block header_nav %}
 
 <li class="column-quarter js-menuitem">
-  <a class="link-heading" id="great-header-invest" href="{{ services_urls.invest }}">Invest</a>
+  <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}">Invest</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ services_urls.fas_search }}" class="link-heading" id="great-header-fas-link">Find a UK supplier</a>
+  <a href="{{ services_urls.fas_search }}" class="link-heading" id="header-fas-search">Find a UK supplier</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.industries }}" class="link-heading" id="great-header-industries">Industries</a>
+  <a href="{{ header_footer_urls.industries }}" class="link-heading" id="header-industries">Industries</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.doing_business_with_the_uk }}" class="link-heading" id="great-header-doing-business-with-the-uk">Doing business with the UK</a>
+  <a href="{{ header_footer_urls.how_to_do_business_with_the_uk }}" class="link-heading" id="header-how-to-do-business-with-the-uk">How to do business with the UK</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ services_urls.great_international }}news" class="link-heading" id="great-header-news-events-link">News</a>
+  <a href="{{ header_footer_urls.international_news }}" class="link-heading" id="header-news">News</a>
 </li>
 
 {% endblock %}

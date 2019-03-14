@@ -3,8 +3,11 @@ from unittest.mock import Mock
 from mohawk import Sender
 import pytest
 
+from django.conf import settings
 from django.http import HttpResponse
 from django.urls import reverse, set_urlconf
+
+from directory_constants.constants.choices import COUNTRY_CHOICES
 
 from directory_components import constants, middleware
 
@@ -461,3 +464,31 @@ def test_signature_check_skip_invalid(client, settings):
     ]
     response = client.get(reverse('admin:thing'), REMOTE_ADDR='8.8.8.8')
     assert response.status_code == 404
+
+
+def test_country_middleware_no_country_code(client, rf):
+    request = rf.get('/')
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+
+    assert not hasattr(response.cookies, settings.COUNTRY_COOKIE_NAME)
+
+
+@pytest.mark.parametrize('country_code,country_name', COUNTRY_CHOICES)
+def test_country_middleware_sets_country_cookie(
+    client, rf, country_code, country_name
+):
+    request = rf.get('/', {'country': country_code})
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+    cookie = response.cookies[settings.COUNTRY_COOKIE_NAME]
+
+    assert cookie.value == country_code
