@@ -1,23 +1,26 @@
-{% extends 'directory_components/header_footer_v2/header_base.html' %}
+{% extends 'directory_components/header_footer_old/header.html' %}
 
 {% block login_state %}
-  <div class="account-links">
+  <ul aria-label="Account links" class="account-links">
+    <li class="anonymous" id="login-state-register">
+      <a href="{{ sso_register_url }}" class="register">Register</a>
+    </li>
     <li class="anonymous" id="login-state-sign-in">
-      <a id="header-sign-in-link" href="{{ sso_login_url }}" class="account-link signin">Sign in</a>
+      <a href="{{ sso_login_url }}" class="signin">Sign in</a>
     </li>
     <li class="authenticated" id="login-state-profile" style="display: none;">
-      <a id="header-profile-link" href="{{ sso_profile_url }}" class="account-link profile">Account</a>
+      <a href="{{ sso_profile_url }}" class="profile">Account</a>
     </li>
     <li class="authenticated" id="login-state-sign-out" style="display: none;">
-      <a id="header-sign-out-link" href="{{ sso_logout_url }}" class="account-link signout">Sign out</a>
+      <a href="{{ sso_logout_url }}" class="signout">Sign out</a>
     </li>
-  </div>
-
+  </ul>
   <script type="text/javascript">
     const isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
     const accountLinksContainer = document.getElementsByClassName('account-links')[0];
     const profile = document.getElementById('login-state-profile');
     const signOut = document.getElementById('login-state-sign-out');
+    const register = document.getElementById('login-state-register');
     const signIn = document.getElementById('login-state-sign-in');
     if (isAnonymous) {
       accountLinksContainer.removeChild(profile);
@@ -25,6 +28,7 @@
     } else {
       profile.style.display = 'inline-block';
       signOut.style.display = 'inline-block';
+      accountLinksContainer.removeChild(register);
       accountLinksContainer.removeChild(signIn);
     }
   </script>

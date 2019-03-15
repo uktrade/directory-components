@@ -8,17 +8,17 @@ from directory_components import context_processors
 
 
 @pytest.mark.parametrize('template_name', [
-    'directory_components/header_footer/header.html',
-    'directory_components/header_footer/footer.html',
-    'directory_components/header_footer/header_static.html',
-    'directory_components/header_footer_v2/international_header.html',
-    'directory_components/header_footer_v2/international_footer.html',
-    'directory_components/header_footer_v2/domestic_header.html',
-    'directory_components/header_footer_v2/domestic_header_with_search.html',
-    'directory_components/header_footer_v2/domestic_footer.html',
-    'directory_components/header_footer_v2/domestic_header_static.html',
+    'directory_components/header_footer_old/header.html',
+    'directory_components/header_footer_old/footer.html',
+    'directory_components/header_footer_old/header_static.html',
+    'directory_components/header_footer/international_header.html',
+    'directory_components/header_footer/international_footer.html',
+    'directory_components/header_footer/domestic_header.html',
+    'directory_components/header_footer/domestic_header_with_search.html',
+    'directory_components/header_footer/domestic_footer.html',
+    'directory_components/header_footer/domestic_header_static.html',
     (
-        'directory_components/header_footer_v2/'
+        'directory_components/header_footer/'
         'domestic_header_with_search_static.html'
     ),
 ])
@@ -30,8 +30,8 @@ def test_templates_rendered(template_name):
 
 
 @pytest.mark.parametrize('template_name', (
-    'directory_components/header_footer/header.html',
-    'directory_components/header_footer_v2/domestic_header.html',
+    'directory_components/header_footer_old/header.html',
+    'directory_components/header_footer/domestic_header.html',
     )
 )
 def test_header_logged_in(template_name):
@@ -49,8 +49,8 @@ def test_header_logged_in(template_name):
 
 
 @pytest.mark.parametrize('template_name', (
-    'directory_components/header_footer/header.html',
-    'directory_components/header_footer_v2/domestic_header.html',
+    'directory_components/header_footer_old/header.html',
+    'directory_components/header_footer/domestic_header.html',
     )
 )
 def test_header_logged_out(template_name):
@@ -85,7 +85,7 @@ def test_urls_exist_in_header(url, settings):
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
-    template_name = 'directory_components/header_footer/header.html'
+    template_name = 'directory_components/header_footer_old/header.html'
     assert url in render_to_string(template_name, context)
 
 
@@ -107,7 +107,7 @@ def test_urls_exist_in_domestic_header_v2(url, settings):
         **context_processors.urls_processor(None)
     }
     template_name = (
-        'directory_components/header_footer_v2/domestic_header.html')
+        'directory_components/header_footer/domestic_header.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -126,7 +126,7 @@ def test_urls_exist_in_international_header_v2(url, settings):
         **context_processors.urls_processor(None)
     }
     template_name = (
-        'directory_components/header_footer_v2/international_header.html')
+        'directory_components/header_footer/international_header.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -157,7 +157,7 @@ def test_urls_exist_in_footer(url, settings):
         **context_processors.urls_processor(None),
         **context_processors.feature_flags(None),
     }
-    template_name = 'directory_components/header_footer/footer.html'
+    template_name = 'directory_components/header_footer_old/footer.html'
     assert url in render_to_string(template_name, context)
 
 
@@ -175,7 +175,7 @@ def test_urls_exist_in_domestic_footer_v2(url, settings):
         **context_processors.feature_flags(None),
     }
     template_name = (
-        'directory_components/header_footer_v2/domestic_footer.html')
+        'directory_components/header_footer/domestic_footer.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -193,7 +193,7 @@ def test_urls_exist_in_international_footer_v2(url, settings):
         **context_processors.feature_flags(None),
     }
     template_name = (
-        'directory_components/header_footer_v2/international_footer.html')
+        'directory_components/header_footer/international_footer.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -274,7 +274,7 @@ def test_header_ids_match_urls_and_text(
     }
 
     html = render_to_string(
-        'directory_components/header_footer/header.html', context
+        'directory_components/header_footer_old/header.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -342,7 +342,7 @@ def test_domestic_header_v2_ids_match_urls_and_text(
     }
 
     html = render_to_string(
-        'directory_components/header_footer_v2/domestic_header.html', context
+        'directory_components/header_footer/domestic_header.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -390,7 +390,7 @@ def test_international_header_v2_ids_match_urls_and_text(
     }
 
     html = render_to_string(
-        'directory_components/header_footer_v2/international_header.html',
+        'directory_components/header_footer/international_header.html',
         context
     )
     soup = BeautifulSoup(html, 'html.parser')
@@ -503,7 +503,7 @@ def test_footer_ids_match_urls_and_text(
         **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer/footer.html', context
+        'directory_components/header_footer_old/footer.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -549,7 +549,7 @@ def test_domestic_footer_v2_ids_match_urls_and_text(
         **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer_v2/domestic_footer.html', context
+        'directory_components/header_footer/domestic_footer.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -595,7 +595,7 @@ def test_international_footer_v2_ids_match_urls_and_text(
         **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer_v2/international_footer.html',
+        'directory_components/header_footer/international_footer.html',
         context
     )
     soup = BeautifulSoup(html, 'html.parser')
@@ -608,11 +608,11 @@ def test_international_footer_v2_ids_match_urls_and_text(
 
 @pytest.mark.parametrize('template, link_id', (
     (
-        'directory_components/header_footer/header.html',
+        'directory_components/header_footer_old/header.html',
         'header-services-market-access'
     ),
     (
-        'directory_components/header_footer/footer.html',
+        'directory_components/header_footer_old/footer.html',
         'footer-services-market-access'
     )
 ))
@@ -645,7 +645,7 @@ def test_service_header_adjusted_width_according_to_market_access_feature(
         "features": {'MARKET_ACCESS_ON': feature_status}
     }
     html = render_to_string(
-        'directory_components/header_footer/header.html',
+        'directory_components/header_footer_old/header.html',
         context
     )
     soup = BeautifulSoup(html, 'html.parser')
