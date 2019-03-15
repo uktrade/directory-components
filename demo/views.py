@@ -3,12 +3,18 @@ from demo import forms
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 
+from directory_components.mixins import CountryDisplayMixin
+
 
 class BasePageView(TemplateView):
 
     @property
     def template_name(self):
         return self.kwargs.get('template_name')
+
+
+class InternationalHeaderView(CountryDisplayMixin, BasePageView):
+    pass
 
 
 class DemoFormErrorsView(FormView):

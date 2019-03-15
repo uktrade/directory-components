@@ -1,0 +1,15 @@
+
+// Links
+
+#header-bar,
+#header-menu,
+#footer {
+
+  a {
+    color: $light-grey;
+  }
+
+  a:focus {
+    outline: 3px solid $focus-yellow;
+  }
+}

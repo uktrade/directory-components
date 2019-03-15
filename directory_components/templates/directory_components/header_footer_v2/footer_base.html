@@ -1,0 +1,41 @@
+{% load static %}
+<footer id="great-footer" class="great-footer light-grey-text background-great-blue">
+
+  <div class="great-footer-logo-container container">
+    {% block footer_left_logo %}{% endblock %}
+    {% block footer_right_logo %}{% endblock %}
+  </div>
+
+  <nav class="great-footer-links container">
+    <ul>
+      <div class="great-footer-site-links">
+        <li>
+          <a id="footer-contact" href="{{ services_urls.contact_us }}">Contact us</a>
+        </li>
+        <li>
+          <a id="footer-privacy-and-cookies" href="{{ header_footer_urls.privacy_and_cookies }}">Privacy and cookies</a>
+        </li>
+        <li>
+          <a id="footer-terms-and-conditions" href="{{ header_footer_urls.terms_and_conditions }}">Terms and conditions</a>
+        </li>
+        <li>
+          <a id="footer-dit" href="{{ header_footer_urls.dit }}">Department for International Trade on GOV.UK</a>
+        </li>
+      </div>
+
+      <div class="great-footer-domestic-international-link">
+        {% block footer_domestic_international_link %}{% endblock %}
+      </div>
+
+    </ul>
+  </nav>
+
+  <div class="great-global-header-footer {% block global_footer_class %}{% endblock %}">
+    <div class="container">
+      {% block global_footer_logo %}
+      {% endblock %}
+      <p id="great-footer-copyright" class="great-footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</p>
+    </div>
+  </div>
+
+</footer>

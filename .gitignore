@@ -102,3 +102,16 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+node_modules
+npm-debug.log
+.DS_Store
+/*.env
+
+directory_components/static/directory_components/export_elements/images/crests
+directory_components/static/directory_components/export_elements/images/examples
+directory_components/static/directory_components/export_elements/javascripts
+directory_components/static/directory_components/export_elements/stylesheets/vendor/prism*
+directory_components/static/directory_components/export_elements/stylesheets/demo*
+directory_components/static/directory_components/export_elements/stylesheets/elements-documentation*
+directory_components/static/directory_components/export_elements/stylesheets/*-ie*

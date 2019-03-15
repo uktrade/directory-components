@@ -1,0 +1,37 @@
+
+%box {
+  margin-bottom: 30px;
+
+  .box-heading {
+    margin-top: 0;
+  }
+}
+
+// CTA BOX
+// ========
+
+.cta-box {
+  @extend %box;
+  padding: 45px;
+
+  .button-container {
+    float: right;
+
+    .button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+// MESSAGE BOX
+// ============
+
+.message-box {
+  @extend %box;
+  padding: 30px;
+
+  .box-description:last-child {
+    margin-bottom: 0;
+  }
+}

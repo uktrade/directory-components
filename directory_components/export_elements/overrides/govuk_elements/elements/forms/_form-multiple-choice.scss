@@ -1,0 +1,27 @@
+@import '!elements/forms/form-multiple-choice';
+
+.multiple-choice {
+
+  [type=radio] + label {
+    &::after {
+      color: $mid-blue;
+    }
+
+    &::before {
+      border: 2px solid $mid-grey;
+      background-color: $white;
+    }
+  }
+
+  [type=checkbox] + label {
+    &::after {
+      color: $mid-blue;
+    }
+
+    &::before {
+      border-radius: 3px;
+      border: 2px solid $mid-grey;
+      background-color: $white;
+    }
+  }
+}

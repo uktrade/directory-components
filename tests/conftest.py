@@ -1,12 +1,19 @@
 import pytest
 
 from django.urls import set_urlconf
+from django.conf import settings
 
 
 def pytest_configure():
-    from django.conf import settings
     settings.configure(
         ALLOWED_HOSTS=['*'],
+        COUNTRY_COOKIE_NAME='test_country',
+        CACHES={
+            'default': {
+                'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            }
+        },
+        SESSION_ENGINE='django.contrib.sessions.backends.cache',
         ROOT_URLCONF='tests.urls',
         SSO_PROXY_LOGIN_URL='http://login.com',
         SSO_PROXY_SIGNUP_URL='http://signup.com',
@@ -15,11 +22,11 @@ def pytest_configure():
         FEATURE_FLAGS={
             'SEARCH_ENGINE_INDEXING_OFF': True,
             'MAINTENANCE_MODE_ON': False,
-            'EXPORT_JOURNEY_ON': True,
         },
         INSTALLED_APPS=[
             'django.contrib.staticfiles',
             'directory_components',
+            'django.contrib.sessions',
         ],
         STATIC_URL='/static/',
         TEMPLATES=[
@@ -38,7 +45,7 @@ def pytest_configure():
         IP_RESTRICTOR_SKIP_CHECK_SECRET='secret-debug',
         RESTRICTED_APP_NAMES=['admin'],
         ALLOWED_ADMIN_IPS=[],
-        DIRECTORY_CONSTANTS_URL_EXPORT_READINESS='https://exred.com',
+        DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC='https://exred.com',
         DIRECTORY_CONSTANTS_URL_EXPORT_OPPORTUNITIES='https://exopps.com',
         DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS='https://soo.com',
         DIRECTORY_CONSTANTS_URL_EVENTS='https://events.com',
@@ -46,9 +53,16 @@ def pytest_configure():
         DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER='https://fas.com',
         DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON='https://sso.com',
         DIRECTORY_CONSTANTS_URL_FIND_A_BUYER='https://fab.com',
-    )
+        )
 
 
 @pytest.fixture(autouse=True)
 def reset_urlsconf():
     set_urlconf('tests.urls')
+
+
+@pytest.fixture(autouse=True)
+def feature_flags(settings):
+    # solves this issue: https://github.com/pytest-dev/pytest-django/issues/601
+    settings.FEATURE_FLAGS = {**settings.FEATURE_FLAGS}
+    yield settings.FEATURE_FLAGS

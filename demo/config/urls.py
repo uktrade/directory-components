@@ -16,10 +16,22 @@ urlpatterns = [
         name='404',
     ),
     url(
-        r'^great-header-footer/$',
+        r'^great-international-header-footer/$',
+        views.InternationalHeaderView.as_view(),
+        {'template_name': 'demo/great-international-header-footer.html'},
+        name='great-international-header-footer',
+    ),
+    url(
+        r'^great-domestic-header-footer/$',
         views.BasePageView.as_view(),
-        {'template_name': 'demo/great-header-footer.html'},
-        name='great-header-footer',
+        {'template_name': 'demo/great-domestic-header-footer.html'},
+        name='great-domestic-header-footer',
+    ),
+    url(
+        r'^great-domestic-header-footer-search/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/great-domestic-header-footer-search.html'},
+        name='great-domestic-header-footer-search',
     ),
     url(
         r'^elements/$',

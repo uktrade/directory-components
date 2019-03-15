@@ -1,0 +1,31 @@
+{% extends 'demo/base.html' %}
+{% load static %}
+
+{% block body_header %}
+    {% include 'directory_components/header_footer_v2/domestic_header.html' %}
+{% endblock %}
+
+{% block header_js %}
+  <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.classes.Dropdown.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.classes.Modal.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.greatDomesticHeader.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="padding-top-30">
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h1 class="heading-xlarge">Great.gov.uk domestic header and footer</h1>
+        <a href="{% url 'index' %}" class="link-back link">Go back</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer_v2/domestic_footer.html' %}
+{% endblock %}

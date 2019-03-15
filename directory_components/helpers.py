@@ -10,6 +10,10 @@ from django.utils.encoding import iri_to_uri
 
 from directory_components import constants
 
+from directory_constants.constants.choices import COUNTRY_CHOICES
+
+COUNTRY_CODES = [code for code, _ in COUNTRY_CHOICES]
+
 
 IPs = namedtuple('IPs', ['second', 'third'])
 
@@ -180,3 +184,14 @@ def is_skip_ip_check_signature_valid(signature):
         return False
     else:
         return True
+
+
+def get_country_from_querystring(request):
+    country_code = request.GET.get('country')
+    if country_code in COUNTRY_CODES:
+        return country_code
+
+
+def get_user_country(request):
+    return get_country_from_querystring(request) or \
+        request.COOKIES.get(settings.COUNTRY_COOKIE_NAME, '')

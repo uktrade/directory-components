@@ -1,0 +1,93 @@
+
+@import '../partials/spacings';
+
+// Hero banner
+
+.hero {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: $spacing-2;
+  padding-bottom: 0;
+  color: $white;
+}
+
+.hero-generic {
+  background-color: $hero-blue;
+
+  .container {
+    min-height: 300px;
+    position: relative;
+    overflow: visible;
+  }
+
+  .hero-title {
+    background-color: $hero-blue;
+    border-bottom: $flag-red solid 6px;
+    bottom: -6px;
+    left: 0;
+    padding: 30px;
+    position: absolute;
+    width: auto;
+
+    h1 > span {
+      display: block;
+      line-height: 1.25;
+    }
+  }
+
+  .hero-title-compact {
+    @extend .hero-title;
+    padding: 25px;
+    max-width: 30%;
+
+    .hero-subheading {
+      @include brand-19();
+    }
+  }
+
+  .hero-description {
+    margin-bottom: 0;
+    font-family: $brand-font;
+  }
+
+  .hero-subheading {
+    @include brand-24();
+  }
+}
+
+.hero-domestic {
+  h1,
+  h2,
+  h3 {
+    margin-bottom: $spacing-1;
+  }
+
+  img {
+    float: right;
+    height: 90px;
+    margin-bottom: $spacing-3;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero-generic {
+    .hero-title,
+    .hero-title-compact {
+      max-width: 400px;
+    }
+  }
+}
+
+@media (min-width: 641px) {
+  .heading-hero-generic {
+    line-height: 1.46;
+  }
+}
+
+@media (max-width: 640px) {
+  .heading-hero-generic {
+    font-size: 32px;
+    line-height: 1;
+  }
+}

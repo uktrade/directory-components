@@ -11,6 +11,16 @@ from directory_components import context_processors
     'directory_components/header_footer/header.html',
     'directory_components/header_footer/footer.html',
     'directory_components/header_footer/header_static.html',
+    'directory_components/header_footer_v2/international_header.html',
+    'directory_components/header_footer_v2/international_footer.html',
+    'directory_components/header_footer_v2/domestic_header.html',
+    'directory_components/header_footer_v2/domestic_header_with_search.html',
+    'directory_components/header_footer_v2/domestic_footer.html',
+    'directory_components/header_footer_v2/domestic_header_static.html',
+    (
+        'directory_components/header_footer_v2/'
+        'domestic_header_with_search_static.html'
+    ),
 ])
 def test_templates_rendered(template_name):
     html = render_to_string(template_name)
@@ -19,8 +29,12 @@ def test_templates_rendered(template_name):
     assert '<a' in html
 
 
-def test_header_logged_in():
-    template_name = 'directory_components/header_footer/header.html'
+@pytest.mark.parametrize('template_name', (
+    'directory_components/header_footer/header.html',
+    'directory_components/header_footer_v2/domestic_header.html',
+    )
+)
+def test_header_logged_in(template_name):
     context = {
         'sso_is_logged_in': True,
         'sso_login_url': 'login.com',
@@ -34,8 +48,12 @@ def test_header_logged_in():
     assert context['sso_logout_url'] in html
 
 
-def test_header_logged_out():
-    template_name = 'directory_components/header_footer/header.html'
+@pytest.mark.parametrize('template_name', (
+    'directory_components/header_footer/header.html',
+    'directory_components/header_footer_v2/domestic_header.html',
+    )
+)
+def test_header_logged_out(template_name):
     context = {
         'sso_is_logged_in': False,
         'sso_login_url': 'login.com',
@@ -50,7 +68,7 @@ def test_header_logged_out():
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICE_EXPORT_READINESS,
+    urls.SERVICES_GREAT_DOMESTIC,
     urls.ADVICE_CREATE_AN_EXPORT_PLAN,
     urls.ADVICE_FIND_AN_EXPORT_MARKET,
     urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
@@ -62,8 +80,7 @@ def test_header_logged_out():
     urls.SERVICES_EXOPPS,
     urls.GET_FINANCE,
 ])
-def test_urls_exist_in_header_export_journey_off(url, settings):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
+def test_urls_exist_in_header(url, settings):
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
@@ -73,67 +90,48 @@ def test_urls_exist_in_header_export_journey_off(url, settings):
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICE_EXPORT_READINESS,
-    urls.CUSTOM_PAGE,
-    urls.EXPORTING_NEW,
-    urls.EXPORTING_REGULAR,
-    urls.EXPORTING_OCCASIONAL,
-    urls.GUIDANCE_FINANCE,
-    urls.GUIDANCE_GETTING_PAID,
-    urls.GUIDANCE_MARKET_RESEARCH,
-    urls.GUIDANCE_CUSTOMER_INSIGHT,
-    urls.GUIDANCE_BUSINESS_PLANNING,
-    urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
-    urls.SERVICES_EXOPPS,
-    urls.GET_FINANCE,
-])
-def test_urls_exist_in_header_export_journey_on(url, settings):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = True
-    context = {
-        **context_processors.header_footer_processor(None),
-        **context_processors.urls_processor(None),
-        **context_processors.feature_flags(None),
-    }
-    template_name = 'directory_components/header_footer/header.html'
-    assert url in render_to_string(template_name, context)
-
-
-@pytest.mark.parametrize('url', [
-    urls.SERVICE_EXPORT_READINESS,
-    urls.CUSTOM_PAGE,
-    urls.EXPORTING_NEW,
-    urls.EXPORTING_REGULAR,
-    urls.EXPORTING_OCCASIONAL,
-    urls.GUIDANCE_FINANCE,
-    urls.GUIDANCE_GETTING_PAID,
-    urls.GUIDANCE_MARKET_RESEARCH,
-    urls.GUIDANCE_CUSTOMER_INSIGHT,
-    urls.GUIDANCE_BUSINESS_PLANNING,
-    urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
-    urls.SERVICES_EXOPPS,
-    urls.GET_FINANCE,
-    urls.ABOUT,
-    urls.PRIVACY_AND_COOKIES,
-    urls.TERMS_AND_CONDITIONS,
+    urls.SERVICES_GREAT_DOMESTIC,
+    urls.GREAT_INTERNATIONAL,
+    urls.ADVICE,
+    urls.MARKETS,
     urls.SERVICES_FAB,
     urls.SERVICES_SOO,
+    urls.SERVICES_EXOPPS,
+    urls.GET_FINANCE,
     urls.SERVICES_EVENTS,
-    urls.CONTACT_US,
-    urls.DIT,
+    urls.GREAT_DOMESTIC_NEWS,
 ])
-def test_urls_exist_in_footer_export_journey_on(url, settings):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = True
+def test_urls_exist_in_domestic_header_v2(url, settings):
     context = {
         **context_processors.header_footer_processor(None),
-        **context_processors.urls_processor(None),
-        **context_processors.feature_flags(None),
+        **context_processors.urls_processor(None)
     }
-    template_name = 'directory_components/header_footer/footer.html'
+    template_name = (
+        'directory_components/header_footer_v2/domestic_header.html')
     assert url in render_to_string(template_name, context)
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICE_EXPORT_READINESS,
+    urls.SERVICES_GREAT_DOMESTIC,
+    urls.GREAT_INTERNATIONAL,
+    urls.SERVICES_INVEST,
+    urls.FAS_SEARCH,
+    urls.GREAT_INTERNATIONAL_INDUSTRIES,
+    urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
+    urls.GREAT_INTERNATIONAL_NEWS,
+])
+def test_urls_exist_in_international_header_v2(url, settings):
+    context = {
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None)
+    }
+    template_name = (
+        'directory_components/header_footer_v2/international_header.html')
+    assert url in render_to_string(template_name, context)
+
+
+@pytest.mark.parametrize('url', [
+    urls.SERVICES_GREAT_DOMESTIC,
     urls.ADVICE_CREATE_AN_EXPORT_PLAN,
     urls.ADVICE_FIND_AN_EXPORT_MARKET,
     urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
@@ -153,14 +151,49 @@ def test_urls_exist_in_footer_export_journey_on(url, settings):
     urls.CONTACT_US,
     urls.DIT,
 ])
-def test_urls_exist_in_footer_export_journey_off(url, settings):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
+def test_urls_exist_in_footer(url, settings):
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
         **context_processors.feature_flags(None),
     }
     template_name = 'directory_components/header_footer/footer.html'
+    assert url in render_to_string(template_name, context)
+
+
+@pytest.mark.parametrize('url', [
+    urls.GREAT_INTERNATIONAL,
+    urls.CONTACT_US,
+    urls.PRIVACY_AND_COOKIES,
+    urls.TERMS_AND_CONDITIONS,
+    urls.DIT,
+])
+def test_urls_exist_in_domestic_footer_v2(url, settings):
+    context = {
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None),
+        **context_processors.feature_flags(None),
+    }
+    template_name = (
+        'directory_components/header_footer_v2/domestic_footer.html')
+    assert url in render_to_string(template_name, context)
+
+
+@pytest.mark.parametrize('url', [
+    urls.SERVICES_GREAT_DOMESTIC,
+    urls.CONTACT_US,
+    urls.PRIVACY_AND_COOKIES,
+    urls.TERMS_AND_CONDITIONS,
+    urls.DIT,
+])
+def test_urls_exist_in_international_footer_v2(url, settings):
+    context = {
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None),
+        **context_processors.feature_flags(None),
+    }
+    template_name = (
+        'directory_components/header_footer_v2/international_footer.html')
     assert url in render_to_string(template_name, context)
 
 
@@ -231,10 +264,9 @@ def test_urls_exist_in_footer_export_journey_off(url, settings):
         urls.SERVICES_EVENTS,
     )
 ))
-def test_header_ids_match_urls_and_text_export_journey_off(
+def test_header_ids_match_urls_and_text(
     title, element_id, url, settings
 ):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
@@ -255,92 +287,111 @@ def test_header_ids_match_urls_and_text_export_journey_off(
 
 @pytest.mark.parametrize('title,element_id,url', (
     (
-        'I\'m new to exporting',
-        'header-export-readiness-new',
-        urls.EXPORTING_NEW,
+        'Advice',
+        'header-advice',
+        urls.ADVICE,
     ),
     (
-        'I export occasionally',
-        'header-export-readiness-occasional',
-        urls.EXPORTING_OCCASIONAL,
+        'Markets',
+        'header-markets',
+        urls.MARKETS,
     ),
     (
-        'I\'m a regular exporter',
-        'header-export-readiness-regular',
-        urls.EXPORTING_REGULAR,
-    ),
-    (
-        'Your export journey',
-        'header-custom-page-link',
-        urls.CUSTOM_PAGE,
-    ),
-    (
-        'Market research',
-        'header-guidance-market-research',
-        urls.GUIDANCE_MARKET_RESEARCH,
-    ),
-    (
-        'Customer insight',
-        'header-guidance-customer-insight',
-        urls.GUIDANCE_CUSTOMER_INSIGHT,
-    ),
-    (
-        'Finance',
-        'header-guidance-finance',
-        urls.GUIDANCE_FINANCE,
-    ),
-    (
-        'Business planning',
-        'header-guidance-business-planning',
-        urls.GUIDANCE_BUSINESS_PLANNING,
-    ),
-    (
-        'Getting paid',
-        'header-guidance-getting-paid',
-        urls.GUIDANCE_GETTING_PAID,
-    ),
-    (
-        'Operations and compliance',
-        'header-guidance-operations-and-compliance',
-        urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
-    ),
-    (
-        None,
-        'header-services-find-a-buyer',
+        'Create a business profile',
+        'header-services-business-profile',
         urls.SERVICES_FAB,
     ),
     (
-        None,
+        'Sell online overseas',
         'header-services-selling-online-overseas',
         urls.SERVICES_SOO,
     ),
     (
-        None,
+        'Find export opportunities',
         'header-services-export-opportunities',
         urls.SERVICES_EXOPPS,
     ),
     (
-        None,
+        'Get finance',
         'header-services-get-finance',
         urls.GET_FINANCE,
     ),
     (
-        None,
+        'Find events and visits',
         'header-services-events',
         urls.SERVICES_EVENTS,
-    )
+    ),
+    (
+        'Get an EORI number',
+        'header-services-eori',
+        'https://www.gov.uk/eori',
+    ),
+    (
+        'News and events',
+        'header-news',
+        urls.GREAT_DOMESTIC_NEWS,
+    ),
 ))
-def test_header_ids_match_urls_and_text_export_journey_on(
+def test_domestic_header_v2_ids_match_urls_and_text(
     title, element_id, url, settings
 ):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = True
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
         **context_processors.feature_flags(None),
     }
+
     html = render_to_string(
-        'directory_components/header_footer/header.html', context
+        'directory_components/header_footer_v2/domestic_header.html', context
+    )
+    soup = BeautifulSoup(html, 'html.parser')
+
+    element = soup.find(id=element_id)
+
+    assert element.attrs['href'] == url
+    if title:
+        assert element.string == title
+
+
+@pytest.mark.parametrize('title,element_id,url', (
+    (
+        'Invest',
+        'header-invest',
+        urls.SERVICES_INVEST,
+    ),
+    (
+        'Find a UK supplier',
+        'header-fas-search',
+        urls.FAS_SEARCH,
+    ),
+    (
+        'Industries',
+        'header-industries',
+        urls.GREAT_INTERNATIONAL_INDUSTRIES,
+    ),
+    (
+        'How to do business with the UK',
+        'header-how-to-do-business-with-the-uk',
+        urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
+    ),
+    (
+        'News',
+        'header-news',
+        urls.GREAT_INTERNATIONAL_NEWS,
+    ),
+))
+def test_international_header_v2_ids_match_urls_and_text(
+    title, element_id, url, settings
+):
+    context = {
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None),
+        **context_processors.feature_flags(None),
+    }
+
+    html = render_to_string(
+        'directory_components/header_footer_v2/international_header.html',
+        context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -443,10 +494,9 @@ def test_header_ids_match_urls_and_text_export_journey_on(
         urls.DIT
     )
 ))
-def test_footer_ids_match_urls_and_text_export_journey_off(
+def test_footer_ids_match_urls_and_text(
     title, element_id, url, settings
 ):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
@@ -465,117 +515,41 @@ def test_footer_ids_match_urls_and_text_export_journey_off(
 
 @pytest.mark.parametrize('title,element_id,url', (
     (
-        'I\'m new to exporting',
-        'footer-export-readiness-new',
-        urls.EXPORTING_NEW,
-    ),
-    (
-        'I export occasionally',
-        'footer-export-readiness-occasional',
-        urls.EXPORTING_OCCASIONAL,
-    ),
-    (
-        'I\'m a regular exporter',
-        'footer-export-readiness-regular',
-        urls.EXPORTING_REGULAR,
-    ),
-    (
-        'Your export journey',
-        'footer-custom-page-link',
-        urls.CUSTOM_PAGE,
-    ),
-    (
-        'Market research',
-        'footer-guidance-market-research',
-        urls.GUIDANCE_MARKET_RESEARCH,
-    ),
-    (
-        'Customer insight',
-        'footer-guidance-customer-insight',
-        urls.GUIDANCE_CUSTOMER_INSIGHT,
-    ),
-    (
-        'Finance',
-        'footer-guidance-finance',
-        urls.GUIDANCE_FINANCE,
-    ),
-    (
-        'Business planning',
-        'footer-guidance-business-planning',
-        urls.GUIDANCE_BUSINESS_PLANNING,
-    ),
-    (
-        'Getting paid',
-        'footer-guidance-getting-paid',
-        urls.GUIDANCE_GETTING_PAID,
-    ),
-    (
-        'Operations and compliance',
-        'footer-guidance-operations-and-compliance',
-        urls.GUIDANCE_OPERATIONS_AND_COMPLIANCE,
-    ),
-    (
-        None,
-        'footer-services-find-a-buyer',
-        urls.SERVICES_FAB,
-    ),
-    (
-        None,
-        'footer-services-selling-online-overseas',
-        urls.SERVICES_SOO,
-    ),
-    (
-        None,
-        'footer-services-export-opportunities',
-        urls.SERVICES_EXOPPS,
-    ),
-    (
-        None,
-        'footer-services-get-finance',
-        urls.GET_FINANCE,
-    ),
-    (
-        None,
-        'footer-services-events',
-        urls.SERVICES_EVENTS,
-    ),
-    (
-        'About',
-        'footer-site-links-about',
-        urls.ABOUT,
-    ),
-    (
         'Contact us',
-        'footer-site-links-contact',
+        'footer-contact',
         urls.CONTACT_US,
     ),
     (
         'Privacy and cookies',
-        'footer-site-links-privacy-and-cookies',
+        'footer-privacy-and-cookies',
         urls.PRIVACY_AND_COOKIES,
     ),
     (
         'Terms and conditions',
-        'footer-site-links-t-and-c',
+        'footer-terms-and-conditions',
         urls.TERMS_AND_CONDITIONS,
     ),
     (
         'Department for International Trade on GOV.UK',
-        'footer-site-links-dit',
+        'footer-dit',
         urls.DIT
-    )
+    ),
+    (
+        'Go to the page for international businesses',
+        'footer-international',
+        urls.GREAT_INTERNATIONAL
+    ),
 ))
-def test_footer_ids_match_urls_and_text_export_journey_on(
+def test_domestic_footer_v2_ids_match_urls_and_text(
     title, element_id, url, settings
 ):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = True
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
         **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer/footer.html', context
+        'directory_components/header_footer_v2/domestic_footer.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -585,33 +559,51 @@ def test_footer_ids_match_urls_and_text_export_journey_on(
         assert element.string == title
 
 
-def test_header_export_journey_links():
+@pytest.mark.parametrize('title,element_id,url', (
+    (
+        'Contact us',
+        'footer-contact',
+        urls.CONTACT_US,
+    ),
+    (
+        'Privacy and cookies',
+        'footer-privacy-and-cookies',
+        urls.PRIVACY_AND_COOKIES,
+    ),
+    (
+        'Terms and conditions',
+        'footer-terms-and-conditions',
+        urls.TERMS_AND_CONDITIONS,
+    ),
+    (
+        'Department for International Trade on GOV.UK',
+        'footer-dit',
+        urls.DIT
+    ),
+    (
+        'Go to the page for UK businesses',
+        'footer-domestic',
+        urls.SERVICES_GREAT_DOMESTIC
+    ),
+))
+def test_international_footer_v2_ids_match_urls_and_text(
+    title, element_id, url, settings
+):
     context = {
-        'features': {'EXPORT_JOURNEY_OFF': True}
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None),
+        **context_processors.feature_flags(None),
     }
     html = render_to_string(
-        'directory_components/header_footer/header.html', context)
-
+        'directory_components/header_footer_v2/international_footer.html',
+        context
+    )
     soup = BeautifulSoup(html, 'html.parser')
-    assert not soup.find(id='header-custom-page-link')
-    assert not soup.find(id='export-readiness-links')
-    assert not soup.find(id='header-export-readiness-new')
-    assert not soup.find(id='header-export-readiness-regular')
-    assert not soup.find(id='header-export-readiness-occasional')
 
-
-def test_footer_export_journey_links():
-    context = {
-        'features': {'EXPORT_JOURNEY_OFF': True}
-    }
-    html = render_to_string(
-        'directory_components/header_footer/footer.html', context)
-
-    soup = BeautifulSoup(html, 'html.parser')
-    assert not soup.find(id='footer-export-readiness-links')
-    assert not soup.find(id='footer-export-readiness-new')
-    assert not soup.find(id='footer-export-readiness-regular')
-    assert not soup.find(id='footer-export-readiness-occasional')
+    element = soup.find(id=element_id)
+    assert element.attrs['href'] == url
+    if title:
+        assert element.string == title
 
 
 @pytest.mark.parametrize('template, link_id', (

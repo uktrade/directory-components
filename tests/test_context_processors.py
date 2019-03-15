@@ -100,8 +100,7 @@ def test_sso_user(request_logged_in, sso_user):
     assert context['sso_user'] == sso_user
 
 
-def test_header_footer_processor_export_journey_off(settings):
-    settings.FEATURE_FLAGS['EXPORT_JOURNEY_ON'] = False
+def test_header_footer_processor(settings):
 
     context = context_processors.header_footer_processor(None)
 
@@ -126,6 +125,14 @@ def test_header_footer_processor_export_journey_off(settings):
             'advice/prepare-for-export-procedures-and-logistics/'),
         'about': 'https://exred.com/about/',
         'dit': urls.DIT,
+        'advice': 'https://exred.com/advice/',
+        'markets': 'https://exred.com/markets/',
+        'domestic_news': 'https://exred.com/news/',
+        'fas_search': 'https://fas.com/search/',
+        'how_to_do_business_with_the_uk':
+            'https://exred.com/international/how-to-do-business-with-the-uk/',
+        'industries': 'https://exred.com/international/industries/',
+        'international_news': 'https://exred.com/international/news/',
         'get_finance': 'https://exred.com/get-finance/',
         'performance': 'https://exred.com/performance-dashboard/',
         'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
@@ -153,7 +160,10 @@ def test_urls_processor(settings):
         'exred': 'https://exred.com',
         'fab': 'https://fab.com',
         'fas': 'https://fas.com',
+        'fas_search': 'https://fas.com/search/',
         'feedback': 'https://exred.com/contact/feedback/',
+        'great_domestic': 'https://exred.com',
+        'great_international': 'https://exred.com/international/',
         'invest': 'https://invest.com',
         'soo': 'https://soo.com',
         'sso': 'https://sso.com',

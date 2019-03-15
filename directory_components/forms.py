@@ -1,4 +1,13 @@
 from django import forms
+from django.forms import Select
+from django.db.models.fields import BLANK_CHOICE_DASH
+
+from directory_components import fields as components_fields
+from directory_constants.constants.choices import COUNTRY_CHOICES
+
+from directory_components import helpers
+
+COUNTRIES = BLANK_CHOICE_DASH + COUNTRY_CHOICES
 
 
 class DirectoryComponentsFormMixin:
@@ -20,3 +29,17 @@ class DirectoryComponentsFormMixin:
 
 class Form(DirectoryComponentsFormMixin, forms.Form):
     pass
+
+
+class CountryForm(Form):
+    country = components_fields.ChoiceField(
+        label='Country',
+        widget=Select(attrs={'id': 'js-country-select'}),
+        choices=COUNTRIES
+    )
+
+
+def get_country_form_initial_data(request):
+    return {
+        'country': helpers.get_user_country(request).upper() or None
+    }
