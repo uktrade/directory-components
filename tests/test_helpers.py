@@ -3,6 +3,7 @@ from unittest import mock
 import pytest
 
 from django.urls import reverse
+from django.conf import settings
 
 from directory_constants.constants.choices import COUNTRY_CHOICES
 
@@ -156,3 +157,18 @@ def test_get_country_from_querystring_invalid_code(rf):
     actual = helpers.get_country_from_querystring(request)
 
     assert not actual
+
+
+@pytest.mark.parametrize('mock_get', (
+    {'country': ''},
+    {},
+))
+def test_get_cookie_when_no_querystring(mock_get, rf):
+    settings.COUNTRY_COOKIE_NAME = 'country'
+    url = reverse('index')
+    request = rf.get(url, mock_get)
+    request.COOKIES = {'country': 'GB'}
+
+    actual = helpers.get_user_country(request)
+
+    assert actual == 'GB'
