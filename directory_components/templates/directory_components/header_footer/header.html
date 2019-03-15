@@ -1,6 +1,8 @@
 
 {% if features.NEW_HEADER_FOOTER_ON %}
-  {% include 'header_footer/domestic_header.html' %}
+  {% include 'directory_components/header_footer/domestic_header_with_search.html' %}
+
 {% else %}
-  {% include 'header_footer_old/header.html' %}
+  {% include 'directory_components/header_footer_old/header.html' %}
+
 {% endif %}

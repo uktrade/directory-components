@@ -622,7 +622,7 @@ def test_market_access_journey_feature_flag_shows_and_hides_links(
 ):
     context = {
         **context_processors.header_footer_processor(None),
-        "features": {'MARKET_ACCESS_ON': feature_status}
+        'features': {'MARKET_ACCESS_ON': feature_status}
     }
     html = render_to_string(template, context)
     soup = BeautifulSoup(html, 'html.parser')
@@ -642,7 +642,7 @@ def test_service_header_adjusted_width_according_to_market_access_feature(
 ):
     context = {
         **context_processors.header_footer_processor(None),
-        "features": {'MARKET_ACCESS_ON': feature_status}
+        'features': {'MARKET_ACCESS_ON': feature_status}
     }
     html = render_to_string(
         'directory_components/header_footer_old/header.html',
@@ -653,8 +653,39 @@ def test_service_header_adjusted_width_according_to_market_access_feature(
     if feature_status is True:
         assert 'column-sixth' in soup.find(
             id='services-links-list'
-        ).findChildren("li", recursive=False)[0].attrs['class']
+        ).findChildren('li', recursive=False)[0].attrs['class']
     else:
         assert 'column-fifth' in soup.find(
             id='services-links-list'
-        ).findChildren("li", recursive=False)[0].attrs['class']
+        ).findChildren('li', recursive=False)[0].attrs['class']
+
+
+@pytest.mark.parametrize('template_name,type', (
+    ('directory_components/header_footer/header.html', 'header'),
+    ('directory_components/header_footer/footer.html', 'footer'),
+))
+def test_new_header_footer_feature_flag_on(template_name, type, settings):
+    context = {
+        'features': {'NEW_HEADER_FOOTER_ON': True}
+    }
+
+    html = render_to_string(template_name, context)
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    assert soup.find(id='great-global-{}-logo'.format(type))
+
+
+@pytest.mark.parametrize('template_name,type', (
+    ('directory_components/header_footer/header.html', 'header'),
+    ('directory_components/header_footer/footer.html', 'footer'),
+))
+def test_new_header_footer_feature_flag_off(template_name, type, settings):
+    context = {
+        'features': {'NEW_HEADER_FOOTER_ON': False}
+    }
+    html = render_to_string(template_name, context)
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    assert soup.find(id='{}-dit-logo'.format(type))
