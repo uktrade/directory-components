@@ -571,3 +571,39 @@ def test_template_tag_kwargs(template_tag):
     }
     actual = template_tag(**test_kwargs)
     assert actual == test_kwargs
+
+
+@pytest.mark.parametrize('heading', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+def test_convert_headings_to(heading):
+    actual = directory_components_tags.convert_headings_to(
+        '<' + heading + '></' + heading + '>',
+        'figure'
+    )
+    expected = '<figure></figure>'
+    assert actual == expected
+
+
+def test_convert_headings_to_does_not_convert_non_headings():
+    actual = directory_components_tags.convert_headings_to(
+        '<span></span>', 'figure'
+    )
+    expected = '<span></span>'
+    assert actual == expected
+
+
+def test_override_elements_css_class():
+    actual = directory_components_tags.override_elements_css_class(
+        '<h2 class="existing-class"></h2>',
+        'h2,test-class'
+    )
+    expected = '<h2 class="test-class"></h2>'
+    assert actual == expected
+
+
+def test_override_elements_css_class_does_not_override_non_targets():
+    actual = directory_components_tags.override_elements_css_class(
+        '<h4 class="existing-class"></h4>',
+        'h2,test-class'
+    )
+    expected = '<h4 class="existing-class"></h4>'
+    assert actual == expected
