@@ -145,3 +145,27 @@ def test_form_field_container():
     html = render_to_string(template_name, context)
 
     assert 'id="id_field-container' in html
+
+
+def test_image_with_caption_displays_caption():
+    template_name = 'directory_components/image_with_caption.html'
+    context = {
+            'main_caption': 'Hello'
+        }
+
+    html = render_to_string(template_name, context)
+
+    assert 'figcaption class="caption"' in html
+    assert 'class="main-caption"' in html
+
+
+def test_image_with_caption_does_not_have_caption_without_caption_text():
+    template_name = 'directory_components/image_with_caption.html'
+    context = {
+            'main_caption': None
+        }
+
+    html = render_to_string(template_name, context)
+
+    assert 'figcaption class="caption"' not in html
+    assert 'class="main-caption"' not in html
