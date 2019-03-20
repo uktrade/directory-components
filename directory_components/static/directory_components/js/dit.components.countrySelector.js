@@ -26,7 +26,6 @@ dit.components.countrySelector = (new function() {
 
   this.bannerCloseButtonEventHandler = function() {
     var $button = this.createBannerCloseButton();
-    console.log('close button events');
 
     $button.on('keydown', function(e) {
       // Close on enter, space or esc
@@ -122,17 +121,13 @@ dit.components.countrySelector = (new function() {
   this.viewInhibitor(true);
 
   this.bannerEventHandler = function() {
-    console.log('events 1');
     this.bannerCloseButtonEventHandler();
-    console.log('events 2');
     this.bannerOpenButtonEventHandler();
-    console.log('events 3');
     this.bannerContentsEventHandler();
     this.selectEventHandler();
   }
 
   this.init = function() {
-    console.log('init');
     this.bannerEventHandler();
   }
 
