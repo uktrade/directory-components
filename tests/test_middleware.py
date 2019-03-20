@@ -495,7 +495,6 @@ def test_country_middleware_sets_country_cookie(
 
 
 def test_country_middleware_sets_default_cookie_name(client, rf):
-    settings.COUNTRY_COOKIE_NAME = None
     request = rf.get('/', {'country': 'GB'})
     response = HttpResponse()
     request.session = client.session
