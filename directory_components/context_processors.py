@@ -55,6 +55,7 @@ def header_footer_processor(request):
         'about': urls.ABOUT,
         'dit': urls.DIT,
         'get_finance': urls.GET_FINANCE,
+        'ukef': urls.GET_FINANCE,
         'performance': urls.PERFORMANCE_DASHBOARD,
         'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
         'terms_and_conditions': urls.TERMS_AND_CONDITIONS,

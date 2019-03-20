@@ -134,6 +134,7 @@ def test_header_footer_processor(settings):
         'industries': 'https://exred.com/international/industries/',
         'international_news': 'https://exred.com/international/news/',
         'get_finance': 'https://exred.com/get-finance/',
+        'ukef': 'https://exred.com/get-finance/',
         'performance': 'https://exred.com/performance-dashboard/',
         'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
         'terms_and_conditions': 'https://exred.com/terms-and-conditions/',

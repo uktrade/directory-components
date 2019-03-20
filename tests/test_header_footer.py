@@ -331,8 +331,8 @@ def test_header_ids_match_urls_and_text(
         urls.SERVICES_EXOPPS,
     ),
     (
-        'Get finance',
-        'header-services-get-finance',
+        'UK Export Finance',
+        'header-services-ukef',
         urls.GET_FINANCE,
     ),
     (
