@@ -61,10 +61,8 @@
 // JS enabled
 
 body.js-enabled {
-  .great-header.with-search {
-    .great-header-nav {
-      margin-right: 280px;
-    }
+  .great-header.domestic .great-header-nav {
+    margin-right: 280px;
   }
 
   .great-header-search-wrapper {
@@ -93,7 +91,7 @@ body.js-enabled {
 
 @media (max-width: 900px) {
   body.js-enabled {
-    .great-header.with-search {
+    .great-header.domestic {
       .great-header-menu > .container {
         padding-bottom: 0;
       }
@@ -117,7 +115,7 @@ body.js-enabled {
 
 @media (max-width: 768px) {
   body.js-enabled {
-    .great-header.with-search {
+    .great-header.domestic {
       .great-header-menu > .container {
         padding-bottom: 20px;
       }

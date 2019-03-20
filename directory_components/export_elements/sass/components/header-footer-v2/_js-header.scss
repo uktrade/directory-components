@@ -57,10 +57,6 @@
       outline: 3px solid $focus-yellow;
     }
 
-    &:hover span {
-      text-decoration: underline;
-    }
-
     &.collapsed .link-heading:after {
       @include chevron(45deg, $white);
       top: 4px;
@@ -82,13 +78,9 @@
         cursor: default;
       }
 
-      .link-heading {
-        text-decoration: underline;
-
-        &:after {
-          @include chevron(225deg, $white);
-          top: 6px;
-        }
+      .link-heading:after {
+        @include chevron(225deg, $white);
+        top: 6px;
       }
     }
   }
