@@ -685,11 +685,11 @@ def test_service_header_adjusted_width_according_to_market_access_feature(
         ).findChildren('li', recursive=False)[0].attrs['class']
 
 
-@pytest.mark.parametrize('template_name,type', (
+@pytest.mark.parametrize('template_name,element_type', (
     ('directory_components/header_footer/header.html', 'header'),
     ('directory_components/header_footer/footer.html', 'footer'),
 ))
-def test_new_header_footer_feature_flag_on(template_name, type, settings):
+def test_new_header_footer_feature_flag_on(template_name, element_type, settings):
     context = {
         'features': {'NEW_HEADER_FOOTER_ON': True}
     }
@@ -698,14 +698,14 @@ def test_new_header_footer_feature_flag_on(template_name, type, settings):
 
     soup = BeautifulSoup(html, 'html.parser')
 
-    assert soup.find(id='great-global-{}-logo'.format(type))
+    assert soup.find(id='great-global-{}-logo'.format(element_type))
 
 
-@pytest.mark.parametrize('template_name,type', (
+@pytest.mark.parametrize('template_name,element_type', (
     ('directory_components/header_footer/header.html', 'header'),
     ('directory_components/header_footer/footer.html', 'footer'),
 ))
-def test_new_header_footer_feature_flag_off(template_name, type, settings):
+def test_new_header_footer_feature_flag_off(template_name, element_type, settings):
     context = {
         'features': {'NEW_HEADER_FOOTER_ON': False}
     }
@@ -713,4 +713,4 @@ def test_new_header_footer_feature_flag_off(template_name, type, settings):
 
     soup = BeautifulSoup(html, 'html.parser')
 
-    assert soup.find(id='{}-dit-logo'.format(type))
+    assert soup.find(id='{}-dit-logo'.format(element_type))

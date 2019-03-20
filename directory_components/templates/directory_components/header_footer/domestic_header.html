@@ -79,7 +79,7 @@
 <div class="great-header-search-wrapper">
   <div class="great-header-search-container">
     {% block header_search_form %}
-      <form action="{{ services_urls.exred }}/search" method="GET">
+      <form action="{{ services_urls.exred }}/search/" method="GET">
         <input id="search-box" type="text" name="q" placeholder="Search">
         <button type="submit">Search</button>
       </form>
