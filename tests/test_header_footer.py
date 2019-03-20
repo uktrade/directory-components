@@ -689,7 +689,9 @@ def test_service_header_adjusted_width_according_to_market_access_feature(
     ('directory_components/header_footer/header.html', 'header'),
     ('directory_components/header_footer/footer.html', 'footer'),
 ))
-def test_new_header_footer_feature_flag_on(template_name, element_type, settings):
+def test_new_header_footer_feature_flag_on(
+    template_name, element_type, settings
+):
     context = {
         'features': {'NEW_HEADER_FOOTER_ON': True}
     }
@@ -705,7 +707,9 @@ def test_new_header_footer_feature_flag_on(template_name, element_type, settings
     ('directory_components/header_footer/header.html', 'header'),
     ('directory_components/header_footer/footer.html', 'footer'),
 ))
-def test_new_header_footer_feature_flag_off(template_name, element_type, settings):
+def test_new_header_footer_feature_flag_off(
+    template_name, element_type, settings
+):
     context = {
         'features': {'NEW_HEADER_FOOTER_ON': False}
     }
