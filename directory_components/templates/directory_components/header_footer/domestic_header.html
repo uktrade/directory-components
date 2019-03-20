@@ -67,8 +67,23 @@
   </ul>
 </li>
 
+{% if features.NEWS_SECTION_ON %}
 <li class="column-quarter js-menuitem">
   <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
 </li>
+{% endif %}
 
+{% endblock %}
+
+{% block header_search %}
+<div class="great-header-search-wrapper">
+  <div class="great-header-search-container">
+    {% block header_search_form %}
+      <form action="{{ services_urls.exred }}/search" method="GET">
+        <input id="search-box" type="text" name="q" placeholder="Search">
+        <button type="submit">Search</button>
+      </form>
+    {% endblock %}
+  </div>
+</div>
 {% endblock %}
