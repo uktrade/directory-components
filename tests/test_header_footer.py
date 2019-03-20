@@ -14,13 +14,8 @@ from directory_components import context_processors
     'directory_components/header_footer/international_header.html',
     'directory_components/header_footer/international_footer.html',
     'directory_components/header_footer/domestic_header.html',
-    'directory_components/header_footer/domestic_header_with_search.html',
     'directory_components/header_footer/domestic_footer.html',
     'directory_components/header_footer/domestic_header_static.html',
-    (
-        'directory_components/header_footer/'
-        'domestic_header_with_search_static.html'
-    ),
 ])
 def test_templates_rendered(template_name):
     html = render_to_string(template_name)
@@ -89,6 +84,28 @@ def test_urls_exist_in_header(url, settings):
     assert url in render_to_string(template_name, context)
 
 
+def test_header_v2_domestic_news_section_off(settings):
+    context = {
+        'features': {'NEWS_SECTION_ON': False},
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None)
+    }
+    template_name = 'directory_components/header_footer/domestic_header.html'
+    html = render_to_string(template_name, context)
+    assert urls.GREAT_DOMESTIC_NEWS not in html
+
+
+def test_header_v2_international_news_section_off(settings):
+    context = {
+        'features': {'NEWS_SECTION_ON': False},
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None)
+    }
+    template_name = 'directory_components/header_footer/domestic_header.html'
+    html = render_to_string(template_name, context)
+    assert urls.GREAT_INTERNATIONAL_NEWS not in html
+
+
 @pytest.mark.parametrize('url', [
     urls.SERVICES_GREAT_DOMESTIC,
     urls.GREAT_INTERNATIONAL,
@@ -103,6 +120,7 @@ def test_urls_exist_in_header(url, settings):
 ])
 def test_urls_exist_in_domestic_header_v2(url, settings):
     context = {
+        'features': {'NEWS_SECTION_ON': True},
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
@@ -122,6 +140,7 @@ def test_urls_exist_in_domestic_header_v2(url, settings):
 ])
 def test_urls_exist_in_international_header_v2(url, settings):
     context = {
+        'features': {'NEWS_SECTION_ON': True},
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
@@ -336,9 +355,12 @@ def test_domestic_header_v2_ids_match_urls_and_text(
     title, element_id, url, settings
 ):
     context = {
+        'features': {
+            'NEWS_SECTION_ON': True,
+            'NEW_HEADER_FOOTER_ON': True,
+        },
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
-        **context_processors.feature_flags(None),
     }
 
     html = render_to_string(
@@ -384,9 +406,12 @@ def test_international_header_v2_ids_match_urls_and_text(
     title, element_id, url, settings
 ):
     context = {
+        'features': {
+            'NEWS_SECTION_ON': True,
+            'NEW_HEADER_FOOTER_ON': True,
+        },
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
-        **context_processors.feature_flags(None),
     }
 
     html = render_to_string(
