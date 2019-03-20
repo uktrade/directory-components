@@ -7,7 +7,6 @@ from django.conf import settings
 def pytest_configure():
     settings.configure(
         ALLOWED_HOSTS=['*'],
-        COUNTRY_COOKIE_NAME='test_country',
         CACHES={
             'default': {
                 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',

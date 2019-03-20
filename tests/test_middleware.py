@@ -492,3 +492,16 @@ def test_country_middleware_sets_country_cookie(
     cookie = response.cookies[settings.COUNTRY_COOKIE_NAME]
 
     assert cookie.value == country_code
+
+
+def test_country_middleware_sets_default_cookie_name(client, rf):
+    settings.COUNTRY_COOKIE_NAME = None
+    request = rf.get('/', {'country': 'GB'})
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+    print(response.cookies)
+    assert response.cookies['country']
