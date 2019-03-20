@@ -1137,7 +1137,8 @@ body {
   @media (max-width: 640px) {
     .button {
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 15px;
+      text-align: center; } }
 
 .button-ghost-blue {
   border: 0;
@@ -1178,7 +1179,8 @@ body {
   @media (max-width: 640px) {
     .button-ghost-blue {
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 15px;
+      text-align: center; } }
   .button-ghost-blue:hover, .button-ghost-blue:focus {
     background-color: #006ccc; }
   .button-ghost-blue:focus {
@@ -1232,7 +1234,8 @@ body {
   @media (max-width: 640px) {
     .button-ghost-white {
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 15px;
+      text-align: center; } }
   .button-ghost-white:hover, .button-ghost-white:focus {
     background-color: #ffffff; }
   .button-ghost-white:focus {
