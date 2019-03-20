@@ -3,7 +3,6 @@ from unittest.mock import Mock
 from mohawk import Sender
 import pytest
 
-from django.conf import settings
 from django.http import HttpResponse
 from django.urls import reverse, set_urlconf
 
@@ -475,7 +474,7 @@ def test_country_middleware_no_country_code(client, rf):
     instance.process_request(request)
     instance.process_response(request, response)
 
-    assert not hasattr(response.cookies, settings.COUNTRY_COOKIE_NAME)
+    assert not hasattr(response.cookies, 'country')
 
 
 @pytest.mark.parametrize('country_code,country_name', COUNTRY_CHOICES)
@@ -489,6 +488,18 @@ def test_country_middleware_sets_country_cookie(
 
     instance.process_request(request)
     instance.process_response(request, response)
-    cookie = response.cookies[settings.COUNTRY_COOKIE_NAME]
+    cookie = response.cookies['country']
 
     assert cookie.value == country_code
+
+
+def test_country_middleware_sets_default_cookie_name(client, rf):
+    request = rf.get('/', {'country': 'GB'})
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+    print(response.cookies)
+    assert response.cookies['country']

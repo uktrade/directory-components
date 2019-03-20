@@ -1,19 +1,24 @@
-{% extends 'demo/great-domestic-header-footer.html' %}
+{% extends 'demo/base.html' %}
 {% load static %}
 
 {% block body_header %}
-    {% include 'directory_components/header_footer_v2/domestic_header_with_search.html' %}
+    {% include 'directory_components/header_footer_old/header.html' %}
 {% endblock %}
+
 
 {% block content %}
 <section class="padding-top-30">
   <div class="container">
     <div class="grid-row">
       <div class="column-two-thirds">
-        <h1 class="heading-xlarge">Great.gov.uk domestic header and footer with search box</h1>
+        <h1 class="heading-xlarge">Great.gov.uk domestic header and footer</h1>
         <a href="{% url 'index' %}" class="link-back link">Go back</a>
       </div>
     </div>
   </div>
 </section>
+{% endblock %}
+
+{% block body_footer %}
+    {% include 'directory_components/header_footer_old/footer.html' %}
 {% endblock %}

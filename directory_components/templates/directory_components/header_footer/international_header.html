@@ -1,9 +1,9 @@
-{% extends 'directory_components/header_footer_v2/header_base.html' %}
+{% extends 'directory_components/header_footer/header_base.html' %}
 {% load static %}
 {% load i18n %}
 
 {% block header_country_selector %}
-  {% include 'directory_components/header_footer_v2/header_country_select.html' %}
+  {% include 'directory_components/header_footer/header_country_select.html' %}
 {% endblock %}
 
 {% block global_header_class %}international{% endblock %}
@@ -50,8 +50,10 @@
   <a href="{{ header_footer_urls.how_to_do_business_with_the_uk }}" class="link-heading" id="header-how-to-do-business-with-the-uk">How to do business with the UK</a>
 </li>
 
+{% if features.NEWS_SECTION_ON %}
 <li class="column-quarter js-menuitem">
   <a href="{{ header_footer_urls.international_news }}" class="link-heading" id="header-news">News</a>
 </li>
+{% endif %}
 
 {% endblock %}

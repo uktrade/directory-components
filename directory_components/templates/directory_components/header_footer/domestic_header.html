@@ -1,4 +1,4 @@
-{% extends 'directory_components/header_footer_v2/header_base.html' %}
+{% extends 'directory_components/header_footer/header_base.html' %}
 {% load static %}
 {% load i18n %}
 
@@ -8,10 +8,6 @@
 
 {% block global_header_logo %}
 <img id="great-global-header-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
-{% endblock %}
-
-{% block global_footer_logo %}
-<img id="great-global-footer-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
 {% endblock %}
 
 {% block header_logo %}
@@ -60,7 +56,7 @@
       <a class="link" id="header-services-export-opportunities" href="{{ services_urls.exopps }}">Find export opportunities</a>
     </li>
     <li class="js-menuitem">
-      <a class="link" id="header-services-get-finance" href="{{ header_footer_urls.get_finance }}">Get finance</a>
+      <a class="link" id="header-services-ukef" href="{{ header_footer_urls.ukef }}">UK Export Finance</a>
     </li>
     <li class="js-menuitem">
       <a class="link" id="header-services-events" href="{{ services_urls.events }}">Find events and visits</a>
@@ -71,8 +67,23 @@
   </ul>
 </li>
 
+{% if features.NEWS_SECTION_ON %}
 <li class="column-quarter js-menuitem">
   <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
 </li>
+{% endif %}
 
+{% endblock %}
+
+{% block header_search %}
+<div class="great-header-search-wrapper">
+  <div class="great-header-search-container">
+    {% block header_search_form %}
+      <form action="{{ services_urls.exred }}/search/" method="GET">
+        <input id="search-box" type="text" name="q" placeholder="Search">
+        <button type="submit">Search</button>
+      </form>
+    {% endblock %}
+  </div>
+</div>
 {% endblock %}

@@ -146,9 +146,11 @@ class CountryMiddleware:
         Shares config with the language cookie as they serve a similar purpose
         """
 
+        cookie_name = getattr(settings, 'COUNTRY_COOKIE_NAME', 'country')
+
         if hasattr(request, 'COUNTRY_CODE'):
             response.set_cookie(
-                key=settings.COUNTRY_COOKIE_NAME,
+                key=cookie_name,
                 value=request.COUNTRY_CODE,
                 max_age=settings.LANGUAGE_COOKIE_AGE,
                 path=settings.LANGUAGE_COOKIE_PATH,

@@ -28,10 +28,10 @@ urlpatterns = [
         name='great-domestic-header-footer',
     ),
     url(
-        r'^great-domestic-header-footer-search/$',
+        r'^old-domestic-header-footer/$',
         views.BasePageView.as_view(),
-        {'template_name': 'demo/great-domestic-header-footer-search.html'},
-        name='great-domestic-header-footer-search',
+        {'template_name': 'demo/old-domestic-header-footer.html'},
+        name='old-domestic-header-footer',
     ),
     url(
         r'^elements/$',

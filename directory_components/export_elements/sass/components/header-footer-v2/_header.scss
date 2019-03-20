@@ -9,6 +9,19 @@
 @import '../partials/mixins';
 
 .great-header {
+  // need to make sure it's not underneath anything
+  position: relative;
+  z-index: 5;
+
+  // fix for SOO
+  .great-header-nav {
+    a.link,
+    a.link:hover {
+      margin-bottom: 0;
+      border: 0;
+    }
+  }
+
   a {
     &:active:focus {
       background-color: $focus-yellow;
