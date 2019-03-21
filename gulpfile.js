@@ -96,6 +96,23 @@ gulp.task('styles:components', () => {
     .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'));
 });
 
+// TO BE REMOVED!
+// Export-elements-specific no-JS component styling
+// Only used in the old domestic header and footer
+
+gulp.task('styles:no-js', () => {
+  return gulp.src('directory_components/export_elements/sass/components/elements-components-no-js.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(cssnano())
+    .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'));
+});
+
 // Flag icons
 
 gulp.task('flags', function() {
@@ -108,6 +125,7 @@ gulp.task('flags', function() {
 gulp.task('styles', [
   'styles:govuk',
   'styles:components',
+  'styles:no-js',
 ]);
 
 // Images build task ---------------------
