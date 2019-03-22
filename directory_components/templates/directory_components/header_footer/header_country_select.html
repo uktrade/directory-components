@@ -11,15 +11,15 @@
           {% if country %}
             <span id="flag-container" class="js-enabled-only flag-icon flag-icon-{{ country.code }}"></span>
           {% endif %}
-          <div class="country-select{% if form.country.errors %} form-group-error{% endif %}">
-            {% if form.country.label %}{{ form.country.label_tag }}{% endif %}
-            {% if form.country.errors %}
-              <span class="error-message">{{ form.country.errors }}</span>
+          <div class="country-select{% if country_selector_form.country.errors %} form-group-error{% endif %}">
+            {% if country_selector_form.country.label %}{{ country_selector_form.country.label_tag }}{% endif %}
+            {% if country_selector_form.country.errors %}
+              <span class="error-message">{{ country_selector_form.country.errors }}</span>
             {% endif %}
-            {% if form.country.help_text %}
-              <span class="form-hint">{{ form.country.help_text }}</span>
+            {% if country_selector_form.country.help_text %}
+              <span class="form-hint">{{ country_selector_form.country.help_text }}</span>
             {% endif %}
-            {{ form.country }}
+            {{ country_selector_form.country }}
           </div>
         </div>
         <div class="button-container">
