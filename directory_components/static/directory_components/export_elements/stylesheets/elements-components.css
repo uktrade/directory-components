@@ -1406,14 +1406,15 @@ body.js-enabled .great-header-search-wrapper {
     float: none; } }
 
 .country-selector-dialog {
-  padding: 20px 0 30px;
-  border-bottom: 1px solid #dfd5c5; }
+  border-bottom: 1px solid #dfd5c5;
+  padding: 0; }
   .country-selector-dialog h2 {
     font-family: "Overpass", "Roboto", arial, helvetica, verdana;
     font-weight: 700;
     font-size: 22px; }
   .country-selector-dialog .countries {
-    position: relative; }
+    position: relative;
+    margin: 20px 0 30px; }
   .country-selector-dialog .button-container {
     float: left;
     width: 50%;

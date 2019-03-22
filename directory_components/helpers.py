@@ -194,4 +194,4 @@ def get_country_from_querystring(request):
 
 def get_user_country(request):
     return get_country_from_querystring(request) or \
-        request.COOKIES.get(settings.COUNTRY_COOKIE_NAME, '')
+        request.COOKIES.get(constants.COUNTRY_COOKIE_NAME, '')

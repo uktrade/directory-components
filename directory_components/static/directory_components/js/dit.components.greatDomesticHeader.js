@@ -100,12 +100,12 @@ dit.components.greatHeader = (new function() {
   }
 
   // destroy, set up again in correct mode
-  this.reset = function() {
+  self.reset = function() {
     while (expanders.length) expanders.pop().destroy();
     setupResponsiveView();
   }
 
-  this.init = function() {
+  self.init = function() {
     dit.responsive.init({
       'desktop': 'min-width: 769px',
       'tablet' : 'max-width: 768px',
@@ -114,7 +114,7 @@ dit.components.greatHeader = (new function() {
 
     setupResponsiveListener();
     setupResponsiveView();
-    delete this.init; // Run once
+    delete self.init; // Run once
   }
 });
 
