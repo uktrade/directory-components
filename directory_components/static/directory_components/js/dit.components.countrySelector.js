@@ -3,6 +3,7 @@ var dit = dit || {};
 dit.components = dit.components || {};
 
 dit.components.countrySelector = (new function() {
+  var self = this;
 
   var BANNER = '#country-selector-dialog';
   var BANNER_ID = 'country-selector-dialog';
@@ -12,7 +13,7 @@ dit.components.countrySelector = (new function() {
   var COUNTRY_SELECT = '#js-country-select';
   var FLAG = '#flag-container';
 
-  this.createBannerCloseButton = function() {
+  self.createBannerCloseButton = function() {
     var $container = $(BANNER + ' .countries');
     var $button = $('<button></button>', {
       'text': 'Close',
@@ -24,24 +25,24 @@ dit.components.countrySelector = (new function() {
     return $button;
   }
 
-  this.bannerCloseButtonEventHandler = function() {
-    var $button = this.createBannerCloseButton();
+  self.bannerCloseButtonEventHandler = function() {
+    var $button = self.createBannerCloseButton();
 
     $button.on('keydown', function(e) {
       // Close on enter, space or esc
       if(e.which === 13 || e.which === 32 || e.which == 27) {
         e.preventDefault();
-        this.closeBanner();
+        self.closeBanner();
       }
     });
 
     $button.on('click', function(e) {
       e.preventDefault();
-      this.closeBanner();
+      self.closeBanner();
     });
   }
 
-  this.createBannerOpenButton = function() {
+  self.createBannerOpenButton = function() {
     var $element = $('#country-text');
     var $button = $('<button></button>', {
       'text': 'Change country',
@@ -53,14 +54,14 @@ dit.components.countrySelector = (new function() {
     return $button;
   }
 
-  this.bannerOpenButtonEventHandler = function() {
-    var $button = this.createBannerOpenButton();
+  self.bannerOpenButtonEventHandler = function() {
+    var $button = self.createBannerOpenButton();
 
     $button.on('keydown', function(e) {
       // Close on enter or space
       if(e.which === 13 || e.which === 32) {
         e.preventDefault();
-        this.openBanner();
+        self.openBanner();
       }
     });
 
@@ -70,29 +71,29 @@ dit.components.countrySelector = (new function() {
     });
   }
 
-  this.closeBanner = function() {
+  self.closeBanner = function() {
     $(BANNER).hide();
     $(BANNER_ACTIVATOR).focus();
   }
 
-  this.openBanner = function() {
+  self.openBanner = function() {
     $(BANNER).show();
     $(COUNTRY_SELECT).focus();
   }
 
-  this.bannerContentsEventHandler = function() {
+  self.bannerContentsEventHandler = function() {
     var $items = $(BANNER).find('form').find('select, a, button, input');
 
     $items.each(function() {
       $(this).on('keydown', function(e) {
         if (e.which === 27) { // esc
-          this.closeBanner();
+          self.closeBanner();
         }
       })
     })
   }
 
-  this.selectEventHandler = function() {
+  self.selectEventHandler = function() {
     $(COUNTRY_SELECT).on('change', function() {
       var country = '';
 
@@ -104,7 +105,7 @@ dit.components.countrySelector = (new function() {
     });
   }
 
-  this.viewInhibitor = function(activate) {
+  self.viewInhibitor = function(activate) {
     var rule = BANNER + " { display: none; }";
     var style;
     if (arguments.length && activate) {
@@ -118,17 +119,17 @@ dit.components.countrySelector = (new function() {
       document.head.removeChild(document.getElementById("country-dialog-view-inhibitor"));
     }
   }
-  this.viewInhibitor(true);
+  self.viewInhibitor(true);
 
-  this.bannerEventHandler = function() {
-    this.bannerCloseButtonEventHandler();
-    this.bannerOpenButtonEventHandler();
-    this.bannerContentsEventHandler();
-    this.selectEventHandler();
+  self.bannerEventHandler = function() {
+    self.bannerCloseButtonEventHandler();
+    self.bannerOpenButtonEventHandler();
+    self.bannerContentsEventHandler();
+    self.selectEventHandler();
   }
 
-  this.init = function() {
-    this.bannerEventHandler();
+  self.init = function() {
+    self.bannerEventHandler();
   }
 
 });
