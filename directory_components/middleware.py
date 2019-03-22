@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
 
+from directory_components import constants
 from directory_components import helpers
 
 logger = logging.getLogger(__name__)
@@ -146,11 +147,9 @@ class CountryMiddleware:
         Shares config with the language cookie as they serve a similar purpose
         """
 
-        cookie_name = getattr(settings, 'COUNTRY_COOKIE_NAME', 'country')
-
         if hasattr(request, 'COUNTRY_CODE'):
             response.set_cookie(
-                key=cookie_name,
+                key=constants.COUNTRY_COOKIE_NAME,
                 value=request.COUNTRY_CODE,
                 max_age=settings.LANGUAGE_COOKIE_AGE,
                 path=settings.LANGUAGE_COOKIE_PATH,
