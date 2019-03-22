@@ -24,7 +24,8 @@ class CountryDisplayMixin:
         return super().get_context_data(
             hide_country_selector=hide_country_selector,
             country=country,
-            form=self.country_form_class(**country_form_kwargs),
+            country_selector_form=self.country_form_class(
+                **country_form_kwargs),
             *args, **kwargs
         )
 
