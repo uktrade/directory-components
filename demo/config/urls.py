@@ -75,7 +75,7 @@ urlpatterns = [
     ),
     url(
         r'^cards/$',
-        views.BasePageView.as_view(),
+        views.DemoCardsView.as_view(),
         {'template_name': 'demo/cards.html'},
         name='cards',
     ),
