@@ -1,0 +1,25 @@
+<div class="statistics-card-grid card-grid underline-active-blue padding-bottom-15">
+  {% for statistic in statistics %}
+    {% if statistic.number %}
+      {% if num_of_statistics >= 6 %}
+      <figure class="column-half column-third-l column-sixth-xl">
+      {% elif num_of_statistics == 5 %}
+      <figure class="column-half column-third-l column-sixth-xl">
+      {% elif num_of_statistics == 4 %}
+      <figure class="column-half column-quarter-xl">
+      {% elif num_of_statistics == 3 %}
+      <figure class="column-half column-third-l">
+      {% else %}
+      <figure class="column-half">
+      {% endif %}
+        <figcaption>
+          <p class="statistic-heading margin-top-30">{{ statistic.heading }}</p>
+        </figcaption>
+        <p class="active-blue-text statistic-number {% if statistic.number|length > 8 %} bold-medium{% else %} bold-large{% endif %}">{{ statistic.number }}</p>
+        <figcaption>
+          <p class="font-xsmall statistic-smallprint">{{ statistic.smallprint }}</p>
+        </figcaption>
+      </figure>
+    {% endif %}
+  {% endfor %}
+</div>

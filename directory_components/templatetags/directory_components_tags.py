@@ -141,3 +141,8 @@ def cta_card(**kwargs):
 @register.inclusion_tag('directory_components/cta_link.html')
 def cta_link(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/statistics_card_grid.html')
+def statistics_card_grid(**kwargs):
+    return kwargs
