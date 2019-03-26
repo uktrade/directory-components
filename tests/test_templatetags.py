@@ -563,6 +563,7 @@ def test_split_lines():
     directory_components_tags.image_with_caption,
     directory_components_tags.cta_card,
     directory_components_tags.cta_link,
+    directory_components_tags.statistics_card_grid
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
