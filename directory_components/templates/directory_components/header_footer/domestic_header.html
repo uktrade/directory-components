@@ -44,28 +44,8 @@
   <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets">Markets</a>
 </li>
 
-<li class="column-quarter js-top-level-list">
-  <span class="link-heading js-link-heading" id="header-services-links-heading">Services</span>
-  <ul class="js-collapsible-menu" aria-labelledby="header-services-links-heading" id="header-services-links-list">
-    <li class="js-menuitem">
-      <a class="link" id="header-services-business-profile" href="{{ services_urls.fab }}">Create a business profile</a>
-    </li>
-    <li class="js-menuitem">
-      <a class="link" id="header-services-selling-online-overseas" href="{{ services_urls.soo }}">Sell online overseas</a>
-    </li>
-    <li class="js-menuitem">
-      <a class="link" id="header-services-export-opportunities" href="{{ services_urls.exopps }}">Find export opportunities</a>
-    </li>
-    <li class="js-menuitem">
-      <a class="link" id="header-services-ukef" href="{{ header_footer_urls.ukef }}">UK Export Finance</a>
-    </li>
-    <li class="js-menuitem">
-      <a class="link" id="header-services-events" href="{{ services_urls.events }}">Find events and visits</a>
-    </li>
-    <li class="js-menuitem">
-      <a class="link" id="header-services-eori" href="https://www.gov.uk/eori">Get an EORI number</a>
-    </li>
-  </ul>
+<li class="column-quarter js-menuitem">
+  <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services">Services</a>
 </li>
 
 {% if features.NEWS_SECTION_ON %}
@@ -77,14 +57,19 @@
 {% endblock %}
 
 {% block header_search %}
-<div class="great-header-search-wrapper">
-  <div class="great-header-search-container">
-    {% block header_search_form %}
-      <form action="{{ services_urls.exred }}/search/" method="GET">
-        <input id="search-box" type="text" name="q" placeholder="Search">
-        <button type="submit">Search</button>
-      </form>
-    {% endblock %}
-  </div>
-</div>
+  {% if features.HEADER_SEARCH_ON %}
+    <style>
+      body.js-enabled .great-header.domestic .great-header-nav { margin-right: 280px }
+    </style>
+    <div class="great-header-search-wrapper">
+      <div class="great-header-search-container">
+        {% block header_search_form %}
+          <form action="{{ services_urls.exred }}/search/" method="GET">
+            <input id="search-box" type="text" name="q" placeholder="Search">
+            <button type="submit">Search</button>
+          </form>
+        {% endblock %}
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}
