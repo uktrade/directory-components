@@ -13,6 +13,23 @@ class BasePageView(TemplateView):
         return self.kwargs.get('template_name')
 
 
+class GreatDomesticHeaderView(BasePageView):
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            features={'HEADER_SEARCH_ON': False},
+            page_heading='Great.gov.uk domestic header and footer',
+            *args, **kwargs)
+
+
+class GreatDomesticHeaderSearchView(BasePageView):
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            features={'HEADER_SEARCH_ON': True},
+            page_heading=(
+                'Great.gov.uk domestic header and footer with search box'),
+            *args, **kwargs)
+
+
 class InternationalHeaderView(CountryDisplayMixin, BasePageView):
     pass
 

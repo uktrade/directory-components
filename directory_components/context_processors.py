@@ -62,6 +62,7 @@ def header_footer_processor(request):
         'fas_search': urls.FAS_SEARCH,
         'advice': urls.ADVICE,
         'markets': urls.MARKETS,
+        'services': urls.SERVICES,
         'domestic_news': urls.GREAT_DOMESTIC_NEWS,
         'international_news': urls.GREAT_INTERNATIONAL_NEWS,
         'how_to_do_business_with_the_uk':

@@ -127,6 +127,7 @@ def test_header_footer_processor(settings):
         'dit': urls.DIT,
         'advice': 'https://exred.com/advice/',
         'markets': 'https://exred.com/markets/',
+        'services': 'https://exred.com/services/',
         'domestic_news': 'https://exred.com/news/',
         'fas_search': 'https://fas.com/search/',
         'how_to_do_business_with_the_uk':
