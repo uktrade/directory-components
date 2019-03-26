@@ -1266,9 +1266,6 @@ body.js-enabled .great-header-nav {
     content: '';
     clear: both; }
 
-body.js-enabled .great-header.domestic .great-header-nav {
-  margin-right: 280px; }
-
 body.js-enabled .great-header-search-wrapper {
   background: transparent; }
   body.js-enabled .great-header-search-wrapper:after {
