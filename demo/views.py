@@ -13,7 +13,7 @@ class BasePageView(TemplateView):
         return self.kwargs.get('template_name')
 
 
-class GreatDomesticHeader(BasePageView):
+class GreatDomesticHeaderView(BasePageView):
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
             features={'HEADER_SEARCH_ON': False},
@@ -21,7 +21,7 @@ class GreatDomesticHeader(BasePageView):
             *args, **kwargs)
 
 
-class GreatDomesticHeaderSearch(BasePageView):
+class GreatDomesticHeaderSearchView(BasePageView):
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
             features={'HEADER_SEARCH_ON': True},

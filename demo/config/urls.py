@@ -23,13 +23,13 @@ urlpatterns = [
     ),
     url(
         r'^great-domestic-header-footer-search/$',
-        views.GreatDomesticHeaderSearch.as_view(),
+        views.GreatDomesticHeaderSearchView.as_view(),
         {'template_name': 'demo/great-domestic-header-footer.html'},
         name='great-domestic-header-footer-search',
     ),
     url(
         r'^great-domestic-header-footer/$',
-        views.GreatDomesticHeader.as_view(),
+        views.GreatDomesticHeaderView.as_view(),
         {'template_name': 'demo/great-domestic-header-footer.html'},
         name='great-domestic-header-footer',
     ),
