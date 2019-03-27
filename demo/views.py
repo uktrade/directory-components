@@ -34,6 +34,42 @@ class InternationalHeaderView(CountryDisplayMixin, BasePageView):
     pass
 
 
+class DemoCardsView(BasePageView):
+    statistics = [
+         {
+             'heading': 'Ease of doing business',
+             'number': '36',
+             'smallprint': 'World Bank Ease of Doing Business ranking'
+         },
+         {
+             'heading': 'Currency',
+             'number': 'Euro',
+             'smallprint': ''
+         },
+         {
+             'heading': 'Business languages',
+             'number': 'Dutch, English',
+             'smallprint': ''
+         },
+         {
+             'heading': 'GDP per capita',
+             'number': '48,223.16 USD',
+             'smallprint': 'UK GDP per capita is 39,800.3 USD'
+         },
+         {
+             'heading': 'Economic growth',
+             'number': '2.9%',
+             'smallprint': 'in 2017'
+         },
+         {
+             'heading': 'Time zone',
+             'number': 'GMT+1',
+             'smallprint': ''
+         },
+     ]
+    num_of_statistics = 6
+
+
 class DemoFormErrorsView(FormView):
     template_name = 'demo/form-errors.html'
     form_class = forms.DemoFormErrors

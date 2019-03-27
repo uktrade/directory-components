@@ -42,6 +42,13 @@
         <pre><code>{% verbatim %}{% cta_card with_arrow=True image_url=card_image02 text="Tell us what help you need" %}{% endverbatim %}</code></pre>
       </div>
     </div>
+    <div>
+      <h2 class="heading-medium">Statistics</h2>
+      <p>A grid of statistics</p>
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
+    </div>
+    <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}{% endverbatim %}</code></pre>
+  </div>
 </section>
 
 <section class="background-stone-30">
