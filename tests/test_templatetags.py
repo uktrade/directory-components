@@ -528,29 +528,6 @@ def test_hero_large_title():
     assert banner.string == 'description'
 
 
-def test_split_lines():
-    template = Template(
-        '{% load split_lines from directory_components_tags %}'
-        '{{ text|split_lines:20 }}'
-    )
-
-    context = Context({
-        'text': (
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, '
-            'sed do eiusmod.'
-        )
-    })
-    html = template.render(context)
-
-    assert html == (
-        '<span>Lorem ipsum dolor</span><br>'
-        '<span>sit amet,</span><br>'
-        '<span>consectetur</span><br>'
-        '<span>adipisicing elit,</span><br>'
-        '<span>sed do eiusmod.</span><br>'
-    )
-
-
 @pytest.mark.parametrize('template_tag', (
     directory_components_tags.cta_box,
     directory_components_tags.message_box,
