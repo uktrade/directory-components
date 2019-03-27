@@ -97,7 +97,7 @@ dit.components.countrySelector = (new function() {
     $(COUNTRY_SELECT).on('change', function() {
       var country = '';
 
-      $("select option:selected").each(function() {
+      $(COUNTRY_SELECT).find("option:selected").each(function() {
         country = $(this).attr('value');
       });
 
