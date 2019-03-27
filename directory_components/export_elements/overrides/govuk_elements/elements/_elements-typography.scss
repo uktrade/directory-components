@@ -44,6 +44,6 @@ body {
 .subheading {
   @extend .font-xsmall;
   color: $mid-grey;
-  line-height: 1.5;
+  line-height: $line-height;
   margin: 0;
 }

@@ -4,6 +4,7 @@
 $brand-font: 'Overpass','Roboto', arial, helvetica, verdana;
 $brand-font-alternative: 'Roboto', arial, helvetica, verdana;
 $quote-font: 'Georgia', serif;
+$line-height: 1.6;
 
 // Great-specific typography mixins
 
@@ -55,59 +56,51 @@ $quote-font: 'Georgia', serif;
   font-weight: 700;
 }
 
-@mixin brand-36($line-height: (40 / 36), $line-height-640: (25 / 24), $tabular-numbers: false, $font-weight: 700) {
+@mixin brand-36($tabular-numbers: false, $font-weight: 700) {
   $font-size: 36px;
   $font-size-640: 24px;
   $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
-@mixin brand-48($line-height: (50 / 48), $line-height-640: (35 / 32), $tabular-numbers: false, $font-weight: 700) {
+@mixin brand-48($tabular-numbers: false, $font-weight: 700) {
   $font-size: 48px;
   $font-size-640: 32px;
   $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
-@mixin brand-52($line-height: (55 / 52), $line-height-640: (40 / 35), $tabular-numbers: false, $font-weight: 700) {
+@mixin brand-52($tabular-numbers: false, $font-weight: 700) {
   $font-size: 52px;
   $font-size-640: 40px;
   $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
-@mixin brand-48($line-height: (50 / 48), $line-height-640: (35 / 32), $tabular-numbers: false, $font-weight: 700) {
-  $font-size: 48px;
-  $font-size-640: 32px;
-  $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-  font-family: $brand-font;
-}
-
-@mixin brand-24($line-height: (30 / 24), $line-height-640: (24 / 20), $tabular-numbers: false, $font-weight: 400) {
+@mixin brand-24($tabular-numbers: false, $font-weight: 700) {
   $font-size: 24px;
   $font-size-640: 18px;
   $font-size-print: 16pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
-@mixin brand-19($line-height: (25 / 19), $line-height-640: (20 / 16), $tabular-numbers: false, $font-weight: 700) {
+@mixin brand-19($tabular-numbers: false, $font-weight: 700) {
   $font-size: 19px;
   $font-size-640: 16px;
   $font-size-print: 14pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
-@mixin quote-24($line-height: (30 / 24), $line-height-640: (24 / 20), $tabular-numbers: false, $font-weight: 400) {
+@mixin quote-24($tabular-numbers: false, $font-weight: 400) {
   $font-size: 24px;
   $font-size-640: 18px;
   $font-size-print: 16pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
   font-family: $quote-font;
   font-style: italic;
 }
