@@ -2,13 +2,15 @@
 @import '../../partials/colours';
 
 .statistics-card-grid {
+  margin-top: -15px;
+
+  .statistic-heading {
+    margin-bottom: 0.5em;
+  }
+
   .statistic-number {
     margin-bottom: 0.4em;
     font-family: $brand-font;
-  }
-
-  .statistic-heading {
-    margin-bottom: 0.75em;
   }
 
   .statistic-smallprint {

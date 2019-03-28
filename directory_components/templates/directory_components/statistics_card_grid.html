@@ -1,19 +1,19 @@
-<div class="statistics-card-grid card-grid underline-active-blue padding-bottom-15">
+<div class="statistics-card-grid card-grid underline-active-blue">
   {% for statistic in statistics %}
     {% if statistic.number %}
       {% if num_of_statistics >= 6 %}
-      <figure class="column-half column-third-l column-sixth-xl">
+      <figure class="padding-vertical-15 column-half column-third-l column-sixth-xl">
       {% elif num_of_statistics == 5 %}
-      <figure class="column-half column-third-l column-sixth-xl">
+      <figure class="padding-vertical-15 column-half column-third-l column-sixth-xl">
       {% elif num_of_statistics == 4 %}
-      <figure class="column-half column-quarter-xl">
+      <figure class="padding-vertical-15 column-half column-quarter-xl">
       {% elif num_of_statistics == 3 %}
-      <figure class="column-half column-third-l">
+      <figure class="padding-vertical-15 column-half column-third-l">
       {% else %}
-      <figure class="column-half">
+      <figure class="padding-vertical-15 column-half">
       {% endif %}
         <figcaption>
-          <p class="statistic-heading margin-top-30">{{ statistic.heading }}</p>
+          <p class="statistic-heading">{{ statistic.heading }}</p>
         </figcaption>
         <p class="active-blue-text statistic-number {% if statistic.number|length > 8 %} bold-medium{% else %} bold-large{% endif %}">{{ statistic.number }}</p>
         <figcaption>
