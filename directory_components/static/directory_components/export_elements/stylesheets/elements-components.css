@@ -1893,7 +1893,13 @@ a.cta-link:active:focus {
       font-size: 36px;
       line-height: 1.6; } }
 
-main {
+main,
+.font-xxlarge, .bold-xxlarge,
+.font-xlarge, .bold-xlarge, .heading-xlarge,
+.font-large, .bold-large, .heading-large,
+.font-medium, .bold-medium, .heading-medium,
+.font-small, .bold-small, .heading-small,
+.font-xsmall, .bold-xsmall {
   line-height: 1.6; }
 
 .hero {
@@ -3913,12 +3919,12 @@ section.blue-underline > .container {
       top: 0;
       right: 0; } }
 
-.statistics-card-grid .statistic-number {
-  margin-bottom: 0.4em;
-  font-family: "Roboto", arial, helvetica, verdana; }
-
-.statistics-card-grid .statistic-heading {
-  margin-bottom: 0.75em; }
-
-.statistics-card-grid .statistic-smallprint {
-  color: #666666; }
+.statistics-card-grid {
+  margin-top: -15px; }
+  .statistics-card-grid .statistic-heading {
+    margin-bottom: 0.5em; }
+  .statistics-card-grid .statistic-number {
+    margin-bottom: 0.4em;
+    font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
+  .statistics-card-grid .statistic-smallprint {
+    color: #666666; }
