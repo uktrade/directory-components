@@ -21,3 +21,7 @@
   @include brand-36();
   color: $white;
 }
+
+main {
+  line-height: $line-height;
+}

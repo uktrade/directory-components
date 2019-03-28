@@ -3,6 +3,6 @@
 <div class="cta-card">
   <img src="{% firstof img_url image_url image_src img_src image %}" alt="{{ alt_text }}">
   <div class="link-container">
-    <a class="cta-link {% if with_arrow %}with-arrow{% endif %}" href="{{ url }}">{{ text|split_lines:25 }}</a>
+    <a class="cta-link {% if with_arrow %}with-arrow{% endif %}" href="{{ url }}"><span>{{ text }}</span><br/></a>
   </div>
 </div>

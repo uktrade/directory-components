@@ -32,7 +32,6 @@
 
     h1 > span {
       display: block;
-      line-height: 1.25;
     }
   }
 
@@ -80,14 +79,13 @@
 }
 
 @media (min-width: 641px) {
-  .heading-hero-generic {
-    line-height: 1.46;
+  .hero-title {
+    min-width: 470px;
   }
 }
 
 @media (max-width: 640px) {
   .heading-hero-generic {
     font-size: 32px;
-    line-height: 1;
   }
 }

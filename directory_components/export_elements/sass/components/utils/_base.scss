@@ -49,16 +49,6 @@ $colours:
   }
 }
 
-// Line-height/leading
-
-.line-height-wide {
-  line-height: 1.75;
-}
-
-.line-height-normal {
-  line-height: 1.31579;
-}
-
 // Borders
 @each $colour, $name in $colours {
   .border-#{$name} {
