@@ -21,3 +21,13 @@
   @include brand-36();
   color: $white;
 }
+
+main,
+.font-xxlarge, .bold-xxlarge,
+.font-xlarge,  .bold-xlarge,  .heading-xlarge,
+.font-large,   .bold-large,   .heading-large,
+.font-medium,  .bold-medium,  .heading-medium,
+.font-small,   .bold-small,   .heading-small,
+.font-xsmall,  .bold-xsmall {
+  line-height: $line-height;
+}

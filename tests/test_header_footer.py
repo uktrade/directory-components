@@ -111,11 +111,6 @@ def test_header_v2_international_news_section_off(settings):
     urls.GREAT_INTERNATIONAL,
     urls.ADVICE,
     urls.MARKETS,
-    urls.SERVICES_FAB,
-    urls.SERVICES_SOO,
-    urls.SERVICES_EXOPPS,
-    urls.GET_FINANCE,
-    urls.SERVICES_EVENTS,
     urls.GREAT_DOMESTIC_NEWS,
 ])
 def test_urls_exist_in_domestic_header_v2(url, settings):
@@ -316,36 +311,6 @@ def test_header_ids_match_urls_and_text(
         'Markets',
         'header-markets',
         urls.MARKETS,
-    ),
-    (
-        'Create a business profile',
-        'header-services-business-profile',
-        urls.SERVICES_FAB,
-    ),
-    (
-        'Sell online overseas',
-        'header-services-selling-online-overseas',
-        urls.SERVICES_SOO,
-    ),
-    (
-        'Find export opportunities',
-        'header-services-export-opportunities',
-        urls.SERVICES_EXOPPS,
-    ),
-    (
-        'UK Export Finance',
-        'header-services-ukef',
-        urls.GET_FINANCE,
-    ),
-    (
-        'Find events and visits',
-        'header-services-events',
-        urls.SERVICES_EVENTS,
-    ),
-    (
-        'Get an EORI number',
-        'header-services-eori',
-        'https://www.gov.uk/eori',
     ),
     (
         'News and events',

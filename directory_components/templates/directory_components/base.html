@@ -52,6 +52,10 @@
             <script src="{% static 'directory_components/js/dit.components.cookie-notice.js' %}"></script>
         {% endblock %}
 
+       {% block head_js_ga360 %}
+            window.dataLayer = window.dataLayer || [];
+       {% endblock %}
+
         {% block header_js %}
           {% if features.NEW_HEADER_FOOTER_ON %}
             <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
