@@ -52,8 +52,8 @@
             <script src="{% static 'directory_components/js/dit.components.cookie-notice.js' %}"></script>
         {% endblock %}
 
-        {% block head_ga360_js %}
-            <script src="{% static 'directory_components/js/dit.components.ga360.js' %}"></script>
+       {% block block head_js_ga360 %}
+            window.dataLayer = window.dataLayer || [];
         {% endblock %}
 
         {% block header_js %}
