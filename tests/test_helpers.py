@@ -168,7 +168,6 @@ def test_get_cookie_when_no_querystring(mock_get, rf):
     url = reverse('index')
     request = rf.get(url, mock_get)
     request.COOKIES = {'country': 'GB'}
-
     actual = helpers.get_user_country(request)
 
     assert actual == 'GB'
