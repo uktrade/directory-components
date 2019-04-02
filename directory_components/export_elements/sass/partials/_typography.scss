@@ -5,6 +5,7 @@ $brand-font: 'Overpass','Roboto', arial, helvetica, verdana;
 $brand-font-alternative: 'Roboto', arial, helvetica, verdana;
 $quote-font: 'Georgia', serif;
 $line-height: 1.6;
+$hero-line-height: 1.2;
 
 // Great-specific typography mixins
 
@@ -60,7 +61,7 @@ $line-height: 1.6;
   $font-size: 36px;
   $font-size-640: 24px;
   $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $hero-line-height, $hero-line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
@@ -68,7 +69,7 @@ $line-height: 1.6;
   $font-size: 48px;
   $font-size-640: 32px;
   $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $hero-line-height, $hero-line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
@@ -84,7 +85,7 @@ $line-height: 1.6;
   $font-size: 24px;
   $font-size-640: 18px;
   $font-size-print: 16pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $hero-line-height, $hero-line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
@@ -92,7 +93,7 @@ $line-height: 1.6;
   $font-size: 19px;
   $font-size-640: 16px;
   $font-size-print: 14pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height, $tabular-numbers, $font-weight);
+  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $hero-line-height, $hero-line-height, $tabular-numbers, $font-weight);
   font-family: $brand-font;
 }
 
