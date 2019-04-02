@@ -1855,7 +1855,7 @@ a.cta-link:active:focus {
   font-weight: 700;
   text-transform: none;
   font-size: 32px;
-  line-height: 1.6;
+  line-height: 1.2;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana;
   display: inline-block;
   color: #ffffff;
@@ -1865,33 +1865,33 @@ a.cta-link:active:focus {
   @media (min-width: 641px) {
     .heading-hero-domestic span {
       font-size: 48px;
-      line-height: 1.6; } }
+      line-height: 1.2; } }
 
 .heading-hero-generic {
   font-family: "nta", Arial, sans-serif;
   font-weight: 700;
   text-transform: none;
   font-size: 32px;
-  line-height: 1.6;
+  line-height: 1.2;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana;
   color: #ffffff; }
   @media (min-width: 641px) {
     .heading-hero-generic {
       font-size: 48px;
-      line-height: 1.6; } }
+      line-height: 1.2; } }
 
 .heading-hero-generic-compact {
   font-family: "nta", Arial, sans-serif;
   font-weight: 700;
   text-transform: none;
   font-size: 24px;
-  line-height: 1.6;
+  line-height: 1.2;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana;
   color: #ffffff; }
   @media (min-width: 641px) {
     .heading-hero-generic-compact {
       font-size: 36px;
-      line-height: 1.6; } }
+      line-height: 1.2; } }
 
 main,
 .font-xxlarge, .bold-xxlarge,
@@ -1934,12 +1934,12 @@ main,
       font-weight: 700;
       text-transform: none;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.2;
       font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
       @media (min-width: 641px) {
         .hero-generic .hero-title-compact .hero-subheading {
           font-size: 19px;
-          line-height: 1.6; } }
+          line-height: 1.2; } }
   .hero-generic .hero-description {
     margin-bottom: 0;
     font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
@@ -1948,12 +1948,12 @@ main,
     font-weight: 700;
     text-transform: none;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.2;
     font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
     @media (min-width: 641px) {
       .hero-generic .hero-subheading {
         font-size: 24px;
-        line-height: 1.6; } }
+        line-height: 1.2; } }
 
 .hero-domestic h1,
 .hero-domestic h2,
