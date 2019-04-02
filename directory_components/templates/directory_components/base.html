@@ -53,7 +53,7 @@
         {% endblock %}
 
        {% block head_js_ga360 %}
-           <script> window.dataLayer = window.dataLayer || [];</script>
+           <script type="text/javascript"> window.dataLayer = window.dataLayer || [];</script>
        {% endblock %}
 
         {% block header_js %}
@@ -82,7 +82,7 @@
         {% block body_google_tag_manager %}
             {% include 'directory_components/google_tag_manager_body.html' %}
         {% endblock %}
-        <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+        <script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
         {% block skip_link %}
           <a id="skip-link" href="#content">Skip to main content</a>
