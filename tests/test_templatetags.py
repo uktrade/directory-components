@@ -136,7 +136,7 @@ def test_card():
     assert 'url' in card_link['href']
 
     card_image = soup.select('.card-image')[0]
-    assert card_image['role'] == 'image'
+    assert card_image['role'] == 'img'
     assert 'img_src' in card_image['style']
     assert card_image['aria-label'] == 'img_alt'
     assert card_image['title'] == 'img_alt'
@@ -196,7 +196,7 @@ def test_labelled_card_with_image():
     assert 'with-image' in card_inner['class']
 
     card_image = soup.select('.card-image')[0]
-    assert card_image['role'] == 'image'
+    assert card_image['role'] == 'img'
     assert 'img_src' in card_image['style']
     assert card_image['aria-label'] == 'img_alt'
     assert card_image['title'] == 'img_alt'
