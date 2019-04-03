@@ -12,10 +12,17 @@
       {% else %}
       <figure class="padding-vertical-15 column-half">
       {% endif %}
+        {% if not number_first %}
         <figcaption>
           <p class="statistic-heading font-xsmall">{{ statistic.heading }}</p>
         </figcaption>
+        {% endif %}
         <p class="active-blue-text statistic-number {% if statistic.number|length > 8 %} bold-medium{% else %} bold-large{% endif %}">{{ statistic.number }}</p>
+        {% if number_first %}
+        <figcaption>
+          <p class="statistic-heading font-xsmall">{{ statistic.heading }}</p>
+        </figcaption>
+        {% endif %}
         <figcaption>
           <p class="font-xsmall statistic-smallprint">{{ statistic.smallprint }}</p>
         </figcaption>
