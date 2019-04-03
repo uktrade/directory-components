@@ -44,10 +44,15 @@
     </div>
     <div>
       <h2 class="heading-medium">Statistics</h2>
-      <p>A grid of statistics</p>
+      <p>A grid of statistics:</p>
       {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
     </div>
     <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}{% endverbatim %}</code></pre>
+    <div class="margin-top-60">
+      <p>You can also put the number first:</p>
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}
+    </div>
+    <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}{% endverbatim %}</code></pre>
   </div>
 </section>
 
