@@ -1,0 +1,17 @@
+{% load static %}
+<section class="hero hero-with-cta" style="background-image: url('{{ img_url }}')">
+	<div class="container">
+		<div class="hero-text">
+			<h1 class="heading-xlarge margin-bottom-15">{{ heading }}</h1>
+			{% if subheading %}
+			<h1 class="heading-xlarge margin-bottom-15">{{ subheading }}</h1>
+			{% endif %}
+			{% if subtitle %}
+			<p class="hero-subtitle">{{ subtitle }}</p>
+			{% endif %}
+			{% if cta_text %}
+				<a href={{cta_link}} class="button button-arrow-small button-blue">{{ cta_text }}</a>
+			{%  endif %}
+		</div>
+	</div>
+</section>

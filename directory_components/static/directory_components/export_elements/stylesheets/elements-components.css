@@ -17,7 +17,8 @@
 #footer a:focus {
   outline: 3px solid #ffbf47; }
 
-#header, #footer {
+#header,
+#footer {
   background-color: #1e1348;
   color: #ffffff; }
   #header .column-fifth,
@@ -1740,16 +1741,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3,
-    a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner,
-    a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    
-    a.labelled-card:focus .card-inner,
-    a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1758,12 +1755,9 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3,
-  a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  
-  a.labelled-card .card-header h3,
-  a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
     font-family: 'Roboto', arial, helvetica, sans-serif;
     font-size: 19px;
     font-weight: 700;
@@ -1935,21 +1929,21 @@ main,
       text-transform: none;
       font-size: 16px;
       line-height: 1.2;
-      font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
+      font-family: "Roboto", arial, helvetica, verdana; }
       @media (min-width: 641px) {
         .hero-generic .hero-title-compact .hero-subheading {
           font-size: 19px;
           line-height: 1.2; } }
   .hero-generic .hero-description {
     margin-bottom: 0;
-    font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
+    font-family: "Roboto", arial, helvetica, verdana; }
   .hero-generic .hero-subheading {
     font-family: "nta", Arial, sans-serif;
     font-weight: 700;
     text-transform: none;
     font-size: 18px;
     line-height: 1.2;
-    font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
+    font-family: "Roboto", arial, helvetica, verdana; }
     @media (min-width: 641px) {
       .hero-generic .hero-subheading {
         font-size: 24px;
@@ -1977,6 +1971,50 @@ main,
 @media (max-width: 640px) {
   .heading-hero-generic {
     font-size: 32px; } }
+
+.hero-with-cta {
+  padding: 90px 0 60px;
+  background-color: #000000; }
+  .hero-with-cta h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-family: "Overpass", "Roboto", arial, helvetica, verdana;
+    text-transform: uppercase; }
+  .hero-with-cta h2 {
+    font-weight: 400;
+    margin-bottom: 30px; }
+  .hero-with-cta .container {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row; }
+  .hero-with-cta .hero-brand {
+    position: absolute;
+    right: 0;
+    top: 0; }
+    .hero-with-cta .hero-brand img {
+      height: 100px; }
+  .hero-with-cta .hero-text {
+    width: 50%; }
+
+@media (max-width: 900px) {
+  .hero-with-cta .hero-text {
+    width: calc(100% / 3 * 2); } }
+
+@media (max-width: 640px) {
+  .hero-with-cta .hero-text {
+    width: 100%; }
+    .hero-with-cta .hero-text h2 {
+      width: 70%; }
+  .hero-with-cta .hero-brand {
+    bottom: 0;
+    top: auto; }
+    .hero-with-cta .hero-brand img {
+      height: 80px; } }
 
 .cookie-notice {
   font-family: 'Roboto', arial, helvetica, sans-serif;
