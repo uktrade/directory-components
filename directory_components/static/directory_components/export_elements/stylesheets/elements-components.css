@@ -1929,21 +1929,21 @@ main,
       text-transform: none;
       font-size: 16px;
       line-height: 1.2;
-      font-family: "Roboto", arial, helvetica, verdana; }
+      font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
       @media (min-width: 641px) {
         .hero-generic .hero-title-compact .hero-subheading {
           font-size: 19px;
           line-height: 1.2; } }
   .hero-generic .hero-description {
     margin-bottom: 0;
-    font-family: "Roboto", arial, helvetica, verdana; }
+    font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
   .hero-generic .hero-subheading {
     font-family: "nta", Arial, sans-serif;
     font-weight: 700;
     text-transform: none;
     font-size: 18px;
     line-height: 1.2;
-    font-family: "Roboto", arial, helvetica, verdana; }
+    font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
     @media (min-width: 641px) {
       .hero-generic .hero-subheading {
         font-size: 24px;
@@ -1977,9 +1977,7 @@ main,
   background-color: #000000; }
   .hero-with-cta h1 {
     margin-top: 0;
-    margin-bottom: 15px;
-    font-family: "Overpass", "Roboto", arial, helvetica, verdana;
-    text-transform: uppercase; }
+    margin-bottom: 15px; }
   .hero-with-cta h2 {
     font-weight: 400;
     margin-bottom: 30px; }

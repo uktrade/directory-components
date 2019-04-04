@@ -1,10 +1,9 @@
-{% load static %}
 <section class="hero hero-with-cta" style="background-image: url('{{ img_url }}')">
 	<div class="container">
 		<div class="hero-text">
-			<h1 class="heading-xlarge margin-bottom-15">{{ heading }}</h1>
+			<h1 class="heading-xlarge">{{ heading }}</h1>
 			{% if subheading %}
-			<h1 class="heading-xlarge margin-bottom-15">{{ subheading }}</h1>
+			<h2 class="heading-xlarge margin-top-0">{{ subheading }}</h2>
 			{% endif %}
 			{% if subtitle %}
 			<p class="hero-subtitle">{{ subtitle }}</p>
