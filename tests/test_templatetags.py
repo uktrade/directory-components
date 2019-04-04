@@ -540,7 +540,8 @@ def test_hero_large_title():
     directory_components_tags.image_with_caption,
     directory_components_tags.cta_card,
     directory_components_tags.cta_link,
-    directory_components_tags.statistics_card_grid
+    directory_components_tags.statistics_card_grid,
+    directory_components_tags.hero_with_cta
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
