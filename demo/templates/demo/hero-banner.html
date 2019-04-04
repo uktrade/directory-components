@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta from directory_components_tags %}
+{% load banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta full_width_banner_with_cta from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -59,6 +59,12 @@
 
   <div class="container">
     <pre><code>{% verbatim %}{% hero_with_cta heading="Hero banner with cta." subheading="For two line cases." subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." img_url=hero_image_domestic cta_text="continue" cta_link="www.google.com" %}{% endverbatim %}</code></pre>
+  </div>
+
+ {% full_width_banner_with_cta background_image=hero_image_domestic heading='Full width banner with a subtitle and cta' subtitle='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'  cta_link='www.google.com'  cta_text='Continue' %}
+
+  <div class="container">
+    <pre><code>{% verbatim %} {% full_width_banner_with_cta background_image=hero_image_domestic heading='Full width banner with a subtitle and cta' subtitle='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'  cta_link='www.google.com'  cta_text='Continue' %}{% endverbatim %}</code></pre>
   </div>
 
   <div class="container">
