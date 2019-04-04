@@ -144,3 +144,8 @@ def statistics_card_grid(**kwargs):
 @register.inclusion_tag('directory_components/hero_with_cta.html')
 def hero_with_cta(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/full_width_banner_with_cta.html')
+def full_width_banner_with_cta(**kwargs):
+    return kwargs
