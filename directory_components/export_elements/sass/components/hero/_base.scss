@@ -1,5 +1,6 @@
 
 @import '../partials/spacings';
+@import '../partials/typography';
 
 // Hero banner
 
@@ -88,4 +89,68 @@
   .heading-hero-generic {
     font-size: 32px;
   }
+}
+
+.hero-with-cta {
+    padding: $spacing-1 + $spacing-3 0 $spacing-1;
+    background-color: $black;
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: $spacing-4;
+    }
+
+    h2 {
+      font-weight: 400;
+      margin-bottom: $spacing-3;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .hero-brand {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      img {
+        height: 100px;
+      }
+    }
+
+    .hero-text {
+      width: 50%;
+    }
+  }
+
+ @media (max-width: 900px) {
+    .hero-with-cta {
+      .hero-text {
+        width: calc(100% / 3 * 2);
+      }
+    }
+  }
+
+@media (max-width: 640px) {
+.hero-with-cta {
+      .hero-text {
+        width: 100%;
+
+        h2 {
+          width: 70%;
+        }
+      }
+
+      .hero-brand {
+        bottom: 0;
+        top: auto;
+
+        img {
+          height: 80px;
+        }
+      }
+    }
 }
