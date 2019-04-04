@@ -1,17 +1,8 @@
 
 @import '../partials/spacings';
+@import '../partials/typography';
 
 // Hero banner
-$spacing-1: 60px;
-$spacing-2: 45px;
-$spacing-3: 30px;
-$spacing-4: 15px;
-$white: #ffffff;
-$flag-red: #b00d23;
-$hero-brand-font: 'Overpass','Roboto', arial, helvetica, verdana;
-$brand-font: 'Roboto', arial, helvetica, verdana;
-$black:                #000000; // rgb(  0,   0,   0)
-
 
 .hero {
   background-position: top center;
