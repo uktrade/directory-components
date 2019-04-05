@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-04 14:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: directory_components/templates/directory_components/cookie_notice.html:5
+msgid "Great.gov.uk uses cookies to make the site simpler."
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:5
+msgid "Find out more about cookies"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/footer_base.html:15
+msgid "Contact us"
+msgstr "Contactez-nous"
+
+#: directory_components/templates/directory_components/header_footer/footer_base.html:18
+msgid "Privacy and cookies"
+msgstr "Confidentialité et cookies"
+
+#: directory_components/templates/directory_components/header_footer/footer_base.html:21
+msgid "Terms and conditions"
+msgstr "Conditions générales"
+
+#: directory_components/templates/directory_components/header_footer/footer_base.html:24
+msgid "Department for International Trade on GOV.UK"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/header_base.html:18
+msgid "For UK businesses"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/header_base.html:19
+msgid "For international businesses"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/header_base.html:38
+msgid "Main menu"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_footer.html:8
+msgid "Department for International Trade"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_footer.html:12
+#: directory_components/templates/directory_components/header_footer/international_header.html:23
+msgid "Great Britain and Northern Ireland"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_footer.html:21
+msgid "Go to the page for UK businesses"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:30
+msgid "Country"
+msgstr "Pays"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:44
+msgid "Select"
+msgstr "Sélectionner"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:49
+msgid "Page in English only"
+msgstr "Page en anglais uniquement"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:55
+msgid "Language"
+msgstr "Langue"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:62
+msgid "Invest"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:66
+msgid "Find a UK supplier"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:70
+msgid "Industries"
+msgstr "Industries"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:74
+msgid "How to do business with the UK"
+msgstr ""
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:79
+msgid "News"
+msgstr ""

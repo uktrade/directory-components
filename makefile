@@ -51,5 +51,11 @@ django_webserver:
 run_demo:
 	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
+translations:
+	$(DEMO_SET_ENV_VARS) && python manage.py makemessages -a
+
+compile_translations:
+	$(DEMO_SET_ENV_VARS) && python manage.py compilemessages
+
 
 .PHONY: build clean test_requirements flake8 pytest test publish

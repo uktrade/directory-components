@@ -3,7 +3,9 @@ from demo import forms
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 
-from directory_components.mixins import CountryDisplayMixin
+from directory_components.mixins import (
+    CountryDisplayMixin, LanguageSwitcherMixin
+)
 
 
 class BasePageView(TemplateView):
@@ -30,43 +32,45 @@ class GreatDomesticHeaderSearchView(BasePageView):
             *args, **kwargs)
 
 
-class InternationalHeaderView(CountryDisplayMixin, BasePageView):
+class InternationalHeaderView(
+    CountryDisplayMixin, LanguageSwitcherMixin, BasePageView
+):
     pass
 
 
 class DemoCardsView(BasePageView):
     statistics = [
-         {
-             'heading': 'Ease of doing business',
-             'number': '36',
-             'smallprint': 'World Bank Ease of Doing Business ranking'
-         },
-         {
-             'heading': 'Currency',
-             'number': 'Euro',
-             'smallprint': ''
-         },
-         {
-             'heading': 'Business languages',
-             'number': 'Dutch, English',
-             'smallprint': ''
-         },
-         {
-             'heading': 'GDP per capita',
-             'number': '48,223.16 USD',
-             'smallprint': 'UK GDP per capita is 39,800.3 USD'
-         },
-         {
-             'heading': 'Economic growth',
-             'number': '2.9%',
-             'smallprint': 'in 2017'
-         },
-         {
-             'heading': 'Time zone',
-             'number': 'GMT+1',
-             'smallprint': ''
-         },
-     ]
+        {
+            'heading': 'Ease of doing business',
+            'number': '36',
+            'smallprint': 'World Bank Ease of Doing Business ranking'
+        },
+        {
+            'heading': 'Currency',
+            'number': 'Euro',
+            'smallprint': ''
+        },
+        {
+            'heading': 'Business languages',
+            'number': 'Dutch, English',
+            'smallprint': ''
+        },
+        {
+            'heading': 'GDP per capita',
+            'number': '48,223.16 USD',
+            'smallprint': 'UK GDP per capita is 39,800.3 USD'
+        },
+        {
+            'heading': 'Economic growth',
+            'number': '2.9%',
+            'smallprint': 'in 2017'
+        },
+        {
+            'heading': 'Time zone',
+            'number': 'GMT+1',
+            'smallprint': ''
+        },
+    ]
     num_of_statistics = 6
 
 

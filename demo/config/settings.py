@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'directory_components.middleware.CountryMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -88,15 +89,28 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
 LANGUAGE_CODE = 'en-gb'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+
+
+# https://github.com/django/django/blob/master/django/conf/locale/__init__.py
+LANGUAGES = [
+    ('en-gb', 'English'),    # English
+    ('de', 'Deutsch'),       # German
+    ('ja', '日本語'),         # Japanese
+    ('zh-hans', '简体中文'),  # Simplified Chinese
+    ('fr', 'Français'),      # French
+    ('es', 'español'),       # Spanish
+    ('pt', 'Português'),     # Portuguese
+]
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
