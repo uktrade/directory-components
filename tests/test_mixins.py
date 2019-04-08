@@ -4,7 +4,9 @@ from unittest.mock import patch
 from django.views.generic import TemplateView
 
 from directory_constants.constants.choices import COUNTRY_CHOICES
-from directory_components.mixins import CountryDisplayMixin
+from directory_components.mixins import (
+    CountryDisplayMixin, LanguageSwitcherMixin
+)
 
 
 @pytest.mark.parametrize('country_code,country_name', COUNTRY_CHOICES)
@@ -38,3 +40,13 @@ def test_country_display_mixin_no_country(mock_country, rf):
     assert not response.context_data['hide_country_selector']
     assert not response.context_data['country']['name']
     assert not response.context_data['country']['code']
+
+
+def test_language_display_mixin(rf):
+    class TestView(LanguageSwitcherMixin, TemplateView):
+        template_name = 'core/base.html'
+
+    request = rf.get('/')
+    response = TestView.as_view()(request)
+
+    assert response.context_data['language_switcher_form']
