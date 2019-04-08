@@ -2021,8 +2021,8 @@ main,
   color: #fff;
   position: relative; }
   .full-width-banner-with-cta .container {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
