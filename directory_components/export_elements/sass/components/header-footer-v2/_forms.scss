@@ -1,0 +1,86 @@
+
+// Header language and country forms
+// ==================================
+
+#great-header-country-select {
+  margin-left: 5px;
+}
+
+.great-header-country-display,
+.great-header-language-display {
+  position: absolute;
+  left: -1000px;
+}
+
+.great-header-language-switcher,
+.great-header-country-select {
+  display: block;
+}
+
+body.js-enabled {
+  .great-header-language-switcher,
+  .great-header-country-select {
+    display: inline-block;
+  }
+}
+
+.great-header-form {
+  // Reset
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    color: $stone;
+    font: inherit;
+    padding: 0;
+    width: auto;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  label {
+    margin-right: 5px;
+  }
+
+  button {
+    @include button-reset;
+    padding: 0;
+    padding-left: 5px;
+
+    &:focus,
+    &:focus:active {
+      @include focus;
+    }
+
+    &:focus:active {
+      background: $focus-yellow;
+      color: $great-blue;
+    }
+
+  }
+}
+
+
+@media (max-width: 500px) {
+  body.js-enabled {
+    .great-header-menu.international {
+      & > .container {
+        padding-top: 70px;
+      }
+
+      .js-mobile-button {
+        top: 70px;
+      }
+    }
+
+    .great-header-language-switcher,
+    .great-header-country-select {
+      display: block;
+    }
+
+  }
+}

@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import Select
+from django.utils import translation
 from django.db.models.fields import BLANK_CHOICE_DASH
+from django.conf import settings
 
 from directory_components import fields as components_fields
 from directory_constants.constants.choices import COUNTRY_CHOICES
@@ -34,7 +36,7 @@ class Form(DirectoryComponentsFormMixin, forms.Form):
 class CountryForm(Form):
     country = components_fields.ChoiceField(
         label='Country',
-        widget=Select(attrs={'id': 'js-country-select'}),
+        widget=Select(attrs={'id': 'great-header-country-select'}),
         choices=COUNTRIES
     )
 
@@ -42,4 +44,18 @@ class CountryForm(Form):
 def get_country_form_initial_data(request):
     return {
         'country': helpers.get_user_country(request).upper() or None
+    }
+
+
+class LanguageForm(Form):
+    language = components_fields.ChoiceField(
+        label='Language',
+        widget=Select(attrs={'id': 'great-header-language-select'}),
+        choices=settings.LANGUAGES,
+    )
+
+
+def get_language_form_initial_data(request):
+    return {
+        'language': translation.get_language()
     }

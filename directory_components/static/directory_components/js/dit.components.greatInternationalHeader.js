@@ -105,4 +105,5 @@ dit.components.greatHeader = (new function() {
 $(document).ready(function() {
   dit.components.greatHeader.init();
   dit.components.countrySelector.init();
+  dit.components.languageSelectorDropdown.init();
 });
