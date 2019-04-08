@@ -155,16 +155,6 @@
     }
 }
 
-.full-width-banner-with-cta::before {
-    content: '';
-    background-image: linear-gradient(to left, transparent 25%, rgba(0, 0, 0, 0.75) 100%);
-    height: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    width: 100%;
-  }
-
 .full-width-banner-with-cta {
   background-position: 50%;
   background-repeat: no-repeat;
