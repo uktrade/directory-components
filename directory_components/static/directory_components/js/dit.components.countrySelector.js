@@ -103,7 +103,6 @@ dit.components.countrySelector = (new function() {
       $(COUNTRY_SELECT).find("option:selected").each(function() {
         country = $(this).attr('value');
       });
-      console.log(country);
       $(FLAG).attr('class', 'flag-icon flag-icon-' + country.toLowerCase())
     });
   }
@@ -130,7 +129,6 @@ dit.components.countrySelector = (new function() {
       });
 
       $(FLAG).attr('class', 'flag-icon flag-icon-' + code.toLowerCase());
-      console.log($(FLAG));
 
       this.form.submit();
 
