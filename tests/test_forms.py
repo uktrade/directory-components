@@ -7,4 +7,4 @@ def test_get_language_form_initial_data():
     translation.activate('fr')
     request_stub = {}
     data = get_language_form_initial_data(request_stub)
-    assert data['lang'] == 'fr'
+    assert data['language'] == 'fr'
