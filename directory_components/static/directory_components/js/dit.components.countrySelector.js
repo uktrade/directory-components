@@ -10,8 +10,11 @@ dit.components.countrySelector = (new function() {
   var BANNER_CLOSE_BUTTON_ID = 'close-country-selector-dialog';
   var BANNER_ACTIVATOR = '#country-selector-activator';
   var BANNER_ACTIVATOR_ID = 'country-selector-activator';
-  var COUNTRY_SELECT = '#js-country-select';
-  var FLAG = '#flag-container';
+  var COUNTRY_SELECT = '#great-header-country-select';
+  var COUNTRY_SUBMIT = '#great-header-country-submit';
+  var COUNTRY_SUBMIT_ID = 'great-header-country-submit';
+  var COUNTRY_DISPLAY = '#great-header-country-display';
+  var FLAG = '#great-header-flag-icon';
 
   self.createBannerCloseButton = function() {
     var $container = $(BANNER + ' .countries');
@@ -45,7 +48,7 @@ dit.components.countrySelector = (new function() {
   self.createBannerOpenButton = function() {
     var $element = $('#country-text');
     var $button = $('<button></button>', {
-      'text': 'Change country',
+      'text': $element.text(),
       'aria-controls': BANNER_ID,
       'class': 'country-selector-activator',
       id: BANNER_ACTIVATOR_ID
@@ -93,43 +96,74 @@ dit.components.countrySelector = (new function() {
     })
   }
 
-  self.selectEventHandler = function() {
+  self.bannerSelectEventHandler = function() {
     $(COUNTRY_SELECT).on('change', function() {
       var country = '';
 
       $(COUNTRY_SELECT).find("option:selected").each(function() {
         country = $(this).attr('value');
       });
-
       $(FLAG).attr('class', 'flag-icon flag-icon-' + country.toLowerCase())
     });
   }
 
+  self.headerSelectEventHandler = function() {
+    var $select = $(COUNTRY_SELECT);
+    // setup initial width
+    var country = $select.find("option:selected").text();
+    var $display = $(COUNTRY_DISPLAY);
+    var code = $select.find("option:selected").attr('value');
+
+    $(COUNTRY_SUBMIT).hide();
+
+    $display.text(country);
+    $select.css('width', $display.width());
+
+    $select.on('change', function() {
+
+      $select.find("option:selected").each(function() {
+        code = $(this).attr('value');
+        country = $(this).text();
+        $display.text(country);
+        $select.css('width', $display.width());
+      });
+
+      $(FLAG).attr('class', 'flag-icon flag-icon-' + code.toLowerCase());
+
+      this.form.submit();
+
+    });
+  }
+
+  self.init = function() {
+    // only run this if the banner exists in the DOM
+    if ($(BANNER).length) {
+      self.bannerCloseButtonEventHandler();
+      self.bannerOpenButtonEventHandler();
+      self.bannerContentsEventHandler();
+      self.bannerSelectEventHandler();
+    // otherwise setup header dropdown
+    } else {
+      self.headerSelectEventHandler();
+    }
+  }
+
   self.viewInhibitor = function(activate) {
-    var rule = BANNER + " { display: none; }";
+    var rule = '#' + COUNTRY_SUBMIT_ID + ' { display: none; }';
     var style;
     if (arguments.length && activate) {
-      style = document.createElement("style");
-      style.setAttribute("type", "text/css");
-      style.setAttribute("id", "country-dialog-view-inhibitor");
+      style = document.createElement('style');
+      style.setAttribute('type', 'text/css');
+      style.setAttribute('id', COUNTRY_SUBMIT_ID);
       style.appendChild(document.createTextNode(rule));
       document.head.appendChild(style);
     }
     else {
-      document.head.removeChild(document.getElementById("country-dialog-view-inhibitor"));
+      document.head.removeChild(document.getElementById(COUNTRY_SUBMIT_ID));
     }
-  }
+  };
+
+  // Hide on load
   self.viewInhibitor(true);
-
-  self.bannerEventHandler = function() {
-    self.bannerCloseButtonEventHandler();
-    self.bannerOpenButtonEventHandler();
-    self.bannerContentsEventHandler();
-    self.selectEventHandler();
-  }
-
-  self.init = function() {
-    self.bannerEventHandler();
-  }
 
 });

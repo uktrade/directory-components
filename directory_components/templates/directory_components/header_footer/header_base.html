@@ -5,9 +5,6 @@
 {% block header_country_selector %}
 {% endblock %}
 
-{% block header_language_selector %}
-{% endblock %}
-
 <header id="great-header" class="great-header {% block header_class %}{% endblock %}">
 
   <div id="great-global-header" class="great-global-header-footer great-global-header {% block global_header_class %}{% endblock %}">
@@ -15,8 +12,8 @@
       {% block global_header_logo %}
       {% endblock %}
       <div class="great-domestic-international-links">
-        <a href="{{ services_urls.great_domestic }}" id="great-global-header-domestic-link" class="domestic">For UK businesses</a>
-        <a href="{{ services_urls.great_international }}" id="great-global-header-international-link" class="international">For international businesses</a>
+        <a href="{{ services_urls.great_domestic }}" id="great-global-header-domestic-link" class="domestic">{% trans 'For UK businesses' %}</a>
+        <a href="{{ services_urls.great_international }}" id="great-global-header-international-link" class="international">{% trans 'For international businesses' %}</a>
       </div>
     </div>
   </div>
@@ -28,14 +25,18 @@
         {% block header_logo %}{% endblock %}
       </a>
 
-      <ul class="great-header-extra-links" id="great-header-extra-links">
+      <div class="great-header-extra-links" id="great-header-extra-links">
         {% block header_extra_links %}
         {% endblock %}
-      </ul>
+
+        {% block header_language_selector %}
+        {% endblock %}
+
+      </div>
     </div>
 
     <div class="great-header-nav-container">
-      <nav id="great-header-nav" class="great-header-nav {% block header_nav_class %}{% endblock %}" aria-label="Main menu">
+      <nav id="great-header-nav" class="great-header-nav {% block header_nav_class %}{% endblock %}" aria-label="{% trans 'Main menu' %}">
         <ul class="grid-row js-nav-list" id="great-header-nav-list">
           {% block header_nav %}
           {% endblock %}

@@ -1,9 +1,12 @@
 {% extends 'directory_components/header_footer/header_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load directory_components_tags %}
 
 {% block header_country_selector %}
-  {% include 'directory_components/header_footer/header_country_select.html' %}
+  {% if not hide_country_selector %}
+    {% include 'directory_components/header_footer/header_country_select.html' %}
+  {% endif %}
 {% endblock %}
 
 {% block global_header_class %}international{% endblock %}
@@ -16,44 +19,62 @@
 {% endblock %}
 
 {% block header_logo %}
-<img src="{% static 'directory_components/images/great.svg' %}" alt="Great Britain and Northern Ireland" width="180" height="auto">
+<img src="{% static 'directory_components/images/great.svg' %}" alt="{% trans 'Great Britain and Northern Ireland' %}" width="180" height="auto">
 {% endblock %}
 
 {% block header_logo_url %}{{ services_urls.great_international }}{% endblock %}
 
 {% block header_extra_links %}
-<div id="country-select-activator-container">
-  <span id="country-text">Country</span>
-  {% if country.name %}
-    <span class="country">
-      <span class="flag-icon flag-icon-{{ country.code }}"></span>
-      {{ country.name }}
-    </span>
-  {% endif %}
+
+{% if hide_country_selector %}
+<div id="great-header-country-selector" class="great-header-country-selector great-header-form">
+  <form class="countries" action="" method="get">
+    <label for="great-header-country-select">{% trans 'Country' %}</label>
+    <span id="great-header-flag-icon" class="flag-icon flag-icon-{{ country.code }}"></span>
+    <span id="great-header-country-display" class="great-header-country-display" aria-hidden="true"></span>
+    {{ country_selector_form.country }}
+    <button id="great-header-country-submit" type="submit">{% trans 'Select' %}</button>
+  </form>
 </div>
+{% endif %}
+
+<div id="great-header-language-switcher" class="great-header-language-switcher great-header-form">
+  {% language request.LANGUAGE_CODE %}
+    <form class="languages" action="{% block language_form_action %}{% url 'set_language' %}{% endblock %}" method="{% block language_form_method %}post{% endblock %}">
+      {% csrf_token %}
+      <label for="great-header-language-select">{% trans 'Language' %}</label>
+      <span id="great-header-language-display" class="great-header-language-display" aria-hidden="true"></span>
+      {{ language_switcher_form.language }}
+      <button id="great-header-language-submit" type="submit">{% trans 'Select' %}</button>
+    </form>
+  {% endlanguage %}
+</div>
+
 {% endblock %}
 
 {% block header_nav %}
 
 <li class="column-quarter js-menuitem">
-  <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}">Invest</a>
+  <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}">{% trans 'Invest' %}</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ services_urls.fas }}" class="link-heading" id="header-fas">Find a UK supplier</a>
+  <a href="{{ services_urls.fas }}" class="link-heading" id="header-fas">{% trans 'Find a UK supplier' %}</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.industries }}" class="link-heading" id="header-industries">Industries</a>
+  <a href="{{ header_footer_urls.industries }}" class="link-heading" id="header-industries">{% trans 'Industries' %}</a>
 </li>
 
+{% if features.HOW_TO_DO_BUSINESS_ON %}
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.how_to_do_business_with_the_uk }}" class="link-heading" id="header-how-to-do-business-with-the-uk">How to do business with the UK</a>
+  <a href="{{ header_footer_urls.how_to_do_business_with_the_uk }}" class="link-heading" id="header-how-to-do-business-with-the-uk">{% trans 'How to do business with the UK' %}</a>
 </li>
+{% endif %}
 
 {% if features.NEWS_SECTION_ON %}
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.international_news }}" class="link-heading" id="header-news">News</a>
+  <a href="{{ header_footer_urls.international_news }}" class="link-heading" id="header-news">{% trans 'News' %}</a>
 </li>
 {% endif %}
 

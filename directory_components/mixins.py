@@ -34,3 +34,23 @@ class CountryDisplayMixin:
             'initial': forms.get_country_form_initial_data(self.request),
             **kwargs,
         }
+
+
+class LanguageSwitcherMixin:
+    language_form_class = forms.LanguageForm
+
+    def get_context_data(self, *args, **kwargs):
+
+        language_form_kwargs = self.get_language_form_kwargs()
+
+        return super().get_context_data(
+            language_switcher_form=self.language_form_class(
+                **language_form_kwargs),
+            *args, **kwargs
+        )
+
+    def get_language_form_kwargs(self, **kwargs):
+        return {
+            'initial': forms.get_language_form_initial_data(self.request),
+            **kwargs,
+        }

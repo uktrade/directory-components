@@ -18,6 +18,7 @@
 {% block header_logo_url %}{{ services_urls.exred }}{% endblock %}
 
 {% block header_extra_links %}
+<ul>
   {% block login_state %}
     {% if not sso_is_logged_in %}
     <li class="anonymous">
@@ -32,6 +33,7 @@
     </li>
     {% endif %}
   {% endblock %}
+</ul>
 {% endblock %}
 
 {% block header_nav %}
