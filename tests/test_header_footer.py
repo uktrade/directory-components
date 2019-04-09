@@ -368,6 +368,11 @@ def test_domestic_header_v2_ids_match_urls_and_text(
         'header-news',
         urls.GREAT_INTERNATIONAL_NEWS,
     ),
+    (
+        '',
+        'great-header-logo',
+        urls.SERVICES_GREAT_INTERNATIONAL,
+    ),
 ))
 def test_international_header_v2_ids_match_urls_and_text(
     title, element_id, url, settings
