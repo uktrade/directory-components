@@ -128,7 +128,7 @@ def test_urls_exist_in_domestic_header_v2(url, settings):
     urls.SERVICES_GREAT_DOMESTIC,
     urls.GREAT_INTERNATIONAL,
     urls.SERVICES_INVEST,
-    urls.FAS_SEARCH,
+    urls.SERVICES_FAS,
     urls.GREAT_INTERNATIONAL_INDUSTRIES,
     urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
     urls.GREAT_INTERNATIONAL_NEWS,
@@ -159,6 +159,7 @@ def test_urls_exist_in_international_header_v2(url, settings):
     urls.ABOUT,
     urls.PRIVACY_AND_COOKIES,
     urls.TERMS_AND_CONDITIONS,
+    urls.PERFORMANCE_DASHBOARD,
     urls.SERVICES_FAB,
     urls.SERVICES_SOO,
     urls.SERVICES_EVENTS,
@@ -180,6 +181,7 @@ def test_urls_exist_in_footer(url, settings):
     urls.CONTACT_US,
     urls.PRIVACY_AND_COOKIES,
     urls.TERMS_AND_CONDITIONS,
+    urls.PERFORMANCE_DASHBOARD,
     urls.DIT,
 ])
 def test_urls_exist_in_domestic_footer_v2(url, settings):
@@ -348,8 +350,8 @@ def test_domestic_header_v2_ids_match_urls_and_text(
     ),
     (
         'Find a UK supplier',
-        'header-fas-search',
-        urls.FAS_SEARCH,
+        'header-fas',
+        urls.SERVICES_FAS,
     ),
     (
         'Industries',
@@ -479,6 +481,11 @@ def test_international_header_v2_ids_match_urls_and_text(
         urls.TERMS_AND_CONDITIONS,
     ),
     (
+        'Performance',
+        'footer-site-links-performance',
+        urls.PERFORMANCE_DASHBOARD,
+    ),
+    (
         'Department for International Trade on GOV.UK',
         'footer-site-links-dit',
         urls.DIT
@@ -518,6 +525,11 @@ def test_footer_ids_match_urls_and_text(
         'Terms and conditions',
         'footer-terms-and-conditions',
         urls.TERMS_AND_CONDITIONS,
+    ),
+    (
+        'Performance',
+        'footer-performance',
+        urls.PERFORMANCE_DASHBOARD,
     ),
     (
         'Department for International Trade on GOV.UK',

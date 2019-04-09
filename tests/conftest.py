@@ -44,6 +44,8 @@ def pytest_configure():
         IP_RESTRICTOR_SKIP_CHECK_SECRET='secret-debug',
         RESTRICTED_APP_NAMES=['admin'],
         ALLOWED_ADMIN_IPS=[],
+        DIRECTORY_CONSTANTS_URL_GREAT_INTERNATIONAL=(
+            'https://international.com/international/'),
         DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC='https://exred.com',
         DIRECTORY_CONSTANTS_URL_EXPORT_OPPORTUNITIES='https://exopps.com',
         DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS='https://soo.com',
