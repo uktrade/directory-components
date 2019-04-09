@@ -17,8 +17,7 @@
 #footer a:focus {
   outline: 3px solid #ffbf47; }
 
-#header,
-#footer {
+#header, #footer {
   background-color: #1e1348;
   color: #ffffff; }
   #header .column-fifth,
@@ -1810,12 +1809,16 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3,
+    a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1824,9 +1827,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     font-family: 'Roboto', arial, helvetica, sans-serif;
     font-size: 19px;
     font-weight: 700;
@@ -1958,10 +1964,10 @@ a.cta-link:active:focus {
 
 main,
 .font-xxlarge, .bold-xxlarge,
-.font-xlarge, .bold-xlarge, .heading-xlarge,
-.font-large, .bold-large, .heading-large,
-.font-medium, .bold-medium, .heading-medium,
-.font-small, .bold-small, .heading-small,
+.font-xlarge, .bold-xlarge,
+.font-large, .bold-large,
+.font-medium, .bold-medium,
+.font-small, .bold-small,
 .font-xsmall, .bold-xsmall {
   line-height: 1.6; }
 
@@ -2083,16 +2089,6 @@ main,
     .hero-with-cta .hero-brand img {
       height: 80px; } }
 
-.full-width-banner-with-cta::before {
-  content: '';
-  background-image: -webkit-gradient(linear, right top, left top, color-stop(25%, transparent), to(rgba(0, 0, 0, 0.75)));
-  background-image: linear-gradient(to left, transparent 25%, rgba(0, 0, 0, 0.75) 100%);
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-  width: 100%; }
-
 .full-width-banner-with-cta {
   background-position: 50%;
   background-repeat: no-repeat;
@@ -2100,7 +2096,8 @@ main,
   color: #fff;
   position: relative; }
   .full-width-banner-with-cta .container {
-    min-height: 597px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
