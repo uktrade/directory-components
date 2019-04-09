@@ -184,16 +184,3 @@ def test_get_cookie_when_no_querystring(mock_get, rf):
 def test_get_language_from_prefix(path, expected_prefix):
     prefix = helpers.get_language_from_prefix(path)
     assert prefix == expected_prefix
-
-
-@pytest.mark.parametrize('prefixed_url,exp_url', (
-    ('/de/', '/'),
-    ('/ar/', '/'),
-    ('/es/industries/', '/industries/'),
-    ('/zh-hans/industries/', '/industries/'),
-    ('/de/industries/aerospace/', '/industries/aerospace/'),
-    ('/fr/industries/automotive/', '/industries/automotive/'),
-))
-def test_get_untranslated_url(prefixed_url, exp_url):
-    url = helpers.get_untranslated_url(prefixed_url)
-    assert url == exp_url
