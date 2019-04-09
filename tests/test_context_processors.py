@@ -130,11 +130,13 @@ def test_header_footer_processor(settings):
         'search': 'https://exred.com/search/',
         'services': 'https://exred.com/services/',
         'domestic_news': 'https://exred.com/news/',
-        'fas': 'https://fas.com/',
-        'how_to_do_business_with_the_uk':
-            'https://exred.com/international/how-to-do-business-with-the-uk/',
-        'industries': 'https://exred.com/international/industries/',
-        'international_news': 'https://exred.com/international/news/',
+        'fas': 'https://fas.com',
+        'how_to_do_business_with_the_uk': (
+            'https://international.com/international'
+            '/how-to-do-business-with-the-uk/'
+        ),
+        'industries': 'https://international.com/international/industries/',
+        'international_news': 'https://international.com/international/news/',
         'get_finance': 'https://exred.com/get-finance/',
         'ukef': 'https://exred.com/get-finance/',
         'performance': 'https://exred.com/performance-dashboard/',
@@ -165,7 +167,7 @@ def test_urls_processor(settings):
         'fas': 'https://fas.com',
         'feedback': 'https://exred.com/contact/feedback/',
         'great_domestic': 'https://exred.com',
-        'great_international': 'https://exred.com/international/',
+        'great_international': 'https://international.com/international/',
         'invest': 'https://invest.com',
         'soo': 'https://soo.com',
         'sso': 'https://sso.com',
