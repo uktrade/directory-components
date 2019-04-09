@@ -128,7 +128,7 @@ def test_urls_exist_in_domestic_header_v2(url, settings):
     urls.SERVICES_GREAT_DOMESTIC,
     urls.GREAT_INTERNATIONAL,
     urls.SERVICES_INVEST,
-    urls.FAS_SEARCH,
+    urls.SERVICES_FAS,
     urls.GREAT_INTERNATIONAL_INDUSTRIES,
     urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
     urls.GREAT_INTERNATIONAL_NEWS,
@@ -348,8 +348,8 @@ def test_domestic_header_v2_ids_match_urls_and_text(
     ),
     (
         'Find a UK supplier',
-        'header-fas-search',
-        urls.FAS_SEARCH,
+        'header-fas',
+        urls.SERVICES_FAS,
     ),
     (
         'Industries',

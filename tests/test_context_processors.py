@@ -130,7 +130,7 @@ def test_header_footer_processor(settings):
         'search': 'https://exred.com/search/',
         'services': 'https://exred.com/services/',
         'domestic_news': 'https://exred.com/news/',
-        'fas_search': 'https://fas.com/search/',
+        'fas': 'https://fas.com/',
         'how_to_do_business_with_the_uk':
             'https://exred.com/international/how-to-do-business-with-the-uk/',
         'industries': 'https://exred.com/international/industries/',
@@ -163,7 +163,6 @@ def test_urls_processor(settings):
         'exred': 'https://exred.com',
         'fab': 'https://fab.com',
         'fas': 'https://fas.com',
-        'fas_search': 'https://fas.com/search/',
         'feedback': 'https://exred.com/contact/feedback/',
         'great_domestic': 'https://exred.com',
         'great_international': 'https://exred.com/international/',
