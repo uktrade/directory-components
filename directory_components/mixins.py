@@ -1,4 +1,3 @@
-from django.conf import settings
 from directory_constants.constants.choices import COUNTRY_CHOICES
 
 from directory_components import helpers, forms
