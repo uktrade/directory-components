@@ -135,7 +135,10 @@ def test_urls_exist_in_domestic_header_v2(url, settings):
 ])
 def test_urls_exist_in_international_header_v2(url, settings):
     context = {
-        'features': {'NEWS_SECTION_ON': True},
+        'features': {
+            'NEWS_SECTION_ON': True,
+            'HOW_TO_DO_BUSINESS_ON': True,
+        },
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
@@ -381,6 +384,7 @@ def test_international_header_v2_ids_match_urls_and_text(
         'features': {
             'NEWS_SECTION_ON': True,
             'NEW_HEADER_FOOTER_ON': True,
+            'HOW_TO_DO_BUSINESS_ON': True
         },
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
