@@ -48,7 +48,7 @@ def get_country_form_initial_data(request):
 
 
 class LanguageForm(Form):
-    lang = components_fields.ChoiceField(
+    language = components_fields.ChoiceField(
         label='Language',
         widget=Select(attrs={'id': 'great-header-language-select'}),
         choices=settings.LANGUAGES,
@@ -57,5 +57,5 @@ class LanguageForm(Form):
 
 def get_language_form_initial_data(request):
     return {
-        'lang': translation.get_language()
+        'language': translation.get_language()
     }
