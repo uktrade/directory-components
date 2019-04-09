@@ -6,7 +6,6 @@ from mohawk import Receiver
 from mohawk.exc import HawkFail
 
 from django.conf import settings
-from django.utils import translation
 from django.utils.encoding import iri_to_uri
 
 from directory_components import constants
