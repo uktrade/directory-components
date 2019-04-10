@@ -2043,12 +2043,11 @@ main,
 
 .hero-with-cta {
   padding: 90px 0 60px;
-  background-color: #000000; }
+  background-color: #000000;
+  min-height: 400px; }
   .hero-with-cta h1 {
-    margin-top: 0;
-    margin-bottom: 15px; }
+    margin-top: 0; }
   .hero-with-cta h2 {
-    font-weight: 400;
     margin-bottom: 30px; }
   .hero-with-cta .container {
     position: relative;
