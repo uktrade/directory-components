@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='9.3.1',
+    version='9.4.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
