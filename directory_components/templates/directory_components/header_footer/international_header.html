@@ -38,6 +38,7 @@
 </div>
 {% endif %}
 
+{% if hide_language_switcher %}
 <div id="great-header-language-switcher" class="great-header-language-switcher great-header-form">
   {% language request.LANGUAGE_CODE %}
     <form class="languages" action="{% block language_form_action %}{% url 'set_language' %}{% endblock %}" method="{% block language_form_method %}post{% endblock %}">
@@ -52,6 +53,7 @@
     </form>
   {% endlanguage %}
 </div>
+{% endif %}
 
 {% endblock %}
 
