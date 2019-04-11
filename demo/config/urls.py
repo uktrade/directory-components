@@ -1,5 +1,4 @@
-from django.conf.urls import url, include
-from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls import url
 
 from demo import views
 
@@ -98,15 +97,10 @@ urlpatterns = [
         {'template_name': 'demo/template_tags.html'},
         name='template-tags',
     ),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-]
-
-urlpatterns += i18n_patterns(
     url(
         r'^great-international-header-footer/$',
         views.InternationalHeaderView.as_view(),
         {'template_name': 'demo/great-international-header-footer.html'},
         name='great-international-header-footer',
     ),
-    prefix_default_language=True,
-)
+]
