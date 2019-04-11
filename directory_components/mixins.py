@@ -54,3 +54,23 @@ class LanguageSwitcherMixin:
             'initial': forms.get_language_form_initial_data(self.request),
             **kwargs,
         }
+
+
+class LangSwitcherMixin:
+    language_form_class = forms.LangForm
+
+    def get_context_data(self, *args, **kwargs):
+
+        language_form_kwargs = self.get_lang_form_kwargs()
+
+        return super().get_context_data(
+            language_switcher_form=self.lang_form_class(
+                **language_form_kwargs),
+            *args, **kwargs
+        )
+
+    def get_lang_form_kwargs(self, **kwargs):
+        return {
+            'initial': forms.get_lang_form_initial_data(self.request),
+            **kwargs,
+        }
