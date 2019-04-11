@@ -47,29 +47,22 @@ def get_country_form_initial_data(request):
     }
 
 
-class LanguageForm(Form):
-    language = components_fields.ChoiceField(
-        label='Language',
-        widget=Select(attrs={'id': 'great-header-language-select'}),
-        choices=settings.LANGUAGES,
-    )
-
-
-def get_language_form_initial_data(request):
-    return {
-        'language': translation.get_language()
-    }
-
-
-class LangForm(Form):
+class LanguageForm(forms.Form):
     lang = components_fields.ChoiceField(
-        label='Language',
         widget=Select(attrs={'id': 'great-header-language-select'}),
-        choices=settings.LANGUAGES,
+        choices=[]  # set by __init__
     )
 
+    def __init__(self, language_choices=settings.LANGUAGES, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['lang'].choices = language_choices
 
-def get_lang_form_initial_data(request):
+    def is_language_available(self, language_code):
+        language_codes = [code for code, _ in self.fields['lang'].choices]
+        return language_code in language_codes
+
+
+def get_language_form_initial_data():
     return {
         'lang': translation.get_language()
     }

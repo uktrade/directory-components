@@ -7,11 +7,14 @@ from django.conf import settings
 def pytest_configure():
     settings.configure(
         ALLOWED_HOSTS=['*'],
+        LANGUAGE_CODE='en-gb',
         CACHES={
             'default': {
                 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
             }
         },
+        MIDDLEWARE_CLASSES=[
+            'directory_components.middleware.ForceDefaultLocale'],
         SESSION_ENGINE='django.contrib.sessions.backends.cache',
         ROOT_URLCONF='tests.urls',
         SSO_PROXY_LOGIN_URL='http://login.com',

@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 
 from directory_components.mixins import (
-    CountryDisplayMixin, LanguageSwitcherMixin
+    CountryDisplayMixin, EnableTranslationsMixin
 )
 
 
@@ -33,7 +33,7 @@ class GreatDomesticHeaderSearchView(BasePageView):
 
 
 class InternationalHeaderView(
-    CountryDisplayMixin, LanguageSwitcherMixin, BasePageView
+    CountryDisplayMixin, EnableTranslationsMixin, BasePageView
 ):
     pass
 

@@ -7,6 +7,7 @@ from mohawk.exc import HawkFail
 
 from django.conf import settings
 from django.utils.encoding import iri_to_uri
+from django.utils import translation
 
 from directory_components import constants
 
@@ -195,3 +196,10 @@ def get_country_from_querystring(request):
 def get_user_country(request):
     return get_country_from_querystring(request) or \
         request.COOKIES.get(constants.COUNTRY_COOKIE_NAME, '')
+
+
+def get_language_from_querystring(request):
+    language_code = request.GET.get('lang')
+    language_codes = translation.trans_real.get_languages()
+    if language_code and language_code in language_codes:
+        return language_code
