@@ -4,7 +4,7 @@ from unittest.mock import patch
 from django.views.generic import TemplateView
 from django.utils import translation
 
-from directory_constants.constants.choices import COUNTRY_CHOICES
+from directory_constants.choices import COUNTRY_CHOICES
 from directory_components import mixins
 
 

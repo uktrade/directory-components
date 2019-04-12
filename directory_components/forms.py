@@ -5,7 +5,7 @@ from django.db.models.fields import BLANK_CHOICE_DASH
 from django.conf import settings
 
 from directory_components import fields as components_fields
-from directory_constants.constants.choices import COUNTRY_CHOICES
+from directory_constants.choices import COUNTRY_CHOICES
 
 from directory_components import helpers
 

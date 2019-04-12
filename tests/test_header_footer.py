@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from directory_constants.constants import urls
+from directory_constants import urls
 import pytest
 
 from django.template.loader import render_to_string

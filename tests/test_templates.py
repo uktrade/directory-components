@@ -7,7 +7,7 @@ from directory_components.helpers import SocialLinkBuilder
 from directory_components.forms import Form as ComponentsForm
 from directory_components.fields import CharField as ComponentsCharField
 from directory_components.context_processors import urls_processor
-from directory_constants.constants import urls
+from directory_constants import urls
 
 
 def test_google_tag_manager_project_id():

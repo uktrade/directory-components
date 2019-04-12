@@ -2,7 +2,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from directory_constants.constants import urls
+from directory_constants import urls
 from directory_components import context_processors
 
 
