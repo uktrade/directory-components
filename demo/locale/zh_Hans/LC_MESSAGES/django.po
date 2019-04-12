@@ -39,32 +39,32 @@ msgstr "条款与条件"
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:24
 msgid "Department for International Trade on GOV.UK"
-msgstr ""
+msgstr "国际贸易部位于 GOV.UK"
 
 #: directory_components/templates/directory_components/header_footer/header_base.html:18
 msgid "For UK businesses"
-msgstr ""
+msgstr "查找英国企业"
 
 #: directory_components/templates/directory_components/header_footer/header_base.html:19
 msgid "For international businesses"
-msgstr ""
+msgstr "查找国际企业"
 
 #: directory_components/templates/directory_components/header_footer/header_base.html:38
 msgid "Main menu"
-msgstr ""
+msgstr "主菜单"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:8
 msgid "Department for International Trade"
-msgstr ""
+msgstr "国际贸易部"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:12
 #: directory_components/templates/directory_components/header_footer/international_header.html:23
 msgid "Great Britain and Northern Ireland"
-msgstr ""
+msgstr "大不列颠和北爱尔兰"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:21
 msgid "Go to the page for UK businesses"
-msgstr ""
+msgstr "转至英国企业页面"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:30
 msgid "Country"
@@ -84,11 +84,11 @@ msgstr "语言"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:62
 msgid "Invest"
-msgstr ""
+msgstr "投资"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:66
 msgid "Find a UK supplier"
-msgstr ""
+msgstr "查找英国供应商"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:70
 msgid "Industries"
@@ -96,7 +96,7 @@ msgstr "行业"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:74
 msgid "How to do business with the UK"
-msgstr ""
+msgstr "如何与英国开展业务"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:79
 msgid "News"
