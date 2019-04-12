@@ -1,22 +1,15 @@
+from datetime import datetime
 import urllib.parse
-from collections import namedtuple
 
-from ipware.ip2 import get_client_ip
-from mohawk import Receiver
-from mohawk.exc import HawkFail
-
-from django.conf import settings
 from django.utils.encoding import iri_to_uri
 from django.utils import translation
 
 from directory_components import constants
 
-from directory_constants.constants.choices import COUNTRY_CHOICES
-
-COUNTRY_CODES = [code for code, _ in COUNTRY_CHOICES]
+from directory_constants import choices
 
 
-IPs = namedtuple('IPs', ['second', 'third'])
+COUNTRY_CODES = [code for code, _ in choices.COUNTRY_CHOICES]
 
 
 def add_next(destination_url, current_url):
@@ -91,102 +84,6 @@ class UrlPrefixer:
         return path
 
 
-class IpwareRemoteIPAddressRetriver:
-    MESSAGE_NOT_FOUND = 'IP not found'
-    MESSAGE_UNROUTABLE = 'IP is private'
-
-    @classmethod
-    def get_ip_address(cls, request):
-        client_ip, is_routable = get_client_ip(request)
-        if not client_ip:
-            raise LookupError(cls.MESSAGE_NOT_FOUND)
-        if not is_routable:
-            raise LookupError(cls.MESSAGE_UNROUTABLE)
-        return client_ip
-
-
-class GovukPaaSRemoteIPAddressRetriver:
-    MESSAGE_MISSING_HEADER = 'X-Forwarded-For not in HTTP headers'
-    MESSAGE_INVALID_IP_COUNT = 'Not enough IP addresses in X-Forwarded-For'
-
-    @classmethod
-    def get_ip_address(cls, request):
-        """
-        Returns the second AND third FROM THE RIGHT
-        IP addresses of the client making a HTTP request, using the
-        second-to-last IP address in the X-Forwarded-For header. This
-        should not be able to be spoofed in GovukPaaS, but it is not
-        safe to use in other environments.
-
-        Args:
-            request (HttpRequest): the incoming Django request object
-
-        Returns:
-            str: The IP address of the incoming request
-
-        Raises:
-            LookupError: The X-Forwarded-For header is not present, or
-            does not contain enough IPs
-        """
-        if 'HTTP_X_FORWARDED_FOR' not in request.META:
-            raise LookupError(cls.MESSAGE_MISSING_HEADER)
-
-        x_forwarded_for = request.META['HTTP_X_FORWARDED_FOR']
-        ip_addesses = x_forwarded_for.split(',')
-        if len(ip_addesses) < 2:
-            raise LookupError(cls.MESSAGE_INVALID_IP_COUNT)
-
-        if len(ip_addesses) >= 3:
-            ips = IPs(ip_addesses[-2].strip(), ip_addesses[-3].strip())
-        else:
-            ips = IPs(ip_addesses[-2].strip(), None)
-        return ips
-
-
-class RemoteIPAddressRetriever:
-    """
-    Different environments retrieve the remote IP address differently. This
-    class negotiates that.
-
-    """
-
-    @classmethod
-    def __new__(cls, *args, **kwargs):
-        value = getattr(
-            settings,
-            'IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER',
-            constants.IP_RETRIEVER_NAME_GOV_UK
-        )
-        if value == constants.IP_RETRIEVER_NAME_GOV_UK:
-            return GovukPaaSRemoteIPAddressRetriver()
-        elif value == constants.IP_RETRIEVER_NAME_IPWARE:
-            return IpwareRemoteIPAddressRetriver()
-        raise NotImplementedError()
-
-
-def is_skip_ip_check_signature_valid(signature):
-    if not getattr(settings, 'IP_RESTRICTOR_SKIP_CHECK_ENABLED', False):
-        return False
-
-    credentials = {
-        'id': settings.IP_RESTRICTOR_SKIP_CHECK_SENDER_ID,
-        'key': settings.IP_RESTRICTOR_SKIP_CHECK_SECRET,
-        'algorithm': 'sha256'
-    }
-    try:
-        Receiver(
-            lambda x: credentials,
-            signature,
-            '/',
-            '',
-            accept_untrusted_content=True
-        )
-    except HawkFail:
-        return False
-    else:
-        return True
-
-
 def get_country_from_querystring(request):
     country_code = request.GET.get('country')
     if country_code in COUNTRY_CODES:
@@ -203,3 +100,125 @@ def get_language_from_querystring(request):
     language_codes = translation.trans_real.get_languages()
     if language_code and language_code in language_codes:
         return language_code
+
+
+class CompanyParser:
+    """
+    Parse the company details provided by directory-api's company
+    serializer
+
+    """
+
+    SECTORS = dict(choices.INDUSTRIES)
+    EMPLOYEES = dict(choices.EMPLOYEES)
+    INDUSTRIES = dict(choices.INDUSTRIES)
+    COUNTRIES = dict(choices.COUNTRY_CHOICES)
+    REGIONS = dict(choices.EXPERTISE_REGION_CHOICES)
+    LANGUAGES = dict(choices.EXPERTISE_LANGUAGES)
+
+    def __init__(self, data):
+        self.data = data
+
+    def __bool__(self):
+        return bool(self.data)
+
+    @property
+    def is_publishable(self):
+        return self.data['is_publishable']
+
+    @property
+    def date_of_creation(self):
+        if self.data.get('date_of_creation'):
+            date = datetime.strptime(self.data['date_of_creation'], '%Y-%m-%d')
+            return date.strftime('%d %B %Y')
+
+    @property
+    def address(self):
+        address = []
+        fields = [
+            'address_line_1', 'address_line_2', 'locality', 'postal_code'
+        ]
+        for field in fields:
+            value = self.data.get(field)
+            if value:
+                address.append(value)
+        return ', '.join(address)
+
+    @property
+    def keywords(self):
+        if self.data.get('keywords'):
+            return ', '.join(tokenize_keywords(self.data['keywords']))
+        return ''
+
+    @property
+    def sectors_label(self):
+        return values_to_labels(
+            values=self.data.get('sectors') or [],
+            choices=self.SECTORS
+        )
+
+    @property
+    def employees_label(self):
+        if self.data.get('employees'):
+            return self.EMPLOYEES.get(self.data['employees'])
+
+    @property
+    def expertise_industries_label(self):
+        return values_to_labels(
+            values=self.data.get('expertise_industries') or [],
+            choices=self.INDUSTRIES
+        )
+
+    @property
+    def expertise_regions_label(self):
+        return values_to_labels(
+            values=self.data.get('expertise_regions') or [],
+            choices=self.REGIONS
+        )
+
+    @property
+    def expertise_countries_label(self):
+        return values_to_labels(
+            values=self.data.get('expertise_countries') or [],
+            choices=self.COUNTRIES
+        )
+
+    @property
+    def expertise_languages_label(self):
+        return values_to_labels(
+            values=self.data.get('expertise_languages') or [],
+            choices=self.LANGUAGES
+        )
+
+    @property
+    def is_in_companies_house(self):
+        return self.data['company_type'] == 'COMPANIES_HOUSE'
+
+    @property
+    def has_expertise(self):
+        fields = [
+            'expertise_industries',
+            'expertise_regions',
+            'expertise_countries',
+            'expertise_languages',
+        ]
+        return any(self.data.get(field) for field in fields)
+
+    @property
+    def expertise_products_services_label(self):
+        value = self.data.get('expertise_products_services')
+        if not value:
+            return {}
+        return {
+            key.replace('-', ' ').capitalize(): ', '.join(value)
+            for key, value in value.items()
+        }
+
+
+def values_to_labels(values, choices):
+    return ', '.join([choices.get(item) for item in values if item in choices])
+
+
+def tokenize_keywords(keywords):
+    sanitized = keywords.replace(', ', ',').replace(' ,', ',').strip(' ,')
+    return sanitized.split(',')
