@@ -40,32 +40,32 @@ msgstr "規約"
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:24
 msgid "Department for International Trade on GOV.UK"
-msgstr ""
+msgstr "GOV.UK の国際通商省サイト"
 
 #: directory_components/templates/directory_components/header_footer/header_base.html:18
 msgid "For UK businesses"
-msgstr ""
+msgstr "英国でのビジネスについて"
 
 #: directory_components/templates/directory_components/header_footer/header_base.html:19
 msgid "For international businesses"
-msgstr ""
+msgstr "国際的なビジネスについて"
 
 #: directory_components/templates/directory_components/header_footer/header_base.html:38
 msgid "Main menu"
-msgstr ""
+msgstr "メインメニュー"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:8
 msgid "Department for International Trade"
-msgstr ""
+msgstr "国際通商省"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:12
 #: directory_components/templates/directory_components/header_footer/international_header.html:23
 msgid "Great Britain and Northern Ireland"
-msgstr ""
+msgstr "英国（グレートブリテン及び北アイルランド連合王国）"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:21
 msgid "Go to the page for UK businesses"
-msgstr ""
+msgstr "英国のビジネスのページ"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:30
 msgid "Country"
@@ -85,11 +85,11 @@ msgstr "言語"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:62
 msgid "Invest"
-msgstr ""
+msgstr "投資"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:66
 msgid "Find a UK supplier"
-msgstr ""
+msgstr "英国のサプライヤー検索"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:70
 msgid "Industries"
@@ -97,7 +97,7 @@ msgstr "産業"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:74
 msgid "How to do business with the UK"
-msgstr ""
+msgstr "英国でのビジネスの進め方"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:79
 msgid "News"
