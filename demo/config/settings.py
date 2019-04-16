@@ -112,7 +112,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
+    os.path.abspath(os.path.join(BASE_DIR, '../directory_components/locale')),
 )
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
