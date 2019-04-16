@@ -17,7 +17,8 @@
 #footer a:focus {
   outline: 3px solid #ffbf47; }
 
-#header, #footer {
+#header,
+#footer {
   background-color: #1e1348;
   color: #ffffff; }
   #header .column-fifth,
@@ -671,31 +672,23 @@
       padding-left: 15px;
       float: none; }
     .great-global-header-footer .great-domestic-international-links {
-      float: right; }
-      .great-global-header-footer .great-domestic-international-links .domestic,
-      .great-global-header-footer .great-domestic-international-links .international {
-        float: left; } }
-
-@media (max-width: 540px) {
-  .great-global-header-footer .great-domestic-international-links {
-    float: none;
-    position: relative; }
-    .great-global-header-footer .great-domestic-international-links > * {
-      position: absolute; }
-    .great-global-header-footer .great-domestic-international-links .domestic {
+      display: table;
       float: none;
-      left: 0; }
-    .great-global-header-footer .great-domestic-international-links .international {
-      float: none;
-      right: 0; } }
-
-@media (max-width: 420px) {
-  .great-global-header-footer .great-domestic-international-links {
-    float: none; }
-    .great-global-header-footer .great-domestic-international-links .domestic {
-      float: left; }
-    .great-global-header-footer .great-domestic-international-links .international {
-      float: right; } }
+      width: 100%;
+      table-layout: fixed; }
+      .great-global-header-footer .great-domestic-international-links a {
+        float: none;
+        display: table-cell;
+        vertical-align: middle;
+        width: 50%;
+        line-height: 1.6;
+        min-height: 50px;
+        height: auto; }
+        .great-global-header-footer .great-domestic-international-links a:first-child {
+          padding: 10px 0 10px 15px; }
+        .great-global-header-footer .great-domestic-international-links a:last-child {
+          text-align: right;
+          padding: 10px 15px 10px 0; } }
 
 @media (max-width: 350px) {
   .great-global-header-footer .great-domestic-international-links > * {
@@ -1809,16 +1802,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3,
-    a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner,
-    a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    
-    a.labelled-card:focus .card-inner,
-    a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1827,12 +1816,9 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3,
-  a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  
-  a.labelled-card .card-header h3,
-  a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
     font-family: 'Roboto', arial, helvetica, sans-serif;
     font-size: 19px;
     font-weight: 700;
