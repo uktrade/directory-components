@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-04 14:40+0000\n"
+"POT-Creation-Date: 2019-04-16 09:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,77 +28,77 @@ msgstr ""
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:15
 msgid "Contact us"
-msgstr "Contacto"
+msgstr "Entrar em contato"
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:18
 msgid "Privacy and cookies"
-msgstr "Privacidad y cookies"
+msgstr "Privacidade e cookies"
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:21
 msgid "Terms and conditions"
-msgstr "Términos y condiciones"
+msgstr "Termos e condições"
 
-#: directory_components/templates/directory_components/header_footer/footer_base.html:24
+#: directory_components/templates/directory_components/header_footer/footer_base.html:25
 msgid "Department for International Trade on GOV.UK"
-msgstr "Departamento de Comercio Internacional (DIT) en GOV.UK"
+msgstr "Departamento de Comércio Internacional em GOV.UK"
 
-#: directory_components/templates/directory_components/header_footer/header_base.html:18
+#: directory_components/templates/directory_components/header_footer/header_base.html:15
 msgid "For UK businesses"
-msgstr "Para empresas del Reino Unido"
+msgstr "Empresas do Reino Unido"
 
-#: directory_components/templates/directory_components/header_footer/header_base.html:19
+#: directory_components/templates/directory_components/header_footer/header_base.html:16
 msgid "For international businesses"
-msgstr "Para empresas internacionales"
+msgstr "Empresas internacionais"
 
-#: directory_components/templates/directory_components/header_footer/header_base.html:38
+#: directory_components/templates/directory_components/header_footer/header_base.html:39
 msgid "Main menu"
-msgstr "Menú principal"
+msgstr "Menu principal"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:8
 msgid "Department for International Trade"
-msgstr "Departamento de Comercio Internacional"
+msgstr "Departamento de Comércio Internacional"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:12
-#: directory_components/templates/directory_components/header_footer/international_header.html:23
+#: directory_components/templates/directory_components/header_footer/international_header.html:22
 msgid "Great Britain and Northern Ireland"
-msgstr "Gran Bretaña e Irlanda del Norte"
+msgstr "Grã-Bretanha e Irlanda do Norte"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:21
 msgid "Go to the page for UK businesses"
-msgstr "Ir a la página de empresas del Reino Unido"
+msgstr "Aceder à página de empresas do Reino Unido"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:30
+#: directory_components/templates/directory_components/header_footer/international_header.html:32
 msgid "Country"
 msgstr "País"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:44
+#: directory_components/templates/directory_components/header_footer/international_header.html:36
+#: directory_components/templates/directory_components/header_footer/international_header.html:50
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Seleccione"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:49
-msgid "Page in English only"
-msgstr "Esta página está solo en inglés"
-
-#: directory_components/templates/directory_components/header_footer/international_header.html:55
+#: directory_components/templates/directory_components/header_footer/international_header.html:47
 msgid "Language"
-msgstr "Idioma"
+msgstr "Língua"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:62
 msgid "Invest"
-msgstr "Invertir"
+msgstr "Investir"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:66
 msgid "Find a UK supplier"
-msgstr "Buscar un proveedor del Reino Unido"
+msgstr "Encontrar um fornecedor no Reino Unido"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:70
 msgid "Industries"
-msgstr "Sectores"
+msgstr "Indústrias"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:74
+#: directory_components/templates/directory_components/header_footer/international_header.html:75
 msgid "How to do business with the UK"
-msgstr "Cómo hacer negocios con el Reino Unido"
+msgstr "Como fazer negócios com o Reino Unido"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:79
+#: directory_components/templates/directory_components/header_footer/international_header.html:81
 msgid "News"
 msgstr ""
+
+#~ msgid "Page in English only"
+#~ msgstr "Esta página apenas está disponível em inglês"
