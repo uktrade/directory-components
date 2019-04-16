@@ -106,55 +106,28 @@
     }
 
     .great-domestic-international-links {
-      float: right;
-
-      .domestic,
-      .international {
-        float: left;
-      }
-
-    }
-  }
-
-}
-
-@media (max-width: 540px) {
-  .great-global-header-footer {
-    .great-domestic-international-links {
+      display: table;
       float: none;
-      position: relative;
+      width: 100%;
+      table-layout: fixed;
 
-      & > * {
-        position: absolute;
-      }
-
-      .domestic {
+      a {
         float: none;
-        left: 0;
-      }
+        display: table-cell;
+        vertical-align: middle;
+        width: 50%;
+        line-height: 1.6;
+        min-height: 50px;
+        height: auto;
 
-      .international {
-        float: none;
-        right: 0;
-      }
-    }
-  }
-}
+        &:first-child {
+          padding: 10px 0 10px 15px;
+        }
 
-
-@media (max-width: 420px) {
-
-  .great-global-header-footer {
-
-    .great-domestic-international-links {
-      float: none;
-
-      .domestic {
-        float: left;
-      }
-
-      .international {
-        float: right;
+        &:last-child {
+          text-align: right;
+          padding: 10px 15px 10px 0;
+        }
       }
     }
   }
