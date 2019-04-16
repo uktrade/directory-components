@@ -80,7 +80,6 @@ class CMSLanguageSwitcherMixin:
             form.is_language_available(translation.get_language())
         )
         return super().get_context_data(
-            page=self.page,
             language_switcher={'form': form, 'show': show_language_switcher},
             *args,
             **kwargs
