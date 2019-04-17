@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load banner hero message_box cta_box card labelled_card labelled_image_card from directory_components_tags %}
+{% load banner hero message_box cta_box card labelled_card labelled_image_card informative_banner from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -66,9 +66,24 @@
 &lt;/div&gt;</code>
     </pre>
 
+     <div class="width-two-thirds">
+        <h2 class="heading-large">Informative banner</h2>
+        <p>A different style of informative banner that can be used to alert the user to potentially useful but not urgent information.</p>
+    </div>
+
+    <pre><code>{% verbatim %}{% load informative_banner from directory_components_tags %}
+
+{% informative_banner banner_label='Banner Label' banner_content='&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, &lt;a href="#"&gt;sed do eiusmod tempor incididunt &lt;/a&gt; ut labore et dolore magna aliqua.&lt;/p&gt;' %}
+
+{% informative_banner banner_label='Banner Label' banner_content='&lt;br&gt;&lt;p&gt;An informative banner with separate lines &lt;a&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit&lt;/a&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;' %}{% endverbatim %}</code></pre>
+
+    {% informative_banner banner_label='Banner Label' banner_content='<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <a href="#">sed do eiusmod tempor incididunt </a> ut labore et dolore magna aliqua.</p>' %}
+    {% informative_banner banner_label='Banner Label' banner_content='<br><p>An informative banner with separate lines <a>Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></p><br><p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>' %}
+
     <a href="{% url 'index' %}" class="link-back link">Go back</a>
 
-  </div>
+   </div>
+
 </section>
 
 {% endblock %}
