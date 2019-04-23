@@ -70,6 +70,11 @@ class EnableTranslationsMixin:
 
 
 class CMSLanguageSwitcherMixin:
+
+    def dispatch(self, request, *args, **kwargs):
+        translation.activate(request.LANGUAGE_CODE)
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, *args, **kwargs):
         form = forms.LanguageForm(
             initial={'lang': translation.get_language()},
