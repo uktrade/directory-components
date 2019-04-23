@@ -61,6 +61,7 @@ def test_cms_language_switcher_one_language(rf):
         }
 
     request = rf.get('/')
+    request.LANGUAGE_CODE = ''
     with translation.override('de'):
         response = MyView.as_view()(request)
 
@@ -81,8 +82,9 @@ def test_cms_language_switcher_active_language_unavailable(rf):
         }
 
     request = rf.get('/')
-    with translation.override('fr'):
-        response = MyView.as_view()(request)
+    request.LANGUAGE_CODE = 'fr'
+
+    response = MyView.as_view()(request)
 
     assert response.status_code == 200
     assert response.context_data['language_switcher']['show'] is False
@@ -101,8 +103,9 @@ def test_cms_language_switcher_active_language_available(rf):
         }
 
     request = rf.get('/')
-    with translation.override('de'):
-        response = MyView.as_view()(request)
+    request.LANGUAGE_CODE = 'de'
+
+    response = MyView.as_view()(request)
 
     assert response.status_code == 200
     context = response.context_data['language_switcher']
