@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load banner hero message_box cta_box card labelled_card labelled_image_card informative_banner from directory_components_tags %}
+{% load banner hero message_box breadcrumb cta_box card labelled_card labelled_image_card informative_banner from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -14,6 +14,10 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="container">
+    {% breadcrumbs left_url='/' left_label='Home' right_label='Banners' %}
+</div>
 
 <div class="container">
   <div class="width-two-thirds">

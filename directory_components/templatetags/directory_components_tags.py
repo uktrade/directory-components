@@ -154,3 +154,8 @@ def full_width_banner_with_cta(**kwargs):
 @register.inclusion_tag('directory_components/informative_banner.html')
 def informative_banner(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/breadcrumbs.html')
+def breadcrumbs(**kwargs):
+    return kwargs

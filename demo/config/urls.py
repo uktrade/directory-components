@@ -80,6 +80,12 @@ urlpatterns = [
         name='cards',
     ),
     url(
+        r'^breadcrumbs/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/breadcrumbs.html'},
+        name='breadcrumbs',
+    ),
+    url(
         r'^responsive/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/responsive.html'},
@@ -94,8 +100,8 @@ urlpatterns = [
     url(
         r'^template-tags/$',
         views.BasePageView.as_view(),
-        {'template_name': 'demo/template_tags.html'},
-        name='template-tags',
+        {'template_name': 'demo/cms.html'},
+        name='cms-tags',
     ),
     url(
         r'^great-international-header-footer/$',

@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta full_width_banner_with_cta from directory_components_tags %}
+{% load breadcrumbs banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta full_width_banner_with_cta from directory_components_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -12,6 +12,10 @@
 
 {% static 'images/hero02.png' as hero_image %}
 {% static 'images/hero01.jpg' as hero_image_domestic %}
+
+<div class="container">
+    {% breadcrumbs left_url='/' left_label='Home' right_label='Hero banner' %}
+</div>
 
 <section class="padding-top-30">
   <div class="container">

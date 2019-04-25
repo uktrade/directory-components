@@ -1,13 +1,13 @@
 <div class="breadcrumbs">
   <ol>
     <li>
-      <a href="{{ parent_site.url }}">{{ parent_site.title }}</a>
+      <a href="{{ left_url }}">{{ left_label }}</a>
     </li>
-    {% for section in parent_sections %}
-      <li>
-        <a href="{{ section.url }}">{{ section.title }}</a>
-      </li>
-    {% endfor %}
-    <li aria-current="page">{{ current_page.title }}</li>
+    {% if middle_label %}
+	  <li>
+	    <a href="{{ middle_url }}">{{ middle_label }}</a>
+	  </li>
+	{% endif %}
+    <li aria-current="page">{{ right_label }}</li>
   </ol>
 </div>
