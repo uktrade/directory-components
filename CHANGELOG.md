@@ -1,7 +1,7 @@
 # Changelog
 
 ## 10.5.0
-[Full Changelog](https://github.com/uktrade/directory-api-client/pull/87/files)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/177/files)
 
 **Implemented enhancements:**
 
