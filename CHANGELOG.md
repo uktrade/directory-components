@@ -1,6 +1,6 @@
 # Changelog
 
-## 10.4.2
+## 10.5.0
 [Full Changelog](https://github.com/uktrade/directory-api-client/pull/87/files)
 
 **Implemented enhancements:**
