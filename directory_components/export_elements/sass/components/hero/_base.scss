@@ -161,6 +161,16 @@
   color: #fff;
   position: relative;
 
+  &.background-tint:before {
+    background-color: rgba(0,0,0,0.5);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
   .container {
     padding-top: 60px;
     padding-bottom: 60px;
