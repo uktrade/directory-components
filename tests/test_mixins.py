@@ -111,3 +111,15 @@ def test_cms_language_switcher_active_language_available(rf):
     context = response.context_data['language_switcher']
     assert context['show'] is True
     assert context['form'].initial['lang'] == 'de'
+
+
+def test_ga360_mixin(rf):
+    class TestView(mixins.GA360Mixin, TemplateView):
+        template_name = 'core/base.html'
+        ga360_payload = {'page_type': 'TestPageType'}
+
+    request = rf.get('/')
+    response = TestView.as_view()(request)
+
+    assert response.context_data['ga360']
+    assert response.context_data['ga360']['page_type'] == 'TestPageType'
