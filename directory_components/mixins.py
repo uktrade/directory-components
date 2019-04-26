@@ -89,3 +89,14 @@ class CMSLanguageSwitcherMixin:
             *args,
             **kwargs
         )
+
+
+class GA360Mixin:
+    ga360_payload = None
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            ga360=self.ga360_payload,
+            *args,
+            **kwargs
+        )
