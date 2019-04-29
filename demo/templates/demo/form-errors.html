@@ -3,9 +3,13 @@
 {% block head_title %}directory-components{% endblock %}
 
 {% load view_instance_code from demo_tags %}
-{% load render_form from directory_components_tags %}
+{% load breadcrumbs render_form from directory_components_tags %}
 
 {% block content %}
+<div class="container">
+    {% breadcrumbs left_url='/' left_label='Home' right_label='Form errors' %}
+</div>
+
 <section class="padding-top-30">
   <div class="container">
     <div class="grid-row">
