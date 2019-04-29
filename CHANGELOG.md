@@ -1,17 +1,25 @@
 # Changelog
 
+## 10.8.2
+
+[Full Changelog](https://github.com/uktrade/directory-components/pull/183/files)
+
+### Bug fixes:
+
+- Improved contrast on international header language dropdown for better accessibility
+
 ## 10.8.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/181/files)
 
 **Bug fixes:**
- 
+
 - Specified support for python 3.6 in setup.py
 
 ## 10.8.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/178/files)
 
 **Implemented enhancements:**
- 
+
 - Add breadcrumbs template tag that supports two and three levels.
 
 ## 10.7.0
