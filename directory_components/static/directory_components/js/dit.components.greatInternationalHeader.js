@@ -87,7 +87,7 @@ dit.components.greatHeader = (new function() {
   self.reset = function() {
     while (expanders.length) expanders.pop().destroy();
     setupResponsiveView();
-  }
+  };
 
   self.init = function() {
     dit.responsive.init({
