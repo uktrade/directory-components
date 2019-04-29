@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.8.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/181/files)
+
+**Bug fixes:**
+ 
+- Specified support for python 3.6 in setup.py
+
 ## 10.8.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/178/files)
 
