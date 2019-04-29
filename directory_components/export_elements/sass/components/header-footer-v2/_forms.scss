@@ -42,6 +42,10 @@ body.js-enabled {
     display: none;
   }
 
+  option {
+    color: $black;
+  }
+
   label {
     margin-right: 5px;
   }
