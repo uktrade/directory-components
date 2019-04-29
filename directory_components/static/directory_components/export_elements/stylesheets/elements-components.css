@@ -17,8 +17,7 @@
 #footer a:focus {
   outline: 3px solid #ffbf47; }
 
-#header,
-#footer {
+#header, #footer {
   background-color: #1e1348;
   color: #ffffff; }
   #header .column-fifth,
@@ -1802,12 +1801,16 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3,
+    a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1816,9 +1819,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     font-family: 'Roboto', arial, helvetica, sans-serif;
     font-size: 19px;
     font-weight: 700;
@@ -2080,6 +2086,14 @@ main,
   background-size: cover;
   color: #fff;
   position: relative; }
+  .full-width-banner-with-cta.background-tint:before {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%; }
   .full-width-banner-with-cta .container {
     padding-top: 60px;
     padding-bottom: 60px;

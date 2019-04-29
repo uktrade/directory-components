@@ -1,4 +1,7 @@
-<section class="full-width-banner-with-cta" style="background-image: url({{ background_image }}) " >
+<section
+  {% if section_id %}id="{{ section_id }}"{% endif %}
+  class="full-width-banner-with-cta {% if background_tint %}background-tint{% endif %}"
+  style="background-image: url({{ background_image }})">
 	<div class="container">
 		<div class="grid-row">
 			<div class="column-full column-two-thirds-m column-half-l column-third-xl">
