@@ -90,14 +90,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
 LANGUAGE_CODE = 'en-gb'
 TIME_ZONE = 'UTC'
 USE_L10N = True
 USE_TZ = True
 
+# https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-LANGUAGE_COOKIE_NAME
+LANGUAGE_COOKIE_DEPRECATED_NAME = 'django-language'
 
 # https://github.com/django/django/blob/master/django/conf/locale/__init__.py
 LANGUAGES = [
