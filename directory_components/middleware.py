@@ -115,7 +115,7 @@ class LocaleQuerystringMiddleware(LocaleMiddleware):
 
 class PersistLocaleMiddleware:
     def process_response(self, request, response):
-        if settings.LANGUAGE_COOKIE_DEPRECATED_NAME:
+        if hasattr(settings, 'LANGUAGE_COOKIE_DEPRECATED_NAME'):
             response.delete_cookie(
                 key=settings.LANGUAGE_COOKIE_DEPRECATED_NAME
             )
