@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.8.3
+
+[Full Changelog](https://github.com/uktrade/directory-components/pull/186/files)
+
+### Bug fixes:
+
+- Improved accessibility of breadcrumbs components based on [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html)
+
 ## 10.8.2
 
 [Full Changelog](https://github.com/uktrade/directory-components/pull/183/files)
