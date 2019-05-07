@@ -39,7 +39,8 @@ DEMO_SET_ENV_VARS := \
 	export PORT=9013; \
 	export DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC=http://exred.trade.great:8007/; \
 	export DIRECTORY_CONSTANTS_URL_GREAT_INTERNATIONAL=http://international.trade.great:8012/international/; \
-	export INVEST_BASE_URL=http://invest.trade.great:8012/
+	export INVEST_BASE_URL=http://invest.trade.great:8012/; \
+	export LANGUAGE_COOKIE_DOMAIN=.trade.great
 
 
 DJANGO_WEBSERVER := \
