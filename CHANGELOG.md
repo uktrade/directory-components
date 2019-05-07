@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.9.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/182/files)
+
+**Implemented Enhancements**
+
+- Add GA tagging script for the international header.
+
 ## 10.9.0
 
 [Full Changelog](https://github.com/uktrade/directory-components/pull/184/files)
