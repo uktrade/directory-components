@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-16 09:55+0000\n"
+"POT-Creation-Date: 2019-05-07 14:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,18 +84,22 @@ msgid "Invest"
 msgstr "投资"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:66
+msgid "UK setup guide"
+msgstr "英国创业指南"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:70
 msgid "Find a UK supplier"
 msgstr "查找英国供应商"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:70
+#: directory_components/templates/directory_components/header_footer/international_header.html:74
 msgid "Industries"
 msgstr "行业"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:75
+#: directory_components/templates/directory_components/header_footer/international_header.html:79
 msgid "How to do business with the UK"
 msgstr "如何与英国开展业务"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:81
+#: directory_components/templates/directory_components/header_footer/international_header.html:85
 msgid "News"
 msgstr ""
 

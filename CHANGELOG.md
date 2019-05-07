@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.9.2
+
+[Full Changelog](https://github.com/uktrade/directory-components/pull/188/files)
+
+### Implemented Enhancements:
+
+- Added 'UK setup guide' to the international header.
+
 ## 10.9.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/182/files)
 

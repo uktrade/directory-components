@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-16 09:55+0000\n"
+"POT-Creation-Date: 2019-05-07 14:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,18 +85,22 @@ msgid "Invest"
 msgstr "Investir"
 
 #: directory_components/templates/directory_components/header_footer/international_header.html:66
+msgid "UK setup guide"
+msgstr "Guia para estabelecer no Reino Unido"
+
+#: directory_components/templates/directory_components/header_footer/international_header.html:70
 msgid "Find a UK supplier"
 msgstr "Encontrar um fornecedor no Reino Unido"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:70
+#: directory_components/templates/directory_components/header_footer/international_header.html:74
 msgid "Industries"
 msgstr "Indústrias"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:75
+#: directory_components/templates/directory_components/header_footer/international_header.html:79
 msgid "How to do business with the UK"
 msgstr "Como fazer negócios com o Reino Unido"
 
-#: directory_components/templates/directory_components/header_footer/international_header.html:81
+#: directory_components/templates/directory_components/header_footer/international_header.html:85
 msgid "News"
 msgstr ""
 
