@@ -252,6 +252,37 @@ def test_locale_persist_middleware_persists_explicit_language(client, rf):
     assert cookie.value == language_code
 
 
+def test_locale_persist_middleware_sets_cross_domain(client, rf, settings):
+    settings.LANGUAGE_COOKIE_DOMAIN = '.test.trade.great'
+
+    request = rf.get('/')
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.PersistLocaleMiddleware()
+
+    instance.process_response(request, response)
+
+    cookie = response.cookies[settings.LANGUAGE_COOKIE_NAME]
+    assert cookie['domain'] == settings.LANGUAGE_COOKIE_DOMAIN
+
+
+def test_locale_persist_middleware_deletes_deprecated_cookie(
+        client, rf, settings
+):
+    settings.LANGUAGE_COOKIE_DEPRECATED_NAME = 'django-language'
+
+    request = rf.get('/')
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.PersistLocaleMiddleware()
+
+    instance.process_response(request, response)
+
+    cookie = response.cookies[settings.LANGUAGE_COOKIE_DEPRECATED_NAME]
+    assert cookie['expires'] == 'Thu, 01-Jan-1970 00:00:00 GMT'
+    assert cookie['max-age'] == 0
+
+
 def test_force_default_locale_no_language_in_request(rf, settings):
     request = rf.get('/')
     instance = middleware.ForceDefaultLocale()
