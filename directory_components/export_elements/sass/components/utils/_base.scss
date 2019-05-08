@@ -218,12 +218,32 @@ section.blue-underline > .container {
   overflow: auto;
 }
 
+.only-display-mobile {
+  display: block;
+}
+
+@media (min-width: 641px) {
+  .only-display-mobile {
+    display: none;
+  }
+}
+
 .only-display-tablet {
   display: block;
 }
 
 @media (min-width: 769px) {
   .only-display-tablet {
+    display: none;
+  }
+}
+
+.only-display-desktop {
+  display: block;
+}
+
+@media (min-width: 961px) {
+  .only-display-desktop {
     display: none;
   }
 }

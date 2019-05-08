@@ -351,6 +351,24 @@ section {
   .width-half {
     width: 100%; } }
 
+.width-sixth-all {
+  width: calc(100%/6); }
+
+.width-quarter-all {
+  width: 25%; }
+
+.width-half-all {
+  width: 50%; }
+
+.width-third-all {
+  width: calc(100%/3); }
+
+.width-two-thirds-all {
+  width: calc(100%/3 * 2); }
+
+.width-full-all {
+  width: 100%; }
+
 .column-full {
   padding: 0 15px;
   -webkit-box-sizing: border-box;

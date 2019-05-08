@@ -146,6 +146,7 @@ def hero_with_cta(**kwargs):
     return kwargs
 
 
+# kept for backwards compatibility
 @register.inclusion_tag('directory_components/full_width_banner_with_cta.html')
 def full_width_banner_with_cta(**kwargs):
     return kwargs
@@ -158,4 +159,9 @@ def informative_banner(**kwargs):
 
 @register.inclusion_tag('directory_components/breadcrumbs.html')
 def breadcrumbs(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/case_study.html')
+def case_study(**kwargs):
     return kwargs
