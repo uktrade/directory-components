@@ -4297,6 +4297,13 @@ section.blue-underline > .container {
 .overflow-auto {
   overflow: auto; }
 
+.only-display-tablet {
+  display: block; }
+
+@media (min-width: 769px) {
+  .only-display-tablet {
+    display: none; } }
+
 .information-banner p {
   margin: 0; }
 
@@ -4364,3 +4371,28 @@ section.blue-underline > .container {
     font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
   .statistics-card-grid .statistic-smallprint {
     color: #666666; }
+
+.case-study {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff; }
+  .case-study .container {
+    min-height: 600px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  @media (max-width: 640px) {
+    .case-study .button {
+      width: auto; } }
+  .case-study .button::after {
+    content: '→';
+    margin-left: 1em; }
+
+@media (max-width: 768px) {
+  .case-study {
+    background-image: none !important;
+    color: #333333; } }

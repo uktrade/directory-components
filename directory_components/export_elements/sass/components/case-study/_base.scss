@@ -1,0 +1,34 @@
+
+// CASE STUDY
+
+.case-study {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+
+  .container {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .button {
+      width: auto;
+    }
+  }
+
+  .button::after {
+    content: '→';
+    margin-left: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-study {
+  // horrible but only way to override inline background style
+  background-image: none !important;
+  color: $grey;
+  }
+}

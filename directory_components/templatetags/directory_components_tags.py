@@ -159,3 +159,8 @@ def informative_banner(**kwargs):
 @register.inclusion_tag('directory_components/breadcrumbs.html')
 def breadcrumbs(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/case_study.html')
+def case_study(**kwargs):
+    return kwargs

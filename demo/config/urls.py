@@ -68,6 +68,12 @@ urlpatterns = [
         name='hero-banner',
     ),
     url(
+        r'^case-study/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/case-study.html'},
+        name='case-study',
+    ),
+    url(
         r'^banners/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/banners.html'},

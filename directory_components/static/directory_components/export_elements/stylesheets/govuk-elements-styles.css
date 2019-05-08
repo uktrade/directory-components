@@ -1122,8 +1122,7 @@ body {
   background-color: #006ccc;
   color: #ffffff;
   padding: 10px 30px;
-  text-decoration: none;
-  line-height: 30px; }
+  text-decoration: none; }
   .button:focus:active, .button:active {
     color: #000000;
     background-color: #ffbf47; }
@@ -1132,8 +1131,6 @@ body {
     outline-offset: 0; }
   .button:hover {
     background-color: #005fb3; }
-  .button:after {
-    line-height: 50px; }
   @media (max-width: 640px) {
     .button {
       width: 100%;
@@ -1162,7 +1159,6 @@ body {
   color: #ffffff;
   padding: 10px 30px;
   text-decoration: none;
-  line-height: 30px;
   background-color: transparent;
   border: 2px solid #006ccc;
   color: #006ccc; }
@@ -1174,8 +1170,6 @@ body {
     outline-offset: 0; }
   .button-ghost-blue:hover {
     background-color: #005fb3; }
-  .button-ghost-blue:after {
-    line-height: 50px; }
   @media (max-width: 640px) {
     .button-ghost-blue {
       width: 100%;
@@ -1217,7 +1211,6 @@ body {
   color: #ffffff;
   padding: 10px 30px;
   text-decoration: none;
-  line-height: 30px;
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff; }
@@ -1229,8 +1222,6 @@ body {
     outline-offset: 0; }
   .button-ghost-white:hover {
     background-color: #005fb3; }
-  .button-ghost-white:after {
-    line-height: 50px; }
   @media (max-width: 640px) {
     .button-ghost-white {
       width: 100%;

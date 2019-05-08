@@ -1,0 +1,59 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load breadcrumbs case_study from directory_components_tags %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block css_layout_class %}components{% endblock css_layout_class %}
+
+{% block content %}
+
+{% static 'images/placeholder.png' as placeholder %}
+
+<div class="container">
+    {% breadcrumbs left_url='/' left_label='Home' right_label='Case study' %}
+</div>
+
+<section class="padding-top-30">
+  <div class="container">
+    <div class="width-two-thirds">
+      <h1 class="heading-xlarge">Case study</h1>
+      <p>Load this template tag to use this component.</p>
+    </div>
+    <pre><code>{% verbatim %}{% load case_study from directory_components_tags %}{% endverbatim %}</code></pre>
+  </div>
+</section>
+
+{% case_study background_image_url=placeholder heading="Case study" description="This component works best with a dark background image or an image where the left side is darker than the right so that this white text is legible." cta_url="/foo" cta_text="Button" %}
+
+<section>
+  <div class="container">
+    <pre><code>{% verbatim %}{% case_study background_image_url=placeholder heading="Case study" description="Lorem ipsum dolor sit amet ..." %}{% endverbatim %}</code></pre>
+  </div>
+
+  <div class="container">
+    <h2 class="heading-large">HTML markup</h2>
+    <h3 class="heading-medium">Case study</h3>
+    <pre>
+      <code>
+&lt;section class="case-study padding-vertical-0" style="background-image: url(/static/images/placeholder.png)"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="grid-row"&gt;
+      &lt;div class="column-full column-two-thirds-l column-half-xl"&gt;
+        &lt;div class="width-half border-thin border-flag-red"&gt;&lt;/div&gt;
+        &lt;h2 class="heading-large"&gt;Case study&lt;/h2&gt;
+        &lt;img class="only-display-tablet width-full margin-bottom-15" src="/static/images/placeholder.png" alt=""&gt;
+        &lt;p&gt;Lorem ipsum.&lt;/p&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code>
+    </pre>
+
+    <a href="{% url 'index' %}" class="link-back link">Go back</a>
+  </div>
+</section>
+{% endblock %}

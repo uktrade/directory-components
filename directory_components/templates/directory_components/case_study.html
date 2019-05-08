@@ -1,0 +1,18 @@
+<section
+  {% if id %}id="{{ id }}"{% endif %}
+  class="case-study padding-vertical-0"
+  style="background-image: url({% firstof background_image_url background_image img_url image_url image_src img_src image %})">
+  <div class="container">
+    <div class="grid-row">
+      <div class="column-full column-two-thirds-l column-half-xl">
+        <div class="width-half border-thin border-flag-red"></div>
+        <h2 class="heading-large">{% firstof title heading %}</h2>
+        <img class="only-display-tablet width-full margin-bottom-15" src="{% firstof background_image_url background_image img_url image_url image_src img_src image %}" alt="">
+        <p>{{ description }}</p>
+        {% if cta_url and cta_text %}
+          <a class="button" href="{{ cta_url }}">{{ cta_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
