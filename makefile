@@ -7,6 +7,9 @@ clean:
 test_requirements:
 	pip install -e .[test]
 
+demo_requirements:
+	pip install -e .[demo]
+
 flake8:
 	flake8 . --exclude=.venv,setup.py,directory_components/version.py,node_modules
 
