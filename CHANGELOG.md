@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/189/files)
+
+### Fixed Bugs
+- Fix typo in filename of 'dit.tagging.internationalHeader.js'
+
 ## 10.9.2
 
 [Full Changelog](https://github.com/uktrade/directory-components/pull/188/files)
