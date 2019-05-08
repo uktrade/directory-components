@@ -117,7 +117,7 @@ dit.components.countrySelector = (new function() {
     $(COUNTRY_SUBMIT).hide();
 
     $display.text(country);
-    $select.css('width', $display.width());
+    $select.css('width', $display.outerWidth());
 
     $select.on('change', function() {
 
@@ -125,7 +125,7 @@ dit.components.countrySelector = (new function() {
         code = $(this).attr('value');
         country = $(this).text();
         $display.text(country);
-        $select.css('width', $display.width());
+        $select.css('width', $display.outerWidth());
       });
 
       $(FLAG).attr('class', 'flag-icon flag-icon-' + code.toLowerCase());
