@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/190/files)
+
+### Bug fixes:
+-[CI-120](https://uktrade.atlassian.net/browse/CI-120) Fixed language selector cutting off the language text on firefox
+
 ## 11.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/189/files)
 
