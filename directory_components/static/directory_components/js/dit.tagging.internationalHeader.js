@@ -1,4 +1,4 @@
-dit.tagging.internationalHeader = function() {
+dit.tagging.internationalHeader = new function() {
 
     this.init = function() {
         $("[data-ga-class='banner-choose-country-form']").on("submit", function() {
