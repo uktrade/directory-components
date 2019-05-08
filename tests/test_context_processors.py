@@ -171,6 +171,8 @@ def test_urls_processor(settings):
         'invest': 'https://invest.com',
         'soo': 'https://soo.com',
         'sso': 'https://sso.com',
+        'uk_setup_guide': 'https://international.com/international'
+                          '/how-to-setup-in-the-uk',
     }
 
 
