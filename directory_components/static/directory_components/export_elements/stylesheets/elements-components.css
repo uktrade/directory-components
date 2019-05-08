@@ -4278,11 +4278,11 @@ section.blue-underline > .container {
     display: none; } }
 
 .only-display-desktop {
-  display: block; }
+  display: none; }
 
-@media (min-width: 961px) {
+@media (min-width: 769px) {
   .only-display-desktop {
-    display: none; } }
+    display: block; } }
 
 .information-banner p {
   margin: 0; }

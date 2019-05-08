@@ -59,7 +59,7 @@ section {
 // when only one column is needed
 
 .width-sixth {
-  width: calc(100%/6);
+  width: 100% / 6;
 }
 
 .width-quarter {
@@ -71,11 +71,11 @@ section {
 }
 
 .width-third {
-  width: calc(100%/3);
+  width: 100% / 3;
 }
 
 .width-two-thirds {
-  width: calc(100%/3 * 2);
+  width: (100% / 3) * 2;
 }
 
 .width-full {
@@ -95,7 +95,7 @@ section {
 // Non-responsive versions
 
 .width-sixth-all {
-  width: calc(100%/6);
+  width: 100% / 6;
 }
 
 .width-quarter-all {
@@ -107,11 +107,11 @@ section {
 }
 
 .width-third-all {
-  width: calc(100%/3);
+  width: 100% / 3;
 }
 
 .width-two-thirds-all {
-  width: calc(100%/3 * 2);
+  width: (100% / 3) * 2;
 }
 
 .width-full-all {
