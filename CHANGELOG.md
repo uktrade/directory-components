@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.0.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/192/files)
+
+### Bug fixes:
+- [CI-108](https://uktrade.atlassian.net/browse/CI-108) Fix applying tags to international header.
+
 ## 11.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/190/files)
 
