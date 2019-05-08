@@ -84,7 +84,6 @@
   color: $white;
   padding: 10px 30px;
   text-decoration: none;
-  line-height: 30px;
 
   &:focus:active,
   &:active {
@@ -98,10 +97,6 @@
 
   &:hover {
     background-color: darken($colour, 5);
-  }
-
-  &:after {
-    line-height: 50px;
   }
 
   @media (max-width: 640px) {
