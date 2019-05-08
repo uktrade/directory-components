@@ -217,3 +217,13 @@ section.blue-underline > .container {
 .overflow-auto {
   overflow: auto;
 }
+
+.only-display-tablet {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .only-display-tablet {
+    display: none;
+  }
+}
