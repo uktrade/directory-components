@@ -239,11 +239,11 @@ section.blue-underline > .container {
 }
 
 .only-display-desktop {
-  display: block;
+  display: none;
 }
 
-@media (min-width: 961px) {
+@media (min-width: 769px) {
   .only-display-desktop {
-    display: none;
+    display: block;
   }
 }
