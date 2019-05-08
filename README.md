@@ -22,6 +22,10 @@ pip install directory-components
 
 ## Demo
 
+Install the demo requirements:
+
+    $ make demo_requirements
+
 To view the components in the browser run the following command:
 
     $ make run_demo
