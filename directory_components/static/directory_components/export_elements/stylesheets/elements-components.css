@@ -1561,7 +1561,8 @@ body.js-enabled .close-button {
 .great-header-country-display,
 .great-header-language-display {
   position: absolute;
-  left: -1000px; }
+  left: -1000px;
+  font-size: 18px; }
 
 .great-header-language-switcher,
 .great-header-country-select {
