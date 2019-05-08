@@ -17,7 +17,7 @@ dit.components.languageSelectorDropdown = (new function() {
     var $display = $(LANGUAGE_DISPLAY);
 
     $display.text(currentLanguageName);
-    $select.css('width', $display.width());
+    $select.css('width', $display.outerWidth());
 
     $select.on("change", function() {
 
@@ -25,7 +25,7 @@ dit.components.languageSelectorDropdown = (new function() {
         currentLanguageName = $(this).text();
         currentLanguageCode = $(this).attr('value');
         $display.text(currentLanguageName);
-        $select.css('width', $display.width());
+        $select.css('width', $display.outerWidth());
       });
 
       this.form.submit();
