@@ -1,5 +1,17 @@
 # Changelog
 
+## 12.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/193/files)
+
+### Implemented enhancements:
+- Improved mobile/tablet styling of full width banner/case study component, added examples to docs
+- Added non-responsive classes for widths
+- Added responsive display classes
+
+### Breaking changes:
+- `full_width_banner_with_cta` inclusion tag has been renamed to `case_study`
+- `full-width-banner-with-cta` CSS class has been renamed to `case-study`
+
 ## 11.0.4
 [Full Changelog](https://github.com/uktrade/directory-components/pull/195/files)
 

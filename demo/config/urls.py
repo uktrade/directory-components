@@ -62,10 +62,10 @@ urlpatterns = [
         name='buttons',
     ),
     url(
-        r'^hero-banner/$',
+        r'^full-width-banners/$',
         views.BasePageView.as_view(),
-        {'template_name': 'demo/hero-banner.html'},
-        name='hero-banner',
+        {'template_name': 'demo/full-width-banners.html'},
+        name='full-width-banners',
     ),
     url(
         r'^banners/$',
