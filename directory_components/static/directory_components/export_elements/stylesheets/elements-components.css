@@ -4352,16 +4352,14 @@ section.blue-underline > .container {
   .statistics-card-grid .statistic-smallprint {
     color: #666666; }
 
-.case-study,
-.full-width-banner-with-cta {
+.case-study {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
+  color: #ffffff;
   padding: 0;
   position: relative; }
-  .case-study.background-tint:before,
-  .full-width-banner-with-cta.background-tint:before {
+  .case-study.background-tint:before {
     background-color: rgba(0, 0, 0, 0.5);
     content: "";
     height: 100%;
@@ -4369,8 +4367,7 @@ section.blue-underline > .container {
     position: absolute;
     top: 0;
     width: 100%; }
-  .case-study .container,
-  .full-width-banner-with-cta .container {
+  .case-study .container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -4380,17 +4377,13 @@ section.blue-underline > .container {
     position: relative;
     min-height: 600px; }
   @media (max-width: 768px) {
-    .case-study,
-    .full-width-banner-with-cta {
+    .case-study {
       background-image: none !important;
       color: #333333; }
-      .case-study.background-tint:before,
-      .full-width-banner-with-cta.background-tint:before {
+      .case-study.background-tint:before {
         display: none; }
-      .case-study > .container,
-      .full-width-banner-with-cta > .container {
+      .case-study > .container {
         min-height: 0; } }
   @media (max-width: 640px) {
-    .case-study .button,
-    .full-width-banner-with-cta .button {
+    .case-study .button {
       width: auto; } }
