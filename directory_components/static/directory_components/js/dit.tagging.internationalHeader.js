@@ -1,3 +1,4 @@
+dit.tagging = dit.tagging || {};
 dit.tagging.internationalHeader = new function() {
 
     this.init = function() {
