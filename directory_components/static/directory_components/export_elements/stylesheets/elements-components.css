@@ -1562,7 +1562,8 @@ body.js-enabled .close-button {
 .great-header-language-display {
   position: absolute;
   left: -1000px;
-  font-size: 18px; }
+  padding: 0 3px;
+  font: inherit; }
 
 .great-header-language-switcher,
 .great-header-country-select {
@@ -1581,7 +1582,8 @@ body.js-enabled .great-header-country-select {
   color: #dfd5c5;
   font: inherit;
   padding: 0;
-  width: auto; }
+  width: auto;
+  vertical-align: middle; }
 
 .great-header-form select::-ms-expand {
   display: none; }

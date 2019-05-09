@@ -12,23 +12,39 @@
 - `full_width_banner_with_cta` inclusion tag has been renamed to `case_study`
 - `full-width-banner-with-cta` CSS class has been renamed to `case-study`
 
+## 11.0.4
+[Full Changelog](https://github.com/uktrade/directory-components/pull/195/files)
+
+### Bug fixes:
+- [[CI-108]](https://uktrade.atlassian.net/browse/CI-108) Fix potential bug where `dit.tagging` is undefined.
+
+## 11.0.3
+[Full Changelog](https://github.com/uktrade/directory-components/pull/194/files)
+
+### Bug fixes:
+- [[CMS-1460]](https://uktrade.atlassian.net/browse/CMS-1460) Fix spacing issues of language/country selector on some browsers.
+
 ## 11.0.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/192/files)
 
 ### Bug fixes:
-- [CI-108](https://uktrade.atlassian.net/browse/CI-108) Fix applying tags to international header.
+- [[CI-108]](https://uktrade.atlassian.net/browse/CI-108) Fix applying tags to international header.
 
 ## 11.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/190/files)
 
 ### Bug fixes:
--[CI-120](https://uktrade.atlassian.net/browse/CI-120) Fixed language selector cutting off the language text on firefox
+
+- [[CI-120]](https://uktrade.atlassian.net/browse/CI-120) Fixed language selector cutting off the language text on firefox
 
 ## 11.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/189/files)
 
+### Upgrade instructions
+- Rename references to `dit.tagging.internatinalHeader.js` to `dit.tagging.internationalHeader.js`
+
 ### Fixed Bugs
-- Fix typo in filename of 'dit.tagging.internationalHeader.js'
+- Fix typo in filename of `dit.tagging.internationalHeader.js`
 
 ## 10.9.2
 

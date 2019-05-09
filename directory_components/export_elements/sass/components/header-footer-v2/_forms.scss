@@ -10,7 +10,8 @@
 .great-header-language-display {
   position: absolute;
   left: -1000px;
-  font-size: 18px;
+  padding: 0 3px;
+  font: inherit;
 }
 
 .great-header-language-switcher,
@@ -37,6 +38,8 @@ body.js-enabled {
     font: inherit;
     padding: 0;
     width: auto;
+
+    vertical-align: middle;
   }
 
   select::-ms-expand {
