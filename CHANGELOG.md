@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.0.4
+[Full Changelog](https://github.com/uktrade/directory-components/pull/195/files)
+
+### Bug fixes:
+- [[CI-108]](https://uktrade.atlassian.net/browse/CI-108) Fix potential bug where `dit.tagging` is undefined.
+
 ## 11.0.3
 [Full Changelog](https://github.com/uktrade/directory-components/pull/194/files)
 
