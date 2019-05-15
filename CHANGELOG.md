@@ -1,5 +1,12 @@
 # Changelog
 
+## 12.1.0
+[Full changelog](https://github.com/uktrade/directory-components/pull/187)
+
+### Bug fixes:
+
+- CMS-1245 Changed default country selector text to "Select a country"
+
 ## 12.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/193/files)
 
@@ -66,6 +73,7 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/184/files)
 
 - [[CMS-1395]](https://uktrade.atlassian.net/browse/CMS-1395) PersistLocaleMiddleware deletes deprecated cookie names
+
 
 ## 10.8.3
 

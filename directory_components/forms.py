@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import Select
 from django.utils import translation
-from django.db.models.fields import BLANK_CHOICE_DASH
 from django.conf import settings
 
 from directory_components import fields as components_fields
@@ -9,7 +8,8 @@ from directory_constants.choices import COUNTRY_CHOICES
 
 from directory_components import helpers
 
-COUNTRIES = BLANK_CHOICE_DASH + COUNTRY_CHOICES
+BLANK_COUNTRY_CHOICE = [("", "Select a country")]
+COUNTRIES = BLANK_COUNTRY_CHOICE + COUNTRY_CHOICES
 
 
 class DirectoryComponentsFormMixin:
