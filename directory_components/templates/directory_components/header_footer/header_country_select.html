@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load render_form from directory_components_tags %}
 
+{% if features.COUNTRY_SELECTOR_ON  %}
 <section id="country-selector-dialog" class="country-selector-dialog" dir="ltr">
   <div class="container">
     <div class="countries">
@@ -29,3 +30,4 @@
     </div>
   </div>
 </section>
+{% endif %}

@@ -75,6 +75,7 @@ TEMPLATES = [
                     '.header_footer_processor'),
                 'directory_components.context_processors.urls_processor',
                 'directory_components.context_processors.cookie_notice',
+                'directory_components.context_processors.feature_flags',
             ],
         },
     },
@@ -178,3 +179,8 @@ DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER = env.str(
     'DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER', ''
 )
 PRIVACY_COOKIE_DOMAIN = env.str('PRIVACY_COOKIE_DOMAIN', '')
+
+# feature flags
+FEATURE_FLAGS = {
+    'COUNTRY_SELECTOR_ON': env.bool('FEATURE_COUNTRY_SELECTOR_ENABLED', False)
+}
