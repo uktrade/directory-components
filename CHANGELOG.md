@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.1.0
+[Full changelog](https://github.com/uktrade/directory-components/pull/187)
+- Change blank country choice to "Choose a country"
+
+
 ## 12.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/193/files)
 
