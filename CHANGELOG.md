@@ -7,8 +7,7 @@
 - CMS-1528: Add a feature flag for the country selector in the international header.
 
 ### Breaking Changes
-- All apps using this library should now provide the 'FEATURE_COUNTRY_SELECTOR_ENABLED' environment variable if they
-require the country selector on the international header to appear.
+- All apps using this library must now provide the 'COUNTRY_SELECTOR_ON' feature flag in their settings file.
 
 ## 12.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/196/files)
