@@ -1,6 +1,6 @@
 # Changelog
 
-## 12.0.1
+## 12.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/196/files)
 
 ### Bug fixes:
