@@ -1,6 +1,7 @@
 import abc
 import logging
 import urllib.parse
+from collections import namedtuple
 
 from django.conf import settings
 from django.shortcuts import redirect
@@ -148,3 +149,55 @@ class ForceDefaultLocale:
     def process_exception(self, request, exception):
         if hasattr(request, 'LANGUAGE_CODE') and request.LANGUAGE_CODE:
             translation.activate(request.LANGUAGE_CODE)
+
+
+class GADataMissingException(Exception):
+    def __init__(self, message):
+        super(GADataMissingException, self).__init__(message)
+
+
+Field = namedtuple('Field', ['name', 'allowed_types'])
+required_fields = [
+    Field(name='business_unit', allowed_types=str),
+    Field(name='site_section', allowed_types=str),
+    Field(name='user_id', allowed_types=(str, type(None))),
+    Field(name='login_status', allowed_types=bool),
+    Field(name='site_language', allowed_types=str)
+]
+
+
+class CheckGATags:
+    def process_response(self, _, response):
+
+        # Only check 2xx responses for google analytics.
+        if response.status_code < 200 or response.status_code > 299:
+            return response
+
+        # Don't check views which should be skipped (see @skip_ga360 decorator)
+        if getattr(response, 'skip_ga360', False):
+            return response
+
+        if not hasattr(response, 'context_data'):
+            raise GADataMissingException('No context data found')
+        context_data = response.context_data
+
+        if 'ga360' not in context_data:
+            raise GADataMissingException(
+                "No Google Analytics data found on the response.")
+
+        ga_data = context_data['ga360']
+        for field in required_fields:
+            if not hasattr(ga_data, field.name):
+                raise GADataMissingException(
+                    "Field '{0}' is missing from Google Analytics Data".format(
+                        field.name))
+
+            field_value = getattr(ga_data, field.name)
+            if not isinstance(field_value, field.allowed_types):
+                raise GADataMissingException(
+                    "Field '{0}' from Google Analytics Data has type {1}, "
+                    "but was expecting {2}".format(field.name,
+                                                   type(field_value),
+                                                   field.allowed_types))
+
+        return response

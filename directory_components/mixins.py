@@ -91,10 +91,33 @@ class CMSLanguageSwitcherMixin:
         )
 
 
+class GA360Payload:
+    page_id = None
+    business_unit = None
+    site_section = None
+    site_subsection = None
+    site_language = None
+    user_id = None
+    login_status = False
+
+    def __init__(self, page_id, business_unit, site_section,
+                 site_subsection=None, user_id=None, login_status=False):
+        self.page_id = page_id
+        self.business_unit = business_unit
+        self.site_section = site_section
+        self.site_subsection = site_subsection
+        self.user_id = user_id
+        self.login_status = login_status
+        # site language is set later within the GA360Mixin
+
+
 class GA360Mixin:
-    ga360_payload = None
+    ga360_payload = None  # This field should be set in the views.
 
     def get_context_data(self, *args, **kwargs):
+        if self.ga360_payload:
+            self.ga360_payload.site_language = translation.get_language()
+
         return super().get_context_data(
             ga360=self.ga360_payload,
             *args,
