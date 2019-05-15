@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.1.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/196/files)
+
+### Bug fixes:
+- Set text direction in country selector so English text displays correctly on pages in Arabic
+
 ## 12.1.0
 [Full changelog](https://github.com/uktrade/directory-components/pull/187)
 
