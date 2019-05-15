@@ -1,5 +1,14 @@
 # Changelog
 
+## 13.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/198/files)
+
+### Implmented enhancements
+- CMS-1528: Add a feature flag for the country selector in the international header.
+
+### Breaking Changes
+- All apps using this library must now provide the 'COUNTRY_SELECTOR_ON' feature flag in their settings file.
+
 ## 12.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/196/files)
 

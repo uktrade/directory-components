@@ -26,7 +26,7 @@
 
 {% block header_extra_links %}
 
-{% if hide_country_selector %}
+{% if features.COUNTRY_SELECTOR_ON and hide_country_selector %}
 <div id="great-header-country-selector" class="great-header-country-selector great-header-form">
   <form class="countries" action="" method="get" data-ga-class="change-country-form">
     <label for="great-header-country-select">{% trans 'Country' %}</label>
