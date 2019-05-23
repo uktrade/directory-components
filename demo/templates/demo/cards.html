@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load directory_components_tags %}
+{% load directory_components %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -26,7 +26,7 @@
       <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
       <p>Load these template tags to use cards:</p>
     </div>
-    <pre><code>{% verbatim %}{% load card labelled_card labelled_image_card from directory_components_tags %}{% endverbatim %}</code></pre>
+    <pre><code>{% verbatim %}{% load card labelled_card labelled_image_card from directory_components %}{% endverbatim %}</code></pre>
 
     <div class="width-two-thirds">
       <p>A custom ID can be assigned to the card which also creates IDs for the link and image with the suffixes <code>-link</code> and <code>-image</code> respectively. See examples below.</p>

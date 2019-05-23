@@ -5,6 +5,7 @@
 
 ### Breaking Changes
 
+- Rename all instances of `directory_components_tags` to `directory_components`
 - Feature flag no longer used:
     - `NEW_HEADER_FOOTER_ON`
 - Six templates have been removed:

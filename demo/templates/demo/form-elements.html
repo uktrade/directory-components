@@ -1,7 +1,7 @@
 {% extends 'demo/base.html' %}
 
 {% load view_instance_code from demo_tags %}
-{% load breadcrumbs render_form from directory_components_tags %}
+{% load breadcrumbs render_form from directory_components %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -16,7 +16,7 @@
   <div class="container">
     <h1 class="heading-xlarge">Form widgets</h1>
     <p>A form can be rendered with this template tag:</p>
-<pre><code>{% verbatim %}{% load render_form from directory_components_tags %}
+<pre><code>{% verbatim %}{% load render_form from directory_components %}
 &lt;form&gt;
   {% csrf_token %}
   {% render_form form %}
