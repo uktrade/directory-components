@@ -5,9 +5,10 @@
 
 ### Breaking Changes
 
-The best way to upgrade is to switch to using the latest header/footer.
-
 - Rename all instances of `directory_components_tags` to `directory_components`
+
+The best way to do the rest of the upgrade is to switch to using the latest header/footer.
+
 - CSS to do with the old header/footer have been removed.
 - Feature flag no longer used:
     - `NEW_HEADER_FOOTER_ON`
