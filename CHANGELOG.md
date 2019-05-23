@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/200/files)
+
+**Implemented enhancements:**
+
+- Added Investment Support Directory URL
+
+
 ## 13.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/198/files)
 

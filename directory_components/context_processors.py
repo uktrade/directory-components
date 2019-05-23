@@ -98,7 +98,8 @@ def urls_processor(request):
         'invest': urls.SERVICES_INVEST,
         'soo': urls.SERVICES_SOO,
         'sso': urls.SERVICES_SSO,
-        'uk_setup_guide': urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK
+        'uk_setup_guide': urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
+        'isd': urls.FAS_INVESTMENT_SUPPORT_DIRECTORY,
     }
     return {'services_urls': services_urls}
 
