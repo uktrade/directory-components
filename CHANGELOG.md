@@ -1,5 +1,12 @@
 # Changelog
 
+## 15.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/200/files)
+
+### Implemented enhancements
+
+- Added `header_footer/invest_header` using invest logo specifically for invest pages
+
 ## 15.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/204/files)
 
