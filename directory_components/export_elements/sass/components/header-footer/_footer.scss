@@ -1,189 +1,131 @@
 
-// Footer
+// FOOTER
+// =======
 
-#footer {
-  li {
-    line-height: 30px;
-    padding: 0;
-    margin: 0;
+@import '../partials/typography';
+@import '../partials/colours';
+@import '../partials/mixins';
 
-    &:before {
-      background: none;
-    }
-  }
+.great-footer-logo-container {
+  @include float-clear;
+  padding: 45px 0 30px;
 
-  nav.container {
-    padding-top: 45px;
-    margin-bottom: 30px;
-  }
-
-  .link-group {
-    width: 25%;
+  img:first-child {
     float: left;
-    box-sizing: border-box;
   }
 
-  .links-list-heading {
-    color: $stone;
-    font-weight: 600;
-    margin: 15px 0;
-    font-size: 19px;
-
-    &:before {
-      @include great-red-trim
-      width: 60px;
-      position: relative;
-      top: -20px;
-      display: block;
-    }
+  img:last-child {
+    float: right;
   }
+}
 
-  .links-list-heading.custom-page-link {
-    display: block;
-    margin-bottom: 50px;
-  }
+.great-footer {
+  font-family: $brand-font;
 
-  .site-links {
-    border-top: $lightened-great-blue solid 1px;
-    padding: 30px 0;
-    font-size: 12px;
-
-    li {
-      float: left;
-      margin-right: 30px;
-    }
-  }
-
-  &-copyright {
-    clear: both;
-    height: 35px;
-    line-height: 35px;
-    font-size: 12px;
-    background-color: $dark-navy;
+  a {
+    font-size: 15px;
     color: $light-grey;
-
-    span {
-      display: block;
-      float: right;
-    }
-  }
-
-  &-dit-logo {
-    margin-bottom: 30px;
-    height: 70px;
-    display: block;
-  }
-
-  &-eig-logo {
-    height: 82px;
-  }
-
-}
-
-
-@media screen and (max-width: 767px) {
-  #footer {
-    nav {
-      padding-top: 4px;
-    }
-
-    .link-group {
-      margin: 30px 0;
-      position: relative;
-      width: 50%;
-
-      &:nth-child(even) {
-        border-left: $lightened-great-blue solid 1px;
-        left: -1px;
-        padding-left: 30px;
-
-        &:after {
-          left: -1px;
-        }
-      }
-
-      &:nth-child(odd) {
-        border-right: $lightened-great-blue solid 1px;
-        clear: left;
-        padding-right: 30px;
-      }
-
-      &:nth-child(3):before,
-      &:nth-child(4):before {
-        border-top: $lightened-great-blue solid 1px;
-        content: '';
-        display: block;
-        left: 0;
-        position: absolute;
-        top: -30px;
-        width: 100.5%;
-      }
-    }
-
-    .links-list-heading {
-      @include font-med-bold
-      line-height: 1.47em;
-    }
-
-    .site-links {
-      li {
-        margin: 0 5px;
-        display: inline-block;
-        float: none;
-      }
-
-      ul {
-        border-color: $lightened-great-blue;
-        padding: 20px 30px;
-        text-align: center;
-      }
-    }
-
-    &-copyright .container span {
-      display: block;
-      float: none;
-    }
   }
 }
 
-@media (min-width: 767px) {
-  #footer {
-    .link-group li {
-      padding-right: 15px;
-    }
+.great-footer-links {
+  padding: 30px 0;
 
-    .footer-logos {
-      width: 50%;
-    }
+  a {
+    font-size: 14px;
   }
-}
 
-@media screen and (max-width: 540px) {
-  #footer-dit-logo {
-    height: auto;
+  ul li {
+    margin-right: 30px;
+    display: inline-block;
+  }
+
+  ul {
+    display: table;
     width: 100%;
+
+    & > * {
+      display: table-cell;
+    }
+  }
+
+  .great-footer-domestic-international-link {
+    white-space: nowrap;
+    text-align: right;
   }
 }
 
-@media screen and (max-width: 480px) {
-  #footer {
-    nav,
-    .site-links ul {
-      padding-left: 0;
-      padding-right: 0;
+.great-footer-copyright {
+  font-size: 12px;
+  font-family: $brand-font-alternative;
+}
+
+@media (max-width: 640px) {
+  .great-footer-links {
+    a {
+      color: $white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    .link-group:nth-child(even) {
-      padding-left: 15px;
+    ul,
+    ul li,
+    ul > div {
+      display: block;
     }
 
-    .link-group:nth-child(odd) {
-      padding-right: 15px;
+    .great-footer-site-links li:first-child a,
+    .great-footer-domestic-international-link li a {
+      font-size: 18px;
     }
 
-    &-eig-logo {
-      height: auto;
-      width: 100%;
+    .great-footer-site-links li:first-child {
+      margin-bottom: 15px;
     }
+
+    .great-footer-domestic-international-link {
+      margin-top: 15px;
+      text-align: left;
+    }
+  }
+
+  .great-global-header-footer .great-footer-copyright {
+    line-height: 50px;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .great-footer-logo-container img {
+    width: 50%;
+    height: auto;
+
+    &:first-child {
+      padding-right: 5px;
+    }
+
+    &:last-child {
+      padding-left: 5px;
+    }
+  }
+
+  .great-footer-links {
+    @include float-clear
+
+    ul li a {
+      color: $white;
+      text-decoration: none;
+    }
+
+    .great-footer-domestic-international-link {
+      white-space: normal;
+    }
+  }
+
+  .great-global-header-footer .great-footer-copyright {
+    float: none;
   }
 }

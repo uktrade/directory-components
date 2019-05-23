@@ -1,137 +1,173 @@
 
-// Header
+// HEADER
+// =======
 
-#header-bar {
-  @include font-med-normal
-  line-height: 1.47em;
-  color: $white;
-  overflow: hidden;
-  height: 110px;
+// base styling. JS disabled
+
+@import '../partials/typography';
+@import '../partials/colours';
+@import '../partials/mixins';
+
+.great-header {
+  // need to make sure it's not underneath anything
+  position: relative;
+  z-index: 5;
+
+  // fix for SOO
+  .great-header-nav {
+    a.link,
+    a.link:hover {
+      margin-bottom: 0;
+      border: 0;
+    }
+  }
+
+  a {
+    &:active:focus {
+      background-color: $focus-yellow;
+      color: $great-blue;
+    }
+
+    &:focus {
+      @include focus
+    }
+  }
+}
+
+// links in global header
+.great-domestic-international-links {
+  a {
+    color: $mid-grey;
+  }
+
+  .active {
+    color: $great-blue;
+
+    &:after {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: $flag-red;
+      content: '';
+    }
+  }
+}
+
+// main header menu
+.great-header-menu {
+  background-color: $great-blue;
   position: relative;
 
-  .account-links {
-    li:nth-child(2):after {
-      display: none;
-    }
+  & > .container {
+    overflow: hidden;
+    padding-bottom: 25px;
+  }
 
-    li:nth-child(3) {
-      margin-left: 30px;
+  &.domestic > .container {
+    padding-top: 20px;
+  }
 
-      a {
-        text-decoration: none;
+  &.international > .container {
+    padding-top: 25px;
+  }
 
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
+  &.domestic .great-header-logo {
+    height: 80px;
   }
 }
 
-#header {
-  min-height: 110px;
-  background: $great-blue;
+// language/country select and account links
+.great-header-extra-links {
+  float: right;
+  font-size: 14px;
+  color: $white;
 
-  ul li {
-    position: static;
-
-    &:before {
-      left: auto;
-      top: auto;
-    }
-  }
-
-  li {
-    padding: 0;
-    margin: 0;
-
-    &:before {
-      background: none;
-    }
-  }
-
-  .column-eigth {
-    width: calc(100% / 8);
-    float: left;
-    box-sizing: border-box;
-  }
-
-  .account-links {
-    float: right;
-    padding: 7px 0;
-
-    a {
-      color: $white;
-    }
-
-    li {
-      float: left;
-      font-weight: bold;
-      margin-left: 5px;
-
-      &:first-child:after {
-        content: '|';
-      }
-    }
-  }
-
-  .navigation {
-    font-weight: 700;
-    color: $white;
-    text-decoration: none;
-  }
-}
-
-#header-dit-logo {
-  height: auto;
-  position: absolute;
-  margin: 20px 0 15px;
-
-  img {
-    max-width: 158px;
-    width: 100%;
-  }
-}
-
-#header-menu {
-  a {
-    color: $white;
-    display: block;
-    position: relative;
-    text-decoration: none;
-    font-weight: 700;
-    padding: 15px;
-    padding-bottom: 21px;
-
+  & > * {
+    display: inline-block;
+    margin-right: 5px;
   }
 
   li {
     display: inline-block;
   }
 
-  .container {
-    overflow: visible;
+  ul:first-child li {
+    margin-right: 0;
   }
-}
 
-@media screen and (min-width: 767px) {
-  #header-menu {
-    a.navigation:hover:before {
-      @include great-red-trim
-      width: 100%;
-      position: absolute;
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:last-child {
+      margin-left: 15px;
+    }
+
+    &:active:focus span {
+      color: $great-blue;
     }
   }
-}
 
-@media screen and (max-width: 767px) {
-  #header-menu a:hover:before {
-    background: $mid-blue;
+  .lang,
+  .country,
+  .account-link {
+    color: $stone;
+    margin-left: 5px;
+  }
+
+  .lang {
+    text-transform: uppercase;
   }
 }
 
-@media (max-width: 767px) {
-  #header .column-eigth {
-    width: 100%;
+.great-header-logo {
+  display: block;
+  float: left;
+}
+
+// main navigation
+.great-header-nav-container {
+  width: 100%;
+  background-color: $white;
+}
+
+.great-header-nav {
+  padding: 15px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  a.link-heading {
+    text-decoration: underline;
+  }
+
+  .link-heading {
+    font-size: 19px;
+    color: $grey;
+  }
+}
+
+// JS enabled styling
+body.js-enabled {
+  @import 'js-header';
+}
+
+@media (max-width: 1260px) {
+  .great-header-nav {
+    margin: 0 30px;
+  }
+}
+
+@import 'mobile-header';
+
+@media (max-width: 420px) {
+  .great-header-nav {
+    margin: 0 20px;
   }
 }
