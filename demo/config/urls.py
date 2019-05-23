@@ -28,12 +28,6 @@ urlpatterns = [
         name='great-domestic-header-footer',
     ),
     url(
-        r'^old-domestic-header-footer/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/old-domestic-header-footer.html'},
-        name='old-domestic-header-footer',
-    ),
-    url(
         r'^elements/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/elements.html'},
@@ -90,12 +84,6 @@ urlpatterns = [
         views.BasePageView.as_view(),
         {'template_name': 'demo/responsive.html'},
         name='responsive',
-    ),
-    url(
-        r'^invest/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/invest_header_footer.html'},
-        name='invest-header-footer',
     ),
     url(
         r'^template-tags/$',

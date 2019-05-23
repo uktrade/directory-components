@@ -1,5 +1,29 @@
 # Changelog
 
+## 14.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/199/files)
+
+### Breaking Changes
+
+- Feature flag no longer used:
+    - `NEW_HEADER_FOOTER_ON`
+- Six templates have been removed:
+    - `header_footer/invest_footer.html`
+    - `header_footer/invest_header.html`
+    - `header_footer_old/footer.html`
+    - `header_footer_old/header.html`
+    - `header_footer_old/header_international_link_js_disabled.html`
+    - `header_footer_old/header_static.html`
+- Images removed:
+    - `IIG_Invest_in_GREAT_White_WITH_Flag.png`
+    - `UK-Gov_STACK_WHITE_AW.png`
+- JavaScript files removed:
+    - `invest-header.js`
+- Templates renamed/moved:
+    - `header_footer/header_static.html` changed to `header_footer/domestic_header_static.html`
+    - `header_footer/footer.html` changed to `header_footer/domestic_footer.html`
+    - `header_footer/header.html` changed to `header_footer/domestic_header.html`
+
 ## 13.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/198/files)
 
