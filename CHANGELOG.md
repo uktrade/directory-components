@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/201/files)
+
+**Implemented enhancements:**
+
+- Added if statements to 'informative banner' so label or content can be used without the other
+
+
 ## 13.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/200/files)
 
