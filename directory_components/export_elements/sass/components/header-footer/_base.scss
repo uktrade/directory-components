@@ -1,9 +1,12 @@
 
-@import '../partials/colours';
-@import 'mixins';
-@import 'typography';
-@import 'links';
-@import 'layout';
+// GREAT HEADER & FOOTER V2
+// DOMESTIC & INTERNATIONAL
+// =========================
+
+@import 'common';
 @import 'header';
-@import 'menu';
+@import 'mobile-header';
+@import 'search';
 @import 'footer';
+@import 'country-selector';
+@import 'forms';

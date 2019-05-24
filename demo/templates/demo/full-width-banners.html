@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load breadcrumbs banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta case_study from directory_components_tags %}
+{% load breadcrumbs banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta case_study from directory_components %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -25,7 +25,7 @@
       <h2 class="heading-large">Hero</h2>
       <p>Load this template tag to use the hero.</p>
     </div>
-    <pre><code>{% verbatim %}{% load hero from directory_components_tags %}{% endverbatim %}</code></pre>
+    <pre><code>{% verbatim %}{% load hero from directory_components %}{% endverbatim %}</code></pre>
   </div>
 
   {% hero background_image_url=hero_image_domestic hero_text="Large title" large_title=True %}

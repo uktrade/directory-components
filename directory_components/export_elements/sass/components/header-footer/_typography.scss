@@ -1,8 +1,0 @@
-@import '../partials/typography';
-
-#header, #footer {
-  @include font-med-normal
-  color: $light-grey;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}

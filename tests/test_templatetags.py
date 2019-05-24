@@ -5,7 +5,7 @@ from django import forms
 from django.template import Context, Template
 
 from directory_components import fields
-from directory_components.templatetags import directory_components_tags
+from directory_components.templatetags import directory_components
 
 REQUIRED_MESSAGE = fields.PaddedCharField.default_error_messages['required']
 
@@ -16,7 +16,7 @@ class PaddedTestForm(forms.Form):
 
 def test_static_absolute(rf):
     template = Template(
-        '{% load static_absolute from directory_components_tags %}'
+        '{% load static_absolute from directory_components %}'
         '{% static_absolute "directory_components/images/favicon.ico" %}'
     )
 
@@ -30,7 +30,7 @@ def test_static_absolute(rf):
 
 def test_add_anchors():
     template = Template(
-        '{% load add_anchors from directory_components_tags %}'
+        '{% load add_anchors from directory_components %}'
         '{{ html|add_anchors:"-section" }}'
     )
 
@@ -49,7 +49,7 @@ def test_add_anchors():
 
 def test_add_anchors_no_suffix():
     template = Template(
-        '{% load add_anchors from directory_components_tags %}'
+        '{% load add_anchors from directory_components %}'
         '{{ html|add_anchors }}'
     )
 
@@ -79,7 +79,7 @@ def test_add_anchors_no_suffix():
 ))
 def test_add_export_elements_classes(input_html, expected_html):
     template = Template(
-        '{% load add_export_elements_classes from directory_components_tags %}'
+        '{% load add_export_elements_classes from directory_components %}'
         '{{ html|add_export_elements_classes }}'
 
     )
@@ -93,7 +93,7 @@ def test_render_form():
     form = PaddedTestForm(data={'field': 'value'})
 
     template = Template(
-        '{% load render_form from directory_components_tags %}'
+        '{% load render_form from directory_components %}'
         '{% render_form form %}'
     )
     context = Context({'form': form})
@@ -121,7 +121,7 @@ def test_card():
         'img_alt': 'img_alt',
     }
     string = (
-        "{{% load card from directory_components_tags %}}"
+        "{{% load card from directory_components %}}"
         "{{% card title='{title}' url='{url}' description='{description}' "
         "img_src='{img_src}' img_alt='{img_alt}' %}}"
         ).format(**card_content)
@@ -157,7 +157,7 @@ def test_card_html():
         'html_content': html_content,
     }
     string = (
-        "{{% load card from directory_components_tags %}}"
+        "{{% load card from directory_components %}}"
         "{{% card html_content='{html_content}' %}}"
         ).format(**card_content)
 
@@ -178,7 +178,7 @@ def test_labelled_card_with_image():
         'img_alt': 'img_alt',
     }
     string = (
-        "{{% load labelled_card from directory_components_tags %}}"
+        "{{% load labelled_card from directory_components %}}"
         "{{% labelled_card title='{title}' url='{url}' img_src='{img_src}' "
         "description='{description}' img_alt='{img_alt}' %}}"
         ).format(**card_content)
@@ -218,7 +218,7 @@ def test_labelled_card_without_image():
         'description': 'description',
     }
     string = (
-        "{{% load labelled_card from directory_components_tags %}}"
+        "{{% load labelled_card from directory_components %}}"
         "{{% labelled_card title='{title}' url='{url}' "
         "description='{description}' %}}"
         ).format(**card_content)
@@ -242,7 +242,7 @@ def test_labelled_image_card():
         'img_alt': 'img_alt',
     }
     string = (
-        "{{% load labelled_image_card from directory_components_tags %}}"
+        "{{% load labelled_image_card from directory_components %}}"
         "{{% labelled_image_card title='{title}' url='{url}' "
         "img_src='{img_src}' "
         "description='{description}' img_alt='{img_alt}' %}}"
@@ -279,7 +279,7 @@ def test_card_with_icon():
         'img_alt': 'img_alt',
     }
     string = (
-        "{{% load card_with_icon from directory_components_tags %}}"
+        "{{% load card_with_icon from directory_components %}}"
         "{{% card_with_icon title='{title}' url='{url}' "
         "description='{description}' "
         "img_src='{img_src}' img_alt='{img_alt}' %}}"
@@ -311,7 +311,7 @@ def test_message_box_default():
         'description': 'description',
     }
     string = (
-        "{{% load message_box from directory_components_tags %}}"
+        "{{% load message_box from directory_components %}}"
         "{{% message_box heading='{heading}' "
         "description='{description}' %}}"
         ).format(**box_content)
@@ -338,7 +338,7 @@ def test_message_box_custom():
         'box_class': 'border-great-red background-offwhite',
     }
     string = (
-        "{{% load message_box from directory_components_tags %}}"
+        "{{% load message_box from directory_components %}}"
         "{{% message_box heading='{heading}' heading_level='{heading_level}' "
         "heading_class='{heading_class}' description='{description}' "
         "box_class='{box_class}' %}}"
@@ -370,7 +370,7 @@ def test_cta_box_default():
         'button_url': 'button_url',
     }
     string = (
-        "{{% load cta_box from directory_components_tags %}}"
+        "{{% load cta_box from directory_components %}}"
         "{{% cta_box box_id='{box_id}' heading='{heading}' "
         "description='{description}' "
         "button_text='{button_text}' button_url='{button_url}' %}}"
@@ -408,7 +408,7 @@ def test_cta_box_custom():
         'button_url': 'button_url',
     }
     string = (
-        "{{% load cta_box from directory_components_tags %}}"
+        "{{% load cta_box from directory_components %}}"
         "{{% cta_box box_id='{box_id}' heading='{heading}' "
         "box_class='{box_class}' heading_level='{heading_level}' "
         "heading_class='{heading_class}' description='{description}' "
@@ -445,7 +445,7 @@ def test_banner():
         'banner_content': '<p>Banner content with a <a href="#">link</a></p>',
     }
     string = (
-        "{{% load banner from directory_components_tags %}}"
+        "{{% load banner from directory_components %}}"
         "{{% banner badge_content='{badge_content}' "
         "banner_content='{banner_content}' %}}"
         ).format(**banner_content)
@@ -477,7 +477,7 @@ def test_hero():
         'description': 'description',
     }
     string = (
-        "{{% load hero from directory_components_tags %}}"
+        "{{% load hero from directory_components %}}"
         "{{% hero background_image_url='{background_image_url}' "
         "hero_text='{hero_text}' description='{description}' %}}"
         ).format(**hero_content)
@@ -506,7 +506,7 @@ def test_hero_large_title():
         'large_title': True,
     }
     string = (
-        "{{% load hero from directory_components_tags %}}"
+        "{{% load hero from directory_components %}}"
         "{{% hero background_image_url='{background_image_url}' "
         "hero_text='{hero_text}' description='{description}' "
         "large_title={large_title} %}}"
@@ -529,22 +529,22 @@ def test_hero_large_title():
 
 
 @pytest.mark.parametrize('template_tag', (
-    directory_components_tags.cta_box,
-    directory_components_tags.message_box,
-    directory_components_tags.banner,
-    directory_components_tags.hero,
-    directory_components_tags.card,
-    directory_components_tags.card_with_icon,
-    directory_components_tags.labelled_card,
-    directory_components_tags.labelled_image_card,
-    directory_components_tags.image_with_caption,
-    directory_components_tags.cta_card,
-    directory_components_tags.cta_link,
-    directory_components_tags.statistics_card_grid,
-    directory_components_tags.hero_with_cta,
-    directory_components_tags.case_study,
-    directory_components_tags.informative_banner,
-    directory_components_tags.breadcrumbs,
+    directory_components.cta_box,
+    directory_components.message_box,
+    directory_components.banner,
+    directory_components.hero,
+    directory_components.card,
+    directory_components.card_with_icon,
+    directory_components.labelled_card,
+    directory_components.labelled_image_card,
+    directory_components.image_with_caption,
+    directory_components.cta_card,
+    directory_components.cta_link,
+    directory_components.statistics_card_grid,
+    directory_components.hero_with_cta,
+    directory_components.case_study,
+    directory_components.informative_banner,
+    directory_components.breadcrumbs,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -557,7 +557,7 @@ def test_template_tag_kwargs(template_tag):
 
 @pytest.mark.parametrize('heading', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 def test_convert_headings_to(heading):
-    actual = directory_components_tags.convert_headings_to(
+    actual = directory_components.convert_headings_to(
         '<' + heading + '></' + heading + '>',
         'figure'
     )
@@ -566,7 +566,7 @@ def test_convert_headings_to(heading):
 
 
 def test_convert_headings_to_does_not_convert_non_headings():
-    actual = directory_components_tags.convert_headings_to(
+    actual = directory_components.convert_headings_to(
         '<span></span>', 'figure'
     )
     expected = '<span></span>'
@@ -574,7 +574,7 @@ def test_convert_headings_to_does_not_convert_non_headings():
 
 
 def test_override_elements_css_class():
-    actual = directory_components_tags.override_elements_css_class(
+    actual = directory_components.override_elements_css_class(
         '<h2 class="existing-class"></h2>',
         'h2,test-class'
     )
@@ -583,7 +583,7 @@ def test_override_elements_css_class():
 
 
 def test_override_elements_css_class_does_not_override_non_targets():
-    actual = directory_components_tags.override_elements_css_class(
+    actual = directory_components.override_elements_css_class(
         '<h4 class="existing-class"></h4>',
         'h2,test-class'
     )
