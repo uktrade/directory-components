@@ -6,7 +6,6 @@ from django.utils import translation
 
 from directory_constants.choices import COUNTRY_CHOICES
 from directory_components import mixins
-from directory_components.mixins import GA360Payload
 
 
 @pytest.mark.parametrize('country_code,country_name', COUNTRY_CHOICES)
@@ -117,12 +116,12 @@ def test_cms_language_switcher_active_language_available(rf):
 def test_ga360_mixin_for_logged_in_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'core/base.html'
-        ga360_payload = GA360Payload(
-            page_id='TestPageId',
-            business_unit='Test App',
-            site_section='Test Section',
-            site_subsection='Test Page',
-        )
+        ga360_payload = {
+            'page_id': 'TestPageId',
+            'business_unit': 'Test App',
+            'site_section': 'Test Section',
+            'site_subsection': 'Test Page',
+        }
 
     request = rf.get('/')
     request.sso_user = Mock(
@@ -134,24 +133,24 @@ def test_ga360_mixin_for_logged_in_user(rf):
 
     assert response.context_data['ga360']
     ga360_data = response.context_data['ga360']
-    assert ga360_data.page_id == 'TestPageId'
-    assert ga360_data.business_unit == 'Test App'
-    assert ga360_data.site_section == 'Test Section'
-    assert ga360_data.site_subsection == 'Test Page'
-    assert ga360_data.user_id == '1234'
-    assert ga360_data.login_status is True
-    assert ga360_data.site_language == 'de'
+    assert ga360_data['page_id'] == 'TestPageId'
+    assert ga360_data['business_unit'] == 'Test App'
+    assert ga360_data['site_section'] == 'Test Section'
+    assert ga360_data['site_subsection'] == 'Test Page'
+    assert ga360_data['user_id'] == '1234'
+    assert ga360_data['login_status'] is True
+    assert ga360_data['site_language'] == 'de'
 
 
 def test_ga360_mixin_for_anonymous_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'core/base.html'
-        ga360_payload = GA360Payload(
-            page_id='TestPageId',
-            business_unit='Test App',
-            site_section='Test Section',
-            site_subsection='Test Page',
-        )
+        ga360_payload = {
+            'page_id': 'TestPageId',
+            'business_unit': 'Test App',
+            'site_section': 'Test Section',
+            'site_subsection': 'Test Page',
+        }
 
     request = rf.get('/')
     request.sso_user = None
@@ -161,5 +160,5 @@ def test_ga360_mixin_for_anonymous_user(rf):
 
     assert response.context_data['ga360']
     ga360_data = response.context_data['ga360']
-    assert ga360_data.user_id is None
-    assert ga360_data.login_status is False
+    assert ga360_data['user_id'] is None
+    assert ga360_data['login_status'] is False

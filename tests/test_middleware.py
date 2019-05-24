@@ -10,7 +10,6 @@ from django.conf import settings
 
 from directory_components import middleware
 from directory_components.middleware import GADataMissingException
-from directory_components.mixins import GA360Payload
 
 
 class PrefixUrlMiddleware(middleware.AbstractPrefixUrlMiddleware):
@@ -335,14 +334,14 @@ def test_force_default_locale_sets_to_prevous_on_response(rf):
 
 
 def dummy_valid_ga_360_response():
-    payload = GA360Payload(
-        page_id='TestPageId',
-        business_unit='Test App',
-        site_section='Test Section',
-    )
-    payload.site_language = 'de'
-    payload.user_id = '1234'
-    payload.login_status = True
+    payload = {
+        'page_id': 'TestPageId',
+        'business_unit': 'Test App',
+        'site_section': 'Test Section',
+        'site_language': 'de',
+        'user_id': '1234',
+        'login_status': True
+    }
 
     response = HttpResponse()
     response.status_code = 200
@@ -406,7 +405,7 @@ def test_check_ga_360_rejects_responses_without_a_ga360_payload():
 
 def test_check_ga_360_rejects_responses_missing_a_required_field():
     response = dummy_valid_ga_360_response()
-    response.context_data['ga360'] = object()
+    response.context_data['ga360'] = {}
     instance = middleware.CheckGATags()
 
     with pytest.raises(GADataMissingException) as exception:
@@ -418,7 +417,7 @@ def test_check_ga_360_rejects_responses_missing_a_required_field():
 
 def test_check_ga_360_rejects_responses_where_a_required_field_is_null():
     response = dummy_valid_ga_360_response()
-    response.context_data['ga360'].business_unit = None
+    response.context_data['ga360']['business_unit'] = None
     instance = middleware.CheckGATags()
 
     with pytest.raises(GADataMissingException) as exception:
@@ -431,7 +430,7 @@ def test_check_ga_360_rejects_responses_where_a_required_field_is_null():
 
 def test_check_ga_360_allows_null_values_for_nullable_fields():
     response = dummy_valid_ga_360_response()
-    response.context_data['ga360'].user_id = None
+    response.context_data['ga360']['user_id'] = None
     instance = middleware.CheckGATags()
 
     processed_response = instance.process_response({}, response)

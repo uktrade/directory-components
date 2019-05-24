@@ -187,12 +187,12 @@ class CheckGATags:
 
         ga_data = context_data['ga360']
         for field in required_fields:
-            if not hasattr(ga_data, field.name):
+            if field.name not in ga_data:
                 raise GADataMissingException(
                     "Field '{0}' is missing from Google Analytics Data".format(
                         field.name))
 
-            field_value = getattr(ga_data, field.name)
+            field_value = ga_data[field.name]
             if not isinstance(field_value, field.allowed_types):
                 raise GADataMissingException(
                     "Field '{0}' from Google Analytics Data has type {1}, "
