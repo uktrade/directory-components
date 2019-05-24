@@ -39,39 +39,37 @@
 {% block header_nav %}
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice">Advice</a>
+  <a href="{{ header_footer_urls.advice }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-advice">Advice</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets">Markets</a>
+  <a href="{{ header_footer_urls.markets }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-markets">Markets</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services">Services</a>
+  <a href="{{ header_footer_urls.services }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-services">Services</a>
 </li>
 
 {% if features.NEWS_SECTION_ON %}
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
+  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-news">News and events</a>
 </li>
 {% endif %}
 
 {% endblock %}
 
 {% block header_search %}
-  {% if features.HEADER_SEARCH_ON %}
     <style>
       body.js-enabled .great-header.domestic .great-header-nav { margin-right: 280px }
     </style>
     <div class="great-header-search-wrapper">
       <div class="great-header-search-container">
         {% block header_search_form %}
-          <form action="{{ header_footer_urls.search }}" method="GET">
+          <form id="great-header-search-form" action="{{ header_footer_urls.search }}" method="GET">
             <input id="search-box" type="text" name="q" placeholder="Search" aria-label="Search">
             <button type="submit">Search</button>
           </form>
         {% endblock %}
       </div>
     </div>
-  {% endif %}
 {% endblock %}
