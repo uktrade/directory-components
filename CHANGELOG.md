@@ -1,5 +1,13 @@
 # Changelog
 
+## 14.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/202/files)
+
+**Implemented enhancements:**
+
+- Added GA360 tagging for the domestic header
+- Cleaned up unused templates and js
+
 ## 14.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/199/files)
 
