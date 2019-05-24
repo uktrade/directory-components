@@ -339,10 +339,10 @@ def dummy_valid_ga_360_response():
         page_id='TestPageId',
         business_unit='Test App',
         site_section='Test Section',
-        user_id='1234',
-        login_status=True,
     )
     payload.site_language = 'de'
+    payload.user_id = '1234'
+    payload.login_status = True
 
     response = HttpResponse()
     response.status_code = 200

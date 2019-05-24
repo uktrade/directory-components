@@ -100,15 +100,14 @@ class GA360Payload:
     user_id = None
     login_status = False
 
-    def __init__(self, page_id, business_unit, site_section,
-                 site_subsection=None, user_id=None, login_status=False):
+    def __init__(self, page_id, business_unit,
+                 site_section, site_subsection=None):
         self.page_id = page_id
         self.business_unit = business_unit
         self.site_section = site_section
         self.site_subsection = site_subsection
-        self.user_id = user_id
-        self.login_status = login_status
-        # site language is set later within the GA360Mixin
+        # site language, user_id and login_status are all set automatically
+        # within the GA360Mixin
 
 
 class GA360Mixin:
@@ -117,6 +116,10 @@ class GA360Mixin:
     def get_context_data(self, *args, **kwargs):
         if self.ga360_payload:
             self.ga360_payload.site_language = translation.get_language()
+
+            if self.request.sso_user and self.request.sso_user.id:
+                self.ga360_payload.user_id = str(self.request.sso_user.id)
+                self.ga360_payload.login_status = True
 
         return super().get_context_data(
             ga360=self.ga360_payload,
