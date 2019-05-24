@@ -4,7 +4,8 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/197/files)
 
 ### Implemented enhancements
-- Added middleware to check that either all views have appropriate GA tags have been set or marked as 'skip_ga360'
+- CI-108: Added middleware to check that all views have appropriate GA tags have been set or marked as 'skip_ga360'
+- CI-108: Updated International Header GA tagging to match the new specification
 
 ### Breaking changes
 - Changed the ga_payload format for the GA360Mixin. (see mixins.GA360Payload for details).
