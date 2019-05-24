@@ -29,6 +29,23 @@ The best way to do the rest of the upgrade is to switch to using the latest head
     - `header_footer/footer.html` changed to `header_footer/domestic_footer.html`
     - `header_footer/header.html` changed to `header_footer/domestic_header.html`
 
+
+## 13.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/201/files)
+
+**Implemented enhancements:**
+
+- Added if statements to 'informative banner' so label or content can be used without the other
+
+
+## 13.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/200/files)
+
+**Implemented enhancements:**
+
+- Added Investment Support Directory URL
+
+
 ## 13.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/198/files)
 
