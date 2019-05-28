@@ -1,14 +1,15 @@
 import abc
 import logging
 import urllib.parse
-from collections import namedtuple
 
+import jsonschema as jsonschema
 from django.conf import settings
 from django.shortcuts import redirect
 from django.utils import translation
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
 from django.middleware.locale import LocaleMiddleware
+from jsonschema import ValidationError
 
 from directory_components import constants
 from directory_components import helpers
@@ -155,21 +156,31 @@ class GADataMissingException(Exception):
     pass
 
 
-Field = namedtuple('Field', ['name', 'allowed_types'])
-required_fields = [
-    Field(name='business_unit', allowed_types=str),
-    Field(name='site_section', allowed_types=str),
-    Field(name='user_id', allowed_types=(str, type(None))),
-    Field(name='login_status', allowed_types=bool),
-    Field(name='site_language', allowed_types=str)
-]
+ga_schema = {
+    "type": "object",
+    "properties": {
+        "business_unit": {"type": "string"},
+        "site_section": {"type": "string"},
+        "user_id": {},  # Can be null
+        "login_status": {"type": "boolean"},
+        "site_language": {"type": "string"},
+        "site_subsection": {"type": "string"},
+    },
+    "required": [
+        "business_unit",
+        "site_section",
+        "login_status",
+        "site_language",
+        "user_id",
+    ]
+}
 
 
 class CheckGATags:
     def process_response(self, _, response):
 
         # Only check 2xx responses for google analytics.
-        if response.status_code < 200 or response.status_code > 299:
+        if not 200 <= response.status_code < 300:
             return response
 
         # Don't check views which should be skipped (see @skip_ga360 decorator)
@@ -185,18 +196,9 @@ class CheckGATags:
                 "No Google Analytics data found on the response.")
 
         ga_data = context_data['ga360']
-        for field in required_fields:
-            if field.name not in ga_data:
-                raise GADataMissingException(
-                    "Field '{0}' is missing from Google Analytics Data".format(
-                        field.name))
-
-            field_value = ga_data[field.name]
-            if not isinstance(field_value, field.allowed_types):
-                raise GADataMissingException(
-                    "Field '{0}' from Google Analytics Data has type {1}, "
-                    "but was expecting {2}".format(field.name,
-                                                   type(field_value),
-                                                   field.allowed_types))
+        try:
+            jsonschema.validate(instance=ga_data, schema=ga_schema)
+        except ValidationError as exception:
+            raise GADataMissingException(exception.message)
 
         return response

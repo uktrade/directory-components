@@ -411,7 +411,7 @@ def test_check_ga_360_rejects_responses_missing_a_required_field():
     with pytest.raises(GADataMissingException) as exception:
         instance.process_response({}, response)
 
-    assert "Field 'business_unit' is missing from Google Analytics Data" \
+    assert "'business_unit' is a required property" \
            in str(exception.value)
 
 
@@ -423,9 +423,7 @@ def test_check_ga_360_rejects_responses_where_a_required_field_is_null():
     with pytest.raises(GADataMissingException) as exception:
         instance.process_response({}, response)
 
-    assert "Field 'business_unit' from Google Analytics Data has type " \
-           "<class 'NoneType'>, but was expecting <class 'str'>" \
-           in str(exception.value)
+    assert "None is not of type 'string'" in str(exception.value)
 
 
 def test_check_ga_360_allows_null_values_for_nullable_fields():

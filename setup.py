@@ -16,6 +16,7 @@ setup(
         'django>=1.11.20,<2.0a1',
         'beautifulsoup4>=4.6.0<5.0.0',
         'directory-constants>=16.7.1,<17.0.0',
+        'jsonschema==3.0.1'
     ],
     extras_require={
         'test': [
