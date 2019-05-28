@@ -1,5 +1,15 @@
 # Changelog
 
+## 15.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/197/files)
+
+### Implemented enhancements
+- CI-108: Added middleware to check that all views have appropriate GA tags have been set or marked as 'skip_ga360'
+- CI-108: Updated International Header GA tagging to match the new specification
+
+### Breaking changes
+- Changed the ga_payload format for the GA360Mixin. (see mixins.GA360Payload for details).
+
 ## 14.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/202/files)
 
@@ -57,7 +67,7 @@ The best way to do the rest of the upgrade is to switch to using the latest head
 ## 13.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/198/files)
 
-### Implmented enhancements
+### Implemented enhancements
 - CMS-1528: Add a feature flag for the country selector in the international header.
 
 ### Breaking Changes

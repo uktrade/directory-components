@@ -9,6 +9,7 @@ from django.utils import translation
 from django.conf import settings
 
 from directory_components import middleware
+from directory_components.middleware import GADataMissingException
 
 
 class PrefixUrlMiddleware(middleware.AbstractPrefixUrlMiddleware):
@@ -330,3 +331,106 @@ def test_force_default_locale_sets_to_prevous_on_response(rf):
 
         instance.process_response(request, None)
         assert translation.get_language() == 'de'
+
+
+def dummy_valid_ga_360_response():
+    payload = {
+        'page_id': 'TestPageId',
+        'business_unit': 'Test App',
+        'site_section': 'Test Section',
+        'site_language': 'de',
+        'user_id': '1234',
+        'login_status': True
+    }
+
+    response = HttpResponse()
+    response.status_code = 200
+    response.context_data = {'ga360': payload}
+    return response
+
+
+def test_check_ga_360_tags_allows_valid_response():
+    response = dummy_valid_ga_360_response()
+    instance = middleware.CheckGATags()
+
+    processed_response = instance.process_response({}, response)
+
+    assert processed_response is not None
+
+
+def test_check_ga_360_allows_redirects():
+    response = HttpResponse()
+    response.status_code = 301
+    instance = middleware.CheckGATags()
+
+    processed_response = instance.process_response({}, response)
+
+    assert processed_response is not None
+
+
+def test_check_ga_360_allows_responses_marked_as_skip_ga360():
+    response = HttpResponse()
+    response.status_code = 200
+    response.skip_ga360 = True
+    instance = middleware.CheckGATags()
+
+    processed_response = instance.process_response({}, response)
+
+    assert processed_response is not None
+
+
+def test_check_ga_360_rejects_responses_without_context_data():
+    response = HttpResponse()
+    response.status_code = 201
+
+    instance = middleware.CheckGATags()
+
+    with pytest.raises(GADataMissingException) as exception:
+        instance.process_response({}, response)
+
+    assert 'No context data found' in str(exception.value)
+
+
+def test_check_ga_360_rejects_responses_without_a_ga360_payload():
+    response = dummy_valid_ga_360_response()
+    response.context_data = {}
+    instance = middleware.CheckGATags()
+
+    with pytest.raises(GADataMissingException) as exception:
+        instance.process_response({}, response)
+
+    assert 'No Google Analytics data found on the response.' \
+           in str(exception.value)
+
+
+def test_check_ga_360_rejects_responses_missing_a_required_field():
+    response = dummy_valid_ga_360_response()
+    response.context_data['ga360'] = {}
+    instance = middleware.CheckGATags()
+
+    with pytest.raises(GADataMissingException) as exception:
+        instance.process_response({}, response)
+
+    assert "'business_unit' is a required property" \
+           in str(exception.value)
+
+
+def test_check_ga_360_rejects_responses_where_a_required_field_is_null():
+    response = dummy_valid_ga_360_response()
+    response.context_data['ga360']['business_unit'] = None
+    instance = middleware.CheckGATags()
+
+    with pytest.raises(GADataMissingException) as exception:
+        instance.process_response({}, response)
+
+    assert "None is not of type 'string'" in str(exception.value)
+
+
+def test_check_ga_360_allows_null_values_for_nullable_fields():
+    response = dummy_valid_ga_360_response()
+    response.context_data['ga360']['user_id'] = None
+    instance = middleware.CheckGATags()
+
+    processed_response = instance.process_response({}, response)
+
+    assert processed_response is not None

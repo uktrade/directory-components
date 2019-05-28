@@ -1,6 +1,6 @@
 import pytest
 
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from django.views.generic import TemplateView
 from django.utils import translation
 
@@ -113,13 +113,58 @@ def test_cms_language_switcher_active_language_available(rf):
     assert context['form'].initial['lang'] == 'de'
 
 
-def test_ga360_mixin(rf):
+def test_ga360_mixin_for_logged_in_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'core/base.html'
-        ga360_payload = {'page_type': 'TestPageType'}
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
 
     request = rf.get('/')
-    response = TestView.as_view()(request)
+    request.sso_user = Mock(
+        id=1234
+    )
+
+    with translation.override('de'):
+        response = TestView.as_view()(request)
 
     assert response.context_data['ga360']
-    assert response.context_data['ga360']['page_type'] == 'TestPageType'
+    ga360_data = response.context_data['ga360']
+    assert ga360_data['page_id'] == 'TestPageId'
+    assert ga360_data['business_unit'] == 'Test App'
+    assert ga360_data['site_section'] == 'Test Section'
+    assert ga360_data['site_subsection'] == 'Test Page'
+    assert ga360_data['user_id'] == '1234'
+    assert ga360_data['login_status'] is True
+    assert ga360_data['site_language'] == 'de'
+
+
+def test_ga360_mixin_for_anonymous_user(rf):
+    class TestView(mixins.GA360Mixin, TemplateView):
+        template_name = 'core/base.html'
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
+
+    request = rf.get('/')
+    request.sso_user = None
+
+    with translation.override('de'):
+        response = TestView.as_view()(request)
+
+    assert response.context_data['ga360']
+    ga360_data = response.context_data['ga360']
+    assert ga360_data['user_id'] is None
+    assert ga360_data['login_status'] is False

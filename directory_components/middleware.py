@@ -2,12 +2,14 @@ import abc
 import logging
 import urllib.parse
 
+import jsonschema as jsonschema
 from django.conf import settings
 from django.shortcuts import redirect
 from django.utils import translation
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
 from django.middleware.locale import LocaleMiddleware
+from jsonschema import ValidationError
 
 from directory_components import constants
 from directory_components import helpers
@@ -148,3 +150,55 @@ class ForceDefaultLocale:
     def process_exception(self, request, exception):
         if hasattr(request, 'LANGUAGE_CODE') and request.LANGUAGE_CODE:
             translation.activate(request.LANGUAGE_CODE)
+
+
+class GADataMissingException(Exception):
+    pass
+
+
+ga_schema = {
+    "type": "object",
+    "properties": {
+        "business_unit": {"type": "string"},
+        "site_section": {"type": "string"},
+        "user_id": {},  # Can be null
+        "login_status": {"type": "boolean"},
+        "site_language": {"type": "string"},
+        "site_subsection": {"type": "string"},
+    },
+    "required": [
+        "business_unit",
+        "site_section",
+        "login_status",
+        "site_language",
+        "user_id",
+    ]
+}
+
+
+class CheckGATags:
+    def process_response(self, _, response):
+
+        # Only check 2xx responses for google analytics.
+        if not 200 <= response.status_code < 300:
+            return response
+
+        # Don't check views which should be skipped (see @skip_ga360 decorator)
+        if getattr(response, 'skip_ga360', False):
+            return response
+
+        if not hasattr(response, 'context_data'):
+            raise GADataMissingException('No context data found')
+        context_data = response.context_data
+
+        if 'ga360' not in context_data:
+            raise GADataMissingException(
+                "No Google Analytics data found on the response.")
+
+        ga_data = context_data['ga360']
+        try:
+            jsonschema.validate(instance=ga_data, schema=ga_schema)
+        except ValidationError as exception:
+            raise GADataMissingException(exception.message)
+
+        return response

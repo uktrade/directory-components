@@ -5,34 +5,41 @@ dit.tagging.internationalHeader = new function() {
         $(document).ready(function() {
             $("[data-ga-class='banner-choose-country-form']").on("submit", function() {
                 window.dataLayer.push({
-                    'eventAction': 'Select Country',
-                    'eventLabel': 'International Header',
-                    'eventValue': $("#great-header-country-select").val()
+                    'event': 'gaEvent',
+                    'action': 'SelectCountry',
+                    'type': 'InternationalHeader',
+                    'element': 'Form',
+                    'value': $("#great-header-country-select").val()
                 });
             });
 
             $("[data-ga-class='change-country-form']").on("submit", function() {
                 window.dataLayer.push({
-                    'eventAction': 'Change Country',
-                    'eventLabel': 'International Header',
-                    'eventValue': $("#great-header-country-select").val()
+                    'event': 'gaEvent',
+                    'action': 'ChangeCountry',
+                    'type': 'InternationalHeader',
+                    'element': 'Form',
+                    'value': $("#great-header-country-select").val()
                 });
             });
 
             $("[data-ga-class='change-language-form']").on("submit", function() {
                 window.dataLayer.push({
-                    'eventAction': 'Change Language',
-                    'eventLabel': 'International Header',
-                    'eventValue': $("#great-header-language-select").val()
+                    'event': 'gaEvent',
+                    'action': 'ChangeLanguage',
+                    'type': 'InternationalHeader',
+                    'element': 'Form',
+                    'value': $("#great-header-language-select").val()
                 });
             });
 
             $("[data-ga-class='header-navigation']").on("click", function() {
                 window.dataLayer.push({
-                    'eventAction': 'Navigation',
-                    'eventCategory': 'Header Link',
-                    'eventLabel': 'International Header',
-                    'eventValue': $(this).text()
+                    'event': 'gaEvent',
+                    'action': 'Navigation',
+                    'type': 'InternationalHeader',
+                    'element': 'Link',
+                    'value': $(this).text()
                 });
             })
         });

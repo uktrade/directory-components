@@ -92,9 +92,26 @@ class CMSLanguageSwitcherMixin:
 
 
 class GA360Mixin:
-    ga360_payload = None
+    ga360_payload = {}
+
+    def set_ga360_payload(self, page_id, business_unit, site_section,
+                          site_subsection=None):
+        self.ga360_payload['page_id'] = page_id
+        self.ga360_payload['business_unit'] = business_unit
+        self.ga360_payload['site_section'] = site_section
+        if site_subsection:
+            self.ga360_payload['site_subsection'] = site_subsection
 
     def get_context_data(self, *args, **kwargs):
+        self.ga360_payload['site_language'] = translation.get_language()
+
+        if self.request.sso_user and self.request.sso_user.id:
+            self.ga360_payload['user_id'] = str(self.request.sso_user.id)
+            self.ga360_payload['login_status'] = True
+        else:
+            self.ga360_payload['user_id'] = None
+            self.ga360_payload['login_status'] = False
+
         return super().get_context_data(
             ga360=self.ga360_payload,
             *args,
