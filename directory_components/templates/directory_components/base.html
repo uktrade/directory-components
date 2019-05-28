@@ -52,9 +52,21 @@
             <script src="{% static 'directory_components/js/dit.components.cookie-notice.js' %}"></script>
         {% endblock %}
 
-       {% block head_js_ga360 %}
-           <script type="text/javascript"> window.dataLayer = window.dataLayer || [];</script>
-       {% endblock %}
+        {% block head_js_ga360 %}
+            <script type="text/javascript">
+                window.dataLayer = window.dataLayer || [];
+                {% if ga360 %}
+                window.dataLayer.push({
+                    'businessUnit': '{{ ga360.business_unit }}',
+                    'siteSection': '{{ ga360.site_section}}',
+                    'siteSubsection': '{{ ga360.site_subsection }}',
+                    'siteLanguage': '{{ ga360.site_language }}',
+                    'userId': '{{ ga360.user_id }}',
+                    'loginStatus': '{{ ga360.login_status }}',
+                });
+                {% endif %}
+            </script>
+        {% endblock %}
 
         {% block header_js %}
             <script src="{% static 'directory_components/js/dit.responsive.js' %}"></script>
