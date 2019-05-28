@@ -116,12 +116,15 @@ def test_cms_language_switcher_active_language_available(rf):
 def test_ga360_mixin_for_logged_in_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'core/base.html'
-        ga360_payload = {
-            'page_id': 'TestPageId',
-            'business_unit': 'Test App',
-            'site_section': 'Test Section',
-            'site_subsection': 'Test Page',
-        }
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
 
     request = rf.get('/')
     request.sso_user = Mock(
@@ -145,12 +148,15 @@ def test_ga360_mixin_for_logged_in_user(rf):
 def test_ga360_mixin_for_anonymous_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'core/base.html'
-        ga360_payload = {
-            'page_id': 'TestPageId',
-            'business_unit': 'Test App',
-            'site_section': 'Test Section',
-            'site_subsection': 'Test Page',
-        }
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
 
     request = rf.get('/')
     request.sso_user = None
