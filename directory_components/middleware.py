@@ -152,8 +152,7 @@ class ForceDefaultLocale:
 
 
 class GADataMissingException(Exception):
-    def __init__(self, message):
-        super(GADataMissingException, self).__init__(message)
+    pass
 
 
 Field = namedtuple('Field', ['name', 'allowed_types'])
