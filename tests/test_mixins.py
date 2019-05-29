@@ -159,7 +159,7 @@ def test_ga360_mixin_for_anonymous_user(rf):
             )
 
     request = rf.get('/')
-    request.sso_user = None
+    # sso_user is not set.
 
     with translation.override('de'):
         response = TestView.as_view()(request)

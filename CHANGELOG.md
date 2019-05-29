@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/204/files)
+
+### Bug Fixes
+- CI-108: Fix GA360 Mixin failing when request.sso_user is unset.
+
 ## 15.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/197/files)
 
