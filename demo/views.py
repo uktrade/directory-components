@@ -21,6 +21,12 @@ class InternationalHeaderView(
     pass
 
 
+class InvestHeaderView(
+    CountryDisplayMixin, EnableTranslationsMixin, BasePageView
+):
+    pass
+
+
 class DemoCardsView(BasePageView):
     statistics = [
         {

@@ -91,4 +91,10 @@ urlpatterns = [
         {'template_name': 'demo/great-international-header-footer.html'},
         name='great-international-header-footer',
     ),
+    url(
+        r'^invest-header/$',
+        views.InvestHeaderView.as_view(),
+        {'template_name': 'demo/invest-header.html'},
+        name='invest-header',
+    ),
 ]
