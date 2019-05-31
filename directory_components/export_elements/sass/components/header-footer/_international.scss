@@ -1,0 +1,79 @@
+@import '../partials/colours';
+
+.great-header-nav-container.international {
+  flex-grow: 1;
+}
+
+.great-header-nav.international {
+
+  .great-international-main-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .link-heading {
+    position: relative;
+    padding: 15px;
+  }
+
+  .main-nav-item {
+    font-size: 19px;
+    line-height: 1;
+  }
+
+  .main-nav-item.active {
+    position: relative;
+
+    .link-heading {
+      &:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4px;
+        background-color: $great-red;
+        content: '';
+      }
+    }
+
+    .sub-nav {
+      top: 100%;
+      position: absolute;
+      margin-top: 15px;
+      width: 150%;
+      display: flex;
+
+      &:after {
+        content: '';
+        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+        top: 0;
+        left: -5000px;
+        width: 10000px;
+        z-index: -1;
+        align-self: stretch;
+        flex-shrink: 0;
+      }
+    }
+
+    .sub-nav-list {
+      flex-shrink: 0;
+
+      li {
+        padding: 15px 0;
+
+        a {
+          padding: 15px;
+        }
+      }
+    }
+  }
+
+}

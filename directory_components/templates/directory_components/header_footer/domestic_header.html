@@ -5,7 +5,6 @@
 {% block global_header_class %}domestic{% endblock %}
 {% block header_class %}domestic{% endblock %}
 {% block header_menu_class %}domestic{% endblock %}
-{% block header_nav_class %}domestic{% endblock %}
 
 {% block global_header_logo %}
 <img id="great-global-header-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
@@ -38,23 +37,29 @@
 
 {% block header_nav %}
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.advice }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-advice">Advice</a>
-</li>
+<div class="great-header-nav-container">
+  <nav id="great-header-nav" class="great-header-nav domestic" aria-label="{% trans 'Main menu' %}">
+    <ul class="grid-row js-nav-list" id="great-header-nav-list">
+      <li class="column-quarter js-menuitem">
+        <a href="{{ header_footer_urls.advice }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-advice">Advice</a>
+      </li>
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.markets }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-markets">Markets</a>
-</li>
+      <li class="column-quarter js-menuitem">
+        <a href="{{ header_footer_urls.markets }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-markets">Markets</a>
+      </li>
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.services }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-services">Services</a>
-</li>
+      <li class="column-quarter js-menuitem">
+        <a href="{{ header_footer_urls.services }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-services">Services</a>
+      </li>
 
-{% if features.NEWS_SECTION_ON %}
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-news">News and events</a>
-</li>
-{% endif %}
+      {% if features.NEWS_SECTION_ON %}
+      <li class="column-quarter js-menuitem">
+        <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-news">News and events</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
 
 {% endblock %}
 

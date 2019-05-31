@@ -19,8 +19,8 @@
   </div>
 
   <div id="great-header-menu" class="great-header-menu {% block header_menu_class %}{% endblock %}">
-    <div class="container">
 
+    <div class="container">
       <a id="great-header-logo" class="great-header-logo" href="{% block header_logo_url %}{% endblock %}">
         {% block header_logo %}{% endblock %}
       </a>
@@ -33,19 +33,12 @@
         {% endblock %}
 
       </div>
+
+      {% block header_nav %}
+      {% endblock %}
+
+      {% block header_search %}
+      {% endblock %}
     </div>
-
-    <div class="great-header-nav-container">
-      <nav id="great-header-nav" class="great-header-nav {% block header_nav_class %}{% endblock %}" aria-label="{% trans 'Main menu' %}">
-        <ul class="grid-row js-nav-list" id="great-header-nav-list">
-          {% block header_nav %}
-          {% endblock %}
-        </ul>
-      </nav>
-    </div>
-
-    {% block header_search %}
-    {% endblock %}
-
   </div>
 </header>

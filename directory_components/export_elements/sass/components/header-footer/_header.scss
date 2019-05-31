@@ -59,29 +59,21 @@
 // main header menu
 .great-header-menu {
   background-color: $great-blue;
-  position: relative;
 
-  & > .container {
-    overflow: hidden;
-    padding-bottom: 25px;
-  }
-
-  &.domestic > .container {
-    padding-top: 20px;
-  }
-
-  &.international > .container {
-    padding-top: 25px;
-  }
-
-  &.domestic .great-header-logo {
-    height: 80px;
+  .container {
+    padding-top: 15px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
   }
 }
 
 // language/country select and account links
 .great-header-extra-links {
-  float: right;
+  position: absolute;
+  top: 15px;
+  right: 0;
   font-size: 14px;
   color: $white;
 
@@ -127,17 +119,6 @@
   }
 }
 
-.great-header-logo {
-  display: block;
-  float: left;
-}
-
-// main navigation
-.great-header-nav-container {
-  width: 100%;
-  background-color: $white;
-}
-
 .great-header-nav {
   padding: 15px 0;
   max-width: 1200px;
@@ -150,17 +131,6 @@
   .link-heading {
     font-size: 19px;
     color: $grey;
-  }
-}
-
-// JS enabled styling
-body.js-enabled {
-  @import 'js-header';
-}
-
-@media (max-width: 1260px) {
-  .great-header-nav {
-    margin: 0 30px;
   }
 }
 
