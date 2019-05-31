@@ -110,7 +110,9 @@
                 {% block feedback_reporter %}
                     <section class="error-reporting" dir="ltr">
                         <div class="container">
-                            <a id="error-reporting-section-contact-us" href="{{ services_urls.feedback }}" target="_blank">Is there anything wrong with this page?</a>
+                            <a id="error-reporting-section-contact-us" href="{{ services_urls.feedback }}" {% block feedback_ga_class %}{% endblock %} target="_blank">
+                                Is there anything wrong with this page?
+                            </a>
                         </div>
                     </section>
                 {% endblock %}

@@ -119,11 +119,13 @@ def test_card():
         'description': 'description',
         'img_src': 'img_src',
         'img_alt': 'img_alt',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load card from directory_components %}}"
         "{{% card title='{title}' url='{url}' description='{description}' "
-        "img_src='{img_src}' img_alt='{img_alt}' %}}"
+        "img_src='{img_src}' img_alt='{img_alt}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -134,6 +136,7 @@ def test_card():
 
     card_link = soup.select('.card-link')[0]
     assert 'url' in card_link['href']
+    assert card_link['data-ga-class'] == 'cta'
 
     card_image = soup.select('.card-image')[0]
     assert card_image['role'] == 'img'
@@ -176,11 +179,13 @@ def test_labelled_card_with_image():
         'description': 'description',
         'img_src': 'img_src',
         'img_alt': 'img_alt',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load labelled_card from directory_components %}}"
         "{{% labelled_card title='{title}' url='{url}' img_src='{img_src}' "
-        "description='{description}' img_alt='{img_alt}' %}}"
+        "description='{description}' img_alt='{img_alt}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -191,6 +196,7 @@ def test_labelled_card_with_image():
 
     card_link = soup.select('.labelled-card')[0]
     assert 'url' in card_link['href']
+    assert card_link['data-ga-class'] == 'cta'
 
     card_inner = soup.select('div.card-inner')[0]
     assert 'with-image' in card_inner['class']
@@ -216,11 +222,13 @@ def test_labelled_card_without_image():
         'title': 'title',
         'url': 'url',
         'description': 'description',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load labelled_card from directory_components %}}"
         "{{% labelled_card title='{title}' url='{url}' "
-        "description='{description}' %}}"
+        "description='{description}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -232,6 +240,10 @@ def test_labelled_card_without_image():
     card_inner = soup.select('div.card-inner')[0]
     assert 'with-image' not in card_inner['class']
 
+    card_link = soup.select('.labelled-card')[0]
+    assert 'url' in card_link['href']
+    assert card_link['data-ga-class'] == 'cta'
+
 
 def test_labelled_image_card():
     card_content = {
@@ -240,12 +252,14 @@ def test_labelled_image_card():
         'description': 'description',
         'img_src': 'img_src',
         'img_alt': 'img_alt',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load labelled_image_card from directory_components %}}"
         "{{% labelled_image_card title='{title}' url='{url}' "
         "img_src='{img_src}' "
-        "description='{description}' img_alt='{img_alt}' %}}"
+        "description='{description}' img_alt='{img_alt}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -256,6 +270,7 @@ def test_labelled_image_card():
 
     card_link = soup.select('.labelled-image-card')[0]
     assert 'url' in card_link['href']
+    assert card_link['data-ga-class'] == 'cta'
 
     card_image = soup.select('.card-image')[0]
     assert card_image['role'] == 'img'
@@ -277,12 +292,14 @@ def test_card_with_icon():
         'description': 'description',
         'img_src': 'img_src',
         'img_alt': 'img_alt',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load card_with_icon from directory_components %}}"
         "{{% card_with_icon title='{title}' url='{url}' "
         "description='{description}' "
-        "img_src='{img_src}' img_alt='{img_alt}' %}}"
+        "img_src='{img_src}' img_alt='{img_alt}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -293,6 +310,7 @@ def test_card_with_icon():
 
     card_link = soup.select('.card-link')[0]
     assert 'url' in card_link['href']
+    assert card_link['data-ga-class'] == 'cta'
 
     card_image = soup.find('img')
     assert card_image['src'] == 'img_src'
@@ -368,12 +386,14 @@ def test_cta_box_default():
         'description': 'description',
         'button_text': 'button_text',
         'button_url': 'button_url',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load cta_box from directory_components %}}"
         "{{% cta_box box_id='{box_id}' heading='{heading}' "
         "description='{description}' "
-        "button_text='{button_text}' button_url='{button_url}' %}}"
+        "button_text='{button_text}' button_url='{button_url}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**box_content)
 
     template = Template(string)
@@ -394,6 +414,7 @@ def test_cta_box_default():
     box_button = soup.select('a.button')[0]
     assert box_button.string == 'button_text'
     assert box_button['href'] == 'button_url'
+    assert box_button['data-ga-class'] == 'cta'
 
 
 def test_cta_box_custom():
@@ -406,13 +427,15 @@ def test_cta_box_custom():
         'description': 'description',
         'button_text': 'button_text',
         'button_url': 'button_url',
+        'link_ga_class': 'cta',
     }
     string = (
         "{{% load cta_box from directory_components %}}"
         "{{% cta_box box_id='{box_id}' heading='{heading}' "
         "box_class='{box_class}' heading_level='{heading_level}' "
         "heading_class='{heading_class}' description='{description}' "
-        "button_text='{button_text}' button_url='{button_url}' %}}"
+        "button_text='{button_text}' button_url='{button_url}' "
+        "link_ga_class='{link_ga_class}' %}}"
         ).format(**box_content)
 
     template = Template(string)
@@ -437,6 +460,7 @@ def test_cta_box_custom():
     assert box_button.string == 'button_text'
     assert box_button['href'] == 'button_url'
     assert box_button['id'] == 'box_id-button'
+    assert box_button['data-ga-class'] == 'cta'
 
 
 def test_banner():

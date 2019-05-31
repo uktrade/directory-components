@@ -1,11 +1,11 @@
 <nav aria-label="Breadcrumb" class="breadcrumbs">
   <ol>
     <li>
-      <a href="{{ left_url }}">{{ left_label }}</a>
+      <a href="{{ left_url }}" {% if link_ga_class %}data-ga-class="{{ link_ga_class }}"{% endif %}>{{ left_label }}</a>
     </li>
     {% if middle_label %}
       <li>
-        <a href="{{ middle_url }}">{{ middle_label }}</a>
+        <a href="{{ middle_url }}" {% if link_ga_class %}data-ga-class="{{ link_ga_class }}"{% endif %}>{{ middle_label }}</a>
       </li>
     {% endif %}
     <li aria-current="page">{{ right_label }}</li>

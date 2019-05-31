@@ -3,25 +3,25 @@
 <ul class="sharing-links" data-component="sharing-links">
     <span class="visually-hidden">{{ title|default:'Share' }}</span>
     <li>
-        <a id="share-twitter" rel="noopener noreferrer" target="_blank" href="{{ social_links.twitter|safe }}">
+        <a id="share-twitter" rel="noopener noreferrer" target="_blank" href="{{ social_links.twitter|safe }}" {% if twitter_ga_class %}data-ga-class="{{ twitter_ga_class }}"{% endif %}>
             <img alt="with Twitter" height="36px" src="{% static 'directory_components/icons/twitter.svg' %}" width="36px">
         </a>
     </li>
     <li>
         <span class="visually-hidden">,</span>
-        <a id="share-facebook" rel="noopener noreferrer" target="_blank" href="{{ social_links.facebook|safe }}">
+        <a id="share-facebook" rel="noopener noreferrer" target="_blank" href="{{ social_links.facebook|safe }}" {% if facebook_ga_class %}data-ga-class="{{ facebook_ga_class }}"{% endif %}>
             <img alt="with Facebook" height="36px" src="{% static 'directory_components/icons/facebook.svg' %}" width="36px">
         </a>
     </li>
     <li>
         <span class="visually-hidden">,</span>
-        <a id="share-linkedin" rel="noopener noreferrer" target="_blank" href="{{ social_links.linkedin|safe }}">
+        <a id="share-linkedin" rel="noopener noreferrer" target="_blank" href="{{ social_links.linkedin|safe }}" {% if linkedin_ga_class %}data-ga-class="{{ linkedin_ga_class }}"{% endif %}>
             <img alt="with LinkedIn" height="36px" src="{% static 'directory_components/icons/linkedin.svg' %}" width="36px">
         </a>
     </li>
     <li>
         <span class="visually-hidden">,</span>
-        <a id="share-email" href="{{ social_links.email|safe }}">
+        <a id="share-email" href="{{ social_links.email|safe }}" {% if email_ga_class %}data-ga-class="{{ email_ga_class }}"{% endif %}>
             <img alt="via Email" height="36px" src="{% static 'directory_components/icons/email.svg' %}" width="36px">
         </a>
     </li>

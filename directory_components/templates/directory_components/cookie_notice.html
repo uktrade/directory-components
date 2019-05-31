@@ -2,7 +2,8 @@
 
 <div id="header-cookie-notice" class="cookie-notice" dir="ltr">
   <div class="container cookie-notice-container">
-    <p>{% trans 'Great.gov.uk uses cookies to make the site simpler.' %} <a class="link" href="{{ header_footer_urls.privacy_and_cookies }}">{% trans 'Find out more about cookies' %}</a>
+    <p>{% trans 'Great.gov.uk uses cookies to make the site simpler.' %} <a class="link" href="{{ header_footer_urls.privacy_and_cookies }}" {% if link_ga_class %}data-ga-class="{{ link_ga_class }}"{% endif %}>
+        {% trans 'Find out more about cookies' %}</a>
     </p>
   </div>
 </div>

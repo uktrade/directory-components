@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/207/files)
+
+### Implemented enhancements
+- CI-108: Add option to pass GA data attributes on directory component templates.
+
 ## 15.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/205/files)
 

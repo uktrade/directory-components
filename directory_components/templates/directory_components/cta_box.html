@@ -7,7 +7,7 @@
       <p class="box-description">{{ description }}</p>
     </div>
     <div class="column-quarter-xl column-half-m column-full button-container">
-      <a id="{{ box_id }}-button" class="button {{ button_class|default:'button-blue' }}" href="{{ button_url }}">{{ button_text }}</a>
+      <a id="{{ box_id }}-button" class="button {{ button_class|default:'button-blue' }}" href="{{ button_url }}" {% if link_ga_class %}data-ga-class="{{ link_ga_class }}"{% endif %}>{{ button_text }}</a>
     </div>
   </div>
 </div>
