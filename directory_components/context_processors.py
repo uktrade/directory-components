@@ -101,6 +101,7 @@ def urls_processor(request):
         'sso': urls.SERVICES_SSO,
         'uk_setup_guide': urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
         'isd': urls.FAS_INVESTMENT_SUPPORT_DIRECTORY,
+        'capital_invest': urls.GREAT_INTERNATIONAL_CAPITAL_INVEST_LANDING_PAGE,
     }
     return {'services_urls': services_urls}
 

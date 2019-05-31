@@ -10,7 +10,7 @@ dit.tagging.domesticHeader = new function() {
                     'action': 'Search',
                     'type': 'General',
                     'element': 'HeaderSearchBar',
-                    'value': $('#search-box').text()
+                    'value': $('#great-header-search-box').text()
                 });
             });
 

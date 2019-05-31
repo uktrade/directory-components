@@ -18,9 +18,11 @@
     </div>
   </div>
 
-  <div id="great-header-menu" class="great-header-menu {% block header_menu_class %}{% endblock %}">
-    <div class="container">
+  <a id="great-header-menu-mobile-anchor" aria-hidden></a>
 
+  <div id="great-header-menu" class="great-header-menu {% block header_menu_class %}{% endblock %}">
+
+    <div class="container">
       <a id="great-header-logo" class="great-header-logo" href="{% block header_logo_url %}{% endblock %}">
         {% block header_logo %}{% endblock %}
       </a>
@@ -31,21 +33,23 @@
 
         {% block header_language_selector %}
         {% endblock %}
+      </div>
 
+      <div class="great-header-nav-container">
+        <a class="mobile-menu-button" href="#great-header-menu-mobile-anchor" id="mobile-menu-button">Menu ☰</a>
+        <a class="mobile-menu-button" href="#great-header-menu-mobile-close" id="mobile-menu-button-close">Menu ☰</a>
+        {% block header_nav %}
+        {% endblock %}
       </div>
     </div>
-
-    <div class="great-header-nav-container">
-      <nav id="great-header-nav" class="great-header-nav {% block header_nav_class %}{% endblock %}" aria-label="{% trans 'Main menu' %}">
-        <ul class="grid-row js-nav-list" id="great-header-nav-list">
-          {% block header_nav %}
-          {% endblock %}
-        </ul>
-      </nav>
-    </div>
-
-    {% block header_search %}
-    {% endblock %}
-
   </div>
+
+  <div id="great-header-menu-mobile" class="great-header-menu-mobile">
+    <div class="container">
+      {% block header_nav_mobile %}
+      {% endblock %}
+    </div>
+  </div>
+
+  <div id="international-header-sub-nav-background" hidden aria-hidden></div>
 </header>
