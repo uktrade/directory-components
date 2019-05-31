@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.1.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/205/files)
+
+### Implemented enhancements
+- CI-108: Improve error handling to be simpler and give more informative error messages.
+
 ## 15.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/200/files)
 

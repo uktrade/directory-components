@@ -105,11 +105,10 @@ class GA360Mixin:
     def get_context_data(self, *args, **kwargs):
         self.ga360_payload['site_language'] = translation.get_language()
 
-        if (hasattr(self.request, 'sso_user')
-                and self.request.sso_user and self.request.sso_user.id):
+        try:
             self.ga360_payload['user_id'] = str(self.request.sso_user.id)
             self.ga360_payload['login_status'] = True
-        else:
+        except AttributeError:
             self.ga360_payload['user_id'] = None
             self.ga360_payload['login_status'] = False
 
