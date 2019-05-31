@@ -193,12 +193,17 @@ class CheckGATags:
 
         if 'ga360' not in context_data:
             raise GADataMissingException(
-                "No Google Analytics data found on the response.")
+                "No Google Analytics data found on the response. "
+                "You should either set this using the GA360Mixin, "
+                "or use the 'skip_ga360' decorator to indicate that this page "
+                "does not require analytics")
 
         ga_data = context_data['ga360']
         try:
             jsonschema.validate(instance=ga_data, schema=ga_schema)
         except ValidationError as exception:
-            raise GADataMissingException(exception.message)
+            raise GADataMissingException(
+                "A field required for Google Analytics is missing or has "
+                "the incorrect type. Details: %s" % exception.message)
 
         return response
