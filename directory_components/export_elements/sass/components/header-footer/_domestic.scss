@@ -1,0 +1,20 @@
+.great-header-menu.domestic {
+  .great-header-logo {
+    margin: 22px 0;
+  }
+
+  .mobile-menu-button {
+    position: absolute;
+    margin-top: -6px;
+    right: 0;
+    top: -100%;
+  }
+
+  .great-header-nav-container {
+    position: relative;
+    width: 100%;
+    @media(min-width: 769px) {
+      width: auto;
+    }
+  }
+}

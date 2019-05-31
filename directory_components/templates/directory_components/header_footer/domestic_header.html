@@ -5,7 +5,6 @@
 {% block global_header_class %}domestic{% endblock %}
 {% block header_class %}domestic{% endblock %}
 {% block header_menu_class %}domestic{% endblock %}
-{% block header_nav_class %}domestic{% endblock %}
 
 {% block global_header_logo %}
 <img id="great-global-header-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
@@ -38,38 +37,54 @@
 
 {% block header_nav %}
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.advice }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-advice">Advice</a>
-</li>
+<nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
+  <ul class="great-header-nav-list" id="great-header-nav-list">
+    <li class="main-nav-item">
+      <a href="{{ header_footer_urls.advice }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-advice">Advice</a>
+    </li>
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.markets }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-markets">Markets</a>
-</li>
+    <li class="main-nav-item">
+      <a href="{{ header_footer_urls.markets }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-markets">Markets</a>
+    </li>
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.services }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-services">Services</a>
-</li>
+    <li class="main-nav-item">
+      <a href="{{ header_footer_urls.services }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-services">Services</a>
+    </li>
 
-{% if features.NEWS_SECTION_ON %}
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-news">News and events</a>
-</li>
-{% endif %}
+    {% if features.NEWS_SECTION_ON %}
+    <li class="main-nav-item">
+      <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-news">News and events</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
+<form id="great-header-search-form" action="{{ header_footer_urls.search }}" method="GET">
+  <input id="great-header-search-box" type="text" name="q" placeholder="Search" aria-label="Search">
+  <button type="submit" aria-label="Submit search">Submit search</button>
+</form>
 
 {% endblock %}
 
-{% block header_search %}
-    <style>
-      body.js-enabled .great-header.domestic .great-header-nav { margin-right: 280px }
-    </style>
-    <div class="great-header-search-wrapper">
-      <div class="great-header-search-container">
-        {% block header_search_form %}
-          <form id="great-header-search-form" action="{{ header_footer_urls.search }}" method="GET">
-            <input id="search-box" type="text" name="q" placeholder="Search" aria-label="Search">
-            <button type="submit">Search</button>
-          </form>
-        {% endblock %}
-      </div>
-    </div>
+{% block header_nav_mobile %}
+
+<nav id="great-header-nav-mobile" class="great-header-nav-mobile" aria-label="{% trans 'Main menu' %}">
+  <ul class="great-header-nav-list" id="great-header-nav-list">
+    <li class="main-nav-item">
+      <a class="link-heading" id="header-advice-mobile" href="#" data-ga-class="header-navigation">Advice</a>
+    </li>
+    <li class="main-nav-item">
+      <a class="link-heading" id="header-markets-mobile" href="#" data-ga-class="header-navigation">Markets</a>
+    </li>
+    <li class="main-nav-item">
+      <a class="link-heading" id="header-services-mobile" href="#" data-ga-class="header-navigation">Services</a>
+    </li>
+    {% if features.NEWS_SECTION_ON %}
+    <li class="main-nav-item">
+      <a class="link-heading" id="header-news-mobile" href="{{ header_footer_urls.domestic_news }}" data-ga-class="header-navigation">News and events</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
 {% endblock %}
