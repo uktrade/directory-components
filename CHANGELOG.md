@@ -1,7 +1,14 @@
 # Changelog
 
 ## 16.0.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/206/files)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/209/files)
+- Added new url for ISD upgrade of directory constants was required
+
+## [15.2.0](https://pypi.org/project/directory-constants/15.2.0/) (2019-06-03)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/208/files)
+
+### Implemented enhancements
+- Added contact form office finder url to urls_processor
 
 ## 15.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/205/files)
