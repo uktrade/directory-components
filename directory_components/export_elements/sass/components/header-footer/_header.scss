@@ -276,6 +276,12 @@
   a {
     color: inherit;
     text-decoration: none;
+
+    @media(hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
@@ -291,16 +297,16 @@
     color: inherit;
     text-decoration: none;
     padding: 10px 0;
-  }
-
-  .sub-nav-mobile-list {
-    padding-left: 15px;
 
     @media(hover: hover) {
-      a:hover {
+      &:hover {
         text-decoration: underline;
       }
     }
+  }
+
+  .sub-nav-mobile-list {
+    padding-left: 25px;
   }
 }
 

@@ -58,63 +58,33 @@
 {% block header_nav %}
 <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
   <ul class="great-header-nav-list" id="great-header-nav-list">
-
-    <li class="main-nav-item{% if international_header_area == "why_choose" %} active{% endif %}">
-      <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Why choose the UK' %}</a>
+    <li class="main-nav-item{% if international_header_area == "about_uk" %} active{% endif %}">
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}uk-regions/midlands">{% trans 'Why the UK?' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "expand" %} active{% endif %}">
-      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Set up in the UK' %} &#9660;</a>
-      <nav class="sub-nav">
-        <ul class="sub-nav-list" id="sub-nav-list-0" hidden>
-          <li><a href="{{ services_urls.invest }}">Why set up a UK business</a></li>
-          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-          <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
-          <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
-          <li><a href="{{ services_urls.invest }}#how-we-help">Our services</a></li>
-        </ul>
-      </nav>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Start a company' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "capital_invest" %} active{% endif %}">
-      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest capital' %} &#9660;</a>
-      <nav class="sub-nav">
-        <ul class="sub-nav-list" id="sub-nav-list-1" hidden>
-          <li><a href="{{ services_urls.capital_invest }}">Why invest in the UK</a></li>
-          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-          <li><a href="{{ header_footer_urls.industries }}">UK investment sectors</a></li>
-          <li><a href="{{ services_urls.uk_setup_guide }}">Investment guides</a></li>
-          <li><a href="{{ services_urls.capital_invest }}#">Our services</a></li>
-        </ul>
-      </nav>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.capital_invest }}">{% trans 'Invest capital' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "find_a_supplier" %} active{% endif %}">
-      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Find a supplier' %} &#9660;</a>
-      <nav class="sub-nav">
-        <ul class="sub-nav-list" id="sub-nav-list-2" hidden>
-          <li><a href="{{ header_footer_urls.fas }}">Why import from the UK</a></li>
-          <li><a href="{{ header_footer_urls.fas }}">Supplier directory</a></li>
-          <li><a href="{{ services_urls.uk_setup_guide }}">Buying guides</a></li>
-          <li><a href="{{ header_footer_urls.fas }}#services-section">Our services</a></li>
-        </ul>
-      </nav>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find suppliers' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "industries" %} active{% endif %}">
-      <a class="link-heading" id="header-invest" href="{{ header_footer_urls.industries }}" data-ga-class="header-navigation">{% trans 'UK export sectors' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.industries }}">{% trans 'Industries' %}</a>
+    </li>
+
+    <li class="main-nav-item{% if international_header_area == "about_dit" %} active{% endif %}">
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'About us' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "news_and_events" %} active{% endif %}">
-      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'News & events' %} &#9660;</a>
-      <nav class="sub-nav">
-        <ul class="sub-nav-list" id="sub-nav-list-4" hidden>
-          <li><a href="{{ services_urls.events }}">Events</a></li>
-          <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
-        </ul>
-      </nav>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'Latest' %}</a>
     </li>
-
   </ul>
 </nav>
 
@@ -126,48 +96,62 @@
   <ul class="great-header-nav-list" id="great-header-nav-list">
 
     <li class="main-nav-item">
-      <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Why choose the UK' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}uk-regions/midlands">{% trans 'About the UK' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ services_urls.invest }}uk-regions/midlands">The Midlands</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/north-england">Northern Powerhouse</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/northern-ireland">Northern Ireland</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/scotland">Scotland</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/south-england">South England</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/wales">Wales</a></li>
+      </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Set up in the UK' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-0" hidden>
-        <li><a href="{{ services_urls.invest }}">Why set up a UK business</a></li>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Do business' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ services_urls.invest }}">Overview</a></li>
+        <li><a href="{{ services_urls.invest }}high-potential-opportunities/food-production/">High-potential opportunities</a></li>
+        <li><a href="{{ services_urls.uk_setup_guide }}">How to set up a company</a></li>
         <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-        <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
-        <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
-        <li><a href="{{ services_urls.invest }}#how-we-help">Our services</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest capital' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-1" hidden>
-        <li><a href="{{ services_urls.capital_invest }}">Why invest in the UK</a></li>
-        <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-        <li><a href="{{ header_footer_urls.industries }}">UK investment sectors</a></li>
-        <li><a href="{{ services_urls.uk_setup_guide }}">Investment guides</a></li>
-        <li><a href="{{ services_urls.capital_invest }}#">Our services</a></li>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.capital_invest }}">{% trans 'Invest capital' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ services_urls.capital_invest }}">Overview</a></li>
+        <li><a href="{{ services_urls.capital_invest }}">Investment types</a></li>
+        <li><a href="{{ services_urls.capital_invest }}">Investment opportunities</a></li>
+        <li><a href="{{ services_urls.capital_invest }}">How to invest capital</a></li>
+        <li><a href="{{ services_urls.capital_invest }}">Professional advice</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Find a supplier' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-2" hidden>
-        <li><a href="{{ header_footer_urls.fas }}">Why import from the UK</a></li>
-        <li><a href="{{ header_footer_urls.fas }}">Supplier directory</a></li>
-        <li><a href="{{ services_urls.uk_setup_guide }}">Buying guides</a></li>
-        <li><a href="{{ header_footer_urls.fas }}#services-section">Our services</a></li>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a UK supplier' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ header_footer_urls.fas }}">Overview</a></li>
+        <li><a href="{{ header_footer_urls.fas }}">How to buy from the UK</a></li>
+        <li><a href="{{ header_footer_urls.fas }}?q=&sectors=">Supplier directory</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" id="header-invest" href="{{ header_footer_urls.industries }}" data-ga-class="header-navigation">{% trans 'UK export sectors' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.industries }}">{% trans 'Industries' %}</a>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'News & events' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-4" hidden>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'About the DIT' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ services_urls.great_international }}">What we do</a></li>
+        <li><a href="{{ services_urls.great_international }}">Success stories</a></li>
+      </ul>
+    </li>
+
+    <li class="main-nav-item">
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'News & events' %}</a>
+      <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.events }}">Events</a></li>
         <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
       </ul>
@@ -175,4 +159,48 @@
   </ul>
 </nav>
 
+{% endblock %}
+
+{% block header_sub_nav %}
+{% if international_header_area and international_header_area != "industries" %}
+<div class="great-header-sub-nav">
+  <div class="container">
+    <nav aria-label="{% trans 'Sub-menu' %}">
+      <ul class="sub-nav-list">
+        {% if international_header_area == "about_uk" %}
+          <li><a href="{{ services_urls.invest }}uk-regions/midlands">The Midlands</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/north-england">Northern Powerhouse</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/northern-ireland">Northern Ireland</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/scotland">Scotland</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/south-england">South England</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/wales">Wales</a></li>
+        {% elif international_header_area == "expand" %}
+          <li><a href="{{ services_urls.invest }}">Overview</a></li>
+          <li><a href="{{ services_urls.invest }}high-potential-opportunities/food-production/">High-potential opportunities</a></li>
+          <li><a href="{{ services_urls.uk_setup_guide }}">How to set up a company</a></li>
+          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
+        {% elif international_header_area == "capital_invest" %}
+          <li><a href="{{ services_urls.capital_invest }}">Overview</a></li>
+          <li><a href="{{ services_urls.capital_invest }}">Investment types</a></li>
+          <li><a href="{{ services_urls.capital_invest }}">Investment opportunities</a></li>
+          <li><a href="{{ services_urls.capital_invest }}">How to invest capital</a></li>
+          <li><a href="{{ services_urls.capital_invest }}#">Professional advice</a></li>
+        {% elif international_header_area == "find_a_supplier" %}
+          <li><a href="{{ header_footer_urls.fas }}">Overview</a></li>
+          <li><a href="{{ header_footer_urls.fas }}">How to buy from the UK</a></li>
+          <li><a href="{{ header_footer_urls.fas }}?q=&sectors=">Supplier directory</a></li>
+        {% elif international_header_area == "industries" %}
+        {% elif international_header_area == "about_dit" %}
+          <li><a href="{{ services_urls.great_international }}">What we do</a></li>
+          <li><a href="{{ services_urls.great_international }}">Success stories</a></li>
+          <li><a href="{{ services_urls.contact_us }}">Contact us</a></li>
+        {% elif international_header_area == "news_and_events" %}
+          <li><a href="{{ services_urls.events }}">Events</a></li>
+          <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endif %}
 {% endblock %}
