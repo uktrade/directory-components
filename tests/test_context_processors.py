@@ -175,6 +175,7 @@ def test_urls_processor(settings):
             'https://international.com/international/how-to-setup-in-the-uk'
         ),
         'isd': 'https://fas.com/investment-support-directory/',
+        'office_finder': 'https://exred.com/contact/office-finder/',
     }
 
 
