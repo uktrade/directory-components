@@ -120,12 +120,13 @@ def test_card():
         'img_src': 'img_src',
         'img_alt': 'img_alt',
         'link_ga_class': 'cta',
+        'link_ga_value': 'Click Me'
     }
     string = (
         "{{% load card from directory_components %}}"
         "{{% card title='{title}' url='{url}' description='{description}' "
         "img_src='{img_src}' img_alt='{img_alt}' "
-        "link_ga_class='{link_ga_class}' %}}"
+        "link_ga_class='{link_ga_class}' link_ga_value='{link_ga_value}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -137,6 +138,7 @@ def test_card():
     card_link = soup.select('.card-link')[0]
     assert 'url' in card_link['href']
     assert card_link['data-ga-class'] == 'cta'
+    assert card_link['data-ga-value'] == 'Click Me'
 
     card_image = soup.select('.card-image')[0]
     assert card_image['role'] == 'img'
@@ -180,12 +182,13 @@ def test_labelled_card_with_image():
         'img_src': 'img_src',
         'img_alt': 'img_alt',
         'link_ga_class': 'cta',
+        'link_ga_value': 'Click Me',
     }
     string = (
         "{{% load labelled_card from directory_components %}}"
         "{{% labelled_card title='{title}' url='{url}' img_src='{img_src}' "
         "description='{description}' img_alt='{img_alt}' "
-        "link_ga_class='{link_ga_class}' %}}"
+        "link_ga_class='{link_ga_class}' link_ga_value='{link_ga_value}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -197,6 +200,7 @@ def test_labelled_card_with_image():
     card_link = soup.select('.labelled-card')[0]
     assert 'url' in card_link['href']
     assert card_link['data-ga-class'] == 'cta'
+    assert card_link['data-ga-value'] == 'Click Me'
 
     card_inner = soup.select('div.card-inner')[0]
     assert 'with-image' in card_inner['class']
@@ -223,12 +227,13 @@ def test_labelled_card_without_image():
         'url': 'url',
         'description': 'description',
         'link_ga_class': 'cta',
+        'link_ga_value': 'Click Me',
     }
     string = (
         "{{% load labelled_card from directory_components %}}"
         "{{% labelled_card title='{title}' url='{url}' "
         "description='{description}' "
-        "link_ga_class='{link_ga_class}' %}}"
+        "link_ga_class='{link_ga_class}' link_ga_value='{link_ga_value}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -293,13 +298,14 @@ def test_card_with_icon():
         'img_src': 'img_src',
         'img_alt': 'img_alt',
         'link_ga_class': 'cta',
+        'link_ga_value': 'Click Me',
     }
     string = (
         "{{% load card_with_icon from directory_components %}}"
         "{{% card_with_icon title='{title}' url='{url}' "
         "description='{description}' "
         "img_src='{img_src}' img_alt='{img_alt}' "
-        "link_ga_class='{link_ga_class}' %}}"
+        "link_ga_class='{link_ga_class}' link_ga_value='{link_ga_value}' %}}"
         ).format(**card_content)
 
     template = Template(string)
@@ -311,6 +317,7 @@ def test_card_with_icon():
     card_link = soup.select('.card-link')[0]
     assert 'url' in card_link['href']
     assert card_link['data-ga-class'] == 'cta'
+    assert card_link['data-ga-value'] == 'Click Me'
 
     card_image = soup.find('img')
     assert card_image['src'] == 'img_src'

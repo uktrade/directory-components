@@ -5,7 +5,10 @@
   <a
     class="card-link"
     href="{{ url }}"
-    {% if link_ga_class %}data-ga-class="{{ link_ga_class }}"{% endif %}
+    {% if link_ga_class and link_ga_value %}
+    data-ga-class="{{ link_ga_class }}"
+    data-ga-value="{{ link_ga_value }}"
+    {% endif %}
     {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
   {% endif %}
     <div class="card-inner">

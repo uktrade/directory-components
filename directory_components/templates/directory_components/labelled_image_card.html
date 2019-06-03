@@ -1,7 +1,10 @@
 <a
   class="labelled-image-card"
   href="{{ url }}"
-  {% if link_ga_class %}data-ga-class="{{ link_ga_class }}"{% endif %}
+  {% if link_ga_class %}
+  data-ga-class="{{ link_ga_class }}"
+  data-ga-value="{{ link_ga_value }}"
+  {% endif %}
   {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
