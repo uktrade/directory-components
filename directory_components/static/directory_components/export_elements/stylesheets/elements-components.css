@@ -725,12 +725,6 @@ body.js-enabled .great-header-country-select {
     .great-header-menu.international .great-header-country-selector {
       display: inline-block; } }
 
-.great-header-menu.international .main-nav-item:last-child .sub-nav {
-  right: 0; }
-
-.great-header-menu.international .main-nav-item:last-child li {
-  text-align: right; }
-
 .great-header-menu.international .main-nav-item .link-heading {
   font-size: 16px; }
 
@@ -744,24 +738,32 @@ body.js-enabled .great-header-country-select {
   background-color: #e41f13;
   content: ''; }
 
-.great-header-menu.international .sub-nav {
-  top: 100%;
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-.great-header-menu.international .sub-nav-list {
-  -ms-flex-negative: 0;
-  flex-shrink: 0; }
-  .great-header-menu.international .sub-nav-list li {
+.great-header-sub-nav {
+  background-color: #3b3458;
+  display: none; }
+  @media (min-width: 769px) {
+    .great-header-sub-nav {
+      display: block; } }
+  .great-header-sub-nav .sub-nav-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     padding: 10px 0; }
-    .great-header-menu.international .sub-nav-list li a {
-      padding: 10px;
-      font-size: 16px; }
-      @media (hover: hover) {
-        .great-header-menu.international .sub-nav-list li a:hover {
-          text-decoration: underline; } }
+  .great-header-sub-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    margin-left: 10px; }
+    @media (hover: hover) {
+      .great-header-sub-nav a:hover {
+        text-decoration: underline; } }
 
 .Modal-Container {
   display: none;
