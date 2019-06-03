@@ -617,67 +617,74 @@ body.js-enabled .great-header-country-select {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1; }
-
-.great-header-nav.international .great-international-main-nav-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end; }
-
-.great-header-nav.international a {
-  color: #fff;
-  text-decoration: none; }
-
-.great-header-nav.international .link-heading {
-  position: relative;
-  padding: 15px; }
-
-.great-header-nav.international .main-nav-item {
-  font-size: 19px;
-  line-height: 1; }
-
-.great-header-nav.international .main-nav-item.active {
-  position: relative; }
-  .great-header-nav.international .main-nav-item.active .link-heading:after {
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background-color: #e41f13;
-    content: ''; }
-  .great-header-nav.international .main-nav-item.active .sub-nav {
-    top: 100%;
-    position: absolute;
-    margin-top: 15px;
-    width: 150%;
+  .great-header-nav-container.international .great-international-main-nav-list {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
-    .great-header-nav.international .main-nav-item.active .sub-nav:after {
-      content: '';
-      background-color: rgba(0, 0, 0, 0.5);
-      position: relative;
-      top: 0;
-      left: -5000px;
-      width: 10000px;
-      z-index: -1;
-      -ms-flex-item-align: stretch;
-      align-self: stretch;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end; }
+  .great-header-nav-container.international a, .great-header-nav-container.international label {
+    color: #fff;
+    text-decoration: none; }
+    @media (hover: hover) {
+      .great-header-nav-container.international a:hover, .great-header-nav-container.international label:hover {
+        cursor: pointer; } }
+  .great-header-nav-container.international .link-heading {
+    position: relative;
+    padding: 15px; }
+  .great-header-nav-container.international .main-nav-item {
+    position: relative;
+    font-size: 19px;
+    line-height: 1; }
+    .great-header-nav-container.international .main-nav-item.active .link-heading:after {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #e41f13;
+      content: ''; }
+    .great-header-nav-container.international .main-nav-item .sub-nav-toggle:checked ~ label.sub-nav-toggle-hide {
+      display: inline; }
+    .great-header-nav-container.international .main-nav-item .sub-nav-toggle:checked ~ label:not(.sub-nav-toggle-hide) {
+      display: none; }
+    .great-header-nav-container.international .main-nav-item .sub-nav-toggle:not(:checked) ~ label.sub-nav-toggle-hide {
+      display: none; }
+    .great-header-nav-container.international .main-nav-item .sub-nav-toggle:not(:checked) ~ label:not(.sub-nav-toggle-hide) {
+      display: inline; }
+    .great-header-nav-container.international .main-nav-item .sub-nav {
+      top: 100%;
+      position: absolute;
+      margin-top: 15px;
+      width: 150%;
+      display: none; }
+      .great-header-nav-container.international .main-nav-item .sub-nav:after {
+        content: '';
+        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+        top: 0;
+        left: -5000px;
+        width: 10000px;
+        z-index: -1;
+        -ms-flex-item-align: stretch;
+        align-self: stretch;
+        -ms-flex-negative: 0;
+        flex-shrink: 0; }
+    .great-header-nav-container.international .main-nav-item .sub-nav-toggle:checked ~ .sub-nav {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+    .great-header-nav-container.international .main-nav-item .sub-nav-list {
       -ms-flex-negative: 0;
       flex-shrink: 0; }
-  .great-header-nav.international .main-nav-item.active .sub-nav-list {
-    -ms-flex-negative: 0;
-    flex-shrink: 0; }
-    .great-header-nav.international .main-nav-item.active .sub-nav-list li {
-      padding: 15px 0; }
-      .great-header-nav.international .main-nav-item.active .sub-nav-list li a {
-        padding: 15px; }
+      .great-header-nav-container.international .main-nav-item .sub-nav-list li {
+        padding: 15px 0; }
+        .great-header-nav-container.international .main-nav-item .sub-nav-list li a {
+          padding: 15px; }
 
 .Modal-Container {
   display: none;

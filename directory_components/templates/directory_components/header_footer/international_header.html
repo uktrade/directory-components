@@ -58,11 +58,14 @@
 {% block header_nav %}
 
 <div class="great-header-nav-container international">
-  <nav id="great-header-nav" class="great-header-nav international" aria-label="{% trans 'Main menu' %}">
+  <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
     <ul class="great-international-main-nav-list" id="great-header-nav-list">
+      <input type="radio" name="sub-nav" id="sub-nav-toggle-hide" hidden aria-hidden />
 
       <li class="main-nav-item active">
-        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Trade with the UK' %}</a>
+        <input type="radio" name="sub-nav" id="sub-nav-toggle-0" class="sub-nav-toggle" hidden aria-hidden />
+        <label class="link-heading" for="sub-nav-toggle-0" data-ga-class="header-navigation">{% trans 'Trade with the UK' %}</label>
+        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Trade with the UK' %}</label>
         <nav class="sub-nav">
           <ul class="sub-nav-list">
             <li><a href="#">Find a UK supplier</a></li>
@@ -75,54 +78,68 @@
       </li>
 
       <li class="main-nav-item">
-        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Expand to the UK' %}</a>
-        <ul class="sub-nav-list" hidden aria-hidden>
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Ipsum</a></li>
-          <li><a href="#">Dorem</a></li>
-        </ul>
+        <input type="radio" name="sub-nav" id="sub-nav-toggle-1" class="sub-nav-toggle" hidden aria-hidden />
+        <label class="link-heading" for="sub-nav-toggle-1" data-ga-class="header-navigation">{% trans 'Expand to the UK' %}</label>
+        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Expand to the UK' %}</label>
+        <nav class="sub-nav">
+          <ul class="sub-nav-list">
+            <li><a href="#">Find a UK supplier</a></li>
+            <li><a href="#">UK trading guides</a></li>
+            <li><a href="#">UK trade success stories</a></li>
+            <li><a href="#">How we help trade</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </nav>
       </li>
 
       <li class="main-nav-item">
-        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Invest in the UK' %}</a>
-        <ul class="sub-nav-list" hidden aria-hidden>
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Ipsum</a></li>
-          <li><a href="#">Dorem</a></li>
-        </ul>
+        <input type="radio" name="sub-nav" id="sub-nav-toggle-2" class="sub-nav-toggle" hidden aria-hidden />
+        <label class="link-heading" for="sub-nav-toggle-2" data-ga-class="header-navigation">{% trans 'Invest in the UK' %}</label>
+        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Invest in the UK' %}</label>
+        <nav class="sub-nav">
+          <ul class="sub-nav-list">
+            <li><a href="#">Find a UK supplier</a></li>
+            <li><a href="#">UK trading guides</a></li>
+            <li><a href="#">UK trade success stories</a></li>
+            <li><a href="#">How we help trade</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </nav>
       </li>
 
       <li class="main-nav-item">
-        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'About the UK' %}</a>
-        <ul class="sub-nav-list" hidden aria-hidden>
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Ipsum</a></li>
-          <li><a href="#">Dorem</a></li>
-        </ul>
+        <input type="radio" name="sub-nav" id="sub-nav-toggle-3" class="sub-nav-toggle" hidden aria-hidden />
+        <label class="link-heading" for="sub-nav-toggle-3" data-ga-class="header-navigation">{% trans 'About the UK' %}</label>
+        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'About the UK' %}</label>
+        <nav class="sub-nav">
+          <ul class="sub-nav-list">
+            <li><a href="#">Find a UK supplier</a></li>
+            <li><a href="#">UK trading guides</a></li>
+            <li><a href="#">UK trade success stories</a></li>
+            <li><a href="#">How we help trade</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </nav>
       </li>
 
       <li class="main-nav-item">
-        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Industries' %}</a>
-        {# Industries doesn't have any sub-nav links #}
+        <a class="link-heading" id="header-invest" href="#" data-ga-class="header-navigation">{% trans 'Industries' %}</a>
       </li>
 
       <li class="main-nav-item">
-        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Help & guides' %}</a>
-        <ul class="sub-nav-list" hidden aria-hidden>
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Ipsum</a></li>
-          <li><a href="#">Dorem</a></li>
-        </ul>
+        <input type="radio" name="sub-nav" id="sub-nav-toggle-5" class="sub-nav-toggle" hidden aria-hidden />
+        <label class="link-heading" for="sub-nav-toggle-5" data-ga-class="header-navigation">{% trans 'Help & guides' %}</label>
+        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Help & guides' %}</label>
+        <nav class="sub-nav">
+          <ul class="sub-nav-list">
+            <li><a href="#">Find a UK supplier</a></li>
+            <li><a href="#">UK trading guides</a></li>
+            <li><a href="#">UK trade success stories</a></li>
+            <li><a href="#">How we help trade</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </nav>
       </li>
-
-{#      <li class="main-nav-item">#}
-{#        <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'News & events' %}</a>#}
-{#        <ul class="sub-nav-list" hidden aria-hidden>#}
-{#          <li><a href="#">Lorem</a></li>#}
-{#          <li><a href="#">Ipsum</a></li>#}
-{#          <li><a href="#">Dorem</a></li>#}
-{#        </ul>#}
-{#      </li>#}
 
     </ul>
   </nav>
