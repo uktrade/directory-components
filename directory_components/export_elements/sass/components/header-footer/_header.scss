@@ -61,18 +61,23 @@
   background-color: $great-blue;
 
   .container {
-    padding-top: 15px;
+    //padding: 25px 0;
     position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
   }
+}
+
+.great-header-logo {
+  line-height: 0;
+  margin: 30px 0;
 }
 
 // language/country select and account links
 .great-header-extra-links {
   position: absolute;
-  top: 15px;
+  top: 25px;
   right: 0;
   font-size: 14px;
   color: $white;
@@ -119,19 +124,13 @@
   }
 }
 
+.great-header-nav-container {
+  align-self: flex-end;
+}
+
 .great-header-nav {
-  padding: 15px 0;
   max-width: 1200px;
   margin: 0 auto;
-
-  a.link-heading {
-    text-decoration: underline;
-  }
-
-  .link-heading {
-    font-size: 19px;
-    color: $grey;
-  }
 }
 
 @import 'mobile-header';

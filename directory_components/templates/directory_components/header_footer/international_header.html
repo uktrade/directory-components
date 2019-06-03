@@ -60,14 +60,12 @@
 <div class="great-header-nav-container international">
   <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
     <ul class="great-international-main-nav-list" id="great-header-nav-list">
-      <input type="radio" name="sub-nav" id="sub-nav-toggle-hide" hidden aria-hidden />
 
       <li class="main-nav-item active">
-        <input type="radio" name="sub-nav" id="sub-nav-toggle-0" class="sub-nav-toggle" hidden aria-hidden />
-        <label class="link-heading" for="sub-nav-toggle-0" data-ga-class="header-navigation">{% trans 'Trade with the UK' %}</label>
-        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Trade with the UK' %}</label>
+        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Trade with the UK' %} &#9660;</a>
         <nav class="sub-nav">
-          <ul class="sub-nav-list">
+          <ul class="sub-nav-list" id="sub-nav-list-0" hidden>
+            <li><a href="#">Trade home</a></li>
             <li><a href="#">Find a UK supplier</a></li>
             <li><a href="#">UK trading guides</a></li>
             <li><a href="#">UK trade success stories</a></li>
@@ -78,46 +76,23 @@
       </li>
 
       <li class="main-nav-item">
-        <input type="radio" name="sub-nav" id="sub-nav-toggle-1" class="sub-nav-toggle" hidden aria-hidden />
-        <label class="link-heading" for="sub-nav-toggle-1" data-ga-class="header-navigation">{% trans 'Expand to the UK' %}</label>
-        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Expand to the UK' %}</label>
+        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Expand to the UK' %} &#9660;</a>
         <nav class="sub-nav">
-          <ul class="sub-nav-list">
-            <li><a href="#">Find a UK supplier</a></li>
-            <li><a href="#">UK trading guides</a></li>
-            <li><a href="#">UK trade success stories</a></li>
-            <li><a href="#">How we help trade</a></li>
-            <li><a href="#">Contact us</a></li>
+          <ul class="sub-nav-list" id="sub-nav-list-1" hidden>
+            <li><a href="#">Expand home</a></li>
+            <li><a href="#">Get started</a></li>
+            <li><a href="#">High-potential opportunities</a></li>
           </ul>
         </nav>
       </li>
 
       <li class="main-nav-item">
-        <input type="radio" name="sub-nav" id="sub-nav-toggle-2" class="sub-nav-toggle" hidden aria-hidden />
-        <label class="link-heading" for="sub-nav-toggle-2" data-ga-class="header-navigation">{% trans 'Invest in the UK' %}</label>
-        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Invest in the UK' %}</label>
+        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest in the UK' %} &#9660;</a>
         <nav class="sub-nav">
-          <ul class="sub-nav-list">
-            <li><a href="#">Find a UK supplier</a></li>
-            <li><a href="#">UK trading guides</a></li>
-            <li><a href="#">UK trade success stories</a></li>
-            <li><a href="#">How we help trade</a></li>
-            <li><a href="#">Contact us</a></li>
-          </ul>
-        </nav>
-      </li>
-
-      <li class="main-nav-item">
-        <input type="radio" name="sub-nav" id="sub-nav-toggle-3" class="sub-nav-toggle" hidden aria-hidden />
-        <label class="link-heading" for="sub-nav-toggle-3" data-ga-class="header-navigation">{% trans 'About the UK' %}</label>
-        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'About the UK' %}</label>
-        <nav class="sub-nav">
-          <ul class="sub-nav-list">
-            <li><a href="#">Find a UK supplier</a></li>
-            <li><a href="#">UK trading guides</a></li>
-            <li><a href="#">UK trade success stories</a></li>
-            <li><a href="#">How we help trade</a></li>
-            <li><a href="#">Contact us</a></li>
+          <ul class="sub-nav-list" id="sub-nav-list-2" hidden>
+            <li><a href="#">Invest home</a></li>
+            <li><a href="#">Regions</a></li>
+            <li><a href="#">Sectors</a></li>
           </ul>
         </nav>
       </li>
@@ -127,16 +102,11 @@
       </li>
 
       <li class="main-nav-item">
-        <input type="radio" name="sub-nav" id="sub-nav-toggle-5" class="sub-nav-toggle" hidden aria-hidden />
-        <label class="link-heading" for="sub-nav-toggle-5" data-ga-class="header-navigation">{% trans 'Help & guides' %}</label>
-        <label class="link-heading sub-nav-toggle-hide" for="sub-nav-toggle-hide" data-ga-class="header-navigation" aria-hidden>{% trans 'Help & guides' %}</label>
+        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-5" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Help & guides' %} &#9660;</a>
         <nav class="sub-nav">
-          <ul class="sub-nav-list">
-            <li><a href="#">Find a UK supplier</a></li>
-            <li><a href="#">UK trading guides</a></li>
-            <li><a href="#">UK trade success stories</a></li>
-            <li><a href="#">How we help trade</a></li>
+          <ul class="sub-nav-list" id="sub-nav-list-5" hidden>
             <li><a href="#">Contact us</a></li>
+            <li><a href="#">How to set up in the UK</a></li>
           </ul>
         </nav>
       </li>
@@ -145,4 +115,8 @@
   </nav>
 </div>
 
+{% endblock %}
+
+{% block header_sub_nav_background %}
+<div id="international-header-sub-nav-background" hidden aria-hidden></div>
 {% endblock %}
