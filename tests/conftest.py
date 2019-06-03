@@ -56,6 +56,9 @@ def pytest_configure():
         DIRECTORY_CONSTANTS_URL_EVENTS='https://events.com',
         DIRECTORY_CONSTANTS_URL_INVEST='https://invest.com',
         DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER='https://fas.com',
+        DIRECTORY_CONSTANTS_URL_INVESTMENT_SUPPORT_DIRECTORY=(
+            'https://isd.com/investment-support-directory/'
+        ),
         DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON='https://sso.com',
         DIRECTORY_CONSTANTS_URL_FIND_A_BUYER='https://fab.com',
         )

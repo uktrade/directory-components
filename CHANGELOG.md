@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/206/files)
+
 ## 15.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/205/files)
 
