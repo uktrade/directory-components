@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/211/files)
+
+### Breaking changes
+- Fixed leaking of information between ga360_payload in different requests
+
 ## 16.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/209/files)
 ### Implemented enhancements
