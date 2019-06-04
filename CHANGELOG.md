@@ -1,5 +1,13 @@
 # Changelog
 
+## 16.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/209/files)
+### Implemented enhancements
+- Added separate isd url via directory-constants context processor
+
+### Breaking changes
+- Added separate isd url please set DIRECTORY_CONSTANTS_URL_INVESTMENT_SUPPORT_DIRECTORY in all dev environments
+
 ## [15.2.0](https://pypi.org/project/directory-constants/15.2.0/) (2019-06-03)
 [Full Changelog](https://github.com/uktrade/directory-components/pull/208/files)
 
