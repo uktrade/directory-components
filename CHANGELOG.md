@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/210/files)
+
+### Implemented enhancements
+- Added ga360_tracker tag for adding GA360 attributes to components.
+
 ## 16.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/211/files)
 
