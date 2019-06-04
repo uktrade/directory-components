@@ -13,6 +13,61 @@
 
 .great-header-nav-container.international {
   flex-grow: 1;
+  text-align: right;
+  color: $white;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.mobile-menu-button {
+  display: none;
+  color: inherit;
+  background: transparent;
+  border: 2px solid $white;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 10px;
+  margin-bottom: 25px;
+
+  @media(max-width: 768px) {
+    display: block;
+  }
+}
+
+.great-header-menu-mobile {
+  position: relative;
+  //top: -50px;
+  //padding-top: 50px;
+}
+
+#great-header-menu-mobile-anchor {
+  //display: block;
+  //position: relative;
+  //top: -85px;
+
+  &:target ~ #great-header-menu-mobile {
+    @media(max-width: 768px) {
+      display: block;
+    }
+  }
+}
+
+#great-header-menu-mobile {
+  background-color: $lightened-great-blue;
+  display: none;
+}
+
+
+.great-header-nav {
+  @media(max-width: 768px) {
+    display: none;
+  }
 }
 
 .great-international-main-nav-list {
@@ -20,11 +75,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
 
   .link-heading {
     position: relative;
