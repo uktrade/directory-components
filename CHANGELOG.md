@@ -3,6 +3,13 @@
 ## 16.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/206/files)
 
+### Implemented enhancements
+- Added separate isd url via directory-constants context processor
+
+### Breaking changes
+- Added separate isd url please set DIRECTORY_CONSTANTS_URL_INVESTMENT_SUPPORT_DIRECTORY in all dev environments
+
+
 ## 15.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/205/files)
 
