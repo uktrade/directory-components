@@ -92,7 +92,8 @@ class CMSLanguageSwitcherMixin:
 
 
 class GA360Mixin:
-    ga360_payload = {}
+    def __init__(self):
+        self.ga360_payload = {}
 
     def set_ga360_payload(self, page_id, business_unit, site_section,
                           site_subsection=None):

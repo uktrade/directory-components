@@ -168,3 +168,15 @@ def test_ga360_mixin_for_anonymous_user(rf):
     ga360_data = response.context_data['ga360']
     assert ga360_data['user_id'] is None
     assert ga360_data['login_status'] is False
+
+
+def test_ga360_mixin_does_not_share_data_between_instances():
+    class TestView(mixins.GA360Mixin):
+        pass
+
+    view_one = TestView()
+    view_one.ga360_payload['Test Key'] = "Test Value"
+
+    view_two = TestView()
+
+    assert 'Test Key' not in view_two.ga360_payload
