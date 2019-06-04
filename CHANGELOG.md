@@ -2,20 +2,18 @@
 
 ## 16.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/209/files)
-- Added new url for ISD upgrade of directory constants was required
-
-## [15.2.0](https://pypi.org/project/directory-constants/15.2.0/) (2019-06-03)
-[Full Changelog](https://github.com/uktrade/directory-components/pull/208/files)
-
-### Implemented enhancements
-- Added contact form office finder url to urls_processor
-
 ### Implemented enhancements
 - Added separate isd url via directory-constants context processor
 
 ### Breaking changes
 - Added separate isd url please set DIRECTORY_CONSTANTS_URL_INVESTMENT_SUPPORT_DIRECTORY in all dev environments
 
+
+## [15.2.0](https://pypi.org/project/directory-constants/15.2.0/) (2019-06-03)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/208/files)
+
+### Implemented enhancements
+- Added contact form office finder url to urls_processor
 
 ## 15.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/205/files)
