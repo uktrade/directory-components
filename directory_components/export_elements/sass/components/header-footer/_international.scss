@@ -112,10 +112,7 @@
       .sub-nav {
         top: 100%;
         position: absolute;
-        //margin-top: 15px;
-        //width: 150%;
         display: flex;
-        //display: none;
       }
 
       .sub-nav-list {
@@ -145,20 +142,22 @@
   position: relative;
   background-color: $lightened-great-blue;
   color: $white;
+  padding: 5px 0;
 
   a {
+    display: block;
     color: inherit;
     text-decoration: none;
+    padding: 10px 0;
   }
 
-  .nav-heading {
-    font-weight: normal;
-    &.link-heading {
-
-    }
-  }
-
-  .sub-nav-list {
+  .sub-nav-mobile-list {
     padding-left: 15px;
+
+    @media(hover: hover) {
+      a:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

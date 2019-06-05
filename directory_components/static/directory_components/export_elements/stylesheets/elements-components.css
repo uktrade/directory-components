@@ -734,14 +734,18 @@ body.js-enabled .great-header-country-select {
   display: none;
   position: relative;
   background-color: #3b3458;
-  color: #ffffff; }
+  color: #ffffff;
+  padding: 5px 0; }
   #great-header-menu-mobile a {
+    display: block;
     color: inherit;
-    text-decoration: none; }
-  #great-header-menu-mobile .nav-heading {
-    font-weight: normal; }
-  #great-header-menu-mobile .sub-nav-list {
+    text-decoration: none;
+    padding: 10px 0; }
+  #great-header-menu-mobile .sub-nav-mobile-list {
     padding-left: 15px; }
+    @media (hover: hover) {
+      #great-header-menu-mobile .sub-nav-mobile-list a:hover {
+        text-decoration: underline; } }
 
 .Modal-Container {
   display: none;

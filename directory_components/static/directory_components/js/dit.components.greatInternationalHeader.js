@@ -27,6 +27,12 @@ dit.components.internationalHeader = (new function() {
     openSubNavId = openSubNavId === subNavId ? "" : subNavId;
   }
 
+  function toggleSubNavMobile(subNavElementId) {
+    const subNavId = subNavElementId.split("-").pop();
+    const subNavList = document.getElementById("sub-nav-mobile-list-" + subNavId);
+    subNavList.hidden = !subNavList.hidden;
+  }
+
   self.init = function() {
     subNavBackground = document.getElementById("international-header-sub-nav-background");
 
@@ -34,6 +40,12 @@ dit.components.internationalHeader = (new function() {
     for (let i = 0; i < subNavToggles.length; i++) {
       const subNavToggle = subNavToggles[i];
       subNavToggle.onclick = function() { toggleSubNav(subNavToggle.id); };
+    }
+
+    const subNavMobileToggles = document.getElementsByClassName("sub-nav-mobile-toggle");
+    for (let i = 0; i < subNavMobileToggles.length; i++) {
+      const subNavMobileToggle = subNavMobileToggles[i];
+      subNavMobileToggle.onclick = function() { toggleSubNavMobile(subNavMobileToggle.id); };
     }
   }
 });
