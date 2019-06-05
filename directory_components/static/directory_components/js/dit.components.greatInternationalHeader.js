@@ -16,13 +16,12 @@ dit.components.internationalHeader = (new function() {
     if (openSubNavId) {
       document.getElementById("sub-nav-list-" + openSubNavId).hidden = true;
     }
-    subNavBackground.hidden = true;
+    subNavBackground.style.height = "0";
 
     if (subNavId && openSubNavId !== subNavId) {
       const subNav = document.getElementById("sub-nav-list-" + subNavId);
       subNav.hidden = false;
       subNavBackground.style.height = subNav.offsetHeight + "px";
-      subNavBackground.hidden = false;
     }
 
     openSubNavId = openSubNavId === subNavId ? "" : subNavId;

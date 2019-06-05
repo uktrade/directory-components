@@ -1,19 +1,20 @@
 @import '../partials/colours';
 
 #international-header-sub-nav-background {
+  @media(min-width: 768px) {
+    display: block;
+  }
+  display: none;
   background-color: rgba($great-blue, 0.8);
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   z-index: -1;
-
-  height: 100px;
 }
 
 .great-header-nav-container.international {
   flex-grow: 1;
-  text-align: right;
   color: $white;
   display: flex;
   justify-content: flex-end;
@@ -25,7 +26,7 @@
 }
 
 .mobile-menu-button {
-  display: none;
+  display: block;
   color: inherit;
   background: transparent;
   border: 2px solid $white;
@@ -35,97 +36,129 @@
   padding: 10px;
   margin-bottom: 25px;
 
-  @media(max-width: 768px) {
-    display: block;
+  @media(min-width: 769px) {
+    display: none;
   }
-}
 
-.great-header-menu-mobile {
-  position: relative;
-  //top: -50px;
-  //padding-top: 50px;
-}
-
-#great-header-menu-mobile-anchor {
-  //display: block;
-  //position: relative;
-  //top: -85px;
-
-  &:target ~ #great-header-menu-mobile {
-    @media(max-width: 768px) {
-      display: block;
-    }
-  }
-}
-
-#great-header-menu-mobile {
-  background-color: $lightened-great-blue;
-  display: none;
-}
-
-
-.great-header-nav {
-  @media(max-width: 768px) {
+  &#mobile-menu-button-close {
     display: none;
   }
 }
 
-.great-international-main-nav-list {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+#great-header-menu-mobile-anchor:target {
+  &~#great-header-menu-mobile {
+    display: block;
+    @media(min-width: 769px) {
+      display: none;
+    }
+  }
+  &~#great-header-menu #mobile-menu-button {
+    display: none;
+  }
+  &~#great-header-menu #mobile-menu-button-close {
+    display: block;
+    @media(min-width: 769px) {
+      display: none;
+    }
+  }
+}
 
-  .link-heading {
-    position: relative;
-    padding: 15px;
-    margin-bottom: 10px;
+#great-header-nav {
+  display: none;
+  margin: 0;
+
+  @media(min-width: 769px) {
     display: block;
   }
 
-  .main-nav-item {
-    //position: relative;
-    font-size: 19px;
-    line-height: 1;
-    //padding: 25px;
+  .great-international-main-nav-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 
-    &.active .link-heading:after {
+    .link-heading {
+      position: relative;
+      padding: 15px;
+      margin-bottom: 10px;
       display: block;
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 100%;
-      height: 4px;
-      background-color: $great-red;
-      content: '';
     }
 
-    .sub-nav {
-      top: 100%;
-      position: absolute;
-      //margin-top: 15px;
-      //width: 150%;
-      display: flex;
-      //display: none;
-    }
+    .main-nav-item {
+      font-size: 19px;
+      line-height: 1;
 
-    .sub-nav-list {
-      flex-shrink: 0;
+      &:last-child {
+        .sub-nav {
+          right: 0;
+        }
 
-      li {
-        padding: 10px 0;
+        li {
+          text-align: right;
+        }
+      }
 
-        a {
-          padding: 10px;
-          font-size: 16px;
+      &.active .link-heading:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100%;
+        height: 4px;
+        background-color: $great-red;
+        content: '';
+      }
 
-          @media(hover: hover) {
-            &:hover {
-              text-decoration: underline;
+      .sub-nav {
+        top: 100%;
+        position: absolute;
+        //margin-top: 15px;
+        //width: 150%;
+        display: flex;
+        //display: none;
+      }
+
+      .sub-nav-list {
+        flex-shrink: 0;
+
+        li {
+          padding: 10px 0;
+
+          a {
+            padding: 10px;
+            font-size: 16px;
+
+            @media(hover: hover) {
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
         }
       }
     }
+  }
+}
+
+#great-header-menu-mobile {
+  display: none;
+  position: relative;
+  background-color: $lightened-great-blue;
+  color: $white;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .nav-heading {
+    font-weight: normal;
+    &.link-heading {
+
+    }
+  }
+
+  .sub-nav-list {
+    padding-left: 15px;
   }
 }
