@@ -92,13 +92,12 @@
   <ul class="great-header-nav-list" id="great-header-nav-list">
 
     <li class="main-nav-item">
-      <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Why choose the UK' %}</a>
+      <a class="link-heading" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Why choose the UK' %}</a>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Set up in the UK' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-0" hidden>
-        <li><a href="{{ services_urls.invest }}">Why set up a UK business</a></li>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Set up in the UK' %}</a>
+      <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
         <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
         <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
@@ -107,9 +106,8 @@
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest capital' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-1" hidden>
-        <li><a href="{{ services_urls.capital_invest }}">Why invest in the UK</a></li>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.capital_invest }}">{% trans 'Invest capital' %}</a>
+      <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
         <li><a href="{{ header_footer_urls.industries }}">UK investment sectors</a></li>
         <li><a href="{{ services_urls.uk_setup_guide }}">Investment guides</a></li>
@@ -118,9 +116,8 @@
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Find a supplier' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-2" hidden>
-        <li><a href="{{ header_footer_urls.fas }}">Why import from the UK</a></li>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a supplier' %}</a>
+      <ul class="sub-nav-mobile-list">
         <li><a href="{{ header_footer_urls.fas }}">Supplier directory</a></li>
         <li><a href="{{ services_urls.uk_setup_guide }}">Buying guides</a></li>
         <li><a href="{{ header_footer_urls.fas }}#services-section">Our services</a></li>
@@ -128,12 +125,12 @@
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" id="header-invest" href="{{ header_footer_urls.industries }}" data-ga-class="header-navigation">{% trans 'UK export sectors' %}</a>
+      <a class="link-heading" href="{{ header_footer_urls.industries }}" data-ga-class="header-navigation">{% trans 'UK export sectors' %}</a>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'News & events' %} &#9660;</a>
-      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-4" hidden>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.events }}">{% trans 'News & events' %}</a>
+      <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.events }}">Events</a></li>
         <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
       </ul>
