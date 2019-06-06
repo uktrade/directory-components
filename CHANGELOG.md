@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/211/files)
+
+### Implemented enhancements
+- Gave `hero_with_cta` a min-height of 350px
+
 ## 16.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/210/files)
 
