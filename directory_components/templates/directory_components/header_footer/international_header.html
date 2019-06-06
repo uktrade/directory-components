@@ -57,119 +57,108 @@
 
 {% block header_nav %}
 
-<div class="great-header-nav-container international">
-  <a class="mobile-menu-button" href="#great-header-menu-mobile-anchor" id="mobile-menu-button">Menu ☰</a>
-  <a class="mobile-menu-button" href="#great-header-menu-mobile-close" id="mobile-menu-button-close">Menu ☰</a>
-  <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
-    <ul class="great-international-main-nav-list" id="great-header-nav-list">
-      <li class="main-nav-item active">
-        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Trade with the UK' %} &#9660;</a>
-        <nav class="sub-nav">
-          <ul class="sub-nav-list" id="sub-nav-list-0" hidden>
-            <li><a href="#">Trade home</a></li>
-            <li><a href="#">Find a UK supplier</a></li>
-            <li><a href="#">UK trading guides</a></li>
-            <li><a href="#">UK trade success stories</a></li>
-            <li><a href="#">How we help trade</a></li>
-            <li><a href="#">Contact us</a></li>
-          </ul>
-        </nav>
-      </li>
+<nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
+  <ul class="great-header-nav-list" id="great-header-nav-list">
+    <li class="main-nav-item active">
+      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Trade with the UK' %} &#9660;</a>
+      <nav class="sub-nav">
+        <ul class="sub-nav-list" id="sub-nav-list-0" hidden>
+          <li><a href="#">Trade home</a></li>
+          <li><a href="#">Find a UK supplier</a></li>
+          <li><a href="#">UK trading guides</a></li>
+          <li><a href="#">UK trade success stories</a></li>
+          <li><a href="#">How we help trade</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </nav>
+    </li>
 
-      <li class="main-nav-item">
-        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Expand to the UK' %} &#9660;</a>
-        <nav class="sub-nav">
-          <ul class="sub-nav-list" id="sub-nav-list-1" hidden>
-            <li><a href="#">Expand home</a></li>
-            <li><a href="#">Get started</a></li>
-            <li><a href="#">High-potential opportunities</a></li>
-          </ul>
-        </nav>
-      </li>
+    <li class="main-nav-item">
+      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Expand to the UK' %} &#9660;</a>
+      <nav class="sub-nav">
+        <ul class="sub-nav-list" id="sub-nav-list-1" hidden>
+          <li><a href="#">Expand home</a></li>
+          <li><a href="#">Get started</a></li>
+          <li><a href="#">High-potential opportunities</a></li>
+        </ul>
+      </nav>
+    </li>
 
-      <li class="main-nav-item">
-        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest in the UK' %} &#9660;</a>
-        <nav class="sub-nav">
-          <ul class="sub-nav-list" id="sub-nav-list-2" hidden>
-            <li><a href="#">Invest home</a></li>
-            <li><a href="#">Regions</a></li>
-            <li><a href="#">Sectors</a></li>
-          </ul>
-        </nav>
-      </li>
+    <li class="main-nav-item">
+      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest in the UK' %} &#9660;</a>
+      <nav class="sub-nav">
+        <ul class="sub-nav-list" id="sub-nav-list-2" hidden>
+          <li><a href="#">Invest home</a></li>
+          <li><a href="#">Regions</a></li>
+          <li><a href="#">Sectors</a></li>
+        </ul>
+      </nav>
+    </li>
 
-      <li class="main-nav-item">
-        <a class="link-heading" id="header-invest" href="#" data-ga-class="header-navigation">{% trans 'Industries' %}</a>
-      </li>
+    <li class="main-nav-item">
+      <a class="link-heading" id="header-invest" href="#" data-ga-class="header-navigation">{% trans 'Industries' %}</a>
+    </li>
 
-      <li class="main-nav-item">
-        <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Help & guides' %} &#9660;</a>
-        <nav class="sub-nav">
-          <ul class="sub-nav-list" id="sub-nav-list-4" hidden>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">How to set up in the UK</a></li>
-          </ul>
-        </nav>
-      </li>
-    </ul>
-  </nav>
-</div>
+    <li class="main-nav-item">
+      <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Help & guides' %} &#9660;</a>
+      <nav class="sub-nav">
+        <ul class="sub-nav-list" id="sub-nav-list-4" hidden>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">How to set up in the UK</a></li>
+        </ul>
+      </nav>
+    </li>
+  </ul>
+</nav>
 
 {% endblock %}
 
 {% block header_nav_mobile %}
-<div id="great-header-menu-mobile" class="great-header-menu-mobile">
-  <div class="container">
-    <nav id="great-header-nav-mobile" class="great-header-nav-mobile" aria-label="{% trans 'Main menu' %}">
-      <ul class="great-international-main-nav-list" id="great-header-nav-list">
-        <li class="main-nav-item active">
-          <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Trade with the UK' %} &#9660;</a>
-          <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-0" hidden>
-            <li><a href="#">Trade home</a></li>
-            <li><a href="#">Find a UK supplier</a></li>
-            <li><a href="#">UK trading guides</a></li>
-            <li><a href="#">UK trade success stories</a></li>
-            <li><a href="#">How we help trade</a></li>
-            <li><a href="#">Contact us</a></li>
-          </ul>
-        </li>
 
-        <li class="main-nav-item">
-          <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Expand to the UK' %} &#9660;</a>
-          <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-1" hidden>
-            <li><a href="#">Expand home</a></li>
-            <li><a href="#">Get started</a></li>
-            <li><a href="#">High-potential opportunities</a></li>
-          </ul>
-        </li>
-
-        <li class="main-nav-item">
-          <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest in the UK' %} &#9660;</a>
-          <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-2" hidden>
-            <li><a href="#">Invest home</a></li>
-            <li><a href="#">Regions</a></li>
-            <li><a href="#">Sectors</a></li>
-          </ul>
-        </li>
-
-        <li class="main-nav-item">
-          <a class="link-heading" id="header-invest" href="#" data-ga-class="header-navigation">{% trans 'Industries' %}</a>
-        </li>
-
-        <li class="main-nav-item">
-          <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Help & guides' %} &#9660;</a>
-          <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-4" hidden>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">How to set up in the UK</a></li>
-          </ul>
-        </li>
+<nav id="great-header-nav-mobile" class="great-header-nav-mobile" aria-label="{% trans 'Main menu' %}">
+  <ul class="great-header-nav-list" id="great-header-nav-list">
+    <li class="main-nav-item active">
+      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Trade with the UK' %} &#9660;</a>
+      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-0" hidden>
+        <li><a href="#">Trade home</a></li>
+        <li><a href="#">Find a UK supplier</a></li>
+        <li><a href="#">UK trading guides</a></li>
+        <li><a href="#">UK trade success stories</a></li>
+        <li><a href="#">How we help trade</a></li>
+        <li><a href="#">Contact us</a></li>
       </ul>
-    </nav>
-  </div>
-</div>
+    </li>
 
-{% endblock %}
+    <li class="main-nav-item">
+      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Expand to the UK' %} &#9660;</a>
+      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-1" hidden>
+        <li><a href="#">Expand home</a></li>
+        <li><a href="#">Get started</a></li>
+        <li><a href="#">High-potential opportunities</a></li>
+      </ul>
+    </li>
 
-{% block header_sub_nav_background %}
-<div id="international-header-sub-nav-background" hidden aria-hidden></div>
+    <li class="main-nav-item">
+      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest in the UK' %} &#9660;</a>
+      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-2" hidden>
+        <li><a href="#">Invest home</a></li>
+        <li><a href="#">Regions</a></li>
+        <li><a href="#">Sectors</a></li>
+      </ul>
+    </li>
+
+    <li class="main-nav-item">
+      <a class="link-heading" id="header-invest" href="#" data-ga-class="header-navigation">{% trans 'Industries' %}</a>
+    </li>
+
+    <li class="main-nav-item">
+      <a class="link-heading sub-nav-mobile-toggle" id="sub-nav-mobile-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Help & guides' %} &#9660;</a>
+      <ul class="sub-nav-mobile-list" id="sub-nav-mobile-list-4" hidden>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">How to set up in the UK</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 {% endblock %}

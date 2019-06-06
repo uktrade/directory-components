@@ -47,7 +47,7 @@ dit.components.internationalHeader = (new function() {
       const subNavMobileToggle = subNavMobileToggles[i];
       subNavMobileToggle.onclick = function() { toggleSubNavMobile(subNavMobileToggle.id); };
     }
-  }
+  };
 });
 
 $(document).ready(function() {

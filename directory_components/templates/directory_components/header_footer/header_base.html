@@ -33,21 +33,23 @@
 
         {% block header_language_selector %}
         {% endblock %}
-
       </div>
 
-      {% block header_nav %}
-      {% endblock %}
+      <div class="great-header-nav-container">
+        <a class="mobile-menu-button" href="#great-header-menu-mobile-anchor" id="mobile-menu-button">Menu ☰</a>
+        <a class="mobile-menu-button" href="#great-header-menu-mobile-close" id="mobile-menu-button-close">Menu ☰</a>
+        {% block header_nav %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
 
-      {% block header_search %}
+  <div id="great-header-menu-mobile" class="great-header-menu-mobile">
+    <div class="container">
+      {% block header_nav_mobile %}
       {% endblock %}
     </div>
   </div>
 
-  {% block header_nav_mobile %}
-  {% endblock %}
-
-
-  {% block header_sub_nav_background %}
-  {% endblock %}
+  <div id="international-header-sub-nav-background" hidden aria-hidden></div>
 </header>
