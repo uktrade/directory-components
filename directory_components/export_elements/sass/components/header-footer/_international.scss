@@ -7,9 +7,15 @@
     @media(min-width: 641px) {
       margin: 60px 0 25px;
     }
+    @media(min-width: 769px) {
+      margin: 25px 0;
+    }
 
     img {
       height: 50px;
+      @media(min-width: 769px) {
+        height: 64px;
+      }
     }
   }
 

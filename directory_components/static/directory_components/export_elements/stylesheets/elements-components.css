@@ -708,8 +708,14 @@ body.js-enabled .great-header-country-select {
   @media (min-width: 641px) {
     .great-header-menu.international .great-header-logo {
       margin: 60px 0 25px; } }
+  @media (min-width: 769px) {
+    .great-header-menu.international .great-header-logo {
+      margin: 25px 0; } }
   .great-header-menu.international .great-header-logo img {
     height: 50px; }
+    @media (min-width: 769px) {
+      .great-header-menu.international .great-header-logo img {
+        height: 64px; } }
 
 .great-header-menu.international .great-header-language-switcher,
 .great-header-menu.international .great-header-country-selector {
