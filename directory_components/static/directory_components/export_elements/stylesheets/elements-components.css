@@ -731,6 +731,9 @@ body.js-enabled .great-header-country-select {
 .great-header-menu.international .main-nav-item:last-child li {
   text-align: right; }
 
+.great-header-menu.international .main-nav-item .link-heading {
+  font-size: 16px; }
+
 .great-header-menu.international .main-nav-item.active .link-heading:after {
   display: block;
   position: absolute;
