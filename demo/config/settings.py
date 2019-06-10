@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'directory_components',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'directory_components.middleware.LocaleQuerystringMiddleware',
