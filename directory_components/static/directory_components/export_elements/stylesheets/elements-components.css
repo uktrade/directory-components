@@ -314,6 +314,9 @@
   .great-header-nav-container a {
     color: inherit;
     text-decoration: none; }
+    @media (hover: hover) {
+      .great-header-nav-container a:hover {
+        text-decoration: underline; } }
 
 .great-header-menu-mobile {
   display: none;
