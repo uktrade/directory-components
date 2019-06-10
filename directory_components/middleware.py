@@ -40,7 +40,7 @@ class NoCacheMiddlware(MiddlewareMixin):
         return response
 
 
-class AbstractPrefixUrlMiddleware(abc.ABC):
+class AbstractPrefixUrlMiddleware(abc.ABC, MiddlewareMixin):
 
     @property
     @abc.abstractmethod
