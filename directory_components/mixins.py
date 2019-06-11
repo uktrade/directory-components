@@ -45,7 +45,10 @@ class EnableTranslationsMixin:
 
     def __init__(self, *args, **kwargs):
         dependency = 'directory_components.middleware.ForceDefaultLocale'
-        assert dependency in settings.MIDDLEWARE_CLASSES
+        if hasattr(settings, 'MIDDLEWARE_CLASSES'):
+            assert dependency in settings.MIDDLEWARE_CLASSES
+        else:
+            assert dependency in settings.MIDDLEWARE
         super().__init__(*args, **kwargs)
 
     def dispatch(self, request, *args, **kwargs):

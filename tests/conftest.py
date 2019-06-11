@@ -13,8 +13,9 @@ def pytest_configure():
                 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
             }
         },
-        MIDDLEWARE_CLASSES=[
-            'directory_components.middleware.ForceDefaultLocale'],
+        MIDDLEWARE=[
+            'directory_components.middleware.ForceDefaultLocale',
+        ],
         SESSION_ENGINE='django.contrib.sessions.backends.cache',
         ROOT_URLCONF='tests.urls',
         SSO_PROXY_LOGIN_URL='http://login.com',
@@ -61,7 +62,7 @@ def pytest_configure():
         ),
         DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON='https://sso.com',
         DIRECTORY_CONSTANTS_URL_FIND_A_BUYER='https://fab.com',
-        )
+    )
 
 
 @pytest.fixture(autouse=True)

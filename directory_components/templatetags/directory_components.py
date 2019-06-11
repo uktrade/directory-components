@@ -3,7 +3,15 @@ import re
 
 from django import template
 from django.templatetags import static
-from django.utils.text import slugify, mark_safe
+
+from django.utils.text import slugify
+try:
+    # Django < 2.2
+    from django.utils.test import mark_safe
+except ImportError:
+    # Django >= 2.2
+    from django.utils.html import mark_safe
+
 
 register = template.Library()
 

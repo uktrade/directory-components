@@ -4,11 +4,12 @@ import urllib.parse
 
 import jsonschema as jsonschema
 from django.conf import settings
+from django.middleware.locale import LocaleMiddleware
 from django.shortcuts import redirect
 from django.utils import translation
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
-from django.middleware.locale import LocaleMiddleware
+from django.utils.deprecation import MiddlewareMixin
 from jsonschema import ValidationError
 
 from directory_components import constants
@@ -17,7 +18,7 @@ from directory_components import helpers
 logger = logging.getLogger(__name__)
 
 
-class MaintenanceModeMiddleware:
+class MaintenanceModeMiddleware(MiddlewareMixin):
     maintenance_url = 'https://sorry.great.gov.uk'
 
     def process_request(self, request):
@@ -25,7 +26,7 @@ class MaintenanceModeMiddleware:
             return redirect(self.maintenance_url)
 
 
-class NoCacheMiddlware:
+class NoCacheMiddlware(MiddlewareMixin):
     """Tell the browser to not cache the pages.
 
     Information that should be kept private can be viewed by anyone
@@ -39,7 +40,7 @@ class NoCacheMiddlware:
         return response
 
 
-class AbstractPrefixUrlMiddleware(abc.ABC):
+class AbstractPrefixUrlMiddleware(abc.ABC, MiddlewareMixin):
 
     @property
     @abc.abstractmethod
@@ -84,7 +85,7 @@ def is_path_resolvable(path):
         return True
 
 
-class CountryMiddleware:
+class CountryMiddleware(MiddlewareMixin):
     def process_request(self, request):
         country_code = helpers.get_country_from_querystring(request)
         if country_code:
@@ -115,7 +116,7 @@ class LocaleQuerystringMiddleware(LocaleMiddleware):
             request.LANGUAGE_CODE = translation.get_language()
 
 
-class PersistLocaleMiddleware:
+class PersistLocaleMiddleware(MiddlewareMixin):
     def process_response(self, request, response):
         if hasattr(settings, 'LANGUAGE_COOKIE_DEPRECATED_NAME'):
             response.delete_cookie(
@@ -131,7 +132,7 @@ class PersistLocaleMiddleware:
         return response
 
 
-class ForceDefaultLocale:
+class ForceDefaultLocale(MiddlewareMixin):
     """
     Force translation to English before view is called, then putting the user's
     original language back after the view has been called, laying the ground
@@ -176,7 +177,7 @@ ga_schema = {
 }
 
 
-class CheckGATags:
+class CheckGATags(MiddlewareMixin):
     def process_response(self, _, response):
 
         # Only check 2xx responses for google analytics.

@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='16.2.0',
+    version='16.3.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -13,20 +13,21 @@ setup(
     long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
-        'django>=1.11.20,<2.0a1',
+        'django>=1.11,<3.0a1',
         'beautifulsoup4>=4.6.0<5.0.0',
         'directory-constants>=17.0.0,<18.0.0',
         'jsonschema==3.0.1'
     ],
     extras_require={
         'test': [
+            'django>=2.2,<3.0a1',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
-            'pytest-cov==2.3.1',
-            'pytest-django==3.0.0',
+            'pytest-cov==2.6.1',
+            'pytest-django==3.3.0',
             'pytest-sugar',
-            'pytest==3.0.3',
+            'pytest==3.6.0',
             'requests-toolbelt==0.8.0',
             'requests==2.18.1',
             'twine>=1.11.0,<2.0.0',
@@ -34,9 +35,10 @@ setup(
             'setuptools>=38.6.0,<39.0.0'
         ],
         'demo': [
+            'django>=2.2,<3.0a1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
-            'whitenoise==3.1',
+            'whitenoise==3.3.1',
             'pip==9.0.1',
             'beautifulsoup4>=4.6.0,<5.0.0',
         ]
@@ -46,6 +48,9 @@ setup(
         'Environment :: Web Environment',
         'Framework :: Django',
         'Framework :: Django :: 1.11',
+        'Framework :: Django :: 2.0',
+        'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',

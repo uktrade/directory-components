@@ -19,10 +19,7 @@ urlpatterns = [
         View.as_view(),
         name='index',
     ),
-    url(
-        r'^admin/',
-        include(admin_urls, namespace='admin', app_name='admin')
-    ),
+    url(r'^admin/', include(admin_urls)),
     url(
         r"^robots\.txt$",
         directory_components.views.RobotsView.as_view(),
