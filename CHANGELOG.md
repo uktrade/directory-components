@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/215/files)
+
+### Implemented enhancements
+- Added support for Django 2 -> 2.2
+
 ## 16.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/213/files)
 
