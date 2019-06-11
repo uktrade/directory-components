@@ -19,7 +19,7 @@ setup(
     ],
     extras_require={
         'test': [
-            'django>=2.0,<2.1a1',
+            'django>=2.1,<2.2',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
@@ -34,7 +34,7 @@ setup(
             'setuptools>=38.6.0,<39.0.0'
         ],
         'demo': [
-            'django>=2.0,<2.1a1',
+            'django>=2.1,<2.2',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
             'whitenoise==3.3.1',

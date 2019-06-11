@@ -280,7 +280,7 @@ def test_locale_persist_middleware_deletes_deprecated_cookie(
     instance.process_response(request, response)
 
     cookie = response.cookies[settings.LANGUAGE_COOKIE_DEPRECATED_NAME]
-    assert cookie['expires'] == 'Thu, 01-Jan-1970 00:00:00 GMT'
+    assert cookie['expires'] == 'Thu, 01 Jan 1970 00:00:00 GMT'
     assert cookie['max-age'] == 0
 
 
