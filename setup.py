@@ -13,13 +13,14 @@ setup(
     long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
+        'django>=1.11,<3.0a1',
         'beautifulsoup4>=4.6.0<5.0.0',
         'directory-constants>=17.0.0,<18.0.0',
         'jsonschema==3.0.1'
     ],
     extras_require={
         'test': [
-            'django>=2.1,<2.2',
+            'django>=2.2,<3.0a1',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
@@ -34,7 +35,7 @@ setup(
             'setuptools>=38.6.0,<39.0.0'
         ],
         'demo': [
-            'django>=2.1,<2.2',
+            'django>=2.2,<3.0a1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
             'whitenoise==3.3.1',
