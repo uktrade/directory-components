@@ -326,7 +326,7 @@ section {
     overflow: hidden; }
 
 .width-sixth {
-  width: calc(100% / 6); }
+  width: 1666.66667%; }
 
 .width-quarter {
   width: 25%; }
@@ -335,10 +335,10 @@ section {
   width: 50%; }
 
 .width-third {
-  width: calc(100% / 3); }
+  width: 3333.33333%; }
 
 .width-two-thirds {
-  width: calc(100% / 3 * 2); }
+  width: 6666.66667%; }
 
 .width-full {
   width: 100%; }
@@ -352,7 +352,7 @@ section {
     width: 100%; } }
 
 .width-sixth-all {
-  width: calc(100% / 6); }
+  width: 1666.66667%; }
 
 .width-quarter-all {
   width: 25%; }
@@ -361,10 +361,10 @@ section {
   width: 50%; }
 
 .width-third-all {
-  width: calc(100% / 3); }
+  width: 3333.33333%; }
 
 .width-two-thirds-all {
-  width: calc(100% / 3 * 2); }
+  width: 6666.66667%; }
 
 .width-full-all {
   width: 100%; }
