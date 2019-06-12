@@ -141,17 +141,34 @@
 {% endblock %}
 
 {% block header_sub_nav %}
+{% if international_header_area and international_header_area != "why_choose" and international_header_area != "industries" %}
 <div class="great-header-sub-nav">
   <div class="container">
     <nav aria-label="{% trans 'Sub-menu' %}">
       <ul class="sub-nav-list">
-        <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-        <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
-        <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
-        <li><a href="{{ services_urls.invest }}#how-we-help">Our services</a></li>
+        {% if international_header_area == "why_choose" %}
+        {% elif international_header_area == "expand" %}
+          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
+          <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
+          <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
+          <li><a href="{{ services_urls.invest }}#how-we-help">Our services</a></li>
+        {% elif international_header_area == "capital_invest" %}
+          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
+          <li><a href="{{ header_footer_urls.industries }}">UK investment sectors</a></li>
+          <li><a href="{{ services_urls.uk_setup_guide }}">Investment guides</a></li>
+          <li><a href="{{ services_urls.capital_invest }}#">Our services</a></li>
+        {% elif international_header_area == "find_a_supplier" %}
+          <li><a href="{{ header_footer_urls.fas }}">Supplier directory</a></li>
+          <li><a href="{{ services_urls.uk_setup_guide }}">Buying guides</a></li>
+          <li><a href="{{ header_footer_urls.fas }}#services-section">Our services</a></li>
+        {% elif international_header_area == "industries" %}
+        {% elif international_header_area == "news_and_events" %}
+          <li><a href="{{ services_urls.events }}">Events</a></li>
+          <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
+        {% endif %}
       </ul>
     </nav>
   </div>
 </div>
-
+{% endif %}
 {% endblock %}
