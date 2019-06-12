@@ -16,6 +16,12 @@ urlpatterns = [
         name='404',
     ),
     url(
+        r'^500/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/500.html'},
+        name='500',
+    ),
+    url(
         r'^great-domestic-header-footer/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/great-domestic-header-footer.html'},
