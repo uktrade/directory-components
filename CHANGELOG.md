@@ -1,5 +1,16 @@
 # Changelog
 
+## 16.4.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/216/files)
+
+### Implemented enhancements
+- Added message box with icon component
+- Improved mobile style of message box
+- Updated documentation
+
+### Bug fixes
+- Fixed invalid property values
+
 ## 16.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/215/files)
 
