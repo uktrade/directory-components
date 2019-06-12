@@ -118,3 +118,12 @@ class GA360Mixin:
             *args,
             **kwargs
         )
+
+
+class InternationalHeaderMixin:
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            international_header_area=self.international_header_area,
+            *args,
+            **kwargs
+        )

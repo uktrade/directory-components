@@ -56,15 +56,14 @@
 {% endblock %}
 
 {% block header_nav %}
-
 <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
   <ul class="great-header-nav-list" id="great-header-nav-list">
 
-    <li class="main-nav-item">
+    <li class="main-nav-item{% if international_header_area == "why_choose" %} active{% endif %}">
       <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Why choose the UK' %}</a>
     </li>
 
-    <li class="main-nav-item active">
+    <li class="main-nav-item{% if international_header_area == "expand" %} active{% endif %}">
       <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-0" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Set up in the UK' %} &#9660;</a>
       <nav class="sub-nav">
         <ul class="sub-nav-list" id="sub-nav-list-0" hidden>
@@ -77,7 +76,7 @@
       </nav>
     </li>
 
-    <li class="main-nav-item">
+    <li class="main-nav-item{% if international_header_area == "capital_invest" %} active{% endif %}">
       <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-1" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Invest capital' %} &#9660;</a>
       <nav class="sub-nav">
         <ul class="sub-nav-list" id="sub-nav-list-1" hidden>
@@ -90,7 +89,7 @@
       </nav>
     </li>
 
-    <li class="main-nav-item">
+    <li class="main-nav-item{% if international_header_area == "find_a_supplier" %} active{% endif %}">
       <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-2" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'Find a supplier' %} &#9660;</a>
       <nav class="sub-nav">
         <ul class="sub-nav-list" id="sub-nav-list-2" hidden>
@@ -102,11 +101,11 @@
       </nav>
     </li>
 
-    <li class="main-nav-item">
+    <li class="main-nav-item{% if international_header_area == "industries" %} active{% endif %}">
       <a class="link-heading" id="header-invest" href="{{ header_footer_urls.industries }}" data-ga-class="header-navigation">{% trans 'UK export sectors' %}</a>
     </li>
 
-    <li class="main-nav-item">
+    <li class="main-nav-item{% if international_header_area == "news_and_events" %} active{% endif %}">
       <a class="link-heading sub-nav-toggle" id="sub-nav-toggle-4" data-ga-class="header-navigation" href="javascript:void(0);">{% trans 'News & events' %} &#9660;</a>
       <nav class="sub-nav">
         <ul class="sub-nav-list" id="sub-nav-list-4" hidden>
