@@ -7,6 +7,7 @@
 - Added message box with icon component
 - Improved mobile style of message box
 - Updated documentation
+- Added 500 error page template based on [gov.uk design system](https://design-system.service.gov.uk/patterns/problem-with-the-service-pages/)
 
 ### Bug fixes
 - Fixed invalid property values
