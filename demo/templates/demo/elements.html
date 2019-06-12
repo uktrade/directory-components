@@ -1,7 +1,7 @@
 {% extends 'demo/base.html' %}
 
 {% load view_instance_code from demo_tags %}
-{% load breadcrumbs render_form from directory_components %}
+{% load breadcrumbs message_box_with_icon from directory_components %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -13,16 +13,18 @@
 <section class="padding-top-30">
   <div class="container">
     <h1 class="heading-xlarge">Elements & utility classes</h1>
-    <h2 class="heading-large">Headings</h2>
+    <h2 class="heading-large">Text</h2>
+
+    <h3 class="heading-medium">Headings</h3>
 
     <div class="width-two-thirds">
       <p>Use these heading classes to change the size of headings while still keeping HTML semantic. These are all <code>h3</code> headings with different heading classes.</p>
-      <h3 class="heading-xlarge">.heading-xlarge</h3>
-      <h3 class="heading-large">.heading-large</h3>
-      <h3 class="heading-medium">.heading-medium</h3>
-      <h3 class="heading-small">.heading-small</h3>
+      <h4 class="heading-xlarge">.heading-xlarge</h4>
+      <h4 class="heading-large">.heading-large</h4>
+      <h4 class="heading-medium">.heading-medium</h4>
+      <h4 class="heading-small">.heading-small</h4>
 
-      <h2 class="heading-large">Font style</h2>
+      <h3 class="heading-medium">Font style</h3>
       <p>These classes can be used to change font size and weight and are mobile responsive.</p>
     </div>
     <div class="grid-row">
@@ -47,7 +49,13 @@
     <div class="width-two-thirds">
       <h3 class="heading-medium">Text transform</h3>
       <p>Use <code>.uppercase</code> to make text <span class="uppercase">all caps.</span></p>
+    </div>
+  </div>
+</section>
 
+<section>
+  <div class="container">
+    <div class="width-two-thirds">
       <h2 class="heading-large">Lists</h2>
 
       <h3 class="heading-medium">ul .list</h3>
@@ -76,42 +84,82 @@
 </section>
 <section>
   <div class="container">
+      <h2 class="heading-large">Width</h2>
+
+      <p class="width-two-thirds">A shortcut to using <code>.grid-row</code> and column classes. For when there is only one column of content. Like column classes, expands to full width on mobile.</p>
+      <div class="background-stone-30 width-sixth">
+        <h3 class="heading-small">.width-sixth</h3>
+        <p>{% lorem 5 w random %}</p>
+      </div>
+      <div class="background-stone-30 width-quarter">
+        <h3 class="heading-small">.width-quarter</h3>
+        <p>{% lorem 10 w random %}</p>
+      </div>
+      <div class="background-stone-30 width-third">
+        <h3 class="heading-small">.width-third</h3>
+        <p>{% lorem 20 w random %}</p>
+      </div>
+      <div class="background-stone-30 width-half">
+        <h3 class="heading-small">.width-half</h3>
+        <p>{% lorem 30 w random %}</p>
+      </div>
+      <div class="background-stone-30 width-two-thirds">
+        <h3 class="heading-small">.width-two-thirds</h3>
+        <p>{% lorem 40 w random %}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
     <div class="width-two-thirds">
-      <h2 class="heading-large">Colour</h2>
+      <h2 class="heading-large" id="colour">Colour</h2>
       <p>When using colour, always be sure to check colour contrast meets accessibility requirements. <a href="https://wave.webaim.org/" class="link">WAVE</a> is useful for automatically checking for contrast and other accessibility issues. <a href="https://wave.webaim.org/extension/" class="link">Browser extensions for WAVE are also available</a> so it can be used in the local dev environment.</p>
-      <p>Text and background colour combinations that have low contrast have been flagged. Please avoid these.</p>
+      {% message_box_with_icon icon='!' description='Text and background colour combinations that have low contrast have been flagged. Please avoid these.' %}
       <h3 class="heading-medium">Core colours</h3>
       <ul class="list list-bullet">
         <li><span class="background-great-red white-text">GREAT Red</span> should only be used for the GREAT logo.</li>
-        <li><span class="background-great-blue white-text">GREAT Blue</span> is used for type where possible, if not black can be used.</li>
+        <li><span class="background-grey white-text">Grey</span> is used for type where possible, if not black can be used.</li>
         <li><span class="background-flag-red white-text">Flag Red</span> is used for red lines and can be used in type.</li>
         <li><span class="background-stone">Stone</span> has been introduced for use as a pale background colour on pages and tables.</li>
       </ul>
-    </div>
 
-    <h3 class="heading-medium">Width</h3>
-
-    <p class="width-two-thirds">A shortcut to using <code>.grid-row</code> and column classes. For when there is only one column of content. Like column classes, expands to full width on mobile.</p>
-    <div class="background-stone-30 width-sixth">
-      <h4 class="heading-small">.width-sixth</h4>
-      <p>{% lorem 5 w random %}</p>
-    </div>
-    <div class="background-stone-30 width-quarter">
-      <h4 class="heading-small">.width-quarter</h4>
-      <p>{% lorem 10 w random %}</p>
-    </div>
-    <div class="background-stone-30 width-third">
-      <h4 class="heading-small">.width-third</h4>
-      <p>{% lorem 20 w random %}</p>
-    </div>
-    <div class="background-stone-30 width-half">
-      <h4 class="heading-small">.width-half</h4>
-      <p>{% lorem 30 w random %}</p>
-    </div>
-    <div class="background-stone-30 width-two-thirds">
-      <h4 class="heading-small">.width-two-thirds</h4>
-      <p>{% lorem 40 w random %}</p>
-    </div>
+      <h3 class="heading-medium">Colour variable names</h3>
+      <p>Colour utility classes have names based on the SASS colour variable names contained in <code>export_elements/sass/partials/colours</code>:</p>
+      <div class="grid-row">
+        <ul class="column-half colour-examples white-text">
+          <li class="background-purple">$purple</li>
+          <li class="background-great-blue">$great-blue</li>
+          <li class="background-dark-navy">$dark-navy</li>
+          <li class="background-mid-blue">$mid-blue</li>
+          <li class="background-active-blue">$active-blue</li>
+          <li class="background-light-blue">$light-blue</li>
+          <li class="background-aqua">$aqua</li>
+          <li class="background-teal">$teal</li>
+          <li class="background-flag-red">$flag-red</li>
+          <li class="background-great-red">$great-red</li>
+          <li class="background-focus-yellow black-text">$focus-yellow</li>
+        </ul>
+        <ul class="column-half colour-examples black-text">
+          <li class="background-black white-text">$black</li>
+          <li class="background-grey white-text">$grey</li>
+          <li class="background-mid-grey white-text">$mid-grey</li>
+          <li class="background-light-grey">$light-grey</li>
+          <li class="background-offwhite">$offwhite</li>
+          <li class="background-white">$white</li>
+          <li class="background-stone-10">$stone-10</li>
+          <li class="background-stone-20">$stone-20</li>
+          <li class="background-stone-30">$stone-30</li>
+          <li class="background-stone-40">$stone-40</li>
+          <li class="background-stone-50">$stone-50</li>
+          <li class="background-stone-60">$stone-60</li>
+          <li class="background-stone-70">$stone-70</li>
+          <li class="background-stone-80">$stone-80</li>
+          <li class="background-stone-90">$stone-90</li>
+          <li class="background-stone">$stone</li>
+        </ul>
+      </div>
 
     <h3 class="heading-medium">Background colour</h3>
     <div class="grid-row">
@@ -235,22 +283,11 @@
 <section class="underline-active-blue">
   <div class="container">
     <h3 class="heading-medium">.underline-active-blue</h3>
+    <p>Underline classes are suffixed with colour names. <a href="#colour" class="link">See above for a full list of colours</a>.</p>
   </div>
 </section>
 
-<section class="underline-flag-red">
-  <div class="container">
-    <h3 class="heading-medium">.underline-flag-red</h3>
-  </div>
-</section>
-
-<section class="underline-great-red">
-  <div class="container">
-    <h3 class="heading-medium">.underline-great-red</h3>
-  </div>
-</section>
-
-<section>
+<section class="padding-top-30">
   <div class="container">
     <a href="{% url 'index' %}" class="link-back link">Go back</a>
   </div>
