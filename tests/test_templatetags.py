@@ -531,6 +531,7 @@ def test_hero_large_title():
 @pytest.mark.parametrize('template_tag', (
     directory_components.cta_box,
     directory_components.message_box,
+    directory_components.message_box_with_icon,
     directory_components.banner,
     directory_components.hero,
     directory_components.card,

@@ -29,9 +29,33 @@
 
 .message-box {
   @extend %box;
-  padding: 30px;
+  @include float-clear;
 
   .box-description:last-child {
     margin-bottom: 0;
+  }
+}
+
+.message-box-with-icon {
+  @extend .message-box;
+  display: table;
+}
+
+.message-box-icon {
+  display: table-cell;
+  font-family: system-ui;
+  width: 80px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.message-box-icon-content {
+  display: table-cell;
+}
+
+
+@media (max-width: 640px) {
+  .message-box-icon {
+    width: 50px;
   }
 }

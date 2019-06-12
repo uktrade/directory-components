@@ -62,6 +62,12 @@ urlpatterns = [
         name='banners',
     ),
     url(
+        r'^message-boxes/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/message-boxes.html'},
+        name='message-boxes',
+    ),
+    url(
         r'^cards/$',
         views.DemoCardsView.as_view(),
         {'template_name': 'demo/cards.html'},
