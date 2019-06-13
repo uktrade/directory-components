@@ -1632,9 +1632,9 @@ ul.tag-list li {
       clear: both;
       display: block; } }
 
-.cta-box, .message-box {
+.cta-box, .message-box, .message-box-with-icon {
   margin-bottom: 30px; }
-  .cta-box .box-heading, .message-box .box-heading {
+  .cta-box .box-heading, .message-box .box-heading, .message-box-with-icon .box-heading {
     margin-top: 0; }
 
 .cta-box {
@@ -1645,10 +1645,30 @@ ul.tag-list li {
       width: 100%;
       text-align: center; }
 
-.message-box {
-  padding: 30px; }
-  .message-box .box-description:last-child {
-    margin-bottom: 0; }
+.message-box:after, .message-box-with-icon:after {
+  display: block;
+  content: '';
+  clear: both; }
+
+.message-box .box-description:last-child, .message-box-with-icon .box-description:last-child {
+  margin-bottom: 0; }
+
+.message-box-with-icon {
+  display: table; }
+
+.message-box-icon {
+  display: table-cell;
+  font-family: system-ui;
+  width: 80px;
+  text-align: center;
+  vertical-align: middle; }
+
+.message-box-icon-content {
+  display: table-cell; }
+
+@media (max-width: 640px) {
+  .message-box-icon {
+    width: 50px; } }
 
 .background-black {
   background-color: #000000; }

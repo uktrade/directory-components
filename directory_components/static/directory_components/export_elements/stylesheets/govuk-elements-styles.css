@@ -326,7 +326,7 @@ section {
     overflow: hidden; }
 
 .width-sixth {
-  width: 100% / 6; }
+  width: 16.66667%; }
 
 .width-quarter {
   width: 25%; }
@@ -335,7 +335,7 @@ section {
   width: 50%; }
 
 .width-third {
-  width: 100% / 3; }
+  width: 33.33333%; }
 
 .width-two-thirds {
   width: 66.66667%; }
@@ -352,7 +352,7 @@ section {
     width: 100%; } }
 
 .width-sixth-all {
-  width: 100% / 6; }
+  width: 16.66667%; }
 
 .width-quarter-all {
   width: 25%; }
@@ -361,7 +361,7 @@ section {
   width: 50%; }
 
 .width-third-all {
-  width: 100% / 3; }
+  width: 33.33333%; }
 
 .width-two-thirds-all {
   width: 66.66667%; }

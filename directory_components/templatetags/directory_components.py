@@ -99,6 +99,11 @@ def message_box(**kwargs):
     return kwargs
 
 
+@register.inclusion_tag('directory_components/message_box_with_icon.html')
+def message_box_with_icon(**kwargs):
+    return kwargs
+
+
 @register.inclusion_tag('directory_components/banner.html')
 def banner(**kwargs):
     return kwargs
