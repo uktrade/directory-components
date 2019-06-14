@@ -1,6 +1,6 @@
 dit.tagging = dit.tagging || {};
 dit.tagging.base = new function() {
-    this.init = function() {
+    this.init = function(debug_mode) {
         $(document).ready(function() {
             addTaggingForLinks();
             addTaggingForVideos();
@@ -145,6 +145,10 @@ dit.tagging.base = new function() {
 
             if (linkDestination) {
                 event['destination'] = linkDestination;
+            }
+
+            if (debug_mode) {
+                console.log(event);
             }
 
             window.dataLayer.push(event);
