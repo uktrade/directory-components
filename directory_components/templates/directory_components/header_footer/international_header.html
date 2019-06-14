@@ -58,12 +58,12 @@
 {% block header_nav %}
 <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
   <ul class="great-header-nav-list" id="great-header-nav-list">
-    <li class="main-nav-item{% if international_header_area == "why_choose" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Why choose the UK' %}</a>
+    <li class="main-nav-item{% if international_header_area == "about_uk" %} active{% endif %}">
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ '' }}">{% trans 'About the UK' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "expand" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Set up in the UK' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Do business' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "capital_invest" %} active{% endif %}">
@@ -71,11 +71,15 @@
     </li>
 
     <li class="main-nav-item{% if international_header_area == "find_a_supplier" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a supplier' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a UK supplier' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "industries" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.industries }}">{% trans 'UK export sectors' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.industries }}">{% trans 'Industries' %}</a>
+    </li>
+
+    <li class="main-nav-item{% if international_header_area == "about_dit" %} active{% endif %}">
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ '' }}">{% trans 'About the DIT' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "news_and_events" %} active{% endif %}">
@@ -92,40 +96,75 @@
   <ul class="great-header-nav-list" id="great-header-nav-list">
 
     <li class="main-nav-item">
-      <a class="link-heading" href="{{ services_urls.invest }}" data-ga-class="header-navigation">{% trans 'Why choose the UK' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'About the UK' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ '' }}">Why choose the UK</a></li>
+        <li><a href="{{ '' }}">The Midlands</a></li>
+        <li><a href="{{ '' }}">Northern Powerhouse</a></li>
+        <li><a href="{{ '' }}">Northern Ireland</a></li>
+        <li><a href="{{ '' }}">Scotland</a></li>
+        <li><a href="{{ '' }}">South England</a></li>
+        <li><a href="{{ '' }}">South Wales</a></li>
+      </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Set up in the UK' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Do business' %}</a>
       <ul class="sub-nav-mobile-list">
-        <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-        <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
-        <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
-        <li><a href="{{ services_urls.invest }}#how-we-help">Our services</a></li>
+        <li><a href="{{ header_footer_urls.industries }}">High-potential opportunities</a></li>
+        <li><a href="{{ services_urls.uk_setup_guide }}">Business guide</a></li>
+        <li><a href="{{ services_urls.invest }}#how-we-help">Professional advice</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
       <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.capital_invest }}">{% trans 'Invest capital' %}</a>
       <ul class="sub-nav-mobile-list">
-        <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-        <li><a href="{{ header_footer_urls.industries }}">UK investment sectors</a></li>
+        <li><a href="{{ services_urls.isd }}">Investment types</a></li>
+        <li><a href="{{ header_footer_urls.industries }}">Investment opportunities</a></li>
         <li><a href="{{ services_urls.uk_setup_guide }}">Investment guides</a></li>
-        <li><a href="{{ services_urls.capital_invest }}#">Our services</a></li>
+        <li><a href="{{ services_urls.capital_invest }}#">Professional advice</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a supplier' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a UK supplier' %}</a>
       <ul class="sub-nav-mobile-list">
+        <li><a href="{{ services_urls.uk_setup_guide }}">Export guides</a></li>
         <li><a href="{{ header_footer_urls.fas }}">Supplier directory</a></li>
-        <li><a href="{{ services_urls.uk_setup_guide }}">Buying guides</a></li>
-        <li><a href="{{ header_footer_urls.fas }}#services-section">Our services</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" href="{{ header_footer_urls.industries }}" data-ga-class="header-navigation">{% trans 'UK export sectors' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Industries' %}</a>
+      <ul class="sub-nav-mobile-list">
+        <li><a href="{{ header_footer_urls.industries }}/aerospace">Aerospace</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Agricultural technology</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/automotive">Automotive</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/creative-industries">Creative industries</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Cyber security</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/education">Education</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/engineering-and-manufacturing">Engineering and manufacturing</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/financial-services">Financial services</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Food and drink</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/healthcare-and=life-sciences">Healthcare and life sciences</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/legal-services">Legal services</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Maritime</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Nuclear energy</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Oil and gas</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Retail</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/space">Space</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/">Sports economy</a></li>
+        <li><a href="{{ header_footer_urls.industries }}/technology">Technology</a></li>
+      </ul>
+    </li>
+
+    <li class="main-nav-item">
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.events }}">{% trans 'About the DIT' %}</a>
+      <ul class="sub-nav-mobile-list">
+          <li><a href="{{ services_urls.events }}">Success stories</a></li>
+          <li><a href="{{ services_urls.events }}">Contact us</a></li>
+      </ul>
     </li>
 
     <li class="main-nav-item">
@@ -141,27 +180,52 @@
 {% endblock %}
 
 {% block header_sub_nav %}
-{% if international_header_area and international_header_area != "why_choose" and international_header_area != "industries" %}
+{% if international_header_area %}
 <div class="great-header-sub-nav">
   <div class="container">
     <nav aria-label="{% trans 'Sub-menu' %}">
       <ul class="sub-nav-list">
-        {% if international_header_area == "why_choose" %}
+        {% if international_header_area == "about_uk" %}
+          <li><a href="{{ '' }}">The Midlands</a></li>
+          <li><a href="{{ '' }}">Northern Powerhouse</a></li>
+          <li><a href="{{ '' }}">Northern Ireland</a></li>
+          <li><a href="{{ '' }}">Scotland</a></li>
+          <li><a href="{{ '' }}">South England</a></li>
+          <li><a href="{{ '' }}">South Wales</a></li>
         {% elif international_header_area == "expand" %}
-          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-          <li><a href="{{ header_footer_urls.industries }}">UK business sectors</a></li>
-          <li><a href="{{ services_urls.uk_setup_guide }}">Business set up guides</a></li>
-          <li><a href="{{ services_urls.invest }}#how-we-help">Our services</a></li>
+          <li><a href="{{ header_footer_urls.industries }}">High-potential opportunities</a></li>
+          <li><a href="{{ services_urls.uk_setup_guide }}">Business guide</a></li>
+          <li><a href="{{ services_urls.invest }}#how-we-help">Professional advice</a></li>
         {% elif international_header_area == "capital_invest" %}
-          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
-          <li><a href="{{ header_footer_urls.industries }}">UK investment sectors</a></li>
+          <li><a href="{{ services_urls.isd }}">Investment types</a></li>
+          <li><a href="{{ header_footer_urls.industries }}">Investment opportunities</a></li>
           <li><a href="{{ services_urls.uk_setup_guide }}">Investment guides</a></li>
-          <li><a href="{{ services_urls.capital_invest }}#">Our services</a></li>
+          <li><a href="{{ services_urls.capital_invest }}#">Professional advice</a></li>
         {% elif international_header_area == "find_a_supplier" %}
+          <li><a href="{{ services_urls.uk_setup_guide }}">Export guides</a></li>
           <li><a href="{{ header_footer_urls.fas }}">Supplier directory</a></li>
-          <li><a href="{{ services_urls.uk_setup_guide }}">Buying guides</a></li>
-          <li><a href="{{ header_footer_urls.fas }}#services-section">Our services</a></li>
         {% elif international_header_area == "industries" %}
+          <li><a href="{{ header_footer_urls.industries }}/aerospace">Aerospace</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Agricultural technology</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/automotive">Automotive</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/creative-industries">Creative industries</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Cyber security</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/education">Education</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/engineering-and-manufacturing">Engineering and manufacturing</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/financial-services">Financial services</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Food and drink</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/healthcare-and=life-sciences">Healthcare and life sciences</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/legal-services">Legal services</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Maritime</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Nuclear energy</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Oil and gas</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Retail</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/space">Space</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/">Sports economy</a></li>
+          <li><a href="{{ header_footer_urls.industries }}/technology">Technology</a></li>
+        {% elif international_header_area == "about_dit" %}
+          <li><a href="{{ services_urls.events }}">Success stories</a></li>
+          <li><a href="{{ services_urls.events }}">Contact us</a></li>
         {% elif international_header_area == "news_and_events" %}
           <li><a href="{{ services_urls.events }}">Events</a></li>
           <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
