@@ -1,11 +1,13 @@
-from django.views.generic import TemplateView
-from demo import forms
-from django.urls import reverse_lazy
+from django.shortcuts import Http404
+from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
 
 from directory_components.mixins import (
     CountryDisplayMixin, EnableTranslationsMixin
 )
+
+from demo import forms
 
 
 class BasePageView(TemplateView):
@@ -80,3 +82,13 @@ class DemoFormView(TemplateView):
             radio_form=forms.RadioForm(),
             *args, **kwargs
         )
+
+
+class Trigger404View(View):
+    def dispatch(self, request):
+        raise Http404()
+
+
+class Trigger500ErrorView(View):
+    def dispatch(self, request):
+        raise Exception('triggering a server error')

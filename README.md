@@ -49,10 +49,6 @@ Then visit the demo at `components.trade.great:9013`
 | `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED`   | Controls `RobotsIndexControlHeaderMiddlware`. |
 | `FEATURE_MAINTENANCE_MODE_ENABLED`          | Controls `MaintenanceModeMiddleware`.         |
 | `FEATURE_FLAGS`                             | Place to store the service's feature flags.   |
-| `IP_RESTRICTOR_REMOTE_IP_ADDRESS_RETRIEVER` | Method for determining client IP address: 'govuk-paas' or 'ipware'
-| `IP_RESTRICTOR_SKIP_CHECK_ENABLED`          | Flag to enable skipping IP check if cookie is valid |
-| `IP_RESTRICTOR_SKIP_CHECK_SENDER_ID`        | The shared sender id for skipping IP check     |
-| `IP_RESTRICTOR_SKIP_CHECK_SECRET`           | The shared secret for skipping IP check        |
 
 
 ### Middleware
@@ -61,11 +57,9 @@ Middleware can be found in `directory_components.middleware.FooBar`.
 
 | Middleware | Notes |
 |------------|-------|
-| `RobotsIndexControlHeaderMiddlware` | Informs the webcrawlers to not index the service if `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED` is `true`. |
 | `MaintenanceModeMiddleware`         | Redirects to http://sorry.great.gov.uk if `FEATURE_MAINTENANCE_MODE_ENABLED` is `true`.|
 | `NoCacheMiddlware`                  | Prevents any page in the service from caching pages of logged in users. |
 | `PrefixUrlMiddleware`               | Redirects use from unprefixed url to prefixed url if `FEATURE_URL_PREFIX_ENABLED` is `true`. |
-| `IPRestrictorMiddleware`            | Convinience wrapper around (django-admin-ip-restrictor)[pypi.org/project/django-admin-ip-restrictor/]. |
 
 
 ### Context processors
@@ -79,6 +73,18 @@ Middleware can be found in `directory_components.context_processors.foo_bar`.
 | `header_footer_processor` | `header_footer_urls` | Urls used by base template's header and footer. |
 | `urls_processor` | `directory_components_urls` | More urls used by base template's header and footer. |
 | `feature_flags` | `feature_flags` | Exposes the service's feature flags. |
+
+### Exception handlers
+
+Add the following to your urls.py for directory components templates to be used on 404 and 500
+
+```
+handler404 = 'directory_components.views.handler404'
+
+handler500 = 'directory_components.views.handler500'
+```
+
+Without doing this the 500 and 400 pages would not receive context data provided by context processors
 
 ## Auto update services dependency
 

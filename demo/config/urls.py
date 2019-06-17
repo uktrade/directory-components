@@ -11,14 +11,12 @@ urlpatterns = [
     ),
     url(
         r'^404/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/404.html'},
+        views.Trigger404View.as_view(),
         name='404',
     ),
     url(
         r'^500/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/500.html'},
+        views.Trigger500ErrorView.as_view(),
         name='500',
     ),
     url(
@@ -110,3 +108,7 @@ urlpatterns = [
         name='invest-header',
     ),
 ]
+
+handler404 = 'directory_components.views.handler404'
+
+handler500 = 'directory_components.views.handler500'

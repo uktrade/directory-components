@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.5.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/218/files)
+
+### Implemented enhancements
+ - Added `handler404` so 404 pages render urls correctly.
+ - Added `handler500` so 500 pages render urls correctly.
+
 ## 16.4.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/216/files)
 
