@@ -3,6 +3,7 @@ from django.views import View
 from django.views.generic.base import RedirectView
 
 import directory_components.views
+import demo.views
 
 
 admin_urls = [
@@ -26,6 +27,16 @@ urlpatterns = [
         name='robots'
     ),
     url(
+        r'^404/$',
+        demo.views.Trigger404View.as_view(),
+        name='404',
+    ),
+    url(
+        r'^500/$',
+        demo.views.Trigger500ErrorView.as_view(),
+        name='500',
+    ),
+    url(
         r"^sitemap\.txt$",
         View.as_view(),
         name='sitemap'
@@ -37,3 +48,7 @@ urlpatterns = [
     ),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
+
+handler404 = 'directory_components.views.handler404'
+
+handler500 = 'directory_components.views.handler500'

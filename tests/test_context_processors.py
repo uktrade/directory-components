@@ -172,7 +172,7 @@ def test_urls_processor(settings):
         'soo': 'https://soo.com',
         'sso': 'https://sso.com',
         'uk_setup_guide': (
-            'https://international.com/international/how-to-setup-in-the-uk'
+            'https://international.com/international/how-to-setup-in-the-uk/'
         ),
         'isd': 'https://isd.com/investment-support-directory/',
         'office_finder': 'https://exred.com/contact/office-finder/',

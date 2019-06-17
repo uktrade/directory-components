@@ -36,9 +36,22 @@ def pytest_configure():
         TEMPLATES=[
             {
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'APP_DIRS': True,
                 'OPTIONS': {
-                    'loaders': [
-                        'django.template.loaders.app_directories.Loader',
+                    'context_processors': [
+                        'django.template.context_processors.request',
+                        (
+                            'directory_components.context_processors.'
+                            'urls_processor'
+                        ),
+                        (
+                            'directory_components.context_processors.'
+                            'header_footer_processor'
+                        ),
+                        (
+                            'directory_components.context_processors.'
+                            'feature_flags'
+                        ),
                     ],
                 },
             },
