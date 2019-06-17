@@ -119,6 +119,12 @@ urlpatterns = [
         {'template_name': 'demo/invest-header.html'},
         name='invest-header',
     ),
+    url(
+        r'^google-tag-manager/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/google-tag-manager.html'},
+        name='google-tag-manager',
+    ),
 ]
 
 handler404 = 'directory_components.views.handler404'

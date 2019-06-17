@@ -70,14 +70,17 @@ dit.tagging.base = new function() {
 
         function inferElement(domObject) {
             var parentSection = domObject.closest('[data-ga-section]');
+            console.log('parent', parentSection);
             return parentSection ? parentSection.data('ga-section') : '';
         }
 
         function inferLinkValue(link) {
-            if (link.text()) {
-                return link.text();
+            var title = guessTitleFromLinkContents(link);
+            console.log('title', title);
+            if (title) {
+                return title;
             }
-            return guessTitleFromLinkContents(link);
+            return link.text();
         }
 
         function inferVideoValue(video) {
@@ -90,7 +93,7 @@ dit.tagging.base = new function() {
 
         function isCta(link) {
             var ctaClasses = ['button', 'cta'];
-            var linkClasses = link.css();
+            var linkClasses = link.attr('class') || '';
             for (var index=0; index < ctaClasses.length; index++) {
                 if (linkClasses.includes(ctaClasses[index])) {
                     return true;
@@ -123,15 +126,14 @@ dit.tagging.base = new function() {
                 'h5',
                 'span',
                 'p',
-                'div'
             ];
 
             for (var index=0; index < titleElements.length; index++) {
-                if (link.find(titleElements[index])) {
-                    return titleElements[index].text();
+                if (link.find(titleElements[index]).text()) {
+                    return link.find(titleElements[index]).text();
                 }
             }
-            return '';
+            return null;
         }
 
         function sendEvent(action, type, element, value, linkDestination = null) {
