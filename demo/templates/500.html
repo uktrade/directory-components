@@ -11,13 +11,6 @@
     <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
-{% block content %}
-  {{ block.super }}
-  <div class="container">
-    <a href="{% url 'index' %}" class="link-back link">Go back</a>
-  </div>
-{% endblock %}
-
 {% block body_footer %}
     {% include 'demo/includes/footer.html' %}
 {% endblock %}

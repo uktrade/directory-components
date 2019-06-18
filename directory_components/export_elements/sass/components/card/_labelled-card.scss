@@ -55,7 +55,8 @@ a.labelled-card {
   }
 
   .card-header h3 {
-    @include font-large-bold;
+    @include brand-19;
+    height: 45px;
     color: $white;
     background-color: $active-blue;
     padding: 10px $spacing-3;
@@ -73,6 +74,10 @@ a.labelled-image-card {
     position: absolute;
     width: 100%;
     top: 45px;
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: $white;
   }
 
   .card-header {
@@ -83,6 +88,7 @@ a.labelled-image-card {
 
 @media (max-width: 640px) {
   a.labelled-image-card .card-image {
+    height: 200px;
     position: static;
   }
 }

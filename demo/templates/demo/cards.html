@@ -19,7 +19,7 @@
     {% breadcrumbs left_url='/' left_label='Home' right_label='Cards' %}
 </div>
 
-<section class="padding-top-30">
+<section class="underline-black">
   <div class="container">
     <div class="width-two-thirds">
       <h1 class="heading-xlarge">Cards</h1>
@@ -31,9 +31,12 @@
     <div class="width-two-thirds">
       <p>A custom ID can be assigned to the card which also creates IDs for the link and image with the suffixes <code>-link</code> and <code>-image</code> respectively. See examples below.</p>
     </div>
-
+  </div>
+</section>
+<section class="underline-black background-stone-30">
+  <div class="container">
     <div class="width-two-thirds">
-      <h2 class="heading-medium">CTA card</h2>
+      <h2 class="heading-large">CTA card</h2>
       <p>An image with a call to action.</p>
     </div>
     <div class="flex-grid">
@@ -46,44 +49,18 @@
         <pre><code>{% verbatim %}{% cta_card with_arrow=True image_url=card_image02 text="Tell us what help you need" %}{% endverbatim %}</code></pre>
       </div>
     </div>
-    <div>
-      <h2 class="heading-medium">Statistics</h2>
-      <p>A grid of statistics:</p>
-      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
-    </div>
-    <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}{% endverbatim %}</code></pre>
-    <div class="margin-top-60">
-      <p>You can also put the number first:</p>
-      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}
-    </div>
-    <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}{% endverbatim %}</code></pre>
+    <h3 class="heading-medium">HTML markup</h3>
+    <pre><code>&lt;div class="cta-card"&gt;
+  &lt;img src="/static/images/card_image01.jpg" alt=""&gt;
+  &lt;div class="link-container"&gt;
+    &lt;a class="cta-link " href=""&gt;&lt;span&gt;Read our market guide for Germany&lt;/span&gt;&lt;br&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </section>
 
-<section class="background-stone-30">
+<section class="underline-black background-stone-30">
   <div class="container">
-    <h2 class="heading-medium">Fact sheet with highlighted heading</h2>
-    <div class="flex-grid">
-      <div class="column-half">
-        <div class="fact-sheet">
-          <h3 class="highlight heading-medium background-grey white-text">Fact sheet</h3>
-          <div class="fact-sheet-content background-white padding-45 wrap-tight">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <hr>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>
-      </div>
-      <div class="column-half">
-        <pre><code>&lt;div class="fact-sheet"&gt;
-&lt;h3 class="highlight heading-medium background-grey white-text"&gt;Fact sheet&lt;/h3&gt;
-&lt;div class="fact-sheet-content background-white padding-45 wrap-tight"&gt;
-  [ html content ]
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-      </div>
-    </div>
     <h2 class="heading-medium">Image with caption</h2>
     <div class="grid-row">
       <div class="column-half">
@@ -176,60 +153,6 @@
         {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
       </div>
     </div>
-    <h2 class="heading-large">HTML markup</h2>
-    <h4 class="heading-medium">Card</h4>
-    <pre><code>
-&lt;div class="card"&gt;
-  &lt;a class="card-link" href="#"&gt;
-
-  &lt;div
-  class="card-image"
-  role="image"
-  style="background-image: url(/static/images/card_image02.jpg);"
-  aria-label="Card image description"
-  title="Card image description"&gt;
-    &lt;p class="visually-hidden"&gt;Card image description&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class="card-inner"&gt;
-    &lt;div class="card-meta"&gt;
-      &lt;p class="subheading"&gt;Metadata such as publish date and category can go here&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;h2 class="heading-large"&gt;Card title&lt;/h2&gt;
-    &lt;p class="description"&gt;Card description.&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;/a&gt;
-&lt;/div&gt;
-    </code></pre>
-
-    <h4 class="heading-medium">Labelled card</h4>
-    <pre><code lang="html">
-&lt;a class="labelled-card" href="#"&gt;
-  &lt;div class="card-header"&gt;
-    &lt;h2 class="title"&gt;Card title&lt;/h2&gt;
-  &lt;/div&gt;
-
-  &lt;div class="card-image" role="image" style="background-image: url(/static/images/card_image02.jpg);" aria-label="Card image description" title="Card image description"&gt;
-    &lt;p class="visually-hidden"&gt;Card image description&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class="card-inner with-image"&gt;
-    &lt;p class="description"&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/a&gt;
-    </code></pre>
-
-    <h4 class="heading-medium">Image with caption</h4>
-    <pre><code lang="html">&lt;figure class="image-with-caption"&gt;
-  &lt;img src="img_src" alt="alt_text"&gt;
-  &lt;figcaption class="caption"&gt;
-    &lt;p class="main-caption"&gt;Main caption&lt;/p&gt;
-    &lt;p class="sub-caption"&gt;Secondary caption&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;</code></pre>
-
-    <a href="{% url 'index' %}" class="link-back link">Go back</a>
   </div>
 </section>
 {% endblock %}

@@ -1,5 +1,18 @@
 # Changelog
 
+## 17.0.0
+
+### Implemented enhancements
+- Removed Overpass semibold (600) weight from font imports
+- Add CSS sourcemaps to aid style debugging in local dev
+
+### Bug fixes
+- Fixed margins on .underline class when used in the stats component
+
+### Breaking changes
+- `card-grid` CSS class has been removed in favour of the more descriptive `flex-grid`
+- Images used in card components (excluding `labelled_image_card`) now use the image's original aspect ratio. If the aspect ratios of multiple images used in a grid of cards do not match, their heights will no longer be aligned. In this case, please update your images to all be the same aspect ratio
+
 ## 16.5.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/218/files)
 

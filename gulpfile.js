@@ -5,6 +5,7 @@ const paths = require('govuk-elements/config/paths.json');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const cssnano = require('gulp-cssnano');
+const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
 const mocha = require('gulp-mocha');
 const nodemon = require('gulp-nodemon');
@@ -65,6 +66,7 @@ gulp.task('clean', () => {
 
 gulp.task('styles:govuk', function() {
   return gulp.src('node_modules/govuk-elements/assets/sass/**/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: [
         'node_modules/govuk_frontend_toolkit/stylesheets',
@@ -78,6 +80,7 @@ gulp.task('styles:govuk', function() {
     .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'));
 });
 
@@ -85,6 +88,7 @@ gulp.task('styles:govuk', function() {
 
 gulp.task('styles:components', () => {
   return gulp.src('directory_components/export_elements/sass/components/elements-components.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
@@ -93,23 +97,7 @@ gulp.task('styles:components', () => {
     .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
-    .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'));
-});
-
-// TO BE REMOVED!
-// Export-elements-specific no-JS component styling
-// Only used in the old domestic header and footer
-
-gulp.task('styles:no-js', () => {
-  return gulp.src('directory_components/export_elements/sass/components/elements-components-no-js.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(cssnano())
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('directory_components/static/directory_components/export_elements/stylesheets'));
 });
 
@@ -125,7 +113,6 @@ gulp.task('flags', function() {
 gulp.task('styles', [
   'styles:govuk',
   'styles:components',
-  'styles:no-js',
 ]);
 
 // Images build task ---------------------

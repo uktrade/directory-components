@@ -63,10 +63,22 @@ $colours:
 // Section underline
 
 @each $colour, $name in $colours {
-  .underline-#{$name} {
+  // needs margin when used on section tag
+  section.underline-#{$name} {
     @include container;
 
     &:after {
+      width: auto;
+      height: 4px;
+      background-color: $colour;
+    }
+  }
+  // does not need margin otherwise
+  .underline-#{$name} {
+    &:after {
+      display: block;
+      content: '';
+      width: 100%;
       height: 4px;
       background-color: $colour;
     }

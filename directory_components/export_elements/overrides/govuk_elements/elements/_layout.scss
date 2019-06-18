@@ -18,14 +18,12 @@
 }
 
 // Like .grid-row but columns expand vertically to align their heights
-.card-grid,
 .flex-grid {
   margin: 0 -15px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.card-grid > *,
 .flex-grid > * {
   padding: 0 15px;
   display: flex;

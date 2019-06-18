@@ -29,7 +29,7 @@ class InvestHeaderView(
     pass
 
 
-class DemoCardsView(BasePageView):
+class DemoStatsView(BasePageView):
     statistics = [
         {
             'heading': 'Ease of doing business',

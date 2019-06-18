@@ -3,12 +3,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='16.5.0',
+    version='17.0.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
     description='Shared components library for Export Directory.',
-    packages=find_packages(exclude=['tests.*', 'tests', 'scripts', 'demo.*']),
+    packages=find_packages(exclude=[
+        'tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     include_package_data=True,
