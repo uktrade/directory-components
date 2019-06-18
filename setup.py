@@ -8,7 +8,8 @@ setup(
     license='MIT',
     author='Department for International Trade',
     description='Shared components library for Export Directory.',
-    packages=find_packages(exclude=['tests.*', 'tests', 'scripts', 'demo.*']),
+    packages=find_packages(exclude=[
+        'tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     include_package_data=True,
