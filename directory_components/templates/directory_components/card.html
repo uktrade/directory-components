@@ -8,15 +8,7 @@
     {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
   {% endif %}
     {% if img_src %}
-      <div
-        class="card-image"
-        role="img"
-        style="background-image: url({{ img_src }});"
-        aria-label="{{ img_alt }}"
-        title="{{ img_alt }}"
-        {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-        <p class="visually-hidden">{{ img_alt }}</p>
-      </div>
+      <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
     {% endif %}
     <div class="card-inner">
       {% if html_content %}
