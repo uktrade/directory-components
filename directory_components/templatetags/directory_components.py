@@ -218,12 +218,15 @@ class GA360Tracker(template.Node):
         return soup.decode(formatter=None)
 
 
-
 @register.tag
 def breadcrumbs(parser, token):
     nodelist = parser.parse(('endbreadcrumbs',))
     parser.delete_first_token()
-    current = template.Variable(token.split_contents()[1]).resolve(None)
+    try:
+        bit = token.split_contents()[1]
+    except IndexError:
+        raise ValueError('Please specify the label of the current page')
+    current = template.Variable(bit).resolve(None)
     return Breadcrumbs(nodelist, current=current)
 
 

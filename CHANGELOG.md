@@ -6,6 +6,7 @@
 - Breadcrumbs template tag now is more flexible: supports any number of levels simplifies most usecases.
 
 ### Breaking changes
+- Remove support for python 3.5
 - breadcrumbs template tag interface has changed:
 
 #### before
