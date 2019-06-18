@@ -136,13 +136,8 @@ def test_card():
     assert 'url' in card_link['href']
 
     card_image = soup.select('.card-image')[0]
-    assert card_image['role'] == 'img'
-    assert 'img_src' in card_image['style']
-    assert card_image['aria-label'] == 'img_alt'
-    assert card_image['title'] == 'img_alt'
-
-    image_description = soup.select('p.visually-hidden')[0]
-    assert image_description.string == 'img_alt'
+    assert 'img_src' in card_image['src']
+    assert card_image['alt'] == 'img_alt'
 
     card_heading = soup.select('h3.heading-large')[0]
     assert card_heading.string == 'title'
@@ -196,13 +191,8 @@ def test_labelled_card_with_image():
     assert 'with-image' in card_inner['class']
 
     card_image = soup.select('.card-image')[0]
-    assert card_image['role'] == 'img'
-    assert 'img_src' in card_image['style']
-    assert card_image['aria-label'] == 'img_alt'
-    assert card_image['title'] == 'img_alt'
-
-    image_description = soup.select('p.visually-hidden')[0]
-    assert image_description.string == 'img_alt'
+    assert 'img_src' in card_image['src']
+    assert card_image['alt'] == 'img_alt'
 
     card_heading = soup.select('h3.title')[0]
     assert card_heading.string == 'title'
