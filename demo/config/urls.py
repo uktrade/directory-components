@@ -32,6 +32,12 @@ urlpatterns = [
         name='elements',
     ),
     url(
+        r'^statistics/$',
+        views.DemoStatsView.as_view(),
+        {'template_name': 'demo/statistics.html'},
+        name='statistics',
+    ),
+    url(
         r'^widgets/$',
         views.DemoFormView.as_view(),
         name='widgets',
@@ -73,7 +79,7 @@ urlpatterns = [
     ),
     url(
         r'^cards/$',
-        views.DemoCardsView.as_view(),
+        views.BasePageView.as_view(),
         {'template_name': 'demo/cards.html'},
         name='cards',
     ),
@@ -82,6 +88,12 @@ urlpatterns = [
         views.BasePageView.as_view(),
         {'template_name': 'demo/breadcrumbs.html'},
         name='breadcrumbs',
+    ),
+    url(
+        r'^fact-sheet/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/fact-sheet.html'},
+        name='fact-sheet',
     ),
     url(
         r'^responsive/$',
