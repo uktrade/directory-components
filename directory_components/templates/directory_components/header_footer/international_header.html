@@ -110,28 +110,28 @@
     <li class="main-nav-item">
       <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Do business' %}</a>
       <ul class="sub-nav-mobile-list">
-        <li><a href="{{ services_urls.invest }}">Getting started</a></li>
+        <li><a href="{{ services_urls.invest }}">Overview</a></li>
         <li><a href="{{ services_urls.invest }}high-potential-opportunities/food-production/">High-potential opportunities</a></li>
         <li><a href="{{ services_urls.uk_setup_guide }}">How to set up a company</a></li>
-        <li><a href="{{ services_urls.invest }}#how-we-help">Professional advice</a></li>
+        <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
       <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.capital_invest }}">{% trans 'Invest capital' %}</a>
       <ul class="sub-nav-mobile-list">
-        <li><a href="{{ services_urls.capital_invest }}">Getting started</a></li>
+        <li><a href="{{ services_urls.capital_invest }}">Overview</a></li>
         <li><a href="{{ services_urls.capital_invest }}">Investment types</a></li>
         <li><a href="{{ services_urls.capital_invest }}">Investment opportunities</a></li>
         <li><a href="{{ services_urls.capital_invest }}">How to invest capital</a></li>
-        <li><a href="{{ services_urls.capital_invest }}#">Professional advice</a></li>
+        <li><a href="{{ services_urls.capital_invest }}">Professional advice</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
       <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a UK supplier' %}</a>
       <ul class="sub-nav-mobile-list">
-        <li><a href="{{ header_footer_urls.fas }}">Getting started</a></li>
+        <li><a href="{{ header_footer_urls.fas }}">Overview</a></li>
         <li><a href="{{ header_footer_urls.fas }}">How to buy from the UK</a></li>
         <li><a href="{{ header_footer_urls.fas }}?q=&sectors=">Supplier directory</a></li>
       </ul>
@@ -175,18 +175,18 @@
           <li><a href="{{ services_urls.invest }}uk-regions/south-england">South England</a></li>
           <li><a href="{{ services_urls.invest }}uk-regions/wales">Wales</a></li>
         {% elif international_header_area == "expand" %}
-          <li><a href="{{ services_urls.invest }}">Getting started</a></li>
+          <li><a href="{{ services_urls.invest }}">Overview</a></li>
           <li><a href="{{ services_urls.invest }}high-potential-opportunities/food-production/">High-potential opportunities</a></li>
           <li><a href="{{ services_urls.uk_setup_guide }}">How to set up a company</a></li>
-          <li><a href="{{ services_urls.invest }}#how-we-help">Professional advice</a></li>
+          <li><a href="{{ services_urls.isd }}">Professional advice</a></li>
         {% elif international_header_area == "capital_invest" %}
-          <li><a href="{{ services_urls.capital_invest }}">Getting started</a></li>
+          <li><a href="{{ services_urls.capital_invest }}">Overview</a></li>
           <li><a href="{{ services_urls.capital_invest }}">Investment types</a></li>
           <li><a href="{{ services_urls.capital_invest }}">Investment opportunities</a></li>
           <li><a href="{{ services_urls.capital_invest }}">How to invest capital</a></li>
           <li><a href="{{ services_urls.capital_invest }}#">Professional advice</a></li>
         {% elif international_header_area == "find_a_supplier" %}
-          <li><a href="{{ header_footer_urls.fas }}">Getting started</a></li>
+          <li><a href="{{ header_footer_urls.fas }}">Overview</a></li>
           <li><a href="{{ header_footer_urls.fas }}">How to buy from the UK</a></li>
           <li><a href="{{ header_footer_urls.fas }}?q=&sectors=">Supplier directory</a></li>
         {% elif international_header_area == "industries" %}
