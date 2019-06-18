@@ -535,7 +535,6 @@ def test_hero_large_title():
     directory_components.hero_with_cta,
     directory_components.case_study,
     directory_components.informative_banner,
-    directory_components.breadcrumbs,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -679,8 +678,6 @@ def test_ga360_tracker_can_optionally_tag_ga_value():
     )
 
     rendered_html = template.render(Context())
-    print('rendered the thing')
-    print(rendered_html)
 
     expected_html = \
         '<div>' \
@@ -691,3 +688,28 @@ def test_ga360_tracker_can_optionally_tag_ga_value():
         ' </a>' \
         '</div>'
     assert rendered_html == expected_html
+
+
+def test_bradcrumbs():
+    template = Template(
+        '{% load breadcrumbs from directory_components %}'
+        '{% breadcrumbs "Current Page" %}'
+        '<a href="/foo"></a>'
+        '<a href="/bar"></a>'
+        '<a href="/baz"></a>'
+        '{% endbreadcrumbs %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<nav aria-label="Breadcrumb" class="breadcrumbs">'
+        '<ol>'
+        '<li><a href="/foo"></a></li>'
+        '<li><a href="/bar"></a></li>'
+        '<li><a href="/baz"></a></li>'
+        '<li aria-current="page"><span>Current Page</span></li>'
+        '</ol>'
+        '</nav>'
+    )
+    assert rendered_html.replace('\n', '') == expected_html

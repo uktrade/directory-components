@@ -11,7 +11,7 @@
 {% block content %}
 
 <div class="container">
-    {% breadcrumbs left_url='/' left_label='Home' right_label='Breadcrumbs' %}
+  {% breadcrumbs 'Breadcrumbs' %}<a href="/">Home</a>{% endbreadcrumbs %}
 </div>
 
 <section>
@@ -20,18 +20,58 @@
     <div class="grid-row">
       <div class="column-full padding-bottom-15">
         <h2 class="heading-medium">Three levels</h2>
-        <pre><code>{% verbatim %}{% breadcrumbs left_url='http://www.example.com' left_label='home' middle_url='http://www.example.com/middle/' middle_label='middle label' right_label='right label' %}{% endverbatim %}</code></pre>
-        {% breadcrumbs left_url='http://www.example.com' left_label='home' middle_url='http://www.example.com/middle/' middle_label='middle label' right_label='right label' %}
+
+
+<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
+  &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
+  &lt;a href="http://www.example.com/middle/"&gt;middle label&lt;/a&gt;
+{% endbreadcrumbs %}{% endverbatim %}
+</code></pre>
+
+{% breadcrumbs %}
+  <a href="http://www.example.com">home</a>
+  <a href="http://www.example.com/middle/">middle label</a>
+  <span>current page</span>
+{% endbreadcrumbs %}
+
       </div>
     </div>
     <div class="grid-row">
       <div class="column-full padding-bottom-15">
         <h2 class="heading-medium">Two levels</h2>
         <p>Similar to three levels, but exclude middle_url and middle_label.</p>
-        <pre><code>{% verbatim %}{% breadcrumbs left_url='http://www.example.com' left_label='home' right_label='right label' %}{% endverbatim %}</code></pre>
-        {% breadcrumbs left_url='http://www.example.com' left_label='home' right_label='right label' %}
+<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
+  &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
+{% endbreadcrumbs %}{% endverbatim %}
+</code></pre>
+
+        {% breadcrumbs 'current page' %}
+          <a href="http://www.example.com">home</a>
+        {% endbreadcrumbs %}
       </div>
     </div>
+    <div class="grid-row">
+      <div class="column-full padding-bottom-15">
+        <h2 class="heading-medium">More levels</h2>
+        <p>Similar to three levels, but exclude middle_url and middle_label.</p>
+
+<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
+  &lt;a href="http://www.example.com/level1/"&gt;level 1&lt;/a&gt;
+  &lt;a href="http://www.example.com/level2/"&gt;level 2&lt;/a&gt;
+  &lt;a href="http://www.example.com/level3/"&gt;level 3&lt;/a&gt;
+  &lt;a href="http://www.example.com/level4/"&gt;level 4&lt;/a&gt;
+{% endbreadcrumbs %}{% endverbatim %}
+</code></pre>
+
+        {% breadcrumbs 'current page' %}
+          <a href="http://www.example.com/level1/">level 1</a>
+          <a href="http://www.example.com/level2/">level 2</a>
+          <a href="http://www.example.com/level3/">level 3</a>
+          <a href="http://www.example.com/level4/">level 4</a>
+        {% endbreadcrumbs %}
+      </div>
+    </div>
+
   </div>
 </section>
 {% endblock %}
