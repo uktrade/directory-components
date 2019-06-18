@@ -17,6 +17,13 @@
     <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
+{% block feedback_reporter %}
+  <div class="container padding-top-30">
+    <a href="{% url 'index' %}" class="link-back link">Go back</a>
+  </div>
+  {{ block.super }}
+{% endblock %}
+
 {% block body_footer %}
     {% include 'demo/includes/footer.html' %}
 {% endblock %}

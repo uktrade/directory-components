@@ -17,14 +17,14 @@
 <section>
   <div class="container">
     <h1 class="heading-large">Breadcrumbs</h1>
-    <div class="grid-row"> 
+    <div class="grid-row">
       <div class="column-full padding-bottom-15">
         <h2 class="heading-medium">Three levels</h2>
         <pre><code>{% verbatim %}{% breadcrumbs left_url='http://www.example.com' left_label='home' middle_url='http://www.example.com/middle/' middle_label='middle label' right_label='right label' %}{% endverbatim %}</code></pre>
         {% breadcrumbs left_url='http://www.example.com' left_label='home' middle_url='http://www.example.com/middle/' middle_label='middle label' right_label='right label' %}
       </div>
     </div>
-    <div class="grid-row"> 
+    <div class="grid-row">
       <div class="column-full padding-bottom-15">
         <h2 class="heading-medium">Two levels</h2>
         <p>Similar to three levels, but exclude middle_url and middle_label.</p>
@@ -32,13 +32,6 @@
         {% breadcrumbs left_url='http://www.example.com' left_label='home' right_label='right label' %}
       </div>
     </div>
-  </div>
-</section>
-
-
-<section>
-  <div class="container">
-    <a href="{% url 'index' %}" class="link-back">Go back</a>
   </div>
 </section>
 {% endblock %}
