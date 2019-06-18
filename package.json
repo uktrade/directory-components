@@ -19,7 +19,7 @@
     "govuk-elements-sass": "3.1.2",
     "gulp-print": "^2.0.1",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1"
+    "gulp-sourcemaps": "^2.6.5"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
