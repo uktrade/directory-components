@@ -246,9 +246,13 @@ class Breadcrumbs(template.Node):
         html = self.nodelist.render(context)
         input_soup = BeautifulSoup(html, 'html.parser')
         output_soup = BeautifulSoup(self.template, 'html.parser')
-
+        links = input_soup.findAll('a')
+        if not links:
+            raise ValueError('Please specify some links')
         # adding level 1...n
-        for link in input_soup.findAll('a'):
+        for link in links:
+            if not link.get('href'):
+                raise ValueError('Missing href in breadcrumb')
             element = output_soup.new_tag('li')
             element.append(link)
             output_soup.find('ol').append(element)

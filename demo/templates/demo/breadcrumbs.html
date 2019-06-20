@@ -19,14 +19,28 @@
     <h1 class="heading-large">Breadcrumbs</h1>
     <div class="grid-row">
       <div class="column-full padding-bottom-15">
+        <h2 class="heading-medium">Two levels</h2>
+        <p>Specify the current page's label as the first argument of the tag, then include a single link in the body of the tag:</p>
+<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
+  &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
+{% endbreadcrumbs %}{% endverbatim %}
+</code></pre>
+        <h3 class="heading-small">Output</h3>
+        {% breadcrumbs 'current page' %}
+          <a href="http://www.example.com">home</a>
+        {% endbreadcrumbs %}
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="column-full padding-bottom-15">
         <h2 class="heading-medium">Three levels</h2>
-
-
+        <p>Specify the current page's label as the first argument of the tag, then include two links in the body of the tag:</p>
 <pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
   &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
   &lt;a href="http://www.example.com/middle/"&gt;middle label&lt;/a&gt;
 {% endbreadcrumbs %}{% endverbatim %}
 </code></pre>
+        <h3 class="heading-small">Output</h3>
 
 {% breadcrumbs 'current page' %}
   <a href="http://www.example.com">home</a>
@@ -37,23 +51,8 @@
     </div>
     <div class="grid-row">
       <div class="column-full padding-bottom-15">
-        <h2 class="heading-medium">Two levels</h2>
-        <p>Similar to three levels, but exclude middle_url and middle_label.</p>
-<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
-  &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
-{% endbreadcrumbs %}{% endverbatim %}
-</code></pre>
-
-        {% breadcrumbs 'current page' %}
-          <a href="http://www.example.com">home</a>
-        {% endbreadcrumbs %}
-      </div>
-    </div>
-    <div class="grid-row">
-      <div class="column-full padding-bottom-15">
         <h2 class="heading-medium">More levels</h2>
-        <p>Similar to three levels, but exclude middle_url and middle_label.</p>
-
+        <p>Similar to above, but include a number of links in the body of the tag.</p>
 <pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
   &lt;a href="http://www.example.com/level1/"&gt;level 1&lt;/a&gt;
   &lt;a href="http://www.example.com/level2/"&gt;level 2&lt;/a&gt;

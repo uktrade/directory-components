@@ -713,3 +713,45 @@ def test_bradcrumbs():
         '</nav>'
     )
     assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_bradcrumbs_empty_href():
+    template = Template(
+        '{% load breadcrumbs from directory_components %}'
+        '{% breadcrumbs "Current Page" %}'
+        '<a href=""></a>'
+        '{% endbreadcrumbs %}'
+    )
+    with pytest.raises(ValueError):
+        template.render(Context())
+
+
+def test_bradcrumbs_missing_href():
+    template = Template(
+        '{% load breadcrumbs from directory_components %}'
+        '{% breadcrumbs "Current Page" %}'
+        '<a></a>'
+        '{% endbreadcrumbs %}'
+    )
+    with pytest.raises(ValueError):
+        template.render(Context())
+
+
+def test_bradcrumbs_missing_links():
+    template = Template(
+        '{% load breadcrumbs from directory_components %}'
+        '{% breadcrumbs "Current Page" %}'
+        '{% endbreadcrumbs %}'
+    )
+    with pytest.raises(ValueError):
+        template.render(Context())
+
+
+def test_bradcrumbs_missing_current_page():
+    with pytest.raises(ValueError):
+        Template(
+            '{% load breadcrumbs from directory_components %}'
+            '{% breadcrumbs %}'
+            '<a href="/foo"></a>'
+            '{% endbreadcrumbs %}'
+        )
