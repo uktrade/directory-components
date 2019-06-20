@@ -59,7 +59,7 @@
 <nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
   <ul class="great-header-nav-list" id="great-header-nav-list">
     <li class="main-nav-item{% if international_header_area == "about_uk" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}uk-regions/midlands">{% trans 'Why the UK?' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}uk-regions/midlands">{% trans 'About the UK' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "expand" %} active{% endif %}">
@@ -71,11 +71,7 @@
     </li>
 
     <li class="main-nav-item{% if international_header_area == "find_a_supplier" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find suppliers' %}</a>
-    </li>
-
-    <li class="main-nav-item{% if international_header_area == "industries" %} active{% endif %}">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.industries }}">{% trans 'Industries' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Buy from the UK' %}</a>
     </li>
 
     <li class="main-nav-item{% if international_header_area == "about_dit" %} active{% endif %}">
@@ -98,17 +94,14 @@
     <li class="main-nav-item">
       <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}uk-regions/midlands">{% trans 'About the UK' %}</a>
       <ul class="sub-nav-mobile-list">
-        <li><a href="{{ services_urls.invest }}uk-regions/midlands">The Midlands</a></li>
-        <li><a href="{{ services_urls.invest }}uk-regions/north-england">Northern Powerhouse</a></li>
-        <li><a href="{{ services_urls.invest }}uk-regions/northern-ireland">Northern Ireland</a></li>
-        <li><a href="{{ services_urls.invest }}uk-regions/scotland">Scotland</a></li>
-        <li><a href="{{ services_urls.invest }}uk-regions/south-england">South England</a></li>
-        <li><a href="{{ services_urls.invest }}uk-regions/wales">Wales</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/midlands">Overview</a></li>
+        <li><a href="{{ services_urls.invest }}uk-regions/midlands">Regions</a></li>
+        <li><a href="{{ header_footer_urls.industries }}">Industries</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Do business' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.invest }}">{% trans 'Start a company' %}</a>
       <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.invest }}">Overview</a></li>
         <li><a href="{{ services_urls.invest }}high-potential-opportunities/food-production/">High-potential opportunities</a></li>
@@ -129,7 +122,7 @@
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Find a UK supplier' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.fas }}">{% trans 'Buy from the UK' %}</a>
       <ul class="sub-nav-mobile-list">
         <li><a href="{{ header_footer_urls.fas }}">Overview</a></li>
         <li><a href="{{ header_footer_urls.fas }}">How to buy from the UK</a></li>
@@ -138,19 +131,16 @@
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ header_footer_urls.industries }}">{% trans 'Industries' %}</a>
-    </li>
-
-    <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'About the DIT' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'About us' %}</a>
       <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.great_international }}">What we do</a></li>
         <li><a href="{{ services_urls.great_international }}">Success stories</a></li>
+        <li><a href="{{ services_urls.contact_us }}">Contact us</a></li>
       </ul>
     </li>
 
     <li class="main-nav-item">
-      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'News & events' %}</a>
+      <a class="link-heading" data-ga-class="header-navigation" href="{{ services_urls.great_international }}">{% trans 'Latest' %}</a>
       <ul class="sub-nav-mobile-list">
         <li><a href="{{ services_urls.events }}">Events</a></li>
         <li><a href="https://www.gov.uk/government/organisations/department-for-international-trade">News</a></li>
@@ -162,18 +152,15 @@
 {% endblock %}
 
 {% block header_sub_nav %}
-{% if international_header_area and international_header_area != "industries" %}
+{% if international_header_area %}
 <div class="great-header-sub-nav">
   <div class="container">
     <nav aria-label="{% trans 'Sub-menu' %}">
       <ul class="sub-nav-list">
         {% if international_header_area == "about_uk" %}
-          <li><a href="{{ services_urls.invest }}uk-regions/midlands">The Midlands</a></li>
-          <li><a href="{{ services_urls.invest }}uk-regions/north-england">Northern Powerhouse</a></li>
-          <li><a href="{{ services_urls.invest }}uk-regions/northern-ireland">Northern Ireland</a></li>
-          <li><a href="{{ services_urls.invest }}uk-regions/scotland">Scotland</a></li>
-          <li><a href="{{ services_urls.invest }}uk-regions/south-england">South England</a></li>
-          <li><a href="{{ services_urls.invest }}uk-regions/wales">Wales</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/midlands">Overview</a></li>
+          <li><a href="{{ services_urls.invest }}uk-regions/midlands">Regions</a></li>
+          <li><a href="{{ header_footer_urls.industries }}">Industries</a></li>
         {% elif international_header_area == "expand" %}
           <li><a href="{{ services_urls.invest }}">Overview</a></li>
           <li><a href="{{ services_urls.invest }}high-potential-opportunities/food-production/">High-potential opportunities</a></li>
@@ -189,7 +176,6 @@
           <li><a href="{{ header_footer_urls.fas }}">Overview</a></li>
           <li><a href="{{ header_footer_urls.fas }}">How to buy from the UK</a></li>
           <li><a href="{{ header_footer_urls.fas }}?q=&sectors=">Supplier directory</a></li>
-        {% elif international_header_area == "industries" %}
         {% elif international_header_area == "about_dit" %}
           <li><a href="{{ services_urls.great_international }}">What we do</a></li>
           <li><a href="{{ services_urls.great_international }}">Success stories</a></li>
