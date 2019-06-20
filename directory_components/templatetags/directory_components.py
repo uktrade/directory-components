@@ -164,11 +164,6 @@ def informative_banner(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/breadcrumbs.html')
-def breadcrumbs(**kwargs):
-    return kwargs
-
-
 @register.inclusion_tag('directory_components/case_study.html')
 def case_study(**kwargs):
     return kwargs
@@ -211,7 +206,9 @@ class GA360Tracker(template.Node):
         html = self.nodelist.render(context)
         soup = BeautifulSoup(html, 'html.parser')
 
-        selector = self.target.resolve(context) if self.target is not None else 'a'  # noqa
+        selector = (
+            self.target.resolve(context) if self.target is not None else 'a'
+        )
         for element in soup.findAll(selector):
             element.attrs['data-ga-class'] = self.ga_class.resolve(context)
             if self.value is not None:
@@ -219,3 +216,49 @@ class GA360Tracker(template.Node):
 
         # Use formatter=None so that `&` is not converted to `&amp;`
         return soup.decode(formatter=None)
+
+
+@register.tag
+def breadcrumbs(parser, token):
+    nodelist = parser.parse(('endbreadcrumbs',))
+    parser.delete_first_token()
+    try:
+        bit = token.split_contents()[1]
+    except IndexError:
+        raise ValueError('Please specify the label of the current page')
+    current = template.Variable(bit).resolve(None)
+    return Breadcrumbs(nodelist, current=current)
+
+
+class Breadcrumbs(template.Node):
+    template = """
+        <nav aria-label="Breadcrumb" class="breadcrumbs">
+          <ol>
+          </ol>
+        </nav>
+    """
+
+    def __init__(self, nodelist, current):
+        self.nodelist = nodelist
+        self.current = current
+
+    def render(self, context):
+        html = self.nodelist.render(context)
+        input_soup = BeautifulSoup(html, 'html.parser')
+        output_soup = BeautifulSoup(self.template, 'html.parser')
+        links = input_soup.findAll('a')
+        if not links:
+            raise ValueError('Please specify some links')
+        # adding level 1...n
+        for link in links:
+            if not link.get('href'):
+                raise ValueError('Missing href in breadcrumb')
+            element = output_soup.new_tag('li')
+            element.append(link)
+            output_soup.find('ol').append(element)
+
+        # adding the current page
+        output_soup.find('ol').append(
+            f'<li aria-current="page"><span>{self.current}</span></li>'
+        )
+        return output_soup.decode(formatter=None)

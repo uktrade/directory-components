@@ -1,5 +1,23 @@
 # Changelog
 
+## 18.0.0
+
+### Implemented enhancements
+- Breadcrumbs template tag now is more flexible: supports any number of levels simplifies most usecases.
+
+### Breaking changes
+- Remove support for python 3.5
+- breadcrumbs template tag interface has changed:
+
+#### before
+1. `{% breadcrumbs left_url='/' left_label='Home' right_label='Statistics' %}`
+2. `{% breadcrumbs left_url='/' left_label='Home' middle_url='/middle/' middle_label='middle' right_label='Statistics' %}`
+
+#### after
+1. `{% breadcrumbs 'Statistics' %}<a href="/">Home</a>{% endbreadcrumbs %}`
+2. `{% breadcrumbs 'Statistics' %}<a href="/">Home</a><a href="/middle/">middle</a>{% endbreadcrumbs %}`
+
+
 ## 17.0.0
 
 ### Implemented enhancements
