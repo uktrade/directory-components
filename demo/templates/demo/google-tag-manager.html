@@ -15,9 +15,34 @@
     {% breadcrumbs left_url='/' left_label='Home' right_label='Banners' %}
 </div>
 
-<section class="padding-top-30">
+<section>
     <div class="container">
         <h1 class="heading-xlarge">Google Tag Manager</h1>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="heading-large">Introduction</h2>
+
+        <h3 class="heading-medium">TL;DR</h3>
+        <p class="width-two-thirds">
+            As long as your page satisfies the following criteria, all basic analytics should be taken care of without
+            you having to do anything!
+        </p>
+
+        <ol class="list list-bullet width-two-thirds">
+            <li>Your template extends <code>base.html</code></li>
+            <li>Your view extends the <code>GA360Mixin</code></li>
+            <li>Your app uses the (correctly configured) <code>analytics</code> context processor</li>
+        </ol>
+
+        <p class="width-two-thirds">
+            If you don't want to extend the base template, or if you'd like finer grained control over how things are
+            tagged on your page, then keep reading to find out the details!
+        </p>
+
+        <h3 class="heading-medium">Purpose</h3>
         <p class="width-two-thirds">
             Google Analytics on its own is able to track a lot of data such as the number of page hits,
             information about how users arrive on our sites etc.
@@ -32,22 +57,23 @@
         <p class="width-two-thirds">
             This page details our GTM setup, and the tools we have created to make this tracking simple.
         </p>
-    </div>
-</section>
 
-<section class="padding-top-30">
-    <div class="container">
-        <h2 class="heading-large">Explaining the DataLayer</h2>
+        <h3 class="heading-medium">Explaining the DataLayer</h3>
         <p class="width-two-thirds">
-            Rather than sending events directly to Google Analytics, we instead prefer to push our events to a global
-            JS variable called the 'dataLayer'. The 'dataLayer' is managed by the GTM scripts, and will collect
-            various events that occur, before sending them off to GTM. One advantage of this approach is to
-            significantly reduce the number of calls that we need to make to GTM.
+            Whenever something happens on the page (eg the page is loaded, or the user clicks on a button), an event
+            is raised to record what happened. These events are then sent to Google Analytics, where they can be used
+            to build up a picture of how the site is being used.
+        </p>
+        <p class="width-two-thirds">
+            It is possible to post these events directly to Google Analytics, but instead we prefer to push our events
+            to a global JS variable called the 'dataLayer'. The 'dataLayer' is managed by the GTM scripts, and will
+            gather up various events that occur, before sending them off to GTM all in one go. One advantage of this
+            approach is to significantly reduce the number of calls that we need to make to GTM.
         </p>
     </div>
 </section>
 
-<section class="padding-top-30">
+<section>
     <div class="container">
         <h2 class="heading-large">Page Level Tracking</h2>
         <p class="width-two-thirds">
@@ -125,7 +151,7 @@
     </div>
 </section>
 
-<section>
+<section id="user-interaction-tracking">
     <div class="container">
         <h2 class="heading-large">User Interaction Tracking</h2>
         <p class="width-two-thirds">
@@ -141,10 +167,6 @@
             unlikely to be perfect, but should be a good place from which to start. For elements where we need a little
             more detail, or wish to track extra interactions, its easy to add to explicit overrides to improve the
             tracking.
-        </p>
-        <p class="width-two-thirds">
-            See below for details of what will automatically be tracked, and how to configure it with additional
-            tracking information.
         </p>
 
         <h3 class="heading-medium">Setup</h3>
@@ -201,12 +223,14 @@
 
         <p class="width-two-thirds">By default, the fields will be populated as follows.</p>
 
-        <ul>
-            <li><span><em>Action: </em>'clickLink'</span></li>
-            <li><span><em>Type: </em>'pageLink/card/cta' - Inferred as described in the sections below.</span></li>
-            <li><span><em>Element: </em>Looks for a parent with a 'data-ga-section="section-name"' attribute and uses that value. Otherwise an empty string.</span></li>
-            <li><span><em>Value: </em>The link text if it exists. Otherwise it scans the descendent HTML looking for text that is likely to be a title. </span></li>
-        </ul>
+        <table class="margin-bottom-30">
+            <thead><tr><td class="width-sixth">Key</td><td class="width-quarter">Default Value</td><td>Comment</td></tr></thead>
+            <tr><td>Action</td><td>'clickLink'</td><td></td></tr>
+            <tr><td>Type</td><td>'pageLink' / 'card' / 'cta'</td><td>Inferred as described in the sections below</td></tr>
+            <tr><td>Element</td><td>Inferred from parents</td><td>Scans itself and ancestors for an element with a 'data-ga-section'. Falls back to an element with an 'id' attribute. Else an empty string.</td></tr>
+            <tr><td>Value</td><td>Inferred from contents</td><td>The link text if it exists. Otherwise it scans the descendent HTML looking for text that is likely to be a title.</td></tr>
+            <tr><td>Destination</td><td>The href of the link</td><td></td></tr>
+        </table>
 
         <h4 class="heading-small">Cards</h4>
         <p class="width-two-thirds">Any link which is a <a href="{% url 'cards' %}">card</a>. Determined by testing the css class of the link for relevant terms.</p>
@@ -224,12 +248,14 @@
 
         <p class="width-two-thirds">By default, the fields will be populated as follows.</p>
 
-        <ul>
-            <li><span><em>Action: </em>'submit'</span></li>
-            <li><span><em>Type: </em>'form'</span></li>
-            <li><span><em>Element: </em>Looks for a parent with a 'data-ga-section="section-name"' attribute and uses that value. Otherwise an empty string.</span></li>
-            <li><span><em>Value: </em>The form's action, if it exists.</span></li>
-        </ul>
+        <table class="margin-bottom-30">
+            <thead><tr><td class="width-sixth">Key</td><td class="width-quarter">Default Value</td><td>Comment</td></tr></thead>
+            <tr><td>Action</td><td>'submit'</td><td></td></tr>
+            <tr><td>Type</td><td>'form'</td><td></td></tr>
+            <tr><td>Element</td><td>Inferred from parents</td><td>Scans itself and ancestors for an element with a 'data-ga-section'. Falls back to an element with an 'id' attribute. Else an empty string.</td></tr>
+            <tr><td>Value</td><td>The form's action</td><td></td></tr>
+            <tr><td>Data</td><td>$(theForm).serialize()</td><td>Only set if the form has the <code>data-ga-include-form-data</code> attribute set to "True".</td></tr>
+        </table>
 
         <h3 class="heading-medium">Videos</h3>
         <p class="width-two-thirds">
@@ -239,12 +265,13 @@
 
         <p class="width-two-thirds">By default, the fields will be populated as follows.</p>
 
-        <ul>
-            <li><span><em>Action: </em>'play/pause/ended'</span></li>
-            <li><span><em>Type: </em>'video'</span></li>
-            <li><span><em>Element: </em>Looks for a parent with a 'data-ga-section="section-name"' attribute and uses that value. Otherwise an empty string.</span></li>
-            <li><span><em>Value: </em>The video's source, if it exists.</span></li>
-        </ul>
+        <table class="margin-bottom-30">
+            <thead><tr><td class="width-sixth">Key</td><td class="width-quarter">Default Value</td><td>Comment</td></tr></thead>
+            <tr><td>Action</td><td>'play/pause/ended'</td><td></td></tr>
+            <tr><td>Type</td><td>'video'</td><td></td></tr>
+            <tr><td>Element</td><td>Inferred from parents</td><td>Scans itself and ancestors for an element with a 'data-ga-section'. Falls back to an element with an 'id' attribute. Else an empty string.</td></tr>
+            <tr><td>Value</td><td>The video's source</td><td></td></tr>
+        </table>
 
         <h3 class="heading-medium">Examples</h3>
         <p class="width-two-thirds">
@@ -291,20 +318,24 @@
         </div>
 
         <h4 class="heading-small">Form</h4>
-        <pre><code>&lt;form action="/" class="form-group"&gt;
-    &lt;label class="form-label"&gt;
-        Name
-        &lt;input type="text" class="form-control"&gt;
-    &lt;/label&gt;
-    &lt;button type="submit" class="button margin-top-30"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-        <form action="/" class="form-group">
-            <label class="form-label">
-                Name
-                <input type="text" class="form-control">
-            </label>
-            <button type="submit" class="button margin-top-30">Submit</button>
-        </form>
+        <pre><code>{% verbatim %}{% ga360_data "form" include_form_data="True" %}
+    &lt;form action="/" class="form-group"&gt;
+        &lt;label class="form-label"&gt;
+            Name
+            &lt;input type="text" class="form-control"&gt;
+        &lt;/label&gt;
+        &lt;button type="submit" class="button margin-top-30"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+{% end_ga360_data %}{% endverbatim %}</code></pre>
+        {% ga360_data "form" include_form_data="True" %}
+            <form action="/" class="form-group">
+                <label class="form-label">
+                    Name
+                    <input type="text" class="form-control" name="name">
+                </label>
+                <button type="submit" class="button margin-top-30">Submit</button>
+            </form>
+        {% end_ga360_data %}
     </div>
 </section>
 

@@ -1,6 +1,7 @@
 {% extends 'directory_components/header_footer/header_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load ga360_data from directory_components %}
 
 {% block global_header_class %}domestic{% endblock %}
 {% block header_class %}domestic{% endblock %}
@@ -39,20 +40,20 @@
 {% block header_nav %}
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.advice }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-advice">Advice</a>
+  <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice">Advice</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.markets }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-markets">Markets</a>
+  <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets">Markets</a>
 </li>
 
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.services }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-services">Services</a>
+  <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services">Services</a>
 </li>
 
 {% if features.NEWS_SECTION_ON %}
 <li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" data-ga-class="great-header-menu-link" id="header-news">News and events</a>
+  <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
 </li>
 {% endif %}
 

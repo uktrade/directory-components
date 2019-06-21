@@ -1,6 +1,6 @@
 dit.tagging = dit.tagging || {};
 dit.tagging.base = new function() {
-    this.init = function(debug_mode) {
+    this.init = function(debug_mode=false) {
         $(document).ready(function() {
             addTaggingForLinks();
             addTaggingForVideos();
@@ -8,9 +8,15 @@ dit.tagging.base = new function() {
         });
 
         function addTaggingForLinks() {
+            var leftMouseButton = 1;
+            var middleMouseButton = 2;
             var enterKeyValue = 13;
             $('a')
-                .on('click', function() { sendLinkEvent($(this)); })
+                .on('mouseup', function(event) {
+                    if (event.which === leftMouseButton || event.which === middleMouseButton) {
+                        sendLinkEvent($(this));
+                    }
+                })
                 .on('keypress', function(event) {
                     if (event.code === enterKeyValue) {
                         sendLinkEvent($(this));
@@ -36,7 +42,7 @@ dit.tagging.base = new function() {
             var value = link.data('ga-value') || inferLinkValue(link);
             var destination = link.attr('href');
 
-            sendEvent(action, type, element, value, destination);
+            sendEvent(linkEvent(action, type, element, value, destination));
         }
 
         function sendVideoEvent(video, action) {
@@ -44,7 +50,7 @@ dit.tagging.base = new function() {
             var element = video.data('ga-element') || inferElement(video);
             var value = video.data('ga-value') || inferVideoValue(video);
 
-            sendEvent(action, type, element, value);
+            sendEvent(event(action, type, element, value));
         }
 
         function sendFormEvent(form) {
@@ -52,8 +58,10 @@ dit.tagging.base = new function() {
             var type = form.data('ga-type') || 'form';
             var element = form.data('ga-element') || inferElement(form);
             var value = form.data('ga-value') || inferFormValue(form);
+            var formData = form.data('ga-include-form-data').toLowerCase() === "true" ? form.serialize() : null;
 
-            sendEvent(action, type, element, value);
+            console.log('formData', formData, form.serialize());
+            sendEvent(formEvent(action, type, element, value, formData));
         }
 
         function inferLinkType(link) {
@@ -69,18 +77,25 @@ dit.tagging.base = new function() {
         }
 
         function inferElement(domObject) {
-            var parentSection = domObject.closest('[data-ga-section]');
-            console.log('parent', parentSection);
-            return parentSection ? parentSection.data('ga-section') : '';
+            var sectionTitle = domObject.closest('[data-ga-section]').data('ga-section');
+            if (sectionTitle) {
+                return sectionTitle;
+            }
+
+            var sectionId = domObject.closest('[id]').attr('id');
+            if (sectionId) {
+                return sectionId;
+            }
+
+            return '';
         }
 
         function inferLinkValue(link) {
             var title = guessTitleFromLinkContents(link);
-            console.log('title', title);
             if (title) {
                 return title;
             }
-            return link.text();
+            return link.text().trim();
         }
 
         function inferVideoValue(video) {
@@ -88,7 +103,7 @@ dit.tagging.base = new function() {
         }
 
         function inferFormValue(form) {
-            return form.attr('action');
+            return form.attr('action') || '';
         }
 
         function isCta(link) {
@@ -130,25 +145,40 @@ dit.tagging.base = new function() {
 
             for (var index=0; index < titleElements.length; index++) {
                 if (link.find(titleElements[index]).text()) {
-                    return link.find(titleElements[index]).text();
+                    return link.find(titleElements[index]).text().trim();
                 }
             }
             return null;
         }
 
-        function sendEvent(action, type, element, value, linkDestination = null) {
-            var event = {
+        function event(action, type, element, value) {
+            return {
                 'event': 'gaEvent',
                 'action': action,
                 'type': type,
                 'element': element,
                 'value': value,
-            };
+            }
+        }
 
-            if (linkDestination) {
-                event['destination'] = linkDestination;
+        function linkEvent(action, type, element, value, destination) {
+            var linkEvent = event(action, type, element, value);
+            linkEvent['destination'] = destination;
+
+            return linkEvent;
+        }
+
+        function formEvent(action, type, element, value, data) {
+            var formEvent = event(action, type, element, value);
+
+            if (data) {
+                formEvent['formData'] = data;
             }
 
+            return formEvent;
+        }
+
+        function sendEvent(event) {
             if (debug_mode) {
                 console.log(event);
             }

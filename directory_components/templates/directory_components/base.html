@@ -1,7 +1,6 @@
 {% load static from staticfiles %}
 {% load i18n %}
 {% load static_absolute from directory_components %}
-{% load ga360_tracker from directory_components %}
 {% get_current_language_bidi as LANGUAGE_BIDI %}
 
 <!DOCTYPE html>
@@ -76,7 +75,6 @@
             <script src="{% static 'directory_components/js/dit.utils.js' %}"></script>
             <script src="{% static 'directory_components/js/dit.classes.Dropdown.js' %}"></script>
             <script src="{% static 'directory_components/js/dit.classes.Modal.js' %}"></script>
-            <script src="{% static 'directory_components/js/dit.components.greatDomesticHeader.js' %}"></script>
         {% endblock %}
 
         {% block head_other %}{% endblock %}
@@ -111,11 +109,9 @@
             <main id="content" class="{% block css_layout_class %}{% endblock css_layout_class %}" role="main">
                 {% block content %}{% endblock %}
                 {% block feedback_reporter %}
-                    <section class="error-reporting" dir="ltr">
+                    <section class="error-reporting" dir="ltr" data-ga-section="feedback">
                         <div class="container">
-                            {% ga360_tracker "feedback-link" %}
                             <a id="error-reporting-section-contact-us" href="{{ services_urls.feedback }}" target="_blank">Is there anything wrong with this page?</a>
-                            {% endga360_tracker %}
                         </div>
                     </section>
                 {% endblock %}
