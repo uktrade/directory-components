@@ -12,7 +12,9 @@
 {% static 'images/card_image01.jpg' as card_image01 %}
 
 <div class="container">
-    {% breadcrumbs left_url='/' left_label='Home' right_label='Banners' %}
+    {% breadcrumbs 'Google Tag Manager' %}
+        <a href="/">Home</a>
+    {% endbreadcrumbs %}
 </div>
 
 <section>
@@ -311,8 +313,8 @@
         <pre><code>{% verbatim %}&lt;div class="column-half"&gt;
     {% card img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
 &lt;/div&gt;{% endverbatim %}</code></pre>
-        <div class="card-grid">
-            <div class="column-half">
+        <div class="flex-grid">
+            <div class="column-third">
                 {% card img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
             </div>
         </div>
@@ -337,13 +339,6 @@
             </form>
         {% end_ga360_data %}
     </div>
-</section>
-
-
-<section>
-  <div class="container">
-    <a href="{% url 'index' %}" class="link-back">Go back</a>
-  </div>
 </section>
 
 {% endblock %}
