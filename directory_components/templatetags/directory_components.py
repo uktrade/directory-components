@@ -226,8 +226,7 @@ def breadcrumbs(parser, token):
         bit = token.split_contents()[1]
     except IndexError:
         raise ValueError('Please specify the label of the current page')
-    current = template.Variable(bit).resolve(None)
-    return Breadcrumbs(nodelist, current=current)
+    return Breadcrumbs(nodelist, bit)
 
 
 class Breadcrumbs(template.Node):
@@ -238,9 +237,9 @@ class Breadcrumbs(template.Node):
         </nav>
     """
 
-    def __init__(self, nodelist, current):
+    def __init__(self, nodelist, bit):
         self.nodelist = nodelist
-        self.current = current
+        self.bit = bit
 
     def render(self, context):
         html = self.nodelist.render(context)
@@ -258,7 +257,8 @@ class Breadcrumbs(template.Node):
             output_soup.find('ol').append(element)
 
         # adding the current page
+        current = template.Variable(self.bit).resolve(context)
         output_soup.find('ol').append(
-            f'<li aria-current="page"><span>{self.current}</span></li>'
+            f'<li aria-current="page"><span>{current}</span></li>'
         )
         return output_soup.decode(formatter=None)

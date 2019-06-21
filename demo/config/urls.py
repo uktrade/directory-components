@@ -85,7 +85,7 @@ urlpatterns = [
     ),
     url(
         r'^breadcrumbs/$',
-        views.BasePageView.as_view(),
+        views.BreadcrumbsDemoPageView.as_view(),
         {'template_name': 'demo/breadcrumbs.html'},
         name='breadcrumbs',
     ),

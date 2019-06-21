@@ -29,6 +29,18 @@ class InvestHeaderView(
     pass
 
 
+class BreadcrumbsDemoPageView(BasePageView):
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['page'] = {
+            'title': 'Breadcrumbs demo page',
+            'url': '',
+        }
+        context['home_link'] = '/'
+        context['home_label'] = 'Home'
+        return context
+
+
 class DemoStatsView(BasePageView):
     statistics = [
         {

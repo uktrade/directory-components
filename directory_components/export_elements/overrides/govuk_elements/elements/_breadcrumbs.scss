@@ -12,7 +12,6 @@
 
   li:after {
     @include chevron(-45deg, $light-grey);
-    margin: 0;
     top: .45em;
   }
 

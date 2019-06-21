@@ -1,5 +1,10 @@
 # Changelog
 
+## 18.1.0
+
+### Implemented enhancements
+- Breadcrumbs template tag now supports context variables as first argument.
+
 ## 18.0.0
 
 ### Implemented enhancements
