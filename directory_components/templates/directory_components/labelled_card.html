@@ -1,14 +1,18 @@
 <a
-  class="labelled-card"
+  class="labelled-card lazyload"
   href="{{ url }}"
-  {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
-  <div class="card-header">
-    <h3 class="title">{% firstof title heading %}</h3>
-  </div>
-  {% if img_src %}
-    <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-  {% endif %}
-  <div class="card-inner {% if img_src %}with-image{% endif %}">
-    <p class="description">{{ description }}</p>
-  </div>
+  {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
+  data-noscript=""
+>
+  <noscript>
+    <div class="card-header">
+      <h3 class="title">{% firstof title heading %}</h3>
+    </div>
+    {% if img_src %}
+      <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
+    {% endif %}
+    <div class="card-inner {% if img_src %}with-image{% endif %}">
+      <p class="description">{{ description }}</p>
+    </div>
+  </noscript>
 </a>

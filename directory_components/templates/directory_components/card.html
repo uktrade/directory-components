@@ -1,31 +1,35 @@
 <div
-  class="card {% if title and not description and not html_content %}only-title{% endif %}"
-  {% if card_id %}id="{{ card_id }}"{% endif %}>
-  {% if url %}
-  <a
-    class="card-link"
-    href="{{ url }}"
-    {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
-  {% endif %}
-    {% if img_src %}
-      <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
+  class="card lazyload {% if title and not description and not html_content %}only-title{% endif %}"
+  {% if card_id %}id="{{ card_id }}"{% endif %}
+  data-noscript=""
+>
+  <noscript>
+    {% if url %}
+    <a
+      class="card-link"
+      href="{{ url }}"
+      {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
     {% endif %}
-    <div class="card-inner">
-      {% if html_content %}
-      {{ html_content }}
-      {% else %}
-        {% if subheading %}
-          <p class="subheading">{{ subheading }}</p>
-        {% endif %}
-        {% if title or heading %}
-          <h3 class="heading-large">{% firstof title heading %}</h3>
-        {% endif %}
-        {% if description %}
-          <p class="description">{{ description }}</p>
-        {% endif %}
+      {% if img_src %}
+        <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
       {% endif %}
-    </div>
-  {% if url %}
-  </a>
-  {% endif %}
+      <div class="card-inner">
+        {% if html_content %}
+        {{ html_content }}
+        {% else %}
+          {% if subheading %}
+            <p class="subheading">{{ subheading }}</p>
+          {% endif %}
+          {% if title or heading %}
+            <h3 class="heading-large">{% firstof title heading %}</h3>
+          {% endif %}
+          {% if description %}
+            <p class="description">{{ description }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% if url %}
+    </a>
+    {% endif %}
+  </noscript>
 </div>

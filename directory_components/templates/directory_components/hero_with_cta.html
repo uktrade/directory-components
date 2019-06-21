@@ -1,16 +1,24 @@
-<section class="hero hero-with-cta" style="background-image: url('{{ img_url }}')" data-ga-section="hero">
-	<div class="container">
-		<div class="hero-text">
-			<h1 class="heading-xlarge {% if subheading %} margin-bottom-0 {% else %} margin-bottom-30 {% endif %} ">{{ heading }}</h1>
-			{% if subheading %}
-			<h2 class="heading-xlarge margin-top-0 margin-bottom-30">{{ subheading }}</h2>
-			{% endif %}
-			{% if subtitle %}
-			<p class="hero-subtitle margin-bottom-45">{{ subtitle }}</p>
-			{% endif %}
-			{% if cta_text and cta_link %}
-				<a href="{{ cta_link }}" class="button button-arrow-small button-blue margin-bottom-30">{{ cta_text }}</a>
-			{%  endif %}
-		</div>
-	</div>
+<section
+  class="lazyload"
+  data-noscript=""
+  data-ga-section="hero"
+>
+  <noscript>
+    <div class="hero hero-with-cta" style="background-image: url('{{ img_url }}')">
+      <div class="container">
+        <div class="hero-text">
+          <h1 class="heading-xlarge {% if subheading %} margin-bottom-0 {% else %} margin-bottom-30 {% endif %} ">{{ heading }}</h1>
+          {% if subheading %}
+          <h2 class="heading-xlarge margin-top-0 margin-bottom-30">{{ subheading }}</h2>
+          {% endif %}
+          {% if subtitle %}
+          <p class="hero-subtitle margin-bottom-45">{{ subtitle }}</p>
+          {% endif %}
+          {% if cta_text and cta_link %}
+            <a href="{{ cta_link }}" class="button button-arrow-small button-blue margin-bottom-30">{{ cta_text }}</a>
+          {%  endif %}
+        </div>
+      </div>
+    </div>
+  </noscript>
 </section>
