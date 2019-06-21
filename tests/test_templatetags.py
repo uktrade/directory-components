@@ -690,7 +690,7 @@ def test_ga360_tracker_can_optionally_tag_ga_value():
     assert rendered_html == expected_html
 
 
-def test_bradcrumbs():
+def test_breadcrumbs():
     template = Template(
         '{% load breadcrumbs from directory_components %}'
         '{% breadcrumbs "Current Page" %}'
@@ -715,7 +715,38 @@ def test_bradcrumbs():
     assert rendered_html.replace('\n', '') == expected_html
 
 
-def test_bradcrumbs_empty_href():
+def test_breadcrumbs_context_variables():
+    template = Template(
+        '{% load breadcrumbs from directory_components %}'
+        '{% breadcrumbs "Current Page" %}'
+        '<a href="{{ foo.url }}">{{ foo.title }}</a>'
+        '<a href="{{ bar.url }}">{{ bar.title }}</a>'
+        '<a href="{{ baz.url }}">{{ baz.title }}</a>'
+        '{% endbreadcrumbs %}'
+    )
+
+    context = {
+        'foo': {'title': 'Foo', 'url': '/foo'},
+        'bar': {'title': 'Bar', 'url': '/bar'},
+        'baz': {'title': 'Baz', 'url': '/baz'},
+    }
+
+    rendered_html = template.render(Context(context))
+
+    expected_html = (
+        '<nav aria-label="Breadcrumb" class="breadcrumbs">'
+        '<ol>'
+        '<li><a href="/foo">Foo</a></li>'
+        '<li><a href="/bar">Bar</a></li>'
+        '<li><a href="/baz">Baz</a></li>'
+        '<li aria-current="page"><span>Current Page</span></li>'
+        '</ol>'
+        '</nav>'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_breadcrumbs_empty_href():
     template = Template(
         '{% load breadcrumbs from directory_components %}'
         '{% breadcrumbs "Current Page" %}'
@@ -726,7 +757,7 @@ def test_bradcrumbs_empty_href():
         template.render(Context())
 
 
-def test_bradcrumbs_missing_href():
+def test_breadcrumbs_missing_href():
     template = Template(
         '{% load breadcrumbs from directory_components %}'
         '{% breadcrumbs "Current Page" %}'
@@ -737,7 +768,7 @@ def test_bradcrumbs_missing_href():
         template.render(Context())
 
 
-def test_bradcrumbs_missing_links():
+def test_breadcrumbs_missing_links():
     template = Template(
         '{% load breadcrumbs from directory_components %}'
         '{% breadcrumbs "Current Page" %}'
@@ -747,7 +778,7 @@ def test_bradcrumbs_missing_links():
         template.render(Context())
 
 
-def test_bradcrumbs_missing_current_page():
+def test_breadcrumbs_missing_current_page():
     with pytest.raises(ValueError):
         Template(
             '{% load breadcrumbs from directory_components %}'

@@ -16,59 +16,61 @@
 
 <section>
   <div class="container">
-    <h1 class="heading-large">Breadcrumbs</h1>
-    <div class="grid-row">
-      <div class="column-full padding-bottom-15">
-        <h2 class="heading-medium">Two levels</h2>
-        <p>Specify the current page's label as the first argument of the tag, then include a single link in the body of the tag:</p>
-<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
-  &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
+    <h1 class="heading-xlarge">Breadcrumbs</h1>
+        <p class="width-two-thirds">Like page titles, breadcrumbs labels should use sentence case - capitalise only the first word except when the breadcrumb contains proper nouns or acronyms e.g. 'Contact us about your investment', 'Market guide for Germany', 'Find out more about DIT'.</p>
+
+        <h2 class="heading-large">Usage in templates</h2>
+        <h3 class="heading-medium">Two levels</h3>
+        <p class="width-half">Specify the current page's label as the first argument of the tag, then include a single link in the body of the tag:</p>
+
+<pre><code>{% verbatim %}{% breadcrumbs 'Current page' %}
+  &lt;a href="http://www.example.com"&gt;Home&lt;/a&gt;
 {% endbreadcrumbs %}{% endverbatim %}
 </code></pre>
-        <h3 class="heading-small">Output</h3>
-        {% breadcrumbs 'current page' %}
-          <a href="http://www.example.com">home</a>
+        <h4 class="heading-small">Output</h4>
+        {% breadcrumbs 'Current page' %}
+          <a href="http://www.example.com">Home</a>
         {% endbreadcrumbs %}
-      </div>
-    </div>
-    <div class="grid-row">
-      <div class="column-full padding-bottom-15">
-        <h2 class="heading-medium">Three levels</h2>
-        <p>Specify the current page's label as the first argument of the tag, then include two links in the body of the tag:</p>
-<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
-  &lt;a href="http://www.example.com"&gt;home&lt;/a&gt;
-  &lt;a href="http://www.example.com/middle/"&gt;middle label&lt;/a&gt;
+
+        <p>Context variables can also be used as the first argument and inside the tag:</p>
+<pre><code>{% verbatim %}{% breadcrumbs page.title %}
+  &lt;a href="{{ home_link }}"&gt;{{ home_label }}&lt;/a&gt;
 {% endbreadcrumbs %}{% endverbatim %}
 </code></pre>
-        <h3 class="heading-small">Output</h3>
-
-{% breadcrumbs 'current page' %}
-  <a href="http://www.example.com">home</a>
-  <a href="http://www.example.com/middle/">middle label</a>
-{% endbreadcrumbs %}
-
-      </div>
-    </div>
-    <div class="grid-row">
-      <div class="column-full padding-bottom-15">
-        <h2 class="heading-medium">More levels</h2>
-        <p>Similar to above, but include a number of links in the body of the tag.</p>
-<pre><code>{% verbatim %}{% breadcrumbs 'current page' %}
-  &lt;a href="http://www.example.com/level1/"&gt;level 1&lt;/a&gt;
-  &lt;a href="http://www.example.com/level2/"&gt;level 2&lt;/a&gt;
-  &lt;a href="http://www.example.com/level3/"&gt;level 3&lt;/a&gt;
-  &lt;a href="http://www.example.com/level4/"&gt;level 4&lt;/a&gt;
-{% endbreadcrumbs %}{% endverbatim %}
-</code></pre>
-
-        {% breadcrumbs 'current page' %}
-          <a href="http://www.example.com/level1/">level 1</a>
-          <a href="http://www.example.com/level2/">level 2</a>
-          <a href="http://www.example.com/level3/">level 3</a>
-          <a href="http://www.example.com/level4/">level 4</a>
+        <h4 class="heading-small">Output</h4>
+        {% breadcrumbs page.title %}
+          <a href="{{ home_link }}">{{ home_label }}</a>
         {% endbreadcrumbs %}
-      </div>
-    </div>
+
+        <h3 class="heading-medium">Three levels</h3>
+        <p class="width-half">Specify the Current page's label as the first argument of the tag, then include two links in the body of the tag:</p>
+<pre><code>{% verbatim %}{% breadcrumbs 'Current page' %}
+  &lt;a href="http://www.example.com"&gt;Home&lt;/a&gt;
+  &lt;a href="http://www.example.com/middle/"&gt;Middle label&lt;/a&gt;
+{% endbreadcrumbs %}{% endverbatim %}
+</code></pre>
+        <h4 class="heading-small">Output</h4>
+        {% breadcrumbs 'Current page' %}
+          <a href="http://www.example.com">Home</a>
+          <a href="http://www.example.com/middle/">Middle label</a>
+        {% endbreadcrumbs %}
+
+        <h3 class="heading-medium">More levels</h3>
+        <p class="width-half">Similar to above, but include a number of links in the body of the tag.</p>
+<pre><code>{% verbatim %}{% breadcrumbs 'Current page' %}
+  &lt;a href="http://www.example.com/level1/"&gt;Level 1&lt;/a&gt;
+  &lt;a href="http://www.example.com/level2/"&gt;Level 2&lt;/a&gt;
+  &lt;a href="http://www.example.com/level3/"&gt;Level 3&lt;/a&gt;
+  &lt;a href="http://www.example.com/level4/"&gt;Level 4&lt;/a&gt;
+{% endbreadcrumbs %}{% endverbatim %}
+</code></pre>
+
+        {% breadcrumbs 'Current page' %}
+          <a href="http://www.example.com/level1/">Level 1</a>
+          <a href="http://www.example.com/level2/">Level 2</a>
+          <a href="http://www.example.com/level3/">Level 3</a>
+          <a href="http://www.example.com/level4/">Level 4</a>
+        {% endbreadcrumbs %}
 
   </div>
 </section>
