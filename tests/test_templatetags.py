@@ -786,3 +786,43 @@ def test_breadcrumbs_missing_current_page():
             '<a href="/foo"></a>'
             '{% endbreadcrumbs %}'
         )
+
+
+def test_ga360_data_with_no_optional_parameters():
+    template = Template(
+        '{% load ga360_data from directory_components %}'
+        '{% ga360_data "a" %}'
+        '<div>'
+        '    <a href="example.com">Click Me</a>'
+        '</div>'
+        '{% end_ga360_data %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = \
+        '<div>' \
+        ' <a href="example.com">Click Me</a>' \
+        '</div>'
+    assert rendered_html == expected_html
+
+
+def test_ga360_data_with_all_optional_parameters():
+    template = Template(
+        '{% load ga360_data from directory_components %}'
+        '{% ga360_data "a" action="link" type="CTA" element="pageSection" value="Click Me" %}'  # noqa
+        '<div>'
+        '    <a href="example.com">Click Me</a>'
+        '</div>'
+        '{% end_ga360_data %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = \
+        '<div>' \
+        ' <a data-ga-action="link" data-ga-element="pageSection" ' \
+        'data-ga-type="CTA" data-ga-value="Click Me" ' \
+        'href="example.com">Click Me</a>' \
+        '</div>'
+    assert rendered_html == expected_html
