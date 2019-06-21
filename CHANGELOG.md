@@ -1,7 +1,7 @@
 # Changelog
 
 ## 19.0.0
-[Full Changelog](TODO)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/217/files)
 
 ### Implemented enhancements
 - Added new tagging.js file to automatically tag links forms and videos.
