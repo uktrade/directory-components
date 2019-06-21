@@ -701,7 +701,7 @@ def test_ga360_data_with_no_optional_parameters():
 def test_ga360_data_with_all_optional_parameters():
     template = Template(
         '{% load ga360_data from directory_components %}'
-        '{% ga360_data "a" action="link" type="CTA" element="pageSection" value="Click Me" %}'  # noqa
+        '{% ga360_data "a" action="link" type="CTA" element="pageSection" value="Click Me" include_form_data="True" %}'  # noqa
         '<div>'
         '    <a href="example.com">Click Me</a>'
         '</div>'
@@ -713,6 +713,7 @@ def test_ga360_data_with_all_optional_parameters():
     expected_html = \
         '<div>' \
         ' <a data-ga-action="link" data-ga-element="pageSection" ' \
+        'data-ga-include-form-data="True" ' \
         'data-ga-type="CTA" data-ga-value="Click Me" ' \
         'href="example.com">Click Me</a>' \
         '</div>'
