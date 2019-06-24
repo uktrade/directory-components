@@ -1,6 +1,21 @@
+// Polyfill for 'includes' in IE.
+if (!String.prototype.includes) {
+    String.prototype.includes = function(search, start) {
+        if (typeof start !== 'number') {
+          start = 0;
+        }
+
+        if (start + search.length > this.length) {
+          return false;
+        } else {
+          return this.indexOf(search, start) !== -1;
+        }
+    }
+}
+
 dit.tagging = dit.tagging || {};
 dit.tagging.base = new function() {
-    this.init = function(debug_mode=false) {
+    this.init = function(debug_mode) {
         $(document).ready(function() {
             addTaggingForLinks();
             addTaggingForVideos();
@@ -8,17 +23,16 @@ dit.tagging.base = new function() {
         });
 
         function addTaggingForLinks() {
-            var leftMouseButton = 1;
-            var middleMouseButton = 2;
-            var enterKeyValue = 13;
+            var leftMouseButton = 0;
+            var middleMouseButton = 1;
             $('a')
                 .on('mouseup', function(event) {
-                    if (event.which === leftMouseButton || event.which === middleMouseButton) {
+                    if (event.button === leftMouseButton || event.button === middleMouseButton) {
                         sendLinkEvent($(this));
                     }
                 })
-                .on('keypress', function(event) {
-                    if (event.code === enterKeyValue) {
+                .on('keydown', function(event) {
+                    if (event.key === 'Enter') {
                         sendLinkEvent($(this));
                     }
                 });
@@ -133,15 +147,7 @@ dit.tagging.base = new function() {
         }
 
         function guessTitleFromLinkContents(link) {
-            var titleElements = [
-                'h1',
-                'h2',
-                'h3',
-                'h4',
-                'h5',
-                'span',
-                'p',
-            ];
+            var titleElements = ['h1', 'h2', 'h3', 'h4', 'h5', 'span', 'p'];
 
             for (var index=0; index < titleElements.length; index++) {
                 if (link.find(titleElements[index]).text()) {
