@@ -170,55 +170,6 @@ def case_study(**kwargs):
 
 
 @register.tag
-def ga360_tracker(parser, token):
-    nodelist = parser.parse(('endga360_tracker',))
-    parser.delete_first_token()
-
-    # the ga360_tracker expects arguments in the following format
-    # <ga_class_name> (Optional)target=<selector> (Optional)value=<ga_value>
-    parameters = token.split_contents()
-
-    ga_class = parameters[1]
-    target = None
-    value = None
-
-    for parameter in parameters[2:]:
-        target_param_name = 'target='
-        value_param_name = 'ga_value='
-
-        if parameter.startswith(target_param_name):
-            target = parameter[len(target_param_name):]
-
-        elif parameter.startswith(value_param_name):
-            value = parameter[len(value_param_name):]
-
-    return GA360Tracker(nodelist, ga_class, target, value)
-
-
-class GA360Tracker(template.Node):
-    def __init__(self, nodelist, ga_class, target=None, value=None):
-        self.nodelist = nodelist
-        self.ga_class = template.Variable(ga_class)
-        self.target = template.Variable(target) if target is not None else None
-        self.value = template.Variable(value) if value is not None else None
-
-    def render(self, context):
-        html = self.nodelist.render(context)
-        soup = BeautifulSoup(html, 'html.parser')
-
-        selector = (
-            self.target.resolve(context) if self.target is not None else 'a'
-        )
-        for element in soup.findAll(selector):
-            element.attrs['data-ga-class'] = self.ga_class.resolve(context)
-            if self.value is not None:
-                element.attrs['data-ga-value'] = self.value.resolve(context)
-
-        # Use formatter=None so that `&` is not converted to `&amp;`
-        return soup.decode(formatter=None)
-
-
-@register.tag
 def breadcrumbs(parser, token):
     nodelist = parser.parse(('endbreadcrumbs',))
     parser.delete_first_token()
@@ -262,3 +213,82 @@ class Breadcrumbs(template.Node):
             f'<li aria-current="page"><span>{current}</span></li>'
         )
         return output_soup.decode(formatter=None)
+
+
+@register.tag
+def ga360_data(parser, token):
+    nodelist = parser.parse(('end_ga360_data',))
+    parser.delete_first_token()
+
+    # the ga360_data tag expects arguments in the following format
+    # <target> action=<action> type=<type> element=<element> value=<value>
+    parameters = token.split_contents()
+
+    target = parameters[1]
+    action = None
+    ga_type = None
+    element = None
+    value = None
+    include_form_data = None
+
+    for parameter in parameters[2:]:
+        action_param_name = 'action='
+        type_param_name = 'type='
+        element_param_name = 'element='
+        value_param_name = 'value='
+        include_form_data_param_name = 'include_form_data='
+
+        if parameter.startswith(action_param_name):
+            action = parameter[len(action_param_name):]
+
+        elif parameter.startswith(type_param_name):
+            ga_type = parameter[len(type_param_name):]
+
+        elif parameter.startswith(element_param_name):
+            element = parameter[len(element_param_name):]
+
+        elif parameter.startswith(value_param_name):
+            value = parameter[len(value_param_name):]
+
+        elif parameter.startswith(include_form_data_param_name):
+            include_form_data = parameter[len(include_form_data_param_name):]
+
+    return GA360Data(nodelist, target, action,
+                     ga_type, element, value, include_form_data)
+
+
+class GA360Data(template.Node):
+    def __init__(self, nodelist,
+                 target,
+                 action=None,
+                 ga_type=None,
+                 element=None,
+                 value=None,
+                 include_form_data=None):
+        self.nodelist = nodelist
+        self.target = template.Variable(target)
+        self.action = template.Variable(action) if action is not None else None
+        self.ga_type = template.Variable(ga_type) if ga_type is not None else None  # noqa
+        self.element = template.Variable(element) if element is not None else None  # noqa
+        self.value = template.Variable(value) if value is not None else None
+        self.include_form_data = template.Variable(include_form_data) if include_form_data is not None else None  # noqa
+
+    def render(self, context):
+        html = self.nodelist.render(context)
+        soup = BeautifulSoup(html, 'html.parser')
+
+        selector = self.target.resolve(context)
+        for element in soup.findAll(selector):
+            if self.action is not None:
+                element.attrs['data-ga-action'] = self.action.resolve(context)
+            if self.ga_type is not None:
+                element.attrs['data-ga-type'] = self.ga_type.resolve(context)
+            if self.element is not None:
+                element.attrs['data-ga-element'] = self.element.resolve(context)  # noqa
+            if self.value is not None:
+                element.attrs['data-ga-value'] = self.value.resolve(context)
+            if self.include_form_data is not None:
+                element.attrs['data-ga-include-form-data'] = self.include_form_data.resolve(context)  # noqa
+
+        # Use formatter=None so that `&` is not converted to `&amp;`
+        return soup.decode(formatter=None)

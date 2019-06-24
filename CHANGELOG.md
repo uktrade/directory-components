@@ -1,5 +1,21 @@
 # Changelog
 
+## 19.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/217/files)
+
+### Implemented enhancements
+- Added new tagging.js file to automatically tag links forms and videos.
+- Added new ga360_data tag for customising data sent to GA360.
+- Removed old methods for GA360 interaction tagging.
+- Added GTM page to the demo app to explain how it all works
+
+### Breaking Changes
+- ga360_tracker has been removed.
+- You can now (probably) just delete any existing `tagging.js` files. Most user interaction tagging will now be 
+performed automatically via the `tagging.js` file within directory components. 
+See https://directory-components-dev.herokuapp.com/google-tag-manager/ for details of what's covered in the new system.
+
+
 ## 18.1.0
 
 ### Implemented enhancements

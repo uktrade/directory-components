@@ -11,7 +11,7 @@ demo_requirements:
 	pip install -e .[demo]
 
 flake8:
-	flake8 . --exclude=.venv,setup.py,directory_components/version.py,node_modules
+	flake8 . --exclude=.venv,.idea-env,setup.py,directory_components/version.py,node_modules
 
 pytest:
 	pytest . --ignore=node_modules --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no -vv --cov-report=html

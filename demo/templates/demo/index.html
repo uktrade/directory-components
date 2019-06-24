@@ -1,7 +1,5 @@
 {% extends 'demo/base.html' %}
 
-{% block head_title %}directory-components{% endblock %}
-
 {% block content %}
 <section class="index padding-top-30">
   <div class="container">
@@ -49,6 +47,11 @@
         <li><a class="link" href="{% url 'great-international-header-footer' %}">Great.gov.uk international header and footer</a></li>
         <li><a class="link" href="{% url 'great-domestic-header-footer' %}">Great.gov.uk domestic header and footer</a></li>
         <li><a class="link" href="{% url 'invest-header' %}">Great.gov.uk invest header (and international footer)</a></li>
+      </ul>
+
+      <ul class="list list-bullet" aria-labelledby="header-footer">
+        <h3 class="heading-small" id="header-footer">Analytics</h3>
+        <li><a class="link" href="{% url 'google-tag-manager' %}">Google Tag Manager</a></li>
       </ul>
 
     </div>

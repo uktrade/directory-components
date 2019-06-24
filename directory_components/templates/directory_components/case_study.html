@@ -1,7 +1,7 @@
 <section
   {% if section_id or id %}id="{% firstof section_id id %}"{% endif %}
   class="case-study {% if background_tint %}background-tint{% endif %}"
-  style="background-image: url({% firstof background_image_url background_image img_url image_url image_src img_src image %})">
+  style="background-image: url({% firstof background_image_url background_image img_url image_url image_src img_src image %})" data-ga-section="caseStudy">
   <div class="container">
     <div class="grid-row">
       <div class="column-full column-two-thirds-l column-half-xl">
