@@ -3,9 +3,11 @@
 
 <footer id="great-footer" class="great-footer light-grey-text background-great-blue" dir="ltr" data-ga-section="footer">
 
-  <div class="great-footer-logo-container container">
-    {% block footer_left_logo %}{% endblock %}
-    {% block footer_right_logo %}{% endblock %}
+  <div class="great-footer-logo-container container lazyload" data-noscript="">
+    <noscript>
+      {% block footer_left_logo %}{% endblock %}
+      {% block footer_right_logo %}{% endblock %}
+    </noscript>
   </div>
 
   <nav class="great-footer-links container">
@@ -34,10 +36,12 @@
   </nav>
 
   <div class="great-global-header-footer {% block global_footer_class %}{% endblock %}">
-    <div class="container">
-      {% block global_footer_logo %}
-      {% endblock %}
-      <p id="great-footer-copyright" class="great-footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</p>
+    <div class="container lazyload" data-noscript="">
+      <noscript>
+        {% block global_footer_logo %}
+        {% endblock %}
+        <p id="great-footer-copyright" class="great-footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</p>
+      </noscript>
     </div>
   </div>
 
