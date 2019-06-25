@@ -1,5 +1,14 @@
 # Changelog
 
+## 20.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/222/files)
+
+### Implemented enhancements
+- Add lazysizes library, which allows lazy loading of images (and more) 
+
+### Breaking changes
+- Moved the JQuery script tag in `base.html` from block `head_js` to block `vendor_js`
+
 ## 19.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/217/files)
 
@@ -14,7 +23,6 @@
 - You can now (probably) just delete any existing `tagging.js` files. Most user interaction tagging will now be 
 performed automatically via the `tagging.js` file within directory components. 
 See https://directory-components-dev.herokuapp.com/google-tag-manager/ for details of what's covered in the new system.
-
 
 ## 18.1.0
 
