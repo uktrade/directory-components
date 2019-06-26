@@ -81,7 +81,7 @@
 @media (max-width: 640px) {
   .great-global-header-footer {
     height: auto;
-    line-height: normal; }
+    line-height: 1; }
     .great-global-header-footer > .container {
       margin: 0;
       width: 100%; }
@@ -90,6 +90,7 @@
       float: none; }
     .great-global-header-footer .great-domestic-international-links {
       display: table;
+      line-height: 50px;
       float: none;
       width: 100%;
       table-layout: fixed; }
@@ -771,7 +772,8 @@ body.js-enabled .great-header-search-wrapper {
 
 .great-footer-copyright {
   font-size: 12px;
-  font-family: "Roboto", arial, helvetica, verdana; }
+  font-family: "Roboto", arial, helvetica, verdana;
+  line-height: 50px; }
 
 @media (max-width: 640px) {
   .great-footer-links a {
