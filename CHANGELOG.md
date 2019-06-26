@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/223/files)
+
+### Bug fixes
+- Fixed too tall line height in header domestic/international links
+
 ## 19.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/217/files)
 
@@ -10,10 +16,27 @@
 - Added GTM page to the demo app to explain how it all works
 
 ### Breaking Changes
-- ga360_tracker has been removed.
-- You can now (probably) just delete any existing `tagging.js` files. Most user interaction tagging will now be 
-performed automatically via the `tagging.js` file within directory components. 
-See https://directory-components-dev.herokuapp.com/google-tag-manager/ for details of what's covered in the new system.
+- `ga360_tracker` has been removed.
+- You can now (probably) just delete any existing `tagging.js` files. Most user interaction tagging will now be
+performed automatically via the `tagging.js` file within directory components.
+See the [google tag manager demo page](https://directory-components-dev.herokuapp.com/google-tag-manager/) for details of what's covered in the new system.
+- `dit.components.greatDomesticHeader.js` has been removed from the base template. Each service will now need to explicitly load the JS file for the version of the header they are using e.g.
+
+```
+{% block header_js %}
+    {{ block.super }}
+    <script src="{% static 'directory_components/js/dit.components.greatDomesticHeader.js' %}"></script>
+{% endblock %}
+```
+
+Or for international-facing services:
+
+```
+{% block header_js %}
+    {{ block.super }}
+    <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
+{% endblock %}
+```
 
 
 ## 18.1.0

@@ -93,7 +93,7 @@
 
   .great-global-header-footer {
     height: auto;
-    line-height: normal;
+    line-height: 1;
 
     & > .container {
       margin: 0;
@@ -107,6 +107,7 @@
 
     .great-domestic-international-links {
       display: table;
+      line-height: 50px;
       float: none;
       width: 100%;
       table-layout: fixed;
