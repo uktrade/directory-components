@@ -1,5 +1,12 @@
 # Changelog
 
+## 19.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/223/files)
+
+### Bug fixes
+- Added domestic header JS back into base template so dropdown works again on mobile
+- Fixed too tall line height in header domestic/international links
+
 ## 19.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/217/files)
 
@@ -11,8 +18,8 @@
 
 ### Breaking Changes
 - ga360_tracker has been removed.
-- You can now (probably) just delete any existing `tagging.js` files. Most user interaction tagging will now be 
-performed automatically via the `tagging.js` file within directory components. 
+- You can now (probably) just delete any existing `tagging.js` files. Most user interaction tagging will now be
+performed automatically via the `tagging.js` file within directory components.
 See https://directory-components-dev.herokuapp.com/google-tag-manager/ for details of what's covered in the new system.
 
 
