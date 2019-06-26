@@ -238,31 +238,6 @@
         background-color: $great-red;
         content: '';
       }
-
-      .sub-nav {
-        top: 100%;
-        position: absolute;
-        display: flex;
-      }
-
-      .sub-nav-list {
-        flex-shrink: 0;
-
-        li {
-          padding: 10px 0;
-
-          a {
-            padding: 10px;
-            font-size: 16px;
-
-            @media(hover: hover) {
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
