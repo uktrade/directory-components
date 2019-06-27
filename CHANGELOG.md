@@ -1,6 +1,6 @@
 # Changelog
 
-## 20.0.0
+## 21.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/222/files)
 
 ### Implemented enhancements
@@ -8,6 +8,12 @@
 
 ### Breaking changes
 - Moved the JQuery script tag in `base.html` from block `head_js` to block `vendor_js`
+
+## 20.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/224/files)
+
+### Breaking Changes
+- Updated to version 18.x.x of directory-constants.
 
 ## 19.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/223/files)
