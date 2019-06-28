@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/225/files)
+
+### Implemented enhancements
+- Add overridable blocks to component templates to allow some services to modify them when needed
+
 ## 26.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/241/files)
 
@@ -15,7 +21,7 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/240/file)
 
 ## Bugs fixed
-- Update lodash vulnerability 
+- Update lodash vulnerability
 
 ## 25.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/228/files)
