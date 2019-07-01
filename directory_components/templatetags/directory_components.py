@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 
 from django import template
+from django.template import VariableDoesNotExist
 from django.templatetags import static
 
 from django.utils.text import slugify
@@ -214,6 +215,78 @@ class Breadcrumbs(template.Node):
         )
         return output_soup.decode(formatter=None)
 
+
+@register.tag
+def base_card(parser, token):
+    nodelist = parser.parse(('end_base_card',))
+    parser.delete_first_token()
+
+    url = ""
+    image_source = ""
+    image_alt_text = ""
+    card_id = ""
+
+    url_param_name = "url="
+    image_source_param_name = "image_source="
+    image_alt_text_param_name = "image_alt_text="
+    card_id_param_name = "card_id="
+
+    parameters = token.split_contents()
+    for parameter in parameters[1:]:
+        if parameter.startswith(url_param_name):
+            url = parameter[len(url_param_name):]
+
+        if parameter.startswith(image_source_param_name):
+            image_source = parameter[len(image_source_param_name):]
+
+        if parameter.startswith(image_alt_text_param_name):
+            image_alt_text = parameter[len(image_alt_text_param_name):]
+
+        if parameter.startswith(card_id_param_name):
+            card_id = parameter[len(card_id_param_name):]
+
+    return Card(nodelist, url, image_source, image_alt_text, card_id)
+
+
+def resolve_variable(context, variable, default):
+    try:
+        return variable.resolve(context)
+    except VariableDoesNotExist:
+        return default
+
+
+class Card(template.Node):
+    def template(self, context):
+        url = resolve_variable(context, self.url, "")
+        image_source = resolve_variable(context, self.image_source, "")
+        image_alt_text = resolve_variable(context, self.image_alt_text, "")
+        card_id = resolve_variable(context, self.card_id, "")
+        link_id = card_id + "-link" if card_id is not "" else ""
+        image_id = card_id + "-image" if card_id is not "" else ""
+
+        return f"""
+            <div class="card" id="{card_id}">
+                <a class="card-link" href="{url}" id="{link_id}">
+                    <img class="card-image" src="{image_source}" alt="{image_alt_text}" id="{image_id}">
+                    <div class="card-inner"></div>
+                </a>
+            </div>
+        """
+
+    def __init__(self, nodelist, url, img_src, image_alt, card_id):
+        self.nodelist = nodelist
+        self.url = template.Variable(url)
+        self.image_source = template.Variable(img_src)
+        self.image_alt_text = template.Variable(image_alt)
+        self.card_id = template.Variable(card_id)
+
+    def render(self, context):
+        html = self.nodelist.render(context)
+        input_soup = BeautifulSoup(html, 'html.parser')
+        output_soup = BeautifulSoup(self.template(context), 'html.parser')
+
+        output_soup.find_all('div', 'card-inner')[0].append(input_soup)
+        return output_soup.decode(formatter=None)
 
 @register.tag
 def ga360_data(parser, token):

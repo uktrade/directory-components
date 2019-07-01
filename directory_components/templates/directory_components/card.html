@@ -1,31 +1,17 @@
-<div
-  class="card {% if title and not description and not html_content %}only-title{% endif %}"
-  {% if card_id %}id="{{ card_id }}"{% endif %}>
-  {% if url %}
-  <a
-    class="card-link"
-    href="{{ url }}"
-    {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
-  {% endif %}
-    {% if img_src %}
-      <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
+{% load base_card from directory_components %}
+
+{% base_card url=url image_source=img_src image_alt_text=img_alt card_id=card_id %}
+
+    {% if subheading %}
+        <p class="subheading">{{ subheading }}</p>
     {% endif %}
-    <div class="card-inner">
-      {% if html_content %}
-      {{ html_content }}
-      {% else %}
-        {% if subheading %}
-          <p class="subheading">{{ subheading }}</p>
-        {% endif %}
-        {% if title or heading %}
-          <h3 class="heading-large">{% firstof title heading %}</h3>
-        {% endif %}
-        {% if description %}
-          <p class="description">{{ description }}</p>
-        {% endif %}
-      {% endif %}
-    </div>
-  {% if url %}
-  </a>
-  {% endif %}
-</div>
+
+    {% if title %}
+        <h3 class="heading-large">{{ title }}</h3>
+    {% endif %}
+
+    {% if description %}
+        <p class="description">{{ description }}</p>
+    {% endif %}
+
+{% end_base_card %}
