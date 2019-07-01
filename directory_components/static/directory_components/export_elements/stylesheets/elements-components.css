@@ -1229,12 +1229,16 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3,
+    a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1243,9 +1247,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     font-family: "nta", Arial, sans-serif;
     font-weight: 700;
     text-transform: none;
@@ -1257,17 +1264,22 @@ a.labelled-card, a.labelled-image-card {
     background-color: #006ccc;
     padding: 10px 30px; }
     @media (min-width: 641px) {
-      a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+      
+      a.labelled-card .card-header h3,
+      a.labelled-image-card .card-header h3 {
         font-size: 19px;
         line-height: 1.2; } }
 
 a.labelled-image-card {
   position: relative; }
-  a.labelled-image-card .card-image {
+  a.labelled-image-card .card-image-container {
     height: calc(100% - 45px);
     position: absolute;
     width: 100%;
-    top: 45px;
+    top: 45px; }
+  a.labelled-image-card .card-image {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
@@ -1398,19 +1410,29 @@ main,
   line-height: 1.6; }
 
 .hero {
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 45px;
+  position: relative;
+  padding-top: 0;
   padding-bottom: 0;
   color: #ffffff; }
+  .hero .hero-background-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; }
+  .hero .hero-background-image {
+    width: 100%;
+    height: 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover; }
 
 .hero-generic {
   background-color: rgba(0, 82, 157, 0.8); }
   .hero-generic .container {
-    min-height: 300px;
+    min-height: 345px;
     position: relative;
-    overflow: visible; }
+    overflow: visible;
+    padding-top: 45px; }
   .hero-generic .hero-title, .hero-generic .hero-title-compact {
     background-color: rgba(0, 82, 157, 0.8);
     border-bottom: #b00d23 solid 6px;
@@ -4025,12 +4047,24 @@ section.blue-underline > .container {
     color: #666666; }
 
 .case-study {
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
   color: #ffffff;
   padding: 0;
   position: relative; }
+  .case-study .hero-background-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; }
+  .case-study .hero-background-image {
+    width: 100%;
+    height: 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none; }
+    @media (min-width: 769px) {
+      .case-study .hero-background-image {
+        display: block; } }
   .case-study.background-tint:before {
     background-color: rgba(0, 0, 0, 0.5);
     content: "";

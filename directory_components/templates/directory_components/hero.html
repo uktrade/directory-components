@@ -1,32 +1,34 @@
 {% with large_title|yesno:'hero-title,hero-title-compact' as title_class_name %}
 {% with large_title|yesno:'heading-hero-generic,heading-hero-generic-compact' as heading_class_name %}
 <section
-  class="lazyload"
+  class="hero hero-generic"
   id="hero"
-  data-noscript=""
   data-ga-section="hero"
 >
-  <noscript>
-    <div class="hero hero-generic" {% if background_image_url %}style="background-image: url({{ background_image_url }})"{% endif %}>
-      <div class="container">
-        <div class="{{ title_class_name }}">
-          {% if hero_subheading %}
-            <h1 id="hero-heading" class="{{ heading_class_name }} with-subheading">
-              <span class="hero-subheading">{{ hero_subheading }}</span>
-              <span>{{ hero_text }}</span>
-            </h1>
-          {% else %}
-            <h1 class="{{ heading_class_name }}" id="hero-heading">
-              {{ hero_text }}
-            </h1>
-          {% endif %}
-          {% if description %}
-          <p class="hero-description" id="hero-description">{{ description }}</p>
-          {% endif %}
-        </div>
-      </div>
+  {% if background_image_url %}
+    <div class="hero-background-container lazyload ls-noscript" data-noscript="" aria-hidden="true">
+      <noscript>
+        <div class="hero-background-image" style="background-image: url('{{ background_image_url }}')"></div>
+      </noscript>
     </div>
-  </noscript>
+  {% endif %}
+  <div class="container">
+    <div class="{{ title_class_name }}">
+      {% if hero_subheading %}
+        <h1 id="hero-heading" class="{{ heading_class_name }} with-subheading">
+          <span class="hero-subheading">{{ hero_subheading }}</span>
+          <span>{{ hero_text }}</span>
+        </h1>
+      {% else %}
+        <h1 class="{{ heading_class_name }}" id="hero-heading">
+          {{ hero_text }}
+        </h1>
+      {% endif %}
+      {% if description %}
+      <p class="hero-description" id="hero-description">{{ description }}</p>
+      {% endif %}
+    </div>
+  </div>
 </section>
 {% endwith %}
 {% endwith %}

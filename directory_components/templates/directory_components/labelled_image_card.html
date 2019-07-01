@@ -1,21 +1,22 @@
 <a
-  class="labelled-image-card lazyload"
+  class="labelled-image-card"
   href="{{ url }}"
   {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
-  data-noscript=""
 >
-  <noscript>
-    <div class="card-header">
-      <h3 class="title">{{ title }}</h3>
-    </div>
-    <div
-      class="card-image"
-      role="img"
-      {% if img_src %}style="background-image: url({{ img_src }});"{% endif %}
-      {% if img_alt %}aria-label="{{ img_alt }}"
-      title="{{ img_alt }}"{% endif %}
-      {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-      {% if img_alt %}<p class="visually-hidden">{{ img_alt }}</p>{% endif %}
-    </div>
-  </noscript>
+  <div class="card-header">
+    <h3 class="title">{{ title }}</h3>
+  </div>
+  <div class="card-image-container lazyload ls-noscript" data-noscript="">
+    <noscript>
+      <div
+        class="card-image"
+        role="img"
+        {% if img_src %}style="background-image: url({{ img_src }});"{% endif %}
+        {% if img_alt %}aria-label="{{ img_alt }}"
+        title="{{ img_alt }}"{% endif %}
+        {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
+        {% if img_alt %}<p class="visually-hidden">{{ img_alt }}</p>{% endif %}
+      </div>
+    </noscript>
+  </div>
 </a>
