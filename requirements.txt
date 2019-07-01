@@ -1,2 +1,2 @@
-# heroku needs this
+# paas needs this
 -e .[demo]
