@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/225/files)
+### Bug fixes
+- Fixed build on gov uk PaaS
+
+
 ## 20.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/224/files)
 
