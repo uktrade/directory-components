@@ -1,5 +1,12 @@
 # Changelog
 
+## 20.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/226/files)
+
+### Implemented enhancements
+- Added `error_box` and `success_box` template tags
+- Removed MANIFEST.in
+
 ## 20.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/225/files)
 ### Bug fixes
