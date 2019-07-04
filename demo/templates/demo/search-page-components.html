@@ -1,0 +1,77 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load breadcrumbs search_page_selected_filters search_page_expandable_options from directory_components %}
+
+{% block css_layout_class %}components{% endblock css_layout_class %}
+
+{% block body_header %}
+  {{ block.super }}
+  {% include 'directory_components/header_beta_banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  {% breadcrumbs 'Search page components' %}<a href="/">Home</a>{% endbreadcrumbs %}
+</div>
+
+<div class="container">
+    <h1 class="heading-xlarge">Search page components</h1>
+
+    <h2 class="heading-medium">Selected filters</h2>
+
+    <pre><code>{% verbatim %}{% load search_page_selected_filters from directory_components %}
+
+&lt;div class="grid-row"&gt;
+    &lt;div class="column-quarter"&gt;
+        {% search_page_selected_filters selected_filters_title="Selected filters" filters=filters
+        clear_all_link="/" clear_all_link_text="Clear all filters" %}
+    &lt;/div&gt;
+&lt;/div&gt;{% endverbatim %}</code></pre>
+
+    <div class="grid-row">
+        <div class="column-quarter">
+            {% search_page_selected_filters selected_filters_title="Selected filters" filters=filters clear_all_link="/" clear_all_link_text="Clear all filters" %}
+        </div>
+    </div>
+
+    <h2 class="heading-medium">Expandable options</h2>
+
+    <pre><code>{% verbatim %}{% load search_page_expandable_options from directory_components %}
+
+&lt;div class="grid-row"&gt;
+    &lt;div class="column-quarter"&gt;
+        {% search_page_expandable_options class_width="column-quarter" option_title="Sector" options=options %}
+    &lt;/div&gt;
+&lt;/div&gt;{% endverbatim %}</code></pre>
+
+
+    <div class="grid-row">
+        <div class="column-quarter">
+            {% search_page_expandable_options class_width="column-quarter" option_title="Sector" options=options %}
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+{% block body_js %}
+<script type="text/javascript">
+
+  function handleExpandableOptions(event) {
+    var element = event.target;
+    element.classList.toggle('checked');
+    var formGroup = document.getElementById(element.getAttribute('aria-controls'));
+    formGroup.setAttribute('aria-expanded', !(formGroup.getAttribute('aria-expanded') == 'true'));
+  }
+  var elements = document.getElementsByClassName('filter-collapse');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', handleExpandableOptions);
+  }
+</script>
+{% endblock %}

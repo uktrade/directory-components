@@ -1,5 +1,10 @@
 # Changelog
 
+## 20.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/227/files)
+### Implemented enhancements
+- Added new `Search page components` including the `selected filters` and `expandable options` components
+
 ## 20.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/226/files)
 

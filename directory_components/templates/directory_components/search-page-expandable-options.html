@@ -1,0 +1,16 @@
+<fieldset class="expandable-fieldset">
+    <div class="">
+        <label for="toggle_id_scale">{{ option_title }}</label>
+        <button type="button" id="toggle_id_scale" aria-controls="id_scale-container" class="filter-collapse {{ open|yesno:',checked' }}" alt=""></button>
+        <div class="form-group">
+            <ul class="select-multiple" id="checkbox">
+                {% for option_name, option_checked_status in options.items %}
+                    <li class="multiple-choice">
+                        <input class="select-multiple" name="scale" type="checkbox" value="{{ option_name }}" {{ option_checked_status }}>
+                        <label class="form-label font-xsmall" for="checkbox">{{ option_name }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</fieldset>
