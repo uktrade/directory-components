@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
@@ -42,6 +43,7 @@ class BreadcrumbsDemoPageView(BasePageView):
 
 
 class SearchPageComponentsDemoPageView(BasePageView):
+
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(
             filters=['Energy', 'Real Estate', 'Automotive', 'Aerospace'],
