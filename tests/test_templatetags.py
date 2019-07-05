@@ -351,6 +351,62 @@ def test_message_box_custom():
     assert box_description.string == 'description'
 
 
+def test_error_box():
+    box_content = {
+        'heading': 'heading',
+        'description': 'description',
+    }
+    string = (
+        "{{% load error_box from directory_components %}}"
+        "{{% error_box heading='{heading}' "
+        "description='{description}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_heading = soup.select('h3.flag-red-text')[0]
+    assert box_heading.string == 'heading'
+
+    box = soup.select('.message-box-with-icon')[0]
+    assert 'border-flag-red' in box['class']
+    assert 'background-white' in box['class']
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+
+def test_success_box():
+    box_content = {
+        'heading': 'heading',
+        'description': 'description',
+    }
+    string = (
+        "{{% load success_box from directory_components %}}"
+        "{{% success_box heading='{heading}' "
+        "description='{description}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_heading = soup.select('h3.teal-text')[0]
+    assert box_heading.string == 'heading'
+
+    box = soup.select('.message-box-with-icon')[0]
+    assert 'border-teal' in box['class']
+    assert 'background-white' in box['class']
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+
 def test_cta_box_default():
     box_content = {
         'box_id': 'box_id',
