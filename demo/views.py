@@ -104,3 +104,15 @@ class Trigger404View(View):
 class Trigger500ErrorView(View):
     def dispatch(self, request):
         raise Exception('triggering a server error')
+
+
+class DemoPaginationView(TemplateView):
+    template_name = 'demo/pagination.html'
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(
+            many_objects=range(60),
+            some_objects=range(40),
+            few_objects=range(21),
+            **kwargs
+        )

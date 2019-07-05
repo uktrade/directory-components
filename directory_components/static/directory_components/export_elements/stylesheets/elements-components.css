@@ -1229,12 +1229,16 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3,
+    a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
+    
+    a.labelled-card:focus .card-inner,
+    a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1243,9 +1247,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+  
+  a.labelled-card .card-header h3,
+  a.labelled-image-card .card-header h3 {
     font-family: "nta", Arial, sans-serif;
     font-weight: 700;
     text-transform: none;
@@ -1257,7 +1264,9 @@ a.labelled-card, a.labelled-image-card {
     background-color: #006ccc;
     padding: 10px 30px; }
     @media (min-width: 641px) {
-      a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
+      
+      a.labelled-card .card-header h3,
+      a.labelled-image-card .card-header h3 {
         font-size: 19px;
         line-height: 1.2; } }
 
@@ -4059,3 +4068,67 @@ section.blue-underline > .container {
   @media (max-width: 640px) {
     .case-study .button {
       width: auto; } }
+
+.pagination {
+  margin-top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .pagination a {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    padding-top: 0; }
+  .pagination ol {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; }
+    .pagination ol li {
+      display: inline-block;
+      vertical-align: top; }
+      .pagination ol li a {
+        padding: 0;
+        width: 50px;
+        vertical-align: bottom; }
+
+@media (max-width: 769px) {
+  .pagination {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    .pagination a {
+      width: 125px;
+      padding: 0; }
+    .pagination ol {
+      -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+      order: 2;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .pagination ol li {
+        margin-right: 10px; }
+    .pagination.has-previous > a, .pagination.has-next > a {
+      width: auto;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-left: 10px;
+      padding-right: 10px; }
+    .pagination.has-previous #paginator-previous, .pagination.has-next #paginator-previous {
+      -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+      order: 1; }
+    .pagination.has-previous #paginator-next, .pagination.has-next #paginator-next {
+      -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+      order: 2; }
+    .pagination.has-previous ol, .pagination.has-next ol {
+      -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+      order: 1; } }
+
+@media (max-width: 420px) {
+  .pagination a {
+    width: 95px; } }
