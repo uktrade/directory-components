@@ -12,7 +12,6 @@
 {% block global_header_class %}international{% endblock %}
 {% block header_class %}international{% endblock %}
 {% block header_menu_class %}international{% endblock %}
-{% block header_nav_class %}international{% endblock %}
 
 {% block global_header_logo %}
 <img id="great-global-header-logo" class="great-global-header-footer-logo" alt="HM Government" height="24" src="{% static 'directory_components/images/hm-government.svg' %}">
@@ -57,33 +56,49 @@
 {% endblock %}
 
 {% block header_nav %}
+<nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
+  <ul class="great-header-nav-list" id="great-header-nav-list">
+    {% for header_item in header_items %}
+      <li class="main-nav-item{% if header_item.is_active %} active{% endif %}">
+        <a class="link-heading" data-ga-class="header-navigation" href="{{ header_item.url }}">{% trans header_item.title %}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
 
-<li class="column-quarter js-menuitem">
-  <a class="link-heading" id="header-invest" href="{{ services_urls.invest }}">{% trans 'Invest' %}</a>
-</li>
+{% endblock %}
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ services_urls.uk_setup_guide }}" class="link-heading" id="header-set-up">{% trans 'UK setup guide' %}</a>
-</li>
+{% block header_nav_mobile %}
+<nav id="great-header-nav-mobile" class="great-header-nav-mobile" aria-label="{% trans 'Main menu' %}">
+  <ul class="great-header-nav-list" id="great-header-nav-list">
+    {% for page in pages %}
+      <li class="main-nav-item">
+        <a class="link-heading" data-ga-class="header-navigation" href="{{ page.url }}">{% trans page.title %}</a>
+        <ul class="sub-nav-mobile-list">
+          {% for sub_page in page.sub_pages %}
+            <li><a href="{{ sub_page.url }}">{{ sub_page.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endblock %}
 
-<li class="column-quarter js-menuitem">
-  <a href="{{ services_urls.fas }}" class="link-heading" id="header-fas">{% trans 'Find a UK supplier' %}</a>
-</li>
-
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.industries }}" class="link-heading" id="header-industries">{% trans 'Industries' %}</a>
-</li>
-
-{% if features.HOW_TO_DO_BUSINESS_ON %}
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.how_to_do_business_with_the_uk }}" class="link-heading" id="header-how-to-do-business-with-the-uk">{% trans 'How to do business with the UK' %}</a>
-</li>
+{% block header_sub_nav %}
+{% if sub_header_items %}
+<div class="great-header-sub-nav">
+  <div class="container">
+    <nav aria-label="{% trans 'Sub-menu' %}">
+      <ul class="sub-nav-list">
+        {% for header_item in sub_header_items %}
+          <li>
+            <a class="{% if header_item.is_active %} active{% endif %}" href="{{ header_item.url }}">{{ header_item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>
 {% endif %}
-
-{% if features.NEWS_SECTION_ON %}
-<li class="column-quarter js-menuitem">
-  <a href="{{ header_footer_urls.international_news }}" class="link-heading" id="header-news">{% trans 'News' %}</a>
-</li>
-{% endif %}
-
 {% endblock %}

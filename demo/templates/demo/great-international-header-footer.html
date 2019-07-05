@@ -1,6 +1,6 @@
 {% extends 'demo/base.html' %}
 {% load static %}
-{% load breadcrumbs from directory_components %}
+{% load breadcrumbs hero from directory_components %}
 
 {% block body_header %}
     {% include 'directory_components/header_footer/international_header.html' %}
@@ -17,10 +17,15 @@
   <script src="{% static 'directory_components/js/dit.classes.Dropdown.js' %}"></script>
   <script src="{% static 'directory_components/js/dit.components.countrySelector.js' %}"></script>
   <script src="{% static 'directory_components/js/dit.components.languageSelectorDropdown.js' %}"></script>
+  <script src="{% static 'directory_components/js/dit.components.header.js' %}"></script>
   <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+
+{% static 'images/hero02.png' as placeholder %}
+{% hero background_image_url=placeholder hero_text="International header and footer" large_title=True %}
+
 <div class="container">
   {% breadcrumbs 'International header footer' %}<a href="/">Home</a>{% endbreadcrumbs %}
 </div>

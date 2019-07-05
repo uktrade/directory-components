@@ -1,5 +1,16 @@
 # Changelog
 
+## 23.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/235/file)
+
+## Implemented Enhancements
+- New international header with optional 2 tier navigation.
+- Improvements to no-js header navigation
+
+### Breaking Changes
+- greatInternationalHeader.js has been replaced by header.js (which is automatically included in base.html)
+
+
 ## 22.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/238/files)
 ### Bug fixes

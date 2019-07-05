@@ -2,11 +2,9 @@
 // HEADER
 // =======
 
-// base styling. JS disabled
-
-@import '../partials/typography';
-@import '../partials/colours';
-@import '../partials/mixins';
+@import '../../partials/typography';
+@import '../../partials/colours';
+@import '../../partials/mixins';
 
 .great-header {
   // need to make sure it's not underneath anything
@@ -34,6 +32,11 @@
   }
 }
 
+.great-global-header {
+  @include float-clear;
+  height: auto;
+}
+
 // links in global header
 .great-domestic-international-links {
   a {
@@ -56,32 +59,52 @@
   }
 }
 
+#great-header-menu-mobile-anchor {
+  position: fixed;
+
+  &:target {
+    &~#great-header-menu-mobile {
+      display: block;
+      opacity: 1;
+
+      @media(min-width: 769px) {
+        display: none;
+      }
+    }
+    &~#great-header-menu #mobile-menu-button {
+      display: none;
+    }
+    &~#great-header-menu #mobile-menu-button-close {
+      display: block;
+      @media(min-width: 769px) {
+        display: none;
+      }
+    }
+  }
+}
+
 // main header menu
 .great-header-menu {
   background-color: $great-blue;
-  position: relative;
 
-  & > .container {
-    overflow: hidden;
-    padding-bottom: 25px;
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   }
+}
 
-  &.domestic > .container {
-    padding-top: 20px;
-  }
-
-  &.international > .container {
-    padding-top: 25px;
-  }
-
-  &.domestic .great-header-logo {
-    height: 80px;
-  }
+.great-header-logo {
+  line-height: 0;
+  margin: 30px 0;
 }
 
 // language/country select and account links
 .great-header-extra-links {
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 0;
   font-size: 14px;
   color: $white;
 
@@ -127,47 +150,193 @@
   }
 }
 
-.great-header-logo {
-  display: block;
-  float: left;
+.great-header-nav-container {
+  align-self: flex-end;
 }
 
-// main navigation
-.great-header-nav-container {
-  width: 100%;
-  background-color: $white;
+.mobile-menu-button {
+  height: 50px;
+  position: absolute;
+  top: 75px;
+  right: 0;
+  color: $white;
+  background-color: $great-blue;
+  border: 2px solid $white;
+  padding: 10px 45px 10px 10px;
+  cursor: pointer;
+  line-height: 30px;
+
+  @media(min-width: 769px) {
+    display: none;
+  }
+
+  span {
+    position: absolute;
+    right: 10px;
+    top: 22px;
+  }
+
+  span,
+  span:after,
+  span:before {
+    background-color: $white;
+    transition: all .2s ease;
+    clear: right;
+    content: '';
+    float: right;
+    height: 2px;
+    margin: 0 0 10px 10px;
+    width: 20px;
+  }
+
+  span:before {
+    margin-top: -6px;
+  }
+
+  &.expanded {
+    background: $active-blue;
+
+    span {
+      background: transparent;
+    }
+
+    span:before {
+      width: 25px;
+      margin-right: -3px;
+      transform: rotate(45deg);
+      margin-top: 0;
+    }
+
+    span:after {
+      width: 25px;
+      margin-right: -3px;
+      transform: rotate(-45deg);
+      margin-top: -12px;
+    }
+  }
+
+  @media(min-width: 769px) {
+    display: none;
+  }
+
+  &#mobile-menu-button-close {
+    display: none;
+  }
 }
 
 .great-header-nav {
-  padding: 15px 0;
   max-width: 1200px;
-  margin: 0 auto;
+  display: none;
+  margin: 0;
 
-  a.link-heading {
-    text-decoration: underline;
+  @media(min-width: 769px) {
+    display: block;
   }
 
-  .link-heading {
-    font-size: 19px;
-    color: $grey;
+  .great-header-nav-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    .link-heading {
+      position: relative;
+      padding: 15px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .main-nav-item {
+      font-size: 16px;
+      line-height: 1;
+
+      &:last-child {
+        .sub-nav {
+          right: 0;
+        }
+
+        li {
+          text-align: right;
+        }
+      }
+
+      &.active .link-heading:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100%;
+        height: 4px;
+        background-color: $great-red;
+        content: '';
+      }
+    }
   }
 }
 
-// JS enabled styling
-body.js-enabled {
-  @import 'js-header';
-}
+.great-header-nav-container {
+  flex-grow: 1;
+  color: $white;
+  display: flex;
+  justify-content: flex-end;
 
-@media (max-width: 1260px) {
-  .great-header-nav {
-    margin: 0 30px;
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    @media(hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
-@import 'mobile-header';
+.great-header-menu-mobile {
+  display: none;
+  opacity: 0;
+  position: relative;
+  background-color: $lightened-great-blue;
+  color: $white;
+  padding: 5px 0;
+  transition: opacity 0.2s;
 
-@media (max-width: 420px) {
-  .great-header-nav {
-    margin: 0 20px;
+  a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    padding: 10px 0;
+
+    @media(hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
+
+  .sub-nav-mobile-list {
+    padding-left: 25px;
+  }
+
+  &.expanded {
+    display: block;
+    opacity: 1;
+
+    @media(min-width: 769px) {
+      display: none;
+    }
+  }
+}
+
+#international-header-sub-nav-background {
+  @media(min-width: 768px) {
+    display: block;
+  }
+  display: none;
+  background-color: rgba($great-blue, 0.8);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: -1;
 }
