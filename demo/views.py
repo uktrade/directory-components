@@ -1,4 +1,3 @@
-from django.core.paginator import Paginator
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
