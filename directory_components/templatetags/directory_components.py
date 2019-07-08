@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 
 from django import template
+from django.core.paginator import EmptyPage, Paginator
 from django.templatetags import static
 
 from django.utils.text import slugify
@@ -190,6 +191,24 @@ def informative_banner(**kwargs):
 @register.inclusion_tag('directory_components/case_study.html')
 def case_study(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag(
+    'directory_components/pagination.html', takes_context=True
+)
+def pagination(context, objects_count, current_page, page_param_name='page'):
+    # page size is hard-coded in here and the template to 5.
+    paginator = Paginator(range(objects_count), 5)
+    pagination = paginator.page(current_page or 1)
+    request = context['request']
+    params = request.GET.copy()
+    params.pop(page_param_name, None)
+    return {
+        'page_param_name': page_param_name,
+        'pagination': pagination,
+        'url': f'{request.path}?{params.urlencode()}',
+        'pages_after_current': paginator.num_pages - pagination.number,
+    }
 
 
 @register.tag

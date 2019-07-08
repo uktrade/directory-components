@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/227/files)
+
+### Implemented enhancements
+- Added `pagination` template tag
+
 ## 20.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/232/files)
 ### Implemented enhancements

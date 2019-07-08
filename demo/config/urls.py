@@ -131,6 +131,12 @@ urlpatterns = [
         {'template_name': 'demo/google-tag-manager.html'},
         name='google-tag-manager',
     ),
+    url(
+        r'^pagination/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/pagination.html'},
+        name='pagination',
+    ),
 ]
 
 handler404 = 'directory_components.views.handler404'
