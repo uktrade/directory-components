@@ -13,13 +13,13 @@
 {% endcomment %}
 
 {% if pagination.paginator.num_pages > 1 %}
-    <div class="pagination"">
+    <nav class="pagination">
         {% if pagination.has_previous %}
             <a class="button-ghost-blue pagination-previous" href="{{ url }}&{{ page_param_name }}={{ pagination.previous_page_number}}">Previous</a>
         {% endif %}
             <ol class="{{ pagination.has_previous|yesno:'has-previous ,' }}{{ pagination.has_next|yesno:'has-next,' }}">
-                {% if pagination.paginator.num_pages <= 5 %}
-                    {% comment %} 1 2 3 4 5 {% endcomment %}
+                {% if pagination.paginator.num_pages <= 6 %}
+                    {% comment %} 1 2 3 4 5 6 {% endcomment %}
                     {% for number in pagination.paginator.page_range %}
                         {% include 'directory_components/pagination-number.html' %}
                     {% endfor %}
@@ -47,5 +47,5 @@
         {% if pagination.has_next %}
             <a class="button-ghost-blue pagination-next" href="{{ url }}&{{ page_param_name }}={{ pagination.next_page_number }}">Next</a>
         {% endif %}
-    </div>
+    </nav>
 {% endif %}

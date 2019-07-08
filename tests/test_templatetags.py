@@ -782,6 +782,7 @@ def test_ga360_data_with_all_optional_parameters():
     (21, 3, 'P 1 2 [3] 4 5 N'),
     (21, 4, 'P 1 2 3 [4] 5 N'),
     (21, 5, 'P 1 2 3 4 [5]'),
+    (30, 1, '[1] 2 3 4 5 6 N'),
     (40, 1, '[1] 2 3 4 ... 8 N'),
     (40, 2, 'P 1 [2] 3 4 ... 8 N'),
     (40, 3, 'P 1 2 [3] 4 ... 8 N'),
@@ -804,15 +805,14 @@ def test_ga360_data_with_all_optional_parameters():
     (60, 12, 'P 1 ... 9 10 11 [12]'),
 ))
 def test_pagination(count, current, expected, rf):
-    objects = range(count)
     template = Template(
         '{% load pagination from directory_components %}'
-        '{% pagination objects=objects current_page=current %}'
+        '{% pagination objects_count=objects_count current_page=current %}'
     )
 
     context = {
         'request': rf.get('/'),
-        'objects': objects,
+        'objects_count': count,
         'current': current,
     }
 

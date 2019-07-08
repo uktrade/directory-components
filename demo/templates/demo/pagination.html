@@ -21,35 +21,39 @@
     <div class="grid-row">
       <div class="column-two-thirds">
           <h2 class="heading-large">Few results</h2>
-          {% pagination objects=few_objects current_page=1 %}
-          {% pagination objects=few_objects current_page=2 %}
-          {% pagination objects=few_objects current_page=3 %}
-          {% pagination objects=few_objects current_page=4 %}
-          {% pagination objects=few_objects current_page=5 %}
+          <pre><code>{% verbatim %}{% pagination objects_count=20 current_page=1 %}{% endverbatim %}</code></pre>
+          {% pagination objects_count=30 current_page=1 %}
+          {% pagination objects_count=30 current_page=2 %}
+          {% pagination objects_count=30 current_page=3 %}
+          {% pagination objects_count=30 current_page=4 %}
+          {% pagination objects_count=30 current_page=5 %}
+          {% pagination objects_count=30 current_page=6 %}
 
           <h2 class="heading-large">Some results</h2>
-          {% pagination objects=some_objects current_page=1 %}
-          {% pagination objects=some_objects current_page=2 %}
-          {% pagination objects=some_objects current_page=3 %}
-          {% pagination objects=some_objects current_page=4 %}
-          {% pagination objects=some_objects current_page=5 %}
-          {% pagination objects=some_objects current_page=6 %}
-          {% pagination objects=some_objects current_page=7 %}
-          {% pagination objects=some_objects current_page=8 %}
+          <pre><code>{% verbatim %}{% pagination objects_count=40 current_page=1 %}{% endverbatim %}</code></pre>
+          {% pagination objects_count=40 current_page=1 %}
+          {% pagination objects_count=40 current_page=2 %}
+          {% pagination objects_count=40 current_page=3 %}
+          {% pagination objects_count=40 current_page=4 %}
+          {% pagination objects_count=40 current_page=5 %}
+          {% pagination objects_count=40 current_page=6 %}
+          {% pagination objects_count=40 current_page=7 %}
+          {% pagination objects_count=40 current_page=8 %}
 
           <h2 class="heading-large">Many results</h2>
-          {% pagination objects=many_objects current_page=1 %}
-          {% pagination objects=many_objects current_page=2 %}
-          {% pagination objects=many_objects current_page=3 %}
-          {% pagination objects=many_objects current_page=4 %}
-          {% pagination objects=many_objects current_page=5 %}
-          {% pagination objects=many_objects current_page=6 %}
-          {% pagination objects=many_objects current_page=7 %}
-          {% pagination objects=many_objects current_page=8 %}
-          {% pagination objects=many_objects current_page=9 %}
-          {% pagination objects=many_objects current_page=10 %}
-          {% pagination objects=many_objects current_page=11 %}
-          {% pagination objects=many_objects current_page=12 %}
+          <pre><code>{% verbatim %}{% pagination objects_count=60 current_page=1 %}{% endverbatim %}</code></pre>
+          {% pagination objects_count=60 current_page=1 %}
+          {% pagination objects_count=60 current_page=2 %}
+          {% pagination objects_count=60 current_page=3 %}
+          {% pagination objects_count=60 current_page=4 %}
+          {% pagination objects_count=60 current_page=5 %}
+          {% pagination objects_count=60 current_page=6 %}
+          {% pagination objects_count=60 current_page=7 %}
+          {% pagination objects_count=60 current_page=8 %}
+          {% pagination objects_count=60 current_page=9 %}
+          {% pagination objects_count=60 current_page=10 %}
+          {% pagination objects_count=60 current_page=11 %}
+          {% pagination objects_count=60 current_page=12 %}
 
       </div>
     </div>
