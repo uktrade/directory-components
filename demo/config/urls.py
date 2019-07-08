@@ -90,6 +90,12 @@ urlpatterns = [
         name='breadcrumbs',
     ),
     url(
+        r'^search-page-components/$',
+        views.SearchPageComponentsDemoPageView.as_view(),
+        {'template_name': 'demo/search-page-components.html'},
+        name='search-page-components',
+    ),
+    url(
         r'^fact-sheet/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/fact-sheet.html'},
