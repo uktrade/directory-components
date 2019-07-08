@@ -1,5 +1,10 @@
 # Changelog
 
+## 20.3.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/234/files)
+### Bug fixes
+- Re-added MANIFEST.in
+
 ## 20.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/227/files)
 
