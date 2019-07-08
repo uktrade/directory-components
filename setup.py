@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='20.3.0',
+    version='20.3.1',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -13,19 +13,6 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     include_package_data=True,
-    package_data={
-        'directory_components': [
-            '**/*.html',
-            '**/*.png',
-            '**/*.svg',
-            '**/*.ico',
-            '**/*.js',
-            '**/*.txt',
-            '**/*.css',
-            '**/*.po',
-            '**/*.mo',
-        ]
-    },
     install_requires=[
         'django>=1.11,<3.0a1',
         'beautifulsoup4>=4.6.0<5.0.0',
