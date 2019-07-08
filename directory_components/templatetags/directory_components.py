@@ -334,3 +334,13 @@ class GA360Data(template.Node):
 
         # Use formatter=None so that `&` is not converted to `&amp;`
         return soup.decode(formatter=None)
+
+
+@register.inclusion_tag('directory_components/search-page-selected-filters.html')  # noqa
+def search_page_selected_filters(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/search-page-expandable-options.html')  # noqa
+def search_page_expandable_options(**kwargs):
+    return kwargs
