@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 
 from django import template
+from django.core.paginator import EmptyPage, Paginator
 from django.templatetags import static
 
 from django.utils.text import slugify
@@ -100,6 +101,29 @@ def message_box(**kwargs):
 
 
 @register.inclusion_tag('directory_components/message_box_with_icon.html')
+def error_box(**kwargs):
+    return {
+        'icon': '✕',
+        'border_colour': 'flag-red',
+        'heading_class': 'heading-xlarge flag-red-text',
+        'box_class': 'width-full background-white flag-red-text',
+        'heading': '.heading-large .flag-red-text',
+        'description': '.width-two-thirds .background-white .flag-red-text',
+        'heading_level': 'h3',
+        **kwargs,
+    }
+
+
+@register.inclusion_tag('directory_components/message_box_with_icon.html')
+def success_box(**kwargs):
+    return {
+        'icon': '✓',
+        'heading_level': 'h3',
+        **kwargs,
+    }
+
+
+@register.inclusion_tag('directory_components/message_box_with_icon.html')
 def message_box_with_icon(**kwargs):
     return kwargs
 
@@ -167,6 +191,24 @@ def informative_banner(**kwargs):
 @register.inclusion_tag('directory_components/case_study.html')
 def case_study(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag(
+    'directory_components/pagination.html', takes_context=True
+)
+def pagination(context, objects_count, current_page, page_param_name='page'):
+    # page size is hard-coded in here and the template to 5.
+    paginator = Paginator(range(objects_count), 5)
+    pagination = paginator.page(current_page or 1)
+    request = context['request']
+    params = request.GET.copy()
+    params.pop(page_param_name, None)
+    return {
+        'page_param_name': page_param_name,
+        'pagination': pagination,
+        'url': f'{request.path}?{params.urlencode()}',
+        'pages_after_current': paginator.num_pages - pagination.number,
+    }
 
 
 @register.tag
@@ -292,3 +334,13 @@ class GA360Data(template.Node):
 
         # Use formatter=None so that `&` is not converted to `&amp;`
         return soup.decode(formatter=None)
+
+
+@register.inclusion_tag('directory_components/search-page-selected-filters.html')  # noqa
+def search_page_selected_filters(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/search-page-expandable-options.html')  # noqa
+def search_page_expandable_options(**kwargs):
+    return kwargs

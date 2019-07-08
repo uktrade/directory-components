@@ -7,7 +7,7 @@ setup(
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
-    description='Shared components library for Export Directory.',
+    description='Shared components library for Great services.',
     packages=find_packages(exclude=[
         'tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
     long_description=open('README.md').read(),

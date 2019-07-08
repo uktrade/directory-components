@@ -90,6 +90,12 @@ urlpatterns = [
         name='breadcrumbs',
     ),
     url(
+        r'^search-page-components/$',
+        views.SearchPageComponentsDemoPageView.as_view(),
+        {'template_name': 'demo/search-page-components.html'},
+        name='search-page-components',
+    ),
+    url(
         r'^fact-sheet/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/fact-sheet.html'},
@@ -124,6 +130,12 @@ urlpatterns = [
         views.BasePageView.as_view(),
         {'template_name': 'demo/google-tag-manager.html'},
         name='google-tag-manager',
+    ),
+    url(
+        r'^pagination/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/pagination.html'},
+        name='pagination',
     ),
 ]
 

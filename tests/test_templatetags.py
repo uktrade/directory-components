@@ -359,6 +359,62 @@ def test_message_box_custom():
     assert box_description.string == 'description'
 
 
+def test_error_box():
+    box_content = {
+        'heading': 'heading',
+        'description': 'description',
+    }
+    string = (
+        "{{% load error_box from directory_components %}}"
+        "{{% error_box heading='{heading}' "
+        "description='{description}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_heading = soup.select('h3.flag-red-text')[0]
+    assert box_heading.string == 'heading'
+
+    box = soup.select('.message-box-with-icon')[0]
+    assert 'border-flag-red' in box['class']
+    assert 'background-white' in box['class']
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+
+def test_success_box():
+    box_content = {
+        'heading': 'heading',
+        'description': 'description',
+    }
+    string = (
+        "{{% load success_box from directory_components %}}"
+        "{{% success_box heading='{heading}' "
+        "description='{description}' %}}"
+        ).format(**box_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    box_heading = soup.select('h3.teal-text')[0]
+    assert box_heading.string == 'heading'
+
+    box = soup.select('.message-box-with-icon')[0]
+    assert 'border-teal' in box['class']
+    assert 'background-white' in box['class']
+
+    box_description = soup.select('p.box-description')[0]
+    assert box_description.string == 'description'
+
+
 def test_cta_box_default():
     box_content = {
         'box_id': 'box_id',
@@ -543,6 +599,8 @@ def test_hero_large_title():
     directory_components.hero_with_cta,
     directory_components.case_study,
     directory_components.informative_banner,
+    directory_components.search_page_selected_filters,
+    directory_components.search_page_expandable_options,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -726,3 +784,64 @@ def test_ga360_data_with_all_optional_parameters():
         'href="example.com">Click Me</a>' \
         '</div>'
     assert rendered_html == expected_html
+
+
+@pytest.mark.parametrize('count,current,expected', (
+    (21, 1, '[1] 2 3 4 5 N'),
+    (21, 2, 'P 1 [2] 3 4 5 N'),
+    (21, 3, 'P 1 2 [3] 4 5 N'),
+    (21, 4, 'P 1 2 3 [4] 5 N'),
+    (21, 5, 'P 1 2 3 4 [5]'),
+    (30, 1, '[1] 2 3 4 5 6 N'),
+    (40, 1, '[1] 2 3 4 ... 8 N'),
+    (40, 2, 'P 1 [2] 3 4 ... 8 N'),
+    (40, 3, 'P 1 2 [3] 4 ... 8 N'),
+    (40, 4, 'P 1 2 3 [4] ... 8 N'),
+    (40, 5, 'P 1 ... [5] 6 7 8 N'),
+    (40, 6, 'P 1 ... 5 [6] 7 8 N'),
+    (40, 7, 'P 1 ... 5 6 [7] 8 N'),
+    (40, 8, 'P 1 ... 5 6 7 [8]'),
+    (60, 1, '[1] 2 3 4 ... 12 N'),
+    (60, 2, 'P 1 [2] 3 4 ... 12 N'),
+    (60, 3, 'P 1 2 [3] 4 ... 12 N'),
+    (60, 4, 'P 1 2 3 [4] ... 12 N'),
+    (60, 5, 'P 1 ... 4 [5] 6 ... 12 N'),
+    (60, 6, 'P 1 ... 5 [6] 7 ... 12 N'),
+    (60, 7, 'P 1 ... 6 [7] 8 ... 12 N'),
+    (60, 8, 'P 1 ... 7 [8] 9 ... 12 N'),
+    (60, 9, 'P 1 ... [9] 10 11 12 N'),
+    (60, 10, 'P 1 ... 9 [10] 11 12 N'),
+    (60, 11, 'P 1 ... 9 10 [11] 12 N'),
+    (60, 12, 'P 1 ... 9 10 11 [12]'),
+))
+def test_pagination(count, current, expected, rf):
+    template = Template(
+        '{% load pagination from directory_components %}'
+        '{% pagination objects_count=objects_count current_page=current %}'
+    )
+
+    context = {
+        'request': rf.get('/'),
+        'objects_count': count,
+        'current': current,
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    items = []
+    if soup.findAll('a', {'class': 'pagination-previous'}):
+        items.append('P')
+    for element in soup.find_all('li'):
+        if element.find('span'):
+            items.append('...')
+        else:
+            button = element.find('a')
+            if 'button' in button['class']  :
+                items.append(f'[{button.string}]')
+            else:
+                items.append(button.string)
+    if soup.findAll('a', {'class': 'pagination-next'}):
+        items.append('N')
+    assert ' '.join(items) == expected
