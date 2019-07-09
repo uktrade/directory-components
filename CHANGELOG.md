@@ -6,7 +6,7 @@
 - Made `search-page-expandable-options` use a form
 
 ### Breaking change
-- `search-page-expandable-options` previously required different parameters so will break if being used already 
+- `search-page-expandable-options` previously required different parameters so needs to be changed to pass in a form with choices that are a list of tuples 
 
 ## 20.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/234/files)
