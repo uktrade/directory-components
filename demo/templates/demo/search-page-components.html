@@ -40,23 +40,27 @@
 
 &lt;div class="grid-row"&gt;
     &lt;div class="column-quarter"&gt;
-        {% search_page_expandable_options option_title="Sector" options=options %}
+        {% search_page_expandable_options label='Sectors' field=form.colours %}
     &lt;/div&gt;
 &lt;/div&gt;{% endverbatim %}</code></pre>
 
-    <span> The 'options' being passed in should be a dictionary. The keys should be the option names and the
-    values should be 'checked' or ' ' (an empty string). The value is added to the input tag and so can be changed
-    to 'checked' if the option has been selected so it will appear selected.
-    <pre><code>{% verbatim %}options = {
-    'Energy': 'checked',
-    'Real Estate': '',
-    'Automotive': '',
-    'Aerospace': 'checked'
-},{% endverbatim %}</code></pre>
+To get the checkboxes, the form should use:<pre><code>{% verbatim %}colours = fields.MultipleChoiceField(
+    widget=widgets.CheckboxSelectInlineLabelMultiple(
+        attrs={'id': 'checkbox-multiple'},
+        use_nice_ids=True,
+    ),{% endverbatim %}</code></pre>
+
+The options should be a list of tuples:
+<pre><code>{% verbatim %}   choices=(
+        ('red', 'Red'),
+        ('green', 'Green'),
+        ('blue', 'Blue'),
+    )
+){% endverbatim %}</code></pre>
 
     <div class="grid-row">
         <div class="column-quarter">
-            {% search_page_expandable_options option_title="Sector" options=options %}
+            {% search_page_expandable_options label='Colours' field=form.multiple_choice %}
         </div>
     </div>
 
