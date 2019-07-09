@@ -79,11 +79,6 @@
 
 }
 
-button[type=submit] {
-  width: 100%;
-  margin-top: 25px;
-}
-
 body.js-enabled {
   .expandable-fieldset{
     button.filter-collapse.checked + .form-group {

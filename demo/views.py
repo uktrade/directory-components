@@ -46,12 +46,7 @@ class SearchPageComponentsDemoPageView(BasePageView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(
             filters=['Energy', 'Real Estate', 'Automotive', 'Aerospace'],
-            options={
-                'Energy': 'checked',
-                'Real Estate': '',
-                'Automotive': '',
-                'Aerospace': 'checked'
-            },
+            form=forms.MultipleChoiceForm(),
             *args, **kwargs
         )
         context['home_link'] = '/'
