@@ -6,8 +6,7 @@
 - Moved javascript from actual component `search-page-expandable-options.html`to `dit.components.searchPageExpandableOptions.js` which needs to be loaded when component is used (fixes bug when component is used more than once on a page)
 
 ### Breaking changes
-- Requires javascript file to be loaded when component is used now
-
+- Requires javascript file `dit.components.searchPageExpandableOptions.js` to be loaded when `search-page-expandable-options` component is used
 ## 21.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/237/files)
 ### Bug fixes
