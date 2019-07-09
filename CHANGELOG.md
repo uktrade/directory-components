@@ -3,7 +3,7 @@
 ## 21.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/237/files)
 ### Bug fixes
-- Moved javascript from demo page `selected_page_components.html` to `search-page-expandable-options.html` 
+- Moved javascript from demo page `selected_page_components.html` to actual component `search-page-expandable-options.html` 
 
 ## 21.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/236/files)
