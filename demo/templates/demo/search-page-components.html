@@ -5,6 +5,11 @@
 {% load demo_tags %}
 {% load breadcrumbs search_page_selected_filters search_page_expandable_options from directory_components %}
 
+{% block header_js %}
+    {{ block.super }}
+    <script src="{% static 'directory_components/js/dit.components.searchPageExpandableOptions.js' %}"></script>
+{% endblock %}
+
 {% block css_layout_class %}components{% endblock css_layout_class %}
 
 {% block content %}
@@ -35,8 +40,14 @@
     </div>
 
     <h2 class="heading-medium">Expandable options</h2>
+The file 'directory_components/js/dit.components.searchPageExpandableOptions.js' needs to be imported to use this component
 
     <pre><code>{% verbatim %}{% load search_page_expandable_options from directory_components %}
+
+{% block header_js %}
+    {{ block.super }}
+    &lt;script src="{% static 'directory_components/js/dit.components.searchPageExpandableOptions.js' %}"&gt;&lt;/script&gt;
+{% endblock %}
 
 &lt;div class="grid-row"&gt;
     &lt;div class="column-quarter"&gt;
