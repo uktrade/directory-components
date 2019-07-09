@@ -1,5 +1,10 @@
 # Changelog
 
+## 20.4.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/236/files)
+### Bug fixes
+- Made `search-page-expandable-options` use a form
+
 ## 20.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/234/files)
 ### Bug fixes
