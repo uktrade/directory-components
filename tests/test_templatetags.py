@@ -647,6 +647,109 @@ def test_override_elements_css_class_does_not_override_non_targets():
     assert actual == expected
 
 
+def test_lazyload():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img class="foo" src="/bar"/>'
+        '{% endlazyload %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<noscript>'
+        '<img class="foo" src="/bar"/>'
+        '</noscript>'
+        '<img class="foo lazyload" data-src="/bar"/>'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_no_img_class():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img src="/bar"/>'
+        '{% endlazyload %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<noscript>'
+        '<img src="/bar"/>'
+        '</noscript>'
+        '<img class=" lazyload" data-src="/bar"/>'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_no_img_src():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img class="foo"/>'
+        '{% endlazyload %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<noscript>'
+        '<img class="foo"/>'
+        '</noscript>'
+        '<img class="foo lazyload" data-src=""/>'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_context_variables():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img class="{{ foo.class }}" src="{{ foo.src }}"/>'
+        '{% endlazyload %}'
+    )
+
+    context = {
+        'foo': {'class': 'foo-class', 'src': '/foo'}
+    }
+
+    rendered_html = template.render(Context(context))
+
+    expected_html = (
+        '<noscript>'
+        '<img class="foo-class" src="/foo"/>'
+        '</noscript>'
+        '<img class="foo-class lazyload" data-src="/foo"/>'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_missing_img():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '{% endlazyload %}'
+    )
+
+    with pytest.raises(ValueError):
+        template.render(Context())
+
+
+def test_lazyload_wrong_element():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<div></div>'
+        '{% endlazyload %}'
+    )
+
+    with pytest.raises(ValueError):
+        template.render(Context())
+
+
 def test_breadcrumbs():
     template = Template(
         '{% load breadcrumbs from directory_components %}'

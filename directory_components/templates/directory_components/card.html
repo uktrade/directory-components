@@ -1,3 +1,5 @@
+{% load lazyload from directory_components %}
+
 <div
   class="card {% if title and not description and not html_content %}only-title{% endif %}"
   {% if card_id %}id="{{ card_id }}"{% endif %}
@@ -9,10 +11,9 @@
     {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
   {% endif %}
     {% if img_src %}
-      <img class="card-image lazyload" data-src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-      <noscript>
+      {% lazyload %}
         <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-      </noscript>
+      {% endlazyload %}
     {% endif %}
     <div class="card-inner">
       {% if html_content %}

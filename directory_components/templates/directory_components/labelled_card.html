@@ -1,3 +1,5 @@
+{% load lazyload from directory_components %}
+
 <a
   class="labelled-card"
   href="{{ url }}"
@@ -7,10 +9,9 @@
       <h3 class="title">{% firstof title heading %}</h3>
     </div>
     {% if img_src %}
-      <img class="card-image lazyload" data-src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-      <noscript>
+      {% lazyload %}
         <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-      </noscript>
+      {% endlazyload %}
     {% endif %}
     <div class="card-inner {% if img_src %}with-image{% endif %}">
       <p class="description">{{ description }}</p>
