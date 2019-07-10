@@ -131,17 +131,17 @@ class DemoPaginationView(TemplateView):
     @property
     def pagination_few_pages(self):
         paginator = Paginator(self.objects, 10)
-        return [paginator.page(index) for index in range(1, 3, 1)]
+        return [paginator.page(index) for index in range(1, 3)]
 
     @property
     def pagination_some_pages(self):
         paginator = Paginator(self.objects, 3)
-        return [paginator.page(index) for index in range(1, 6, 1)]
+        return [paginator.page(index) for index in range(1, 6)]
 
     @property
     def pagination_many_pages(self):
         paginator = Paginator(self.objects, 1)
-        return [paginator.page(index) for index in range(1, 16, 1)]
+        return [paginator.page(index) for index in range(1, 16)]
 
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
