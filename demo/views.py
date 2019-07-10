@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
@@ -120,3 +121,31 @@ class Trigger404View(View):
 class Trigger500ErrorView(View):
     def dispatch(self, request):
         raise Exception('triggering a server error')
+
+
+class DemoPaginationView(TemplateView):
+    template_name = 'demo/pagination.html'
+
+    objects = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+    @property
+    def pagination_few_pages(self):
+        paginator = Paginator(self.objects, 10)
+        return [paginator.page(index) for index in range(1, 3)]
+
+    @property
+    def pagination_some_pages(self):
+        paginator = Paginator(self.objects, 3)
+        return [paginator.page(index) for index in range(1, 6)]
+
+    @property
+    def pagination_many_pages(self):
+        paginator = Paginator(self.objects, 1)
+        return [paginator.page(index) for index in range(1, 16)]
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            pagination_page_few_pages=self.pagination_few_pages,
+            pagination_page_some_pages=self.pagination_some_pages,
+            pagination_page_many_pages=self.pagination_many_pages,
+        )
