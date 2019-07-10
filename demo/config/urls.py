@@ -139,8 +139,7 @@ urlpatterns = [
     ),
     url(
         r'^pagination/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/pagination.html'},
+        views.DemoPaginationView.as_view(),
         name='pagination',
     ),
 ]

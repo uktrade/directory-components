@@ -196,18 +196,16 @@ def case_study(**kwargs):
 @register.inclusion_tag(
     'directory_components/pagination.html', takes_context=True
 )
-def pagination(context, objects_count, current_page, page_param_name='page'):
-    # page size is hard-coded in here and the template to 5.
-    paginator = Paginator(range(objects_count), 5)
-    pagination = paginator.page(current_page or 1)
+def pagination(context, pagination_page, page_param_name='page'):
+    paginator = pagination_page.paginator
     request = context['request']
     params = request.GET.copy()
     params.pop(page_param_name, None)
     return {
         'page_param_name': page_param_name,
-        'pagination': pagination,
+        'pagination': pagination_page,
         'url': f'{request.path}?{params.urlencode()}',
-        'pages_after_current': paginator.num_pages - pagination.number,
+        'pages_after_current': paginator.num_pages - pagination_page.number,
     }
 
 

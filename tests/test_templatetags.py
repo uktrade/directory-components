@@ -2,8 +2,10 @@ import pytest
 from bs4 import BeautifulSoup
 
 from django import forms
+from django.core.paginator import Paginator
 from django.template import Context, Template
 
+from demo.views import DemoPaginationView
 from directory_components import fields
 from directory_components.templatetags import directory_components
 
@@ -912,13 +914,17 @@ def test_ga360_data_with_all_optional_parameters():
 def test_pagination(count, current, expected, rf):
     template = Template(
         '{% load pagination from directory_components %}'
-        '{% pagination objects_count=objects_count current_page=current %}'
+        '{% pagination pagination_page=pagination_page %}'
     )
 
+    page_size = 5
+    objects = [item for item in range(count)]
+
+    paginator = Paginator(objects, page_size)
+    pagination_page = paginator.page(current)
     context = {
         'request': rf.get('/'),
-        'objects_count': count,
-        'current': current,
+        'pagination_page': pagination_page
     }
 
     html = template.render(Context(context))
@@ -933,7 +939,7 @@ def test_pagination(count, current, expected, rf):
             items.append('...')
         else:
             button = element.find('a')
-            if 'button' in button['class']  :
+            if 'button' in button['class']:
                 items.append(f'[{button.string}]')
             else:
                 items.append(button.string)
