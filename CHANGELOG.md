@@ -1,13 +1,43 @@
 # Changelog
 
-## 21.0.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/222/files)
+## 24.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/228/files)
 
 ### Implemented enhancements
-- Add lazysizes library, which allows lazy loading of images (and more) 
+- Add lazysizes library, which allows lazy loading of images (and more). Check out the directory-components app for usage notes.
 
 ### Breaking changes
 - Moved the JQuery script tag in `base.html` from block `head_js` to block `vendor_js`
+
+## 23.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/235/file)
+
+## Implemented Enhancements
+- New international header with optional 2 tier navigation.
+- Improvements to no-js header navigation
+
+### Breaking Changes
+- greatInternationalHeader.js has been replaced by header.js (which is automatically included in base.html)
+
+## 22.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/238/files)
+### Bug fixes
+- Moved javascript from actual component `search-page-expandable-options.html`to `dit.components.searchPageExpandableOptions.js` which needs to be loaded when component is used (fixes bug when component is used more than once on a page)
+
+### Breaking changes
+- Requires javascript file `dit.components.searchPageExpandableOptions.js` to be loaded when `search-page-expandable-options` component is used
+## 21.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/237/files)
+### Bug fixes
+- Moved javascript from demo page `selected_page_components.html` to actual component `search-page-expandable-options.html`
+
+## 21.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/236/files)
+### Bug fixes
+- Made `search-page-expandable-options` use a form
+
+### Breaking change
+- `search-page-expandable-options` previously required different parameters so needs to be changed to pass in a form with choices that are a list of tuples
 
 ## 20.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/234/files)

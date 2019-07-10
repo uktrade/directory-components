@@ -4,7 +4,7 @@ from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 
 from directory_components.mixins import (
-    CountryDisplayMixin, EnableTranslationsMixin
+    CountryDisplayMixin, EnableTranslationsMixin, InternationalHeaderMixin
 )
 
 from demo import forms
@@ -18,9 +18,12 @@ class BasePageView(TemplateView):
 
 
 class InternationalHeaderView(
-    CountryDisplayMixin, EnableTranslationsMixin, BasePageView
+    InternationalHeaderMixin,
+    CountryDisplayMixin,
+    EnableTranslationsMixin,
+    BasePageView
 ):
-    pass
+    header_section = "invest"
 
 
 class InvestHeaderView(
@@ -46,12 +49,7 @@ class SearchPageComponentsDemoPageView(BasePageView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(
             filters=['Energy', 'Real Estate', 'Automotive', 'Aerospace'],
-            options={
-                'Energy': 'checked',
-                'Real Estate': '',
-                'Automotive': '',
-                'Aerospace': 'checked'
-            },
+            form=forms.MultipleChoiceForm(),
             *args, **kwargs
         )
         context['home_link'] = '/'

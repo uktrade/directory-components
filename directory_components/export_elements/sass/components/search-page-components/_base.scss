@@ -1,7 +1,7 @@
 // Search page components
 
-@import "directory_components/export_elements/sass/partials/_colours.scss";
-@import "directory_components/export_elements/sass/partials/_spacings.scss";
+@import "../../partials/_colours.scss";
+@import "../../partials/_spacings.scss";
 
 .selected-filters-container {
   background-color: $stone-40;
@@ -77,11 +77,6 @@
     margin: 5px 0 0 0;
   }
 
-}
-
-button[type=submit] {
-  width: 100%;
-  margin-top: 25px;
 }
 
 body.js-enabled {
