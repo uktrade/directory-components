@@ -139,10 +139,6 @@ def test_card():
     assert 'img_src' in lazy_card_image['data-src']
     assert lazy_card_image['alt'] == 'img_alt'
 
-    noscript_card_image = soup.select('.card-image:not(.lazyload)')[0]
-    assert 'img_src' in noscript_card_image['src']
-    assert noscript_card_image['alt'] == 'img_alt'
-
     card_heading = soup.select('h3.heading-large')[0]
     assert card_heading.string == 'title'
 
@@ -196,10 +192,6 @@ def test_labelled_card_with_image():
 
     card_image = soup.select('.card-image.lazyload')[0]
     assert 'img_src' in card_image['data-src']
-    assert card_image['alt'] == 'img_alt'
-
-    card_image = soup.select('.card-image:not(.lazyload)')[0]
-    assert 'img_src' in card_image['src']
     assert card_image['alt'] == 'img_alt'
 
     card_heading = soup.select('h3.title')[0]
