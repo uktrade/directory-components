@@ -815,9 +815,7 @@ def test_pagination(count, current, expected, rf):
     )
 
     page_size = 5
-    objects = []
-    for i in range(count):
-        objects.append(i)
+    objects = [item for item in range(count)]
 
     paginator = Paginator(objects, page_size)
     pagination_page = paginator.page(current)
