@@ -30,20 +30,21 @@ def pagination(self):
     return paginator.page(current_page_num or 1){% endverbatim %}</code></pre>
           <h2 class="heading-large">Few results</h2>
           <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
-          {% pagination pagination_page=pagination_page_few_1 %}
-          {% pagination pagination_page=pagination_page_few_2 %}
+          {% for pagination in pagination_page_few_pages %}
+            {% pagination pagination_page=pagination %}
+          {% endfor %}
 
           <h2 class="heading-large">Some results</h2>
           <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
-          {% pagination pagination_page=pagination_page_some_1 %}
-          {% pagination pagination_page=pagination_page_some_3 %}
-          {% pagination pagination_page=pagination_page_some_5 %}
+          {% for pagination in pagination_page_some_pages %}
+            {% pagination pagination_page=pagination %}
+          {% endfor %}
 
           <h2 class="heading-large">Many results</h2>
           <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
-          {% pagination pagination_page=pagination_page_many_1 %}
-          {% pagination pagination_page=pagination_page_many_10 %}
-          {% pagination pagination_page=pagination_page_many_15 %}
+          {% for pagination in pagination_page_many_pages %}
+            {% pagination pagination_page=pagination %}
+          {% endfor %}
 
       </div>
     </div>
