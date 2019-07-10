@@ -100,11 +100,8 @@ def test_urls_exist_in_domestic_header(url, settings):
 @pytest.mark.parametrize('url', [
     urls.SERVICES_GREAT_DOMESTIC,
     urls.GREAT_INTERNATIONAL,
-    urls.SERVICES_INVEST,
-    urls.SERVICES_FAS,
-    urls.GREAT_INTERNATIONAL_INDUSTRIES,
-    urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
-    urls.GREAT_INTERNATIONAL_NEWS,
+    'http://test.co.uk',
+    'http://mobile-test.co.uk'
 ])
 def test_urls_exist_in_international_header(url, settings):
     context = {
@@ -112,6 +109,12 @@ def test_urls_exist_in_international_header(url, settings):
             'NEWS_SECTION_ON': True,
             'HOW_TO_DO_BUSINESS_ON': True,
         },
+        'pages': [
+            {'url': 'http://mobile-test.co.uk', 'title': 'test', 'sub_pages': []}  # NOQA
+        ],
+        'header_items': [
+            {'url': 'http://test.co.uk', 'title': 'test', 'active': True}
+        ],
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None)
     }
@@ -146,7 +149,7 @@ def test_urls_exist_in_domestic_footer(url, settings):
     urls.TERMS_AND_CONDITIONS,
     urls.DIT,
 ])
-def test_urls_exist_in_international_footer_v2(url, settings):
+def test_urls_exist_in_international_footer(url, settings):
     context = {
         **context_processors.header_footer_processor(None),
         **context_processors.urls_processor(None),
@@ -187,63 +190,6 @@ def test_domestic_header_ids_match_urls_and_text(
 
     html = render_to_string(
         'directory_components/header_footer/domestic_header.html', context
-    )
-    soup = BeautifulSoup(html, 'html.parser')
-
-    element = soup.find(id=element_id)
-
-    assert element.attrs['href'] == url
-    if title:
-        assert element.string == title
-
-
-@pytest.mark.parametrize('title,element_id,url', (
-    (
-        'Invest',
-        'header-invest',
-        urls.SERVICES_INVEST,
-    ),
-    (
-        'Find a UK supplier',
-        'header-fas',
-        urls.SERVICES_FAS,
-    ),
-    (
-        'Industries',
-        'header-industries',
-        urls.GREAT_INTERNATIONAL_INDUSTRIES,
-    ),
-    (
-        'How to do business with the UK',
-        'header-how-to-do-business-with-the-uk',
-        urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
-    ),
-    (
-        'News',
-        'header-news',
-        urls.GREAT_INTERNATIONAL_NEWS,
-    ),
-    (
-        '',
-        'great-header-logo',
-        urls.SERVICES_GREAT_INTERNATIONAL,
-    ),
-))
-def test_international_header_ids_match_urls_and_text(
-    title, element_id, url, settings
-):
-    context = {
-        'features': {
-            'NEWS_SECTION_ON': True,
-            'HOW_TO_DO_BUSINESS_ON': True
-        },
-        **context_processors.header_footer_processor(None),
-        **context_processors.urls_processor(None),
-    }
-
-    html = render_to_string(
-        'directory_components/header_footer/international_header.html',
-        context
     )
     soup = BeautifulSoup(html, 'html.parser')
 

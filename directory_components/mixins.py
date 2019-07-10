@@ -1,7 +1,10 @@
+from collections import namedtuple
+
 from django.conf import settings
 from django.utils import translation
 
 from directory_constants.choices import COUNTRY_CHOICES
+from directory_constants import urls
 
 from directory_components import helpers, forms
 
@@ -118,6 +121,77 @@ class GA360Mixin:
 
         return super().get_context_data(
             ga360=self.ga360_payload,
+            *args,
+            **kwargs
+        )
+
+
+Page = namedtuple('Page', 'name title url sub_pages')
+HeaderItem = namedtuple('HeaderItem', 'title url is_active')
+
+
+class InternationalHeaderMixin:
+    # header_section and header_subsection can be set in the views.
+    header_section = ""
+    header_subsection = ""
+
+    pages = [
+        Page(
+            name='invest',
+            title=translation.gettext('Invest'),
+            url=urls.SERVICES_INVEST,
+            sub_pages=[]
+        ),
+        Page(
+            name='uk_setup_guides',
+            title=translation.gettext('UK setup guide'),
+            url=urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
+            sub_pages=[]
+        ),
+        Page(
+            name='find_a_supplier',
+            title=translation.gettext('Find a UK supplier'),
+            url=urls.SERVICES_FAS,
+            sub_pages=[]
+        ),
+        Page(
+            name='industries',
+            title=translation.gettext('Industries'),
+            url=urls.GREAT_INTERNATIONAL_INDUSTRIES,
+            sub_pages=[]
+        ),
+    ]
+
+    def get_active_page(self):
+        return next(
+            (page for page in self.pages if page.name == self.header_section),
+            None
+        )
+
+    def get_context_data(self, *args, **kwargs):
+
+        header_items = [
+            HeaderItem(
+                title=page.title,
+                url=page.url,
+                is_active=page.name == self.header_section)
+            for page in self.pages
+        ]
+
+        active_page = self.get_active_page()
+        sub_pages = active_page.sub_pages if active_page else []
+
+        sub_header_items = [
+            HeaderItem(title=page.title,
+                       url=page.url,
+                       is_active=page.name == self.header_subsection)
+            for page in sub_pages
+        ]
+
+        return super().get_context_data(
+            header_items=header_items,
+            sub_header_items=sub_header_items,
+            pages=self.pages,
             *args,
             **kwargs
         )

@@ -9,7 +9,7 @@
 .great-header-country-display,
 .great-header-language-display {
   position: absolute;
-  left: -1000px;
+  left: -10000px;
   padding: 0 3px;
   font: inherit;
 }
@@ -72,23 +72,3 @@ body.js-enabled {
   }
 }
 
-
-@media (max-width: 500px) {
-  body.js-enabled {
-    .great-header-menu.international {
-      & > .container {
-        padding-top: 70px;
-      }
-
-      .js-mobile-button {
-        top: 70px;
-      }
-    }
-
-    .great-header-language-switcher,
-    .great-header-country-select {
-      display: block;
-    }
-
-  }
-}
