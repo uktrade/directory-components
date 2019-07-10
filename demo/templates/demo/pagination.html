@@ -20,40 +20,30 @@
     </div>
     <div class="grid-row">
       <div class="column-two-thirds">
+          <span class="font-medium">Pagination requires your page's view to create it's own Pagination object and pass this into the component. The view should include something like:</span>
+          <pre><code>{% verbatim %}objects_being_displayed = []
+page_size = 5
+
+@property
+def pagination(self):
+    paginator = Paginator(self.objects_being_displayed, self.page_size)
+    return paginator.page(current_page_num or 1){% endverbatim %}</code></pre>
           <h2 class="heading-large">Few results</h2>
-          <pre><code>{% verbatim %}{% pagination objects_count=20 current_page=1 %}{% endverbatim %}</code></pre>
-          {% pagination objects_count=30 current_page=1 %}
-          {% pagination objects_count=30 current_page=2 %}
-          {% pagination objects_count=30 current_page=3 %}
-          {% pagination objects_count=30 current_page=4 %}
-          {% pagination objects_count=30 current_page=5 %}
-          {% pagination objects_count=30 current_page=6 %}
+          <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
+          {% pagination pagination_page=pagination_page_few_1 %}
+          {% pagination pagination_page=pagination_page_few_2 %}
 
           <h2 class="heading-large">Some results</h2>
-          <pre><code>{% verbatim %}{% pagination objects_count=40 current_page=1 %}{% endverbatim %}</code></pre>
-          {% pagination objects_count=40 current_page=1 %}
-          {% pagination objects_count=40 current_page=2 %}
-          {% pagination objects_count=40 current_page=3 %}
-          {% pagination objects_count=40 current_page=4 %}
-          {% pagination objects_count=40 current_page=5 %}
-          {% pagination objects_count=40 current_page=6 %}
-          {% pagination objects_count=40 current_page=7 %}
-          {% pagination objects_count=40 current_page=8 %}
+          <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
+          {% pagination pagination_page=pagination_page_some_1 %}
+          {% pagination pagination_page=pagination_page_some_3 %}
+          {% pagination pagination_page=pagination_page_some_5 %}
 
           <h2 class="heading-large">Many results</h2>
-          <pre><code>{% verbatim %}{% pagination objects_count=60 current_page=1 %}{% endverbatim %}</code></pre>
-          {% pagination objects_count=60 current_page=1 %}
-          {% pagination objects_count=60 current_page=2 %}
-          {% pagination objects_count=60 current_page=3 %}
-          {% pagination objects_count=60 current_page=4 %}
-          {% pagination objects_count=60 current_page=5 %}
-          {% pagination objects_count=60 current_page=6 %}
-          {% pagination objects_count=60 current_page=7 %}
-          {% pagination objects_count=60 current_page=8 %}
-          {% pagination objects_count=60 current_page=9 %}
-          {% pagination objects_count=60 current_page=10 %}
-          {% pagination objects_count=60 current_page=11 %}
-          {% pagination objects_count=60 current_page=12 %}
+          <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
+          {% pagination pagination_page=pagination_page_many_1 %}
+          {% pagination pagination_page=pagination_page_many_10 %}
+          {% pagination pagination_page=pagination_page_many_15 %}
 
       </div>
     </div>

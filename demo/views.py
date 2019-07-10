@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
@@ -120,3 +121,61 @@ class Trigger404View(View):
 class Trigger500ErrorView(View):
     def dispatch(self, request):
         raise Exception('triggering a server error')
+
+
+class DemoPaginationView(TemplateView):
+    template_name = 'demo/pagination.html'
+
+    objects = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+    @property
+    def pagination_few_pages_1(self):
+        paginator = Paginator(self.objects, 10)
+        return paginator.page(1 or 1)
+
+    @property
+    def pagination_few_pages_2(self):
+        paginator = Paginator(self.objects, 10)
+        return paginator.page(2 or 1)
+
+    @property
+    def pagination_some_pages_1(self):
+        paginator = Paginator(self.objects, 3)
+        return paginator.page(1 or 1)
+
+    @property
+    def pagination_some_pages_3(self):
+        paginator = Paginator(self.objects, 3)
+        return paginator.page(3 or 1)
+
+    @property
+    def pagination_some_pages_5(self):
+        paginator = Paginator(self.objects, 3)
+        return paginator.page(5 or 1)
+
+    @property
+    def pagination_many_pages_1(self):
+        paginator = Paginator(self.objects, 1)
+        return paginator.page(1 or 1)
+
+    @property
+    def pagination_many_pages_10(self):
+        paginator = Paginator(self.objects, 1)
+        return paginator.page(10 or 1)
+
+    @property
+    def pagination_many_pages_15(self):
+        paginator = Paginator(self.objects, 1)
+        return paginator.page(15 or 1)
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            pagination_page_few_1=self.pagination_few_pages_1,
+            pagination_page_few_2=self.pagination_few_pages_2,
+            pagination_page_some_1=self.pagination_some_pages_1,
+            pagination_page_some_3=self.pagination_some_pages_3,
+            pagination_page_some_5=self.pagination_some_pages_5,
+            pagination_page_many_1=self.pagination_many_pages_1,
+            pagination_page_many_10=self.pagination_many_pages_10,
+            pagination_page_many_15=self.pagination_many_pages_15
+        )

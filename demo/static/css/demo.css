@@ -81,14 +81,6 @@ main {
   display: inline-block;
 }
 
-nav.pagination > ol:not(.has-previous) {
-  padding-left: 140px;
-}
-
-nav.pagination > ol:not(.has-next) {
-  padding-right: 100px;
-}
-
 @media (max-width: 640px) {
   .demo-footer .copyright {
     font-size: 13px;
