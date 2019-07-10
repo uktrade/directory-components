@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 from django import forms
 from django.template import Context, Template
 
-from demo.views import DemoPaginationView
 from directory_components import fields
 from directory_components.templatetags import directory_components
 
@@ -777,37 +776,3 @@ def test_ga360_data_with_all_optional_parameters():
         'href="example.com">Click Me</a>' \
         '</div>'
     assert rendered_html == expected_html
-
-
-@pytest.mark.parametrize('pagination_page,expected', (
-    (DemoPaginationView.pagination_few_pages_1, '[1] 2 N')))
-def test_pagination(pagination_page, expected, rf):
-    template = Template(
-        '{% load pagination from directory_components %}'
-        '{% pagination pagination_page=pagination_page %}'
-    )
-
-    context = {
-        'request': rf.get('/'),
-        'pagination_page': pagination_page,
-    }
-
-    html = template.render(Context(context))
-
-    soup = BeautifulSoup(html, 'html.parser')
-
-    items = []
-    if soup.findAll('a', {'class': 'pagination-previous'}):
-        items.append('P')
-    for element in soup.find_all('li'):
-        if element.find('span'):
-            items.append('...')
-        else:
-            button = element.find('a')
-            if 'button' in button['class']  :
-                items.append(f'[{button.string}]')
-            else:
-                items.append(button.string)
-    if soup.findAll('a', {'class': 'pagination-next'}):
-        items.append('N')
-    assert ' '.join(items) == expected
