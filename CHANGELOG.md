@@ -7,7 +7,7 @@
 - Pagination component takes in Pagination object from the page it is being used on rather than creating it's own
 
 ### Breaking Changes
-- When pagination component is used the pages is required to create it's own Pagination object in the view and pass this in to pagination component
+- When pagination component is used the page is required to create it's own Pagination object in the view and pass this in to pagination component
 
 ## 23.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/235/file)
