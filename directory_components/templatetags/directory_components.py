@@ -237,9 +237,10 @@ class LazyLoad(template.Node):
             raise ValueError('Missing img in lazyload template tag')
 
         lazyload_element = BeautifulSoup(html, 'html.parser').find('img')
-        lazyload_element['class'] = lazyload_element.get('class', [''])[0] + ' lazyload'  # noqa
+        lazyload_element.attrs.setdefault('class', [''])
+        lazyload_element['class'][0] += ' lazyload'
         lazyload_element['data-src'] = lazyload_element.get('src', '')
-        del(lazyload_element['src'])
+        del lazyload_element['src']
 
         output_soup.append(lazyload_element)
         output_soup.find('noscript').append(noscript_element)
