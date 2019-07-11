@@ -137,9 +137,9 @@ def test_card():
     card_link = soup.select('.card-link')[0]
     assert 'url' in card_link['href']
 
-    card_image = soup.select('.card-image')[0]
-    assert 'img_src' in card_image['src']
-    assert card_image['alt'] == 'img_alt'
+    lazy_card_image = soup.select('.card-image.lazyload')[0]
+    assert 'img_src' in lazy_card_image['data-src']
+    assert lazy_card_image['alt'] == 'img_alt'
 
     card_heading = soup.select('h3.heading-large')[0]
     assert card_heading.string == 'title'
@@ -192,8 +192,8 @@ def test_labelled_card_with_image():
     card_inner = soup.select('div.card-inner')[0]
     assert 'with-image' in card_inner['class']
 
-    card_image = soup.select('.card-image')[0]
-    assert 'img_src' in card_image['src']
+    card_image = soup.select('.card-image.lazyload')[0]
+    assert 'img_src' in card_image['data-src']
     assert card_image['alt'] == 'img_alt'
 
     card_heading = soup.select('h3.title')[0]
@@ -639,6 +639,109 @@ def test_override_elements_css_class_does_not_override_non_targets():
     )
     expected = '<h4 class="existing-class"></h4>'
     assert actual == expected
+
+
+def test_lazyload():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img class="foo" src="/bar">'
+        '{% endlazyload %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<noscript>'
+        '<img class="foo" src="/bar">'
+        '</noscript>'
+        '<img class="foo lazyload" data-src="/bar">'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_no_img_class():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img src="/bar">'
+        '{% endlazyload %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<noscript>'
+        '<img src="/bar">'
+        '</noscript>'
+        '<img class=" lazyload" data-src="/bar">'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_no_img_src():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img class="foo">'
+        '{% endlazyload %}'
+    )
+
+    rendered_html = template.render(Context())
+
+    expected_html = (
+        '<noscript>'
+        '<img class="foo">'
+        '</noscript>'
+        '<img class="foo lazyload" data-src="">'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_context_variables():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<img class="{{ foo.class }}" src="{{ foo.src }}">'
+        '{% endlazyload %}'
+    )
+
+    context = {
+        'foo': {'class': 'foo-class', 'src': '/foo'}
+    }
+
+    rendered_html = template.render(Context(context))
+
+    expected_html = (
+        '<noscript>'
+        '<img class="foo-class" src="/foo">'
+        '</noscript>'
+        '<img class="foo-class lazyload" data-src="/foo">'
+    )
+    assert rendered_html.replace('\n', '') == expected_html
+
+
+def test_lazyload_missing_img():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '{% endlazyload %}'
+    )
+
+    with pytest.raises(ValueError):
+        template.render(Context())
+
+
+def test_lazyload_wrong_element():
+    template = Template(
+        '{% load lazyload from directory_components %}'
+        '{% lazyload %}'
+        '<div></div>'
+        '{% endlazyload %}'
+    )
+
+    with pytest.raises(ValueError):
+        template.render(Context())
 
 
 def test_breadcrumbs():

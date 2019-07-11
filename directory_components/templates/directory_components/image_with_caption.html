@@ -1,5 +1,9 @@
+{% load lazyload from directory_components %}
+
 <figure class="image-with-caption">
-  <img src="{% firstof img_url image_url image_src img_src image %}" alt="{{ alt_text }}">
+  {% lazyload %}
+    <img src="{% firstof img_url image_url image_src img_src image %}" alt="{{ alt_text }}">
+  {% endlazyload %}
   {% if main_caption or sub_caption %}
   <figcaption class="caption">
     <p class="main-caption">{{ main_caption }}</p>

@@ -210,6 +210,43 @@ def pagination(context, pagination_page, page_param_name='page'):
 
 
 @register.tag
+def lazyload(parser, token):
+    nodelist = parser.parse(('endlazyload',))
+    parser.delete_first_token()
+    return LazyLoad(nodelist)
+
+
+class LazyLoad(template.Node):
+    template = """
+        <noscript></noscript>
+    """
+
+    def __init__(self, nodelist):
+        self.nodelist = nodelist
+
+    def render(self, context):
+        html = self.nodelist.render(context)
+
+        output_soup = BeautifulSoup(self.template, 'html.parser')
+
+        noscript_element = BeautifulSoup(html, 'html.parser').find('img')
+
+        if not noscript_element:
+            raise ValueError('Missing img in lazyload template tag')
+
+        lazyload_element = BeautifulSoup(html, 'html.parser').find('img')
+        lazyload_element.attrs.setdefault('class', [''])
+        lazyload_element['class'][0] += ' lazyload'
+        lazyload_element['data-src'] = lazyload_element.get('src', '')
+        del lazyload_element['src']
+
+        output_soup.append(lazyload_element)
+        output_soup.find('noscript').append(noscript_element)
+
+        return output_soup.decode(formatter=None)
+
+
+@register.tag
 def breadcrumbs(parser, token):
     nodelist = parser.parse(('endbreadcrumbs',))
     parser.delete_first_token()

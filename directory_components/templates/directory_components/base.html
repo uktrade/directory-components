@@ -16,9 +16,6 @@
         {% block cookie_domain_meta %}
           <meta id="privacyCookieDomain" value="{{ directory_components_cookie_notice.PRIVACY_COOKIE_DOMAIN }}" />
         {% endblock %}
-        {% block js_header %}
-          <meta id="headerInvestURL" value="{{ services_urls.invest }}">
-        {% endblock %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
@@ -37,6 +34,7 @@
 
         <style type="text/css">
             .js-disabled-only { display: none; }
+            .lazyload { visibility: hidden !important; }
         </style>
         <noscript>
           <link href="{% static 'directory_components/export_elements/stylesheets/elements-components-no-js.min.css' %}" media="all" rel="stylesheet" />
@@ -44,11 +42,18 @@
                 .navigation-toggle { display: block; }
                 .js-disabled-only { display: block; }
                 .js-enabled-only { display: none; }
+                .lazyload { visibility: visible !important; }
+                .lazyload:not(.ls-noscript) { display: none !important; }
             </style>
         </noscript>
 
-        {% block head_js %}
+        {% block vendor_js %}
+            <script src="{% static 'directory_components/js/vendor/lazysizes.min.js' %}"></script>
+            <script src="{% static 'directory_components/js/vendor/ls.noscript.min.js' %}"></script>
             <script src="{% static 'directory_components/js/vendor/jquery-3.3.1.min.js' %}"></script>
+        {% endblock %}
+
+        {% block head_js %}
             <script src="{% static 'directory_components/js/dit.components.cookie-notice.js' %}"></script>
         {% endblock %}
 
