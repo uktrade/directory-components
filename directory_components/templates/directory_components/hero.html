@@ -1,9 +1,17 @@
 {% with large_title|yesno:'hero-title,hero-title-compact' as title_class_name %}
 {% with large_title|yesno:'heading-hero-generic,heading-hero-generic-compact' as heading_class_name %}
 <section
-  class="hero hero-generic"{% if background_image_url %}
-  style="background-image: url({{ background_image_url }})"{% endif%}
-  id="hero" data-ga-section="hero">
+  class="hero hero-generic"
+  id="hero"
+  data-ga-section="hero"
+>
+  {% if background_image_url %}
+    <div class="hero-background-container lazyload ls-noscript" data-noscript="" aria-hidden="true">
+      <noscript>
+        <div class="hero-background-image" style="background-image: url('{{ background_image_url }}')"></div>
+      </noscript>
+    </div>
+  {% endif %}
   <div class="container">
     <div class="{{ title_class_name }}">
       {% if hero_subheading %}

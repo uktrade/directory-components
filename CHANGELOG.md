@@ -1,12 +1,19 @@
 # Changelog
 
-
-## 24.0.1
+## 25.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/240/file)
 
 ## Bugs fixed
 - Update lodash vulnerability 
 
+## 25.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/228/files)
+
+### Implemented enhancements
+- Add lazysizes library, which allows lazy loading of images (and more). Check out the directory-components app for usage notes.
+
+### Breaking changes
+- Moved the JQuery script tag in `base.html` from block `head_js` to block `vendor_js`
 
 ## 24.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/239/file)
@@ -27,7 +34,6 @@
 ### Breaking Changes
 - greatInternationalHeader.js has been replaced by header.js (which is automatically included in base.html)
 
-
 ## 22.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/238/files)
 ### Bug fixes
@@ -38,7 +44,7 @@
 ## 21.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/237/files)
 ### Bug fixes
-- Moved javascript from demo page `selected_page_components.html` to actual component `search-page-expandable-options.html` 
+- Moved javascript from demo page `selected_page_components.html` to actual component `search-page-expandable-options.html`
 
 ## 21.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/236/files)
@@ -46,7 +52,7 @@
 - Made `search-page-expandable-options` use a form
 
 ### Breaking change
-- `search-page-expandable-options` previously required different parameters so needs to be changed to pass in a form with choices that are a list of tuples 
+- `search-page-expandable-options` previously required different parameters so needs to be changed to pass in a form with choices that are a list of tuples
 
 ## 20.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/234/files)
@@ -75,7 +81,6 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/225/files)
 ### Bug fixes
 - Fixed build on gov uk PaaS
-
 
 ## 20.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/224/files)
@@ -120,7 +125,6 @@ Or for international-facing services:
     <script src="{% static 'directory_components/js/dit.components.greatInternationalHeader.js' %}"></script>
 {% endblock %}
 ```
-
 
 ## 18.1.0
 

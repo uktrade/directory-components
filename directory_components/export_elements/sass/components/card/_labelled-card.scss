@@ -69,11 +69,16 @@ a.labelled-image-card {
   @extend .labelled-card;
   position: relative;
 
-  .card-image {
+  .card-image-container {
     height: calc(100% - 45px);
     position: absolute;
     width: 100%;
     top: 45px;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
