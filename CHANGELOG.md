@@ -1,5 +1,17 @@
 # Changelog
 
+## 26.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/230/files)
+
+### Implemented enhancements
+- Can add custom css classes to fields via `Field.container_css_classes`
+- Added `forms.field_factory` for streamlining creating augmented django form fields.
+- Added `helpers.get_pagination_url`
+
+### Breaking changes
+- members of `form.widgets`, `form.fields` are now imported from `forms` directly.
+
+
 ## 25.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/228/files)
 

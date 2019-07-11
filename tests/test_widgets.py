@@ -1,7 +1,7 @@
-from directory_components.widgets import CheckboxWithInlineLabel
-from directory_components.widgets import CheckboxSelectInlineLabelMultiple
-from directory_components.widgets import RadioSelect
 from bs4 import BeautifulSoup
+
+from directory_components import forms
+
 
 TEST_CHOICES = (
     ('cyan', 'Cyan'),
@@ -17,7 +17,7 @@ TEST_CHOICES_WITH_SPACES = (
 
 
 def test_checkbox_inline_label_widget():
-    widget = CheckboxWithInlineLabel(
+    widget = forms.CheckboxWithInlineLabel(
         label='Box label',
         help_text='Help text',
         attrs={
@@ -42,13 +42,13 @@ def test_checkbox_inline_label_widget():
 
 
 def test_checkbox_inline_label_multiple_widget():
-    widget = CheckboxSelectInlineLabelMultiple()
+    widget = forms.CheckboxSelectInlineLabelMultiple()
     html = widget.render('name', 'value')
     assert '<ul ' in html
 
 
 def test_radio_select_widget():
-    widget = RadioSelect(
+    widget = forms.RadioSelect(
         attrs={'id': 'radio-test'},
         choices=TEST_CHOICES
     )
@@ -63,7 +63,7 @@ def test_radio_select_widget():
 
 
 def test_radio_nice_ids():
-    widget = RadioSelect(
+    widget = forms.RadioSelect(
         use_nice_ids=True,
         attrs={'id': 'radio-test'},
         choices=TEST_CHOICES
@@ -82,7 +82,7 @@ def test_radio_nice_ids():
 
 
 def test_radio_default_ids():
-    widget = RadioSelect(
+    widget = forms.RadioSelect(
         attrs={'id': 'radio-test'},
         choices=TEST_CHOICES
     )
@@ -100,7 +100,7 @@ def test_radio_default_ids():
 
 
 def test_radio_select_class_has_attrs():
-    radio = RadioSelect(
+    radio = forms.RadioSelect(
         attrs={'id': 'radio-test'}
     )
     assert radio.input_type == 'radio'
@@ -109,7 +109,7 @@ def test_radio_select_class_has_attrs():
 
 
 def test_checkbox_inline_class_has_attrs():
-    checkbox = CheckboxWithInlineLabel(
+    checkbox = forms.CheckboxWithInlineLabel(
         label='Test label',
         help_text='Test helptext'
     )
@@ -119,7 +119,7 @@ def test_checkbox_inline_class_has_attrs():
 
 
 def test_widget_id_handles_spaces_and_uppercase():
-    widget = RadioSelect(
+    widget = forms.RadioSelect(
         use_nice_ids=True,
         attrs={'id': 'radio-test'},
         choices=TEST_CHOICES_WITH_SPACES

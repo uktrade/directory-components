@@ -3,6 +3,15 @@ from django import forms
 from django.utils.text import slugify
 
 
+__all__ = [
+    'CheckboxSelectInlineLabelMultiple',
+    'CheckboxWithInlineLabel',
+    'ChoiceWidget',
+    'PrettyIDsMixin',
+    'RadioSelect',
+]
+
+
 class PrettyIDsMixin:
     def __init__(self, use_nice_ids=False, *args, **kwargs):
         self.use_nice_ids = use_nice_ids

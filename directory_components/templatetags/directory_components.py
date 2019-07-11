@@ -13,6 +13,8 @@ except ImportError:
     # Django >= 2.2
     from django.utils.html import mark_safe
 
+from directory_components import helpers
+
 
 register = template.Library()
 
@@ -198,13 +200,13 @@ def case_study(**kwargs):
 )
 def pagination(context, pagination_page, page_param_name='page'):
     paginator = pagination_page.paginator
-    request = context['request']
-    params = request.GET.copy()
-    params.pop(page_param_name, None)
+    pagination_url = helpers.get_pagination_url(
+        request=context['request'], page_param_name=page_param_name
+    )
     return {
         'page_param_name': page_param_name,
         'pagination': pagination_page,
-        'url': f'{request.path}?{params.urlencode()}',
+        'url': pagination_url,
         'pages_after_current': paginator.num_pages - pagination_page.number,
     }
 

@@ -1,7 +1,23 @@
 from django import forms
 from django.forms.boundfield import BoundField
 
-from directory_components import widgets
+from directory_components.forms import widgets
+
+
+__all__ = [
+    'BooleanField',
+    'CharField',
+    'ChoiceField',
+    'DateField',
+    'DirectoryComponentsBoundField',
+    'DirectoryComponentsFieldMixin',
+    'EmailField',
+    'field_factory',
+    'IntegerField',
+    'MultipleChoiceField',
+    'PaddedCharField',
+    'URLField',
+]
 
 
 class DirectoryComponentsBoundField(BoundField):
@@ -15,12 +31,14 @@ class DirectoryComponentsBoundField(BoundField):
         )
 
     def css_classes(self, *args, **kwargs):
-        return ' '.join([super().css_classes(*args, **kwargs), 'form-group'])
+        css_classes = super().css_classes(*args, **kwargs)
+        return f'{css_classes} {self.field.container_css_classes}'
 
 
 class DirectoryComponentsFieldMixin:
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, container_css_classes='form-group', *args, **kwargs):
+        self.container_css_classes = container_css_classes
         super().__init__(*args, **kwargs)
         if not hasattr(self.widget, 'css_class_name'):
             self.widget.attrs['class'] = (
@@ -32,26 +50,18 @@ class DirectoryComponentsFieldMixin:
         return DirectoryComponentsBoundField(form, self, field_name)
 
 
-class CharField(DirectoryComponentsFieldMixin, forms.CharField):
-    pass
+def field_factory(base_class):
+    bases = (DirectoryComponentsFieldMixin, base_class)
+    return type(base_class.__name__, bases, {})
 
 
-class EmailField(DirectoryComponentsFieldMixin, forms.EmailField):
-    pass
-
-
-class URLField(DirectoryComponentsFieldMixin, forms.URLField):
-    pass
-
-
-class ChoiceField(DirectoryComponentsFieldMixin, forms.ChoiceField):
-    pass
-
-
-class MultipleChoiceField(
-    DirectoryComponentsFieldMixin, forms.MultipleChoiceField
-):
-    pass
+CharField = field_factory(forms.CharField)
+EmailField = field_factory(forms.EmailField)
+URLField = field_factory(forms.URLField)
+ChoiceField = field_factory(forms.ChoiceField)
+DateField = field_factory(forms.DateField)
+IntegerField = field_factory(forms.IntegerField)
+MultipleChoiceField = field_factory(forms.MultipleChoiceField)
 
 
 class BooleanField(DirectoryComponentsFieldMixin, forms.BooleanField):

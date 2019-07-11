@@ -1,4 +1,4 @@
-from directory_components import forms, fields, widgets
+from directory_components import forms
 
 
 class PrefixIdMixin:
@@ -7,19 +7,19 @@ class PrefixIdMixin:
 
 
 class TextBoxForm(PrefixIdMixin, forms.Form):
-    text_field1 = fields.CharField(
+    text_field1 = forms.CharField(
         label='Q1: Simple text field',
         help_text='Some help text'
     )
-    url_field = fields.URLField(
+    url_field = forms.URLField(
         label='Q2: URL field',
         help_text='Some help text'
     )
-    email_field = fields.EmailField(
+    email_field = forms.EmailField(
         label='Q3: Email field',
         help_text='Some email field help text',
     )
-    choice_field = fields.ChoiceField(
+    choice_field = forms.ChoiceField(
         label='Q4: select field',
         help_text='Some help text',
         choices=[
@@ -28,10 +28,15 @@ class TextBoxForm(PrefixIdMixin, forms.Form):
             ('blue', 'Blue'),
         ]
     )
+    text_field2 = forms.CharField(
+        label='Q5: Custom css class on container',
+        help_text='Some help text',
+        container_css_classes='border-purple border-thin padding-30',
+    )
 
 
 class CheckboxForm(PrefixIdMixin, forms.Form):
-    checkbox1 = fields.BooleanField(
+    checkbox1 = forms.BooleanField(
         label='Q1: Label text',
         help_text=(
             'This is some help text. This help text is very long so '
@@ -39,23 +44,23 @@ class CheckboxForm(PrefixIdMixin, forms.Form):
             'long boring text that doesn\'t say anything. Why are you '
             'reading this?'
         ),
-        widget=widgets.CheckboxWithInlineLabel(
+        widget=forms.CheckboxWithInlineLabel(
             attrs={'id': 'checkbox-one'}
         )
     )
-    checkbox2 = fields.BooleanField(
+    checkbox2 = forms.BooleanField(
         label='Q2: Label text with no help text',
-        widget=widgets.CheckboxWithInlineLabel(
+        widget=forms.CheckboxWithInlineLabel(
             attrs={'id': 'checkbox-two'}
         )
     )
 
 
 class MultipleChoiceForm(PrefixIdMixin, forms.Form):
-    multiple_choice = fields.MultipleChoiceField(
+    multiple_choice = forms.MultipleChoiceField(
         label='Q1: Multiple choice checkboxes',
         help_text='This is some help text.',
-        widget=widgets.CheckboxSelectInlineLabelMultiple(
+        widget=forms.CheckboxSelectInlineLabelMultiple(
             attrs={'id': 'checkbox-multiple'},
             use_nice_ids=True,
         ),
@@ -68,11 +73,11 @@ class MultipleChoiceForm(PrefixIdMixin, forms.Form):
 
 
 class RadioForm(PrefixIdMixin, forms.Form):
-    radio = fields.ChoiceField(
+    radio = forms.ChoiceField(
         label='Q1: Radio select',
         label_suffix='',
         help_text='Some help text.',
-        widget=widgets.RadioSelect(
+        widget=forms.RadioSelect(
             use_nice_ids=True,
             attrs={'id': 'radio-one'}
         ),
@@ -81,11 +86,11 @@ class RadioForm(PrefixIdMixin, forms.Form):
             (False, 'No'),
         )
     )
-    radio_group = fields.ChoiceField(
+    radio_group = forms.ChoiceField(
         label='Q2: Radio select with option groups',
         label_suffix='',
         help_text='Some help text.',
-        widget=widgets.RadioSelect(
+        widget=forms.RadioSelect(
             use_nice_ids=True,
             attrs={'id': 'radio-two'}
         ),
@@ -108,26 +113,26 @@ class RadioForm(PrefixIdMixin, forms.Form):
 
 class DemoFormErrors(PrefixIdMixin, forms.Form):
 
-    text_field1 = fields.CharField(
+    text_field1 = forms.CharField(
         label='Simple text field',
         help_text='Some help text',
         required=True
     )
-    checkbox1 = fields.BooleanField(
+    checkbox1 = forms.BooleanField(
         label='Label text',
         required=True,
         help_text=(
             'Some help text.'
         ),
-        widget=widgets.CheckboxWithInlineLabel(
+        widget=forms.CheckboxWithInlineLabel(
             attrs={'id': 'checkbox-one'}
         )
     )
-    multiple_choice = fields.MultipleChoiceField(
+    multiple_choice = forms.MultipleChoiceField(
         label='Multiple choice checkboxes',
         required=True,
         help_text='Some help text.',
-        widget=widgets.CheckboxSelectInlineLabelMultiple(
+        widget=forms.CheckboxSelectInlineLabelMultiple(
             attrs={'id': 'checkbox-multiple'},
             use_nice_ids=True,
         ),
@@ -138,12 +143,12 @@ class DemoFormErrors(PrefixIdMixin, forms.Form):
         ),
     )
 
-    radio = fields.ChoiceField(
+    radio = forms.ChoiceField(
         label='Radio select',
         required=True,
         label_suffix='',
         help_text='Some help text.',
-        widget=widgets.RadioSelect(
+        widget=forms.RadioSelect(
             use_nice_ids=True,
             attrs={'id': 'radio-one'}
         ),
