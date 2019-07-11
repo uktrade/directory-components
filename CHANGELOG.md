@@ -1,7 +1,7 @@
 # Changelog
 
 ## 26.0.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/230/files)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/241/files)
 
 ### Implemented enhancements
 - Can add custom css classes to fields via `Field.container_css_classes`
