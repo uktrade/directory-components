@@ -222,3 +222,13 @@ def values_to_labels(values, choices):
 def tokenize_keywords(keywords):
     sanitized = keywords.replace(', ', ',').replace(' ,', ',').strip(' ,')
     return sanitized.split(',')
+
+
+def get_pagination_url(request, page_param_name):
+    """Remove pagination param from request url"""
+    url = request.path
+    params = request.GET.copy()
+    params.pop(page_param_name, None)
+    if params:
+        url = f'{url}?{params.urlencode()}'
+    return url

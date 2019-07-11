@@ -1,13 +1,10 @@
+from directory_constants import urls
 from bs4 import BeautifulSoup
 import pytest
 
 from django.template.loader import render_to_string
 
-from directory_components.helpers import SocialLinkBuilder
-from directory_components.forms import Form as ComponentsForm
-from directory_components.fields import CharField as ComponentsCharField
-from directory_components.context_processors import urls_processor
-from directory_constants import urls
+from directory_components import context_processors, forms, helpers
 
 
 def test_google_tag_manager_project_id():
@@ -64,7 +61,7 @@ def test_google_tag_manager_env():
 
 
 def test_base_page_links(settings):
-    context = urls_processor(None)
+    context = context_processors.urls_processor(None)
     html = render_to_string('directory_components/base.html', context)
 
     assert urls.FEEDBACK in html
@@ -72,7 +69,7 @@ def test_base_page_links(settings):
 
 def test_404_links(settings):
     """Test 404 page has links to home and contact-us."""
-    context = urls_processor(None)
+    context = context_processors.urls_processor(None)
     html = render_to_string('404.html', context)
 
     assert urls.SERVICES_GREAT_DOMESTIC in html
@@ -81,14 +78,14 @@ def test_404_links(settings):
 
 def test_404_content(settings):
     """Test 404 page has correct content."""
-    context = urls_processor(None)
+    context = context_processors.urls_processor(None)
     html = render_to_string('404.html', context)
 
     assert 'If you entered a web address please check it’s correct.' in html
 
 
 def test_404_title_exists(settings):
-    context = urls_processor(None)
+    context = context_processors.urls_processor(None)
     html = render_to_string('404.html', context)
     soup = BeautifulSoup(html, 'html.parser')
     title = soup.title.string
@@ -96,7 +93,7 @@ def test_404_title_exists(settings):
 
 
 def test_social_share_links():
-    social_links_builder = SocialLinkBuilder(
+    social_links_builder = helpers.SocialLinkBuilder(
         url='https://testserver/',
         page_title='Do research first',
         app_title='Export Readiness',
@@ -133,8 +130,8 @@ def test_robots_site_indexing():
 
 def test_form_field_container():
 
-    class Form(ComponentsForm):
-        field = ComponentsCharField()
+    class Form(forms.Form):
+        field = forms.CharField()
 
     form = Form()
 

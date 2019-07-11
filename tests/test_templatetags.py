@@ -6,14 +6,15 @@ from django.core.paginator import Paginator
 from django.template import Context, Template
 
 from demo.views import DemoPaginationView
-from directory_components import fields
+from directory_components import forms
 from directory_components.templatetags import directory_components
 
-REQUIRED_MESSAGE = fields.PaddedCharField.default_error_messages['required']
+
+REQUIRED_MESSAGE = forms.PaddedCharField.default_error_messages['required']
 
 
 class PaddedTestForm(forms.Form):
-    field = fields.PaddedCharField(fillchar='0', max_length=6)
+    field = forms.PaddedCharField(fillchar='0', max_length=6)
 
 
 def test_static_absolute(rf):

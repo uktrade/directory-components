@@ -1,14 +1,15 @@
 import pytest
 
-from django import forms
+from django.forms import TextInput
 
-from directory_components import fields
+from directory_components import forms
 
-REQUIRED_MESSAGE = fields.PaddedCharField.default_error_messages['required']
+
+REQUIRED_MESSAGE = forms.PaddedCharField.default_error_messages['required']
 
 
 class PaddedTestForm(forms.Form):
-    field = fields.PaddedCharField(fillchar='0', max_length=6)
+    field = forms.PaddedCharField(fillchar='0', max_length=6)
 
 
 def test_padded_field_padds_value():
@@ -26,17 +27,35 @@ def test_padded_field_handles_empty():
         assert form.errors['field'] == [REQUIRED_MESSAGE]
 
 
-@pytest.mark.parametrize('field_class', (
-    fields.CharField,
-    fields.URLField,
-    fields.BooleanField,
-))
+field_classes = (
+    forms.BooleanField,
+    forms.CharField,
+    forms.ChoiceField,
+    forms.DateField,
+    forms.EmailField,
+    forms.IntegerField,
+    forms.MultipleChoiceField,
+    forms.URLField,
+)
+
+
+@pytest.mark.parametrize('field_class', field_classes)
 def test_explicit_widget_attrs(field_class):
     field = field_class()
 
     field_explicit_attrs = field_class(
-        widget=forms.TextInput(attrs={'class': 'a-class'})
+        widget=TextInput(attrs={'class': 'a-class'})
     )
 
     assert field.widget.attrs['class'] == ' form-control'
     assert field_explicit_attrs.widget.attrs['class'] == 'a-class form-control'
+
+
+@pytest.mark.parametrize('field_class', field_classes)
+def test_container_class(field_class):
+    class MyForm(forms.Form):
+        field = field_class(container_css_classes='border-purple')
+
+    form = MyForm()
+
+    assert form['field'].css_classes() == ' border-purple'
