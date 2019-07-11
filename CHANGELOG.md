@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/240/file)
+
+## Bugs fixed
+- Update lodash vulnerability 
+
 ## 25.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/228/files)
 
