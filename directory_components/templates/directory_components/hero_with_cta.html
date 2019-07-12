@@ -1,3 +1,4 @@
+
 <section
   class="hero hero-with-cta"
   data-noscript=""
@@ -13,6 +14,7 @@
   <div class="container">
     <div class="hero-text">
       <h1 class="heading-xlarge {% if subheading %} margin-bottom-0 {% else %} margin-bottom-30 {% endif %} ">{{ heading }}</h1>
+      {% block content %}
       {% if subheading %}
       <h2 class="heading-xlarge margin-top-0 margin-bottom-30">{{ subheading }}</h2>
       {% endif %}
@@ -21,7 +23,8 @@
       {% endif %}
       {% if cta_text and cta_link %}
         <a href="{{ cta_link }}" class="button button-arrow-small button-blue margin-bottom-30">{{ cta_text }}</a>
-      {%  endif %}
+      {% endif %}
+      {% endblock %}
     </div>
   </div>
 </section>

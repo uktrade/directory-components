@@ -6,6 +6,7 @@
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
   </div>
+  {% block image %}
   <div class="card-image-container lazyload ls-noscript" data-noscript="">
     <noscript>
       <div
@@ -19,4 +20,5 @@
       </div>
     </noscript>
   </div>
+  {% endblock %}
 </a>

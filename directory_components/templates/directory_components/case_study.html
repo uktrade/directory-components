@@ -18,10 +18,12 @@
         {% lazyload %}
           <img class="only-display-tablet width-full margin-bottom-15" src="{% firstof background_image_url background_image img_url image_url image_src img_src image %}" alt="">
         {% endlazyload %}
+        {% block content %}
         <p>{% firstof subtitle description %}</p>
         {% if cta_link and cta_text %}
           <a class="button button-arrow-small margin-top-15-l" href="{{ cta_link }}">{{ cta_text }}</a>
         {% endif %}
+        {% endblock %}
       </div>
     </div>
   </div>

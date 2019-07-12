@@ -10,12 +10,15 @@
     href="{{ url }}"
     {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
   {% endif %}
+    {% block image %}
     {% if img_src %}
       {% lazyload %}
         <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
       {% endlazyload %}
     {% endif %}
+    {% endblock %}
     <div class="card-inner">
+      {% block content %}
       {% if html_content %}
       {{ html_content }}
       {% else %}
@@ -29,6 +32,7 @@
           <p class="description">{{ description }}</p>
         {% endif %}
       {% endif %}
+      {% endblock %}
     </div>
   {% if url %}
   </a>
