@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.1.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/242/files)
+
+### Implemented enhancements
+- Display package version on demo homepage
+
 ## 26.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/225/files)
 
