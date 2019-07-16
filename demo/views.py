@@ -3,6 +3,7 @@ from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+from pkg_resources import get_distribution
 
 from directory_components.mixins import (
     CountryDisplayMixin, EnableTranslationsMixin, InternationalHeaderMixin
@@ -16,6 +17,14 @@ class BasePageView(TemplateView):
     @property
     def template_name(self):
         return self.kwargs.get('template_name')
+
+
+class IndexPageView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['version'] = get_distribution('directory_components').version
+        return context
 
 
 class InternationalHeaderView(
