@@ -5,7 +5,7 @@ from demo import views
 urlpatterns = [
     url(
         r'^$',
-        views.BasePageView.as_view(),
+        views.IndexPageView.as_view(),
         {'template_name': 'demo/index.html'},
         name='index',
     ),
