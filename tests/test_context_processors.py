@@ -38,7 +38,8 @@ def test_cookie_notice(settings):
 def sso_user():
     return Mock(
         id=1,
-        email='jim@example.com'
+        email='jim@example.com',
+        spec=['id', 'email'],
     )
 
 

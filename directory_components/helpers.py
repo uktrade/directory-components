@@ -12,6 +12,21 @@ from directory_constants import choices
 COUNTRY_CODES = [code for code, _ in choices.COUNTRY_CHOICES]
 
 
+def get_user(request):
+    # backwards compatibility with new and old style of user auth
+    for attribute in ['user', 'sso_user']:
+         if hasattr(request, attribute):
+            return getattr(request, attribute)
+
+
+def get_is_authenticated(request):
+    # backwards compatibility with new and old style of user auth
+    user = get_user(request)
+    if hasattr(user, 'is_authenticated'):
+        return user.is_authenticated
+    return user is not None
+
+
 def add_next(destination_url, current_url):
     if 'next=' in destination_url:
         return destination_url

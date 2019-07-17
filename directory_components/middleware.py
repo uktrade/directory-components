@@ -35,7 +35,7 @@ class NoCacheMiddlware(MiddlewareMixin):
     """
 
     def process_response(self, request, response):
-        if getattr(request, 'sso_user', None):
+        if helpers.get_is_authenticated(request):
             response['Cache-Control'] = 'no-store, no-cache'
         return response
 
