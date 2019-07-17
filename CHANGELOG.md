@@ -1,5 +1,15 @@
 # Changelog
 
+## 26.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/243/files)
+
+### Implemented enhancements
+- Support SSO auth backend
+
+### Bugs fixed
+- Fix landing page library version number detection
+
+
 ## 26.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/242/files)
 

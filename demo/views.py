@@ -1,9 +1,11 @@
+import ast
+import re
+
 from django.core.paginator import Paginator
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
-from pkg_resources import get_distribution
 
 from directory_components.mixins import (
     CountryDisplayMixin, EnableTranslationsMixin, InternationalHeaderMixin
@@ -20,10 +22,17 @@ class BasePageView(TemplateView):
 
 
 class IndexPageView(BasePageView):
+    def get_version(self):
+        pattern = re.compile(r'version=(.*),')
+
+        with open('setup.py', 'rb') as src:
+            return str(ast.literal_eval(
+                pattern.search(src.read().decode('utf-8')).group(1)
+            ))
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['version'] = get_distribution('directory_components').version
+        context['version'] = self.get_version()
         return context
 
 

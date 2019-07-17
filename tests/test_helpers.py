@@ -351,3 +351,35 @@ def test_tokenize_keywords(value, expected):
 def test_get_pagination_url(rf, url, expected):
     request = rf.get(url)
     assert helpers.get_pagination_url(request, 'page') == expected
+
+
+def test_get_user_old(rf):
+    sso_user = mock.Mock()
+    request = rf.get('/')
+    request.sso_user = sso_user
+    assert helpers.get_user(request) == sso_user
+
+
+def test_get_user_django_auth(rf):
+    user = mock.Mock()
+    request = rf.get('/')
+    request.user = user
+    assert helpers.get_user(request) == user
+
+
+@pytest.mark.parametrize('user,expected', (
+    (mock.Mock(spec=[]), True),
+    (None, False)
+))
+def test_get_is_authenticated_old(user, expected, rf):
+    request = rf.get('/')
+    request.sso_user = user
+    assert helpers.get_is_authenticated(request) is expected
+
+
+@pytest.mark.parametrize('value', (True, False))
+def test_get_is_authenticated_django_auth(value, rf):
+    user = mock.Mock(spec=['is_authenticated'], is_authenticated=value)
+    request = rf.get('/')
+    request.user = user
+    assert helpers.get_is_authenticated(request) == value
