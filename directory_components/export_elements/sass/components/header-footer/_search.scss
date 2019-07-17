@@ -2,48 +2,91 @@
 // SEARCH COMPONENT
 // =================
 
-@import '../../partials/colours';
-@import '../../partials/mixins';
-@import '../../partials/typography';
+@import "../../partials/colours";
+@import "../../partials/typography";
+@import "../../partials/mixins";
 
-#great-header-search-form {
-  display: flex;
-  align-items: center;
+.great-header-search-wrapper {
   width: 100%;
-  padding-bottom: 20px;
-  @media(min-width: 769px) {
-    width: auto;
-    padding-bottom: 10px;
-  }
+  background: transparent;
 
-  #great-header-search-box {
-    height: 40px;
-    width: calc(100% - 40px);
-    font-family: $brand-font-alternative;
-    padding: 0 15px;
+  form {
+    width: 240px;
+    float: right;
+    margin-left: 15px;
+    margin-top: -58px;
+    padding: 8px 0;
 
-    @media(min-width: 769px) {
+    & > * {
+      float: left;
+    }
+
+    input {
+      height: 40px;
       width: 200px;
+      font-family: $brand-font-alternative;
+      padding: 0 15px;
+      border: 0;
+    }
+
+    button {
+      @include button-reset;
+      color: $white;
+      border: 0;
+      font-size: 0; // hide button text visually but not for screenreaders
+      height: 40px;
+      width: 40px;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-color: $active-blue;
+      background-image: url('/static/directory_components/images/search.svg');
+      background-size: 20px;
+      padding: 0;
+
+      &:focus,
+      &:focus:active {
+        @include focus;
+      }
+
+      &:active {
+        background-color: $focus-yellow;
+      }
+
     }
   }
+}
 
-  button[type=submit] {
-    @include button-reset;
-    height: 40px;
-    width: 40px;
-    font-size: 0; // hide button text visually but not for screenreaders
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-color: $active-blue;
-    background-image: url('/static/directory_components/images/search.svg');
-    background-size: 20px;
-    &:focus,
-    &:focus:active {
-      @include focus;
+.great-header-search-container {
+  @include float-clear;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+@media (max-width: 1260px) {
+  .great-header-search-container {
+    margin: 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .great-header.domestic {
+    .great-header-search-wrapper form {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 20px;
+
+      input {
+        width: calc(100% - 40px);
+      }
     }
-    &:active {
-      background-color: $focus-yellow;
-    }
+  }
+}
+
+@media (max-width: 420px) {
+  .great-header-search-container {
+    margin: 0 20px;
   }
 }
 

@@ -2,9 +2,9 @@
 // FOOTER
 // =======
 
-@import '../partials/typography';
-@import '../partials/colours';
-@import '../partials/mixins';
+@import '../../partials/typography';
+@import '../../partials/colours';
+@import '../../partials/mixins';
 
 .great-footer-logo-container {
   @include float-clear;
@@ -114,7 +114,7 @@
   }
 
   .great-footer-links {
-    @include float-clear
+    @include float-clear;
 
     ul li a {
       color: $white;

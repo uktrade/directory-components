@@ -8,7 +8,8 @@ from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 
 from directory_components.mixins import (
-    CountryDisplayMixin, EnableTranslationsMixin, InternationalHeaderMixin
+    CountryDisplayMixin, EnableTranslationsMixin,
+    InternationalHeaderMixin
 )
 
 from demo import forms
@@ -45,9 +46,7 @@ class InternationalHeaderView(
     header_section = "invest"
 
 
-class InvestHeaderView(
-    CountryDisplayMixin, EnableTranslationsMixin, BasePageView
-):
+class InvestHeaderView(InternationalHeaderView):
     pass
 
 

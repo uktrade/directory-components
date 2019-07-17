@@ -12,7 +12,6 @@ from directory_components import context_processors
     'directory_components/header_footer/international_footer.html',
     'directory_components/header_footer/domestic_header.html',
     'directory_components/header_footer/domestic_footer.html',
-    'directory_components/header_footer/domestic_header_static.html',
 ])
 def test_templates_rendered(template_name):
     html = render_to_string(template_name)

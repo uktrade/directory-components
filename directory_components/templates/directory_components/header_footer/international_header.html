@@ -1,104 +1,28 @@
-{% extends 'directory_components/header_footer/header_base.html' %}
 {% load static %}
 {% load i18n %}
-{% load directory_components %}
 
-{% block header_country_selector %}
-  {% if not hide_country_selector %}
-    {% include 'directory_components/header_footer/header_country_select.html' %}
-  {% endif %}
-{% endblock %}
+{% include 'directory_components/header_footer/header_country_select.html' %}
 
-{% block global_header_class %}international{% endblock %}
-{% block header_class %}international{% endblock %}
-{% block header_menu_class %}international{% endblock %}
+<header id="great-header" class="great-header international" dir="ltr" data-ga-section="header">
+  {% include 'directory_components/header_footer/global_header.html' with header_class="international" %}
 
-{% block global_header_logo %}
-<img id="great-global-header-logo" class="great-global-header-footer-logo" alt="HM Government" height="24" src="{% static 'directory_components/images/hm-government.svg' %}">
-{% endblock %}
+  <div id="great-header-menu" class="great-header-menu international">
+    <div class="container">
 
-{% block header_logo %}
-<img src="{% static 'directory_components/images/great.svg' %}" alt="{% trans 'Great Britain and Northern Ireland' %}" height="64" width="auto">
-{% endblock %}
+      {% block header_logo %}
+        {% static 'directory_components/images/great.svg' as logo_image_url %}
+        {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.great_international image_source=logo_image_url image_alt_text='Great Britain and Northern Ireland' %}
+      {% endblock %}
 
-{% block header_logo_url %}{{ services_urls.great_international }}{% endblock %}
+      <div class="great-header-extra-links" id="great-header-extra-links">
+        {% include 'directory_components/header_footer/country_switcher.html' %}
+        {% include 'directory_components/header_footer/language_switcher.html' %}
+      </div>
 
-{% block header_extra_links %}
-
-{% if features.COUNTRY_SELECTOR_ON and hide_country_selector %}
-<div id="great-header-country-selector" class="great-header-country-selector great-header-form">
-  <form class="countries" action="" method="get">
-    <label for="great-header-country-select">{% trans 'Country' %}</label>
-    <span id="great-header-flag-icon" class="flag-icon flag-icon-{{ country.code }}"></span>
-    <span id="great-header-country-display" class="great-header-country-display" aria-hidden="true"></span>
-    {{ country_selector_form.country }}
-    <button id="great-header-country-submit" type="submit">{% trans 'Select' %}</button>
-  </form>
-</div>
-{% endif %}
-
-{% block header_language_switcher %}
-  {% if language_switcher.show %}
-    <div id="great-header-language-switcher" class="great-header-language-switcher great-header-form">
-      {% language request.LANGUAGE_CODE %}
-        <form class="languages" action="" method="get">
-          {% block language_form_inner %}{% endblock %}
-          <label for="great-header-language-select">{% trans 'Language' %}</label>
-          <span id="great-header-language-display" class="great-header-language-display" aria-hidden="true"></span>
-            {{ language_switcher.form.lang }}
-          <button id="great-header-language-submit" type="submit">{% trans 'Select' %}</button>
-        </form>
-      {% endlanguage %}
+      {% include 'directory_components/header_footer/international_header_desktop_nav.html' %}
+      {% include 'directory_components/header_footer/mobile_menu_button.html' with controls='#great-header-nav' %}
     </div>
-  {% endif %}
-{% endblock %}
-
-{% endblock %}
-
-{% block header_nav %}
-<nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
-  <ul class="great-header-nav-list" id="great-header-nav-list">
-    {% for header_item in header_items %}
-      <li class="main-nav-item{% if header_item.is_active %} active{% endif %}">
-        <a class="link-heading" data-ga-class="header-navigation" href="{{ header_item.url }}">{% trans header_item.title %}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>
-
-{% endblock %}
-
-{% block header_nav_mobile %}
-<nav id="great-header-nav-mobile" class="great-header-nav-mobile" aria-label="{% trans 'Main menu' %}">
-  <ul class="great-header-nav-list" id="great-header-nav-list">
-    {% for page in pages %}
-      <li class="main-nav-item">
-        <a class="link-heading" data-ga-class="header-navigation" href="{{ page.url }}">{% trans page.title %}</a>
-        <ul class="sub-nav-mobile-list">
-          {% for sub_page in page.sub_pages %}
-            <li><a href="{{ sub_page.url }}">{{ sub_page.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>
-{% endblock %}
-
-{% block header_sub_nav %}
-{% if sub_header_items %}
-<div class="great-header-sub-nav">
-  <div class="container">
-    <nav aria-label="{% trans 'Sub-menu' %}">
-      <ul class="sub-nav-list">
-        {% for header_item in sub_header_items %}
-          <li>
-            <a class="{% if header_item.is_active %} active{% endif %}" href="{{ header_item.url }}">{{ header_item.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
+    {% include 'directory_components/header_footer/international_header_desktop_sub_nav.html' %}
+    {% include 'directory_components/header_footer/international_header_mobile_nav.html' %}
   </div>
-</div>
-{% endif %}
-{% endblock %}
+</header>

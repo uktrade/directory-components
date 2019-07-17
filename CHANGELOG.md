@@ -1,5 +1,19 @@
 # Changelog
 
+## 27.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/issues/245/files)
+
+### Bugs Fixed
+- Fixed regression in accessibility of headers
+
+### Implemented Enhancements
+- Refactored header code to simplify code and make it easier to extend.
+
+### Breaking Changes
+- `domestic_header_static.html` has been removed. I believe this is unused, and so ought to have no impact.
+- Templates extending `domestic_header.html` and `international_header.html` can now only overwrite the header_logo. All other overwrites are no longer allowed. I believe no templates do this, so there ought to be no impact.
+- Templates overwriting the `header_logo` on `domestic_header.html` and `international_header.html` should now use a `header_logo.html` block to do so, instead of just an image. I believe no templates do this, so there ought to be no impact.
+
 ## 26.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/244/files)
 

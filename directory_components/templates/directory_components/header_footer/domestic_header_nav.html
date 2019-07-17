@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div class="great-header-nav-container {{ device_type }}">
+  <nav id="{{ id }}" class="great-header-nav expanded" aria-label="{% trans 'Main menu' %}">
+    <ul class="grid-row nav-list" id="great-header-nav-list">
+
+      <li class="js-menuitem">
+        <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice">Advice</a>
+      </li>
+
+      <li class="js-menuitem">
+        <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets">Markets</a>
+      </li>
+
+      <li class="js-menuitem">
+        <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services">Services</a>
+      </li>
+
+      {% if features.NEWS_SECTION_ON %}
+      <li class="js-menuitem">
+        <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
+      </li>
+      {% endif %}
+
+    </ul>
+  </nav>
+</div>

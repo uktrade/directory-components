@@ -1,0 +1,53 @@
+@import 'header';
+@import 'global-header';
+@import 'header-logo';
+@import 'mobile-menu-button';
+
+.great-header.domestic {
+  .great-header-extra-links {
+    & > * {
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    ul:first-child li {
+      margin-right: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:last-child {
+        margin-left: 15px;
+      }
+
+      &:active:focus span {
+        color: $great-blue;
+      }
+
+      .lang,
+      .country,
+      .account-link {
+        color: $stone;
+        margin-left: 5px;
+      }
+
+      .lang {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .great-header-nav {
+    margin-right: 280px;
+  }
+}

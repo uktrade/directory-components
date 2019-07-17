@@ -3,5 +3,6 @@
 {% load i18n %}
 
 {% block header_logo %}
-<img src="{% static 'directory_components/images/invest.svg' %}" alt="{% trans 'Great Britain and Northern Ireland' %}" height="64" width="auto">
+  {% static 'directory_components/images/invest.svg' as logo_image_url %}
+  {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.great_international image_source=logo_image_url image_alt_text='Great Britain and Northern Ireland' %}
 {% endblock %}

@@ -2,9 +2,9 @@
 // COMMON STYLES
 // ==============
 
-@import '../partials/typography';
-@import '../partials/colours';
-@import '../partials/mixins';
+@import '../../partials/typography';
+@import '../../partials/colours';
+@import '../../partials/mixins';
 
 .great-global-header-footer,
 .great-header {
@@ -85,7 +85,7 @@
 
 .great-global-header.domestic a.domestic,
 .great-global-header.international a.international {
-  @include flag-red-underline
+  @include flag-red-underline;
   color: $great-blue;
 }
 

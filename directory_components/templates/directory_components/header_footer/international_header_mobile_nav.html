@@ -1,0 +1,20 @@
+{% load i18n %}
+
+<div class="great-header-nav-container mobile">
+  <nav id="great-header-mobile-nav" class="great-header-nav expanded" aria-label="{% trans 'Main menu' %}">
+    <ul class="nav-list" id="great-header-nav-list">
+      {% for page in pages %}
+        <li class="js-menuitem">
+          <a class="link-heading" data-ga-class="header-navigation" href="{{ page.url }}">{% trans page.title %}</a>
+          <ul class="sub-nav-mobile-list">
+            {% for sub_page in page.sub_pages %}
+              <li class="js-menuitem">
+                <a class="link-heading" href="{{ sub_page.url }}">{{ sub_page.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
