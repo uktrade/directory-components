@@ -343,9 +343,9 @@ def test_tokenize_keywords(value, expected):
 
 
 @pytest.mark.parametrize('url,expected', (
-    ('/foo/bar/', '/foo/bar/'),
-    ('/foo/bar/?page=2', '/foo/bar/'),
-    ('/foo/bar/?page=2&baz=3', '/foo/bar/?baz=3'),
+    ('/foo/bar/', '/foo/bar/?'),
+    ('/foo/bar/?page=2', '/foo/bar/?'),
+    ('/foo/bar/?page=2&baz=3', '/foo/bar/?baz=3&'),
 
 ))
 def test_get_pagination_url(rf, url, expected):
