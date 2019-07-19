@@ -245,5 +245,5 @@ def get_pagination_url(request, page_param_name):
     params = request.GET.copy()
     params.pop(page_param_name, None)
     if params:
-        url = f'{url}?{params.urlencode()}'
-    return url
+        return f'{url}?{params.urlencode()}&'
+    return f'{url}?'

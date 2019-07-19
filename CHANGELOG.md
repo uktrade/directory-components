@@ -1,5 +1,12 @@
 # Changelog
 
+## 26.2.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/244/files)
+
+### Bugs fixed
+- `get_pagination_url` returns correct url with `?` when no query params and removes added `&` when page number and no query
+
+
 ## 26.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/243/files)
 
