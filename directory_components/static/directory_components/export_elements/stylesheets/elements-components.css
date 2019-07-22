@@ -752,13 +752,10 @@ body.js-enabled .great-header-country-select {
     margin-left: 15px; }
   .great-header.domestic .great-header-extra-links a:active:focus span {
     color: #1e1348; }
-  .great-header.domestic .great-header-extra-links a .lang,
-  .great-header.domestic .great-header-extra-links a .country,
-  .great-header.domestic .great-header-extra-links a .account-link {
-    color: #dfd5c5;
-    margin-left: 5px; }
-  .great-header.domestic .great-header-extra-links a .lang {
-    text-transform: uppercase; }
+
+.great-header.domestic .great-header-extra-links .account-link {
+  color: #dfd5c5;
+  margin-left: 5px; }
 
 .great-header.domestic .great-header-nav {
   margin-right: 280px; }

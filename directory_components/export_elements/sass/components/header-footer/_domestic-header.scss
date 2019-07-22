@@ -33,17 +33,11 @@
       &:active:focus span {
         color: $great-blue;
       }
+    }
 
-      .lang,
-      .country,
-      .account-link {
-        color: $stone;
-        margin-left: 5px;
-      }
-
-      .lang {
-        text-transform: uppercase;
-      }
+    .account-link {
+      color: $stone;
+      margin-left: 5px;
     }
   }
 
