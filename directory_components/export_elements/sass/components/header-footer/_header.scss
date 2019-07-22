@@ -126,14 +126,16 @@
             height: 0;
             opacity: 0;
             overflow: hidden;
+            display: none;
 
             &.expanded {
               height: auto;
               opacity: 1;
+              display: block;
             }
 
             .nav-list {
-              margin: 0 $header-margin;
+              margin: 4px $header-margin;
               flex-direction: column;
 
               .js-menuitem {
@@ -163,7 +165,7 @@
           margin: 0 20px;
 
           .nav-list {
-            margin: 0 20px;
+            margin: 4px 20px;
           }
         }
       }

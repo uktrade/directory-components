@@ -17,6 +17,7 @@
 
   @media (max-width: 768px) {
     @include button-reset;
+
     height: 50px;
     position: absolute;
     top: 45px;
@@ -26,6 +27,10 @@
     border: 2px solid $white;
     padding: 10px 45px 10px 10px;
     cursor: pointer;
+
+    &:focus {
+      @include focus;
+    }
 
     &.ready {
       display: block;

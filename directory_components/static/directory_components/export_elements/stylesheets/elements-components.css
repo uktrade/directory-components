@@ -175,10 +175,12 @@
     width: 100%;
     margin-left: 0;
     margin-top: 0;
-    padding-top: 0;
+    padding-top: 20px;
     padding-bottom: 20px; }
     .great-header.domestic .great-header-search-wrapper form input {
-      width: calc(100% - 40px); } }
+      width: calc(100% - 40px); }
+  .js-enabled .great-header.domestic .great-header-search-wrapper form {
+    padding-top: 0; } }
 
 @media (max-width: 420px) {
   .great-header-search-container {
@@ -580,12 +582,14 @@ body.js-enabled .great-header-country-select {
       width: 100%;
       height: 0;
       opacity: 0;
-      overflow: hidden; }
+      overflow: hidden;
+      display: none; }
       .great-header .great-header-menu .great-header-nav-container.mobile .great-header-nav.expanded {
         height: auto;
-        opacity: 1; }
+        opacity: 1;
+        display: block; }
       .great-header .great-header-menu .great-header-nav-container.mobile .great-header-nav .nav-list {
-        margin: 0 30px;
+        margin: 4px 30px;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -602,7 +606,7 @@ body.js-enabled .great-header-country-select {
   .great-header .great-header-menu .great-header-nav-container .great-header-nav {
     margin: 0 20px; }
     .great-header .great-header-menu .great-header-nav-container .great-header-nav .nav-list {
-      margin: 0 20px; } }
+      margin: 4px 20px; } }
 
 .great-domestic-international-links a {
   color: #666666; }
@@ -668,6 +672,9 @@ body.js-enabled .great-header-country-select {
       border: 2px solid #ffffff;
       padding: 10px 45px 10px 10px;
       cursor: pointer; }
+      .js-mobile-button:focus {
+        outline: #ffbf47 solid 3px;
+        outline-offset: 0; }
       .js-mobile-button.ready {
         display: block; }
       .js-mobile-button .burger-icon {
@@ -855,12 +862,14 @@ body.js-enabled .great-header-country-select {
       width: 100%;
       height: 0;
       opacity: 0;
-      overflow: hidden; }
+      overflow: hidden;
+      display: none; }
       .great-header .great-header-menu .great-header-nav-container.mobile .great-header-nav.expanded {
         height: auto;
-        opacity: 1; }
+        opacity: 1;
+        display: block; }
       .great-header .great-header-menu .great-header-nav-container.mobile .great-header-nav .nav-list {
-        margin: 0 30px;
+        margin: 4px 30px;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -877,7 +886,7 @@ body.js-enabled .great-header-country-select {
   .great-header .great-header-menu .great-header-nav-container .great-header-nav {
     margin: 0 20px; }
     .great-header .great-header-menu .great-header-nav-container .great-header-nav .nav-list {
-      margin: 0 20px; } }
+      margin: 4px 20px; } }
 
 .great-domestic-international-links a {
   color: #666666; }
@@ -943,6 +952,9 @@ body.js-enabled .great-header-country-select {
       border: 2px solid #ffffff;
       padding: 10px 45px 10px 10px;
       cursor: pointer; }
+      .js-mobile-button:focus {
+        outline: #ffbf47 solid 3px;
+        outline-offset: 0; }
       .js-mobile-button.ready {
         display: block; }
       .js-mobile-button .burger-icon {
