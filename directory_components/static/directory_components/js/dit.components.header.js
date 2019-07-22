@@ -30,9 +30,12 @@ dit.components.header = (new function() {
   };
 
   self.closeMenu = function() {
-    $('#mobile-menu-button').removeClass('expanded').attr('aria-expanded', 'false');
+    var menuButton = $('#mobile-menu-button');
+    menuButton.removeClass('expanded').attr('aria-expanded', 'false');
     $('#great-header-mobile-nav').removeClass('expanded').attr('aria-expanded', 'false');
     $('#great-header-search-wrapper').show();
+
+    menuButton.focus();
   };
 
   self.init = function() {
