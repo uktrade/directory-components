@@ -1,5 +1,12 @@
 # Changelog
 
+## 26.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/246/files)
+
+### Implemented enhancements
+- Added the class `bold-small` when bold is used in `add-export-elements-classes`
+
+
 ## 26.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/244/files)
 
