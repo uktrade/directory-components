@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/246/files)
 
 ### Implemented enhancements
-- Added the class `bold-small` when bold is used in `add-export-elements-classes`
+- Added the class `bold-small` when bold is used in `add-export-elements-classes` filter
 
 
 ## 26.2.1
