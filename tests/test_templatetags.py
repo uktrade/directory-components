@@ -646,7 +646,7 @@ def test_lazyload():
     template = Template(
         '{% load lazyload from directory_components %}'
         '{% lazyload %}'
-        '<img class="foo" src="/bar">'
+        '<img class="foo" src="/bar"/>'
         '{% endlazyload %}'
     )
 
@@ -654,9 +654,9 @@ def test_lazyload():
 
     expected_html = (
         '<noscript>'
-        '<img class="foo" src="/bar">'
+        '<img class="foo" src="/bar"/>'
         '</noscript>'
-        '<img class="foo lazyload" data-src="/bar">'
+        '<img class="foo lazyload" data-src="/bar"/>'
     )
     assert rendered_html.replace('\n', '') == expected_html
 
@@ -665,7 +665,7 @@ def test_lazyload_no_img_class():
     template = Template(
         '{% load lazyload from directory_components %}'
         '{% lazyload %}'
-        '<img src="/bar">'
+        '<img src="/bar"/>'
         '{% endlazyload %}'
     )
 
@@ -673,9 +673,9 @@ def test_lazyload_no_img_class():
 
     expected_html = (
         '<noscript>'
-        '<img src="/bar">'
+        '<img src="/bar"/>'
         '</noscript>'
-        '<img class=" lazyload" data-src="/bar">'
+        '<img class=" lazyload" data-src="/bar"/>'
     )
     assert rendered_html.replace('\n', '') == expected_html
 
@@ -684,7 +684,7 @@ def test_lazyload_no_img_src():
     template = Template(
         '{% load lazyload from directory_components %}'
         '{% lazyload %}'
-        '<img class="foo">'
+        '<img class="foo"/>'
         '{% endlazyload %}'
     )
 
@@ -692,9 +692,9 @@ def test_lazyload_no_img_src():
 
     expected_html = (
         '<noscript>'
-        '<img class="foo">'
+        '<img class="foo"/>'
         '</noscript>'
-        '<img class="foo lazyload" data-src="">'
+        '<img class="foo lazyload" data-src=""/>'
     )
     assert rendered_html.replace('\n', '') == expected_html
 
@@ -703,7 +703,7 @@ def test_lazyload_context_variables():
     template = Template(
         '{% load lazyload from directory_components %}'
         '{% lazyload %}'
-        '<img class="{{ foo.class }}" src="{{ foo.src }}">'
+        '<img class="{{ foo.class }}" src="{{ foo.src }}"/>'
         '{% endlazyload %}'
     )
 
@@ -715,9 +715,9 @@ def test_lazyload_context_variables():
 
     expected_html = (
         '<noscript>'
-        '<img class="foo-class" src="/foo">'
+        '<img class="foo-class" src="/foo"/>'
         '</noscript>'
-        '<img class="foo-class lazyload" data-src="/foo">'
+        '<img class="foo-class lazyload" data-src="/foo"/>'
     )
     assert rendered_html.replace('\n', '') == expected_html
 
