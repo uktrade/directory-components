@@ -61,7 +61,6 @@ def add_export_elements_classes(value):
         ('p', 'body-text'),
         ('a', 'link'),
         ('blockquote', 'quote'),
-        ('strong', 'bold-small'),
     ]
     for tag_name, class_name in mapping:
         for element in soup.findAll(tag_name):
