@@ -158,7 +158,7 @@ class InternationalHeaderMixin:
             },
             {
                 'name': 'expand',
-                'title': 'Start a company',
+                'title': 'Set up a UK company',
                 'url': services_urls['invest'],
                 'sub_pages': [
                     {
@@ -173,7 +173,7 @@ class InternationalHeaderMixin:
                     },
                     {
                         'name': 'uk_setup_guide',
-                        'title': 'How to set up a company',
+                        'title': 'How to expand your business to the UK',
                         'url': services_urls['uk_setup_guide']
                     },
                     {
