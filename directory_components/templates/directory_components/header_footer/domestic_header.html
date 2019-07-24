@@ -1,91 +1,27 @@
-{% extends 'directory_components/header_footer/header_base.html' %}
 {% load static %}
-{% load i18n %}
-{% load ga360_data from directory_components %}
 
-{% block global_header_class %}domestic{% endblock %}
-{% block header_class %}domestic{% endblock %}
-{% block header_menu_class %}domestic{% endblock %}
+<header id="great-header" class="great-header domestic" dir="ltr" data-ga-section="header">
+  {% include 'directory_components/header_footer/global_header.html' with header_class="domestic" %}
 
-{% block global_header_logo %}
-<img id="great-global-header-logo" class="great-global-header-footer-logo" height="21" alt="Department for International Trade" src="{% static 'directory_components/images/dit-logo.svg' %}">
-{% endblock %}
+  <div id="great-header-menu" class="great-header-menu domestic">
+    <div class="container">
 
-{% block header_logo %}
-<img src="{% static 'directory_components/images/eig-logo-stacked.svg' %}" alt="Exporting is Great" height="80">
-{% endblock %}
+      {% block header_logo %}
+        {% static 'directory_components/images/eig-logo-stacked.svg' as logo_image_url %}
+        {% include 'directory_components/header_footer/header_logo.html' with url=service_urls.exred image_source=logo_image_url image_alt_text='Exporting is Great' %}
+      {% endblock %}
 
-{% block header_logo_url %}{{ services_urls.exred }}{% endblock %}
+      <div class="great-header-extra-links" id="great-header-extra-links">
+        <ul>
+          {% include 'directory_components/header_footer/sso_login.html' %}
+        </ul>
+      </div>
 
-{% block header_extra_links %}
-<ul>
-  {% block login_state %}
-    {% if not sso_is_logged_in %}
-    <li class="anonymous">
-      <a id="header-sign-in-link" href="{{ sso_login_url }}" class="account-link signin">Sign in</a>
-    </li>
-    {% else %}
-    <li class="authenticated">
-      <a id="header-profile-link" href="{{ sso_profile_url }}" class="account-link profile">Account</a>
-    </li>
-    <li class="authenticated">
-      <a id="header-sign-out-link" href="{{ sso_logout_url }}" class="account-link signout">Sign out</a>
-    </li>
-    {% endif %}
-  {% endblock %}
-</ul>
-{% endblock %}
+      {% include 'directory_components/header_footer/mobile_menu_button.html' %}
+      {% include 'directory_components/header_footer/domestic_header_nav.html' with device_type='desktop' js_tag=false %}
+    </div>
 
-{% block header_nav %}
-
-<nav id="great-header-nav" class="great-header-nav" aria-label="{% trans 'Main menu' %}">
-  <ul class="great-header-nav-list" id="great-header-nav-list">
-    <li class="main-nav-item">
-      <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice">Advice</a>
-    </li>
-
-    <li class="main-nav-item">
-      <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets">Markets</a>
-    </li>
-
-    <li class="main-nav-item">
-      <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services">Services</a>
-    </li>
-
-    {% if features.NEWS_SECTION_ON %}
-    <li class="main-nav-item">
-      <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news">News and events</a>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
-
-<form id="great-header-search-form" action="{{ header_footer_urls.search }}" method="GET">
-  <input id="great-header-search-box" type="text" name="q" placeholder="Search" aria-label="Search">
-  <button type="submit" aria-label="Submit search">Submit search</button>
-</form>
-
-{% endblock %}
-
-{% block header_nav_mobile %}
-
-<nav id="great-header-nav-mobile" class="great-header-nav-mobile" aria-label="{% trans 'Main menu' %}">
-  <ul class="great-header-nav-list" id="great-header-nav-list">
-    <li class="main-nav-item">
-      <a class="link-heading" id="header-advice-mobile" href="#">Advice</a>
-    </li>
-    <li class="main-nav-item">
-      <a class="link-heading" id="header-markets-mobile" href="#">Markets</a>
-    </li>
-    <li class="main-nav-item">
-      <a class="link-heading" id="header-services-mobile" href="#">Services</a>
-    </li>
-    {% if features.NEWS_SECTION_ON %}
-    <li class="main-nav-item">
-      <a class="link-heading" id="header-news-mobile" href="{{ header_footer_urls.domestic_news }}" data-ga-class="header-navigation">News and events</a>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
-
-{% endblock %}
+    {% include 'directory_components/header_footer/domestic_header_nav.html' with id='great-header-mobile-nav' device_type='mobile' js_tag=True %}
+    {% include 'directory_components/header_footer/search.html' %}
+  </div>
+</header>

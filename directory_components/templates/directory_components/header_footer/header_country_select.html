@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load render_form from directory_components %}
 
-{% if features.COUNTRY_SELECTOR_ON  %}
+{% if features.COUNTRY_SELECTOR_ON and not hide_country_selector  %}
 <section id="country-selector-dialog" class="country-selector-dialog" dir="ltr">
   <div class="container">
     <div class="countries">

@@ -1,342 +1,174 @@
-
-// HEADER
-// =======
-
 @import '../../partials/typography';
 @import '../../partials/colours';
 @import '../../partials/mixins';
+@import '../../partials/spacings';
 
 .great-header {
   // need to make sure it's not underneath anything
   position: relative;
   z-index: 5;
 
-  // fix for SOO
-  .great-header-nav {
-    a.link,
-    a.link:hover {
-      margin-bottom: 0;
-      border: 0;
-    }
-  }
+  a:focus {
+    @include focus;
 
-  a {
-    &:active:focus {
+    &:active {
       background-color: $focus-yellow;
       color: $great-blue;
     }
-
-    &:focus {
-      @include focus
-    }
-  }
-}
-
-.great-global-header {
-  @include float-clear;
-  height: auto;
-}
-
-// links in global header
-.great-domestic-international-links {
-  a {
-    color: $mid-grey;
   }
 
-  .active {
-    color: $great-blue;
-
-    &:after {
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 4px;
-      background-color: $flag-red;
-      content: '';
-    }
-  }
-}
-
-#great-header-menu-mobile-anchor {
-  position: fixed;
-
-  &:target {
-    &~#great-header-menu-mobile {
-      display: block;
-      opacity: 1;
-
-      @media(min-width: 769px) {
-        display: none;
-      }
-    }
-    &~#great-header-menu #mobile-menu-button {
-      display: none;
-    }
-    &~#great-header-menu #mobile-menu-button-close {
-      display: block;
-      @media(min-width: 769px) {
-        display: none;
-      }
-    }
-  }
-}
-
-// main header menu
-.great-header-menu {
-  background-color: $great-blue;
-
-  .container {
+  .great-header-menu {
+    background-color: $great-blue;
     position: relative;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-}
 
-.great-header-logo {
-  line-height: 0;
-  margin: 30px 0;
-}
-
-// language/country select and account links
-.great-header-extra-links {
-  position: absolute;
-  top: 10px;
-  right: 0;
-  font-size: 14px;
-  color: $white;
-
-  & > * {
-    display: inline-block;
-    margin-right: 5px;
-  }
-
-  li {
-    display: inline-block;
-  }
-
-  ul:first-child li {
-    margin-right: 0;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &:last-child {
-      margin-left: 15px;
-    }
-
-    &:active:focus span {
-      color: $great-blue;
-    }
-  }
-
-  .lang,
-  .country,
-  .account-link {
-    color: $stone;
-    margin-left: 5px;
-  }
-
-  .lang {
-    text-transform: uppercase;
-  }
-}
-
-.great-header-nav-container {
-  align-self: flex-end;
-}
-
-.mobile-menu-button {
-  height: 50px;
-  position: absolute;
-  top: 75px;
-  right: 0;
-  color: $white;
-  background-color: $great-blue;
-  border: 2px solid $white;
-  padding: 10px 45px 10px 10px;
-  cursor: pointer;
-  line-height: 30px;
-
-  @media(min-width: 769px) {
-    display: none;
-  }
-
-  span {
-    position: absolute;
-    right: 10px;
-    top: 22px;
-  }
-
-  span,
-  span:after,
-  span:before {
-    background-color: $white;
-    transition: all .2s ease;
-    clear: right;
-    content: '';
-    float: right;
-    height: 2px;
-    margin: 0 0 10px 10px;
-    width: 20px;
-  }
-
-  span:before {
-    margin-top: -6px;
-  }
-
-  &.expanded {
-    background: $active-blue;
-
-    span {
-      background: transparent;
-    }
-
-    span:before {
-      width: 25px;
-      margin-right: -3px;
-      transform: rotate(45deg);
-      margin-top: 0;
-    }
-
-    span:after {
-      width: 25px;
-      margin-right: -3px;
-      transform: rotate(-45deg);
-      margin-top: -12px;
-    }
-  }
-
-  @media(min-width: 769px) {
-    display: none;
-  }
-
-  &#mobile-menu-button-close {
-    display: none;
-  }
-}
-
-.great-header-nav {
-  max-width: 1200px;
-  display: none;
-  margin: 0;
-
-  @media(min-width: 769px) {
-    display: block;
-  }
-
-  .great-header-nav-list {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-
-    .link-heading {
+    .container {
       position: relative;
-      padding: 15px;
-      margin-bottom: 10px;
-      display: block;
-    }
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
 
-    .main-nav-item {
-      font-size: 16px;
-      line-height: 1;
-
-      &:last-child {
-        .sub-nav {
-          right: 0;
-        }
-
-        li {
-          text-align: right;
-        }
-      }
-
-      &.active .link-heading:after {
-        display: block;
+      .great-header-extra-links {
+        font-size: 14px;
+        color: $white;
         position: absolute;
-        left: 0;
-        bottom: -10px;
-        width: 100%;
-        height: 4px;
-        background-color: $great-red;
-        content: '';
+        top: 25px;
+        right: 0;
+      }
+    }
+
+    .great-header-nav-container {
+      &.mobile {
+        display: none;
+      }
+
+      background-color: transparent;
+      display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
+      align-self: flex-end;
+
+      .great-header-nav {
+        max-width: 1200px;
+        display: block;
+
+        .nav-list {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          position: relative;
+
+          .js-menuitem {
+            width: auto;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1;
+
+            .link-heading {
+              color: $white;
+              font-family: inherit;
+              display: block;
+              font-size: 16px;
+              padding: 15px;
+              text-decoration: none;
+              position: relative;
+              margin-bottom: 10px;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
-.great-header-nav-container {
-  flex-grow: 1;
-  color: $white;
-  display: flex;
-  justify-content: flex-end;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    @media(hover: hover) {
-      &:hover {
-        text-decoration: underline;
+@media (max-width: 1260px) {
+  .great-header {
+    .great-header-menu {
+      .great-header-nav-container {
+        margin-left: 30px;
       }
     }
   }
 }
 
-.great-header-menu-mobile {
-  display: none;
-  opacity: 0;
-  position: relative;
-  background-color: $lightened-great-blue;
-  color: $white;
-  padding: 5px 0;
-  transition: opacity 0.2s;
+@media (max-width: 768px) {
+  $header-margin: $spacing-3;
 
-  a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-    padding: 10px 0;
+  .great-header {
+    .great-header-menu {
+      .container {
+        padding: 0;
+        margin: 0 $header-margin;
 
-    @media(hover: hover) {
-      &:hover {
-        text-decoration: underline;
+        .great-header-extra-links {
+          top: 10px;
+          position: absolute;
+        }
       }
-    }
-  }
 
-  .sub-nav-mobile-list {
-    padding-left: 25px;
-  }
+      .great-header-nav-container {
+        &.desktop {
+          display: none;
+        }
 
-  &.expanded {
-    display: block;
-    opacity: 1;
+        &.mobile {
+          margin: 0;
+          display: flex;
 
-    @media(min-width: 769px) {
-      display: none;
+          .great-header-nav {
+            transition: all .2s ease;
+            background-color: $lightened-great-blue;
+            margin: 0;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            display: none;
+
+            &.expanded {
+              height: auto;
+              opacity: 1;
+              display: block;
+            }
+
+            .nav-list {
+              margin: 4px $header-margin;
+              flex-direction: column;
+
+              .js-menuitem {
+                .link-heading {
+                  text-decoration: underline;
+                  padding: 15px 0;
+                  display: block;
+                  margin: 0;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
-#international-header-sub-nav-background {
-  @media(min-width: 768px) {
-    display: block;
+@media (max-width: 420px) {
+  .great-header {
+    .great-header-menu {
+      .container {
+        margin: 0 20px;
+      }
+      .great-header-nav-container {
+        .great-header-nav {
+          margin: 0 20px;
+
+          .nav-list {
+            margin: 4px 20px;
+          }
+        }
+      }
+    }
   }
-  display: none;
-  background-color: rgba($great-blue, 0.8);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  z-index: -1;
 }

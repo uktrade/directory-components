@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div class="great-header-nav-container desktop">
+  <nav class="great-header-nav" aria-label="{% trans 'Main menu' %}">
+    <ul class="nav-list" id="great-header-nav-list">
+      {% for header_item in header_items %}
+        <li class="js-menuitem{% if header_item.is_active %} active{% endif %}">
+          <a class="link-heading" data-ga-class="header-navigation" href="{{ header_item.url }}">{% trans header_item.title %}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
