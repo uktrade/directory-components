@@ -15,6 +15,12 @@
 - Templates overwriting the `header_logo` on `domestic_header.html` and `international_header.html` should now use a `header_logo.html` block to do so, instead of just an image. I believe no templates do this, so there ought to be no impact.
 - `dit.classes.Dropdown.js` has been removed. This should no longer be required anywhere, so can be safely removed.
 
+## 26.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/246/files)
+
+### Implemented enhancements
+- Added the class `bold-small` when bold is used in `add-export-elements-classes` filter
+
 ## 26.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/244/files)
 

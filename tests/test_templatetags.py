@@ -665,7 +665,7 @@ def test_lazyload_no_img_class():
     template = Template(
         '{% load lazyload from directory_components %}'
         '{% lazyload %}'
-        '<img src="/bar">'
+        '<img src="/bar"/>'
         '{% endlazyload %}'
     )
 
@@ -684,7 +684,7 @@ def test_lazyload_no_img_src():
     template = Template(
         '{% load lazyload from directory_components %}'
         '{% lazyload %}'
-        '<img class="foo">'
+        '<img class="foo"/>'
         '{% endlazyload %}'
     )
 
