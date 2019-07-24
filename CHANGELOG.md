@@ -13,6 +13,7 @@
 - `domestic_header_static.html` has been removed. I believe this is unused, and so ought to have no impact.
 - Templates extending `domestic_header.html` and `international_header.html` can now only overwrite the header_logo. All other overwrites are no longer allowed. I believe no templates do this, so there ought to be no impact.
 - Templates overwriting the `header_logo` on `domestic_header.html` and `international_header.html` should now use a `header_logo.html` block to do so, instead of just an image. I believe no templates do this, so there ought to be no impact.
+- `dit.classes.Dropdown.js` has been removed. This should no longer be required anywhere, so can be safely removed.
 
 ## 26.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/244/files)
