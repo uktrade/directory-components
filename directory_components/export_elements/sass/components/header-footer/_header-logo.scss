@@ -5,17 +5,13 @@
   img {
     height: 100%;
   }
-}
 
-@media (max-width: 768px) {
-  .great-header-logo {
+  @media (max-width: 768px) {
     height: 70px;
     margin: 20px 0;
   }
-}
 
-@media (max-width: 420px) {
-  .great-header-logo {
+  @media (max-width: 420px) {
     height: 60px;
     margin: 25px 0;
   }

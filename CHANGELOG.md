@@ -1,5 +1,14 @@
 # Changelog
 
+## 27.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/issues/247/files)
+
+### Bugs Fixed 
+- Fix header arrow keys not working in IE.
+
+### Implemented Enhancements
+- Refactored header css to simplify code and make it easier to extend.
+
 ## 27.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/issues/245/files)
 

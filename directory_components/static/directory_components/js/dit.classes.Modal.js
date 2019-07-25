@@ -1,3 +1,5 @@
+dit.classes = dit.classes || {};
+dit.utils = dit.utils || {};
 
 /* Class: Modal
  * -------------------------
@@ -13,7 +15,7 @@
 
   var ARIA_EXPANDED = "aria-expanded";
   var CSS_CLASS_CLOSE_BUTTON = "close";
-  var CSS_CLASS_CONTAINER = "Modal-Container"
+  var CSS_CLASS_CONTAINER = "Modal-Container";
   var CSS_CLASS_CONTENT = "content";
   var CSS_CLASS_OPEN = "open";
   var CSS_CLASS_OVERLAY = "Modal-Overlay";

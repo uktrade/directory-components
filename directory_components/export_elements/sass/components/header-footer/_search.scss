@@ -10,6 +10,12 @@
   width: 100%;
   background: transparent;
 
+  @media (max-width: 768px) {
+    &.hidden {
+      display: none;
+    }
+  }
+
   form {
     width: 240px;
     float: right;
@@ -69,7 +75,7 @@
 }
 
 @media (max-width: 768px) {
-  .great-header.domestic {
+  .great-header {
     .great-header-search-wrapper form {
       width: 100%;
       margin-left: 0;
@@ -84,7 +90,7 @@
   }
 
   .js-enabled {
-    .great-header.domestic {
+    .great-header {
       .great-header-search-wrapper form {
         padding-top: 0;
       }

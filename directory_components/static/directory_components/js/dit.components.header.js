@@ -34,7 +34,7 @@ dit.components.header = (new function() {
   self.openMenu = function() {
     $(self.MENU_BUTTON).addClass('expanded').attr('aria-expanded', 'true');
     $(self.MOBILE_NAV).addClass('expanded').attr('aria-expanded', 'true');
-    $(self.SEARCH_WRAPPER).hide();
+    $(self.SEARCH_WRAPPER).addClass('hidden');
 
     self.moveFocusToMenuButton();
   };
@@ -42,7 +42,7 @@ dit.components.header = (new function() {
   self.closeMenu = function() {
     $(self.MENU_BUTTON).removeClass('expanded').attr('aria-expanded', 'false');
     $(self.MOBILE_NAV).removeClass('expanded').attr('aria-expanded', 'false');
-    $(self.SEARCH_WRAPPER).show();
+    $(self.SEARCH_WRAPPER).removeClass('hidden');
 
     self.moveFocusToMenuButton();
   };
@@ -119,11 +119,11 @@ dit.components.header = (new function() {
   };
 
   self.handleMenuButtonKeyDownEvents = function(event) {
-      if (event.key === "Escape" || event.key === "ArrowUp") {
+      if (event.key === "Escape" || event.key === "ArrowUp" || event.key === "Esc" || event.key === "Up") {
         self.closeMenu();
         event.preventDefault();
       }
-      if (event.key === "ArrowDown") {
+      if (event.key === "ArrowDown" || event.key === "Down") {
         self.openMenu();
         self.moveFocusToFirstMenuItem();
         event.preventDefault();
@@ -131,38 +131,38 @@ dit.components.header = (new function() {
   };
 
   self.handleMenuItemKeyDownEvents = function(event) {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" || event.key === "Esc") {
       self.closeMenu();
       event.preventDefault();
     }
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" || event.key === "Up") {
       self.moveFocusToPreviousMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" || event.key === "Down") {
       self.moveFocusToNextMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowRight") {
+    if (event.key === "ArrowRight" || event.key === "Right") {
       self.moveFocusToSubMenu(event.target);
       event.preventDefault();
     }
   };
   
   self.handleSubMenuItemKeyDownEvents = function(event) {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" || event.key === "Esc") {
       self.closeMenu();
       event.preventDefault();
     }
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" || event.key === "Up") {
       self.moveFocusToPreviousSubMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" || event.key === "Down") {
       self.moveFocusToNextSubMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowLeft") {
+    if (event.key === "ArrowLeft" || event.key === "Left") {
       self.moveFocusToMainMenu(event.target);
       event.preventDefault();
     }

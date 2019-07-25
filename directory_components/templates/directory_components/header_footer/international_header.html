@@ -3,10 +3,10 @@
 
 {% include 'directory_components/header_footer/header_country_select.html' %}
 
-<header id="great-header" class="great-header international" dir="ltr" data-ga-section="header">
+<header id="great-international-header" class="great-header" dir="ltr" data-ga-section="header">
   {% include 'directory_components/header_footer/global_header.html' with header_class="international" %}
 
-  <div id="great-header-menu" class="great-header-menu international">
+  <div class="menu">
     <div class="container">
 
       {% block header_logo %}
@@ -14,7 +14,7 @@
         {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.great_international image_source=logo_image_url image_alt_text='Great Britain and Northern Ireland' %}
       {% endblock %}
 
-      <div class="great-header-extra-links" id="great-header-extra-links">
+      <div class="extra-links">
         {% include 'directory_components/header_footer/country_switcher.html' %}
         {% include 'directory_components/header_footer/language_switcher.html' %}
       </div>
