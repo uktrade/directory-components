@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/248/files)
+
+### Implemented enhancements
+- Introduce filter that adds anchors to _all_ headings, not just `<h2>`s.
+
 ## 27.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/issues/247/files)
 
