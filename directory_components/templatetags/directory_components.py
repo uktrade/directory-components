@@ -47,6 +47,14 @@ def add_anchors(value, suffix=''):
 
 
 @register.filter
+def add_anchors_to_all_headings(value, suffix=''):
+    soup = BeautifulSoup(value, 'html.parser')
+    for element in soup.find_all(re.compile('^h[1-6]$')):
+        element.attrs['id'] = build_anchor_id(element, suffix)
+    return mark_safe(str(soup))
+
+
+@register.filter
 def add_export_elements_classes(value):
     soup = BeautifulSoup(value, 'html.parser')
     mapping = [
