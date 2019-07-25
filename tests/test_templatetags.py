@@ -69,6 +69,54 @@ def test_add_anchors_no_suffix():
     )
 
 
+def test_add_anchors_to_all_headings():
+    template = Template(
+        '{% load add_anchors_to_all_headings from directory_components %}'
+        '{{ html|add_anchors_to_all_headings:"-section" }}'
+    )
+
+    context = Context({
+        'html': '<br/>'
+                '<h1>Title one</h1>'
+                '<h2>Title two</h2>'
+                '<h3>Title: with punctuation!</h3>'
+                '<br/>'
+    })
+    html = template.render(context)
+
+    assert html == (
+        '<br/>'
+        '<h1 id="title-one-section">Title one</h1>'
+        '<h2 id="title-two-section">Title two</h2>'
+        '<h3 id="title-with-punctuation-section">Title: with punctuation!</h3>'
+        '<br/>'
+    )
+
+
+def test_add_anchors_to_all_headings_no_suffix():
+    template = Template(
+        '{% load add_anchors_to_all_headings from directory_components %}'
+        '{{ html|add_anchors_to_all_headings }}'
+    )
+
+    context = Context({
+        'html': '<br/>'
+                '<h1>Title one</h1>'
+                '<h2>Title two</h2>'
+                '<h3>Title: with punctuation!</h3>'
+                '<br/>'
+    })
+    html = template.render(context)
+
+    assert html == (
+        '<br/>'
+        '<h1 id="title-one">Title one</h1>'
+        '<h2 id="title-two">Title two</h2>'
+        '<h3 id="title-with-punctuation">Title: with punctuation!</h3>'
+        '<br/>'
+    )
+
+
 @pytest.mark.parametrize('input_html,expected_html', (
     ('<h1>content</h1>', '<h1 class="heading-xlarge">content</h1>'),
     ('<h2>content</h2>', '<h2 class="heading-large">content</h2>'),
