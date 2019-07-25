@@ -3,8 +3,8 @@
 @import 'header-logo';
 @import 'mobile-menu-button';
 
-.great-header.international {
-  .js-menuitem {
+#great-international-header {
+  .menu-item {
     &.active .link-heading:after {
       display: block;
       position: absolute;
@@ -17,83 +17,63 @@
     }
   }
 
-  .great-header-sub-nav-container {
+  .sub-nav-container {
     background-color: $lightened-great-blue;
 
-    .great-header-sub-nav {
-      max-width: 1200px;
-      margin: 0 auto;
-
-      .sub-nav-list {
-        display: flex;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        padding: 10px 0;
-      }
-
-      a {
-        position: relative;
-        display: block;
-        color: $white;
-        text-decoration: none;
-        font-size: 16px;
-        padding: 10px 15px;
-
-        @media(hover: hover) {
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        &.active:after {
-          display: block;
-          position: absolute;
-          left: 0;
-          bottom: -10px;
-          width: 100%;
-          height: 4px;
-          background-color: $white;
-          content: '';
-        }
-      }
+    @media (max-width: 768px) {
+      display: none;
     }
   }
-}
 
-@media (max-width: 1260px) {
-  .great-header.international {
-    .great-header-sub-nav-container {
-      .great-header-sub-nav {
-        margin: 0 30px;
-      }
+  .sub-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 1260px) {
+      margin: 0 30px;
     }
   }
-}
 
-@media (max-width: 768px) {
-  .great-header.international {
-    .great-header-menu {
-      .great-header-nav-container.mobile {
-        .great-header-nav {
-          .nav-list {
-            .js-menuitem {
-              .link-heading {
-                padding: 10px 0;
-                text-decoration: none;
-                color: white;
-              }
-            }
-          }
+  .sub-nav-list {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
 
-          .sub-nav-mobile-list {
-            margin-left: 25px;
-          }
-        }
+  .sub-nav-mobile-list {
+    margin-left: 25px;
+  }
+
+  .link-heading {
+    position: relative;
+    display: block;
+    color: $white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+
+    @media(hover: hover) {
+      &:hover {
+        text-decoration: underline;
       }
+    }
 
-      .great-header-sub-nav-container {
-        display: none;
-      }
+    &.active:after {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 4px;
+      background-color: $white;
+      content: '';
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px 0;
+      text-decoration: none;
+      color: white;
     }
   }
 }

@@ -34,7 +34,7 @@ dit.components.header = (new function() {
   self.openMenu = function() {
     $(self.MENU_BUTTON).addClass('expanded').attr('aria-expanded', 'true');
     $(self.MOBILE_NAV).addClass('expanded').attr('aria-expanded', 'true');
-    $(self.SEARCH_WRAPPER).hide();
+    $(self.SEARCH_WRAPPER).addClass('hidden');
 
     self.moveFocusToMenuButton();
   };
@@ -42,7 +42,7 @@ dit.components.header = (new function() {
   self.closeMenu = function() {
     $(self.MENU_BUTTON).removeClass('expanded').attr('aria-expanded', 'false');
     $(self.MOBILE_NAV).removeClass('expanded').attr('aria-expanded', 'false');
-    $(self.SEARCH_WRAPPER).show();
+    $(self.SEARCH_WRAPPER).removeClass('hidden');
 
     self.moveFocusToMenuButton();
   };
