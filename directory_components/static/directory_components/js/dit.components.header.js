@@ -119,11 +119,11 @@ dit.components.header = (new function() {
   };
 
   self.handleMenuButtonKeyDownEvents = function(event) {
-      if (event.key === "Escape" || event.key === "ArrowUp") {
+      if (event.key === "Escape" || event.key === "ArrowUp" || event.key === "Esc" || event.key === "Up") {
         self.closeMenu();
         event.preventDefault();
       }
-      if (event.key === "ArrowDown") {
+      if (event.key === "ArrowDown" || event.key === "Down") {
         self.openMenu();
         self.moveFocusToFirstMenuItem();
         event.preventDefault();
@@ -131,38 +131,38 @@ dit.components.header = (new function() {
   };
 
   self.handleMenuItemKeyDownEvents = function(event) {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" || event.key === "Esc") {
       self.closeMenu();
       event.preventDefault();
     }
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" || event.key === "Up") {
       self.moveFocusToPreviousMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" || event.key === "Down") {
       self.moveFocusToNextMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowRight") {
+    if (event.key === "ArrowRight" || event.key === "Right") {
       self.moveFocusToSubMenu(event.target);
       event.preventDefault();
     }
   };
   
   self.handleSubMenuItemKeyDownEvents = function(event) {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" || event.key === "Esc") {
       self.closeMenu();
       event.preventDefault();
     }
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" || event.key === "Up") {
       self.moveFocusToPreviousSubMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" || event.key === "Down") {
       self.moveFocusToNextSubMenuItem(event.target);
       event.preventDefault();
     }
-    if (event.key === "ArrowLeft") {
+    if (event.key === "ArrowLeft" || event.key === "Left") {
       self.moveFocusToMainMenu(event.target);
       event.preventDefault();
     }
