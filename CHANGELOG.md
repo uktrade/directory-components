@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.3
+[Full Changelog](https://github.com/uktrade/directory-components/pull/251/files)
+
+### Bugs fixed
+- Remove reference to old css file in base template
+
 ## 27.1.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/250/files)
 
