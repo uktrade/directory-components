@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/250/files)
+
+### Bugs fixed
+- Regenerate missing CSS
+
 ## 27.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/249/files)
 
