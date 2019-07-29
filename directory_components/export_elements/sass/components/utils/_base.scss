@@ -97,7 +97,7 @@ $spacings:
         (60, 60),
         (90, 90);
 $positions: top right bottom left;
-$sizes: (961, xl), (769, l), (641, m);
+$sizes: (641, m), (769, l), (961, xl);
 $rules: padding, margin;
 
 @each $rule in $rules {

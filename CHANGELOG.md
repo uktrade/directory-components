@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/249/files)
+
+### Bugs fixed
+- re-order min-width breakpoints
+
 ## 27.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/248/files)
 
@@ -9,7 +15,7 @@
 ## 27.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/issues/247/files)
 
-### Bugs Fixed 
+### Bugs Fixed
 - Fix header arrow keys not working in IE.
 
 ### Implemented Enhancements

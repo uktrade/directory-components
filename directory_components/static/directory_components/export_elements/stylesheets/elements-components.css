@@ -2926,133 +2926,133 @@ section.underline-stone {
   padding-right: 90px;
   padding-left: 90px; }
 
-@media (min-width: 961px) {
-  .padding-top-negative-30-xl {
+@media (min-width: 641px) {
+  .padding-top-negative-30-m {
     padding-top: -30px; }
-  .padding-top-negative-15-xl {
+  .padding-top-negative-15-m {
     padding-top: -15px; }
-  .padding-top-0-xl {
+  .padding-top-0-m {
     padding-top: 0px; }
-  .padding-top-15-xl {
+  .padding-top-15-m {
     padding-top: 15px; }
-  .padding-top-30-xl {
+  .padding-top-30-m {
     padding-top: 30px; }
-  .padding-top-45-xl {
+  .padding-top-45-m {
     padding-top: 45px; }
-  .padding-top-60-xl {
+  .padding-top-60-m {
     padding-top: 60px; }
-  .padding-top-90-xl {
+  .padding-top-90-m {
     padding-top: 90px; }
-  .padding-right-negative-30-xl {
+  .padding-right-negative-30-m {
     padding-right: -30px; }
-  .padding-right-negative-15-xl {
+  .padding-right-negative-15-m {
     padding-right: -15px; }
-  .padding-right-0-xl {
+  .padding-right-0-m {
     padding-right: 0px; }
-  .padding-right-15-xl {
+  .padding-right-15-m {
     padding-right: 15px; }
-  .padding-right-30-xl {
+  .padding-right-30-m {
     padding-right: 30px; }
-  .padding-right-45-xl {
+  .padding-right-45-m {
     padding-right: 45px; }
-  .padding-right-60-xl {
+  .padding-right-60-m {
     padding-right: 60px; }
-  .padding-right-90-xl {
+  .padding-right-90-m {
     padding-right: 90px; }
-  .padding-bottom-negative-30-xl {
+  .padding-bottom-negative-30-m {
     padding-bottom: -30px; }
-  .padding-bottom-negative-15-xl {
+  .padding-bottom-negative-15-m {
     padding-bottom: -15px; }
-  .padding-bottom-0-xl {
+  .padding-bottom-0-m {
     padding-bottom: 0px; }
-  .padding-bottom-15-xl {
+  .padding-bottom-15-m {
     padding-bottom: 15px; }
-  .padding-bottom-30-xl {
+  .padding-bottom-30-m {
     padding-bottom: 30px; }
-  .padding-bottom-45-xl {
+  .padding-bottom-45-m {
     padding-bottom: 45px; }
-  .padding-bottom-60-xl {
+  .padding-bottom-60-m {
     padding-bottom: 60px; }
-  .padding-bottom-90-xl {
+  .padding-bottom-90-m {
     padding-bottom: 90px; }
-  .padding-left-negative-30-xl {
+  .padding-left-negative-30-m {
     padding-left: -30px; }
-  .padding-left-negative-15-xl {
+  .padding-left-negative-15-m {
     padding-left: -15px; }
-  .padding-left-0-xl {
+  .padding-left-0-m {
     padding-left: 0px; }
-  .padding-left-15-xl {
+  .padding-left-15-m {
     padding-left: 15px; }
-  .padding-left-30-xl {
+  .padding-left-30-m {
     padding-left: 30px; }
-  .padding-left-45-xl {
+  .padding-left-45-m {
     padding-left: 45px; }
-  .padding-left-60-xl {
+  .padding-left-60-m {
     padding-left: 60px; }
-  .padding-left-90-xl {
+  .padding-left-90-m {
     padding-left: 90px; }
-  .padding-negative-30-xl {
+  .padding-negative-30-m {
     padding: -30px; }
-  .padding-negative-15-xl {
+  .padding-negative-15-m {
     padding: -15px; }
-  .padding-0-xl {
+  .padding-0-m {
     padding: 0px; }
-  .padding-15-xl {
+  .padding-15-m {
     padding: 15px; }
-  .padding-30-xl {
+  .padding-30-m {
     padding: 30px; }
-  .padding-45-xl {
+  .padding-45-m {
     padding: 45px; }
-  .padding-60-xl {
+  .padding-60-m {
     padding: 60px; }
-  .padding-90-xl {
+  .padding-90-m {
     padding: 90px; }
-  .padding-vertical-negative-30-xl {
+  .padding-vertical-negative-30-m {
     padding-top: -30px;
     padding-bottom: -30px; }
-  .padding-vertical-negative-15-xl {
+  .padding-vertical-negative-15-m {
     padding-top: -15px;
     padding-bottom: -15px; }
-  .padding-vertical-0-xl {
+  .padding-vertical-0-m {
     padding-top: 0px;
     padding-bottom: 0px; }
-  .padding-vertical-15-xl {
+  .padding-vertical-15-m {
     padding-top: 15px;
     padding-bottom: 15px; }
-  .padding-vertical-30-xl {
+  .padding-vertical-30-m {
     padding-top: 30px;
     padding-bottom: 30px; }
-  .padding-vertical-45-xl {
+  .padding-vertical-45-m {
     padding-top: 45px;
     padding-bottom: 45px; }
-  .padding-vertical-60-xl {
+  .padding-vertical-60-m {
     padding-top: 60px;
     padding-bottom: 60px; }
-  .padding-vertical-90-xl {
+  .padding-vertical-90-m {
     padding-top: 90px;
     padding-bottom: 90px; }
-  .padding-horizontal-negative-30-xl {
+  .padding-horizontal-negative-30-m {
     padding-right: -30px;
     padding-left: -30px; }
-  .padding-horizontal-negative-15-xl {
+  .padding-horizontal-negative-15-m {
     padding-right: -15px;
     padding-left: -15px; }
-  .padding-horizontal-0-xl {
+  .padding-horizontal-0-m {
     padding-right: 0px;
     padding-left: 0px; }
-  .padding-horizontal-15-xl {
+  .padding-horizontal-15-m {
     padding-right: 15px;
     padding-left: 15px; }
-  .padding-horizontal-30-xl {
+  .padding-horizontal-30-m {
     padding-right: 30px;
     padding-left: 30px; }
-  .padding-horizontal-45-xl {
+  .padding-horizontal-45-m {
     padding-right: 45px;
     padding-left: 45px; }
-  .padding-horizontal-60-xl {
+  .padding-horizontal-60-m {
     padding-right: 60px;
     padding-left: 60px; }
-  .padding-horizontal-90-xl {
+  .padding-horizontal-90-m {
     padding-right: 90px;
     padding-left: 90px; } }
 
@@ -3186,133 +3186,133 @@ section.underline-stone {
     padding-right: 90px;
     padding-left: 90px; } }
 
-@media (min-width: 641px) {
-  .padding-top-negative-30-m {
+@media (min-width: 961px) {
+  .padding-top-negative-30-xl {
     padding-top: -30px; }
-  .padding-top-negative-15-m {
+  .padding-top-negative-15-xl {
     padding-top: -15px; }
-  .padding-top-0-m {
+  .padding-top-0-xl {
     padding-top: 0px; }
-  .padding-top-15-m {
+  .padding-top-15-xl {
     padding-top: 15px; }
-  .padding-top-30-m {
+  .padding-top-30-xl {
     padding-top: 30px; }
-  .padding-top-45-m {
+  .padding-top-45-xl {
     padding-top: 45px; }
-  .padding-top-60-m {
+  .padding-top-60-xl {
     padding-top: 60px; }
-  .padding-top-90-m {
+  .padding-top-90-xl {
     padding-top: 90px; }
-  .padding-right-negative-30-m {
+  .padding-right-negative-30-xl {
     padding-right: -30px; }
-  .padding-right-negative-15-m {
+  .padding-right-negative-15-xl {
     padding-right: -15px; }
-  .padding-right-0-m {
+  .padding-right-0-xl {
     padding-right: 0px; }
-  .padding-right-15-m {
+  .padding-right-15-xl {
     padding-right: 15px; }
-  .padding-right-30-m {
+  .padding-right-30-xl {
     padding-right: 30px; }
-  .padding-right-45-m {
+  .padding-right-45-xl {
     padding-right: 45px; }
-  .padding-right-60-m {
+  .padding-right-60-xl {
     padding-right: 60px; }
-  .padding-right-90-m {
+  .padding-right-90-xl {
     padding-right: 90px; }
-  .padding-bottom-negative-30-m {
+  .padding-bottom-negative-30-xl {
     padding-bottom: -30px; }
-  .padding-bottom-negative-15-m {
+  .padding-bottom-negative-15-xl {
     padding-bottom: -15px; }
-  .padding-bottom-0-m {
+  .padding-bottom-0-xl {
     padding-bottom: 0px; }
-  .padding-bottom-15-m {
+  .padding-bottom-15-xl {
     padding-bottom: 15px; }
-  .padding-bottom-30-m {
+  .padding-bottom-30-xl {
     padding-bottom: 30px; }
-  .padding-bottom-45-m {
+  .padding-bottom-45-xl {
     padding-bottom: 45px; }
-  .padding-bottom-60-m {
+  .padding-bottom-60-xl {
     padding-bottom: 60px; }
-  .padding-bottom-90-m {
+  .padding-bottom-90-xl {
     padding-bottom: 90px; }
-  .padding-left-negative-30-m {
+  .padding-left-negative-30-xl {
     padding-left: -30px; }
-  .padding-left-negative-15-m {
+  .padding-left-negative-15-xl {
     padding-left: -15px; }
-  .padding-left-0-m {
+  .padding-left-0-xl {
     padding-left: 0px; }
-  .padding-left-15-m {
+  .padding-left-15-xl {
     padding-left: 15px; }
-  .padding-left-30-m {
+  .padding-left-30-xl {
     padding-left: 30px; }
-  .padding-left-45-m {
+  .padding-left-45-xl {
     padding-left: 45px; }
-  .padding-left-60-m {
+  .padding-left-60-xl {
     padding-left: 60px; }
-  .padding-left-90-m {
+  .padding-left-90-xl {
     padding-left: 90px; }
-  .padding-negative-30-m {
+  .padding-negative-30-xl {
     padding: -30px; }
-  .padding-negative-15-m {
+  .padding-negative-15-xl {
     padding: -15px; }
-  .padding-0-m {
+  .padding-0-xl {
     padding: 0px; }
-  .padding-15-m {
+  .padding-15-xl {
     padding: 15px; }
-  .padding-30-m {
+  .padding-30-xl {
     padding: 30px; }
-  .padding-45-m {
+  .padding-45-xl {
     padding: 45px; }
-  .padding-60-m {
+  .padding-60-xl {
     padding: 60px; }
-  .padding-90-m {
+  .padding-90-xl {
     padding: 90px; }
-  .padding-vertical-negative-30-m {
+  .padding-vertical-negative-30-xl {
     padding-top: -30px;
     padding-bottom: -30px; }
-  .padding-vertical-negative-15-m {
+  .padding-vertical-negative-15-xl {
     padding-top: -15px;
     padding-bottom: -15px; }
-  .padding-vertical-0-m {
+  .padding-vertical-0-xl {
     padding-top: 0px;
     padding-bottom: 0px; }
-  .padding-vertical-15-m {
+  .padding-vertical-15-xl {
     padding-top: 15px;
     padding-bottom: 15px; }
-  .padding-vertical-30-m {
+  .padding-vertical-30-xl {
     padding-top: 30px;
     padding-bottom: 30px; }
-  .padding-vertical-45-m {
+  .padding-vertical-45-xl {
     padding-top: 45px;
     padding-bottom: 45px; }
-  .padding-vertical-60-m {
+  .padding-vertical-60-xl {
     padding-top: 60px;
     padding-bottom: 60px; }
-  .padding-vertical-90-m {
+  .padding-vertical-90-xl {
     padding-top: 90px;
     padding-bottom: 90px; }
-  .padding-horizontal-negative-30-m {
+  .padding-horizontal-negative-30-xl {
     padding-right: -30px;
     padding-left: -30px; }
-  .padding-horizontal-negative-15-m {
+  .padding-horizontal-negative-15-xl {
     padding-right: -15px;
     padding-left: -15px; }
-  .padding-horizontal-0-m {
+  .padding-horizontal-0-xl {
     padding-right: 0px;
     padding-left: 0px; }
-  .padding-horizontal-15-m {
+  .padding-horizontal-15-xl {
     padding-right: 15px;
     padding-left: 15px; }
-  .padding-horizontal-30-m {
+  .padding-horizontal-30-xl {
     padding-right: 30px;
     padding-left: 30px; }
-  .padding-horizontal-45-m {
+  .padding-horizontal-45-xl {
     padding-right: 45px;
     padding-left: 45px; }
-  .padding-horizontal-60-m {
+  .padding-horizontal-60-xl {
     padding-right: 60px;
     padding-left: 60px; }
-  .padding-horizontal-90-m {
+  .padding-horizontal-90-xl {
     padding-right: 90px;
     padding-left: 90px; } }
 
@@ -3500,133 +3500,133 @@ section.underline-stone {
   margin-right: 90px;
   margin-left: 90px; }
 
-@media (min-width: 961px) {
-  .margin-top-negative-30-xl {
+@media (min-width: 641px) {
+  .margin-top-negative-30-m {
     margin-top: -30px; }
-  .margin-top-negative-15-xl {
+  .margin-top-negative-15-m {
     margin-top: -15px; }
-  .margin-top-0-xl {
+  .margin-top-0-m {
     margin-top: 0px; }
-  .margin-top-15-xl {
+  .margin-top-15-m {
     margin-top: 15px; }
-  .margin-top-30-xl {
+  .margin-top-30-m {
     margin-top: 30px; }
-  .margin-top-45-xl {
+  .margin-top-45-m {
     margin-top: 45px; }
-  .margin-top-60-xl {
+  .margin-top-60-m {
     margin-top: 60px; }
-  .margin-top-90-xl {
+  .margin-top-90-m {
     margin-top: 90px; }
-  .margin-right-negative-30-xl {
+  .margin-right-negative-30-m {
     margin-right: -30px; }
-  .margin-right-negative-15-xl {
+  .margin-right-negative-15-m {
     margin-right: -15px; }
-  .margin-right-0-xl {
+  .margin-right-0-m {
     margin-right: 0px; }
-  .margin-right-15-xl {
+  .margin-right-15-m {
     margin-right: 15px; }
-  .margin-right-30-xl {
+  .margin-right-30-m {
     margin-right: 30px; }
-  .margin-right-45-xl {
+  .margin-right-45-m {
     margin-right: 45px; }
-  .margin-right-60-xl {
+  .margin-right-60-m {
     margin-right: 60px; }
-  .margin-right-90-xl {
+  .margin-right-90-m {
     margin-right: 90px; }
-  .margin-bottom-negative-30-xl {
+  .margin-bottom-negative-30-m {
     margin-bottom: -30px; }
-  .margin-bottom-negative-15-xl {
+  .margin-bottom-negative-15-m {
     margin-bottom: -15px; }
-  .margin-bottom-0-xl {
+  .margin-bottom-0-m {
     margin-bottom: 0px; }
-  .margin-bottom-15-xl {
+  .margin-bottom-15-m {
     margin-bottom: 15px; }
-  .margin-bottom-30-xl {
+  .margin-bottom-30-m {
     margin-bottom: 30px; }
-  .margin-bottom-45-xl {
+  .margin-bottom-45-m {
     margin-bottom: 45px; }
-  .margin-bottom-60-xl {
+  .margin-bottom-60-m {
     margin-bottom: 60px; }
-  .margin-bottom-90-xl {
+  .margin-bottom-90-m {
     margin-bottom: 90px; }
-  .margin-left-negative-30-xl {
+  .margin-left-negative-30-m {
     margin-left: -30px; }
-  .margin-left-negative-15-xl {
+  .margin-left-negative-15-m {
     margin-left: -15px; }
-  .margin-left-0-xl {
+  .margin-left-0-m {
     margin-left: 0px; }
-  .margin-left-15-xl {
+  .margin-left-15-m {
     margin-left: 15px; }
-  .margin-left-30-xl {
+  .margin-left-30-m {
     margin-left: 30px; }
-  .margin-left-45-xl {
+  .margin-left-45-m {
     margin-left: 45px; }
-  .margin-left-60-xl {
+  .margin-left-60-m {
     margin-left: 60px; }
-  .margin-left-90-xl {
+  .margin-left-90-m {
     margin-left: 90px; }
-  .margin-negative-30-xl {
+  .margin-negative-30-m {
     margin: -30px; }
-  .margin-negative-15-xl {
+  .margin-negative-15-m {
     margin: -15px; }
-  .margin-0-xl {
+  .margin-0-m {
     margin: 0px; }
-  .margin-15-xl {
+  .margin-15-m {
     margin: 15px; }
-  .margin-30-xl {
+  .margin-30-m {
     margin: 30px; }
-  .margin-45-xl {
+  .margin-45-m {
     margin: 45px; }
-  .margin-60-xl {
+  .margin-60-m {
     margin: 60px; }
-  .margin-90-xl {
+  .margin-90-m {
     margin: 90px; }
-  .margin-vertical-negative-30-xl {
+  .margin-vertical-negative-30-m {
     margin-top: -30px;
     margin-bottom: -30px; }
-  .margin-vertical-negative-15-xl {
+  .margin-vertical-negative-15-m {
     margin-top: -15px;
     margin-bottom: -15px; }
-  .margin-vertical-0-xl {
+  .margin-vertical-0-m {
     margin-top: 0px;
     margin-bottom: 0px; }
-  .margin-vertical-15-xl {
+  .margin-vertical-15-m {
     margin-top: 15px;
     margin-bottom: 15px; }
-  .margin-vertical-30-xl {
+  .margin-vertical-30-m {
     margin-top: 30px;
     margin-bottom: 30px; }
-  .margin-vertical-45-xl {
+  .margin-vertical-45-m {
     margin-top: 45px;
     margin-bottom: 45px; }
-  .margin-vertical-60-xl {
+  .margin-vertical-60-m {
     margin-top: 60px;
     margin-bottom: 60px; }
-  .margin-vertical-90-xl {
+  .margin-vertical-90-m {
     margin-top: 90px;
     margin-bottom: 90px; }
-  .margin-horizontal-negative-30-xl {
+  .margin-horizontal-negative-30-m {
     margin-right: -30px;
     margin-left: -30px; }
-  .margin-horizontal-negative-15-xl {
+  .margin-horizontal-negative-15-m {
     margin-right: -15px;
     margin-left: -15px; }
-  .margin-horizontal-0-xl {
+  .margin-horizontal-0-m {
     margin-right: 0px;
     margin-left: 0px; }
-  .margin-horizontal-15-xl {
+  .margin-horizontal-15-m {
     margin-right: 15px;
     margin-left: 15px; }
-  .margin-horizontal-30-xl {
+  .margin-horizontal-30-m {
     margin-right: 30px;
     margin-left: 30px; }
-  .margin-horizontal-45-xl {
+  .margin-horizontal-45-m {
     margin-right: 45px;
     margin-left: 45px; }
-  .margin-horizontal-60-xl {
+  .margin-horizontal-60-m {
     margin-right: 60px;
     margin-left: 60px; }
-  .margin-horizontal-90-xl {
+  .margin-horizontal-90-m {
     margin-right: 90px;
     margin-left: 90px; } }
 
@@ -3760,133 +3760,133 @@ section.underline-stone {
     margin-right: 90px;
     margin-left: 90px; } }
 
-@media (min-width: 641px) {
-  .margin-top-negative-30-m {
+@media (min-width: 961px) {
+  .margin-top-negative-30-xl {
     margin-top: -30px; }
-  .margin-top-negative-15-m {
+  .margin-top-negative-15-xl {
     margin-top: -15px; }
-  .margin-top-0-m {
+  .margin-top-0-xl {
     margin-top: 0px; }
-  .margin-top-15-m {
+  .margin-top-15-xl {
     margin-top: 15px; }
-  .margin-top-30-m {
+  .margin-top-30-xl {
     margin-top: 30px; }
-  .margin-top-45-m {
+  .margin-top-45-xl {
     margin-top: 45px; }
-  .margin-top-60-m {
+  .margin-top-60-xl {
     margin-top: 60px; }
-  .margin-top-90-m {
+  .margin-top-90-xl {
     margin-top: 90px; }
-  .margin-right-negative-30-m {
+  .margin-right-negative-30-xl {
     margin-right: -30px; }
-  .margin-right-negative-15-m {
+  .margin-right-negative-15-xl {
     margin-right: -15px; }
-  .margin-right-0-m {
+  .margin-right-0-xl {
     margin-right: 0px; }
-  .margin-right-15-m {
+  .margin-right-15-xl {
     margin-right: 15px; }
-  .margin-right-30-m {
+  .margin-right-30-xl {
     margin-right: 30px; }
-  .margin-right-45-m {
+  .margin-right-45-xl {
     margin-right: 45px; }
-  .margin-right-60-m {
+  .margin-right-60-xl {
     margin-right: 60px; }
-  .margin-right-90-m {
+  .margin-right-90-xl {
     margin-right: 90px; }
-  .margin-bottom-negative-30-m {
+  .margin-bottom-negative-30-xl {
     margin-bottom: -30px; }
-  .margin-bottom-negative-15-m {
+  .margin-bottom-negative-15-xl {
     margin-bottom: -15px; }
-  .margin-bottom-0-m {
+  .margin-bottom-0-xl {
     margin-bottom: 0px; }
-  .margin-bottom-15-m {
+  .margin-bottom-15-xl {
     margin-bottom: 15px; }
-  .margin-bottom-30-m {
+  .margin-bottom-30-xl {
     margin-bottom: 30px; }
-  .margin-bottom-45-m {
+  .margin-bottom-45-xl {
     margin-bottom: 45px; }
-  .margin-bottom-60-m {
+  .margin-bottom-60-xl {
     margin-bottom: 60px; }
-  .margin-bottom-90-m {
+  .margin-bottom-90-xl {
     margin-bottom: 90px; }
-  .margin-left-negative-30-m {
+  .margin-left-negative-30-xl {
     margin-left: -30px; }
-  .margin-left-negative-15-m {
+  .margin-left-negative-15-xl {
     margin-left: -15px; }
-  .margin-left-0-m {
+  .margin-left-0-xl {
     margin-left: 0px; }
-  .margin-left-15-m {
+  .margin-left-15-xl {
     margin-left: 15px; }
-  .margin-left-30-m {
+  .margin-left-30-xl {
     margin-left: 30px; }
-  .margin-left-45-m {
+  .margin-left-45-xl {
     margin-left: 45px; }
-  .margin-left-60-m {
+  .margin-left-60-xl {
     margin-left: 60px; }
-  .margin-left-90-m {
+  .margin-left-90-xl {
     margin-left: 90px; }
-  .margin-negative-30-m {
+  .margin-negative-30-xl {
     margin: -30px; }
-  .margin-negative-15-m {
+  .margin-negative-15-xl {
     margin: -15px; }
-  .margin-0-m {
+  .margin-0-xl {
     margin: 0px; }
-  .margin-15-m {
+  .margin-15-xl {
     margin: 15px; }
-  .margin-30-m {
+  .margin-30-xl {
     margin: 30px; }
-  .margin-45-m {
+  .margin-45-xl {
     margin: 45px; }
-  .margin-60-m {
+  .margin-60-xl {
     margin: 60px; }
-  .margin-90-m {
+  .margin-90-xl {
     margin: 90px; }
-  .margin-vertical-negative-30-m {
+  .margin-vertical-negative-30-xl {
     margin-top: -30px;
     margin-bottom: -30px; }
-  .margin-vertical-negative-15-m {
+  .margin-vertical-negative-15-xl {
     margin-top: -15px;
     margin-bottom: -15px; }
-  .margin-vertical-0-m {
+  .margin-vertical-0-xl {
     margin-top: 0px;
     margin-bottom: 0px; }
-  .margin-vertical-15-m {
+  .margin-vertical-15-xl {
     margin-top: 15px;
     margin-bottom: 15px; }
-  .margin-vertical-30-m {
+  .margin-vertical-30-xl {
     margin-top: 30px;
     margin-bottom: 30px; }
-  .margin-vertical-45-m {
+  .margin-vertical-45-xl {
     margin-top: 45px;
     margin-bottom: 45px; }
-  .margin-vertical-60-m {
+  .margin-vertical-60-xl {
     margin-top: 60px;
     margin-bottom: 60px; }
-  .margin-vertical-90-m {
+  .margin-vertical-90-xl {
     margin-top: 90px;
     margin-bottom: 90px; }
-  .margin-horizontal-negative-30-m {
+  .margin-horizontal-negative-30-xl {
     margin-right: -30px;
     margin-left: -30px; }
-  .margin-horizontal-negative-15-m {
+  .margin-horizontal-negative-15-xl {
     margin-right: -15px;
     margin-left: -15px; }
-  .margin-horizontal-0-m {
+  .margin-horizontal-0-xl {
     margin-right: 0px;
     margin-left: 0px; }
-  .margin-horizontal-15-m {
+  .margin-horizontal-15-xl {
     margin-right: 15px;
     margin-left: 15px; }
-  .margin-horizontal-30-m {
+  .margin-horizontal-30-xl {
     margin-right: 30px;
     margin-left: 30px; }
-  .margin-horizontal-45-m {
+  .margin-horizontal-45-xl {
     margin-right: 45px;
     margin-left: 45px; }
-  .margin-horizontal-60-m {
+  .margin-horizontal-60-xl {
     margin-right: 60px;
     margin-left: 60px; }
-  .margin-horizontal-90-m {
+  .margin-horizontal-90-xl {
     margin-right: 90px;
     margin-left: 90px; } }
 
