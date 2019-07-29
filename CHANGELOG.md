@@ -1,9 +1,10 @@
 # Changelog
 
 ## 27.1.1
-[Full Changelog](https://github.com/uktrade/directory-components/pull/248/files)
-### Implemented enhancements
-- bugfix - re-order min-width breakpoints
+[Full Changelog](https://github.com/uktrade/directory-components/pull/249/files)
+
+### Bugs fixed
+- re-order min-width breakpoints
 
 ## 27.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/248/files)
