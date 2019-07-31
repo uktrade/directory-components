@@ -64,4 +64,7 @@ compile_translations:
 	$(DEMO_SET_ENV_VARS) && python manage.py compilemessages
 
 
+compile_css:
+	./node_modules/.bin/gulp styles
+
 .PHONY: build clean test_requirements flake8 pytest test publish

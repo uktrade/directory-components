@@ -1,5 +1,6 @@
 import ast
 import re
+from unittest.mock import Mock
 
 from django.core.paginator import Paginator
 from django.shortcuts import Http404
@@ -165,4 +166,20 @@ class DemoPaginationView(TemplateView):
             pagination_page_few_pages=self.pagination_few_pages,
             pagination_page_some_pages=self.pagination_some_pages,
             pagination_page_many_pages=self.pagination_many_pages,
+        )
+
+
+class DomesticHeaderFooterView(TemplateView):
+    template_name = 'demo/great-domestic-header-footer.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if 'authenticated' in request.GET:
+            request.user = Mock(is_authenticated=True)
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(
+            **kwargs,
+            sso_login_url='?authenticated',
+            sso_logout_url='?unauthenticated',
         )

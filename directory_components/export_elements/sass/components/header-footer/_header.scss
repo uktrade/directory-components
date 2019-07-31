@@ -44,9 +44,12 @@
     position: absolute;
     top: 25px;
     right: 0;
-
+    display: flex;
     @media (max-width: 768px) {
       top: 10px;
+    }
+    li:last-child {
+      margin-left: 10px;
     }
   }
 

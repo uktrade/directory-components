@@ -3,7 +3,6 @@ import pytest
 from unittest.mock import patch, Mock
 from django.views.generic import TemplateView
 from django.utils import translation
-from django.conf import settings
 
 from directory_constants.choices import COUNTRY_CHOICES
 from directory_components import mixins
@@ -42,7 +41,7 @@ def test_country_display_mixin_no_country(mock_country, rf):
     assert not response.context_data['country']['code']
 
 
-def test_language_display_mixin(rf):
+def test_language_display_mixin(rf, settings):
     class TestView(mixins.EnableTranslationsMixin, TemplateView):
         template_name = 'core/base.html'
 
@@ -54,14 +53,12 @@ def test_language_display_mixin(rf):
 
     # Test when MIDDLWARE_CLASSES setting is being used instead of MIDDLEWARE
     settings.MIDDLEWARE_CLASSES = settings.MIDDLEWARE
-    try:
-        request = rf.get('/')
-        request.LANGUAGE_CODE = ''
-        response = TestView.as_view()(request)
-        assert response.context_data['language_switcher']['form']
-    finally:
-        # clean up!
-        del settings.MIDDLEWARE_CLASSES
+    settings.MIDDLEWARE = []
+
+    request = rf.get('/')
+    request.LANGUAGE_CODE = ''
+    response = TestView.as_view()(request)
+    assert response.context_data['language_switcher']['form']
 
 
 def test_cms_language_switcher_one_language(rf):
