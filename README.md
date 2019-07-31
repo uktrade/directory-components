@@ -46,7 +46,6 @@ Then visit the demo at `components.trade.great:9013`
 
 | Environment variable | Notes |
 |-------------------------------------------- |-----------------------------------------------|
-| `FEATURE_SEARCH_ENGINE_INDEXING_DISABLED`   | Controls `RobotsIndexControlHeaderMiddlware`. |
 | `FEATURE_MAINTENANCE_MODE_ENABLED`          | Controls `MaintenanceModeMiddleware`.         |
 | `FEATURE_FLAGS`                             | Place to store the service's feature flags.   |
 
@@ -59,7 +58,7 @@ Middleware can be found in `directory_components.middleware.FooBar`.
 |------------|-------|
 | `MaintenanceModeMiddleware`         | Redirects to http://sorry.great.gov.uk if `FEATURE_MAINTENANCE_MODE_ENABLED` is `true`.|
 | `NoCacheMiddlware`                  | Prevents any page in the service from caching pages of logged in users. |
-| `PrefixUrlMiddleware`               | Redirects use from unprefixed url to prefixed url if `FEATURE_URL_PREFIX_ENABLED` is `true`. |
+| `PrefixUrlMiddleware`               | Redirects use from unprefixed url to prefixed url. |
 
 
 ### Context processors

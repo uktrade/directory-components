@@ -74,6 +74,7 @@ TEMPLATES = [
                 ('directory_components.context_processors'
                     '.header_footer_processor'),
                 'directory_components.context_processors.urls_processor',
+                'directory_components.context_processors.sso_processor',
                 'directory_components.context_processors.cookie_notice',
                 'directory_components.context_processors.feature_flags',
             ],
@@ -184,3 +185,8 @@ PRIVACY_COOKIE_DOMAIN = env.str('PRIVACY_COOKIE_DOMAIN', '')
 FEATURE_FLAGS = {
     'COUNTRY_SELECTOR_ON': env.bool('FEATURE_COUNTRY_SELECTOR_ENABLED', False)
 }
+
+SSO_PROXY_SIGNUP_URL = 'https://signup.com'
+SSO_PROXY_LOGIN_URL = 'https://login.com'
+SSO_PROXY_LOGOUT_URL = 'https://logout.com'
+SSO_PROFILE_URL = 'https://profile.com'

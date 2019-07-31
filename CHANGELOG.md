@@ -1,5 +1,15 @@
 # Changelog
 
+## 27.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/252/files)
+
+### Bugs fixed
+- Fixed login state links collapsed
+- Removed old documentation and conf
+
+### Implemented enhancements
+- Demo login state in header footer
+
 ## 27.1.3
 [Full Changelog](https://github.com/uktrade/directory-components/pull/251/files)
 

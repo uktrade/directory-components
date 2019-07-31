@@ -21,8 +21,7 @@ urlpatterns = [
     ),
     url(
         r'^great-domestic-header-footer/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/great-domestic-header-footer.html'},
+        views.DomesticHeaderFooterView.as_view(),
         name='great-domestic-header-footer',
     ),
     url(
