@@ -45,10 +45,12 @@ Then visit the demo at `components.trade.great:9013`
 ### Environment variables
 
 | Environment variable | Notes |
-|-------------------------------------------- |-----------------------------------------------|
-| `FEATURE_MAINTENANCE_MODE_ENABLED`          | Controls `MaintenanceModeMiddleware`.         |
-| `FEATURE_FLAGS`                             | Place to store the service's feature flags.   |
-
+|-------------------------------------------------- |-----------------------------------------------|
+| `FEATURE_MAINTENANCE_MODE_ENABLED`                | Controls `MaintenanceModeMiddleware`.         |
+| `FEATURE_FLAGS`                                   | Place to store the service's feature flags.   |
+| `DIRECTORY_COMPONENTS_VAULT_URL                   | Hashicorp vault domain. For diffing vaults.   |
+| `DIRECTORY_COMPONENTS_VAULT_PROJECT               | Hashicorp vault project. For diffing vaults.  |
+| `DIRECTORY_COMPONENTS_VAULT_IGNORE_SETTINGS_REGEX | Settings to ignore when diffing vaults.       |
 
 ### Middleware
 
@@ -90,6 +92,27 @@ Without doing this the 500 and 400 pages would not receive context data provided
 To automatically update the dependences of services that use this library call the following command:
 
     $ make update
+
+## Management commands
+
+### Diff environments
+
+You can diff the vaults of two environments by running the following.
+
+    manage.py vault_diff \
+        --token=<token> \
+        --domain=<domain> \
+        --project=<project> \
+        --environment_a=<environment_a> \
+        --environment_b=<environment_b>
+
+For simplicity once you set the `DIRECTORY_COMPONENTS_VAULT_URL` and `DIRECTORY_COMPONENTS_VAULT_PROJECT` that simplifies to
+
+    manage.py vault_diff \
+        --token=<token> \
+        --environment_a=<environment_a> \
+        --environment_b=<environment_b>
+
 
 ## Publish to PyPI
 

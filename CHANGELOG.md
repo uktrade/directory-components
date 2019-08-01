@@ -1,5 +1,12 @@
 # Changelog
 
+## 27.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/253/files)
+
+### Implemented enhancements
+- Added vault_diff management command
+
+
 ## 27.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/252/files)
 

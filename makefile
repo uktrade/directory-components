@@ -57,6 +57,9 @@ django_webserver:
 run_demo:
 	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
+demo_manage:
+	$(DEMO_SET_ENV_VARS) && ./manage.py $(cmd)
+
 translations:
 	$(DEMO_SET_ENV_VARS) && python manage.py makemessages -a
 
