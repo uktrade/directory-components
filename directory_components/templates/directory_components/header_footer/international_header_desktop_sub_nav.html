@@ -5,8 +5,8 @@
     <nav class="sub-nav" aria-label="{% trans 'Sub-menu' %}">
       <ul class="sub-nav-list">
         {% for header_item in sub_header_items %}
-          <li>
-            <a class="menu-item {% if header_item.is_active %} active{% endif %}" href="{{ header_item.url }}">{{ header_item.title }}</a>
+          <li class="menu-item">
+            <a class="link-heading {% if header_item.is_active %} active{% endif %}" href="{{ header_item.url }}">{{ header_item.title }}</a>
           </li>
         {% endfor %}
       </ul>

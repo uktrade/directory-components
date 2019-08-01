@@ -137,27 +137,90 @@ class InternationalHeaderMixin:
 
     pages = [
         Page(
-            name='invest',
-            title=translation.gettext('Invest'),
-            url=urls.SERVICES_INVEST,
-            sub_pages=[]
-        ),
-        Page(
-            name='uk_setup_guides',
-            title=translation.gettext('UK setup guide'),
-            url=urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
-            sub_pages=[]
-        ),
-        Page(
-            name='find_a_supplier',
-            title=translation.gettext('Find a UK supplier'),
-            url=urls.SERVICES_FAS,
-            sub_pages=[]
-        ),
-        Page(
             name='industries',
             title=translation.gettext('Industries'),
             url=urls.GREAT_INTERNATIONAL_INDUSTRIES,
+            sub_pages=[]
+        ),
+        Page(
+            name='set_up',
+            title=translation.gettext('Set up a UK company'),
+            url=urls.SERVICES_INVEST,
+            sub_pages=[
+                Page(
+                    name='overview',
+                    title=translation.gettext('Overview'),
+                    url=urls.SERVICES_INVEST,
+                    sub_pages=[]
+                ),
+                Page(
+                    name='guides',
+                    title=translation.gettext('How to expand your business to the UK'),  # noqa
+                    url=urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
+                    sub_pages=[]
+                ),
+                Page(
+                    name='advice',
+                    title=translation.gettext('Professional advice'),
+                    url=urls.SERVICES_ISD,
+                    sub_pages=[]
+                ),
+                Page(
+                    name='contact_us',
+                    title=translation.gettext('Contact us'),
+                    url=urls.INVEST_CONTACT_US,
+                    sub_pages=[]
+                ),
+            ]
+        ),
+        Page(
+            name='invest_capital',
+            title=translation.gettext('Invest capital'),
+            url=urls.GREAT_INTERNATIONAL_CAPITAL_INVEST_LANDING_PAGE,
+            sub_pages=[]
+        ),
+        Page(
+            name='import',
+            title=translation.gettext('Buy from the UK'),
+            url=urls.SERVICES_FAS,
+            sub_pages=[
+                Page(
+                    name='supplier-directory',
+                    title=translation.gettext('Supplier directory'),
+                    url=urls.SERVICES_FAS,
+                    sub_pages=[]
+                ),
+                Page(
+                    name='contact_us',
+                    title=translation.gettext('Contact us'),
+                    url=urls.FAS_CONTACT_US,
+                    sub_pages=[]
+                ),
+            ]
+        ),
+        Page(
+            name='about_dit',
+            title=translation.gettext('About us'),
+            url=urls.GREAT_INTERNATIONAL_ABOUT_DIT,
+            sub_pages=[
+                Page(
+                    name='what_we_do',
+                    title='What we do',
+                    url=urls.GREAT_INTERNATIONAL_ABOUT_DIT,
+                    sub_pages=[]
+                ),
+                Page(
+                    name='contact_us',
+                    title='Contact us',
+                    url=urls.GREAT_INTERNATIONAL_CONTACT_US,
+                    sub_pages=[]
+                ),
+            ]
+        ),
+        Page(
+            name='events',
+            title=translation.gettext('Events'),
+            url=urls.SERVICES_EVENTS,
             sub_pages=[]
         ),
     ]
