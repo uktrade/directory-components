@@ -1,0 +1,10 @@
+{% load breadcrumbs from directory_components %}
+
+{% with current_page=page.tree_based_breadcrumbs|last %}
+    {% breadcrumb current_page.title %}
+        <a href="{{ homepage_url }}">{{ homepage_label }}</a>
+        {% for crumb in page.tree_based_breadcrumbs|slice:':-1' %}
+            <a href="{{ crumb.url }}">{{ crumb.title }}</a>
+        {% endfor %}
+    {% endbreadcrumb %}
+{% endwith %}
