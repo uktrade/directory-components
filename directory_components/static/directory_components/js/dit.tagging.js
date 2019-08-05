@@ -72,9 +72,10 @@ dit.tagging.base = new function() {
             var type = form.data('ga-type') || 'form';
             var element = form.data('ga-element') || inferElement(form);
             var value = form.data('ga-value') || inferFormValue(form);
-            var formData = form.data('ga-include-form-data').toLowerCase() === "true" ? form.serialize() : null;
 
-            console.log('formData', formData, form.serialize());
+            var includeFormData = form.data('ga-include-form-data');
+            var formData = includeFormData && includeFormData.toLowerCase() === "true" ? form.serialize() : null;
+
             sendEvent(formEvent(action, type, element, value, formData));
         }
 

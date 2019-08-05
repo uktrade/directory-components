@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.2.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/255/files)
+
+### Bugs Fixed
+- Fixed NPE JS error when submitting a form without serializing the data.
+
 ## 27.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/252/files)
 
