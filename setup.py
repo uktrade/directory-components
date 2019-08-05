@@ -19,6 +19,7 @@ setup(
         'directory-constants>=18.0.0,<19.0.0',
         'jsonschema>=3.0.1,<4.0.0',
         'hvac>=0.9.5,<1.0.0',
+        'vulture>=1.0.0,<2.0.0',
     ],
     extras_require={
         'test': [

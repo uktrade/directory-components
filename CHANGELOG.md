@@ -1,10 +1,11 @@
 # Changelog
 
 ## 27.3.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/253/files)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/254/files)
 
 ### Implemented enhancements
-- Added vault_diff management command
+- Added environment_diff management command
+- Added settings_shake management command
 
 
 ## 27.2.0

@@ -1,5 +1,3 @@
-from urllib.parse import urljoin
-
 import hvac
 
 from django.conf import settings
@@ -28,6 +26,11 @@ class Command(BaseCommand):
             help='Select the projects and environments from a list.'
         )
         parser.add_argument(
+            '--root',
+            default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_ROOT_PATH', None),
+            help='The vault root path your projects are within.'
+        )
+        parser.add_argument(
             '--project',
             default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_PROJECT', None),
             help='The name of the project you want to diff.'
@@ -50,16 +53,16 @@ class Command(BaseCommand):
         assert client.is_authenticated()
 
         if options['wizard']:
-            secrets_a = helpers.get_secrets_wizard(client=client)
-            secrets_b = helpers.get_secrets_wizard(client=client)
+            secrets_a = helpers.get_secrets_wizard(client=client, root=options['root'])
+            secrets_b = helpers.get_secrets_wizard(client=client, root=options['root'])
         else:
             secrets_a = helpers.get_secrets(
                 client=client,
-                path=urljoin(options['project'], options['environment_a']),
+                path=f"{options['root']}/{options['project']}/{options['environment_a']}",
             )
             secrets_b = helpers.get_secrets(
                 client=client,
-                path=urljoin(options['project'], options['environment_b']),
+                path=f"{options['root']}/{options['project']}/{options['environment_b']}",
             )
         diff = helpers.diff_dicts(secrets_a, secrets_b)
         self.stdout.write(diff)

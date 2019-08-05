@@ -1,7 +1,4 @@
-from urllib.parse import urljoin
-
 import hvac
-from vulture import Vulture
 
 from django.conf import global_settings, settings
 
@@ -11,16 +8,9 @@ from django.core.management.commands.diffsettings import module_to_dict
 from directory_components.management.commands import helpers
 
 
-class Vulture(Vulture):
-    def report(self, min_confidence=0):
-        for unused_code in self.get_unused_code(min_confidence=min_confidence):
-            report = unused_code.get_report()
-            if 'conf/settings.py' in report:
-                yield unused_code.name
-
 
 class Command(BaseCommand):
-
+    help_text = 'Shake the settings and see what falls off. Like tree-shaking.'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -29,13 +19,18 @@ class Command(BaseCommand):
         )
         parser.add_argument(
             '--domain',
-            default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_URL', None),
+            default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_DOMAIN', None),
             help='Vault domain. The domain you uses to access the UI.'
         )
         parser.add_argument(
             '--wizard',
             action='store_true',
             help='Select the projects and environments from a list.'
+        )
+        parser.add_argument(
+            '--root',
+            default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_ROOT_PATH', None),
+            help='The vault root path your projects are within.'
         )
         parser.add_argument(
             '--project',
@@ -69,21 +64,19 @@ class Command(BaseCommand):
         )
 
     def report_obsolete_vault_entries(self, options):
-        self.stdout.write(
-            self.style.MIGRATE_LABEL('Looking for obsolete vault entries.')
-        )
-
-        client = hvac.Client(
-            url=f"https://{options['domain']}", token=options['token']
-        )
+        url = f"https://{options['domain']}"
+        client = hvac.Client(url=url, token=options['token'])
         assert client.is_authenticated()
 
+        label = self.style.MIGRATE_LABEL('Looking for obsolete vault entries.')
+        self.stdout.write(label)
+
         if options['wizard']:
-            secrets = helpers.get_secrets_wizard(client=client)
+            secrets = helpers.get_secrets_wizard(client=client, root=options['root'])
         else:
             secrets = helpers.get_secrets(
                 client=client,
-                path=f"{options['project']}/{options['environment']}",
+                path=f"{options['root']}/{options['project']}/{options['environment']}",
             )
         return [key for key in secrets if not hasattr(settings, key)]
 
@@ -106,12 +99,12 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.MIGRATE_LABEL('Looking for unused settings')
         )
-        vulture = Vulture(
+        vulture = helpers.Vulture(
             verbose=False,
             ignore_names=[],
             ignore_decorators=False
         )
-        vulture.scavenge(['/home/richtier/workspace/directory-sso-profile/'])
+        vulture.scavenge(['.'])
         return vulture.report()
 
     def report_results(self, warning_message, success_message, warnings):

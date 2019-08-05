@@ -3,6 +3,8 @@ from pprint import pformat
 import re
 from urllib.parse import urljoin
 
+from vulture import Vulture
+
 from django.conf import settings
 
 
@@ -12,25 +14,24 @@ DEFAULT_UNSAFE_SETTINGS = [
     re.compile('.*?TOKEN.*?'),
     re.compile('.*?KEY.*?'),
 ]
-VAULT_ROOT_PATH = '/dit/directory/'
 
 
-def get_secrets_wizard(client):
-    response = client.list(path=VAULT_ROOT_PATH)
+def get_secrets_wizard(client, root):
+    response = client.list(path=root)
     project = prompt_user_choice(
-        message='{VAULT_ROOT_PATH} Choose a projects:',
+        message=f'{root} Choose a projects:',
         options=response['data']['keys'],
     )
 
-    response = client.list(path=f'{VAULT_ROOT_PATH}/{project}')
+    response = client.list(path=f'{root}/{project}')
     environment = prompt_user_choice(
-        message='({VAULT_ROOT_PATH}/{project}) Choose an environment:',
+        message=f'({root}{project}) Choose an environment:',
         options=response['data']['keys'],
     )
 
     return get_secrets(
         client=client,
-        path=urljoin(project, environment),
+        path=f'{root}{project}{environment}',
     )
 
 
@@ -55,15 +56,21 @@ def clean_secrets(secrets):
 
 
 def get_secrets(client, path):
-    print(path)
-    print(urljoin(VAULT_ROOT_PATH, path))
-    response = client.read(path=urljoin(VAULT_ROOT_PATH, path))
+    response = client.read(path=path)
     return clean_secrets(response['data'])
 
 
 def diff_dicts(dict_a, dict_b):
     differ = difflib.Differ()
     return '\n'.join(difflib.ndiff(
-       pformat(secrets_a).splitlines(),
-       pformat(secrets_b).splitlines()
+       pformat(dict_a).splitlines(),
+       pformat(dict_b).splitlines()
     ))
+
+
+class Vulture(Vulture):
+    def report(self, min_confidence=0):
+        for unused_code in self.get_unused_code(min_confidence=min_confidence):
+            report = unused_code.get_report()
+            if 'conf/settings.py' in report:
+                yield unused_code.name

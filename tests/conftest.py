@@ -70,6 +70,7 @@ def pytest_configure():
         ),
         DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON='https://sso.com',
         DIRECTORY_CONSTANTS_URL_FIND_A_BUYER='https://fab.com',
+        DIRECTORY_COMPONENTS_VAULT_ROOT_PATH='/root/'
     )
 
 
