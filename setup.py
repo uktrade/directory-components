@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='27.3.0',
+    version='27.4.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -21,7 +21,6 @@ setup(
     ],
     extras_require={
         'test': [
-            'directory-components[janitor]',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',

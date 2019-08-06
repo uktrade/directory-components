@@ -5,11 +5,19 @@ jobs:
       - image: circleci/python:3.6.6
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - restore_cache:
+          key: v1-deps-{{ checksum "setup.py" }}
       - run:
           command: |
             python3 -m venv .venv
             . .venv/bin/activate
             make test_requirements
+      - save_cache:
+          key: v1-deps-{{ checksum "setup.py" }}
+          paths:
+            - "venv"
       - run:
           command: |
             . .venv/bin/activate

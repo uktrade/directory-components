@@ -5,7 +5,8 @@ clean:
 	-find . -type d -name "__pycache__" -delete
 
 test_requirements:
-	pip install -e .[test]
+	pip install -e .[test]; \
+	pip install -e .[janitor]
 
 demo_requirements:
 	pip install -e .[demo]

@@ -1,12 +1,23 @@
 # Changelog
 
-## 27.3.0
+## 27.4.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/254/files)
 
 ### Implemented enhancements
 - Added environment_diff management command
 - Added settings_shake management command
 
+## 27.3.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/256)
+
+### Bugs Fixed
+- Fixed search input on domestic header which was covered by other elements and not clickable
+
+## 27.2.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/255/files)
+
+### Bugs Fixed
+- Fixed NPE JS error when submitting a form without serializing the data.
 
 ## 27.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/252/files)

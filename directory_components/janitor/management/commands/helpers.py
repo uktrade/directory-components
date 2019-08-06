@@ -9,10 +9,12 @@ from django.conf import settings
 
 
 DEFAULT_UNSAFE_SETTINGS = [
-    re.compile('.*?SECRET.*?'),
     re.compile('.*?PASSWORD.*?'),
-    re.compile('.*?TOKEN.*?'),
+    re.compile('.*?SECRET.*?'),
+    re.compile('.*?AUTHORIZATION.*?'),
     re.compile('.*?KEY.*?'),
+    re.compile('.*?TOKEN.*?'),
+    re.compile('.*?DSN.*?'),
 ]
 
 
