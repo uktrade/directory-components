@@ -50,7 +50,7 @@ def clean_secrets(secrets):
     for key in secrets.copy():
         for entry in ignore_settings:
             if entry.match(key):
-                del secrets[key]
+                secrets[key] = '💀' * 5
                 break
     return secrets
 
@@ -61,7 +61,6 @@ def get_secrets(client, path):
 
 
 def diff_dicts(dict_a, dict_b):
-    differ = difflib.Differ()
     return '\n'.join(difflib.ndiff(
        pformat(dict_a).splitlines(),
        pformat(dict_b).splitlines()

@@ -30,6 +30,7 @@ def pytest_configure():
         INSTALLED_APPS=[
             'django.contrib.staticfiles',
             'directory_components',
+            'directory_components.janitor',
             'django.contrib.sessions',
         ],
         STATIC_URL='/static/',

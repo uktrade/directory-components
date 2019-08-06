@@ -5,7 +5,7 @@ from django.conf import global_settings, settings
 from django.core.management.base import BaseCommand, CommandError
 from django.core.management.commands.diffsettings import module_to_dict
 
-from directory_components.management.commands import helpers
+from directory_components.janitor.management.commands import helpers
 
 
 

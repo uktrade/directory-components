@@ -1,6 +1,6 @@
 from unittest import mock
 
-from directory_components.management.commands import helpers
+from directory_components.janitor.management.commands import helpers
 
 
 def test_prompt_user_choice(monkeypatch):
@@ -26,7 +26,13 @@ def test_clean_secrets_default():
         'API_KEY': '123',
         'BENIGN': True,
     }
-    assert helpers.clean_secrets(secrets) == {'BENIGN': True}
+    assert helpers.clean_secrets(secrets) == {
+        'SECRET_KEY': '💀💀💀💀💀',
+        'PASSWORD': '💀💀💀💀💀',
+        'MAGIC_TOKEN': '💀💀💀💀💀',
+        'API_KEY': '💀💀💀💀💀',
+        'BENIGN': True,
+    }
 
 
 def test_clean_secrets_explicit(settings):
@@ -53,7 +59,10 @@ def test_get_secrets():
 
     result = helpers.get_secrets(client=mock_client, path='/root/foo')
 
-    assert result == {'BENIGN': True}
+    assert result == {
+        'API_KEY': '💀💀💀💀💀',
+        'BENIGN': True,
+    }
     assert mock_client.read.call_count == 1
     assert mock_client.read.call_args == mock.call(path='/root/foo')
 

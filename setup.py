@@ -18,12 +18,10 @@ setup(
         'beautifulsoup4>=4.6.0,<5.0.0',
         'directory-constants>=18.0.0,<19.0.0',
         'jsonschema>=3.0.1,<4.0.0',
-        'hvac>=0.9.5,<1.0.0',
-        'vulture>=1.0.0,<2.0.0',
     ],
     extras_require={
         'test': [
-            'django>=2.2,<3.0a1',
+            'directory-components[janitor]',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
@@ -38,14 +36,15 @@ setup(
             'setuptools>=38.6.0,<39.0.0'
         ],
         'demo': [
-            'django>=2.2,<3.0a1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
             'whitenoise==3.3.1',
-            'pip==9.0.1',
-            'beautifulsoup4>=4.6.0,<5.0.0',
+        ],
+        'janitor': [
+            'hvac>=0.9.5,<1.0.0',
+            'vulture>=1.0.0,<2.0.0',
         ]
-    },
+    },  
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',

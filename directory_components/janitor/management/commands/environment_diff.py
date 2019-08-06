@@ -3,7 +3,7 @@ import hvac
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from directory_components.management.commands import helpers
+from directory_components.janitor.management.commands import helpers
 
 
 class Command(BaseCommand):
@@ -17,7 +17,7 @@ class Command(BaseCommand):
         )
         parser.add_argument(
             '--domain',
-            default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_URL', None),
+            default=getattr(settings, 'DIRECTORY_COMPONENTS_VAULT_DOMAIN', None),
             help='Vault domain. The domain you uses to access the UI.'
         )
         parser.add_argument(

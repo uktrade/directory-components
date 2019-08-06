@@ -94,7 +94,13 @@ To automatically update the dependences of services that use this library call t
 
     $ make update
 
-## Management commands
+## Settings janitor
+
+Management commands are provided to assist in the maintenance of settings. Install by `pip install directory-components[janitor]` and then add the following to `settings.py`:
+
+    if some_predicate_is_met:  # feature flagged so it's not used in prod
+        INSTALLED_APPS.append('directory_components.janitor')
+
 
 ### Diff environments
 

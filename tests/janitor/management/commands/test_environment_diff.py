@@ -4,7 +4,7 @@ import pytest
 
 from django.core.management import call_command
 
-from directory_components.management.commands import helpers
+from directory_components.janitor.management.commands import helpers
 
 
 @pytest.fixture(autouse=True)
