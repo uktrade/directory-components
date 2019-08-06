@@ -169,10 +169,6 @@
     content: '';
     clear: both; }
 
-@media (max-width: 1260px) {
-  .great-header-search-container {
-    margin: 0 30px; } }
-
 @media (max-width: 768px) {
   .great-header .great-header-search-wrapper form {
     width: 100%;
@@ -1243,16 +1239,12 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card:focus, a.labelled-image-card:focus {
     outline: none; }
     a.labelled-card:focus .card-image, a.labelled-image-card:focus .card-image,
-    a.labelled-card:focus .card-header h3,
-    a.labelled-image-card:focus .card-header h3,
-    a.labelled-card:focus .card-inner,
-    a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-header h3, a.labelled-image-card:focus .card-header h3,
+    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
       outline: #ffbf47 solid 3px;
       outline-offset: 0;
       outline-offset: -3px; }
-    
-    a.labelled-card:focus .card-inner,
-    a.labelled-image-card:focus .card-inner {
+    a.labelled-card:focus .card-inner, a.labelled-image-card:focus .card-inner {
       border-color: #ffffff; }
   a.labelled-card:active, a.labelled-image-card:active {
     background-color: transparent; }
@@ -1261,12 +1253,9 @@ a.labelled-card, a.labelled-image-card {
   a.labelled-card .card-header, a.labelled-image-card .card-header {
     z-index: 0; }
   a.labelled-card .card-header, a.labelled-image-card .card-header,
-  a.labelled-card .card-header h3,
-  a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
     display: inline-block; }
-  
-  a.labelled-card .card-header h3,
-  a.labelled-image-card .card-header h3 {
+  a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
     font-family: "nta", Arial, sans-serif;
     font-weight: 700;
     text-transform: none;
@@ -1278,9 +1267,7 @@ a.labelled-card, a.labelled-image-card {
     background-color: #006ccc;
     padding: 10px 30px; }
     @media (min-width: 641px) {
-      
-      a.labelled-card .card-header h3,
-      a.labelled-image-card .card-header h3 {
+      a.labelled-card .card-header h3, a.labelled-image-card .card-header h3 {
         font-size: 19px;
         line-height: 1.2; } }
 

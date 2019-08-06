@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.3.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/256)
+
+### Bugs Fixed
+- Fixed search input on domestic header which was covered by other elements and not clickable
+
 ## 27.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/255/files)
 
