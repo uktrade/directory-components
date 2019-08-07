@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='27.3.1',
+    version='27.4.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -17,11 +17,10 @@ setup(
         'django>=1.11,<3.0a1',
         'beautifulsoup4>=4.6.0,<5.0.0',
         'directory-constants>=18.0.0,<19.0.0',
-        'jsonschema==3.0.1'
+        'jsonschema>=3.0.1,<4.0.0',
     ],
     extras_require={
         'test': [
-            'django>=2.2,<3.0a1',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
@@ -36,14 +35,15 @@ setup(
             'setuptools>=38.6.0,<39.0.0'
         ],
         'demo': [
-            'django>=2.2,<3.0a1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
             'whitenoise==3.3.1',
-            'pip==9.0.1',
-            'beautifulsoup4>=4.6.0,<5.0.0',
+        ],
+        'janitor': [
+            'hvac>=0.9.5,<1.0.0',
+            'vulture>=1.0.0,<2.0.0',
         ]
-    },
+    },  
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',

@@ -45,10 +45,13 @@ Then visit the demo at `components.trade.great:9013`
 ### Environment variables
 
 | Environment variable | Notes |
-|-------------------------------------------- |-----------------------------------------------|
-| `FEATURE_MAINTENANCE_MODE_ENABLED`          | Controls `MaintenanceModeMiddleware`.         |
-| `FEATURE_FLAGS`                             | Place to store the service's feature flags.   |
-
+|--------------------------------------------------- |------------------------------------------------|
+| `FEATURE_MAINTENANCE_MODE_ENABLED`                 | Controls `MaintenanceModeMiddleware`.          |
+| `FEATURE_FLAGS`                                    | Place to store the service's feature flags.    |
+| `DIRECTORY_COMPONENTS_VAULT_DOMAIN`                | Hashicorp vault domain. For diffing vaults.    |
+| `DIRECTORY_COMPONENTS_VAULT_ROOT_PATH`             | Hashicorp vault root path. For diffing vaults. |
+| `DIRECTORY_COMPONENTS_VAULT_PROJECT`               | Hashicorp vault project. For diffing vaults.   |
+| `DIRECTORY_COMPONENTS_VAULT_IGNORE_SETTINGS_REGEX` | Settings to ignore when diffing vaults.        |
 
 ### Middleware
 
@@ -90,6 +93,52 @@ Without doing this the 500 and 400 pages would not receive context data provided
 To automatically update the dependences of services that use this library call the following command:
 
     $ make update
+
+## Settings janitor
+
+Management commands are provided to assist in the maintenance of settings. Install by `pip install directory-components[janitor]` and then add the following to `settings.py`:
+
+    if some_predicate_is_met:  # feature flagged so it's not used in prod
+        INSTALLED_APPS.append('directory_components.janitor')
+
+
+### Diff environments
+
+You can diff the vaults of two environments by running the following.
+
+    manage.py environment_diff \
+        --token=<token> \
+        --domain=<domain> \
+        --root=<root> \
+        --project=<project> \
+        --environment_a=<environment_a> \
+        --environment_b=<environment_b>
+
+For simplicity once you set the `DIRECTORY_COMPONENTS_VAULT_DOMAIN`, `DIRECTORY_COMPONENTS_VAULT_PROJECT`, and `DIRECTORY_COMPONENTS_VAULT_ROOT_PATH` that simplifies to
+
+    manage.py environment_diff \
+        --token=<token> \
+        --environment_a=<environment_a> \
+        --environment_b=<environment_b>
+
+
+### Detect settings orphans
+
+You can detect settings that are either unused in the codebase, redundant because they're explicitly set to the default django value, or obsolete because they're set in the vault but not used anywhere:
+
+    manage.py settings_shake \
+        --token=<token> \
+        --root=<root> \
+        --domain=<domain> \
+        --project=<project> \
+        --environment=<environment>
+
+For simplicity once you set the `DIRECTORY_COMPONENTS_VAULT_DOMAIN`, `DIRECTORY_COMPONENTS_VAULT_PROJECT`, and `DIRECTORY_COMPONENTS_VAULT_ROOT_PATH` that simplifies to
+
+    manage.py settings_shake \
+        --token=<token> \
+        --environment=<environment>
+
 
 ## Publish to PyPI
 

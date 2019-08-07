@@ -5,13 +5,14 @@ clean:
 	-find . -type d -name "__pycache__" -delete
 
 test_requirements:
-	pip install -e .[test]
+	pip install -e .[test]; \
+	pip install -e .[janitor]
 
 demo_requirements:
 	pip install -e .[demo]
 
 flake8:
-	flake8 . --exclude=.venv,.idea-env,setup.py,directory_components/version.py,node_modules
+	flake8 . --exclude=.venv,.idea-env,setup.py,directory_components/version.py,node_modules --max-line-length=120
 
 pytest:
 	pytest . --ignore=node_modules --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no -vv --cov-report=html
@@ -56,6 +57,9 @@ django_webserver:
 
 run_demo:
 	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
+
+demo_manage:
+	$(DEMO_SET_ENV_VARS) && ./manage.py $(cmd)
 
 translations:
 	$(DEMO_SET_ENV_VARS) && python manage.py makemessages -a

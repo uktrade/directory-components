@@ -1,5 +1,12 @@
 # Changelog
 
+## 27.4.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/254/files)
+
+### Implemented enhancements
+- Added environment_diff management command
+- Added settings_shake management command
+
 ## 27.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/256)
 
