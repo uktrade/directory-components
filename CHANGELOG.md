@@ -1,7 +1,7 @@
 # Changelog
 
 ## 27.4.1
-[Full Changelog](https://github.com/uktrade/directory-components/pull/255/files)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/257/files)
 
 ### Fixed bugs
 - Fixed missing url in domestic header logo
