@@ -19,6 +19,12 @@
 - Colour output of environment_diff
 
 ## 27.4.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/258/files)
+
+### Implemented enhancements
+- Center hero images horizontally and vertically
+
+## 27.4.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/257/files)
 
 ### Fixed bugs
