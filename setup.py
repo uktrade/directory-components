@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='27.4.0',
+    version='27.4.1',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -43,7 +43,7 @@ setup(
             'hvac>=0.9.5,<1.0.0',
             'vulture>=1.0.0,<2.0.0',
         ]
-    },  
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',

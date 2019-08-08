@@ -7,7 +7,7 @@
     <div class="container">
       {% block header_logo %}
         {% static 'directory_components/images/eig-logo-stacked.svg' as logo_image_url %}
-        {% include 'directory_components/header_footer/header_logo.html' with url=service_urls.exred image_source=logo_image_url image_alt_text='Exporting is Great' %}
+        {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.exred image_source=logo_image_url image_alt_text='Exporting is Great' %}
       {% endblock %}
 
       <ul class="extra-links">
