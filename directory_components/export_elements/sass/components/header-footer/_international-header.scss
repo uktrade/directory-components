@@ -3,42 +3,39 @@
 @import 'header-logo';
 @import 'mobile-menu-button';
 
-#great-international-header {
+@mixin underlineActiveHeaders($underline-color) {
   .menu-item {
     &.active .link-heading:after {
       display: block;
       position: absolute;
       left: 0;
-      bottom: -10px;
+      bottom: -$menu-item-vertical-spacing;
       width: 100%;
       height: 4px;
-      background-color: $great-red;
+      background-color: $underline-color;
       content: '';
     }
   }
+}
+
+#great-international-header {
+  @include underlineActiveHeaders($great-red);
 
   .sub-nav-container {
     background-color: $lightened-great-blue;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
+    @include desktopOnly;
   }
 
   .sub-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @media (max-width: 1260px) {
-      margin: 0 30px;
-    }
+    @include headerContainer;
   }
 
   .sub-nav-list {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    padding: 10px 0;
+    padding-top: $menu-item-vertical-spacing;
+    @include underlineActiveHeaders($white);
   }
 
   .sub-nav-mobile-list {
@@ -46,34 +43,15 @@
   }
 
   .link-heading {
-    position: relative;
-    display: block;
-    color: $white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px 15px;
-
     @media(hover: hover) {
       &:hover {
         text-decoration: underline;
       }
     }
 
-    &.active:after {
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 100%;
-      height: 4px;
-      background-color: $white;
-      content: '';
-    }
-
     @media (max-width: 768px) {
       padding: 10px 0;
       text-decoration: none;
-      color: white;
     }
   }
 }

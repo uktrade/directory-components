@@ -44,7 +44,8 @@ class InternationalHeaderView(
     EnableTranslationsMixin,
     BasePageView
 ):
-    header_section = "invest"
+    header_section = "expand"
+    header_subsection = "overview"
 
 
 class InvestHeaderView(InternationalHeaderView):
