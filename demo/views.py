@@ -44,8 +44,13 @@ class InternationalHeaderView(
     EnableTranslationsMixin,
     BasePageView
 ):
-    header_section = "expand"
-    header_subsection = "overview"
+    @property
+    def header_section(self):
+        return self.request.GET.get('section', '')
+
+    @property
+    def header_subsection(self):
+        return self.request.GET.get('sub-section', '')
 
 
 class InvestHeaderView(InternationalHeaderView):

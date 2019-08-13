@@ -35,7 +35,7 @@ $menu-margin-s: 20px;
   }
 }
 
-.great-header {
+.great-header, .great-sub-header {
   // need to make sure it's not underneath anything
   position: relative;
   z-index: 5;

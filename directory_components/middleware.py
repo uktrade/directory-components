@@ -208,3 +208,16 @@ class CheckGATags(MiddlewareMixin):
                 "the incorrect type. Details: %s" % exception.message)
 
         return response
+
+
+class TestVariantMiddleware(MiddlewareMixin):
+    def process_response(self, request, response):
+        if request.GET.get('header-variant'):
+            response.set_cookie(
+                key='header-variant',
+                value=request.GET.get('header-variant'),
+                max_age=settings.LANGUAGE_COOKIE_AGE,
+                path=settings.LANGUAGE_COOKIE_PATH,
+                domain=settings.LANGUAGE_COOKIE_DOMAIN
+            )
+        return response

@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'directory_components.middleware.PersistLocaleMiddleware',
     'directory_components.middleware.ForceDefaultLocale',
     'directory_components.middleware.CountryMiddleware',
+    'directory_components.middleware.TestVariantMiddleware',
 ]
 
 ROOT_URLCONF = 'demo.config.urls'

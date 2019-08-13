@@ -10,3 +10,40 @@
 @import 'forms';
 @import 'domestic-header';
 @import 'international-header';
+
+.ab-test-section {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  .ab-test-list {
+    display: none;
+    padding: 15px;
+    margin: 10px;
+    background-color: $lightened-great-blue;
+  }
+
+  .ab-test {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 0;
+  }
+
+  .ab-test-name {
+    color: white;
+    margin-right: 10px;
+  }
+
+  .variant-list {
+    display: flex;
+  }
+
+  .variant {
+    margin: 4px;
+  }
+
+  .button.active {
+    @include focus;
+  }
+}

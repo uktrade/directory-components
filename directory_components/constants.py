@@ -1,5 +1,5 @@
 
-# used by core.helpers.RemoteIPAddressRetriver
+# used by core.helpers.RemoteIPAddressRetriever
 IP_RETRIEVER_NAME_GOV_UK = 'govuk-paas'
 IP_RETRIEVER_NAME_IPWARE = 'ipware'
 

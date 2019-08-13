@@ -20,12 +20,9 @@
 
 #great-international-header {
   @include underlineActiveHeaders($great-red);
+}
 
-  .sub-nav-container {
-    background-color: $lightened-great-blue;
-    @include desktopOnly;
-  }
-
+#great-international-header, .great-sub-header {
   .sub-nav {
     @include headerContainer;
   }
@@ -54,4 +51,11 @@
       text-decoration: none;
     }
   }
+}
+
+.great-sub-header {
+  background-color: $lightened-great-blue;
+  @include desktopOnly;
+  position: sticky;
+  top: 0;
 }

@@ -4,9 +4,9 @@ from django.conf import settings
 from django.utils import translation
 
 from directory_constants.choices import COUNTRY_CHOICES
-from directory_constants import urls
 
 from directory_components import helpers, forms
+from directory_components import international_header_links as page_links
 
 
 class CountryDisplayMixin:
@@ -125,9 +125,177 @@ class GA360Mixin:
             **kwargs
         )
 
-
-Page = namedtuple('Page', 'name title url sub_pages')
+HeaderNode = namedtuple('RootPage', 'page sub_pages')
 HeaderItem = namedtuple('HeaderItem', 'title url is_active')
+
+
+INTERNATIONAL_HEADER_PAGES_WIDE = [
+    HeaderNode(
+        page=page_links.EXPAND,
+        sub_pages=[
+            page_links.OVERVIEW_EXPAND,
+            page_links.HOW_TO_EXPAND,
+            page_links.ISD,
+            page_links.CONTACT_EXPAND,
+        ],
+    ),
+    HeaderNode(
+        page=page_links.INVEST,
+        sub_pages=[
+            page_links.OVERVIEW_INVEST,
+            page_links.INVESTMENT_TYPES,
+            page_links.INVESTMENT_OPPORTUNITIES,
+            page_links.HOW_TO_INVEST_CAPITAL,
+            page_links.CONTACT_INVEST
+        ],
+    ),
+    HeaderNode(
+        page=page_links.FAS,
+        sub_pages=[
+            page_links.FAS,
+            page_links.CONTACT_TRADE,
+        ],
+    ),
+    HeaderNode(
+        page=page_links.ABOUT_THE_UK,
+        sub_pages=[
+            page_links.OVERVIEW_ABOUT,
+            page_links.WHY_THE_UK,
+            page_links.INDUSTRIES,
+            page_links.REGIONS,
+            page_links.CONTACT_INTERNATIONAL_TRIAGE
+        ],
+    ),
+    HeaderNode(
+        page=page_links.ABOUT_DIT,
+        sub_pages=[
+            page_links.WHAT_WE_DO_EXPAND,
+            page_links.WHAT_WE_DO_INVEST,
+            page_links.WHAT_WE_DO_TRADE,
+            page_links.CONTACT_INTERNATIONAL_TRIAGE,
+        ],
+    ),
+]
+INTERNATIONAL_HEADER_PAGES_NARROW_ABOUT_ON_LEFT = [
+    HeaderNode(
+        page=page_links.ABOUT_THE_UK,
+        sub_pages=[
+            page_links.WHY_THE_UK,
+            page_links.INDUSTRIES,
+            page_links.REGIONS,
+            page_links.CONTACT_INTERNATIONAL_TRIAGE
+        ]
+    ),
+    HeaderNode(
+        page=page_links.EXPAND,
+        sub_pages=[
+            page_links.HOW_TO_EXPAND,
+            page_links.ISD,
+            page_links.WHAT_WE_DO_EXPAND,
+            page_links.CONTACT_EXPAND
+        ]
+    ),
+    HeaderNode(
+        page=page_links.INVEST,
+        sub_pages=[
+            page_links.INVESTMENT_TYPES,
+            page_links.INVESTMENT_OPPORTUNITIES,
+            page_links.HOW_TO_INVEST_CAPITAL,
+            page_links.WHAT_WE_DO_INVEST,
+            page_links.CONTACT_INVEST
+        ]
+    ),
+    HeaderNode(
+        page=page_links.FAS,
+        sub_pages=[
+            page_links.HOW_TO_BUY,
+            page_links.FAS,
+            page_links.WHAT_WE_DO_TRADE,
+            page_links.CONTACT_TRADE
+        ]
+    )
+]
+INTERNATIONAL_HEADER_PAGES_NARROW_ABOUT_ON_RIGHT = [
+    HeaderNode(
+        page=page_links.EXPAND,
+        sub_pages=[
+            page_links.HOW_TO_EXPAND,
+            page_links.ISD,
+            page_links.WHAT_WE_DO_EXPAND,
+            page_links.CONTACT_EXPAND
+        ]
+    ),
+    HeaderNode(
+        page=page_links.INVEST,
+        sub_pages=[
+            page_links.INVESTMENT_TYPES,
+            page_links.INVESTMENT_OPPORTUNITIES,
+            page_links.HOW_TO_INVEST_CAPITAL,
+            page_links.WHAT_WE_DO_INVEST,
+            page_links.CONTACT_INVEST
+        ]
+    ),
+    HeaderNode(
+        page=page_links.FAS,
+        sub_pages=[
+            page_links.HOW_TO_BUY,
+            page_links.FAS,
+            page_links.WHAT_WE_DO_TRADE,
+            page_links.CONTACT_TRADE
+        ]
+    ),
+    HeaderNode(
+        page=page_links.ABOUT_THE_UK,
+        sub_pages=[
+            page_links.WHY_THE_UK,
+            page_links.INDUSTRIES,
+            page_links.REGIONS,
+            page_links.CONTACT_INTERNATIONAL_TRIAGE
+        ]
+    ),
+]
+INTERNATIONAL_HEADER_PAGES_NARROW_WITH_OVERVIEW = [
+    HeaderNode(
+        page=page_links.ABOUT_THE_UK,
+        sub_pages=[
+            page_links.OVERVIEW_ABOUT,
+            page_links.WHY_THE_UK,
+            page_links.INDUSTRIES,
+            page_links.REGIONS,
+            page_links.CONTACT_INTERNATIONAL_TRIAGE
+        ]
+    ),
+    HeaderNode(
+        page=page_links.EXPAND,
+        sub_pages=[
+            page_links.OVERVIEW_EXPAND,
+            page_links.HOW_TO_EXPAND,
+            page_links.ISD,
+            page_links.WHAT_WE_DO_EXPAND,
+            page_links.CONTACT_EXPAND
+        ]
+    ),
+    HeaderNode(
+        page=page_links.INVEST,
+        sub_pages=[
+            page_links.OVERVIEW_INVEST,
+            page_links.INVESTMENT_TYPES,
+            page_links.INVESTMENT_OPPORTUNITIES,
+            page_links.HOW_TO_INVEST_CAPITAL,
+            page_links.WHAT_WE_DO_INVEST,
+            page_links.CONTACT_INVEST
+        ]
+    ),
+    HeaderNode(
+        page=page_links.FAS,
+        sub_pages=[
+            page_links.HOW_TO_BUY,
+            page_links.FAS,
+            page_links.WHAT_WE_DO_TRADE,
+            page_links.CONTACT_TRADE
+        ]
+    )
+]
 
 
 class InternationalHeaderMixin:
@@ -135,116 +303,33 @@ class InternationalHeaderMixin:
     header_section = ""
     header_subsection = ""
 
-    pages = [
-        Page(
-            name='expand',
-            title=translation.gettext('Expand to the UK'),
-            url=urls.SERVICES_INVEST,
-            sub_pages=[
-                Page(
-                    name='overview',
-                    title=translation.gettext('Overview'),
-                    url=urls.SERVICES_INVEST,
-                    sub_pages=[]
-                ),
-                Page(
-                    name='how-to-expand',
-                    title=translation.gettext('How to expand your business to the UK'),
-                    url=urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
-                    sub_pages=[]
-                ),
-                Page(
-                    name='investment-support-directory',
-                    title=translation.gettext('Professional Advice'),
-                    url=urls.SERVICES_ISD,
-                    sub_pages=[]
-                ),
-                Page(
-                    name='contact',
-                    title=translation.gettext('Contact Us'),
-                    url=urls.INVEST_CONTACT_US,
-                    sub_pages=[]
-                ),
-            ]
-        ),
-        Page(
-            name='invest',
-            title=translation.gettext('Invest Capital in the UK'),
-            url=urls.SERVICES_INVEST,
-            sub_pages=[]
-        ),
-        Page(
-            name='trade',
-            title=translation.gettext('Buy from the UK'),
-            url=urls.GREAT_INTERNATIONAL_CAPITAL_INVEST_LANDING_PAGE,
-            sub_pages=[
-                Page(
-                    name='find-a-supplier',
-                    title=translation.gettext('Supplier Directory'),
-                    url=urls.SERVICES_FAS,
-                    sub_pages=[]
-                ),
-                Page(
-                    name='contact',
-                    title=translation.gettext('Contact Us'),
-                    url=urls.CONTACT_US,
-                    sub_pages=[]
-                ),
-            ]
-        ),
-        Page(
-            name='industries',
-            title=translation.gettext('Industries'),
-            url=urls.GREAT_INTERNATIONAL_INDUSTRIES,
-            sub_pages=[]
-        ),
-        Page(
-            name='about-dit',
-            title=translation.gettext('About us'),
-            url='/international/content/about-dit/',
-            sub_pages=[
-                Page(
-                    name='what-we-do',
-                    title=translation.gettext('What we do'),
-                    url='/international/content/about-dit/',
-                    sub_pages=[]
-                ),
-                Page(
-                    name='contact',
-                    title=translation.gettext('Contact Us'),
-                    url=urls.CONTACT_US,
-                    sub_pages=[]
-                ),
-            ]
-        ),
-        Page(
-            name='about-the-uk',
-            title=translation.gettext('About the UK'),
-            url='/international/content/about-uk/',
-            sub_pages=[]
-        ),
-        Page(
-            name='events',
-            title=translation.gettext('Events'),
-            url=urls.SERVICES_EVENTS,
-            sub_pages=[]
-        ),
-    ]
+    @property
+    def nodes(self):
+        variant = self.request.GET.get('header-variant', '') or self.request.COOKIES.get('header-variant', '')
+
+        if variant == 'wide':
+            return INTERNATIONAL_HEADER_PAGES_WIDE
+        if variant == 'narrow-about-on-right':
+            return INTERNATIONAL_HEADER_PAGES_NARROW_ABOUT_ON_RIGHT
+        if variant == 'narrow-with-overview-link':
+            return INTERNATIONAL_HEADER_PAGES_NARROW_WITH_OVERVIEW
+        else:
+            return INTERNATIONAL_HEADER_PAGES_NARROW_ABOUT_ON_LEFT
 
     def get_active_page(self):
         return next(
-            (page for page in self.pages if page.name == self.header_section),
+            (node for node in self.nodes if node.page.name == self.header_section),
             None
         )
 
     def get_context_data(self, *args, **kwargs):
-
         header_items = [
             HeaderItem(
-                title=page.title,
-                url=page.url,
-                is_active=page.name == self.header_section)
-            for page in self.pages
+                title=node.page.title,
+                url=node.page.url,
+                is_active=node.page.name == self.header_section
+            )
+            for node in self.nodes
         ]
 
         active_page = self.get_active_page()
@@ -260,7 +345,7 @@ class InternationalHeaderMixin:
         return super().get_context_data(
             header_items=header_items,
             sub_header_items=sub_header_items,
-            pages=self.pages,
+            pages=self.nodes,
             *args,
             **kwargs
         )
