@@ -8,6 +8,17 @@ from directory_components.janitor.management.commands import helpers, settings_s
 
 
 @pytest.fixture(autouse=True)
+def mock_get_settings_source_code():
+    patched = mock.patch.object(
+        helpers,
+        'get_settings_source_code',
+        return_value='EXAMPLE_A = env.bool("EXAMPLE_A")'
+    )
+    yield patched.start()
+    patched.stop()
+
+
+@pytest.fixture(autouse=True)
 def mock_client():
     patched = mock.patch('hvac.Client', mock.Mock(is_authenticated=True))
     yield patched.start()
@@ -35,7 +46,6 @@ def mock_vulture():
 
 
 def test_settings_shake_obsolete(settings):
-    settings.EXAMPLE_A = True
     out = io.StringIO()
 
     call_command(

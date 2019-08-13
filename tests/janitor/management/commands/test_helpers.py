@@ -108,3 +108,9 @@ def test_vulture_filters_non_settings(mock_get_unused_code):
         ignore_decorators=False
     )
     assert list(vulture.report()) == ['FOO', 'BAR']
+
+
+def test_get_settings_source_code(settings):
+    settings.SETTINGS_MODULE = 'tests.conftest'
+
+    assert helpers.get_settings_source_code(settings)

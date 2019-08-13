@@ -1,12 +1,10 @@
 import hvac
 
 from django.conf import global_settings, settings
-
 from django.core.management.base import BaseCommand, CommandError
 from django.core.management.commands.diffsettings import module_to_dict
 
 from directory_components.janitor.management.commands import helpers
-
 
 
 class Command(BaseCommand):
@@ -64,6 +62,8 @@ class Command(BaseCommand):
         )
 
     def report_obsolete_vault_entries(self, options):
+        settings_source_code = helpers.get_settings_source_code(settings)
+
         url = f"https://{options['domain']}"
         client = hvac.Client(url=url, token=options['token'])
         assert client.is_authenticated()
@@ -78,9 +78,12 @@ class Command(BaseCommand):
                 client=client,
                 path=f"{options['root']}/{options['project']}/{options['environment']}",
             )
-        return [key for key in secrets if not hasattr(settings, key)]
+        # there is no guarantee env vars and the settings variable name jave the same name,
+        # so check the env var is referenced in the code
+        return [key for key in secrets if key not in settings_source_code]
 
     def report_redundant_settings(self):
+        # false positives: if powered by env var but the default value that is the same as django default
         self.stdout.write(
             self.style.MIGRATE_LABEL('Looking for redundant settings')
         )

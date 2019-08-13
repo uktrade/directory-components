@@ -1,5 +1,7 @@
 import difflib
 from pprint import pformat
+import importlib
+import inspect
 import re
 from urllib.parse import urljoin
 
@@ -75,3 +77,10 @@ class Vulture(Vulture):
             report = unused_code.get_report()
             if 'conf/settings.py' in report:
                 yield unused_code.name
+
+
+def get_settings_source_code(settings):
+    # SETTINGS_MODULE is set only when the settings are provided from settings.py otherwise
+    # when settings are explicitly set via settings.configure SETTINGS_MODULE is empty
+    assert settings.SETTINGS_MODULE
+    return inspect.getsource(importlib.import_module(settings.SETTINGS_MODULE))
