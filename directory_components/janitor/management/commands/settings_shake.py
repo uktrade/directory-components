@@ -78,7 +78,7 @@ class Command(BaseCommand):
                 client=client,
                 path=f"{options['root']}/{options['project']}/{options['environment']}",
             )
-        # there is no guarantee env vars and the settings variable name jave the same name,
+        # there is no guarantee env vars and the settings variable name have the same name,
         # so check the env var is referenced in the code
         return [key for key in secrets if key not in settings_source_code]
 
