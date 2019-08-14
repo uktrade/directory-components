@@ -113,7 +113,7 @@ OVERVIEW_ABOUT = HeaderLink(
 OVERVIEW_EXPAND = HeaderLink(
     name='overview',
     title=translation.gettext('Overview'),
-    url='/international/content/capital-invest',
+    url='/international/invest/',
 )
 OVERVIEW_INVEST = HeaderLink(
     name='overview',
