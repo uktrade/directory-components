@@ -348,7 +348,7 @@ def test_card_with_icon():
 
 def test_card_with_external_link():
     card_content = {
-        'external_link': 'True',
+        'external_link': True,
         'url': 'url',
     }
     string = (
