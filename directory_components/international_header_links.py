@@ -42,7 +42,7 @@ HOW_TO_EXPAND = HeaderLink(
 )
 ISD = HeaderLink(
     name='investment-support-directory',
-    title=translation.gettext('Professional advice'),
+    title=translation.gettext('Professional services'),
     url='/international/content/investment-support-directory'
 )
 WHAT_WE_DO_EXPAND = HeaderLink(
@@ -124,4 +124,9 @@ ABOUT_DIT = HeaderLink(
     name='about-dit',
     title=translation.gettext('About us'),
     url='/international/content/about-dit',
+)
+WHAT_WE_DO = HeaderLink(
+    name='what-we',
+    title=translation.gettext('What we do'),
+    url='/international/content/about-dit/',
 )

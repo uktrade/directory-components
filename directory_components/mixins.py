@@ -169,9 +169,7 @@ INTERNATIONAL_HEADER_PAGES_WIDE = [
     HeaderNode(
         page=page_links.ABOUT_DIT,
         sub_pages=[
-            page_links.WHAT_WE_DO_EXPAND,
-            page_links.WHAT_WE_DO_INVEST,
-            page_links.WHAT_WE_DO_TRADE,
+            page_links.WHAT_WE_DO,
             page_links.CONTACT_INTERNATIONAL_TRIAGE,
         ],
     ),
