@@ -1,6 +1,8 @@
 from unittest import mock
 import io
+
 import pytest
+from colors import red, green
 
 from django.core.management import call_command
 
@@ -44,9 +46,8 @@ def test_environment_diff(mock_get_secrets):
     out.seek(0)
     result = out.read()
 
-    assert result == (
-        "- {'BAZ': True, 'FOO': True}\n+ {'BAR': False, 'BOX': False}\n"
-    )
+    assert red("- {'BAZ': True, 'FOO': True}") in result
+    assert green("+ {'BAR': False, 'BOX': False}") in result
 
 
 @mock.patch.object(helpers, 'get_secrets_wizard')
@@ -67,6 +68,5 @@ def test_wizard(mock_get_secrets_wizard):
     out.seek(0)
     result = out.read()
 
-    assert result == (
-        "- {'BAZ': True, 'FOO': True}\n+ {'BAR': False, 'BOX': False}\n"
-    )
+    assert red("- {'BAZ': True, 'FOO': True}") in result
+    assert green("+ {'BAR': False, 'BOX': False}") in result

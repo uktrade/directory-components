@@ -33,8 +33,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', False)
 
-# As the app is running behind a host-based router supplied by Heroku or other
-# PaaS, we can open ALLOWED_HOSTS
+# As the app is running behind a host-based router supplied by PaaS, we can open ALLOWED_HOSTS
 ALLOWED_HOSTS = ['*']
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#append-slash
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'demo',
     'directory_components',
+    'directory_components.janitor',
 ]
 
 MIDDLEWARE = [
