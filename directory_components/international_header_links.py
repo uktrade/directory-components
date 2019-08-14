@@ -28,7 +28,7 @@ REGIONS = HeaderLink(
 CONTACT_INTERNATIONAL_TRIAGE = HeaderLink(
     name='contact',
     title=translation.gettext('Contact us'),
-    url=urls.GREAT_INTERNATIONAL_CONTACT_US
+    url='/international/content/about-uk/contact/'
 )
 EXPAND = HeaderLink(
     name='expand',
@@ -48,7 +48,7 @@ ISD = HeaderLink(
 WHAT_WE_DO_EXPAND = HeaderLink(
     name='what-we-do',
     title=translation.gettext('How we help'),
-    url=urls.GREAT_INTERNATIONAL_ABOUT_DIT + 'how-we-help-expand/'
+    url='/international/content/how-we-help-expand/'
 )
 CONTACT_EXPAND = HeaderLink(
     name='contact',
@@ -66,7 +66,7 @@ INVESTMENT_TYPES = HeaderLink(
     url='/international/content/investment-types/'
 )
 INVESTMENT_OPPORTUNITIES = HeaderLink(
-    name='investment-opportunities',
+    name='opportunities',
     title=translation.gettext('Investment opportunities'),
     url='/international/content/opportunities/',
 )
@@ -103,7 +103,7 @@ WHAT_WE_DO_TRADE = HeaderLink(
 CONTACT_TRADE = HeaderLink(
     name='contact',
     title=translation.gettext('Contact Us'),
-    url=urls.CONTACT_US
+    url='/international/content/trade/contact/'
 )
 OVERVIEW_ABOUT = HeaderLink(
     name='overview',
