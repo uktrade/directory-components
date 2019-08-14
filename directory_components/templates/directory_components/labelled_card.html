@@ -4,7 +4,7 @@
   class="labelled-card"
   href="{{ url }}"
   {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
-  {% if link_type %}target="_blank" rel="noopener noreferrer" title="Opens in a new window"{% endif %}
+  {% if external_link %}target="_blank" rel="noopener noreferrer" title="Opens in a new window"{% endif %}
 >
     <div class="card-header">
       <h3 class="title">{% firstof title heading %}</h3>

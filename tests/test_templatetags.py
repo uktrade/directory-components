@@ -348,12 +348,12 @@ def test_card_with_icon():
 
 def test_card_with_external_link():
     card_content = {
-        'link_type': 'external',
+        'external_link': 'True',
         'url': 'url',
     }
     string = (
         "{{% load card from directory_components %}}"
-        "{{% card link_type='{link_type}' url='{url}' %}}"
+        "{{% card external_link='{external_link}' url='{url}' %}}"
         ).format(**card_content)
 
     template = Template(string)
