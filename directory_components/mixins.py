@@ -170,7 +170,7 @@ INTERNATIONAL_HEADER_PAGES_WIDE = [
         page=page_links.ABOUT_DIT,
         sub_pages=[
             page_links.WHAT_WE_DO,
-            page_links.CONTACT_INTERNATIONAL_TRIAGE,
+            page_links.ABOUT_DIT_CONTACT,
         ],
     ),
 ]

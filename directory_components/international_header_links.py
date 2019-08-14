@@ -126,7 +126,12 @@ ABOUT_DIT = HeaderLink(
     url='/international/content/about-dit',
 )
 WHAT_WE_DO = HeaderLink(
-    name='what-we',
+    name='what-we-do',
     title=translation.gettext('What we do'),
     url='/international/content/about-dit/',
+)
+ABOUT_DIT_CONTACT = HeaderLink(
+    name='contact',
+    title=translation.gettext('Contact us'),
+    url='/international/content/about-dit/contact/',
 )
