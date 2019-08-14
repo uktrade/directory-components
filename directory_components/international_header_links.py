@@ -43,7 +43,7 @@ HOW_TO_EXPAND = HeaderLink(
 ISD = HeaderLink(
     name='investment-support-directory',
     title=translation.gettext('Professional advice'),
-    url=urls.SERVICES_ISD
+    url='/international/content/investment-support-directory'
 )
 WHAT_WE_DO_EXPAND = HeaderLink(
     name='what-we-do',
@@ -88,7 +88,7 @@ CONTACT_INVEST = HeaderLink(
 FAS = HeaderLink(
     name='trade',
     title=translation.gettext('Buy from the UK'),
-    url=urls.SERVICES_FAS,
+    url='/international/content/find-a-supplier',
 )
 HOW_TO_BUY = HeaderLink(
     name='how-to-buy',
@@ -113,7 +113,7 @@ OVERVIEW_ABOUT = HeaderLink(
 OVERVIEW_EXPAND = HeaderLink(
     name='overview',
     title=translation.gettext('Overview'),
-    url=urls.SERVICES_FAS,
+    url='/international/content/capital-invest',
 )
 OVERVIEW_INVEST = HeaderLink(
     name='overview',
