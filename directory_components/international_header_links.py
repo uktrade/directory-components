@@ -98,7 +98,7 @@ HOW_TO_BUY = HeaderLink(
 WHAT_WE_DO_TRADE = HeaderLink(
     name='what-we-do',
     title=translation.gettext('How we help'),
-    url='/international/content/about-dit/how-we-help-trade/',
+    url='/international/content/how-we-help-trade/',
 )
 CONTACT_TRADE = HeaderLink(
     name='contact',
