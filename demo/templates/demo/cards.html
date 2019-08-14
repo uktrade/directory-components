@@ -127,6 +127,14 @@
       </div>
     </div>
 
+    <div class="grid-row">
+      <div class="column-half">
+        <h2 class="heading-medium">Linked card with external link, opens in new window</h2>
+        {% card card_id='card-example-image-description' img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' link_type='external' %}
+        <pre><code>{% verbatim %}{% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet...' link_type='external' %}{% endverbatim %}</code></pre>
+      </div>
+    </div>
+
     <h2 class="heading-medium">Flex grid</h2>
     <p class="width-two-thirds">Use the <code>.flex-grid</code> class to align the heights of cards in a grid.</p>
     <div class="flex-grid">

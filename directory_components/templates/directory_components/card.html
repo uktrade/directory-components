@@ -8,7 +8,9 @@
   <a
     class="card-link"
     href="{{ url }}"
-    {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
+    {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
+    {% if link_type %}target="_blank" rel="noopener noreferrer" title="Opens in a new window"{% endif %}
+    >
   {% endif %}
     {% block image %}
     {% if img_src %}
