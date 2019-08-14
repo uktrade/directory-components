@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'demo',
     'directory_components',
+    'directory_components.janitor',
 ]
 
 MIDDLEWARE = [

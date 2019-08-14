@@ -6,6 +6,7 @@
 
 ### Implemented enhancements
 - Reduce false positives for settings janitor obsolete settings
+- Colour output of environment_diff
 
 ## 27.4.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/257/files)

@@ -5,6 +5,7 @@ import inspect
 import re
 from urllib.parse import urljoin
 
+from colors import red, green
 from vulture import Vulture
 
 from django.conf import settings
@@ -65,10 +66,20 @@ def get_secrets(client, path):
 
 
 def diff_dicts(dict_a, dict_b):
-    return '\n'.join(difflib.ndiff(
+    return difflib.ndiff(
        pformat(dict_a).splitlines(),
        pformat(dict_b).splitlines()
-    ))
+    )
+
+
+def colour_diff(diff):
+    for line in diff:
+        if line.startswith('+'):
+            yield green(line)
+        elif line.startswith('-'):
+            yield red(line)
+        else:
+            yield line
 
 
 class Vulture(Vulture):

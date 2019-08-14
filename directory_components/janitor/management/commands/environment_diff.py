@@ -65,4 +65,4 @@ class Command(BaseCommand):
                 path=f"{options['root']}/{options['project']}/{options['environment_b']}",
             )
         diff = helpers.diff_dicts(secrets_a, secrets_b)
-        self.stdout.write(diff)
+        self.stdout.write('\n'.join(helpers.colour_diff(diff)))
