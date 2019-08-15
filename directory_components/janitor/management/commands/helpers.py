@@ -1,3 +1,4 @@
+import ast
 import difflib
 from pprint import pformat
 import importlib
@@ -8,7 +9,11 @@ from urllib.parse import urljoin
 from colors import red, green
 from vulture import Vulture
 
-from django.conf import settings
+from django.core.management.commands.diffsettings import module_to_dict
+from django.conf import global_settings, settings
+
+
+settings_keys = list(module_to_dict(settings._wrapped).keys())
 
 
 DEFAULT_UNSAFE_SETTINGS = [
@@ -83,11 +88,40 @@ def colour_diff(diff):
 
 
 class Vulture(Vulture):
+
     def report(self, min_confidence=0):
         for unused_code in self.get_unused_code(min_confidence=min_confidence):
             report = unused_code.get_report()
             if 'conf/settings.py' in report:
                 yield unused_code.name
+
+    def visit_Str(self, node):
+        # handle cases like getattr(settings, 'SOME_SETTING')
+        name = self.resolve_setting_name(node.s)
+        if name:
+            self.used_names.add(name)
+        else:
+            return super().visit_Str(node)
+
+    def resolve_setting_name(self, name):
+        resolved_name = None
+        match = next((item for item in settings_keys if item == name), None)
+
+        # prevent matching SECRET_KEY to LIBRARY_SECRET_KEY
+        if match:
+            if not hasattr(global_settings, match):
+                resolved_name = match
+        else:
+            # handle when USERNAME_REQUIRED is used in code that refers to ACCOUNT_USERNAME_REQUIRED setting
+            partial_match = next((item for item in settings_keys if item.endswith(name)), None)
+            if partial_match:
+                # gets prefix for partial matches e.g, ACCOUNT_
+                prefix = partial_match.replace(name, '')
+                # avoids KEY being misidentified as LIBRARY_SECRET_KEY
+                # or heaven forbid C being misidentified as DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC
+                if prefix.count('_') == 1:
+                    resolved_name = partial_match
+        return resolved_name
 
 
 def get_settings_source_code(settings):

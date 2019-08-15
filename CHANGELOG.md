@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 27.7.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)
+
+### Implemented enhancements
+- Reduce false positives for settings janitor unused settings
+
+
 ## 27.5.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/258/files)
 
