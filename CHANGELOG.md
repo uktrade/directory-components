@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.6.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/260/files)
+
+### Implemented enhancements
+- Add external window parameter to card component
+- Add title and rel attribute to external footer link
 
 ## 27.7.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)

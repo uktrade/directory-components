@@ -346,6 +346,29 @@ def test_card_with_icon():
     assert card_description.string == 'description'
 
 
+def test_card_with_external_link():
+    card_content = {
+        'external_link': True,
+        'url': 'url',
+    }
+    string = (
+        "{{% load card from directory_components %}}"
+        "{{% card external_link='{external_link}' url='{url}' %}}"
+        ).format(**card_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    card_link = soup.select('.card-link')[0]
+
+    assert card_link['target'] == '_blank'
+    assert card_link['rel'] == ['noopener', 'noreferrer']
+    assert card_link['title'] == 'Opens in a new window'
+
+
 def test_message_box_default():
     box_content = {
         'heading': 'heading',
