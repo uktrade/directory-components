@@ -1,7 +1,15 @@
 # Changelog
 
+## 2.7.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/263/files)
+
+### Fixed bugs
+- Added a comment about the empty lazy loading method.
+
 ## 27.7.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/262/files)
+
+### Implemented enhancements
 - Disable Lazy loading of images.
 
 ## 27.6.0

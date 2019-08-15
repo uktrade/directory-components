@@ -231,6 +231,8 @@ class LazyLoad(template.Node):
     def __init__(self, nodelist):
         self.nodelist = nodelist
 
+    # Lazy Loading is turned off for now as it was causing too much of a delay in rendering images.
+    # CI-424 has been raised to cover getting it back into working order.
     def render(self, context):
         return self.nodelist.render(context)
 
