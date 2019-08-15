@@ -1,4 +1,5 @@
 {% load lazyload from directory_components %}
+{% load i18n %}
 
 <div
   class="card {% if title and not description and not html_content %}only-title{% endif %}"
@@ -8,7 +9,9 @@
   <a
     class="card-link"
     href="{{ url }}"
-    {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}>
+    {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
+    {% if external_link %}target="_blank" rel="noopener noreferrer" title="{% trans 'Opens in a new window' %}"{% endif %}
+    >
   {% endif %}
     {% block image %}
     {% if img_src %}

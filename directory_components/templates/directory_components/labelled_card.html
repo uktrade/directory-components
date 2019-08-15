@@ -1,9 +1,11 @@
 {% load lazyload from directory_components %}
+{% load i18n %}
 
 <a
   class="labelled-card"
   href="{{ url }}"
   {% if card_id %}id="{{ card_id|add:'-link' }}"{% endif %}
+  {% if external_link %}target="_blank" rel="noopener noreferrer" title="{% trans 'Opens in a new window' %}"{% endif %}
 >
     <div class="card-header">
       <h3 class="title">{% firstof title heading %}</h3>
