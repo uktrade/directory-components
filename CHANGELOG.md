@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.7.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/262/files)
+- Disable Lazy loading of images.
+
 ## 27.6.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/260/files)
 
