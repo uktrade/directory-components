@@ -2,6 +2,7 @@ from collections import namedtuple
 
 from django.conf import settings
 from django.utils import translation
+from django.utils.translation import gettext_lazy as _
 
 from directory_constants.choices import COUNTRY_CHOICES
 from directory_constants import urls
@@ -62,9 +63,13 @@ class EnableTranslationsMixin:
         context = super().get_context_data(*args, **kwargs)
         context['LANGUAGE_BIDI'] = translation.get_language_bidi()
         language_form_kwargs = self.get_language_form_kwargs()
+
+        hidden_fields = dict(zip(self.request.GET.keys(), self.request.GET.values()))
+
         context['language_switcher'] = {
             'show': True,
             'form': self.language_form_class(**language_form_kwargs),
+            'hidden_fields': hidden_fields,
         }
         return context
 
@@ -138,25 +143,25 @@ class InternationalHeaderMixin:
     pages = [
         Page(
             name='invest',
-            title=translation.gettext('Invest'),
+            title=_('Invest'),
             url=urls.SERVICES_INVEST,
             sub_pages=[]
         ),
         Page(
             name='uk_setup_guides',
-            title=translation.gettext('UK setup guide'),
+            title=_('UK setup guide'),
             url=urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
             sub_pages=[]
         ),
         Page(
             name='find_a_supplier',
-            title=translation.gettext('Find a UK supplier'),
+            title=_('Find a UK supplier'),
             url=urls.SERVICES_FAS,
             sub_pages=[]
         ),
         Page(
             name='industries',
-            title=translation.gettext('Industries'),
+            title=_('Industries'),
             url=urls.GREAT_INTERNATIONAL_INDUSTRIES,
             sub_pages=[]
         ),

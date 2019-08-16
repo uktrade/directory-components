@@ -4,6 +4,11 @@
   <div id="great-header-language-switcher" class="great-header-language-switcher great-header-form">
     {% language request.LANGUAGE_CODE %}
       <form class="languages" action="" method="get">
+        {% for name, value in language_switcher.hidden_fields %}
+          {% if name != 'lang' %}
+            <input type="hidden" name="{{ name }}" value="{{ value }}" />
+          {% endif %}
+        {% endfor %}
         {% block language_form_inner %}{% endblock %}
         <label for="great-header-language-select">{% trans 'Language' %}</label>
         <span id="great-header-language-display" class="great-header-language-display" aria-hidden="true"></span>
