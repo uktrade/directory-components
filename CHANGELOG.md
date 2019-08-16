@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.8.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/258/files)
+
+### Implemented enhancements
+- Center hero images horizontally and vertically
+
 ## 27.7.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/262/files)
 - Disable Lazy loading of images.
