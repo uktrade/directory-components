@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.7.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/263/files)
+- Fix language selector not preserving other query params in URL on submit.
+
 ## 27.7.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/262/files)
 - Disable Lazy loading of images.
