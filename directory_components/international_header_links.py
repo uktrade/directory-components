@@ -28,7 +28,7 @@ REGIONS = HeaderLink(
 CONTACT_INTERNATIONAL_TRIAGE = HeaderLink(
     name='contact',
     title=translation.gettext('Contact us'),
-    url='/contact/triage/international/'
+    url='/international/content/about-uk/contact/'
 )
 EXPAND = HeaderLink(
     name='expand',
