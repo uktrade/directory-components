@@ -228,33 +228,11 @@ def lazyload(parser, token):
 
 
 class LazyLoad(template.Node):
-    template = """
-        <noscript></noscript>
-    """
-
     def __init__(self, nodelist):
         self.nodelist = nodelist
 
     def render(self, context):
-        html = self.nodelist.render(context)
-
-        output_soup = BeautifulSoup(self.template, 'html.parser')
-
-        noscript_element = BeautifulSoup(html, 'html.parser').find('img')
-
-        if not noscript_element:
-            raise ValueError('Missing img in lazyload template tag')
-
-        lazyload_element = BeautifulSoup(html, 'html.parser').find('img')
-        lazyload_element.attrs.setdefault('class', [''])
-        lazyload_element['class'][0] += ' lazyload'
-        lazyload_element['data-src'] = lazyload_element.get('src', '')
-        del lazyload_element['src']
-
-        output_soup.append(lazyload_element)
-        output_soup.find('noscript').append(noscript_element)
-
-        return output_soup.decode(formatter=None)
+        return self.nodelist.render(context)
 
 
 @register.tag

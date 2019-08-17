@@ -1,18 +1,28 @@
 # Changelog
 
+## 27.9.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)
+
+### Implemented enhancements
+- Reduce false positives for settings janitor unused settings
+
+
+## 27.8.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/258/files)
+
+### Implemented enhancements
+- Center hero images horizontally and vertically
+
+## 27.7.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/262/files)
+- Disable Lazy loading of images.
+
 ## 27.6.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/260/files)
 
 ### Implemented enhancements
 - Add external window parameter to card component
 - Add title and rel attribute to external footer link
-
-## 27.7.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)
-
-### Implemented enhancements
-- Reduce false positives for settings janitor unused settings
-
 
 ## 27.5.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/258/files)
