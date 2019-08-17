@@ -1,5 +1,7 @@
 from unittest import mock
 
+import pytest
+
 from directory_components.janitor.management.commands import helpers
 
 
@@ -114,3 +116,23 @@ def test_get_settings_source_code(settings):
     settings.SETTINGS_MODULE = 'tests.conftest'
 
     assert helpers.get_settings_source_code(settings)
+
+
+@pytest.mark.parametrize('value, expected', ((
+    ('SSO_PROXY_LOGOUT_URL', 'SSO_PROXY_LOGOUT_URL'),
+    ('DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON', 'DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON'),
+    ('ON', None),  # partial match false positive
+    ('FOO', None),
+    ('foo', None),
+    ('Foo', None),
+    ('EMAIL_REQUIRED', 'ACCOUNT_EMAIL_REQUIRED'),  # partial match
+    ('DUBUG', None),  # django provided
+    ('LIBRARY_SECRET_KEY', None)  # partial match that looks like django provided
+)))
+def test_resolve_setting_name(value, expected):
+    settings_keys = [
+        'SSO_PROXY_LOGOUT_URL',
+        'ACCOUNT_EMAIL_REQUIRED',
+        'DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON',
+    ]
+    assert helpers.resolve_setting_name(name=value, settings_keys=settings_keys) == expected
