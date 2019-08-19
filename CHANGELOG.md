@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.9.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/264/files)
+
+### Implemented enhancements
+- Remove remaining lazyload code from templates
+
 ## 27.9.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)
 
