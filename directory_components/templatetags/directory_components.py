@@ -47,6 +47,18 @@ def add_anchors(value, suffix=''):
 
 
 @register.filter
+def add_href_target(value, request):
+    soup = BeautifulSoup(value, 'html.parser')
+    for element in soup.findAll('a', attrs={'href': re.compile("^http")}):
+        print(element)
+        if request.META['HTTP_HOST'] not in element.attrs['href']:
+            element.attrs['target'] = '_blank'
+            element.attrs['title'] = 'Opens in a new window'
+            element.attrs['rel'] = 'noopener noreferrer'
+    return str(soup)
+
+
+@register.filter
 def add_anchors_to_all_headings(value, suffix=''):
     soup = BeautifulSoup(value, 'html.parser')
     for element in soup.find_all(re.compile('^h[1-6]$')):
@@ -228,11 +240,33 @@ def lazyload(parser, token):
 
 
 class LazyLoad(template.Node):
+    template = """
+        <noscript></noscript>
+    """
+
     def __init__(self, nodelist):
         self.nodelist = nodelist
 
     def render(self, context):
-        return self.nodelist.render(context)
+        html = self.nodelist.render(context)
+
+        output_soup = BeautifulSoup(self.template, 'html.parser')
+
+        noscript_element = BeautifulSoup(html, 'html.parser').find('img')
+
+        if not noscript_element:
+            raise ValueError('Missing img in lazyload template tag')
+
+        lazyload_element = BeautifulSoup(html, 'html.parser').find('img')
+        lazyload_element.attrs.setdefault('class', [''])
+        lazyload_element['class'][0] += ' lazyload'
+        lazyload_element['data-src'] = lazyload_element.get('src', '')
+        del lazyload_element['src']
+
+        output_soup.append(lazyload_element)
+        output_soup.find('noscript').append(noscript_element)
+
+        return output_soup.decode(formatter=None)
 
 
 @register.tag

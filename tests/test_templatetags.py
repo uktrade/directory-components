@@ -47,6 +47,31 @@ def test_add_anchors():
         '<br/>'
     )
 
+def test_add_href_target(rf):
+    request = rf.get('/', HTTP_HOST='www.example.com')
+    template = Template(
+        '{% load add_href_target from directory_components %}'
+        '{{ html|add_href_target:request|safe }}'
+
+    )
+    context = Context({
+        'request': request,
+        'html': (
+            '<a href="http://www.google.com"></a>'
+            '<a href="https://www.google.com"></a>'
+            '<a href="/selling-online-overseas"></a>'
+            '<a href="/export-opportunities"></a>'
+        )
+    })
+    html = template.render(context)
+
+    assert html == (
+        '<a href="http://www.google.com" rel="noopener noreferrer" target="_blank" title="Opens in a new window"></a>'
+        '<a href="https://www.google.com" rel="noopener noreferrer" target="_blank" title="Opens in a new window"></a>'
+        '<a href="/selling-online-overseas"></a>'
+        '<a href="/export-opportunities"></a>'
+    )
+
 
 def test_add_anchors_no_suffix():
     template = Template(
@@ -707,72 +732,72 @@ def test_override_elements_css_class_does_not_override_non_targets():
     assert actual == expected
 
 
-def test_lazyload():
-    template = Template(
-        '{% load lazyload from directory_components %}'
-        '{% lazyload %}'
-        '<img class="foo" src="/bar"/>'
-        '{% endlazyload %}'
-    )
+# def test_lazyload():
+#     template = Template(
+#         '{% load lazyload from directory_components %}'
+#         '{% lazyload %}'
+#         '<img class="foo" src="/bar"/>'
+#         '{% endlazyload %}'
+#     )
 
-    rendered_html = template.render(Context())
+#     rendered_html = template.render(Context())
 
-    expected_html = (
-        '<img class="foo" src="/bar"/>'
-    )
-    assert rendered_html.replace('\n', '') == expected_html
-
-
-def test_lazyload_no_img_class():
-    template = Template(
-        '{% load lazyload from directory_components %}'
-        '{% lazyload %}'
-        '<img src="/bar"/>'
-        '{% endlazyload %}'
-    )
-
-    rendered_html = template.render(Context())
-
-    expected_html = (
-        '<img src="/bar"/>'
-    )
-    assert rendered_html.replace('\n', '') == expected_html
+#     expected_html = (
+#         '<img class="foo" src="/bar"/>'
+#     )
+#     assert rendered_html.replace('\n', '') == expected_html
 
 
-def test_lazyload_no_img_src():
-    template = Template(
-        '{% load lazyload from directory_components %}'
-        '{% lazyload %}'
-        '<img class="foo"/>'
-        '{% endlazyload %}'
-    )
+# def test_lazyload_no_img_class():
+#     template = Template(
+#         '{% load lazyload from directory_components %}'
+#         '{% lazyload %}'
+#         '<img src="/bar"/>'
+#         '{% endlazyload %}'
+#     )
 
-    rendered_html = template.render(Context())
+#     rendered_html = template.render(Context())
 
-    expected_html = (
-        '<img class="foo"/>'
-    )
-    assert rendered_html.replace('\n', '') == expected_html
+#     expected_html = (
+#         '<img src="/bar"/>'
+#     )
+#     assert rendered_html.replace('\n', '') == expected_html
 
 
-def test_lazyload_context_variables():
-    template = Template(
-        '{% load lazyload from directory_components %}'
-        '{% lazyload %}'
-        '<img class="{{ foo.class }}" src="{{ foo.src }}"/>'
-        '{% endlazyload %}'
-    )
+# def test_lazyload_no_img_src():
+#     template = Template(
+#         '{% load lazyload from directory_components %}'
+#         '{% lazyload %}'
+#         '<img class="foo"/>'
+#         '{% endlazyload %}'
+#     )
 
-    context = {
-        'foo': {'class': 'foo-class', 'src': '/foo'}
-    }
+#     rendered_html = template.render(Context())
 
-    rendered_html = template.render(Context(context))
+#     expected_html = (
+#         '<img class="foo"/>'
+#     )
+#     assert rendered_html.replace('\n', '') == expected_html
 
-    expected_html = (
-        '<img class="foo-class" src="/foo"/>'
-    )
-    assert rendered_html.replace('\n', '') == expected_html
+
+# def test_lazyload_context_variables():
+#     template = Template(
+#         '{% load lazyload from directory_components %}'
+#         '{% lazyload %}'
+#         '<img class="{{ foo.class }}" src="{{ foo.src }}"/>'
+#         '{% endlazyload %}'
+#     )
+
+#     context = {
+#         'foo': {'class': 'foo-class', 'src': '/foo'}
+#     }
+
+#     rendered_html = template.render(Context(context))
+
+#     expected_html = (
+#         '<img class="foo-class" src="/foo"/>'
+#     )
+#     assert rendered_html.replace('\n', '') == expected_html
 
 
 def test_breadcrumbs():
