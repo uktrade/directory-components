@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.10.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/265/files)
+
+### Implemented enhancements
+- Allow override of login links for SOO static header
+
 ## 27.9.3
 [Full Changelog](https://github.com/uktrade/directory-components/pull/263/files)
 
