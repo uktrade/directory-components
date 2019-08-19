@@ -4,14 +4,9 @@
   class="hero hero-generic"
   id="hero"
   data-ga-section="hero"
->
   {% if background_image_url %}
-    <div class="hero-background-container lazyload ls-noscript" data-noscript="" aria-hidden="true">
-      <noscript>
-        <div class="hero-background-image" style="background-image: url('{{ background_image_url }}')"></div>
-      </noscript>
-    </div>
-  {% endif %}
+  style="background-image: url('{{ background_image_url }}')"
+  {% endif %}>
   <div class="container">
     <div class="{{ title_class_name }}">
       {% if hero_subheading %}

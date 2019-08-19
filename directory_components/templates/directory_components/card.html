@@ -1,4 +1,3 @@
-{% load lazyload from directory_components %}
 {% load i18n %}
 
 <div
@@ -15,9 +14,7 @@
   {% endif %}
     {% block image %}
     {% if img_src %}
-      {% lazyload %}
         <img class="card-image" src="{{ img_src }}" alt="{{ img_alt }}" {% if card_id %}id="{{ card_id|add:'-image' }}"{% endif %}>
-      {% endlazyload %}
     {% endif %}
     {% endblock %}
     <div class="card-inner">

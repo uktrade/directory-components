@@ -83,12 +83,6 @@ urlpatterns = [
         name='cards',
     ),
     url(
-        r'^lazyload/$',
-        views.BasePageView.as_view(),
-        {'template_name': 'demo/lazyload.html'},
-        name='lazyload',
-    ),
-    url(
         r'^breadcrumbs/$',
         views.BreadcrumbsDemoPageView.as_view(),
         {'template_name': 'demo/breadcrumbs.html'},

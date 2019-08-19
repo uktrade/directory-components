@@ -3,14 +3,9 @@
   class="hero hero-with-cta"
   data-noscript=""
   data-ga-section="hero"
->
   {% if img_url %}
-    <div class="hero-background-container lazyload ls-noscript" data-noscript="" aria-hidden="true">
-      <noscript>
-        <div class="hero-background-image" style="background-image: url('{{ img_url }}')"></div>
-      </noscript>
-    </div>
-  {% endif %}
+  style="background-image: url('{{ img_url }}')"
+  {% endif %}>
   <div class="container">
     <div class="hero-text">
       <h1 class="heading-xlarge {% if subheading %} margin-bottom-0 {% else %} margin-bottom-30 {% endif %} ">{{ heading }}</h1>
