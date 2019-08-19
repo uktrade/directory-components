@@ -10,9 +10,11 @@
         {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.exred image_source=logo_image_url image_alt_text='Exporting is Great' %}
       {% endblock %}
 
+      {% block login_state %}
       <ul class="extra-links">
         {% include 'directory_components/header_footer/sso_login.html' %}
       </ul>
+      {% endblock %}
 
       {% include 'directory_components/header_footer/mobile_menu_button.html' %}
 
