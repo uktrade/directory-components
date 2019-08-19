@@ -105,7 +105,7 @@ class Command(BaseCommand):
         vulture = helpers.Vulture(
             verbose=False,
             ignore_names=[],
-            ignore_decorators=False
+            ignore_decorators=[]
         )
         vulture.scavenge(['.'])
         return vulture.report()
@@ -113,8 +113,7 @@ class Command(BaseCommand):
     def report_results(self, warning_message, success_message, warnings):
         if warnings:            
             warnings = '\n'.join(warnings)
-            self.stdout.write(
-                self.style.WARNING(f'{warning_message}\n{warnings}\n\n')
-            )
+            self.stdout.write(self.style.MIGRATE_LABEL(warning_message))
+            self.stdout.write(self.style.WARNING(f'{warnings}\n\n'))
         else:
             self.stdout.write(self.style.SUCCESS(success_message))

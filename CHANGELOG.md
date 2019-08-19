@@ -1,8 +1,21 @@
 # Changelog
 
-## 27.7.1
+## 27.9.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/263/files)
 - Fix language selector not preserving other query params in URL on submit.
+
+## 27.9.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)
+
+### Implemented enhancements
+- Reduce false positives for settings janitor unused settings
+
+
+## 27.8.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/258/files)
+
+### Implemented enhancements
+- Center hero images horizontally and vertically
 
 ## 27.7.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/262/files)
