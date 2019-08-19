@@ -59,6 +59,7 @@ def test_add_href_target(rf):
         'html': (
             '<a href="http://www.google.com"></a>'
             '<a href="https://www.google.com"></a>'
+            '<a href="http://www.example.com"></a>'
             '<a href="/selling-online-overseas"></a>'
             '<a href="/export-opportunities"></a>'
         )
@@ -68,6 +69,7 @@ def test_add_href_target(rf):
     assert html == (
         '<a href="http://www.google.com" rel="noopener noreferrer" target="_blank" title="Opens in a new window"></a>'
         '<a href="https://www.google.com" rel="noopener noreferrer" target="_blank" title="Opens in a new window"></a>'
+        '<a href="http://www.example.com"></a>'
         '<a href="/selling-online-overseas"></a>'
         '<a href="/export-opportunities"></a>'
     )
