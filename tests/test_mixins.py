@@ -78,26 +78,6 @@ def test_cms_language_switcher_one_language(rf):
     assert response.context_data['language_switcher']['show'] is False
 
 
-def test_language_switcher_keeps_query_params(rf):
-    class TestView(mixins.EnableTranslationsMixin, TemplateView):
-        template_name = 'directory_components/base.html'
-
-    query_params = {
-        'cats': 'yes',
-        'dogs': 'no',
-        'fish': 'maybe',
-    }
-
-    request = rf.get('/', query_params)
-    request.LANGUAGE_CODE = 'fr'
-    response = TestView.as_view()(request)
-
-    hidden_fields = response.context_data['language_switcher']['hidden_fields']
-
-    assert hidden_fields
-    assert hidden_fields == query_params
-
-
 def test_cms_language_switcher_active_language_unavailable(rf):
 
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):

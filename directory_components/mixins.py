@@ -64,12 +64,9 @@ class EnableTranslationsMixin:
         context['LANGUAGE_BIDI'] = translation.get_language_bidi()
         language_form_kwargs = self.get_language_form_kwargs()
 
-        hidden_fields = dict(zip(self.request.GET.keys(), self.request.GET.values()))
-
         context['language_switcher'] = {
             'show': True,
-            'form': self.language_form_class(**language_form_kwargs),
-            'hidden_fields': hidden_fields,
+            'form': self.language_form_class(**language_form_kwargs)
         }
         return context
 
