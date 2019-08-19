@@ -1,23 +1,16 @@
-{% load lazyload from directory_components %}
 
 <section
   {% if section_id or id %}id="{% firstof section_id id %}"{% endif %}
-  class="case-study"
   data-ga-section="caseStudy"
+  class="case-study {% if background_tint %}background-tint{% endif %}"
+  style="background-image: url({% firstof background_image_url background_image img_url image_url image_src img_src image %})" data-ga-section="caseStudy">
 >
-  <div class="hero-background-container {% if background_tint %}background-tint{% endif %} lazyload ls-noscript" data-noscript="" aria-hidden="true">
-    <noscript>
-      <div class="hero-background-image" style="background-image: url('{% firstof background_image_url background_image img_url image_url image_src img_src image %}')"></div>
-    </noscript>
-  </div>
   <div class="container">
     <div class="grid-row">
       <div class="column-full column-two-thirds-l column-half-xl">
         <div class="width-half-all border-thin border-flag-red"></div>
         <h2 class="heading-large">{% firstof title heading %}</h2>
-        {% lazyload %}
           <img class="only-display-tablet width-full margin-bottom-15" src="{% firstof background_image_url background_image img_url image_url image_src img_src image %}" alt="">
-        {% endlazyload %}
         {% block content %}
         <p>{% firstof subtitle description %}</p>
         {% if cta_link and cta_text %}

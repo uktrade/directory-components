@@ -1273,18 +1273,9 @@ a.labelled-card, a.labelled-image-card {
 
 a.labelled-image-card {
   position: relative; }
-  a.labelled-image-card .card-image-container {
-    height: calc(100% - 45px);
-    position: absolute;
-    width: 100%;
-    top: 45px; }
   a.labelled-image-card .card-image {
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: right;
-    background-repeat: no-repeat;
-    background-color: #ffffff; }
+    height: auto; }
   a.labelled-image-card .card-header {
     position: relative;
     z-index: 1; }
@@ -1414,18 +1405,10 @@ main,
   position: relative;
   padding-top: 0;
   padding-bottom: 0;
-  color: #ffffff; }
-  .hero .hero-background-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0; }
-  .hero .hero-background-image {
-    width: 100%;
-    height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover; }
+  color: #ffffff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 .hero-generic {
   background-color: rgba(0, 82, 157, 0.8); }
@@ -4048,24 +4031,12 @@ section.blue-underline > .container {
     color: #666666; }
 
 .case-study {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #ffffff;
   padding: 0;
   position: relative; }
-  .case-study .hero-background-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0; }
-  .case-study .hero-background-image {
-    width: 100%;
-    height: 100%;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: none; }
-    @media (min-width: 769px) {
-      .case-study .hero-background-image {
-        display: block; } }
   .case-study.background-tint:before {
     background-color: rgba(0, 0, 0, 0.5);
     content: "";
