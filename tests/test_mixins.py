@@ -14,7 +14,7 @@ def test_country_display_mixin(
     mock_country, country_code, country_name, rf
 ):
     class TestView(mixins.CountryDisplayMixin, TemplateView):
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
     mock_country.return_value = country_code
 
@@ -29,7 +29,7 @@ def test_country_display_mixin(
 @patch('directory_components.helpers.get_user_country')
 def test_country_display_mixin_no_country(mock_country, rf):
     class TestView(mixins.CountryDisplayMixin, TemplateView):
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
     mock_country.return_value = ''
 
@@ -43,7 +43,7 @@ def test_country_display_mixin_no_country(mock_country, rf):
 
 def test_language_display_mixin(rf, settings):
     class TestView(mixins.EnableTranslationsMixin, TemplateView):
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
     # Test with usual settings first
     request = rf.get('/')
@@ -64,7 +64,7 @@ def test_language_display_mixin(rf, settings):
 def test_cms_language_switcher_one_language(rf):
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):
 
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
         page = {
             'meta': {'languages': [('en-gb', 'English')]}
         }
@@ -82,7 +82,7 @@ def test_cms_language_switcher_active_language_unavailable(rf):
 
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):
 
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
         page = {
             'meta': {
@@ -103,7 +103,7 @@ def test_cms_language_switcher_active_language_available(rf):
 
     class MyView(mixins.CMSLanguageSwitcherMixin, TemplateView):
 
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
         page = {
             'meta': {
@@ -124,7 +124,7 @@ def test_cms_language_switcher_active_language_available(rf):
 
 def test_ga360_mixin_for_logged_in_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
         def __init__(self):
             super().__init__()
@@ -156,7 +156,7 @@ def test_ga360_mixin_for_logged_in_user(rf):
 
 def test_ga360_mixin_for_anonymous_user(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
-        template_name = 'core/base.html'
+        template_name = 'directory_components/base.html'
 
         def __init__(self):
             super().__init__()
@@ -192,21 +192,23 @@ def test_ga360_mixin_does_not_share_data_between_instances():
 
 
 def test_international_header_mixin(rf):
-    class TestView(mixins.InternationalHeaderMixin, TemplateView):
-        header_section = 'invest'
-        template_name = 'core/base.html'
+    with translation.override('en-gb'):
 
-    request = rf.get('/')
-    response = TestView.as_view()(request)
+        class TestView(mixins.InternationalHeaderMixin, TemplateView):
+            header_section = 'invest'
+            template_name = 'directory_components/base.html'
 
-    assert response.status_code == 200
-    assert len(response.context_data['sub_header_items']) == 0
-    assert len(response.context_data['pages']) == 4
+        request = rf.get('/')
+        response = TestView.as_view()(request)
 
-    header_items = [(item[0], item[2]) for item in response.context_data['header_items']]  # NOQA
-    assert header_items == [
-        ('Invest', True),
-        ('UK setup guide', False),
-        ('Find a UK supplier', False),
-        ('Industries', False),
-    ]
+        assert response.status_code == 200
+        assert len(response.context_data['sub_header_items']) == 0
+        assert len(response.context_data['pages']) == 4
+
+        header_items = [(item[0], item[2]) for item in response.context_data['header_items']]  # NOQA
+        assert header_items == [
+            ('Invest', True),
+            ('UK setup guide', False),
+            ('Find a UK supplier', False),
+            ('Industries', False),
+        ]
