@@ -1,11 +1,9 @@
 import pytest
 from bs4 import BeautifulSoup
 
-from django import forms
 from django.core.paginator import Paginator
 from django.template import Context, Template
 
-from demo.views import DemoPaginationView
 from directory_components import forms
 from directory_components.templatetags import directory_components
 
@@ -299,13 +297,9 @@ def test_labelled_image_card():
     assert 'url' in card_link['href']
 
     card_image = soup.select('.card-image')[0]
-    assert card_image['role'] == 'img'
-    assert 'img_src' in card_image['style']
-    assert card_image['aria-label'] == 'img_alt'
-    assert card_image['title'] == 'img_alt'
-
-    image_description = soup.select('p.visually-hidden')[0]
-    assert image_description.string == 'img_alt'
+    assert card_image.name == 'img'
+    assert 'img_src' in card_image['src']
+    assert card_image['alt'] == 'img_alt'
 
     card_heading = soup.select('h3.title')[0]
     assert card_heading.string == 'title'

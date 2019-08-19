@@ -1,8 +1,16 @@
 # Changelog
 
-## 27.9.1
+## 27.9.3
 [Full Changelog](https://github.com/uktrade/directory-components/pull/263/files)
+
+### Implemented enhancements
 - Fix language selector not preserving other query params in URL on submit.
+
+## 27.9.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/264/files)
+
+### Implemented enhancements
+- Remove remaining lazyload code from templates
 
 ## 27.9.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/261/files)
