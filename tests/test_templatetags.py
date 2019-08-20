@@ -47,8 +47,10 @@ def test_add_anchors():
         '<br/>'
     )
 
+
 def test_add_href_target(rf):
-    request = rf.get('/', HTTP_HOST='www.example.com')
+    request = rf.get('/')
+    request.META['HTTP_HOST'] = 'example.com'
     template = Template(
         '{% load add_href_target from directory_components %}'
         '{{ html|add_href_target:request|safe }}'
@@ -60,6 +62,8 @@ def test_add_href_target(rf):
             '<a href="http://www.google.com"></a>'
             '<a href="https://www.google.com"></a>'
             '<a href="http://www.example.com"></a>'
+            '<a href="http://example.com/selling-online-overseas"></a>'
+            '<a href="http://example.com/export-opportunities"></a>'
             '<a href="/selling-online-overseas"></a>'
             '<a href="/export-opportunities"></a>'
         )
@@ -70,6 +74,8 @@ def test_add_href_target(rf):
         '<a href="http://www.google.com" rel="noopener noreferrer" target="_blank" title="Opens in a new window"></a>'
         '<a href="https://www.google.com" rel="noopener noreferrer" target="_blank" title="Opens in a new window"></a>'
         '<a href="http://www.example.com"></a>'
+        '<a href="http://example.com/selling-online-overseas"></a>'
+        '<a href="http://example.com/export-opportunities"></a>'
         '<a href="/selling-online-overseas"></a>'
         '<a href="/export-opportunities"></a>'
     )

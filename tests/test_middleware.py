@@ -194,7 +194,6 @@ def test_country_middleware_sets_default_cookie_name(client, rf):
 
     instance.process_request(request)
     instance.process_response(request, response)
-    print(response.cookies)
     assert response.cookies['country']
 
 
