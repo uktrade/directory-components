@@ -55,6 +55,17 @@ def add_anchors_to_all_headings(value, suffix=''):
 
 
 @register.filter
+def add_href_target(value, request):
+    soup = BeautifulSoup(value, 'html.parser')
+    for element in soup.findAll('a', attrs={'href': re.compile("^http")}):
+        if request.META['HTTP_HOST'] not in element.attrs['href']:
+            element.attrs['target'] = '_blank'
+            element.attrs['title'] = 'Opens in a new window'
+            element.attrs['rel'] = 'noopener noreferrer'
+    return str(soup)
+
+
+@register.filter
 def add_export_elements_classes(value):
     soup = BeautifulSoup(value, 'html.parser')
     mapping = [
