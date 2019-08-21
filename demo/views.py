@@ -213,5 +213,9 @@ class FullWidthBannersView(TemplateView):
                 }
             ],
             intro_markdown="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
-                           "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                           "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            video={
+                'url': '/static/videos/hpo-food-video.mp4',
+                'file_extension': 'mp4'
+            }
         )

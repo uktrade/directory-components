@@ -13,7 +13,6 @@
 {% static 'images/placeholder.png' as placeholder %}
 {% static 'images/hero04.jpg' as dark_hero %}
 {% static 'images/card_image01.jpg' as half_image %}
-{% static 'videos/hpo-food-video.mp4' as half_video %}
 
 <div class="container">
   {% breadcrumbs 'Full width banners' %}<a href="/">Home</a>{% endbreadcrumbs %}
@@ -110,10 +109,10 @@
     <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
   </div>
 
-  {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=half_video intro_markdown=intro_markdown items_list=items_list %}
+  {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_markdown=intro_markdown items_list=items_list %}
 
   <div class="container">
-    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=half_video intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
+    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
   </div>
 
   <div class="container">
