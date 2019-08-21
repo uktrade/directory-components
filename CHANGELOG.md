@@ -1,5 +1,12 @@
 # Changelog
 
+## 27.12.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/267/files)
+
+### Implemented enhancements
+- Show non-field errors in forms
+- Added deprecation warning for `{% render_form form %}`: now can simply do `{{ form }}`.
+
 ## 27.10.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/265/files)
 
