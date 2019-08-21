@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.11.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/266/files)
+
+### Implemented enhancements
+- `django_language` cookie is now set as secure and http-only.
+
 ## 27.10.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/265/files)
 

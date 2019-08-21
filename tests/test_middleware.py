@@ -283,6 +283,30 @@ def test_locale_persist_middleware_deletes_deprecated_cookie(
     assert cookie['max-age'] == 0
 
 
+def test_locale_persist_middleware_sets_http_only(client, rf, settings):
+    request = rf.get('/')
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.PersistLocaleMiddleware()
+
+    instance.process_response(request, response)
+
+    cookie = response.cookies[settings.LANGUAGE_COOKIE_NAME]
+    assert cookie['httponly'] is True
+
+
+def test_locale_persist_middleware_sets_secure(client, rf, settings):
+    request = rf.get('/')
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.PersistLocaleMiddleware()
+
+    instance.process_response(request, response)
+
+    cookie = response.cookies[settings.LANGUAGE_COOKIE_NAME]
+    assert cookie['secure'] is True
+
+
 def test_force_default_locale_no_language_in_request(rf, settings):
     request = rf.get('/')
     instance = middleware.ForceDefaultLocale()
