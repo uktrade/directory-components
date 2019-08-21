@@ -174,6 +174,7 @@ def test_prefix_url_middleware_starts_with_known_url_correct_domain(
 def test_country_middleware_sets_country_cookie(
     client, rf, country_code, country_name
 ):
+    settings.COUNTRY_COOKIE_SECURE = True
     request = rf.get('/', {'country': country_code})
     response = HttpResponse()
     request.session = client.session
@@ -187,6 +188,7 @@ def test_country_middleware_sets_country_cookie(
 
 
 def test_country_middleware_sets_default_cookie_name(client, rf):
+    settings.COUNTRY_COOKIE_SECURE = True
     request = rf.get('/', {'country': 'GB'})
     response = HttpResponse()
     request.session = client.session
@@ -195,6 +197,48 @@ def test_country_middleware_sets_default_cookie_name(client, rf):
     instance.process_request(request)
     instance.process_response(request, response)
     assert response.cookies['country']
+
+
+def test_country_middleware_sets_http_only(client, rf):
+    settings.COUNTRY_COOKIE_SECURE = True
+    request = rf.get('/', {'country': 'GB'})
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+
+    cookie = response.cookies['country']
+    assert cookie['httponly'] is True
+
+
+def test_county_middleware_sets_secure(client, rf):
+    settings.COUNTRY_COOKIE_SECURE = True
+    request = rf.get('/', {'country': 'GB'})
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+
+    cookie = response.cookies['country']
+    assert cookie['secure'] is True
+
+
+def test_county_middleware_sets_not_secure_if_flag_is_off(client, rf, settings):
+    settings.COUNTRY_COOKIE_SECURE = False
+    request = rf.get('/', {'country': 'GB'})
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.CountryMiddleware()
+
+    instance.process_request(request)
+    instance.process_response(request, response)
+
+    cookie = response.cookies['country']
+    assert cookie['secure'] == ""
 
 
 def test_locale_middleware_sets_querystring_language(rf):
@@ -228,6 +272,7 @@ def test_locale_middleware_handles_missing_querystring_language(rf):
 
 
 def test_locale_persist_middleware_handles_no_explicit_language(client, rf):
+    settings.LANGUAGE_COOKIE_SECURE = True
     request = rf.get('/')
     response = HttpResponse()
     request.session = client.session
@@ -240,6 +285,7 @@ def test_locale_persist_middleware_handles_no_explicit_language(client, rf):
 
 
 def test_locale_persist_middleware_persists_explicit_language(client, rf):
+    settings.LANGUAGE_COOKIE_SECURE = True
     language_code = 'en-gb'
     request = rf.get('/', {'lang': language_code})
     response = HttpResponse()
@@ -254,6 +300,7 @@ def test_locale_persist_middleware_persists_explicit_language(client, rf):
 
 def test_locale_persist_middleware_sets_cross_domain(client, rf, settings):
     settings.LANGUAGE_COOKIE_DOMAIN = '.test.trade.great'
+    settings.LANGUAGE_COOKIE_SECURE = True
 
     request = rf.get('/')
     response = HttpResponse()
@@ -270,6 +317,7 @@ def test_locale_persist_middleware_deletes_deprecated_cookie(
         client, rf, settings
 ):
     settings.LANGUAGE_COOKIE_DEPRECATED_NAME = 'django-language'
+    settings.LANGUAGE_COOKIE_SECURE = True
 
     request = rf.get('/')
     response = HttpResponse()
@@ -284,6 +332,7 @@ def test_locale_persist_middleware_deletes_deprecated_cookie(
 
 
 def test_locale_persist_middleware_sets_http_only(client, rf, settings):
+    settings.LANGUAGE_COOKIE_SECURE = True
     request = rf.get('/')
     response = HttpResponse()
     request.session = client.session
@@ -296,6 +345,7 @@ def test_locale_persist_middleware_sets_http_only(client, rf, settings):
 
 
 def test_locale_persist_middleware_sets_secure(client, rf, settings):
+    settings.LANGUAGE_COOKIE_SECURE = True
     request = rf.get('/')
     response = HttpResponse()
     request.session = client.session
@@ -305,6 +355,19 @@ def test_locale_persist_middleware_sets_secure(client, rf, settings):
 
     cookie = response.cookies[settings.LANGUAGE_COOKIE_NAME]
     assert cookie['secure'] is True
+
+
+def test_locale_persist_middleware_sets_not_secure_if_flag_is_off(client, rf, settings):
+    settings.LANGUAGE_COOKIE_SECURE = False
+    request = rf.get('/')
+    response = HttpResponse()
+    request.session = client.session
+    instance = middleware.PersistLocaleMiddleware()
+
+    instance.process_response(request, response)
+
+    cookie = response.cookies[settings.LANGUAGE_COOKIE_NAME]
+    assert cookie['secure'] == ""
 
 
 def test_force_default_locale_no_language_in_request(rf, settings):

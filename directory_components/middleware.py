@@ -103,6 +103,8 @@ class CountryMiddleware(MiddlewareMixin):
                 max_age=settings.LANGUAGE_COOKIE_AGE,
                 path=settings.LANGUAGE_COOKIE_PATH,
                 domain=settings.LANGUAGE_COOKIE_DOMAIN,
+                secure=settings.COUNTRY_COOKIE_SECURE,
+                httponly=True,
             )
         return response
 
@@ -128,7 +130,7 @@ class PersistLocaleMiddleware(MiddlewareMixin):
             max_age=settings.LANGUAGE_COOKIE_AGE,
             path=settings.LANGUAGE_COOKIE_PATH,
             domain=settings.LANGUAGE_COOKIE_DOMAIN,
-            secure=True,
+            secure=settings.LANGUAGE_COOKIE_SECURE,
             httponly=True,
         )
         return response
