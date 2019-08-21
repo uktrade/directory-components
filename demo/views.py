@@ -193,20 +193,25 @@ class FullWidthBannersView(TemplateView):
             title_and_text_dict=[
                 {
                     'title': 'Item One Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="/full-width-banners/">Learn more.</a></p>'
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
                 },
                 {
                     'title': 'Item Two Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="/full-width-banners/">Learn more.</a></p>'
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
                 },
                 {
                     'title': 'Item Three Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="/full-width-banners/">Learn more.</a></p>'
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
                 },
                 {
                     'title': 'Item Four Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="/full-width-banners/">Learn more.</a></p>'
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
                 }
             ],
-            paragraph="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+            paragraph="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                      "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
         )
