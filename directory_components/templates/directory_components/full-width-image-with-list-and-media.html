@@ -11,7 +11,7 @@
         <div class="flex-grid reverse-columns-l">
             <div class="column-half-xl column-full-m">
                 <div class="flex-grid">
-                    {% for item in title_and_text_dict %}
+                    {% for item in items_list %}
                         <div class="column-half-l">
                             <h2 class="bold-medium list-item padding-top-15">{{ item.title }}</h2>
                             <span class="font-xsmall">{{ item.text|add_export_elements_classes|safe }}</span>

@@ -190,7 +190,7 @@ class FullWidthBannersView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
-            title_and_text_dict=[
+            items_list=[
                 {
                     'title': 'Item One Title',
                     'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
