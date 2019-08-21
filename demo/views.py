@@ -212,6 +212,6 @@ class FullWidthBannersView(TemplateView):
                             '<a href="/full-width-banners/">Learn more.</a></p>'
                 }
             ],
-            paragraph="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+            intro_markdown="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
                       "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
         )
