@@ -193,22 +193,22 @@ class FullWidthBannersView(TemplateView):
             items_list=[
                 {
                     'title': 'Item One Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
                             '<a href="/full-width-banners/">Learn more.</a></p>'
                 },
                 {
                     'title': 'Item Two Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
                             '<a href="/full-width-banners/">Learn more.</a></p>'
                 },
                 {
                     'title': 'Item Three Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
                             '<a href="/full-width-banners/">Learn more.</a></p>'
                 },
                 {
                     'title': 'Item Four Title',
-                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
                             '<a href="/full-width-banners/">Learn more.</a></p>'
                 }
             ],

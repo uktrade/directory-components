@@ -13,7 +13,7 @@
                 <ul class="flex-grid">
                     {% for item in items_list %}
                         <li class="column-half-l">
-                            <h2 class="bold-medium list-item padding-top-15">{{ item.title }}</h2>
+                            <h3 class="bold-medium list-item padding-top-15">{{ item.title }}</h3>
                             <span class="font-xsmall">{{ item.text|add_export_elements_classes|safe }}</span>
                         </li>
                     {% endfor %}
