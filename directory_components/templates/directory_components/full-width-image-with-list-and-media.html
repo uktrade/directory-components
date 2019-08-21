@@ -2,7 +2,7 @@
 
 <section class="full-width-list-with-media " style="background-image: url('{{ background_image }}')">
     <div class="container padding-top-30 padding-bottom-30">
-        <h1 class="heading-large">{{ title }}</h1>
+        <{{ title_level|default:'h2' }} class="{{ title_class|default:'heading-large'}}">{{ title }}</{{ title_level|default:'h2' }}>
         <div class="grid-row">
             <div class="column-two-thirds-l">
                 {{ intro_markdown|add_export_elements_classes|safe }}
@@ -30,7 +30,7 @@
             {% elif video %}
             <div class="column-half-xl media">
                 <div class="flex-grid">
-                    <video controls data-ga-class="hpo-video" class="width-full">
+                    <video controls class="width-full">
                         <source src="{{ video.url }}" type="video/{{ video.file_extension }}">
                         <p>Your browser doesn't support HTML5 video. Here is a <a class="link" href="{{ video.url }}">link to the video</a> instead.</p>
                     </video>
