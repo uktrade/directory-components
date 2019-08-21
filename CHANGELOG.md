@@ -1,5 +1,17 @@
 # Changelog
 
+## 27.12.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/269/files)
+
+### Implemented enhancements
+- Added new full width image component `full_width_image_with_list_and_media`, this shows list of items with title and text and can have an image or video on the right
+
+## 27.11.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/267/files)
+
+### Implemented enhancements
+- Gtransform 338 external link tag added
+
 ## 27.10.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/265/files)
 

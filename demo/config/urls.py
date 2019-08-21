@@ -60,7 +60,7 @@ urlpatterns = [
     ),
     url(
         r'^full-width-banners/$',
-        views.BasePageView.as_view(),
+        views.FullWidthBannersView.as_view(),
         {'template_name': 'demo/full-width-banners.html'},
         name='full-width-banners',
     ),

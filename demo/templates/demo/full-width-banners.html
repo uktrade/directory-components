@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load demo_tags %}
-{% load breadcrumbs banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta case_study from directory_components %}
+{% load breadcrumbs banner hero message_box cta_box card labelled_card labelled_image_card hero_with_cta case_study full_width_image_with_list_and_media add_export_elements_classes from directory_components %}
 
 {% block css_layout_class %}components{% endblock css_layout_class %}
 
@@ -11,6 +11,9 @@
 {% static 'images/hero02.png' as hero_image %}
 {% static 'images/hero01.jpg' as hero_image_domestic %}
 {% static 'images/placeholder.png' as placeholder %}
+{% static 'images/hero04.jpg' as dark_hero %}
+{% static 'images/card_image01.jpg' as half_image %}
+{% static 'videos/hpo-food-video.mp4' as half_video %}
 
 <div class="container">
   {% breadcrumbs 'Full width banners' %}<a href="/">Home</a>{% endbreadcrumbs %}
@@ -75,6 +78,42 @@
 
   <div class="container">
     <pre><code>{% verbatim %} {% case_study background_tint=True background_image=hero_image_domestic heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}{% endverbatim %}</code></pre>
+  </div>
+
+  <div class="container">
+    <h3 class="heading-large"> Full width image with a list of items and an optional image or video</h3>
+    <p>The intro is expected to be a mark down field</p>
+    <p>The list of items are expected to be a dictionary with a title and text</p>
+
+    <pre><code>{% verbatim %}title_and_text_dict=[
+    {
+        'title': 'Item One Title',
+        'text': '&lt;p>Lorem ipsum ... &lt;a href="/full-width-banners/">Learn more.&lt;/a>&lt;/p>'
+    },
+    {
+        'title': 'Item Two Title',
+        'text': '&lt;p>Lorem ipsum ... &lt;a href="/full-width-banners/">Learn more.&lt;/a>&lt;/p>'
+    },
+]{% endverbatim %}</code></pre>
+
+  </div>
+
+  {% full_width_image_with_list_and_media title="Full width image with a list of items" background_image=dark_hero intro=paragraph title_and_text_dict=title_and_text_dict %}
+
+  <div class="container">
+    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items" background_image=dark_hero intro=paragraph title_and_text_dict=title_and_text_dict %}{% endverbatim %}</code></pre>
+  </div>
+
+  {% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro=paragraph title_and_text_dict=title_and_text_dict %}
+
+  <div class="container">
+    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro=paragraph title_and_text_dict=title_and_text_dict %}{% endverbatim %}</code></pre>
+  </div>
+
+  {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=half_video intro=paragraph title_and_text_dict=title_and_text_dict %}
+
+  <div class="container">
+    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero image=half_video intro=paragraph title_and_text_dict=title_and_text_dict %}{% endverbatim %}</code></pre>
   </div>
 
   <div class="container">
