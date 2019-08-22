@@ -1,11 +1,23 @@
 # Changelog
 
+## 27.13.0
+[Full Changelog] https://github.com/uktrade/directory-components/pull/271
+
+### Implemented enhancements
+- adding 5 column responsive grid layout class
+
 ## 27.12.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/267/files)
 
 ### Implemented enhancements
 - Show non-field errors in forms
 - Added deprecation warning for `{% render_form form %}`: now can simply do `{{ form }}`.
+
+## 27.11.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/267/files)
+
+### Implemented enhancements
+- Gtransform 338 external link tag added
 
 ## 27.10.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/265/files)
