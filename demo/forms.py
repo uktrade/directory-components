@@ -157,3 +157,7 @@ class DemoFormErrors(PrefixIdMixin, forms.Form):
             (False, 'No'),
         )
     )
+
+    def clean(self, *args, **kwargs):
+        self.add_error(field=None, error=['Some non-field error', 'Some other non-field error'])
+        super().clean(*args, **kwargs)
