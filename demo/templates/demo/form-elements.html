@@ -1,7 +1,7 @@
 {% extends 'demo/base.html' %}
 
 {% load view_instance_code from demo_tags %}
-{% load breadcrumbs render_form from directory_components %}
+{% load breadcrumbs from directory_components %}
 
 {% block css_layout_class %}forms{% endblock %}
 
@@ -13,12 +13,10 @@
 <section class="padding-top-30">
   <div class="container">
     <h1 class="heading-xlarge">Form widgets</h1>
-    <p>A form can be rendered with this template tag:</p>
-<pre><code>{% verbatim %}{% load render_form from directory_components %}
-&lt;form&gt;
-  {% csrf_token %}
-  {% render_form form %}
-&lt;input class="button" type="submit" value="Submit" /&gt;
+    <p>Forms are rendered thusly:</p>
+<pre><code>{% verbatim %}&lt;form&gt;
+  {{ form }}
+  &lt;input class="button" type="submit" value="Submit" /&gt;
 &lt;/form&gt;
 {% endverbatim %}</code></pre>
 
@@ -28,8 +26,7 @@
         <article class="grid-row">
           <div class="column-one-half">
             <form>
-              {% csrf_token %}
-              {% render_form text_form %}
+              {{ text_form }}
               <input class="button margin-top-30" type="submit" value="Submit" />
             </form>
           </div>
@@ -45,8 +42,7 @@
         <article class="grid-row">
           <div class="column-one-half">
             <form>
-              {% csrf_token %}
-              {% render_form form=checkbox_form %}
+              {{ checkbox_form }}
               <div class="form-group">
                 <input class="button" type="submit" value="Submit" />
               </div>
@@ -64,8 +60,7 @@
         <article class="grid-row">
           <div class="column-one-half">
             <form>
-              {% csrf_token %}
-              {% render_form form=multiple_choice_form %}
+              {{ multiple_choice_form }}
               <input class="button" type="submit" value="Submit" />
             </form>
           </div>
@@ -81,8 +76,7 @@
         <article class="grid-row">
           <div class="column-one-half">
             <form>
-              {% csrf_token %}
-              {% render_form form=radio_form %}
+              {{ radio_form }}
               <input class="button" type="submit" value="Submit" />
             </form>
           </div>

@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import re
+import warnings
 
 from django import template
 from django.core.paginator import EmptyPage, Paginator
 from django.templatetags import static
-
 from django.utils.text import slugify
 try:
     # Django < 2.2
@@ -109,6 +109,7 @@ def override_elements_css_class(value, element_and_override):
 
 @register.inclusion_tag('directory_components/form_widgets/form.html')
 def render_form(form):
+    warnings.warn('This feature is deprecated. You can now do {{ form }} in the template to get the same outcome.')
     return {'form': form}
 
 
