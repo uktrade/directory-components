@@ -1,4 +1,4 @@
-@import '!elements/layout';
+// @import 'elements/layout';
 @import '../../sass/partials/spacings';
 @import '../../sass/partials/mixins';
 
@@ -12,6 +12,9 @@
 }
 
 // Additional great.gov.uk styles
+.grid-row {
+  margin: 0 -15px;
+}
 
 .grid-row > * {
   padding: 0 15px;
@@ -141,6 +144,12 @@ section {
   width: 100%;
 }
 
+.column-five-twelfths {
+  @include grid-column(5 / 12);
+  width: 100%;
+}
+
+
 .column-sixth {
   @include grid-column(1 / 6);
   width: 100%;
@@ -184,6 +193,10 @@ section {
     @include grid-column(1 / 4);
   }
 
+  .column-five-twelfths-m {
+    @include grid-column(5 / 12);
+  }
+
   .column-sixth-m {
     @include grid-column(1 / 6);
   }
@@ -220,6 +233,10 @@ section {
     @include grid-column(1 / 4);
   }
 
+  .column-five-twelfths-l {
+    @include grid-column(5 / 12);
+  }
+
   .column-sixth-l {
     @include grid-column(1 / 6);
   }
@@ -254,6 +271,10 @@ section {
 
   .column-quarter-xl {
     @include grid-column(1 / 4);
+  }
+
+  .column-five-twelfths-xl {
+    @include grid-column(5 / 12);
   }
 
   .column-sixth-xl {
