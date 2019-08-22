@@ -6,10 +6,10 @@
 // Generic (normalize/reset.css)
 @import 'elements/reset';
 
-// // Objects (unstyled design patterns)
+// Objects (unstyled design patterns)
 @import 'elements/layout';                        // Main content container. Grid layout - rows and column widths
 
-// // Components (chunks of UI)
+// Components (chunks of UI)
 @import 'elements/elements-typography';           // Typography
 @import 'elements/buttons';                       // Buttons
 @import 'elements/icons';                         // Icons - numbered steps, calendar, search
@@ -24,4 +24,4 @@
 @import 'elements/breadcrumbs';                   // Breadcrumbs
 @import 'elements/phase-banner';                  // Alpha and beta banners and tags
 @import 'elements/components';                    // GOV.UK prefixed styles - blue highlighted box
-// @import 'elements/shame';                         // Hacks and workarounds that will go away eventually
+@import 'elements/shame';                         // Hacks and workarounds that will go away eventually

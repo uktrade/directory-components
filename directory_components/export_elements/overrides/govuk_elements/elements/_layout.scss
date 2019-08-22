@@ -1,4 +1,4 @@
-// @import 'elements/layout';
+@import '!elements/layout';
 @import '../../sass/partials/spacings';
 @import '../../sass/partials/mixins';
 
@@ -12,10 +12,6 @@
 }
 
 // Additional great.gov.uk styles
-.grid-row {
-  margin: 0 -15px;
-}
-
 .grid-row > * {
   padding: 0 15px;
 }
