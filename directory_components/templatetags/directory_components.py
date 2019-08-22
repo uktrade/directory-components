@@ -380,3 +380,8 @@ def search_page_selected_filters(**kwargs):
 @register.inclusion_tag('directory_components/search-page-expandable-options.html')  # noqa
 def search_page_expandable_options(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/full-width-image-with-list-and-media.html')  # noqa
+def full_width_image_with_list_and_media(**kwargs):
+    return kwargs

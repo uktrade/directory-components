@@ -62,6 +62,9 @@ main {
 .demo-header .home-link:hover {
   text-decoration: underline;
 }
+.demo-header .home-link:active:focus {
+  color: #1e1348;
+}
 
 .demo-header .home-link {
   color: white;

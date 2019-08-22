@@ -711,6 +711,7 @@ def test_hero_large_title():
     directory_components.informative_banner,
     directory_components.search_page_selected_filters,
     directory_components.search_page_expandable_options,
+    directory_components.full_width_image_with_list_and_media
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
