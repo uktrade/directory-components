@@ -194,6 +194,23 @@ def test_render_form():
     assert input_field['id'] == 'id_field'
 
 
+def test_render_form_non_field_errors():
+    form = PaddedTestForm(data={'field': 'value'})
+    form.add_error(field=None, error=['Some error', 'Some other error'])
+    assert form.is_valid() is False
+
+    template = Template(
+        '{% load render_form from directory_components %}'
+        '{% render_form form %}'
+    )
+    context = Context({'form': form})
+
+    html = template.render(context)
+
+    assert 'Some error' in html
+    assert 'Some other error' in html
+
+
 def test_card():
     card_content = {
         'title': 'title',
@@ -694,6 +711,7 @@ def test_hero_large_title():
     directory_components.informative_banner,
     directory_components.search_page_selected_filters,
     directory_components.search_page_expandable_options,
+    directory_components.full_width_image_with_list_and_media
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {

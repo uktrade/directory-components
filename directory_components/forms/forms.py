@@ -1,13 +1,13 @@
 from directory_constants.choices import COUNTRY_CHOICES
 
 from django import forms
-from django.forms import Select
-from django.utils import translation
 from django.conf import settings
+from django.forms import Select
+from django.template.loader import render_to_string
+from django.utils import translation
 
 from directory_components.forms import fields
 from directory_components import helpers
-
 
 __all__ = [
     'CountryForm',
@@ -28,16 +28,8 @@ class DirectoryComponentsFormMixin:
     use_required_attribute = False
     error_css_class = 'form-group-error'
 
-    def as_p(self):
-        return self._html_output(
-            normal_row=(
-                '<p%(html_class_attr)s>%(label)s %(help_text)s %(field)s</p>'
-            ),
-            error_row='%s',
-            row_ender='</p>',
-            help_text_html=' <span class="form-hint">%s</span>',
-            errors_on_separate_row=True
-        )
+    def __str__(self):
+        return render_to_string('directory_components/form_widgets/form.html', {'form': self})
 
 
 class Form(DirectoryComponentsFormMixin, forms.Form):

@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import re
+import warnings
 
 from django import template
 from django.core.paginator import EmptyPage, Paginator
 from django.templatetags import static
-
 from django.utils.text import slugify
 try:
     # Django < 2.2
@@ -109,6 +109,7 @@ def override_elements_css_class(value, element_and_override):
 
 @register.inclusion_tag('directory_components/form_widgets/form.html')
 def render_form(form):
+    warnings.warn('This feature is deprecated. You can now do {{ form }} in the template to get the same outcome.')
     return {'form': form}
 
 
@@ -378,4 +379,9 @@ def search_page_selected_filters(**kwargs):
 
 @register.inclusion_tag('directory_components/search-page-expandable-options.html')  # noqa
 def search_page_expandable_options(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/full-width-image-with-list-and-media.html')  # noqa
+def full_width_image_with_list_and_media(**kwargs):
     return kwargs

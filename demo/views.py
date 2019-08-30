@@ -183,3 +183,39 @@ class DomesticHeaderFooterView(TemplateView):
             sso_login_url='?authenticated',
             sso_logout_url='?unauthenticated',
         )
+
+
+class FullWidthBannersView(TemplateView):
+    template_name = 'demo/full-width-banners.html'
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            items_list=[
+                {
+                    'title': 'Item One Title',
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
+                },
+                {
+                    'title': 'Item Two Title',
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
+                },
+                {
+                    'title': 'Item Three Title',
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
+                },
+                {
+                    'title': 'Item Four Title',
+                    'text': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. '
+                            '<a href="/full-width-banners/">Learn more.</a></p>'
+                }
+            ],
+            intro_markdown="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                           "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            video={
+                'url': '/static/videos/hpo-food-video.mp4',
+                'file_extension': 'mp4'
+            }
+        )

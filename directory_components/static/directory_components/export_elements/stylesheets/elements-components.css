@@ -4189,3 +4189,31 @@ body:not(.js-enabled) .expandable-fieldset button.filter-collapse {
 @media (max-width: 420px) {
   .pagination a {
     width: 95px; } }
+
+.full-width-list-with-media {
+  width: 100%;
+  min-height: 500px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white; }
+  .full-width-list-with-media a {
+    color: white; }
+  .full-width-list-with-media a:visited {
+    color: white; }
+  .full-width-list-with-media a:active:focus {
+    color: #1e1348; }
+  .full-width-list-with-media .list-item {
+    border-top: 3px solid #e41f13; }
+  .full-width-list-with-media .media {
+    margin-top: auto;
+    margin-bottom: auto; }
+    @media (max-width: 960px) {
+      .full-width-list-with-media .media {
+        margin-bottom: 30px; } }
+  @media (max-width: 960px) {
+    .full-width-list-with-media .reverse-columns-l {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse; } }
