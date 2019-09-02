@@ -1,5 +1,14 @@
 # Changelog
 
+## 28.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
+
+### Implemented enhancements
+- Changes to international header to improve support for new sticky second tier navigation.
+
+### Breaking Changes
+- The `InternationalHeader` mixin has been removed, and replaced with the `international_header` templatetag. 
+
 ## 27.14.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/269/files)
 

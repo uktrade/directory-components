@@ -97,32 +97,6 @@ def test_urls_exist_in_domestic_header(url, settings):
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICES_GREAT_DOMESTIC,
-    urls.GREAT_INTERNATIONAL,
-    'http://test.co.uk',
-    'http://mobile-test.co.uk'
-])
-def test_urls_exist_in_international_header(url, settings):
-    context = {
-        'features': {
-            'NEWS_SECTION_ON': True,
-            'HOW_TO_DO_BUSINESS_ON': True,
-        },
-        'pages': [
-            {'url': 'http://mobile-test.co.uk', 'title': 'test', 'sub_pages': []}  # NOQA
-        ],
-        'header_items': [
-            {'url': 'http://test.co.uk', 'title': 'test', 'active': True}
-        ],
-        **context_processors.header_footer_processor(None),
-        **context_processors.urls_processor(None)
-    }
-    template_name = (
-        'directory_components/header_footer/international_header.html')
-    assert url in render_to_string(template_name, context)
-
-
-@pytest.mark.parametrize('url', [
     urls.GREAT_INTERNATIONAL,
     urls.CONTACT_US,
     urls.PRIVACY_AND_COOKIES,

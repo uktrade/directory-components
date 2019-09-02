@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import re
 import warnings
+from collections import namedtuple
 
 from django import template
-from django.core.paginator import EmptyPage, Paginator
 from django.templatetags import static
 from django.utils.text import slugify
 try:
@@ -216,9 +216,7 @@ def case_study(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag(
-    'directory_components/pagination.html', takes_context=True
-)
+@register.inclusion_tag('directory_components/pagination.html', takes_context=True)
 def pagination(context, pagination_page, page_param_name='page'):
     paginator = pagination_page.paginator
     pagination_url = helpers.get_pagination_url(
@@ -230,6 +228,39 @@ def pagination(context, pagination_page, page_param_name='page'):
         'url': pagination_url,
         'pages_after_current': paginator.num_pages - pagination_page.number,
     }
+
+HeaderItem = namedtuple('HeaderItem', 'title url is_active')
+
+@register.inclusion_tag('directory_components/header_footer/international_header.html')
+def international_header(navigation_tree, site_section, site_sub_section):
+
+    tier_one_items = []
+    tier_two_items = []
+
+    for node in navigation_tree:
+        node_is_active = node.tier_one_item.name == site_section
+        tier_one_items.append(HeaderItem(
+            title=node.tier_one_item.title,
+            url=node.tier_one_item.url,
+            is_active=node_is_active
+        ))
+
+        if node_is_active:
+            tier_two_items = [
+                HeaderItem(title=item.title, url=item.url, is_active=item.name == site_sub_section)
+                for item in node.tier_two_items
+            ]
+
+    return {
+        'tier_one_items': tier_one_items,
+        'tier_two_items': tier_two_items,
+        'navigation_tree': navigation_tree,
+    }
+
+
+@register.inclusion_tag('directory_components/header_footer/invest_header.html')
+def invest_header(navigation_tree, site_section, site_sub_section):
+    return international_header(navigation_tree, site_section, site_sub_section)
 
 
 @register.tag

@@ -1,6 +1,7 @@
 import ast
 import re
 from unittest.mock import Mock
+from collections import namedtuple
 
 from django.core.paginator import Paginator
 from django.shortcuts import Http404
@@ -9,8 +10,7 @@ from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 
 from directory_components.mixins import (
-    CountryDisplayMixin, EnableTranslationsMixin,
-    InternationalHeaderMixin
+    CountryDisplayMixin, EnableTranslationsMixin
 )
 
 from demo import forms
@@ -37,14 +37,107 @@ class IndexPageView(BasePageView):
         context['version'] = self.get_version()
         return context
 
+NavNode = namedtuple('NavItem', 'tier_one_item tier_two_items')
+
+def nav_title_to_name(title):
+    return title.lower().replace(' ', '-')
+
+class TierOneNavItem:
+    def __init__(self, title):
+        self.title = title
+
+    @property
+    def name(self):
+        return nav_title_to_name(self.title)
+
+    @property
+    def url(self):
+        return f'/great-international-header-footer/?section={self.name}'
+
+class TierTwoNavItem:
+    def __init__(self, title, parent_title):
+        self.title = title
+        self.parent_title = parent_title
+
+    @property
+    def parent_name(self):
+        return nav_title_to_name(self.parent_title)
+
+    @property
+    def name(self):
+        return nav_title_to_name(self.title)
+
+    @property
+    def url(self):
+        return f'/great-international-header-footer/?section={self.parent_name}&sub_section={self.name}'
 
 class InternationalHeaderView(
-    InternationalHeaderMixin,
     CountryDisplayMixin,
     EnableTranslationsMixin,
     BasePageView
 ):
-    header_section = "invest"
+    @property
+    def header_section(self):
+        return self.request.GET.get('section', '')
+
+    @property
+    def header_sub_section(self):
+        return self.request.GET.get('sub_section', '')
+
+    navigation_tree = [
+        NavNode(
+            tier_one_item=TierOneNavItem('About the UK'),
+            tier_two_items=[
+                TierTwoNavItem('Overview', 'About the UK'),
+                TierTwoNavItem('Why choose the UK', 'About the UK'),
+                TierTwoNavItem('Industries', 'About the UK'),
+                TierTwoNavItem('Regions', 'About the UK'),
+                TierTwoNavItem('Contact us', 'About the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("Expand to the UK"),
+            tier_two_items=[
+                TierTwoNavItem('Overview', 'Expand to the UK'),
+                TierTwoNavItem('How to expand to the UK', 'Expand to the UK'),
+                TierTwoNavItem('Professional services', 'Expand to the UK'),
+                TierTwoNavItem('Contact us', 'Expand to the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("Invest capital in the UK"),
+            tier_two_items=[
+                TierTwoNavItem('Overview', 'Invest capital in the UK'),
+                TierTwoNavItem('Investment types', 'Invest capital in the UK'),
+                TierTwoNavItem('Investment Opportunities', 'Invest capital in the UK'),
+                TierTwoNavItem('How to invest capital', 'Invest capital in the UK'),
+                TierTwoNavItem('Contact us', 'Invest capital in the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("Buy from the UK"),
+            tier_two_items=[
+                TierTwoNavItem('Buy from the UK', 'Buy from the UK'),
+                TierTwoNavItem('Contact us', 'Buy from the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("About us"),
+            tier_two_items=[
+                TierTwoNavItem('What we do', 'About us'),
+                TierTwoNavItem('Contact us', 'About us'),
+            ]
+        ),
+    ]
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            navigation_tree=self.navigation_tree,
+            header_section=self.header_section,
+            header_sub_section=self.header_sub_section,
+            *args,
+            **kwargs
+        )
 
 
 class InvestHeaderView(InternationalHeaderView):
