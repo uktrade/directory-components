@@ -8,6 +8,7 @@ from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+from django.utils.text import slugify
 
 from directory_components.mixins import (
     CountryDisplayMixin, EnableTranslationsMixin
@@ -39,16 +40,13 @@ class IndexPageView(BasePageView):
 
 NavNode = namedtuple('NavItem', 'tier_one_item tier_two_items')
 
-def nav_title_to_name(title):
-    return title.lower().replace(' ', '-')
-
 class TierOneNavItem:
     def __init__(self, title):
         self.title = title
 
     @property
     def name(self):
-        return nav_title_to_name(self.title)
+        return slugify(self.title)
 
     @property
     def url(self):
@@ -61,11 +59,11 @@ class TierTwoNavItem:
 
     @property
     def parent_name(self):
-        return nav_title_to_name(self.parent_title)
+        return slugify(self.parent_title)
 
     @property
     def name(self):
-        return nav_title_to_name(self.title)
+        return slugify(self.title)
 
     @property
     def url(self):
