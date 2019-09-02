@@ -1098,3 +1098,20 @@ def test_international_header_active_section_and_subsection():
     assert len(navigation['tier_two_items']) == 1
     assert navigation['tier_two_items'][0].title == 'Sub Page 1'
     assert navigation['tier_two_items'][0].is_active == True
+
+
+def test_international_header_tag():
+    template = Template(
+        '{% load international_header from directory_components %}'
+        '{% international_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
+    )
+    context = {
+        'tree': SAMPLE_NAVIGATION_TREE,
+        'section': '',
+        'sub_section': '',
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/root-1/'}) is not None
