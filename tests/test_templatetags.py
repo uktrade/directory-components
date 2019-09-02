@@ -1115,3 +1115,20 @@ def test_international_header_tag():
 
     soup = BeautifulSoup(html, 'html.parser')
     assert soup.find('a', {'href': '/root-1/'}) is not None
+
+
+def test_invest_header_tag():
+    template = Template(
+        '{% load invest_header from directory_components %}'
+        '{% invest_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
+    )
+    context = {
+        'tree': SAMPLE_NAVIGATION_TREE,
+        'section': '',
+        'sub_section': '',
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/root-1/'}) is not None
