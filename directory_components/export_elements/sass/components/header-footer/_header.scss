@@ -3,10 +3,48 @@
 @import '../../partials/mixins';
 @import '../../partials/spacings';
 
-.great-header {
+$menu-max-width: 1200px;
+$menu-item-vertical-spacing: 10px;
+$menu-margin-l: 30px;
+$menu-margin-s: 20px;
+
+@mixin desktopOnly() {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+@mixin mobileOnly() {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+@mixin headerContainer() {
+  max-width: $menu-max-width;
+  margin: 0 auto;
+
+  @media (max-width: 1260px) {
+    margin: 0 $menu-margin-l;
+  }
+
+  @media (max-width: 420px) {
+    margin: 0 $menu-margin-s;
+  }
+}
+
+.great-header, .great-sub-header {
   // need to make sure it's not underneath anything
   position: relative;
   z-index: 5;
+
+  &:focus-within {
+    // ensure that the focused outline will appear above any other headers/sub-headers.
+    // focus-within won't work on all browsers, but its still usable without this.
+    z-index: 6;
+  }
 
   a:focus {
     @include focus;
@@ -27,14 +65,7 @@
       flex-wrap: wrap;
       align-content: center;
       padding: 0;
-
-      @media (max-width: 768px) {
-        margin: 0 30px;
-      }
-
-      @media (max-width: 420px) {
-        margin: 0 20px;
-      }
+      @include headerContainer;
     }
   }
 
@@ -55,12 +86,8 @@
 
   .main-nav-container {
     &.mobile {
-      display: none;
       margin: 0;
-
-      @media (max-width: 768px) {
-        display: flex;
-      }
+      @include mobileOnly;
     }
 
     &.desktop {
@@ -69,13 +96,10 @@
       justify-content: flex-end;
       flex-grow: 1;
       align-self: flex-end;
+      @include desktopOnly;
 
       @media (max-width: 1260px) {
-        margin-left: 30px;
-      }
-
-      @media (max-width: 768px) {
-        display: none;
+        margin-left: $menu-margin-l;
       }
     }
   }
@@ -87,12 +111,10 @@
       background-color: $lightened-great-blue;
       margin: 0;
       width: 100%;
-      height: 0;
       opacity: 0;
       overflow: hidden;
 
       &.expanded {
-        height: auto;
         opacity: 1;
         display: block;
       }
@@ -104,8 +126,7 @@
     }
 
     &.desktop {
-      max-width: 1200px;
-      display: block;
+      max-width: $menu-max-width;
     }
   }
 
@@ -116,7 +137,7 @@
     position: relative;
 
     @media (max-width: 420px) {
-      margin: 4px 20px;
+      margin: 4px $menu-margin-s;
     }
   }
 
@@ -132,10 +153,10 @@
     font-family: inherit;
     display: block;
     font-size: 16px;
+    line-height: $spacing-3;
     padding: 15px;
     text-decoration: none;
     position: relative;
-    margin-bottom: 10px;
 
     &:hover {
       text-decoration: underline;
@@ -145,6 +166,7 @@
       text-decoration: underline;
       padding: 15px 0;
       margin: 0;
+      line-height: 1;
     }
   }
 }

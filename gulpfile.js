@@ -1,14 +1,11 @@
-'use strict'
+'use strict';
 
 const path = require('path');
-const paths = require('govuk-elements/config/paths.json');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
-const mocha = require('gulp-mocha');
-const nodemon = require('gulp-nodemon');
 const rename = require('gulp-rename');
 const runsequence = require('run-sequence');
 const sass = require('gulp-sass');

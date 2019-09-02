@@ -189,26 +189,3 @@ def test_ga360_mixin_does_not_share_data_between_instances():
     view_two = TestView()
 
     assert 'Test Key' not in view_two.ga360_payload
-
-
-def test_international_header_mixin(rf):
-    with translation.override('en-gb'):
-
-        class TestView(mixins.InternationalHeaderMixin, TemplateView):
-            header_section = 'invest'
-            template_name = 'directory_components/base.html'
-
-        request = rf.get('/')
-        response = TestView.as_view()(request)
-
-        assert response.status_code == 200
-        assert len(response.context_data['sub_header_items']) == 0
-        assert len(response.context_data['pages']) == 4
-
-        header_items = [(item[0], item[2]) for item in response.context_data['header_items']]  # NOQA
-        assert header_items == [
-            ('Invest', True),
-            ('UK setup guide', False),
-            ('Find a UK supplier', False),
-            ('Industries', False),
-        ]

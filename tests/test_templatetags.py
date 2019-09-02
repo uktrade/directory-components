@@ -6,7 +6,7 @@ from django.template import Context, Template
 
 from directory_components import forms
 from directory_components.templatetags import directory_components
-
+from directory_components.templatetags.directory_components import international_header
 
 REQUIRED_MESSAGE = forms.PaddedCharField.default_error_messages['required']
 
@@ -1028,3 +1028,107 @@ def test_pagination(count, current, expected, rf):
     if soup.findAll('a', {'class': 'pagination-next'}):
         items.append('N')
     assert ' '.join(items) == expected
+
+
+class NavNode:
+    def __init__(self, tier_one_item, tier_two_items):
+        self.tier_one_item = tier_one_item
+        self.tier_two_items = tier_two_items
+
+class NavItem:
+    def __init__(self, title, name):
+        self.title = title
+        self.name = name
+        self.url = "/{0}/".format(name)
+
+
+SAMPLE_NAVIGATION_TREE = [
+    NavNode(
+        tier_one_item=NavItem('Root 1', 'root-1'),
+        tier_two_items=[
+            NavItem('Sub Page 1', 'sub-page-1'),
+        ]
+    ),
+    NavNode(
+        tier_one_item=NavItem('Root 2', 'root-2'),
+        tier_two_items=[]
+    ),
+]
+
+
+@pytest.mark.parametrize('section,subsection', [
+    ('', ''),
+    ('incorrect-section', ''),
+    ('', 'incorrect-subsection'),
+    ('', 'sub-page-one'),
+])
+def test_international_header_no_active_sections(section, subsection):
+    navigation = international_header(SAMPLE_NAVIGATION_TREE, '', '')
+
+    assert len(navigation['tier_one_items']) == 2
+    assert navigation['tier_one_items'][0].title == 'Root 1'
+    assert navigation['tier_one_items'][0].is_active is False
+    assert navigation['tier_one_items'][1].title == 'Root 2'
+    assert navigation['tier_one_items'][1].is_active is False
+
+    assert len(navigation['tier_two_items']) == 0
+
+    assert navigation['navigation_tree'] == SAMPLE_NAVIGATION_TREE
+
+
+def test_international_header_active_section():
+    navigation = international_header(SAMPLE_NAVIGATION_TREE, 'root-1', '')
+
+    assert len(navigation['tier_one_items']) == 2
+    assert navigation['tier_one_items'][0].is_active is True
+    assert navigation['tier_one_items'][1].is_active is False
+
+    assert len(navigation['tier_two_items']) == 1
+    assert navigation['tier_two_items'][0].title == 'Sub Page 1'
+    assert navigation['tier_two_items'][0].is_active == False
+
+
+def test_international_header_active_section_and_subsection():
+    navigation = international_header(SAMPLE_NAVIGATION_TREE, 'root-1', 'sub-page-1')
+
+    assert len(navigation['tier_one_items']) == 2
+    assert navigation['tier_one_items'][0].is_active is True
+    assert navigation['tier_one_items'][1].is_active is False
+
+    assert len(navigation['tier_two_items']) == 1
+    assert navigation['tier_two_items'][0].title == 'Sub Page 1'
+    assert navigation['tier_two_items'][0].is_active == True
+
+
+def test_international_header_tag():
+    template = Template(
+        '{% load international_header from directory_components %}'
+        '{% international_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
+    )
+    context = {
+        'tree': SAMPLE_NAVIGATION_TREE,
+        'section': '',
+        'sub_section': '',
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/root-1/'}) is not None
+
+
+def test_invest_header_tag():
+    template = Template(
+        '{% load invest_header from directory_components %}'
+        '{% invest_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
+    )
+    context = {
+        'tree': SAMPLE_NAVIGATION_TREE,
+        'section': '',
+        'sub_section': '',
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/root-1/'}) is not None

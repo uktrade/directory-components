@@ -7,6 +7,7 @@
 @import '../../partials/mixins';
 
 .great-global-header-footer,
+.great-sub-header,
 .great-header {
   font-family: $brand-font;
   font-weight: 700;
@@ -49,6 +50,7 @@
 
 .great-global-header-footer,
 .great-header,
+.great-sub-header,
 .great-footer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,7 +62,8 @@
 }
 
 .great-footer,
-.great-header {
+.great-header,
+.great-sub-header {
   a:active:focus {
     color: $great-blue;
   }
