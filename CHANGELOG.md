@@ -1,5 +1,12 @@
 # Changelog
 
+## 29.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
+- Update to latest version of directory-constants
+
+### Breaking Changes
+- now uses `directory-constants` in the range `>=19.1.0,<20.0.0`
+
 ## 28.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
 
