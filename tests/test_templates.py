@@ -64,7 +64,7 @@ def test_base_page_links(settings):
     context = context_processors.urls_processor(None)
     html = render_to_string('directory_components/base.html', context)
 
-    assert urls.FEEDBACK in html
+    assert urls.domestic.FEEDBACK in html
 
 
 def test_404_links(settings):
@@ -72,8 +72,8 @@ def test_404_links(settings):
     context = context_processors.urls_processor(None)
     html = render_to_string('404.html', context)
 
-    assert urls.SERVICES_GREAT_DOMESTIC in html
-    assert urls.CONTACT_US in html
+    assert urls.domestic.HOME in html
+    assert urls.domestic.CONTACT_US in html
 
 
 def test_404_content(settings):

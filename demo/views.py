@@ -38,7 +38,9 @@ class IndexPageView(BasePageView):
         context['version'] = self.get_version()
         return context
 
+
 NavNode = namedtuple('NavItem', 'tier_one_item tier_two_items')
+
 
 class TierOneNavItem:
     def __init__(self, title):
@@ -51,6 +53,7 @@ class TierOneNavItem:
     @property
     def url(self):
         return f'/great-international-header-footer/?section={self.name}'
+
 
 class TierTwoNavItem:
     def __init__(self, title, parent_title):
@@ -68,6 +71,7 @@ class TierTwoNavItem:
     @property
     def url(self):
         return f'/great-international-header-footer/?section={self.parent_name}&sub_section={self.name}'
+
 
 class InternationalHeaderView(
     CountryDisplayMixin,
