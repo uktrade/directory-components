@@ -4,7 +4,12 @@
 
 // Hero banner
 
-.hero {
+.great-hero-heading {
+  @include brand-xlarge;
+  color: $white;
+}
+
+.great-hero {
   position: relative;
   padding-top: 0;
   padding-bottom: 0;
@@ -12,9 +17,58 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  & > .container {
+    z-index: 1;
+    position: absolute;
+    overflow: visible;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
-.hero-generic {
+.great-hero-no-image {
+  height: 160px;
+  background-color: $hero-blue;
+}
+
+.great-hero-title {
+  max-width: 700px;
+  background-color: $hero-blue;
+  border-bottom: $flag-red solid 6px;
+  bottom: -6px;
+  left: 0;
+  padding: 30px;
+  position: absolute;
+  width: auto;
+
+  h1 > span {
+    display: block;
+  }
+}
+
+.great-hero-description {
+  margin-bottom: 0;
+  font-family: $brand-font;
+}
+
+.great-hero-subheading {
+  @include brand-large;
+}
+
+.great-hero-image {
+  display: block;
+  z-index: 0;
+
+  img, source {
+    display: block;
+    width: 100%;
+  }
+}
+
+.great-hero-generic {
   background-color: $hero-blue;
 
   .container {
@@ -23,135 +77,91 @@
     overflow: visible;
     padding-top: 45px;
   }
-
-  .hero-title {
-    background-color: $hero-blue;
-    border-bottom: $flag-red solid 6px;
-    bottom: -6px;
-    left: 0;
-    padding: 30px;
-    position: absolute;
-    width: auto;
-
-    h1 > span {
-      display: block;
-    }
-  }
-
-  .hero-title-compact {
-    @extend .hero-title;
-    padding: 25px;
-    max-width: 30%;
-
-    .hero-subheading {
-      @include brand-19();
-    }
-  }
-
-  .hero-description {
-    margin-bottom: 0;
-    font-family: $brand-font;
-  }
-
-  .hero-subheading {
-    @include brand-24();
-  }
-}
-
-.hero-domestic {
-  h1,
-  h2,
-  h3 {
-    margin-bottom: $spacing-1;
-  }
-
-  img {
-    float: right;
-    height: 90px;
-    margin-bottom: $spacing-3;
-  }
 }
 
 @media (max-width: 1100px) {
-  .hero-generic {
-    .hero-title,
-    .hero-title-compact {
-      max-width: 400px;
-    }
+  .great-hero-title {
+    max-width: 400px;
   }
 }
 
 @media (min-width: 641px) {
-  .hero-title {
+  .great-hero-title {
     min-width: 470px;
   }
-}
 
-@media (max-width: 640px) {
-  .heading-hero-generic {
-    font-size: 32px;
+  .great-hero-no-image {
+    height: 345px;
   }
 }
 
-.hero-with-cta {
-    padding: $spacing-1 + $spacing-3 0 $spacing-1;
-    background-color: $black;
-    min-height: 350px;
+.great-hero-with-cta {
+  padding: $spacing-1 + $spacing-3 0 $spacing-1;
+  color: $white;
+  background-color: $black;
+  min-height: 350px;
+  background-position: 50%;
+  background-size: cover;
 
-    h1 {
-      margin-top: 0;
+  h1 {
+    margin-top: 0;
+  }
+
+  h2 {
+    margin-bottom: $spacing-3;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .great-hero-brand {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    img {
+      height: 100px;
+    }
+  }
+
+  .great-hero-text {
+    width: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .great-hero-with-cta {
+    .great-hero-text {
+      width: calc(100% / 3 * 2);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .great-hero-background-image {
+    height: 160px;
+    width: auto;
+  }
+
+  .great-hero-with-cta {
+    .great-hero-text {
+      width: 100%;
+
+      h2 {
+        width: 70%;
+      }
     }
 
-    h2 {
-      margin-bottom: $spacing-3;
-    }
-
-    .container {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-    }
-
-    .hero-brand {
-      position: absolute;
-      right: 0;
-      top: 0;
+    .great-hero-brand {
+      bottom: 0;
+      top: auto;
 
       img {
-        height: 100px;
-      }
-    }
-
-    .hero-text {
-      width: 50%;
-    }
-  }
-
- @media (max-width: 900px) {
-    .hero-with-cta {
-      .hero-text {
-        width: calc(100% / 3 * 2);
+        height: 80px;
       }
     }
   }
-
-@media (max-width: 640px) {
-.hero-with-cta {
-      .hero-text {
-        width: 100%;
-
-        h2 {
-          width: 70%;
-        }
-      }
-
-      .hero-brand {
-        bottom: 0;
-        top: auto;
-
-        img {
-          height: 80px;
-        }
-      }
-    }
 }
