@@ -654,39 +654,9 @@ def test_hero():
 
     banner = soup.find(id='hero-heading')
     assert 'hero_text' in banner.string
-    assert 'heading-hero-generic-compact' in banner['class']
+    assert 'great-hero-heading' in banner['class']
 
-    assert 'hero-title-compact' in html
-
-    banner = soup.find(id='hero-description')
-    assert banner.string == 'description'
-
-
-def test_hero_large_title():
-    hero_content = {
-        'background_image_url': 'image.png',
-        'hero_text': 'hero_text',
-        'description': 'description',
-        'large_title': True,
-    }
-    string = (
-        "{{% load hero from directory_components %}}"
-        "{{% hero background_image_url='{background_image_url}' "
-        "hero_text='{hero_text}' description='{description}' "
-        "large_title={large_title} %}}"
-        ).format(**hero_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    banner = soup.find(id='hero-heading')
-    assert 'hero_text' in banner.string
-    assert 'heading-hero-generic' in banner['class']
-
-    assert 'hero-title' in html
+    assert 'great-hero-title' in html
 
     banner = soup.find(id='hero-description')
     assert banner.string == 'description'
