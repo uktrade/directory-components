@@ -2,7 +2,7 @@
 @import '../partials/mixins';
 
 #skip-link {
-  @include font-med-normal;
+  @include body-small;
   background-color: transparent;
   color: $white;
   display: inline-block;

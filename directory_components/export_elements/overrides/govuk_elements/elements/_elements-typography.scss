@@ -11,7 +11,7 @@ body {
 }
 
 .quote {
-  @include quote-24
+  @include quote-large
   margin-top: em(5, 16);
   margin-bottom: em(20, 16);
 
