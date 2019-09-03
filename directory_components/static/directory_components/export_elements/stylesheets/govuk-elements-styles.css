@@ -1119,19 +1119,16 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', helvetica, arial, sans-serif; }
 
 .quote {
-  font-family: "Roboto", arial, helvetica, verdana;
   font-weight: 400;
-  text-transform: none;
-  font-size: 18px;
+  font-size: 19px;
+  font-family: "Roboto", arial, helvetica, verdana;
+  font-style: normal;
   line-height: 1.6;
-  font-family: "Georgia", serif;
-  font-style: italic;
   margin-top: 0.3125em;
   margin-bottom: 1.25em; }
   @media (min-width: 641px) {
     .quote {
-      font-size: 24px;
-      line-height: 1.6; } }
+      font-size: 24px; } }
   @media (min-width: 641px) {
     .quote {
       margin-top: 0.26316em;
@@ -1655,6 +1652,9 @@ table {
 .table-font-xsmall th,
 .table-font-xsmall td {
   padding: 0.75em 1.25em 0.5625em 0; }
+
+table {
+  margin-bottom: 30px; }
 
 details {
   display: block;
