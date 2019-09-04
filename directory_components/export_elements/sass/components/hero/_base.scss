@@ -68,17 +68,6 @@
   }
 }
 
-.great-hero-generic {
-  background-color: $hero-blue;
-
-  .container {
-    min-height: 345px;
-    position: relative;
-    overflow: visible;
-    padding-top: 45px;
-  }
-}
-
 @media (max-width: 1100px) {
   .great-hero-title {
     max-width: 400px;
@@ -117,16 +106,6 @@
     flex-direction: row;
   }
 
-  .great-hero-brand {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    img {
-      height: 100px;
-    }
-  }
-
   .great-hero-text {
     width: 50%;
   }
@@ -141,11 +120,6 @@
 }
 
 @media (max-width: 640px) {
-  .great-hero-background-image {
-    height: 160px;
-    width: auto;
-  }
-
   .great-hero-with-cta {
     .great-hero-text {
       width: 100%;
