@@ -20,6 +20,8 @@
 * `heading-hero-generic-compact`
 * `hero-title-compact`
 
+- The `large_title` param has been removed from hero components
+
 ## 29.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
 - Update to latest version of directory-constants
