@@ -19,6 +19,10 @@
 {% static 'images/hero-768x300.png' as hero_medium %}
 {% static 'images/hero-640x300.png' as hero_small %}
 
+{% static 'images/placeholder-1200x300.png' as placeholder_xlarge %}
+{% static 'images/placeholder-1200x400.png' as placeholder_large %}
+{% static 'images/placeholder-768x376.png' as placeholder_medium %}
+
 {% hero xlarge_image=hero_xlarge large_image=hero_large medium_image=hero_medium small_image=hero_small hero_text="Full width banners" %}
 
 <div class="container">
@@ -41,27 +45,32 @@
         <tr>
           <th>Screen width</th>
           <th>Image to use</th>
+          <th>Image dimensions</th>
         </tr>
       </thead>
       <tr>
         <td>&gt; 1024px</td>
         <td><code>xlarge_image</code></td>
+        <td>1200x300</td>
       </tr>
       <tr>
         <td>&gt; 768px</td>
         <td><code>large_image</code></td>
+        <td>1024x300</td>
       </tr>
       <tr>
         <td>&gt; 640px</td>
         <td><code>medium_image</code></td>
+        <td>768x300</td>
       </tr>
       <tr>
         <td>&lt;= 640px</td>
         <td><code>small_image</code></td>
+        <td>640x300</td>
       </tr>
     </table>
   </div>
-  <p><code>medium_image</code> must be provided and is the default image size. Ideally the other image sizes should have a width that matches the max width of the given breakpoint e.g. in the examples on this page the image for &gt; 1024px is 1200px wide. For &gt; 768px the image is 1024px wide.</p>
+  <p><code>medium_image</code> must be provided and is the default image size.</p>
 
   <h3 class="heading-medium">Subheadings</h3>
   <p>Hero title can also be split into heading and subheading.</p>
@@ -112,10 +121,38 @@
   <h3 class="heading-medium">Hero with CTA button</h3>
 </div>
 
-{% hero_with_cta heading="Hero banner with CTA." subheading="For two line cases." subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." img_url=placeholder cta_text="Continue" cta_link="www.google.com" %}
+{% hero_with_cta heading="Heading" subheading="Subheading" medium_image=placeholder_medium large_image=placeholder_large small_image=placeholder_small xlarge_image=placeholder_xlarge cta_text="Continue" cta_link="/foo" %}
 
 <div class="container">
-  <pre><code>{% verbatim %}{% hero_with_cta heading="Hero banner with cta." subheading="For two line cases." subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." img_url=placeholder cta_text="continue" cta_link="www.google.com" %}{% endverbatim %}</code></pre>
+  <pre><code>{% verbatim %}{% hero_with_cta heading="Heading" subheading="Subheading" medium_image=placeholder_medium large_image=placeholder_large small_image=placeholder_small xlarge_image=placeholder_xlarge cta_text="Continue" cta_link="/foo" %}{% endverbatim %}</code></pre>
+
+  <h3 class="heading-medium">Responsive image sizes</h3>
+  <p class="width-two-thirds">3 image sizes can be passed to the <code>hero_with_cta</code> template tag: <code>xlarge_image</code>, <code>large_image</code> and <code>medium_image</code>.</p>
+  <p>Breakpoints and images are as follows:</p>
+  <table class="width-two-thirds">
+    <thead>
+      <tr>
+        <th>Screen width</th>
+        <th>Image to use</th>
+        <th>Image dimensions</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>&gt; 1300px</td>
+      <td><code>xlarge_image</code></td>
+      <td>1200x300</td>
+    </tr>
+    <tr>
+      <td>&gt; 1024px</td>
+      <td><code>large_image</code></td>
+      <td>1200x400</td>
+    </tr>
+    <tr>
+      <td>&lt;= 1024px</td>
+      <td><code>medium_image</code></td>
+      <td>768x376</td>
+    </tr>
+  </table>
 
   <h4 class="heading-small">HTML markup</h4>
   <pre><code>&lt;section data-ga-section="caseStudy" class="great-case-study" style="background-image: url([background_image])">
