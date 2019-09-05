@@ -1,5 +1,28 @@
 # Changelog
 
+## 30.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/274/files)
+
+### Breaking Changes
+- Some class names have changed:
+* `case-study` => `great-case-study`
+* `hero` => `great-hero`
+* `hero-with-cta` => `great-hero-with-cta`
+* `hero-title` => `great-hero-title`
+* `hero-text` => `great-hero-text`
+* `heading-hero-generic` => `great-hero-heading`
+* `hero-subheading` => `great-hero-subheading`
+* `hero-description` => `great-hero-description`
+
+- Some classes have been removed:
+* `hero-domestic`
+* `heading-hero-domestic`
+* `heading-hero-generic-compact`
+* `hero-title-compact`
+
+- The `large_title` param has been removed from hero components
+- `{% render_form form %}` has been removed. Please use `{{ form }}` instead
+
 ## 29.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
 - Update to latest version of directory-constants
@@ -14,7 +37,7 @@
 - Changes to international header to improve support for new sticky second tier navigation.
 
 ### Breaking Changes
-- The `InternationalHeader` mixin has been removed, and replaced with the `international_header` templatetag. 
+- The `InternationalHeader` mixin has been removed, and replaced with the `international_header` templatetag.
 
 ## 27.14.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/269/files)

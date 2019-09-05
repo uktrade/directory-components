@@ -171,46 +171,6 @@ def test_add_export_elements_classes(input_html, expected_html):
     assert html == expected_html
 
 
-def test_render_form():
-    form = PaddedTestForm(data={'field': 'value'})
-
-    template = Template(
-        '{% load render_form from directory_components %}'
-        '{% render_form form %}'
-    )
-    context = Context({'form': form})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    form_container = soup.find('div')
-    assert 'form-group' in form_container['class']
-
-    label = soup.find('label')
-    assert 'form-label' in label['class']
-    assert label['for'] == 'id_field'
-
-    input_field = soup.find('input')
-    assert input_field['id'] == 'id_field'
-
-
-def test_render_form_non_field_errors():
-    form = PaddedTestForm(data={'field': 'value'})
-    form.add_error(field=None, error=['Some error', 'Some other error'])
-    assert form.is_valid() is False
-
-    template = Template(
-        '{% load render_form from directory_components %}'
-        '{% render_form form %}'
-    )
-    context = Context({'form': form})
-
-    html = template.render(context)
-
-    assert 'Some error' in html
-    assert 'Some other error' in html
-
-
 def test_card():
     card_content = {
         'title': 'title',
@@ -654,39 +614,9 @@ def test_hero():
 
     banner = soup.find(id='hero-heading')
     assert 'hero_text' in banner.string
-    assert 'heading-hero-generic-compact' in banner['class']
+    assert 'great-hero-heading' in banner['class']
 
-    assert 'hero-title-compact' in html
-
-    banner = soup.find(id='hero-description')
-    assert banner.string == 'description'
-
-
-def test_hero_large_title():
-    hero_content = {
-        'background_image_url': 'image.png',
-        'hero_text': 'hero_text',
-        'description': 'description',
-        'large_title': True,
-    }
-    string = (
-        "{{% load hero from directory_components %}}"
-        "{{% hero background_image_url='{background_image_url}' "
-        "hero_text='{hero_text}' description='{description}' "
-        "large_title={large_title} %}}"
-        ).format(**hero_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    banner = soup.find(id='hero-heading')
-    assert 'hero_text' in banner.string
-    assert 'heading-hero-generic' in banner['class']
-
-    assert 'hero-title' in html
+    assert 'great-hero-title' in html
 
     banner = soup.find(id='hero-description')
     assert banner.string == 'description'

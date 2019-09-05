@@ -1,20 +1,31 @@
 
-<section
-  class="hero hero-with-cta"
-  data-noscript=""
-  data-ga-section="hero"
-  {% if img_url %}
-  style="background-image: url('{{ img_url }}')"
-  {% endif %}>
-  <div class="container">
-    <div class="hero-text">
+<section data-ga-section="hero" class="great-hero-with-cta">
+  {% if medium_image %}
+  <picture>
+    {% if xlarge_image %}
+    <source media="(min-width: 1300px)" srcset="{{ xlarge_image }} 1200w">
+    {% endif %}
+
+    {% if large_image %}
+    <source media="(min-width: 1025px)" srcset="{{ large_image }} 1200w">
+    {% endif %}
+
+    {# default #}
+    <source media="" srcset="{{ medium_image }} 768w">
+
+    <img class="great-hero-image" alt="{{ img_alt }}" src="{{ medium_image }} 768w">
+  </picture>
+  {% endif %}
+
+  <div class="container padding-top-90-l padding-top-45 padding-bottom-45-l">
+    <div class="great-hero-text width-half-xl width-two-thirds-l width-full">
       <h1 class="heading-xlarge {% if subheading %} margin-bottom-0 {% else %} margin-bottom-30 {% endif %} ">{{ heading }}</h1>
       {% block content %}
       {% if subheading %}
       <h2 class="heading-xlarge margin-top-0 margin-bottom-30">{{ subheading }}</h2>
       {% endif %}
       {% if subtitle %}
-      <p class="hero-subtitle margin-bottom-45">{{ subtitle }}</p>
+      <p class="margin-bottom-45">{{ subtitle }}</p>
       {% endif %}
       {% if cta_text and cta_link %}
         <a href="{{ cta_link }}" class="button button-arrow-small button-blue margin-bottom-30">{{ cta_text }}</a>

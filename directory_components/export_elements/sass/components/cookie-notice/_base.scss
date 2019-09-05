@@ -3,7 +3,7 @@
 @import '../../partials/colours';
 
 .cookie-notice {
-  @include font-med-normal;
+  @include body-small;
   padding: 10px 0;
 
   a:focus, button:focus {

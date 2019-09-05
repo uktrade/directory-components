@@ -458,6 +458,18 @@ section {
       width: 58.33333%; } }
 
 @media (min-width: 641px) {
+  .width-sixth-m {
+    width: 16.66667%; }
+  .width-quarter-m {
+    width: 25%; }
+  .width-half-m {
+    width: 50%; }
+  .width-third-m {
+    width: 33.33333%; }
+  .width-two-thirds-m {
+    width: 66.66667%; }
+  .width-full-m {
+    width: 100%; }
   .column-full-m {
     padding: 0 15px;
     -webkit-box-sizing: border-box;
@@ -548,6 +560,18 @@ section {
       width: 75%; } }
 
 @media (min-width: 769px) {
+  .width-sixth-l {
+    width: 16.66667%; }
+  .width-quarter-l {
+    width: 25%; }
+  .width-half-l {
+    width: 50%; }
+  .width-third-l {
+    width: 33.33333%; }
+  .width-two-thirds-l {
+    width: 66.66667%; }
+  .width-full-l {
+    width: 100%; }
   .column-full-l {
     padding: 0 15px;
     -webkit-box-sizing: border-box;
@@ -638,6 +662,18 @@ section {
       width: 75%; } }
 
 @media (min-width: 961px) {
+  .width-sixth-xl {
+    width: 16.66667%; }
+  .width-quarter-xl {
+    width: 25%; }
+  .width-half-xl {
+    width: 50%; }
+  .width-third-xl {
+    width: 33.33333%; }
+  .width-two-thirds-xl {
+    width: 66.66667%; }
+  .width-full-xl {
+    width: 100%; }
   .column-full-xl {
     padding: 0 15px;
     -webkit-box-sizing: border-box;
@@ -1119,19 +1155,16 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', helvetica, arial, sans-serif; }
 
 .quote {
-  font-family: "Roboto", arial, helvetica, verdana;
   font-weight: 400;
-  text-transform: none;
-  font-size: 18px;
+  font-size: 19px;
+  font-family: "Roboto", arial, helvetica, verdana;
+  font-style: normal;
   line-height: 1.6;
-  font-family: "Georgia", serif;
-  font-style: italic;
   margin-top: 0.3125em;
   margin-bottom: 1.25em; }
   @media (min-width: 641px) {
     .quote {
-      font-size: 24px;
-      line-height: 1.6; } }
+      font-size: 24px; } }
   @media (min-width: 641px) {
     .quote {
       margin-top: 0.26316em;
@@ -1655,6 +1688,9 @@ table {
 .table-font-xsmall th,
 .table-font-xsmall td {
   padding: 0.75em 1.25em 0.5625em 0; }
+
+table {
+  margin-bottom: 30px; }
 
 details {
   display: block;

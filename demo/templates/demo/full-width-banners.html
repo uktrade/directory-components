@@ -14,179 +14,299 @@
 {% static 'images/hero04.jpg' as dark_hero %}
 {% static 'images/card_image01.jpg' as half_image %}
 
+{% static 'images/hero-1200x300.png' as hero_xlarge %}
+{% static 'images/hero-1024x300.png' as hero_large %}
+{% static 'images/hero-768x300.png' as hero_medium %}
+{% static 'images/hero-640x300.png' as hero_small %}
+
+{% static 'images/placeholder-1200x300.png' as placeholder_xlarge %}
+{% static 'images/placeholder-1200x400.png' as placeholder_large %}
+{% static 'images/placeholder-768x376.png' as placeholder_medium %}
+
+{% hero xlarge_image=hero_xlarge large_image=hero_large medium_image=hero_medium small_image=hero_small hero_text="Full width banners" %}
+
 <div class="container">
   {% breadcrumbs 'Full width banners' %}<a href="/">Home</a>{% endbreadcrumbs %}
 </div>
 
-<section class="padding-top-30">
-  <div class="container">
-    <div class="width-two-thirds">
-      <h1 class="heading-xlarge">Full width banners</h1>
-      <h2 class="heading-large">Hero</h2>
-      <p>Load this template tag to use the hero.</p>
-    </div>
-    <pre><code>{% verbatim %}{% load hero from directory_components %}{% endverbatim %}</code></pre>
+<div class="container">
+  <div class="width-two-thirds">
+    <h2 class="heading-large">Hero</h2>
+    <p>Load this template tag to use the hero.</p>
   </div>
+  <pre><code>{% verbatim %}{% load hero from directory_components %}{% endverbatim %}</code></pre>
 
-  {% hero background_image_url=hero_image_domestic hero_text="Large title" large_title=True %}
-
-  <div class="container">
-    <pre><code>{% verbatim %}{% hero background_image_url=hero_image_domestic hero_text="Large title" large_title=True %}{% endverbatim %}</code></pre>
-    <p class="width-two-thirds">Use the hero with large title for when the title is very short. If CMS content is being used, a character count can be done on the title field to decide whether to pass <code>large_title=True</code> to the template.</p>
+  <h3 class="heading-medium">Responsive image sizes</h3>
+  <p>4 image sizes can be passed to the <code>hero</code> template tag: <code>xlarge_image</code>, <code>large_image</code>, <code>medium_image</code> and <code>small_image</code>.</p>
+  <p>Breakpoints and images are as follows:</p>
+  <div class="width-two-thirds">
+    <table>
+      <thead>
+        <tr>
+          <th>Screen width</th>
+          <th>Image to use</th>
+          <th>Image dimensions</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>&gt; 1024px</td>
+        <td><code>xlarge_image</code></td>
+        <td>1200x300</td>
+      </tr>
+      <tr>
+        <td>&gt; 768px</td>
+        <td><code>large_image</code></td>
+        <td>1024x300</td>
+      </tr>
+      <tr>
+        <td>&gt; 640px</td>
+        <td><code>medium_image</code></td>
+        <td>768x300</td>
+      </tr>
+      <tr>
+        <td>&lt;= 640px</td>
+        <td><code>small_image</code></td>
+        <td>640x300</td>
+      </tr>
+    </table>
   </div>
+  <p><code>medium_image</code> must be provided and is the default image size.</p>
 
-  {% hero background_image_url=hero_image hero_subheading="Exporting to" hero_text="Germany" large_title=True %}
+  <h3 class="heading-medium">Subheadings</h3>
+  <p>Hero title can also be split into heading and subheading.</p>
+</div>
 
-  <div class="container">
-    <pre><code>{% verbatim %}{% hero background_image_url=hero_image_domestic hero_subheading="Exporting to" hero_text="Germany" large_title=True %}{% endverbatim %}</code></pre>
-    <p>Hero title can also be split into heading and subheading.</p>
-  </div>
+{% hero large_image=hero_large medium_image=hero_medium hero_subheading="Exporting to" hero_text="Germany" %}
 
-  {% hero background_image_url=hero_image_domestic hero_subheading="Exporting to" hero_text="Germany" %}
+<div class="container">
+  <pre><code>{% verbatim %}{% hero large_image=hero_large medium_image=hero_medium hero_subheading="Exporting to" hero_text="Germany" %}{% endverbatim %}</code></pre>
 
-  <div class="container">
-    <pre><code>{% verbatim %}{% hero background_image_url=hero_image_domestic hero_subheading="Exporting to" hero_text="Germany" %}{% endverbatim %}</code></pre>
-    <p class="width-two-thirds">Compact version.</p>
-  </div>
 
-  {% hero hero_text="Hero banner with a description" background_image_url=hero_image description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+  <h3 class="heading-medium">Description</h3>
+  <p>A description can be added after the hero heading.</p>
 
-  <div class="container">
-    <pre><code>{% verbatim %}{% hero hero_text="Hero banner with a description" description='Lorem ipsum...' %}{% endverbatim %}</code></pre>
-  </div>
+</div>
 
-  {% hero hero_text="Hero banner with no background image" %}
+{% hero hero_text="Hero banner with a description" large_image=hero_large medium_image=hero_medium description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
 
-  <div class="container">
-    <pre><code>{% verbatim %}{% hero hero_text="Hero banner with no background image" %}{% endverbatim %}</code></pre>
-  </div>
+<div class="container">
+  <pre><code>{% verbatim %}{% hero hero_text="Hero banner with a description" description='Lorem ipsum...' %}{% endverbatim %}</code></pre>
 
-  {% hero_with_cta heading="Hero banner with CTA." subheading="For two line cases." subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." img_url=placeholder cta_text="Continue" cta_link="www.google.com" %}
+  <h3 class="heading-medium">No image</h3>
+  <p>If an image is not provided a background colour will be used.</p>
 
-  <div class="container">
-    <pre><code>{% verbatim %}{% hero_with_cta heading="Hero banner with cta." subheading="For two line cases." subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." img_url=placeholder cta_text="continue" cta_link="www.google.com" %}{% endverbatim %}</code></pre>
-  </div>
+</div>
 
- {% case_study background_image=placeholder heading='Full width banner with a subtitle and CTA' subtitle='This component works best with a dark background image or an image where the left side is darker than the right so that this white text is legible. On tablet and smaller the image is displayed separately from the text.'  cta_link='/'  cta_text='Continue' %}
+{% hero hero_text="Hero banner with no background image" %}
 
-  <div class="container">
-    <pre><code>{% verbatim %} {% case_study background_image=placeholder heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}{% endverbatim %}</code></pre>
-  </div>
+<div class="container">
+  <pre><code>{% verbatim %}{% hero hero_text="Hero banner with no background image" %}{% endverbatim %}</code></pre>
 
- {% case_study background_tint=True background_image=hero_image_domestic heading='Full width banner with subtitle, CTA, and background tint' subtitle='If an image is too bright a background tint can be used to make text more legible. On tablet and smaller it displays the same as above.'  cta_link='www.google.com'  cta_text='Continue' %}
+    <h4 class="heading-small">HTML markup</h4>
+    <pre><code>&lt;section class="great-hero" id="hero">
+    &lt;picture class="great-hero-image">
+      &lt;source media="(min-width: 1025px)" srcset="[xlarge_image] 1200w">
+      &lt;source media="(min-width: 769px)" srcset="[large_image] 1024w">
+      &lt;source media="(min-width: 641px)" srcset="[medium_image] 768w">
+      &lt;source media="(max-width: 640px)" srcset="[small_image] 640w">
+      &lt;img alt="" src="[medium_image]">
+    &lt;/picture>
+    &lt;div class="container">
+      &lt;div class="great-hero-title">
+          &lt;h1 class="great-hero-heading" id="hero-heading">[heading]&lt;/h1>
+      &lt;/div>
+    &lt;/div>
+  &lt;/section></code></pre>
 
-  <div class="container">
-    <pre><code>{% verbatim %} {% case_study background_tint=True background_image=hero_image_domestic heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}{% endverbatim %}</code></pre>
-  </div>
+  <h3 class="heading-medium">Hero with CTA button</h3>
+</div>
 
-  <div class="container">
-    <h3 class="heading-large"> Full width image with a list of items and an optional image or video</h3>
-    <p>The intro is expected to be a mark down field</p>
-    <p>The list of items are expected to be a dictionary with a title and text</p>
+{% hero_with_cta heading="Heading" subheading="Subheading" medium_image=placeholder_medium large_image=placeholder_large small_image=placeholder_small xlarge_image=placeholder_xlarge cta_text="Continue" cta_link="/foo" %}
 
-    <pre><code>{% verbatim %}items_list=[
-    {
-        'title': 'Item One Title',
-        'text': '&lt;p>Lorem ipsum ... &lt;a href="/full-width-banners/">Learn more.&lt;/a>&lt;/p>'
-    },
-    {
-        'title': 'Item Two Title',
-        'text': '&lt;p>Lorem ipsum ... &lt;a href="/full-width-banners/">Learn more.&lt;/a>&lt;/p>'
-    },
+<div class="container">
+  <pre><code>{% verbatim %}{% hero_with_cta heading="Heading" subheading="Subheading" medium_image=placeholder_medium large_image=placeholder_large small_image=placeholder_small xlarge_image=placeholder_xlarge cta_text="Continue" cta_link="/foo" %}{% endverbatim %}</code></pre>
+
+  <h3 class="heading-medium">Responsive image sizes</h3>
+  <p class="width-two-thirds">3 image sizes can be passed to the <code>hero_with_cta</code> template tag: <code>xlarge_image</code>, <code>large_image</code> and <code>medium_image</code>.</p>
+  <p>Breakpoints and images are as follows:</p>
+  <table class="width-two-thirds">
+    <thead>
+      <tr>
+        <th>Screen width</th>
+        <th>Image to use</th>
+        <th>Image dimensions</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>&gt; 1300px</td>
+      <td><code>xlarge_image</code></td>
+      <td>1200x300</td>
+    </tr>
+    <tr>
+      <td>&gt; 1024px</td>
+      <td><code>large_image</code></td>
+      <td>1200x400</td>
+    </tr>
+    <tr>
+      <td>&lt;= 1024px</td>
+      <td><code>medium_image</code></td>
+      <td>768x376</td>
+    </tr>
+  </table>
+
+  <h4 class="heading-small">HTML markup</h4>
+  <pre><code>&lt;section data-ga-section="caseStudy" class="great-case-study" style="background-image: url([background_image])">
+  &lt;div class="container">
+    &lt;div class="grid-row">
+      &lt;div class="column-full column-two-thirds-l column-half-xl">
+        &lt;div class="width-half-all border-thin border-flag-red">&lt;/div>
+        &lt;h2 class="heading-large">[heading]&lt;/h2>
+        &lt;img class="only-display-tablet width-full margin-bottom-15" src="[background_image]" alt="">
+        &lt;p>[subtitle]&lt;/p>
+        &lt;a class="button button-arrow-small margin-top-15-l" href="/">[cta_text]&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></code></pre>
+
+  <h2 class="heading-large">Full width banners</h2>
+</div>
+
+{% case_study background_image=placeholder heading='Full width banner with a subtitle and CTA' subtitle='This component works best with a dark background image or an image where the left side is darker than the right so that this white text is legible. On tablet and smaller the image is displayed separately from the text.'  cta_link='/'  cta_text='Continue' %}
+
+<div class="container">
+  <pre><code>{% verbatim %} {% case_study background_image=placeholder heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}{% endverbatim %}</code></pre>
+
+  <h4 class="heading-small">HTML markup</h4>
+  <pre><code>&lt;section data-ga-section="caseStudy" class="great-case-study " style="background-image: url([background_image])">
+  &lt;div class="container">
+    &lt;div class="grid-row">
+      &lt;div class="column-full column-two-thirds-l column-half-xl">
+        &lt;div class="width-half-all border-thin border-flag-red">&lt;/div>
+        &lt;h2 class="heading-large">[heading]&lt;/h2>
+        &lt;img class="only-display-tablet width-full margin-bottom-15" src="[background_image]" alt="">
+        &lt;p>[subtitle]&lt;/p>
+        &lt;a class="button button-arrow-small margin-top-15-l" href="/">[cta_text]&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></code></pre>
+
+</div>
+
+{% case_study background_tint=True background_image=hero_image_domestic heading='Full width banner with subtitle, CTA, and background tint' subtitle='If an image is too bright a background tint can be used to make text more legible. On tablet and smaller it displays the same as above.'  cta_link='www.google.com'  cta_text='Continue' %}
+
+<div class="container">
+  <pre><code>{% verbatim %} {% case_study background_tint=True background_image=hero_image_domestic heading='Heading text' subtitle='Lorem ipsum dolor sit amet ...'  cta_link='/'  cta_text='Continue' %}{% endverbatim %}</code></pre>
+
+  <h4 class="heading-small">HTML markup</h4>
+  <p>Simply add the <code>background-tint</code> class to the <code>.great-case-study</code> element.</p>
+
+  <pre><code>&lt;section data-ga-section="caseStudy" class="great-case-study <span class="great-red-text">background-tint</span>" style="background-image: url([background_image])">
+  &lt;div class="container">
+    &lt;div class="grid-row">
+      &lt;div class="column-full column-two-thirds-l column-half-xl">
+        &lt;div class="width-half-all border-thin border-flag-red">&lt;/div>
+        &lt;h2 class="heading-large">[heading]&lt;/h2>
+        &lt;img class="only-display-tablet width-full margin-bottom-15" src="[background_image]" alt="">
+        &lt;p>[subtitle]&lt;/p>
+        &lt;a class="button button-arrow-small margin-top-15-l" href="/">[cta_text]&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+  &lt;/section></code></pre>
+</div>
+
+<div class="container">
+  <h3 class="heading-large"> Full width image with a list of items and an optional image or video</h3>
+  <p>The intro is expected to be a markdown field.</p>
+  <p>The list of items are expected to be a dictionary with a title and text.</p>
+
+  <pre><code>{% verbatim %}items_list=[
+  {
+      'title': 'Item One Title',
+      'text': '&lt;p>Lorem ipsum ... &lt;a href="/full-width-banners/">Learn more.&lt;/a>&lt;/p>'
+  },
+  {
+      'title': 'Item Two Title',
+      'text': '&lt;p>Lorem ipsum ... &lt;a href="/full-width-banners/">Learn more.&lt;/a>&lt;/p>'
+  },
 ]{% endverbatim %}</code></pre>
 
-  </div>
+</div>
 
-  {% full_width_image_with_list_and_media title="Full width image with a list of items" background_image=dark_hero intro_markdown=intro_markdown items_list=items_list %}
+{% full_width_image_with_list_and_media title="Full width image with a list of items" background_image=dark_hero intro_markdown=intro_markdown items_list=items_list %}
 
-  <div class="container">
-    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items" background_image=dark_hero intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
-  </div>
+<div class="container">
+  <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items" background_image=dark_hero intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
 
-  {% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro_markdown=intro_markdown items_list=items_list %}
+  <h4 class="heading-small">HTML markup</h4>
 
-  <div class="container">
-    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
-  </div>
+  <pre><code>&lt;section class="full-width-list-with-media " style="background-image: url([background_image])">
+  &lt;div class="container padding-top-30 padding-bottom-30">
+    &lt;h2 class="heading-large">Full width image with a list of items&lt;/h2>
+    &lt;div class="grid-row">
+      &lt;div class="column-two-thirds-l">
+        [intro (markdown)]
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="flex-grid reverse-columns-l">
+      &lt;div class="column-half-xl column-full-m">
+        &lt;ul class="flex-grid">
+          &lt;li class="column-half-l">
+            &lt;h3 class="bold-medium list-item padding-top-15">[title]&lt;/h3>
+            &lt;span class="font-xsmall">[text (markdown)]&lt;/span>
+          &lt;/li>
+          ... etc
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></code></pre>
+</div>
 
-  {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_markdown=intro_markdown items_list=items_list %}
+{% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro_markdown=intro_markdown items_list=items_list %}
 
-  <div class="container">
-    <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
-  </div>
+<div class="container">
+  <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and an image" background_image=dark_hero image=half_image intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
 
-  <div class="container">
-    <h2 class="heading-large">HTML markup</h2>
-    <h3 class="heading-medium">Hero</h3>
-    <pre>
-      <code>&lt;section class="hero hero-generic" style="background-image: url(/static/images/hero02.png)" id="hero"&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="hero-title-compact"&gt;
-      &lt;h1 class="heading-hero-generic-compact" id="hero-heading"&gt;Hero banner with a description&lt;/h1&gt;
-      &lt;p class="hero-description" id="hero-description"&gt;Hero banner description.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code>
-    </pre>
+  <h4 class="heading-small">HTML markup</h4>
 
-    <h3 class="heading-medium">Hero with large title</h3>
-    <pre>
-      <code>&lt;section class="hero hero-generic" style="background-image: url(/static/images/hero01.jpg)" id="hero"&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="hero-title"&gt;
-      &lt;h1 class="heading-hero-generic" id="hero-heading"&gt;Hero with large title&lt;/h1&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code>
-    </pre>
+  <pre><code>&lt;section class="full-width-list-with-media " style="background-image: url('/static/images/hero04.jpg')">
+  &lt;div class="container padding-top-30 padding-bottom-30">
+    &lt;h2 class="heading-large">Full width image with a list of items and an image&lt;/h2>
+    &lt;div class="grid-row">
+      &lt;div class="column-two-thirds-l">
+        [intro (markdown)]
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="flex-grid reverse-columns-l">
+      &lt;div class="column-half-xl column-full-m">
+        &lt;ul class="flex-grid">
+          &lt;li class="column-half-l">
+            &lt;h3 class="bold-medium list-item padding-top-15">[title]&lt;/h3>
+            &lt;span class="font-xsmall">[text (markdown)]&lt;/span>
+          &lt;/li>
+          ... etc
+        &lt;/ul>
+      &lt;/div>
+      &lt;div class="column-half-xl media">
+        &lt;div class="flex-grid">
+          &lt;figure>
+            &lt;img class="width-full" src="[image]" alt="">
+          &lt;/figure>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></pre></code>
+</div>
 
-    <h3 class="heading-medium">Hero with large title and subheading</h3>
-    <pre>
-      <code>&lt;section class="hero hero-generic" style="background-image: url(/static/images/hero02.png)" id="hero"&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="hero-title"&gt;
-        &lt;h1 id="hero-heading" class="heading-hero-generic with-subheading"&gt;
-          &lt;span class="hero-subheading"&gt;Exporting to&lt;/span&gt;
-          &lt;span&gt;Germany&lt;/span&gt;
-        &lt;/h1&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code>
-    </pre>
+{% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_markdown=intro_markdown items_list=items_list %}
 
-    <h3 class="heading-medium">Full width banner with a subtitle and CTA</h3>
-    <pre>
-      <code>&lt;section class="case-study " style="background-image: url(/static/images/placeholder.png)"&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="grid-row"&gt;
-      &lt;div class="column-full column-two-thirds-l column-half-xl"&gt;
-        &lt;div class="width-half-all border-thin border-flag-red"&gt;&lt;/div&gt;
-        &lt;h2 class="heading-large"&gt;Heading&lt;/h2&gt;
-        &lt;img class="only-display-tablet width-full margin-bottom-15" src="/static/images/placeholder.png" alt=""&gt;
-        &lt;p&gt;Lorem ipsum.&lt;/p&gt;
-        &lt;a class="button button-arrow-small margin-top-15-l" href="/"&gt;Continue&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code>
-    </pre>
+<div class="container">
+  <pre><code>{% verbatim %} {% full_width_image_with_list_and_media title="Full width image with a list of items and a video" background_image=dark_hero video=video intro_markdown=intro_markdown items_list=items_list %}{% endverbatim %}</code></pre>
+</div>
 
-    <h3 class="heading-medium">Full width banner with a subtitle, CTA and background tint</h3>
-    <pre>
-      <code>&lt;section class="case-study background-tint" style="background-image: url(/static/images/hero01.jpg)"&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="grid-row"&gt;
-      &lt;div class="column-full column-two-thirds-l column-half-xl"&gt;
-        &lt;div class="width-half-all border-thin border-flag-red"&gt;&lt;/div&gt;
-        &lt;h2 class="heading-large"&gt;Heading&lt;/h2&gt;
-        &lt;img class="only-display-tablet width-full margin-bottom-15" src="/static/images/hero01.jpg" alt=""&gt;
-        &lt;p&gt;Lorem ipsum.&lt;/p&gt;
-        &lt;a class="button button-arrow-small margin-top-15-l" href="/"&gt;Continue&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code>
-    </pre>
-  </div>
-</section>
+
 {% endblock %}
