@@ -1,7 +1,7 @@
 
 <section class="great-hero {% if not medium_image %}great-hero-no-image{% endif %}" id="hero">
   {% if medium_image %}
-  <picture class="great-hero-image">
+  <picture>
     {% if xlarge_image %}
     <source media="(min-width: 1025px)" srcset="{{ xlarge_image }} 1200w">
     {% endif %}
@@ -17,7 +17,7 @@
     <source media="(max-width: 640px)" srcset="{{ small_image }} 640w">
     {% endif %}
 
-    <img alt="" src="{{ medium_image }}">
+    <img class="great-hero-image" alt="" src="{{ medium_image }}">
   </picture>
   {% endif %}
   <div class="container">
