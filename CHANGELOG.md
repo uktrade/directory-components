@@ -21,6 +21,7 @@
 * `hero-title-compact`
 
 - The `large_title` param has been removed from hero components
+- `{% render_form form %}` has been removed. Please use `{{ form }}` instead
 
 ## 29.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)

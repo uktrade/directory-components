@@ -107,12 +107,6 @@ def override_elements_css_class(value, element_and_override):
     return str(soup)
 
 
-@register.inclusion_tag('directory_components/form_widgets/form.html')
-def render_form(form):
-    warnings.warn('This feature is deprecated. You can now do {{ form }} in the template to get the same outcome.')
-    return {'form': form}
-
-
 @register.inclusion_tag('directory_components/cta_box.html')
 def cta_box(**kwargs):
     return kwargs

@@ -171,46 +171,6 @@ def test_add_export_elements_classes(input_html, expected_html):
     assert html == expected_html
 
 
-def test_render_form():
-    form = PaddedTestForm(data={'field': 'value'})
-
-    template = Template(
-        '{% load render_form from directory_components %}'
-        '{% render_form form %}'
-    )
-    context = Context({'form': form})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    form_container = soup.find('div')
-    assert 'form-group' in form_container['class']
-
-    label = soup.find('label')
-    assert 'form-label' in label['class']
-    assert label['for'] == 'id_field'
-
-    input_field = soup.find('input')
-    assert input_field['id'] == 'id_field'
-
-
-def test_render_form_non_field_errors():
-    form = PaddedTestForm(data={'field': 'value'})
-    form.add_error(field=None, error=['Some error', 'Some other error'])
-    assert form.is_valid() is False
-
-    template = Template(
-        '{% load render_form from directory_components %}'
-        '{% render_form form %}'
-    )
-    context = Context({'form': form})
-
-    html = template.render(context)
-
-    assert 'Some error' in html
-    assert 'Some other error' in html
-
-
 def test_card():
     card_content = {
         'title': 'title',
