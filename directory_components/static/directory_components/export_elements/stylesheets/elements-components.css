@@ -1,4 +1,44 @@
 @charset "UTF-8";
+.great-key-facts .great-key-facts-text > *[class^="heading"] {
+  margin-top: 0;
+  margin-bottom: 10px; }
+
+.great-key-facts .great-key-facts-content {
+  padding-bottom: 30px; }
+  .great-key-facts .great-key-facts-content:after {
+    display: block;
+    content: '';
+    clear: both; }
+
+.great-key-facts .great-key-facts-text {
+  float: left;
+  width: calc(100% - (60px + 15px)); }
+  .great-key-facts .great-key-facts-text > p {
+    margin-bottom: 10px; }
+
+.great-key-facts .great-key-facts-icon {
+  float: left;
+  padding-right: 15px;
+  height: 60px;
+  width: 75px;
+  margin-bottom: 10px; }
+
+@media (min-width: 769px) {
+  .great-key-facts .great-key-facts-text {
+    float: none; }
+    .great-key-facts .great-key-facts-text > p {
+      margin: 0; }
+  .great-key-facts .great-key-facts-icon {
+    width: auto;
+    float: none; } }
+
+@media (min-width: 641px) {
+  .great-key-facts .great-key-facts-text {
+    float: none; }
+  .great-key-facts .great-key-facts-icon {
+    width: auto;
+    float: none; } }
+
 .great-global-header-footer,
 .great-sub-header,
 .great-header {

@@ -223,7 +223,9 @@ def pagination(context, pagination_page, page_param_name='page'):
         'pages_after_current': paginator.num_pages - pagination_page.number,
     }
 
+
 HeaderItem = namedtuple('HeaderItem', 'title url is_active')
+
 
 @register.inclusion_tag('directory_components/header_footer/international_header.html')
 def international_header(navigation_tree, site_section, site_sub_section):
@@ -409,4 +411,9 @@ def search_page_expandable_options(**kwargs):
 
 @register.inclusion_tag('directory_components/full-width-image-with-list-and-media.html')  # noqa
 def full_width_image_with_list_and_media(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/key_facts.html')  # noqa
+def key_facts(**kwargs):
     return kwargs

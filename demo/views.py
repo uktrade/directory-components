@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from django.utils.text import slugify
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 from directory_components.mixins import (
     CountryDisplayMixin, EnableTranslationsMixin
@@ -22,6 +23,44 @@ class BasePageView(TemplateView):
     @property
     def template_name(self):
         return self.kwargs.get('template_name')
+
+
+class KeyFactsView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        key_facts = [
+            {
+                'icon': static('images/icon1.png'),
+                'heading': 'Heading 1',
+                'content': (
+                    '<p>Bacon ipsum dolor amet pork jerky sausage buffalo '
+                    'chicken cow strip steak doner pancetta shoulder kielbasa rump ham.</p>'
+                ),
+            },
+            {
+                'icon': static('images/icon2.png'),
+                'heading': 'Heading 2',
+                'content': (
+                    '<p>Lorem ipsum dolor sit amet.</p>'
+                    '<p><a class="link" href="/">A link</a></p>'
+                    '<p><a class="link" href="/">Another link</a></p>'
+                ),
+            },
+            {
+                'icon': static('images/icon3.png'),
+                'heading': 'Heading 3',
+                'content': (
+                    '<p><a class="link" href="/">Yet more links</a></p>'
+                    '<p><a class="link" href="/">So many links</a></p>'
+                    '<p><a class="link" href="/">More links</a></p>'
+                ),
+            },
+        ]
+        context['key_facts'] = key_facts
+        context['key_facts_two'] = key_facts[1:]
+        context['key_facts_one'] = key_facts[:1]
+        return context
 
 
 class IndexPageView(BasePageView):

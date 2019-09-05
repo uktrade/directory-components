@@ -1,0 +1,11 @@
+{% load add_export_elements_classes from directory_components %}
+
+{% for item in key_facts %}
+<div class="great-key-facts-content {% if columns == 3 %}column-third{% elif columns == 2 %}column-half{% else %}column-two-thirds-xl column-half-l{% endif %}">
+  <img class="great-key-facts-icon" src="{{ item.icon }}" alt="{{ item.icon_alt }}">
+  <div class="great-key-facts-text">
+    <h3 class="heading-medium">{{ item.heading }}</h3>
+    {{ item.content|add_export_elements_classes }}
+  </div>
+</div>
+{% endfor %}
