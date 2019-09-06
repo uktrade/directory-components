@@ -21,7 +21,7 @@ setup(
     ],
     extras_require={
         'test': [
-            'lorem=0.1.1',
+            'lorem==0.1.1',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
