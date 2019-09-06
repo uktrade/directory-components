@@ -1,5 +1,7 @@
 import ast
 import re
+import lorem
+
 from unittest.mock import Mock
 from collections import namedtuple
 
@@ -361,3 +363,31 @@ class FullWidthBannersView(TemplateView):
                 'file_extension': 'mp4'
             }
         )
+
+
+class DetailsView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        word = lorem.sentence().split(' ')[0]
+        link = f'<p><a href="/foo">{word}</a></p>'
+        list = f'<ul><li>{lorem.sentence()}</li><li>{lorem.sentence()}</li><li>{lorem.sentence()}</li></ul>'
+
+        details_list = [
+            {
+                'heading': lorem.sentence(),
+                'content': list + f'<p>{lorem.paragraph()}</p>'
+            },
+            {
+                'heading': lorem.sentence(),
+                'content': f'<p>{lorem.paragraph()}</p>' + link + link + f'<p>{lorem.paragraph()}</p>'
+            },
+            {
+                'heading': lorem.sentence(),
+                'content': f'<p>{lorem.paragraph()}</p>'
+            },
+        ]
+
+        context['details_list'] = details_list
+        return context
