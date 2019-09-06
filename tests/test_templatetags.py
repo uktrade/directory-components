@@ -1029,7 +1029,7 @@ def test_international_header_active_section_and_subsection():
 
     assert len(navigation['tier_two_items']) == 1
     assert navigation['tier_two_items'][0].title == 'Sub Page 1'
-    assert not navigation['tier_two_items'][0].is_active
+    assert navigation['tier_two_items'][0].is_active
 
 
 def test_international_header_tag():
