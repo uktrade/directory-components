@@ -12,9 +12,15 @@
     <div class="grid-row">
       <div class="column-two-thirds">
         <h1 class="heading-xlarge">Key facts</h1>
-        <p>This is a section with max 3 columns each with a heading, text and optional icon. The <code>items</code> param takes a list.</p>
+        <p>This is a section with max 3 columns each with a heading, text and optional icon. The <code>items</code> param expects a list of dictionaries like this:</p>
+        <pre><code>{
+    'icon': [icon url],
+    'heading': 'Heading',
+    'content': '&lt;p>Some HTML.&lt;/p>'
+}</code></pre>
       </div>
     </div>
+    <p>An optional <code>section_class</code> can be added to style the container e.g.</p>
     <pre><code>{% verbatim %}{% key_facts items=key_facts heading='With three items' section_class='background-stone-30' %}{% endverbatim %}</code></pre>
   </div>
 </section>
