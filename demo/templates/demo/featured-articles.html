@@ -38,4 +38,12 @@
 
 {% featured_articles items=articles_list heading="What's new" %}
 
+<div class="container">
+  <p><code>section_class</code> can be given to change the container style:</p>
+
+  <pre><code>{% verbatim %}{% featured_articles items=articles_list heading="What's new" section_class='underline-flag-red background-stone-30' %}{% endverbatim %}</code></pre>
+</div>
+
+{% featured_articles items=articles_list heading="What's new" section_class='underline-flag-red background-stone-30' %}
+
 {% endblock content %}
