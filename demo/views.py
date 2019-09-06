@@ -61,6 +61,13 @@ class KeyFactsView(BasePageView):
         context['key_facts'] = key_facts
         context['key_facts_two'] = key_facts[1:]
         context['key_facts_one'] = key_facts[:1]
+        key_facts_no_icons = [
+            {
+                'heading': item['heading'],
+                'content': item['content'],
+            }
+            for item in key_facts]
+        context['key_facts_no_icons'] = key_facts_no_icons
         return context
 
 
