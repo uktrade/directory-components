@@ -1,5 +1,11 @@
 # Changelog
 
+## 31.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
+
+### Implemented enhancements
+- Add details/accordion list component
+
 ## 30.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
 
