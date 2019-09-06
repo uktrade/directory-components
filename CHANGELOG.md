@@ -1,5 +1,11 @@
 # Changelog
 
+## 30.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
+
+### Implemented enhancements
+- Add key facts component
+
 ## 30.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/275/files)
 
