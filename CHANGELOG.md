@@ -1,5 +1,11 @@
 # Changelog
 
+## 30.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/275/files)
+
+### Implemented enhancements
+- Do not render labels and container of hidden form fields
+
 ## 30.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/274/files)
 
