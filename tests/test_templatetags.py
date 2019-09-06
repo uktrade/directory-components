@@ -643,6 +643,7 @@ def test_hero():
     directory_components.search_page_expandable_options,
     directory_components.full_width_image_with_list_and_media,
     directory_components.key_facts,
+    directory_components.details_list,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {

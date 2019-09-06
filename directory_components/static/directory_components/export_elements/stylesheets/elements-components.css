@@ -4212,3 +4212,10 @@ body:not(.js-enabled) .expandable-fieldset button.filter-collapse {
       -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
       flex-direction: column-reverse; } }
+
+.great-details-list details:first-child {
+  border-top: 2px solid #d8d8d8;
+  border-bottom: 0; }
+
+.great-details-list details:last-child {
+  border-top: 0; }

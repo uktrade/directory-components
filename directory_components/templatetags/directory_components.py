@@ -417,3 +417,8 @@ def full_width_image_with_list_and_media(**kwargs):
 @register.inclusion_tag('directory_components/key_facts.html')  # noqa
 def key_facts(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/details_list.html')  # noqa
+def details_list(**kwargs):
+    return kwargs
