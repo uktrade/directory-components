@@ -12,18 +12,39 @@
     <div class="grid-row">
       <div class="column-two-thirds">
         <h1 class="heading-xlarge">Key facts</h1>
-        <p>This is a section with max 3 columns each with a heading, text and optional icon.</p>
+        <p>This is a section with max 3 columns each with a heading, text and optional icon. The <code>items</code> param takes a list.</p>
       </div>
     </div>
+    <pre><code>{% verbatim %}{% key_facts items=key_facts heading='With three items' section_class='background-stone-30' %}{% endverbatim %}</code></pre>
   </div>
 </section>
 
-{% key_facts key_facts=key_facts heading='With three items' section_class='background-stone-30' %}
+{% key_facts items=key_facts heading='With three items' section_class='background-stone-30' %}
 
-{% key_facts key_facts=key_facts_two heading='With two items' %}
+{% key_facts items=key_facts_two heading='With two items' %}
 
-{% key_facts key_facts=key_facts_one heading='With one item' section_class='background-stone-30' %}
+{% key_facts items=key_facts_one heading='With one item' section_class='background-stone-30' %}
 
-{% key_facts key_facts=key_facts_no_icons heading='With no icons' %}
+{% key_facts items=key_facts_no_icons heading='With no icons' %}
+
+<section>
+  <div class="container">
+    <h2 class="heading-large">HTML markup</h2>
+    <pre><code>&lt;section class="great-key-facts padding-top-60">
+    &lt;div class="container wrap-tight">
+      &lt;h2 class="heading-large margin-bottom-30">[heading]&lt;/h2>
+      &lt;div class="grid-row">
+        &lt;div class="great-key-facts-content column-third">
+          &lt;img class="great-key-facts-icon" src="[item.icon]" alt="">
+          &lt;div class="great-key-facts-text">
+            &lt;h3 class="heading-medium">[item.heading]&lt;/h3>
+            [item.content (markdown/HTML)]
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/section></code></pre>
+  </div>
+</section>
 
 {% endblock %}

@@ -1,6 +1,6 @@
 {% load add_export_elements_classes from directory_components %}
 
-{% for item in key_facts %}
+{% for item in items %}
 <div class="great-key-facts-content {% if columns == 3 %}column-third{% elif columns == 2 %}column-half{% else %}column-two-thirds-xl column-half-l{% endif %}">
   {% if item.icon %}
     <img class="great-key-facts-icon" src="{{ item.icon }}" alt="{{ item.icon_alt }}">
