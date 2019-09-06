@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='30.3.0',
+    version='31.1.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -16,7 +16,7 @@ setup(
     install_requires=[
         'django>=1.11,<3.0a1',
         'beautifulsoup4>=4.6.0,<5.0.0',
-        'directory-constants>=19.1.0,<20.0.0',
+        'directory-constants>=20.0.0,<21.0.0',
         'jsonschema>=3.0.1,<4.0.0',
     ],
     extras_require={

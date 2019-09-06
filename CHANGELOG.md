@@ -1,4 +1,12 @@
 # Changelog
+## 31.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/275/files)
+
+### Breaking Changes
+- Update required version of directory-constants.
+This will require you to update your settings file. 
+`DIRECTORY_CONSTANTS_URL_INTERNATIONAL` should be added and should point at the root page for the international site (ie, please DO NOT include `content/`)
+`DIRECTORY_CONSTANTS_URL_GREAT_INTERNATIONAL` is no longer required for this library, and can be deleted as long as it isn't directly used in your application.
 
 ## 31.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
