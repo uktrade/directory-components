@@ -641,7 +641,8 @@ def test_hero():
     directory_components.informative_banner,
     directory_components.search_page_selected_filters,
     directory_components.search_page_expandable_options,
-    directory_components.full_width_image_with_list_and_media
+    directory_components.full_width_image_with_list_and_media,
+    directory_components.key_facts,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -965,6 +966,7 @@ class NavNode:
         self.tier_one_item = tier_one_item
         self.tier_two_items = tier_two_items
 
+
 class NavItem:
     def __init__(self, title, name):
         self.title = title
@@ -1015,7 +1017,7 @@ def test_international_header_active_section():
 
     assert len(navigation['tier_two_items']) == 1
     assert navigation['tier_two_items'][0].title == 'Sub Page 1'
-    assert navigation['tier_two_items'][0].is_active == False
+    assert not navigation['tier_two_items'][0].is_active
 
 
 def test_international_header_active_section_and_subsection():
@@ -1027,7 +1029,7 @@ def test_international_header_active_section_and_subsection():
 
     assert len(navigation['tier_two_items']) == 1
     assert navigation['tier_two_items'][0].title == 'Sub Page 1'
-    assert navigation['tier_two_items'][0].is_active == True
+    assert not navigation['tier_two_items'][0].is_active
 
 
 def test_international_header_tag():
