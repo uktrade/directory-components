@@ -1,6 +1,6 @@
 <section class="{{ section_class }}">
   <div class="container">
-    <h2 class="heading-large">{{ heading }}</h2>
+    <h2 class="heading-large margin-top-60-m margin-top-30">{{ heading }}</h2>
     <div class="grid-row">
       {% for item in items %}
         {% if forloop.first %}
@@ -12,10 +12,10 @@
         </article>
         {% endif %}
       {% endfor %}
-      <div class="column-full column-third-xl margin-bottom-30">
+      <div class="column-full column-third-xl">
         {% for item in items %}
           {% if not forloop.first %}
-          <article class="margin-bottom-15-xl margin-bottom-30">
+          <article class="margin-bottom-30">
             <p class="subheading">{{ item.type_of_article }}</p>
             <a href="{{ item.url }}" class="link heading-medium margin-top-0">{{ item.title }}</a>
           </article>
