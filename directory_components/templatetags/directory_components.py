@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import re
-import warnings
+
 from collections import namedtuple
 
 from django import template
@@ -421,4 +421,9 @@ def key_facts(**kwargs):
 
 @register.inclusion_tag('directory_components/details_list.html')  # noqa
 def details_list(**kwargs):
+    return kwargs
+
+
+@register.inclusion_tag('directory_components/featured_articles.html')  # noqa
+def featured_articles(**kwargs):
     return kwargs

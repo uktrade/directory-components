@@ -1,0 +1,41 @@
+{% extends 'demo/base.html' %}
+
+{% load static %}
+{% load demo_tags %}
+{% load directory_components %}
+
+{% block head_title %}directory-components{% endblock %}
+
+{% block content %}
+<div class="container">
+  {% breadcrumbs 'Featured articles' %}<a href="/">Home</a>{% endbreadcrumbs %}
+</div>
+
+<section>
+  <div class="container">
+    <div class="width-two-thirds">
+      <h1 class="heading-xlarge">Featured articles</h1>
+      <p>This is a list of article previews with text and an image for the first item. The <code>items</code> param expects a list of dictionaries like this:</p>
+    </div>
+
+    <pre><code>{
+    'title': 'Article title',
+    'url': '/article',
+    'type_of_article': 'Advice',
+    'teaser': 'This is some intro text',
+    'image': {
+        'url': '/link-to-the-image.jpeg',
+    },
+    'image_alt': 'Some descriptive image text',
+}</code></pre>
+
+    <p>Used below:</p>
+
+    <pre><code>{% verbatim %}{% featured_articles items=articles_list heading="What's new" %}{% endverbatim %}</code></pre>
+
+    {% featured_articles items=articles_list heading="What's new" %}
+
+  </div>
+</section>
+
+{% endblock content %}

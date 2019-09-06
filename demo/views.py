@@ -359,7 +359,7 @@ class FullWidthBannersView(TemplateView):
             intro_markdown="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
                            "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
             video={
-                'url': '/static/videos/hpo-food-video.mp4',
+                'url': static('videos/hpo-food-video.mp4'),
                 'file_extension': 'mp4'
             }
         )
@@ -390,4 +390,56 @@ class DetailsView(BasePageView):
         ]
 
         context['details_list'] = details_list
+        return context
+
+
+class FeaturedArticlesView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        articles_list = [
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+                'image': {
+                    'url': static('images/card_image02.jpg'),
+                },
+                'image_alt': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+        ]
+
+        context['articles_list'] = articles_list
         return context
