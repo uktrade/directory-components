@@ -1,5 +1,11 @@
 # Changelog
 
+## 31.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/279/files)
+
+### Implemented enhancements
+- Add featured articles list component
+
 ## 31.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
 
