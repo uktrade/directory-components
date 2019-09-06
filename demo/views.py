@@ -43,7 +43,8 @@ class KeyFactsView(BasePageView):
                 'heading': 'Heading 2',
                 'content': (
                     '<p>Lorem ipsum dolor sit amet.</p>'
-                    '<p><a class="link" href="/">A link</a></p>'
+                    '<p><a class="link" href="/">Bacon ipsum dolor amet pork jerky sausage buffalo '
+                    'chicken cow strip steak doner pancetta shoulder kielbasa rump ham</a></p>'
                     '<p><a class="link" href="/">Another link</a></p>'
                 ),
             },

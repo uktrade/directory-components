@@ -26,8 +26,6 @@
 @media (min-width: 769px) {
   .great-key-facts .great-key-facts-text {
     float: none; }
-    .great-key-facts .great-key-facts-text > p {
-      margin: 0; }
   .great-key-facts .great-key-facts-icon {
     width: auto;
     float: none; } }
