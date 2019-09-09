@@ -6,6 +6,9 @@
 ### Implemented enhancements
 - Add featured articles list component
 
+### Breaking changes
+- `section` padding-bottom has been updated from 30px to 60px
+
 ## 31.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
 
