@@ -373,10 +373,10 @@ class GA360Data(template.Node):
         self.nodelist = nodelist
         self.target = template.Variable(target)
         self.action = template.Variable(action) if action is not None else None
-        self.ga_type = template.Variable(ga_type) if ga_type is not None else None  # noqa
-        self.element = template.Variable(element) if element is not None else None  # noqa
+        self.ga_type = template.Variable(ga_type) if ga_type is not None else None
+        self.element = template.Variable(element) if element is not None else None
         self.value = template.Variable(value) if value is not None else None
-        self.include_form_data = template.Variable(include_form_data) if include_form_data is not None else None  # noqa
+        self.include_form_data = template.Variable(include_form_data) if include_form_data is not None else None
 
     def render(self, context):
         html = self.nodelist.render(context)
@@ -389,41 +389,41 @@ class GA360Data(template.Node):
             if self.ga_type is not None:
                 element.attrs['data-ga-type'] = self.ga_type.resolve(context)
             if self.element is not None:
-                element.attrs['data-ga-element'] = self.element.resolve(context)  # noqa
+                element.attrs['data-ga-element'] = self.element.resolve(context)
             if self.value is not None:
                 element.attrs['data-ga-value'] = self.value.resolve(context)
             if self.include_form_data is not None:
-                element.attrs['data-ga-include-form-data'] = self.include_form_data.resolve(context)  # noqa
+                element.attrs['data-ga-include-form-data'] = self.include_form_data.resolve(context)
 
         # Use formatter=None so that `&` is not converted to `&amp;`
         return soup.decode(formatter=None)
 
 
-@register.inclusion_tag('directory_components/search-page-selected-filters.html')  # noqa
+@register.inclusion_tag('directory_components/search-page-selected-filters.html')
 def search_page_selected_filters(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/search-page-expandable-options.html')  # noqa
+@register.inclusion_tag('directory_components/search-page-expandable-options.html')
 def search_page_expandable_options(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/full-width-image-with-list-and-media.html')  # noqa
+@register.inclusion_tag('directory_components/full-width-image-with-list-and-media.html')
 def full_width_image_with_list_and_media(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/key_facts.html')  # noqa
+@register.inclusion_tag('directory_components/key_facts.html')
 def key_facts(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/details_list.html')  # noqa
+@register.inclusion_tag('directory_components/details_list.html')
 def details_list(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/featured_articles.html')  # noqa
+@register.inclusion_tag('directory_components/featured_articles.html')
 def featured_articles(**kwargs):
     return kwargs
