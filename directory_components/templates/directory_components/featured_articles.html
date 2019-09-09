@@ -4,24 +4,24 @@
     <div class="grid-row">
       {% for item in items %}
         {% if forloop.first %}
-        <article class="column-full column-two-thirds-xl margin-bottom-30">
+        <div class="column-full column-two-thirds-xl margin-bottom-30">
           <img class="width-full margin-bottom-30" src="{{ item.image.url }}" alt="{{ item.img_alt }}">
           <p class="subheading">{{ item.type_of_article }}</p>
           <a href="{{ item.url }}" class="link heading-medium margin-top-0">{{ item.title }}</a>
           <p class="margin-bottom-0">{{ item.teaser }}</p>
-        </article>
+        </div>
         {% endif %}
       {% endfor %}
-      <div class="column-full column-third-xl">
+      <ul class="column-full column-third-xl">
         {% for item in items %}
           {% if not forloop.first %}
-          <article class="margin-bottom-30">
+          <li class="margin-bottom-30">
             <p class="subheading">{{ item.type_of_article }}</p>
             <a href="{{ item.url }}" class="link heading-medium margin-top-0">{{ item.title }}</a>
-          </article>
+          </li>
           {% endif %}
         {% endfor %}
-      </div>
+      </ul>
     </div>
   </div>
 </section>
