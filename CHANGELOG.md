@@ -1,6 +1,6 @@
 # Changelog
 
-## 31.2.0
+## 32.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/279/files)
 
 ### Implemented enhancements
