@@ -43,6 +43,12 @@ urlpatterns = [
         name='key-facts',
     ),
     url(
+        r'^featured-articles/$',
+        views.FeaturedArticlesView.as_view(),
+        {'template_name': 'demo/featured-articles.html'},
+        name='featured-articles',
+    ),
+    url(
         r'^statistics/$',
         views.DemoStatsView.as_view(),
         {'template_name': 'demo/statistics.html'},
