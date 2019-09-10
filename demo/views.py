@@ -33,7 +33,9 @@ class KeyFactsView(BasePageView):
         context = super().get_context_data(*args, **kwargs)
         key_facts = [
             {
-                'icon': static('images/icon1.png'),
+                'icon': {
+                    'url': static('images/icon1.png')
+                },
                 'heading': 'Heading 1',
                 'content': (
                     '<p>Bacon ipsum dolor amet pork jerky sausage buffalo '
@@ -41,7 +43,9 @@ class KeyFactsView(BasePageView):
                 ),
             },
             {
-                'icon': static('images/icon2.png'),
+                'icon': {
+                    'url': static('images/icon2.png')
+                },
                 'heading': 'Heading 2',
                 'content': (
                     '<p>Lorem ipsum dolor sit amet.</p>'
@@ -51,7 +55,9 @@ class KeyFactsView(BasePageView):
                 ),
             },
             {
-                'icon': static('images/icon3.png'),
+                'icon': {
+                    'url': static('images/icon3.png')
+                },
                 'heading': 'Heading 3',
                 'content': (
                     '<p><a class="link" href="/">Yet more links</a></p>'
