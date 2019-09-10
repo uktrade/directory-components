@@ -1,5 +1,11 @@
 # Changelog
 
+## 32.0.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/281/files)
+
+### Implemented enhancements
+- Update params for featured articles component to work properly with CMS fields
+
 ## 32.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/280/files)
 
