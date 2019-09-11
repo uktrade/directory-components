@@ -1,5 +1,12 @@
 # Changelog
 
+## 32.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/282/files)
+
+### Implemented enhancements
+- Changed the colour of the second level nav
+
+
 ## 32.0.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/281/files)
 
