@@ -1,36 +1,26 @@
 # directory-components
 
+[![code-climate-image]][code-climate]
 [![circle-ci-image]][circle-ci]
 [![codecov-image]][codecov]
 [![pypi-image]][pypi]
+[![semver-image]][semver]
 
-**Reusable components used across the directory applications for the Department for International Trade.**
+**Reusable components used across the GREAT platform for the Department for International Trade.**
 
 ---
 
 ## Installation
 
-```shell
-pip install directory-components
-```
+    pip install directory-components
+
 
 ## Development
 
     $ git clone https://github.com/uktrade/directory-components
     $ cd directory-components
-
-
-## Demo
-
-Install the demo requirements:
-
-    $ make demo_requirements
-
-To view the components in the browser run the following command:
-
-    $ make run_demo
-
-and go to `0.0.0.0:9013` in your browser
+    $ [create virtual environment and activate]
+    $ make install_requirements
 
 To test cookies locally add this to your /etc/hosts:
 
@@ -39,6 +29,24 @@ To test cookies locally add this to your /etc/hosts:
 ```
 
 Then visit the demo at `components.trade.great:9013`
+
+### Commands
+
+| Command                       | Description |
+| ----------------------------- | ------------|
+| make clean                    | Delete pyc files |
+| make pytest                   | Run all tests |
+| make pytest test_foo.py       | Run all tests in file called test_foo.py |
+| make pytest -- --last-failed` | Run the last tests to fail |
+| make pytest -- -k foo         | Run the test called foo |
+| make pytest -- <foo>          | Run arbitrary pytest command |
+| make flake8                   | Run linting |
+| make manage <foo>             | Run arbitrary management command |
+| make webserver                | Run the demo development web server |
+| make requirements             | Compile the requirements file |
+| make install_requirements     | Installed the compile requirements file |
+| make css                      | Compile scss to css |
+| make publish                  | Publish the package to PyPI |
 
 ## Features
 
@@ -166,3 +174,6 @@ Then run the following command:
 
 [pypi-image]: https://badge.fury.io/py/directory-components.svg
 [pypi]: https://badge.fury.io/py/directory-components
+
+[semver-image]: https://img.shields.io/badge/Versioning%20strategy-SemVer-5FBB1C.svg
+[semver]: https://semver.org
