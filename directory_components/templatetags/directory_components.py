@@ -227,8 +227,8 @@ def pagination(context, pagination_page, page_param_name='page'):
 HeaderItem = namedtuple('HeaderItem', 'title url is_active')
 
 
-@register.inclusion_tag('directory_components/header_footer/international_header.html')
-def international_header(navigation_tree, site_section, site_sub_section):
+@register.inclusion_tag('directory_components/header_footer/international_header.html', takes_context=True)
+def international_header(context, navigation_tree, site_section, site_sub_section):
 
     tier_one_items = []
     tier_two_items = []
@@ -247,16 +247,15 @@ def international_header(navigation_tree, site_section, site_sub_section):
                 for item in node.tier_two_items
             ]
 
-    return {
-        'tier_one_items': tier_one_items,
-        'tier_two_items': tier_two_items,
-        'navigation_tree': navigation_tree,
-    }
+    context['tier_one_items'] = tier_one_items
+    context['tier_two_items'] = tier_two_items
+    context['navigation_tree'] = navigation_tree
+    return context
 
 
-@register.inclusion_tag('directory_components/header_footer/invest_header.html')
-def invest_header(navigation_tree, site_section, site_sub_section):
-    return international_header(navigation_tree, site_section, site_sub_section)
+@register.inclusion_tag('directory_components/header_footer/invest_header.html', takes_context=True)
+def invest_header(context, navigation_tree, site_section, site_sub_section):
+    return international_header(context, navigation_tree, site_section, site_sub_section)
 
 
 @register.tag
