@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
 
 ### Implemented enhancements
-- Amended list elements in footer to pass accessibility
+- Amended list elements in footer to pass accessibility and mobile menu
 
 ## 32.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/286/files)
