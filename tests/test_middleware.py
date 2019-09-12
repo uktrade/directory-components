@@ -44,7 +44,7 @@ def test_no_cache_middlware_sso_user(rf):
     output = middleware.NoCacheMiddlware().process_response(request, response)
 
     assert output == response
-    assert output['Cache-Control'] == 'no-store, no-cache'
+    assert output['Cache-Control'] == middleware.NoCacheMiddlware.NO_CACHE_HEADER_VALUE
 
 
 def test_no_cache_middlware_anon_user(rf):

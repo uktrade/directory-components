@@ -1,10 +1,8 @@
-import ast
 import difflib
 from pprint import pformat
 import importlib
 import inspect
 import re
-from urllib.parse import urljoin
 
 from colors import red, green
 from vulture import Vulture
