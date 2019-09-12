@@ -255,13 +255,14 @@
     display: inline-block; }
   .great-footer-links ul {
     display: table;
-    width: 100%; }
+    width: 75%; }
     .great-footer-links ul > * {
       display: table-cell; }
   .great-footer-links .great-footer-domestic-international-link {
-    white-space: nowrap;
     text-align: right;
-    width: 30%; }
+    width: 25%; }
+    .great-footer-links .great-footer-domestic-international-link li {
+      margin: 0; }
 
 .great-footer-copyright {
   font-size: 12px;

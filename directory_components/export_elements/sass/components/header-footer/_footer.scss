@@ -43,7 +43,7 @@
 
   ul {
     display: table;
-    width: 100%;
+    width: 75%;
 
     & > * {
       display: table-cell;
@@ -51,9 +51,11 @@
   }
 
   .great-footer-domestic-international-link {
-    white-space: nowrap;
     text-align: right;
-    width: 30%;
+    width: 25%;
+    li {
+      margin: 0;
+    }
   }
 }
 
