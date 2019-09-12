@@ -997,7 +997,7 @@ SAMPLE_NAVIGATION_TREE = [
     ('', 'sub-page-one'),
 ])
 def test_international_header_no_active_sections(section, subsection):
-    navigation = international_header(SAMPLE_NAVIGATION_TREE, '', '')
+    navigation = international_header(Context({}), SAMPLE_NAVIGATION_TREE, '', '')
 
     assert len(navigation['tier_one_items']) == 2
     assert navigation['tier_one_items'][0].title == 'Root 1'
@@ -1011,7 +1011,7 @@ def test_international_header_no_active_sections(section, subsection):
 
 
 def test_international_header_active_section():
-    navigation = international_header(SAMPLE_NAVIGATION_TREE, 'root-1', '')
+    navigation = international_header(Context({}), SAMPLE_NAVIGATION_TREE, 'root-1', '')
 
     assert len(navigation['tier_one_items']) == 2
     assert navigation['tier_one_items'][0].is_active is True
@@ -1023,7 +1023,7 @@ def test_international_header_active_section():
 
 
 def test_international_header_active_section_and_subsection():
-    navigation = international_header(SAMPLE_NAVIGATION_TREE, 'root-1', 'sub-page-1')
+    navigation = international_header(Context({}), SAMPLE_NAVIGATION_TREE, 'root-1', 'sub-page-1')
 
     assert len(navigation['tier_one_items']) == 2
     assert navigation['tier_one_items'][0].is_active is True

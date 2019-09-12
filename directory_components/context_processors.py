@@ -41,16 +41,11 @@ def header_footer_processor(request):
         'create_an_export_plan': urls.domestic.ADVICE_CREATE_AN_EXPORT_PLAN,
         'find_an_export_market': urls.domestic.ADVICE_FIND_AN_EXPORT_MARKET,
         'define_route_to_market': urls.domestic.ADVICE_DEFINE_ROUTE_TO_MARKET,
-        'get_export_finance_and_funding':
-            urls.domestic.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
-        'manage_payment_for_export_orders':
-            urls.domestic.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
-        'prepare_to_do_business_in_a_foreign_country':
-            urls.domestic.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
-        'manage_legal_and_ethical_compliance':
-            urls.domestic.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
-        'prepare_for_export_procedures_and_logistics':
-            urls.domestic.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
+        'get_export_finance_and_funding': urls.domestic.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
+        'manage_payment_for_export_orders': urls.domestic.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
+        'prepare_to_do_business_in_a_foreign_country': urls.domestic.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
+        'manage_legal_and_ethical_compliance': urls.domestic.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
+        'prepare_for_export_procedures_and_logistics': urls.domestic.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
     }
     header_footer_urls = {
         'about': urls.domestic.ABOUT,
@@ -84,24 +79,25 @@ def invest_header_footer_processor(request):
 
 
 def urls_processor(request):
-    services_urls = {
-        'contact_us': urls.domestic.CONTACT_US,
-        'events': urls.domestic.EVENTS,
-        'exopps': urls.domestic.EXPORT_OPPORTUNITIES,
-        'exred': urls.domestic.HOME,
-        'great_domestic': urls.domestic.HOME,
-        'great_international': urls.international.HOME,
-        'fab': urls.domestic.FIND_A_BUYER,
-        'fas': urls.international.TRADE_FAS,
-        'feedback': urls.domestic.FEEDBACK,
-        'office_finder': urls.domestic.OFFICE_FINDER,
-        'invest': urls.international.EXPAND_HOME,
-        'soo': urls.domestic.SELLING_OVERSEAS,
-        'sso': urls.domestic.SINGLE_SIGN_ON,
-        'uk_setup_guide': urls.international.EXPAND_HOW_TO_SETUP,
-        'isd': urls.international.EXPAND_ISD_HOME,
+    return {
+        'services_urls': {
+            'contact_us': urls.domestic.CONTACT_US,
+            'events': urls.domestic.EVENTS,
+            'exopps': urls.domestic.EXPORT_OPPORTUNITIES,
+            'exred': urls.domestic.HOME,
+            'great_domestic': urls.domestic.HOME,
+            'great_international': urls.international.HOME,
+            'fab': urls.domestic.FIND_A_BUYER,
+            'fas': urls.international.TRADE_FAS,
+            'feedback': urls.domestic.FEEDBACK,
+            'office_finder': urls.domestic.OFFICE_FINDER,
+            'invest': urls.international.EXPAND_HOME,
+            'soo': urls.domestic.SELLING_OVERSEAS,
+            'sso': urls.domestic.SINGLE_SIGN_ON,
+            'uk_setup_guide': urls.international.EXPAND_HOW_TO_SETUP,
+            'isd': urls.international.EXPAND_ISD_HOME,
+        }
     }
-    return {'services_urls': services_urls}
 
 
 def feature_flags(request):

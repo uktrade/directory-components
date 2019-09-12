@@ -128,11 +128,7 @@ class TierTwoNavItem:
         return f'/great-international-header-footer/?section={self.parent_name}&sub_section={self.name}'
 
 
-class InternationalHeaderView(
-    CountryDisplayMixin,
-    EnableTranslationsMixin,
-    BasePageView
-):
+class InternationalHeaderView(CountryDisplayMixin, EnableTranslationsMixin, BasePageView):
     @property
     def header_section(self):
         return self.request.GET.get('section', '')
