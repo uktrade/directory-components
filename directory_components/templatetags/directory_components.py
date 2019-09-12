@@ -247,12 +247,10 @@ def international_header(context, navigation_tree, site_section, site_sub_sectio
                 for item in node.tier_two_items
             ]
 
-    return {
-        **context.flatten(),
-        'tier_one_items': tier_one_items,
-        'tier_two_items': tier_two_items,
-        'navigation_tree': navigation_tree,
-    }
+    context['tier_one_items'] = tier_one_items
+    context['tier_two_items'] = tier_two_items
+    context['navigation_tree'] = navigation_tree
+    return context
 
 
 @register.inclusion_tag('directory_components/header_footer/invest_header.html', takes_context=True)
