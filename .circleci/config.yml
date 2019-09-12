@@ -5,15 +5,13 @@ jobs:
       - image: circleci/python:3.6.6
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - restore_cache:
           key: v1-deps-{{ checksum "setup.py" }}
       - run:
           command: |
             python3 -m venv .venv
             . .venv/bin/activate
-            make test_requirements
+            make install_requirements
       - save_cache:
           key: v1-deps-{{ checksum "setup.py" }}
           paths:
@@ -21,33 +19,43 @@ jobs:
       - run:
           command: |
             . .venv/bin/activate
-            make test
+            make pytest -- --cov=. --cov-config=.coveragerc --cov-report=html
+            codecov
+
+  flake8:
+    docker:
+      - image: circleci/python:3.6.6
+    steps:
+      - checkout
+      - run:
+          name: Run flake8
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install flake8
+            make flake8
+
   deploy_to_dev:
     docker:
       - image: circleci/python:3.6.6
     steps:
-      - setup_remote_docker
-      - run:
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - checkout
       - run:
           command: |
             python3 -m venv .venv
             . .venv/bin/activate
-            make test_requirements
+            make install_requirements
             make publish
 
 workflows:
   version: 2
   test_and_deploy_to_dev:
     jobs:
+      - flake8
       - test
       - deploy_to_dev:
           requires:
+            - flake8
             - test
           filters:
             branches:

@@ -1,74 +1,46 @@
-build: test_requirements test
+ARGUMENTS = $(filter-out $@,$(MAKECMDGOALS)) $(filter-out --,$(MAKEFLAGS))
 
 clean:
 	-find . -type f -name "*.pyc" -delete
 	-find . -type d -name "__pycache__" -delete
 
-test_requirements:
-	pip install -e .[test]; \
-	pip install -e .[janitor]
+pytest:
+	ENV_FILES='test,dev' \
+	pytest $(ARGUMENTS) \
+	--ignore=node_modules \
+	--capture=no \
+	--nomigrations \
+	--reuse-db \
+	-Wignore::DeprecationWarning \
+	-vv
 
-demo_requirements:
-	pip install -e .[demo]
 
 flake8:
-	flake8 . --exclude=.venv,venv,.idea-env,setup.py,directory_components/version.py,node_modules --max-line-length=120
+	flake8 . \
+	--exclude=.venv,venv,.idea-env,setup.py,directory_components/version.py,node_modules \
+	--max-line-length=120
 
-pytest:
-	pytest . --ignore=node_modules --cov=. --cov-config=.coveragerc $(pytest_args) --capture=no -vv --cov-report=html
+manage:
+	ENV_FILES='dev' ./manage.py $(ARGUMENTS)
 
-CODECOV := \
-	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
-	   codecov --token=$$CODECOV_REPO_TOKEN ;\
-	fi
+webserver:
+	ENV_FILES='dev' python manage.py runserver 0.0.0.0:9013 $(ARGUMENTS)
 
-test: flake8 pytest
-	$(CODECOV)
+requirements:
+	pip-compile requirements.in
+	pip-compile requirements_test.in
+
+install_requirements:
+	pip install -e .[test]; \
+	pip install -e .[demo]; \
+	pip install -e .[janitor]
+
+css:
+	./node_modules/.bin/gulp styles
 
 publish:
 	rm -rf build dist; \
 	python setup.py bdist_wheel; \
 	twine upload --username $$DIRECTORY_PYPI_USERNAME --password $$DIRECTORY_PYPI_PASSWORD dist/*
 
-update:
-	bash ./scripts/header_footer_git_make_branch.sh
-	python ./scripts/upgrade_header_footer.py
-	bash ./scripts/header_footer_git_push_changes.sh
-
-
-DEMO_SET_ENV_VARS := \
-	export SECRET_KEY=debug; \
-	export DEBUG=true; \
-	export PRIVACY_COOKIE_DOMAIN=.trade.great; \
-	export PORT=9013; \
-	export DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC=http://exred.trade.great:8007/; \
-	export DIRECTORY_CONSTANTS_URL_INTERNATIONAL=http://international.trade.great:8012/international/; \
-	export INVEST_BASE_URL=http://invest.trade.great:8012/; \
-	export LANGUAGE_COOKIE_DOMAIN=.trade.great; \
-	export FEATURE_COUNTRY_SELECTOR_ENABLED=true
-
-
-DJANGO_WEBSERVER := \
-	./manage.py collectstatic --noinput --settings=demo.config.settings && \
-	./manage.py runserver --settings=demo.config.settings 0.0.0.0:$$PORT
-
-django_webserver:
-	$(DJANGO_WEBSERVER)
-
-run_demo:
-	$(DEMO_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
-
-demo_manage:
-	$(DEMO_SET_ENV_VARS) && ./manage.py $(cmd)
-
-translations:
-	$(DEMO_SET_ENV_VARS) && python manage.py makemessages -a
-
-compile_translations:
-	$(DEMO_SET_ENV_VARS) && python manage.py compilemessages
-
-
-compile_css:
-	./node_modules/.bin/gulp styles
-
-.PHONY: build clean test_requirements flake8 pytest test publish
+.PHONY: clean pytest flake8 manage webserver requirements install_requirements css publish

@@ -15,7 +15,7 @@ COUNTRY_CODES = [code for code, _ in choices.COUNTRY_CHOICES]
 def get_user(request):
     # backwards compatibility with new and old style of user auth
     for attribute in ['user', 'sso_user']:
-         if hasattr(request, attribute):
+        if hasattr(request, attribute):
             return getattr(request, attribute)
 
 
