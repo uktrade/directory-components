@@ -1,4 +1,11 @@
 # Changelog
+
+## 32.2.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
+
+### Implemented enhancements
+- Amended list elements in footer to pass accessibility
+
 ## 32.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/284/files)
 
@@ -6,12 +13,6 @@
 - CMS-1843: Fix language picker not appearing in international header.
 - no ticket: Fix home and domestic URL's in international header.
 - no ticket: Fix country selector in the international header.
-
-## 32.2.2
-[Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
-
-### Implemented enhancements
-- Amended list elements in footer to pass accessibility
 
 ## 32.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/283/files)
