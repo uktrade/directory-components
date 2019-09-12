@@ -282,15 +282,16 @@
       display: block; }
     .great-footer-links .great-footer-site-links {
       padding: 0 30px; }
-      .great-footer-links .great-footer-site-links li:first-child a,
-      .great-footer-links .great-footer-site-links .great-footer-domestic-international-link li a {
-        font-size: 18px; }
+    .great-footer-links .great-footer-site-links li:first-child a,
+    .great-footer-links .great-footer-domestic-international-link li a {
+      font-size: 18px; }
     .great-footer-links .great-footer-site-links li:first-child {
       margin-bottom: 15px; }
     .great-footer-links .great-footer-domestic-international-link {
       margin-top: 15px;
       text-align: left;
-      padding: 0 30px; }
+      padding: 0 30px;
+      width: 100%; }
   .great-global-header-footer .great-footer-copyright {
     line-height: 50px;
     padding: 0 15px; } }

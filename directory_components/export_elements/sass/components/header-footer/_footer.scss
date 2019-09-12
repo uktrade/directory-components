@@ -49,7 +49,7 @@
       display: table-cell;
     }
   }
-  
+
   .great-footer-domestic-international-link {
     white-space: nowrap;
     text-align: right;
@@ -83,11 +83,10 @@
 
     .great-footer-site-links {
       padding: 0 30px;
-
-      li:first-child a,
-      .great-footer-domestic-international-link li a {
-        font-size: 18px;
-      }
+    }
+    .great-footer-site-links li:first-child a,
+    .great-footer-domestic-international-link li a {
+      font-size: 18px;
     }
 
     .great-footer-site-links li:first-child {
@@ -98,6 +97,7 @@
       margin-top: 15px;
       text-align: left;
       padding: 0 30px;
+      width: 100%;
     }
   }
 
