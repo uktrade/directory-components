@@ -44,7 +44,7 @@ jobs:
           command: |
             python3 -m venv .venv
             . .venv/bin/activate
-            make test_requirements
+            make install_requirements
             make publish
 
 workflows:
