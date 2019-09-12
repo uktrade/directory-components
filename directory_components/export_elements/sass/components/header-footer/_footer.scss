@@ -67,7 +67,7 @@
 
 @media (max-width: 640px) {
   .great-footer-links {
-    display: unset;
+    display: block;
     a {
       color: $white;
       text-decoration: none;
@@ -83,9 +83,6 @@
       display: block;
     }
 
-    .great-footer-site-links {
-      padding: 0 30px;
-    }
     .great-footer-site-links li:first-child a,
     .great-footer-domestic-international-link li a {
       font-size: 18px;
@@ -98,7 +95,6 @@
     .great-footer-domestic-international-link {
       margin-top: 15px;
       text-align: left;
-      padding: 0 30px;
       width: 100%;
     }
   }
