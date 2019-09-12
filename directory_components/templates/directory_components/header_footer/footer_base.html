@@ -9,8 +9,7 @@
   </div>
 
   <nav class="great-footer-links container">
-    <ul>
-      <div class="great-footer-site-links">
+      <ul class="great-footer-site-links">
         <li>
           <a id="footer-contact" href="{{ services_urls.contact_us }}">{% trans 'Contact us' %}</a>
         </li>
@@ -24,13 +23,12 @@
         <li>
           <a id="footer-dit" href="{{ header_footer_urls.dit }}" title="{% trans 'Opens in a new window' %}" rel="noopener noreferrer" target="_blank">{% trans 'Department for International Trade on GOV.UK' %}</a>
         </li>
-      </div>
+      </ul>
 
-      <div class="great-footer-domestic-international-link">
+      <ul class="great-footer-domestic-international-link">
         {% block footer_domestic_international_link %}{% endblock %}
-      </div>
+      </ul>
 
-    </ul>
   </nav>
 
   <div class="great-global-header-footer {% block global_footer_class %}{% endblock %}">

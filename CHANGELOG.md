@@ -1,5 +1,11 @@
 # Changelog
 
+## 32.2.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
+
+### Implemented enhancements
+- Amended list elements in footer to pass accessibility
+
 ## 32.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/283/files)
 
