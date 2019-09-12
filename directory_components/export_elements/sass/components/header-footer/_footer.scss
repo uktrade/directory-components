@@ -43,7 +43,7 @@
 
   ul {
     display: table;
-    width: 75%;
+    width: 100%;
 
     & > * {
       display: table-cell;
@@ -52,7 +52,6 @@
 
   .great-footer-domestic-international-link {
     text-align: right;
-    width: 25%;
     li {
       margin: 0;
     }
@@ -84,7 +83,7 @@
     }
 
     .great-footer-site-links li:first-child a,
-    .great-footer-domestic-international-link li a {
+    li:last-child a {
       font-size: 18px;
     }
 

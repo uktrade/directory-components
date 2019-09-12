@@ -255,12 +255,11 @@
     display: inline-block; }
   .great-footer-links ul {
     display: table;
-    width: 75%; }
+    width: 100%; }
     .great-footer-links ul > * {
       display: table-cell; }
   .great-footer-links .great-footer-domestic-international-link {
-    text-align: right;
-    width: 25%; }
+    text-align: right; }
     .great-footer-links .great-footer-domestic-international-link li {
       margin: 0; }
 
@@ -282,7 +281,7 @@
     .great-footer-links ul > div {
       display: block; }
     .great-footer-links .great-footer-site-links li:first-child a,
-    .great-footer-links .great-footer-domestic-international-link li a {
+    .great-footer-links li:last-child a {
       font-size: 18px; }
     .great-footer-links .great-footer-site-links li:first-child {
       margin-bottom: 15px; }
