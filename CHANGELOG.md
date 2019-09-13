@@ -1,4 +1,11 @@
 # Changelog
+
+## 32.3.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
+
+### Implemented enhancements
+- Amended list elements in footer to pass accessibility and mobile menu
+
 ## 32.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/286/files)
 ### Implemented enhancements
@@ -7,8 +14,6 @@
 - No ticket: renamed config to conf for consistency
 - TT-1808: Add no-validate to no cache middleware
 
-
-# Changelog
 ## 32.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/284/files)
 

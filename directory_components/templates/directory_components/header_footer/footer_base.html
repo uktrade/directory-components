@@ -9,27 +9,21 @@
   </div>
 
   <nav class="great-footer-links container">
-    <ul>
-      <div class="great-footer-site-links">
+    <ul class="great-footer-site-links">
         <li>
-          <a id="footer-contact" href="{{ services_urls.contact_us }}">{% trans 'Contact us' %}</a>
+            <a id="footer-contact" href="{{ services_urls.contact_us }}">{% trans 'Contact us' %}</a>
         </li>
         <li>
-          <a id="footer-privacy-and-cookies" href="{{ header_footer_urls.privacy_and_cookies }}">{% trans 'Privacy and cookies' %}</a>
+            <a id="footer-privacy-and-cookies" href="{{ header_footer_urls.privacy_and_cookies }}">{% trans 'Privacy and cookies' %}</a>
         </li>
         <li>
-          <a id="footer-terms-and-conditions" href="{{ header_footer_urls.terms_and_conditions }}">{% trans 'Terms and conditions' %}</a>
+            <a id="footer-terms-and-conditions" href="{{ header_footer_urls.terms_and_conditions }}">{% trans 'Terms and conditions' %}</a>
         </li>
         {% block footer_performance_link %}{% endblock %}
         <li>
-          <a id="footer-dit" href="{{ header_footer_urls.dit }}" title="{% trans 'Opens in a new window' %}" rel="noopener noreferrer" target="_blank">{% trans 'Department for International Trade on GOV.UK' %}</a>
+            <a id="footer-dit" href="{{ header_footer_urls.dit }}" title="{% trans 'Opens in a new window' %}" rel="noopener noreferrer" target="_blank">{% trans 'Department for International Trade on GOV.UK' %}</a>
         </li>
-      </div>
-
-      <div class="great-footer-domestic-international-link">
         {% block footer_domestic_international_link %}{% endblock %}
-      </div>
-
     </ul>
   </nav>
 

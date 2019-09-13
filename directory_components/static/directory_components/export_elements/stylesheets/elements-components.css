@@ -244,7 +244,10 @@
     color: #d8d8d8; }
 
 .great-footer-links {
-  padding: 30px 0; }
+  padding: 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
   .great-footer-links a {
     font-size: 14px; }
   .great-footer-links ul li {
@@ -256,8 +259,9 @@
     .great-footer-links ul > * {
       display: table-cell; }
   .great-footer-links .great-footer-domestic-international-link {
-    white-space: nowrap;
     text-align: right; }
+    .great-footer-links .great-footer-domestic-international-link li {
+      margin: 0; }
 
 .great-footer-copyright {
   font-size: 12px;
@@ -265,23 +269,26 @@
   line-height: 50px; }
 
 @media (max-width: 640px) {
-  .great-footer-links a {
-    color: #ffffff;
-    text-decoration: none; }
-    .great-footer-links a:hover {
-      text-decoration: underline; }
-  .great-footer-links ul,
-  .great-footer-links ul li,
-  .great-footer-links ul > div {
+  .great-footer-links {
     display: block; }
-  .great-footer-links .great-footer-site-links li:first-child a,
-  .great-footer-links .great-footer-domestic-international-link li a {
-    font-size: 18px; }
-  .great-footer-links .great-footer-site-links li:first-child {
-    margin-bottom: 15px; }
-  .great-footer-links .great-footer-domestic-international-link {
-    margin-top: 15px;
-    text-align: left; }
+    .great-footer-links a {
+      color: #ffffff;
+      text-decoration: none; }
+      .great-footer-links a:hover {
+        text-decoration: underline; }
+    .great-footer-links ul,
+    .great-footer-links ul li,
+    .great-footer-links ul > div {
+      display: block; }
+    .great-footer-links .great-footer-site-links li:first-child a,
+    .great-footer-links li:last-child a {
+      font-size: 18px; }
+    .great-footer-links .great-footer-site-links li:first-child {
+      margin-bottom: 15px; }
+    .great-footer-links .great-footer-domestic-international-link {
+      margin-top: 15px;
+      text-align: left;
+      width: 100%; }
   .great-global-header-footer .great-footer-copyright {
     line-height: 50px;
     padding: 0 15px; } }
