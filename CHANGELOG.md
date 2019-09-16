@@ -1,5 +1,12 @@
 # Changelog
 
+## 33.0.3
+[Full Changelog](https://github.com/uktrade/directory-components/pull/291/files)
+
+### Bugs fixed
+- GA360 mixin handles AnonymouseUser, SSOUser, and None
+
+
 ## 33.0.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/289/files)
 
