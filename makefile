@@ -24,7 +24,7 @@ manage:
 	ENV_FILES='dev' ./manage.py $(ARGUMENTS)
 
 webserver:
-	ENV_FILES='dev' python manage.py collectstatic --no-input && ENV_FILES='dev' python manage.py runserver 0.0.0.0:9013 $(ARGUMENTS)
+	ENV_FILES='dev' python manage.py runserver 0.0.0.0:9013 $(ARGUMENTS)
 
 requirements:
 	pip-compile requirements.in
