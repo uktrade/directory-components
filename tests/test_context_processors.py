@@ -106,38 +106,25 @@ def test_header_footer_processor(settings):
     context = context_processors.header_footer_processor(None)
 
     assert context['header_footer_urls'] == {
-        'create_an_export_plan': (
-            'https://exred.com/advice/create-an-export-plan/'),
-        'find_an_export_market': (
-            'https://exred.com/advice/find-an-export-market/'),
-        'define_route_to_market': (
-            'https://exred.com/advice/define-route-to-market/'),
-        'get_export_finance_and_funding': (
-            'https://exred.com/advice/get-export-finance-and-funding/'),
-        'manage_payment_for_export_orders': (
-            'https://exred.com/advice/manage-payment-for-export-orders/'),
-        'prepare_to_do_business_in_a_foreign_country': (
-            'https://exred.com/'
-            'advice/prepare-to-do-business-in-a-foreign-country/'),
-        'manage_legal_and_ethical_compliance': (
-            'https://exred.com/advice/manage-legal-and-ethical-compliance/'),
-        'prepare_for_export_procedures_and_logistics': (
-            'https://exred.com/'
-            'advice/prepare-for-export-procedures-and-logistics/'),
+        'create_an_export_plan': 'https://exred.com/advice/create-an-export-plan/',
+        'find_an_export_market': 'https://exred.com/advice/find-an-export-market/',
+        'define_route_to_market': 'https://exred.com/advice/define-route-to-market/',
+        'get_export_finance_and_funding': 'https://exred.com/advice/get-export-finance-and-funding/',
+        'manage_payment_for_export_orders': 'https://exred.com/advice/manage-payment-for-export-orders/',
+        'prepare_to_do_business_in_a_foreign_country': 'https://exred.com/advice/prepare-to-do-business-in-a-foreign-country/',  # noqa
+        'manage_legal_and_ethical_compliance': 'https://exred.com/advice/manage-legal-and-ethical-compliance/',
+        'prepare_for_export_procedures_and_logistics': 'https://exred.com/advice/prepare-for-export-procedures-and-logistics/',  # noqa
         'about': 'https://exred.com/about/',
-        'dit': urls.DIT,
+        'dit': urls.domestic.DIT,
         'advice': 'https://exred.com/advice/',
         'markets': 'https://exred.com/markets/',
         'search': 'https://exred.com/search/',
         'services': 'https://exred.com/services/',
         'domestic_news': 'https://exred.com/news/',
-        'fas': 'https://fas.com',
-        'how_to_do_business_with_the_uk': (
-            'https://international.com/international'
-            '/how-to-do-business-with-the-uk/'
-        ),
-        'industries': 'https://international.com/international/industries/',
-        'international_news': 'https://international.com/international/news/',
+        'fas': 'https://international.com/international/trade/',
+        'how_to_do_business_with_the_uk': 'https://international.com/international/content/how-to-do-business-with-the-uk/',  # noqa
+        'industries': 'https://international.com/international/content/industries/',
+        'international_news': 'https://international.com/international/content/news/',
         'get_finance': 'https://exred.com/get-finance/',
         'ukef': 'https://exred.com/get-finance/',
         'performance': 'https://exred.com/performance-dashboard/',
@@ -150,8 +137,8 @@ def test_header_footer_processor(settings):
 def test_invest_header_footer_processor():
     context = context_processors.invest_header_footer_processor(None)
     assert context['invest_header_footer_urls'] == {
-        'industries': 'https://invest.com/industries/',
-        'uk_setup_guide': 'https://invest.com/uk-setup-guide/',
+        'industries': 'https://international.com/international/content/industries/',
+        'uk_setup_guide': 'https://international.com/international/content/how-to-setup-in-the-uk/',
     }
 
 
@@ -165,17 +152,15 @@ def test_urls_processor(settings):
         'exopps': 'https://exopps.com',
         'exred': 'https://exred.com',
         'fab': 'https://fab.com',
-        'fas': 'https://fas.com',
+        'fas': 'https://international.com/international/trade/',
         'feedback': 'https://exred.com/contact/feedback/',
         'great_domestic': 'https://exred.com',
         'great_international': 'https://international.com/international/',
-        'invest': 'https://invest.com',
+        'invest': 'https://international.com/international/invest/',
         'soo': 'https://soo.com',
         'sso': 'https://sso.com',
-        'uk_setup_guide': (
-            'https://international.com/international/how-to-setup-in-the-uk/'
-        ),
-        'isd': 'https://isd.com/investment-support-directory/',
+        'uk_setup_guide': 'https://international.com/international/content/how-to-setup-in-the-uk/',
+        'isd': 'https://international.com/international/investment-support-directory/',
         'office_finder': 'https://exred.com/contact/office-finder/',
     }
 

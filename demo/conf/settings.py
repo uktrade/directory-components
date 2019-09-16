@@ -17,7 +17,8 @@ import environ
 
 
 env = environ.Env()
-env.read_env()
+for env_file in env.list('ENV_FILES', default=[]):
+    env.read_env(f'demo/conf/env/{env_file}')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -59,7 +60,7 @@ MIDDLEWARE = [
     'directory_components.middleware.CountryMiddleware',
 ]
 
-ROOT_URLCONF = 'demo.config.urls'
+ROOT_URLCONF = 'demo.conf.urls'
 
 TEMPLATES = [
     {
@@ -71,8 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.i18n',
-                ('directory_components.context_processors'
-                    '.header_footer_processor'),
+                'directory_components.context_processors.header_footer_processor',
                 'directory_components.context_processors.urls_processor',
                 'directory_components.context_processors.sso_processor',
                 'directory_components.context_processors.cookie_notice',
@@ -88,7 +88,10 @@ TEMPLATES = [
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_HOST = env.str('STATIC_HOST', '')
 STATIC_URL = STATIC_HOST + '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = env.str(
+    'STATICFILES_STORAGE',
+    'whitenoise.storage.CompressedManifestStaticFilesStorage'
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -170,8 +173,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC = env.str(
     'DIRECTORY_CONSTANTS_URL_GREAT_DOMESTIC', ''
 )
-DIRECTORY_CONSTANTS_URL_GREAT_INTERNATIONAL = env.str(
-    'DIRECTORY_CONSTANTS_URL_GREAT_INTERNATIONAL', ''
+DIRECTORY_CONSTANTS_URL_INTERNATIONAL = env.str(
+    'DIRECTORY_CONSTANTS_URL_INTERNATIONAL', ''
 )
 DIRECTORY_CONSTANTS_URL_INVEST = env.str(
     'DIRECTORY_CONSTANTS_URL_INVEST', ''

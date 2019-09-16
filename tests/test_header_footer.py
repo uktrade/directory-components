@@ -64,7 +64,7 @@ def test_header_domestic_news_section_off(settings):
     }
     template_name = 'directory_components/header_footer/domestic_header.html'
     html = render_to_string(template_name, context)
-    assert urls.GREAT_DOMESTIC_NEWS not in html
+    assert urls.domestic.GREAT_DOMESTIC_NEWS not in html
 
 
 def test_header_international_news_section_off(settings):
@@ -75,15 +75,15 @@ def test_header_international_news_section_off(settings):
     }
     template_name = 'directory_components/header_footer/domestic_header.html'
     html = render_to_string(template_name, context)
-    assert urls.GREAT_INTERNATIONAL_NEWS not in html
+    assert urls.international.NEWS not in html
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICES_GREAT_DOMESTIC,
-    urls.GREAT_INTERNATIONAL,
-    urls.ADVICE,
-    urls.MARKETS,
-    urls.GREAT_DOMESTIC_NEWS,
+    urls.domestic.HOME,
+    urls.international.HOME,
+    urls.domestic.ADVICE,
+    urls.domestic.MARKETS,
+    urls.domestic.GREAT_DOMESTIC_NEWS,
 ])
 def test_urls_exist_in_domestic_header(url, settings):
     context = {
@@ -97,38 +97,12 @@ def test_urls_exist_in_domestic_header(url, settings):
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICES_GREAT_DOMESTIC,
-    urls.GREAT_INTERNATIONAL,
-    'http://test.co.uk',
-    'http://mobile-test.co.uk'
-])
-def test_urls_exist_in_international_header(url, settings):
-    context = {
-        'features': {
-            'NEWS_SECTION_ON': True,
-            'HOW_TO_DO_BUSINESS_ON': True,
-        },
-        'pages': [
-            {'url': 'http://mobile-test.co.uk', 'title': 'test', 'sub_pages': []}  # NOQA
-        ],
-        'header_items': [
-            {'url': 'http://test.co.uk', 'title': 'test', 'active': True}
-        ],
-        **context_processors.header_footer_processor(None),
-        **context_processors.urls_processor(None)
-    }
-    template_name = (
-        'directory_components/header_footer/international_header.html')
-    assert url in render_to_string(template_name, context)
-
-
-@pytest.mark.parametrize('url', [
-    urls.GREAT_INTERNATIONAL,
-    urls.CONTACT_US,
-    urls.PRIVACY_AND_COOKIES,
-    urls.TERMS_AND_CONDITIONS,
-    urls.PERFORMANCE_DASHBOARD,
-    urls.DIT,
+    urls.international.HOME,
+    urls.domestic.CONTACT_US,
+    urls.domestic.PRIVACY_AND_COOKIES,
+    urls.domestic.TERMS_AND_CONDITIONS,
+    urls.domestic.PERFORMANCE_DASHBOARD,
+    urls.domestic.DIT,
 ])
 def test_urls_exist_in_domestic_footer(url, settings):
     context = {
@@ -142,11 +116,11 @@ def test_urls_exist_in_domestic_footer(url, settings):
 
 
 @pytest.mark.parametrize('url', [
-    urls.SERVICES_GREAT_DOMESTIC,
-    urls.CONTACT_US,
-    urls.PRIVACY_AND_COOKIES,
-    urls.TERMS_AND_CONDITIONS,
-    urls.DIT,
+    urls.domestic.HOME,
+    urls.domestic.CONTACT_US,
+    urls.domestic.PRIVACY_AND_COOKIES,
+    urls.domestic.TERMS_AND_CONDITIONS,
+    urls.domestic.DIT,
 ])
 def test_urls_exist_in_international_footer(url, settings):
     context = {
@@ -163,17 +137,17 @@ def test_urls_exist_in_international_footer(url, settings):
     (
         'Advice',
         'header-advice',
-        urls.ADVICE,
+        urls.domestic.ADVICE,
     ),
     (
         'Markets',
         'header-markets',
-        urls.MARKETS,
+        urls.domestic.MARKETS,
     ),
     (
         'News and events',
         'header-news',
-        urls.GREAT_DOMESTIC_NEWS,
+        urls.domestic.GREAT_DOMESTIC_NEWS,
     ),
 ))
 def test_domestic_header_ids_match_urls_and_text(
@@ -203,32 +177,32 @@ def test_domestic_header_ids_match_urls_and_text(
     (
         'Contact us',
         'footer-contact',
-        urls.CONTACT_US,
+        urls.domestic.CONTACT_US,
     ),
     (
         'Privacy and cookies',
         'footer-privacy-and-cookies',
-        urls.PRIVACY_AND_COOKIES,
+        urls.domestic.PRIVACY_AND_COOKIES,
     ),
     (
         'Terms and conditions',
         'footer-terms-and-conditions',
-        urls.TERMS_AND_CONDITIONS,
+        urls.domestic.TERMS_AND_CONDITIONS,
     ),
     (
         'Performance',
         'footer-performance',
-        urls.PERFORMANCE_DASHBOARD,
+        urls.domestic.PERFORMANCE_DASHBOARD,
     ),
     (
         'Department for International Trade on GOV.UK',
         'footer-dit',
-        urls.DIT
+        urls.domestic.DIT
     ),
     (
         'Go to the page for international businesses',
         'footer-international',
-        urls.GREAT_INTERNATIONAL
+        urls.international.HOME
     ),
 ))
 def test_domestic_footer_ids_match_urls_and_text(
@@ -254,27 +228,27 @@ def test_domestic_footer_ids_match_urls_and_text(
     (
         'Contact us',
         'footer-contact',
-        urls.CONTACT_US,
+        urls.domestic.CONTACT_US,
     ),
     (
         'Privacy and cookies',
         'footer-privacy-and-cookies',
-        urls.PRIVACY_AND_COOKIES,
+        urls.domestic.PRIVACY_AND_COOKIES,
     ),
     (
         'Terms and conditions',
         'footer-terms-and-conditions',
-        urls.TERMS_AND_CONDITIONS,
+        urls.domestic.TERMS_AND_CONDITIONS,
     ),
     (
         'Department for International Trade on GOV.UK',
         'footer-dit',
-        urls.DIT
+        urls.domestic.DIT
     ),
     (
         'Go to the page for UK businesses',
         'footer-domestic',
-        urls.SERVICES_GREAT_DOMESTIC
+        urls.domestic.HOME
     ),
 ))
 def test_international_footer_ids_match_urls_and_text(

@@ -34,9 +34,11 @@ class NoCacheMiddlware(MiddlewareMixin):
 
     """
 
+    NO_CACHE_HEADER_VALUE = 'no-store, no-cache, must-revalidate'
+
     def process_response(self, request, response):
         if helpers.get_is_authenticated(request):
-            response['Cache-Control'] = 'no-store, no-cache'
+            response['Cache-Control'] = self.NO_CACHE_HEADER_VALUE
         return response
 
 

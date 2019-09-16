@@ -55,7 +55,7 @@ a.labelled-card {
   }
 
   .card-header h3 {
-    @include brand-19;
+    @include brand-medium;
     height: 45px;
     color: $white;
     background-color: $active-blue;

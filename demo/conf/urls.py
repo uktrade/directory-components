@@ -31,6 +31,24 @@ urlpatterns = [
         name='elements',
     ),
     url(
+        r'^details/$',
+        views.DetailsView.as_view(),
+        {'template_name': 'demo/details.html'},
+        name='details',
+    ),
+    url(
+        r'^key-facts/$',
+        views.KeyFactsView.as_view(),
+        {'template_name': 'demo/key-facts.html'},
+        name='key-facts',
+    ),
+    url(
+        r'^featured-articles/$',
+        views.FeaturedArticlesView.as_view(),
+        {'template_name': 'demo/featured-articles.html'},
+        name='featured-articles',
+    ),
+    url(
         r'^statistics/$',
         views.DemoStatsView.as_view(),
         {'template_name': 'demo/statistics.html'},

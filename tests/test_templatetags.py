@@ -6,7 +6,7 @@ from django.template import Context, Template
 
 from directory_components import forms
 from directory_components.templatetags import directory_components
-
+from directory_components.templatetags.directory_components import international_header
 
 REQUIRED_MESSAGE = forms.PaddedCharField.default_error_messages['required']
 
@@ -169,46 +169,6 @@ def test_add_export_elements_classes(input_html, expected_html):
 
     html = template.render(context)
     assert html == expected_html
-
-
-def test_render_form():
-    form = PaddedTestForm(data={'field': 'value'})
-
-    template = Template(
-        '{% load render_form from directory_components %}'
-        '{% render_form form %}'
-    )
-    context = Context({'form': form})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    form_container = soup.find('div')
-    assert 'form-group' in form_container['class']
-
-    label = soup.find('label')
-    assert 'form-label' in label['class']
-    assert label['for'] == 'id_field'
-
-    input_field = soup.find('input')
-    assert input_field['id'] == 'id_field'
-
-
-def test_render_form_non_field_errors():
-    form = PaddedTestForm(data={'field': 'value'})
-    form.add_error(field=None, error=['Some error', 'Some other error'])
-    assert form.is_valid() is False
-
-    template = Template(
-        '{% load render_form from directory_components %}'
-        '{% render_form form %}'
-    )
-    context = Context({'form': form})
-
-    html = template.render(context)
-
-    assert 'Some error' in html
-    assert 'Some other error' in html
 
 
 def test_card():
@@ -654,39 +614,9 @@ def test_hero():
 
     banner = soup.find(id='hero-heading')
     assert 'hero_text' in banner.string
-    assert 'heading-hero-generic-compact' in banner['class']
+    assert 'great-hero-heading' in banner['class']
 
-    assert 'hero-title-compact' in html
-
-    banner = soup.find(id='hero-description')
-    assert banner.string == 'description'
-
-
-def test_hero_large_title():
-    hero_content = {
-        'background_image_url': 'image.png',
-        'hero_text': 'hero_text',
-        'description': 'description',
-        'large_title': True,
-    }
-    string = (
-        "{{% load hero from directory_components %}}"
-        "{{% hero background_image_url='{background_image_url}' "
-        "hero_text='{hero_text}' description='{description}' "
-        "large_title={large_title} %}}"
-        ).format(**hero_content)
-
-    template = Template(string)
-    context = Context({})
-
-    html = template.render(context)
-    soup = BeautifulSoup(html, 'html.parser')
-
-    banner = soup.find(id='hero-heading')
-    assert 'hero_text' in banner.string
-    assert 'heading-hero-generic' in banner['class']
-
-    assert 'hero-title' in html
+    assert 'great-hero-title' in html
 
     banner = soup.find(id='hero-description')
     assert banner.string == 'description'
@@ -711,7 +641,10 @@ def test_hero_large_title():
     directory_components.informative_banner,
     directory_components.search_page_selected_filters,
     directory_components.search_page_expandable_options,
-    directory_components.full_width_image_with_list_and_media
+    directory_components.full_width_image_with_list_and_media,
+    directory_components.key_facts,
+    directory_components.details_list,
+    directory_components.featured_articles,
 ))
 def test_template_tag_kwargs(template_tag):
     test_kwargs = {
@@ -1028,3 +961,108 @@ def test_pagination(count, current, expected, rf):
     if soup.findAll('a', {'class': 'pagination-next'}):
         items.append('N')
     assert ' '.join(items) == expected
+
+
+class NavNode:
+    def __init__(self, tier_one_item, tier_two_items):
+        self.tier_one_item = tier_one_item
+        self.tier_two_items = tier_two_items
+
+
+class NavItem:
+    def __init__(self, title, name):
+        self.title = title
+        self.name = name
+        self.url = "/{0}/".format(name)
+
+
+SAMPLE_NAVIGATION_TREE = [
+    NavNode(
+        tier_one_item=NavItem('Root 1', 'root-1'),
+        tier_two_items=[
+            NavItem('Sub Page 1', 'sub-page-1'),
+        ]
+    ),
+    NavNode(
+        tier_one_item=NavItem('Root 2', 'root-2'),
+        tier_two_items=[]
+    ),
+]
+
+
+@pytest.mark.parametrize('section,subsection', [
+    ('', ''),
+    ('incorrect-section', ''),
+    ('', 'incorrect-subsection'),
+    ('', 'sub-page-one'),
+])
+def test_international_header_no_active_sections(section, subsection):
+    navigation = international_header(Context({}), SAMPLE_NAVIGATION_TREE, '', '')
+
+    assert len(navigation['tier_one_items']) == 2
+    assert navigation['tier_one_items'][0].title == 'Root 1'
+    assert navigation['tier_one_items'][0].is_active is False
+    assert navigation['tier_one_items'][1].title == 'Root 2'
+    assert navigation['tier_one_items'][1].is_active is False
+
+    assert len(navigation['tier_two_items']) == 0
+
+    assert navigation['navigation_tree'] == SAMPLE_NAVIGATION_TREE
+
+
+def test_international_header_active_section():
+    navigation = international_header(Context({}), SAMPLE_NAVIGATION_TREE, 'root-1', '')
+
+    assert len(navigation['tier_one_items']) == 2
+    assert navigation['tier_one_items'][0].is_active is True
+    assert navigation['tier_one_items'][1].is_active is False
+
+    assert len(navigation['tier_two_items']) == 1
+    assert navigation['tier_two_items'][0].title == 'Sub Page 1'
+    assert not navigation['tier_two_items'][0].is_active
+
+
+def test_international_header_active_section_and_subsection():
+    navigation = international_header(Context({}), SAMPLE_NAVIGATION_TREE, 'root-1', 'sub-page-1')
+
+    assert len(navigation['tier_one_items']) == 2
+    assert navigation['tier_one_items'][0].is_active is True
+    assert navigation['tier_one_items'][1].is_active is False
+
+    assert len(navigation['tier_two_items']) == 1
+    assert navigation['tier_two_items'][0].title == 'Sub Page 1'
+    assert navigation['tier_two_items'][0].is_active
+
+
+def test_international_header_tag():
+    template = Template(
+        '{% load international_header from directory_components %}'
+        '{% international_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
+    )
+    context = {
+        'tree': SAMPLE_NAVIGATION_TREE,
+        'section': '',
+        'sub_section': '',
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/root-1/'}) is not None
+
+
+def test_invest_header_tag():
+    template = Template(
+        '{% load invest_header from directory_components %}'
+        '{% invest_header navigation_tree=tree site_section=section site_sub_section=sub_section %}'
+    )
+    context = {
+        'tree': SAMPLE_NAVIGATION_TREE,
+        'section': '',
+        'sub_section': '',
+    }
+
+    html = template.render(Context(context))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/root-1/'}) is not None

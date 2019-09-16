@@ -3,24 +3,24 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='28.0.0',
+    version='33.0.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
     description='Shared components library for Great services.',
-    packages=find_packages(exclude=[
-        'tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
+    packages=find_packages(exclude=['tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
         'django>=1.11,<3.0a1',
         'beautifulsoup4>=4.6.0,<5.0.0',
-        'directory-constants>=18.0.0,<19.0.0',
+        'directory-constants>=20.0.0,<21.0.0',
         'jsonschema>=3.0.1,<4.0.0',
     ],
     extras_require={
         'test': [
+            'lorem==0.1.1',
             'ansicolors==1.1.8',
             'codecov==2.0.9',
             'flake8==3.0.4',
@@ -35,6 +35,7 @@ setup(
             'setuptools>=38.6.0,<39.0.0'
         ],
         'demo': [
+            'lorem==0.1.1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
             'whitenoise==3.3.1',

@@ -38,40 +38,33 @@ def cookie_notice(request):
 
 def header_footer_processor(request):
     advice_urls = {
-        'create_an_export_plan': urls.ADVICE_CREATE_AN_EXPORT_PLAN,
-        'find_an_export_market': urls.ADVICE_FIND_AN_EXPORT_MARKET,
-        'define_route_to_market': urls.ADVICE_DEFINE_ROUTE_TO_MARKET,
-        'get_export_finance_and_funding':
-            urls.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
-        'manage_payment_for_export_orders':
-            urls.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
-        'prepare_to_do_business_in_a_foreign_country':
-            urls.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
-        'manage_legal_and_ethical_compliance':
-            urls.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
-        'prepare_for_export_procedures_and_logistics':
-            urls.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
+        'create_an_export_plan': urls.domestic.ADVICE_CREATE_AN_EXPORT_PLAN,
+        'find_an_export_market': urls.domestic.ADVICE_FIND_AN_EXPORT_MARKET,
+        'define_route_to_market': urls.domestic.ADVICE_DEFINE_ROUTE_TO_MARKET,
+        'get_export_finance_and_funding': urls.domestic.ADVICE_GET_EXPORT_FINANCE_AND_FUNDING,
+        'manage_payment_for_export_orders': urls.domestic.ADVICE_MANAGE_PAYMENT_FOR_EXPORT_ORDERS,
+        'prepare_to_do_business_in_a_foreign_country': urls.domestic.ADVICE_PREPARE_TO_DO_BUSINESS_IN_A_FOREIGN_COUNTRY,
+        'manage_legal_and_ethical_compliance': urls.domestic.ADVICE_MANAGE_LEGAL_AND_ETHICAL_COMPLIANCE,
+        'prepare_for_export_procedures_and_logistics': urls.domestic.ADVICE_PREPARE_FOR_EXPORT_PROCEDURES_AND_LOGISTICS,
     }
     header_footer_urls = {
-        'about': urls.ABOUT,
-        'dit': urls.DIT,
-        'get_finance': urls.GET_FINANCE,
-        'ukef': urls.GET_FINANCE,
-        'performance': urls.PERFORMANCE_DASHBOARD,
-        'privacy_and_cookies': urls.PRIVACY_AND_COOKIES,
-        'terms_and_conditions': urls.TERMS_AND_CONDITIONS,
-        'fas': urls.SERVICES_FAS,
-        'advice': urls.ADVICE,
-        'markets': urls.MARKETS,
-        'search': urls.SEARCH,
-        'services': urls.SERVICES,
-        'domestic_news': urls.GREAT_DOMESTIC_NEWS,
-        'international_news': urls.GREAT_INTERNATIONAL_NEWS,
-        'how_to_do_business_with_the_uk':
-            urls.GREAT_INTERNATIONAL_HOW_TO_DO_BUSINESS_WITH_THE_UK,
-        'industries':
-            urls.GREAT_INTERNATIONAL_INDUSTRIES,
-        'market_access': urls.build_great_url('report-trade-barrier/')
+        'about': urls.domestic.ABOUT,
+        'dit': urls.domestic.DIT,
+        'get_finance': urls.domestic.GET_FINANCE,
+        'ukef': urls.domestic.GET_FINANCE,
+        'performance': urls.domestic.PERFORMANCE_DASHBOARD,
+        'privacy_and_cookies': urls.domestic.PRIVACY_AND_COOKIES,
+        'terms_and_conditions': urls.domestic.TERMS_AND_CONDITIONS,
+        'fas': urls.international.TRADE_FAS,
+        'advice': urls.domestic.ADVICE,
+        'markets': urls.domestic.MARKETS,
+        'search': urls.domestic.SEARCH,
+        'services': urls.domestic.SERVICES,
+        'domestic_news': urls.domestic.GREAT_DOMESTIC_NEWS,
+        'international_news': urls.international.NEWS,
+        'how_to_do_business_with_the_uk': urls.international.EXPAND_HOW_TO_DO_BUSINESS,
+        'industries': urls.international.ABOUT_UK_INDUSTRIES,
+        'market_access': urls.domestic.HOME / 'report-trade-barrier'
     }
     header_footer_urls = {**header_footer_urls, **advice_urls}
     return {'header_footer_urls': header_footer_urls}
@@ -79,31 +72,32 @@ def header_footer_processor(request):
 
 def invest_header_footer_processor(request):
     invest_header_footer_urls = {
-        'industries': urls.INVEST_INDUSTRIES,
-        'uk_setup_guide': urls.INVEST_SETUP_GUIDE,
+        'industries': urls.international.ABOUT_UK_INDUSTRIES,
+        'uk_setup_guide': urls.international.EXPAND_HOW_TO_SETUP,
     }
     return {'invest_header_footer_urls': invest_header_footer_urls}
 
 
 def urls_processor(request):
-    services_urls = {
-        'contact_us': urls.CONTACT_US,
-        'events': urls.SERVICES_EVENTS,
-        'exopps': urls.SERVICES_EXOPPS,
-        'exred': urls.SERVICES_GREAT_DOMESTIC,
-        'great_domestic': urls.SERVICES_GREAT_DOMESTIC,
-        'great_international': urls.GREAT_INTERNATIONAL,
-        'fab': urls.SERVICES_FAB,
-        'fas': urls.SERVICES_FAS,
-        'feedback': urls.FEEDBACK,
-        'office_finder': urls.OFFICE_FINDER,
-        'invest': urls.SERVICES_INVEST,
-        'soo': urls.SERVICES_SOO,
-        'sso': urls.SERVICES_SSO,
-        'uk_setup_guide': urls.GREAT_INTERNATIONAL_HOW_TO_SETUP_IN_THE_UK,
-        'isd': urls.FAS_INVESTMENT_SUPPORT_DIRECTORY,
+    return {
+        'services_urls': {
+            'contact_us': urls.domestic.CONTACT_US,
+            'events': urls.domestic.EVENTS,
+            'exopps': urls.domestic.EXPORT_OPPORTUNITIES,
+            'exred': urls.domestic.HOME,
+            'great_domestic': urls.domestic.HOME,
+            'great_international': urls.international.HOME,
+            'fab': urls.domestic.FIND_A_BUYER,
+            'fas': urls.international.TRADE_FAS,
+            'feedback': urls.domestic.FEEDBACK,
+            'office_finder': urls.domestic.OFFICE_FINDER,
+            'invest': urls.international.EXPAND_HOME,
+            'soo': urls.domestic.SELLING_OVERSEAS,
+            'sso': urls.domestic.SINGLE_SIGN_ON,
+            'uk_setup_guide': urls.international.EXPAND_HOW_TO_SETUP,
+            'isd': urls.international.EXPAND_ISD_HOME,
+        }
     }
-    return {'services_urls': services_urls}
 
 
 def feature_flags(request):

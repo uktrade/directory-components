@@ -30,6 +30,7 @@
 
 .great-footer-links {
   padding: 30px 0;
+  display: flex;
 
   a {
     font-size: 14px;
@@ -50,8 +51,10 @@
   }
 
   .great-footer-domestic-international-link {
-    white-space: nowrap;
     text-align: right;
+    li {
+      margin: 0;
+    }
   }
 }
 
@@ -63,6 +66,7 @@
 
 @media (max-width: 640px) {
   .great-footer-links {
+    display: block;
     a {
       color: $white;
       text-decoration: none;
@@ -79,7 +83,7 @@
     }
 
     .great-footer-site-links li:first-child a,
-    .great-footer-domestic-international-link li a {
+    li:last-child a {
       font-size: 18px;
     }
 
@@ -90,6 +94,7 @@
     .great-footer-domestic-international-link {
       margin-top: 15px;
       text-align: left;
+      width: 100%;
     }
   }
 

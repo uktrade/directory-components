@@ -1,16 +1,20 @@
 import ast
 import re
+import lorem
+
 from unittest.mock import Mock
+from collections import namedtuple
 
 from django.core.paginator import Paginator
 from django.shortcuts import Http404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+from django.utils.text import slugify
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 from directory_components.mixins import (
-    CountryDisplayMixin, EnableTranslationsMixin,
-    InternationalHeaderMixin
+    CountryDisplayMixin, EnableTranslationsMixin
 )
 
 from demo import forms
@@ -21,6 +25,58 @@ class BasePageView(TemplateView):
     @property
     def template_name(self):
         return self.kwargs.get('template_name')
+
+
+class KeyFactsView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        key_facts = [
+            {
+                'icon': {
+                    'url': static('images/icon1.png')
+                },
+                'heading': 'Heading 1',
+                'content': (
+                    '<p>Bacon ipsum dolor amet pork jerky sausage buffalo '
+                    'chicken cow strip steak doner pancetta shoulder kielbasa rump ham.</p>'
+                ),
+            },
+            {
+                'icon': {
+                    'url': static('images/icon2.png')
+                },
+                'heading': 'Heading 2',
+                'content': (
+                    '<p>Lorem ipsum dolor sit amet.</p>'
+                    '<p><a class="link" href="/">Bacon ipsum dolor amet pork jerky sausage buffalo '
+                    'chicken cow strip steak doner pancetta shoulder kielbasa rump ham</a></p>'
+                    '<p><a class="link" href="/">Another link</a></p>'
+                ),
+            },
+            {
+                'icon': {
+                    'url': static('images/icon3.png')
+                },
+                'heading': 'Heading 3',
+                'content': (
+                    '<p><a class="link" href="/">Yet more links</a></p>'
+                    '<p><a class="link" href="/">So many links</a></p>'
+                    '<p><a class="link" href="/">More links</a></p>'
+                ),
+            },
+        ]
+        context['key_facts'] = key_facts
+        context['key_facts_two'] = key_facts[1:]
+        context['key_facts_one'] = key_facts[:1]
+        key_facts_no_icons = [
+            {
+                'heading': item['heading'],
+                'content': item['content'],
+            }
+            for item in key_facts]
+        context['key_facts_no_icons'] = key_facts_no_icons
+        return context
 
 
 class IndexPageView(BasePageView):
@@ -38,13 +94,103 @@ class IndexPageView(BasePageView):
         return context
 
 
-class InternationalHeaderView(
-    InternationalHeaderMixin,
-    CountryDisplayMixin,
-    EnableTranslationsMixin,
-    BasePageView
-):
-    header_section = "invest"
+NavNode = namedtuple('NavItem', 'tier_one_item tier_two_items')
+
+
+class TierOneNavItem:
+    def __init__(self, title):
+        self.title = title
+
+    @property
+    def name(self):
+        return slugify(self.title)
+
+    @property
+    def url(self):
+        return f'/great-international-header-footer/?section={self.name}'
+
+
+class TierTwoNavItem:
+    def __init__(self, title, parent_title):
+        self.title = title
+        self.parent_title = parent_title
+
+    @property
+    def parent_name(self):
+        return slugify(self.parent_title)
+
+    @property
+    def name(self):
+        return slugify(self.title)
+
+    @property
+    def url(self):
+        return f'/great-international-header-footer/?section={self.parent_name}&sub_section={self.name}'
+
+
+class InternationalHeaderView(CountryDisplayMixin, EnableTranslationsMixin, BasePageView):
+    @property
+    def header_section(self):
+        return self.request.GET.get('section', '')
+
+    @property
+    def header_sub_section(self):
+        return self.request.GET.get('sub_section', '')
+
+    navigation_tree = [
+        NavNode(
+            tier_one_item=TierOneNavItem('About the UK'),
+            tier_two_items=[
+                TierTwoNavItem('Overview', 'About the UK'),
+                TierTwoNavItem('Why choose the UK', 'About the UK'),
+                TierTwoNavItem('Industries', 'About the UK'),
+                TierTwoNavItem('Regions', 'About the UK'),
+                TierTwoNavItem('Contact us', 'About the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("Expand to the UK"),
+            tier_two_items=[
+                TierTwoNavItem('Overview', 'Expand to the UK'),
+                TierTwoNavItem('How to expand to the UK', 'Expand to the UK'),
+                TierTwoNavItem('Professional services', 'Expand to the UK'),
+                TierTwoNavItem('Contact us', 'Expand to the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("Invest capital in the UK"),
+            tier_two_items=[
+                TierTwoNavItem('Overview', 'Invest capital in the UK'),
+                TierTwoNavItem('Investment types', 'Invest capital in the UK'),
+                TierTwoNavItem('Investment Opportunities', 'Invest capital in the UK'),
+                TierTwoNavItem('How to invest capital', 'Invest capital in the UK'),
+                TierTwoNavItem('Contact us', 'Invest capital in the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("Buy from the UK"),
+            tier_two_items=[
+                TierTwoNavItem('Buy from the UK', 'Buy from the UK'),
+                TierTwoNavItem('Contact us', 'Buy from the UK'),
+            ]
+        ),
+        NavNode(
+            tier_one_item=TierOneNavItem("About us"),
+            tier_two_items=[
+                TierTwoNavItem('What we do', 'About us'),
+                TierTwoNavItem('Contact us', 'About us'),
+            ]
+        ),
+    ]
+
+    def get_context_data(self, *args, **kwargs):
+        return super().get_context_data(
+            navigation_tree=self.navigation_tree,
+            header_section=self.header_section,
+            header_sub_section=self.header_sub_section,
+            *args,
+            **kwargs
+        )
 
 
 class InvestHeaderView(InternationalHeaderView):
@@ -215,7 +361,87 @@ class FullWidthBannersView(TemplateView):
             intro_markdown="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
                            "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
             video={
-                'url': '/static/videos/hpo-food-video.mp4',
+                'url': static('videos/hpo-food-video.mp4'),
                 'file_extension': 'mp4'
             }
         )
+
+
+class DetailsView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        word = lorem.sentence().split(' ')[0]
+        link = f'<p><a href="/foo">{word}</a></p>'
+        list = f'<ul><li>{lorem.sentence()}</li><li>{lorem.sentence()}</li><li>{lorem.sentence()}</li></ul>'
+
+        details_list = [
+            {
+                'heading': lorem.sentence(),
+                'content': list + f'<p>{lorem.paragraph()}</p>'
+            },
+            {
+                'heading': lorem.sentence(),
+                'content': f'<p>{lorem.paragraph()}</p>' + link + link + f'<p>{lorem.paragraph()}</p>'
+            },
+            {
+                'heading': lorem.sentence(),
+                'content': f'<p>{lorem.paragraph()}</p>'
+            },
+        ]
+
+        context['details_list'] = details_list
+        return context
+
+
+class FeaturedArticlesView(BasePageView):
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        articles_list = [
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+                'image': {
+                    'url': static('images/card_image02.jpg'),
+                },
+                'image_alt': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+            {
+                'title': lorem.sentence(),
+                'url': f'/{slugify(lorem.sentence())}',
+                'type_of_article': 'Advice',
+                'teaser': lorem.sentence(),
+            },
+        ]
+
+        context['articles_list'] = articles_list
+        return context

@@ -1,6 +1,6 @@
 # Changelog
 
-## 28.0.0
+## 33.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/266/files)
 
 ### Implemented enhancements
@@ -11,6 +11,129 @@
 -- `LANGUAGE_COOKIE_SECURE` should be `true` for all production environments. Should be `false` locally if required to run without https.
 -- `COUNTRY_COOKIE_SECURE` should be `true` for all production environments. Should be `false` locally if required to run without https.
 
+
+## 32.3.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
+
+### Implemented enhancements
+- Amended list elements in footer to pass accessibility and mobile menu
+
+## 32.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/286/files)
+### Implemented enhancements
+- no ticket: Refactored makefile
+- No ticket: Speed up tests during development and test by not running collectstatic
+- No ticket: renamed config to conf for consistency
+- TT-1808: Add no-validate to no cache middleware
+
+## 32.2.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/284/files)
+
+### Fix bugs
+- CMS-1843: Fix language picker not appearing in international header.
+- no ticket: Fix home and domestic URL's in international header.
+- no ticket: Fix country selector in the international header.
+
+## 32.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/283/files)
+
+### Implemented enhancements
+- Changed the colour of the second level nav (again) and the underline active colour of first level
+
+
+## 32.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/282/files)
+
+### Implemented enhancements
+- Changed the colour of the second level nav
+
+
+## 32.0.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/281/files)
+
+### Implemented enhancements
+- Update params for featured articles component to work properly with CMS fields
+
+## 32.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/280/files)
+
+### Implemented enhancements
+- Update params for key facts and featured articles components to work properly with CMS fields
+
+## 32.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/279/files)
+
+### Implemented enhancements
+- Add featured articles list component
+
+### Breaking changes
+- `section` padding-bottom has been updated from 30px to 60px
+
+## 31.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
+
+### Implemented enhancements
+- Add details/accordion list component
+
+## 31.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/275/files)
+
+### Breaking Changes
+- Update required version of directory-constants.
+This will require you to update your settings file.
+`DIRECTORY_CONSTANTS_URL_INTERNATIONAL` should be added and should point at the root page for the international site (ie, please DO NOT include `content/`)
+`DIRECTORY_CONSTANTS_URL_GREAT_INTERNATIONAL` is no longer required for this library, and can be deleted as long as it isn't directly used in your application.
+
+## 30.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/277/files)
+
+### Implemented enhancements
+- Add key facts component
+
+## 30.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/275/files)
+
+### Implemented enhancements
+- Do not render labels and container of hidden form fields
+
+## 30.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/274/files)
+
+### Breaking Changes
+- Some class names have changed:
+* `case-study` => `great-case-study`
+* `hero` => `great-hero`
+* `hero-with-cta` => `great-hero-with-cta`
+* `hero-title` => `great-hero-title`
+* `hero-text` => `great-hero-text`
+* `heading-hero-generic` => `great-hero-heading`
+* `hero-subheading` => `great-hero-subheading`
+* `hero-description` => `great-hero-description`
+
+- Some classes have been removed:
+* `hero-domestic`
+* `heading-hero-domestic`
+* `heading-hero-generic-compact`
+* `hero-title-compact`
+
+- The `large_title` param has been removed from hero components
+- `{% render_form form %}` has been removed. Please use `{{ form }}` instead
+
+## 29.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
+- Update to latest version of directory-constants
+
+### Breaking Changes
+- now uses `directory-constants` in the range `>=19.1.0,<20.0.0`
+
+## 28.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/270/files)
+
+### Implemented enhancements
+- Changes to international header to improve support for new sticky second tier navigation.
+
+### Breaking Changes
+- The `InternationalHeader` mixin has been removed, and replaced with the `international_header` templatetag.
 
 ## 27.14.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/269/files)
