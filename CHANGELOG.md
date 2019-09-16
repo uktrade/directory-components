@@ -1,7 +1,13 @@
 # Changelog
 
+## 33.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/289/files)
+
+### Bugs fixed
+- GA360 mixin handles `request.user` and `request.sso_user`
+
 ## 33.0.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/266/files)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/286/files)
 
 ### Implemented enhancements
 - `django_language` and `country` cookies are now set as secure and http-only.
