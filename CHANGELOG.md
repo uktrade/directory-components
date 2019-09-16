@@ -1,5 +1,17 @@
 # Changelog
 
+## 33.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/266/files)
+
+### Implemented enhancements
+- `django_language` and `country` cookies are now set as secure and http-only.
+
+### Breaking Changes
+- All implementing applications are required to provide the following additional settings
+-- `LANGUAGE_COOKIE_SECURE` should be `true` for all production environments. Should be `false` locally if required to run without https.
+-- `COUNTRY_COOKIE_SECURE` should be `true` for all production environments. Should be `false` locally if required to run without https.
+
+
 ## 32.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)
 

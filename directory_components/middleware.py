@@ -104,7 +104,9 @@ class CountryMiddleware(MiddlewareMixin):
                 value=request.COUNTRY_CODE,
                 max_age=settings.LANGUAGE_COOKIE_AGE,
                 path=settings.LANGUAGE_COOKIE_PATH,
-                domain=settings.LANGUAGE_COOKIE_DOMAIN
+                domain=settings.LANGUAGE_COOKIE_DOMAIN,
+                secure=settings.COUNTRY_COOKIE_SECURE,
+                httponly=True,
             )
         return response
 
@@ -129,7 +131,9 @@ class PersistLocaleMiddleware(MiddlewareMixin):
             value=translation.get_language(),
             max_age=settings.LANGUAGE_COOKIE_AGE,
             path=settings.LANGUAGE_COOKIE_PATH,
-            domain=settings.LANGUAGE_COOKIE_DOMAIN
+            domain=settings.LANGUAGE_COOKIE_DOMAIN,
+            secure=settings.LANGUAGE_COOKIE_SECURE,
+            httponly=True,
         )
         return response
 
