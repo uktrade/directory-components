@@ -1,10 +1,16 @@
 # Changelog
 
-## 33.0.1
+## 33.0.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/289/files)
 
 ### Bugs fixed
 - GA360 mixin handles `request.user` and `request.sso_user`
+
+## 33.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/290/files)
+
+### Implemented enhancements
+- Gave `search-page-expandable-options` an aria-label to fix accessibility error
 
 ## 33.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/286/files)
@@ -16,7 +22,6 @@
 - All implementing applications are required to provide the following additional settings
 -- `LANGUAGE_COOKIE_SECURE` should be `true` for all production environments. Should be `false` locally if required to run without https.
 -- `COUNTRY_COOKIE_SECURE` should be `true` for all production environments. Should be `false` locally if required to run without https.
-
 
 ## 32.3.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/285/files)

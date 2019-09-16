@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-14 15:57+0000\n"
+"POT-Creation-Date: 2019-09-16 13:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: directory_components/mixins.py:141
-msgid "Invest"
-msgstr "Investieren"
-
-#: directory_components/mixins.py:147
-msgid "UK setup guide"
-msgstr "Leitfaden Unternehmensgründung"
-
-#: directory_components/mixins.py:153
-msgid "Find a UK supplier"
-msgstr "Anbieter aus Großbritannien finden"
-
-#: directory_components/mixins.py:159
-msgid "Industries"
-msgstr "Branchen"
-
-#: directory_components/templates/directory_components/card.html:13
+#: directory_components/templates/directory_components/card.html:12
+#: directory_components/templates/directory_components/cta_card.html:7
+#: directory_components/templates/directory_components/header_footer/footer_base.html:24
+#: directory_components/templates/directory_components/labelled_card.html:7
+#: directory_components/templates/directory_components/labelled_image_card.html:7
 msgid "Opens in a new window"
 msgstr ""
 
@@ -46,12 +34,12 @@ msgstr ""
 msgid "Find out more about cookies"
 msgstr ""
 
-#: directory_components/templates/directory_components/header_footer/country_switcher.html:6
+#: directory_components/templates/directory_components/header_footer/country_switcher.html:11
 msgid "Country"
 msgstr "Land"
 
-#: directory_components/templates/directory_components/header_footer/country_switcher.html:10
-#: directory_components/templates/directory_components/header_footer/language_switcher.html:11
+#: directory_components/templates/directory_components/header_footer/country_switcher.html:15
+#: directory_components/templates/directory_components/header_footer/language_switcher.html:16
 msgid "Select"
 msgstr "Wechseln"
 
@@ -61,19 +49,19 @@ msgstr "Wechseln"
 msgid "Main menu"
 msgstr "Hauptmenü"
 
-#: directory_components/templates/directory_components/header_footer/footer_base.html:15
+#: directory_components/templates/directory_components/header_footer/footer_base.html:14
 msgid "Contact us"
 msgstr "Kontakt"
 
-#: directory_components/templates/directory_components/header_footer/footer_base.html:18
+#: directory_components/templates/directory_components/header_footer/footer_base.html:17
 msgid "Privacy and cookies"
 msgstr "Datenschutz und Cookies"
 
-#: directory_components/templates/directory_components/header_footer/footer_base.html:21
+#: directory_components/templates/directory_components/header_footer/footer_base.html:20
 msgid "Terms and conditions"
 msgstr "AGB"
 
-#: directory_components/templates/directory_components/header_footer/footer_base.html:25
+#: directory_components/templates/directory_components/header_footer/footer_base.html:24
 msgid "Department for International Trade on GOV.UK"
 msgstr "Department for International Trade auf GOV.UK"
 
@@ -85,15 +73,15 @@ msgstr "Für Unternehmen in Großbritannien"
 msgid "For international businesses"
 msgstr "Für internationale Unternehmen"
 
-#: directory_components/templates/directory_components/header_footer/international_footer.html:10
+#: directory_components/templates/directory_components/header_footer/international_footer.html:8
 msgid "Department for International Trade"
 msgstr "Ministerium für internationalen Handel (DIT)"
 
-#: directory_components/templates/directory_components/header_footer/international_footer.html:16
+#: directory_components/templates/directory_components/header_footer/international_footer.html:12
 msgid "Great Britain and Northern Ireland"
 msgstr "Großbritannien und Nordirland"
 
-#: directory_components/templates/directory_components/header_footer/international_footer.html:28
+#: directory_components/templates/directory_components/header_footer/international_footer.html:21
 msgid "Go to the page for UK businesses"
 msgstr "Zur Seite für britische Unternehmen"
 
@@ -101,12 +89,17 @@ msgstr "Zur Seite für britische Unternehmen"
 msgid "Sub-menu"
 msgstr ""
 
-#: directory_components/templates/directory_components/header_footer/language_switcher.html:8
+#: directory_components/templates/directory_components/header_footer/language_switcher.html:13
 msgid "Language"
 msgstr "Sprache"
 
 #: directory_components/templates/directory_components/header_footer/mobile_menu_button.html:10
 msgid "Menu"
+msgstr ""
+
+#: directory_components/templates/directory_components/search-page-expandable-options.html:5
+#, python-format
+msgid "Toggle %(label)s filter options"
 msgstr ""
 
 #: directory_components/templates/directory_components/search-page-selected-filters.html:6
@@ -116,6 +109,18 @@ msgstr ""
 #: directory_components/templates/directory_components/search-page-selected-filters.html:10
 msgid "Clear all"
 msgstr ""
+
+#~ msgid "Invest"
+#~ msgstr "Investieren"
+
+#~ msgid "UK setup guide"
+#~ msgstr "Leitfaden Unternehmensgründung"
+
+#~ msgid "Find a UK supplier"
+#~ msgstr "Anbieter aus Großbritannien finden"
+
+#~ msgid "Industries"
+#~ msgstr "Branchen"
 
 #~ msgid "How to do business with the UK"
 #~ msgstr "Handel mit Großbritannien treiben"
