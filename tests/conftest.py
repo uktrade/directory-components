@@ -28,6 +28,8 @@ def pytest_configure():
             'COUNTRY_SELECTOR_ON': True,
         },
         INSTALLED_APPS=[
+            'django.contrib.contenttypes',  # required by auth, not using DB
+            'django.contrib.auth',
             'django.contrib.staticfiles',
             'directory_components',
             'directory_components.janitor',

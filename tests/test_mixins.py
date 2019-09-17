@@ -1,10 +1,12 @@
-import pytest
-
 from unittest.mock import patch, Mock
-from django.views.generic import TemplateView
-from django.utils import translation
 
 from directory_constants.choices import COUNTRY_CHOICES
+import pytest
+
+from django.contrib.auth.models import AnonymousUser
+from django.utils import translation
+from django.views.generic import TemplateView
+
 from directory_components import mixins
 
 
@@ -122,8 +124,7 @@ def test_cms_language_switcher_active_language_available(rf):
     assert context['form'].initial['lang'] == 'de'
 
 
-@pytest.mark.parametrize('user_property', ('sso_user', 'user'))
-def test_ga360_mixin_for_logged_in_user(rf, user_property):
+def test_ga360_mixin_for_logged_in_user_old_style(rf):
     class TestView(mixins.GA360Mixin, TemplateView):
         template_name = 'directory_components/base.html'
 
@@ -137,7 +138,10 @@ def test_ga360_mixin_for_logged_in_user(rf, user_property):
             )
 
     request = rf.get('/')
-    setattr(request, user_property, Mock(hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9'))
+    request.sso_user = Mock(
+        hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
+        spec_set=['hashed_uuid'],
+    )
 
     with translation.override('de'):
         response = TestView.as_view()(request)
@@ -151,6 +155,65 @@ def test_ga360_mixin_for_logged_in_user(rf, user_property):
     assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
     assert ga360_data['login_status'] is True
     assert ga360_data['site_language'] == 'de'
+
+
+def test_ga360_mixin_for_logged_in_user(rf):
+    class TestView(mixins.GA360Mixin, TemplateView):
+        template_name = 'directory_components/base.html'
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
+
+    request = rf.get('/')
+    request.user = Mock(
+        id=1,
+        hashed_uuid='a9a8f733-6bbb-4dca-a682-e8a0a18439e9',
+        is_authenticated=True
+    )
+
+    with translation.override('de'):
+        response = TestView.as_view()(request)
+
+    assert response.context_data['ga360']
+    ga360_data = response.context_data['ga360']
+    assert ga360_data['page_id'] == 'TestPageId'
+    assert ga360_data['business_unit'] == 'Test App'
+    assert ga360_data['site_section'] == 'Test Section'
+    assert ga360_data['site_subsection'] == 'Test Page'
+    assert ga360_data['user_id'] == 'a9a8f733-6bbb-4dca-a682-e8a0a18439e9'
+    assert ga360_data['login_status'] is True
+    assert ga360_data['site_language'] == 'de'
+
+
+def test_ga360_mixin_for_anonymous_user_old_style(rf):
+    class TestView(mixins.GA360Mixin, TemplateView):
+        template_name = 'directory_components/base.html'
+
+        def __init__(self):
+            super().__init__()
+            self.set_ga360_payload(
+                page_id='TestPageId',
+                business_unit='Test App',
+                site_section='Test Section',
+                site_subsection='Test Page'
+            )
+
+    request = rf.get('/')
+    request.sso_user = None
+
+    with translation.override('de'):
+        response = TestView.as_view()(request)
+
+    assert response.context_data['ga360']
+    ga360_data = response.context_data['ga360']
+    assert ga360_data['user_id'] is None
+    assert ga360_data['login_status'] is False
 
 
 def test_ga360_mixin_for_anonymous_user(rf):
@@ -167,7 +230,7 @@ def test_ga360_mixin_for_anonymous_user(rf):
             )
 
     request = rf.get('/')
-    # sso_user is not set.
+    request.user = AnonymousUser()
 
     with translation.override('de'):
         response = TestView.as_view()(request)
