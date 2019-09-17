@@ -23,7 +23,7 @@ def get_is_authenticated(request):
     # backwards compatibility with new and old style of user auth
     user = get_user(request)
     if hasattr(user, 'is_authenticated'):
-        return user.is_authenticated
+        return bool(user.is_authenticated)
     return user is not None
 
 
