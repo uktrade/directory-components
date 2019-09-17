@@ -1,6 +1,6 @@
 # Changelog
 
-## 33.0.3
+## 33.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/292/files)
 
 ## 33.0.2
