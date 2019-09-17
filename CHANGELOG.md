@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.0.3
+[Full Changelog](https://github.com/uktrade/directory-components/pull/292/files)
+
 ## 33.0.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/289/files)
 
