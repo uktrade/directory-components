@@ -1,5 +1,10 @@
 # Changelog
 
+## 33.1.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/293/files)
+### Bugs fixed
+- fix CallableBool(False) is not of type 'boolean' error for user.is_authenticated
+
 ## 33.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/291/files)
 
