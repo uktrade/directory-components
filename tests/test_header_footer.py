@@ -101,6 +101,7 @@ def test_urls_exist_in_domestic_header(url, settings):
     urls.domestic.CONTACT_US,
     urls.domestic.PRIVACY_AND_COOKIES,
     urls.domestic.TERMS_AND_CONDITIONS,
+    urls.domestic.ACCESSIBILITY,
     urls.domestic.PERFORMANCE_DASHBOARD,
     urls.domestic.DIT,
 ])
@@ -120,6 +121,7 @@ def test_urls_exist_in_domestic_footer(url, settings):
     urls.domestic.CONTACT_US,
     urls.domestic.PRIVACY_AND_COOKIES,
     urls.domestic.TERMS_AND_CONDITIONS,
+    urls.domestic.ACCESSIBILITY,
     urls.domestic.DIT,
 ])
 def test_urls_exist_in_international_footer(url, settings):
@@ -239,6 +241,11 @@ def test_domestic_footer_ids_match_urls_and_text(
         'Terms and conditions',
         'footer-terms-and-conditions',
         urls.domestic.TERMS_AND_CONDITIONS,
+    ),
+    (
+        'Accessibility',
+        'footer-accessibility',
+        urls.domestic.ACCESSIBILITY
     ),
     (
         'Department for International Trade on GOV.UK',
