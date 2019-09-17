@@ -22,6 +22,7 @@
     $ [create virtual environment and activate]
     $ make install_requirements
 
+
 To test cookies locally add this to your /etc/hosts:
 
 ```
@@ -60,6 +61,12 @@ Then visit the demo at `components.trade.great:9013`
 | `DIRECTORY_COMPONENTS_VAULT_ROOT_PATH`             | Hashicorp vault root path. For diffing vaults. |
 | `DIRECTORY_COMPONENTS_VAULT_PROJECT`               | Hashicorp vault project. For diffing vaults.   |
 | `DIRECTORY_COMPONENTS_VAULT_IGNORE_SETTINGS_REGEX` | Settings to ignore when diffing vaults.        |
+
+- add env directory to demo/conf
+- add dev file to env
+- add below to env/dev file:
+SECRET_KEY=debug
+DEBUG=true
 
 ### Middleware
 
