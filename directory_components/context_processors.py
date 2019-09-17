@@ -55,6 +55,7 @@ def header_footer_processor(request):
         'performance': urls.domestic.PERFORMANCE_DASHBOARD,
         'privacy_and_cookies': urls.domestic.PRIVACY_AND_COOKIES,
         'terms_and_conditions': urls.domestic.TERMS_AND_CONDITIONS,
+        'accessibility': urls.domestic.ACCESSIBILITY,
         'fas': urls.international.TRADE_FAS,
         'advice': urls.domestic.ADVICE,
         'markets': urls.domestic.MARKETS,

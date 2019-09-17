@@ -130,6 +130,7 @@ def test_header_footer_processor(settings):
         'performance': 'https://exred.com/performance-dashboard/',
         'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
         'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
+        'accessibility': 'https://exred.com/accessibility-statement/',
         'market_access': 'https://exred.com/report-trade-barrier/'
     }
 
