@@ -1066,3 +1066,29 @@ def test_invest_header_tag():
 
     soup = BeautifulSoup(html, 'html.parser')
     assert soup.find('a', {'href': '/root-1/'}) is not None
+
+
+def test_content_404_tag():
+    template = Template(
+        '{% load content_404 from directory_components %}'
+        '{% content_404 feedback_url="/feedback/" home_page_url="/" %}'
+    )
+
+    html = template.render(Context({}))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/feedback/'}) is not None
+    assert soup.find('a', {'href': '/'}) is not None
+
+
+def test_content_500_tag():
+    template = Template(
+        '{% load content_500 from directory_components %}'
+        '{% content_500 feedback_url="/feedback/" home_page_url="/" %}'
+    )
+
+    html = template.render(Context({}))
+
+    soup = BeautifulSoup(html, 'html.parser')
+    assert soup.find('a', {'href': '/feedback/'}) is not None
+    assert soup.find('a', {'href': '/'}) is not None

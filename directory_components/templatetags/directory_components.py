@@ -426,3 +426,19 @@ def details_list(**kwargs):
 @register.inclusion_tag('directory_components/featured_articles.html')
 def featured_articles(**kwargs):
     return kwargs
+
+
+@register.inclusion_tag('directory_components/errors/content_404.html')
+def content_404(feedback_url, home_page_url):
+    return {
+        'feedback_url': feedback_url,
+        'home_page_url': home_page_url,
+    }
+
+
+@register.inclusion_tag('directory_components/errors/content_500.html')
+def content_500(feedback_url, home_page_url):
+    return {
+        'feedback_url': feedback_url,
+        'home_page_url': home_page_url,
+    }
