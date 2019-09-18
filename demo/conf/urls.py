@@ -153,6 +153,12 @@ urlpatterns = [
         views.DemoPaginationView.as_view(),
         name='pagination',
     ),
+    url(
+        r'^error-pages/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/error-pages.html'},
+        name='error-pages'
+    )
 ]
 
 handler404 = 'directory_components.views.handler404'

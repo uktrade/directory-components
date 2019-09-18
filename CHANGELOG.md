@@ -1,5 +1,11 @@
 # Changelog
 
+## 33.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/295/files)
+
+## Implemented enhancements
+- Split out the content of the error pages, so that they can be used on multiple apps.
+
 ## 33.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/294/files)
 ### Implemented enhancements
