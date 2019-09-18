@@ -1,9 +1,14 @@
 # Changelog
 
+## 33.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/294/files)
+### Implemented enhancements
+- GTRANSFORM-368 - update directory constants version
+
 ## 33.1.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/293/files)
 ### Bugs fixed
-- fix CallableBool(False) is not of type 'boolean' error for user.is_authenticated
+- no ticket - fix CallableBool(False) is not of type 'boolean' error for user.is_authenticated
 
 ## 33.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/291/files)
@@ -15,7 +20,7 @@
 [Full Changelog](https://github.com/uktrade/directory-components/pull/292/files)
 
 ### Implemented enhancements
-- Add accessibility footer link, update constants version
+- GTRANSFORM-368 - Add accessibility footer link, update constants version
 
 ## 33.0.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/289/files)
