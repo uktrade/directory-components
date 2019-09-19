@@ -15,7 +15,7 @@
   "dependencies": {
     "@csstools/sass-import-resolve": "^1.0.0",
     "flag-icon-css": "^3.2.1",
-    "govuk-elements": "https://github.com/alphagov/govuk_elements.git#master",
+    "govuk-elements": "https://github.com/alphagov/govuk_elements.git#0a5ec0765c992117e96c79aeb86760363aa15c3e",
     "govuk-elements-sass": "3.1.2",
     "gulp-print": "^2.0.1",
     "gulp-sass": "^4.0.2",
