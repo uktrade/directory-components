@@ -1,5 +1,10 @@
 # Changelog
 
+### 33.4.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/296/files)
+## Implemented enhancements
+- no ticket - change bullet point colour to #333
+
 ## 33.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/295/files)
 

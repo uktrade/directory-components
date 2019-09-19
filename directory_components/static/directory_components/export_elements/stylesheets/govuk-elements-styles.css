@@ -1622,7 +1622,7 @@ ol {
     list-style: none;
     padding: 0 0 0 30px; }
   .list.list-bullet.list-bullet li::before {
-    background-color: #dfd5c5;
+    background-color: #333333;
     border-radius: 4px;
     content: '';
     display: inline-block;
