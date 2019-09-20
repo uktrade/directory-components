@@ -1,5 +1,14 @@
 # Changelog
 
+## 35.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/302/files)
+
+### Implemented enhancements
+- Separate details and accordions into two styles
+
+### Breaking changes
+- `details_list` template tag has been renamed to `accordion_list`
+- `great-details-list` class has been renamed to `great-accordion-list`
 
 ## 34.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/301/files)
