@@ -14,16 +14,7 @@
 {% static 'images/hero04.jpg' as dark_hero %}
 {% static 'images/card_image01.jpg' as half_image %}
 
-{% static 'images/hero-1200x300.png' as hero_xlarge %}
-{% static 'images/hero-1024x300.png' as hero_large %}
-{% static 'images/hero-768x300.png' as hero_medium %}
-{% static 'images/hero-640x300.png' as hero_small %}
-
-{% static 'images/placeholder-1200x300.png' as placeholder_xlarge %}
-{% static 'images/placeholder-1200x400.png' as placeholder_large %}
-{% static 'images/placeholder-768x376.png' as placeholder_medium %}
-
-{% hero xlarge_image=hero_xlarge large_image=hero_large medium_image=hero_medium small_image=hero_small hero_text="Full width banners" %}
+{% hero image=placeholder hero_text="Full width banners" %}
 
 <div class="container">
   {% breadcrumbs 'Full width banners' %}<a href="/">Home</a>{% endbreadcrumbs %}
@@ -36,61 +27,55 @@
   </div>
   <pre><code>{% verbatim %}{% load hero from directory_components %}{% endverbatim %}</code></pre>
 
-  <h3 class="heading-medium">Responsive image sizes</h3>
-  <p>4 image sizes can be passed to the <code>hero</code> template tag: <code>xlarge_image</code>, <code>large_image</code>, <code>medium_image</code> and <code>small_image</code>.</p>
-  <p>Breakpoints and images are as follows:</p>
-  <div class="width-two-thirds">
-    <table>
-      <thead>
-        <tr>
-          <th>Screen width</th>
-          <th>Image to use</th>
-          <th>Image dimensions</th>
-        </tr>
-      </thead>
-      <tr>
-        <td>&gt; 1024px</td>
-        <td><code>xlarge_image</code></td>
-        <td>1200x300</td>
-      </tr>
-      <tr>
-        <td>&gt; 768px</td>
-        <td><code>large_image</code></td>
-        <td>1024x300</td>
-      </tr>
-      <tr>
-        <td>&gt; 640px</td>
-        <td><code>medium_image</code></td>
-        <td>768x300</td>
-      </tr>
-      <tr>
-        <td>&lt;= 640px</td>
-        <td><code>small_image</code></td>
-        <td>640x300</td>
-      </tr>
-    </table>
-  </div>
-  <p><code>medium_image</code> must be provided and is the default image size.</p>
+  <h3 class="heading-small">HTML markup</h3>
+  <pre><code>&lt;section class="great-hero " id="hero" style="background-image: url([image url])">
+  &lt;div class="container">
+    &lt;div class="great-hero-title">
+      &lt;h1 class="great-hero-heading" id="hero-heading">[heading]&lt;/h1>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></code></pre>
 
   <h3 class="heading-medium">Subheadings</h3>
   <p>Hero title can also be split into heading and subheading.</p>
 </div>
 
-{% hero large_image=hero_large medium_image=hero_medium hero_subheading="Exporting to" hero_text="Germany" %}
+{% hero image=placeholder hero_subheading="Exporting to" hero_text="Germany" %}
 
 <div class="container">
-  <pre><code>{% verbatim %}{% hero large_image=hero_large medium_image=hero_medium hero_subheading="Exporting to" hero_text="Germany" %}{% endverbatim %}</code></pre>
+  <pre><code>{% verbatim %}{% hero image=placeholder hero_subheading="Exporting to" hero_text="Germany" %}{% endverbatim %}</code></pre>
 
+  <h4 class="heading-small">HTML markup</h4>
+  <pre><code>&lt;section class="great-hero " id="hero" style="background-image: url([image url])">
+  &lt;div class="container">
+    &lt;div class="great-hero-title">
+      &lt;h1 id="hero-heading" class="great-hero-heading with-subheading">
+        &lt;span class="great-hero-subheading">[subheading]&lt;/span>
+        &lt;span>[heading]&lt;/span>
+      &lt;/h1>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></code></pre>
 
   <h3 class="heading-medium">Description</h3>
   <p>A description can be added after the hero heading.</p>
 
 </div>
 
-{% hero hero_text="Hero banner with a description" large_image=hero_large medium_image=hero_medium description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+{% hero hero_text="Hero banner with a description" image=placeholder description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
 
 <div class="container">
-  <pre><code>{% verbatim %}{% hero hero_text="Hero banner with a description" description='Lorem ipsum...' %}{% endverbatim %}</code></pre>
+  <pre><code>{% verbatim %}{% hero hero_text="Hero banner with a description" image=placeholder description='Lorem ipsum...' %}{% endverbatim %}</code></pre>
+
+  <h4 class="heading-small">HTML markup</h4>
+  <pre><code>&lt;section class="great-hero" id="hero" style="background-image: url([image url])">
+  &lt;div class="container">
+    &lt;div class="great-hero-title">
+      &lt;h1 class="great-hero-heading" id="hero-heading">[heading]&lt;/h1>
+      &lt;p class="great-hero-description" id="hero-description">[description]&lt;/p>
+    &lt;/div>
+  &lt;/div>
+&lt;/section></code></pre>
 
   <h3 class="heading-medium">No image</h3>
   <p>If an image is not provided a background colour will be used.</p>
@@ -103,59 +88,24 @@
   <pre><code>{% verbatim %}{% hero hero_text="Hero banner with no background image" %}{% endverbatim %}</code></pre>
 
     <h4 class="heading-small">HTML markup</h4>
-    <pre><code>&lt;section class="great-hero" id="hero">
-    &lt;picture class="great-hero-image">
-      &lt;source media="(min-width: 1025px)" srcset="[xlarge_image] 1200w">
-      &lt;source media="(min-width: 769px)" srcset="[large_image] 1024w">
-      &lt;source media="(min-width: 641px)" srcset="[medium_image] 768w">
-      &lt;source media="(max-width: 640px)" srcset="[small_image] 640w">
-      &lt;img alt="" src="[medium_image]">
-    &lt;/picture>
-    &lt;div class="container">
-      &lt;div class="great-hero-title">
-          &lt;h1 class="great-hero-heading" id="hero-heading">[heading]&lt;/h1>
-      &lt;/div>
+    <pre><code>&lt;section class="great-hero great-hero-no-image" id="hero">
+  &lt;div class="container">
+    &lt;div class="great-hero-title">
+      &lt;h1 class="great-hero-heading" id="hero-heading">[heading]&lt;/h1>
     &lt;/div>
-  &lt;/section></code></pre>
+  &lt;/div>
+&lt;/section></code></pre>
 
   <h3 class="heading-medium">Hero with CTA button</h3>
 </div>
 
-{% hero_with_cta heading="Heading" subheading="Subheading" medium_image=placeholder_medium large_image=placeholder_large small_image=placeholder_small xlarge_image=placeholder_xlarge cta_text="Continue" cta_link="/foo" %}
+{% hero_with_cta heading="Heading" subheading="Subheading" image=placeholder cta_text="Continue" cta_link="/foo" %}
 
 <div class="container">
-  <pre><code>{% verbatim %}{% hero_with_cta heading="Heading" subheading="Subheading" medium_image=placeholder_medium large_image=placeholder_large small_image=placeholder_small xlarge_image=placeholder_xlarge cta_text="Continue" cta_link="/foo" %}{% endverbatim %}</code></pre>
-
-  <h3 class="heading-medium">Responsive image sizes</h3>
-  <p class="width-two-thirds">3 image sizes can be passed to the <code>hero_with_cta</code> template tag: <code>xlarge_image</code>, <code>large_image</code> and <code>medium_image</code>.</p>
-  <p>Breakpoints and images are as follows:</p>
-  <table class="width-two-thirds">
-    <thead>
-      <tr>
-        <th>Screen width</th>
-        <th>Image to use</th>
-        <th>Image dimensions</th>
-      </tr>
-    </thead>
-    <tr>
-      <td>&gt; 1300px</td>
-      <td><code>xlarge_image</code></td>
-      <td>1200x300</td>
-    </tr>
-    <tr>
-      <td>&gt; 1024px</td>
-      <td><code>large_image</code></td>
-      <td>1200x400</td>
-    </tr>
-    <tr>
-      <td>&lt;= 1024px</td>
-      <td><code>medium_image</code></td>
-      <td>768x376</td>
-    </tr>
-  </table>
+  <pre><code>{% verbatim %}{% hero_with_cta heading="Heading" subheading="Subheading" image=placeholder cta_text="Continue" cta_link="/foo" %}{% endverbatim %}</code></pre>
 
   <h4 class="heading-small">HTML markup</h4>
-  <pre><code>&lt;section data-ga-section="caseStudy" class="great-case-study" style="background-image: url([background_image])">
+  <pre><code>&lt;section data-ga-section="caseStudy" class="great-case-study" style="background-image: url([image url])">
   &lt;div class="container">
     &lt;div class="grid-row">
       &lt;div class="column-full column-two-thirds-l column-half-xl">
