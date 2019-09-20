@@ -14,7 +14,6 @@
 
     pip install directory-components
 
-
 ## Development
 
     $ git clone https://github.com/uktrade/directory-components
@@ -36,14 +35,14 @@ Then visit the demo at `components.trade.great:9013`
 | Command                       | Description |
 | ----------------------------- | ------------|
 | make clean                    | Delete pyc files |
-| make pytest                   | Run all tests |
+| make pytest                   | Run all tests. Run `pip install .[test] first` |
 | make pytest test_foo.py       | Run all tests in file called test_foo.py |
 | make pytest -- --last-failed` | Run the last tests to fail |
 | make pytest -- -k foo         | Run the test called foo |
 | make pytest -- <foo>          | Run arbitrary pytest command |
 | make flake8                   | Run linting |
 | make manage <foo>             | Run arbitrary management command |
-| make webserver                | Run the demo development web server |
+| make webserver                | Run the demo development web server. Run `pip install .[demo] first` |
 | make requirements             | Compile the requirements file |
 | make install_requirements     | Installed the compile requirements file |
 | make css                      | Compile scss to css |
@@ -61,12 +60,6 @@ Then visit the demo at `components.trade.great:9013`
 | `DIRECTORY_COMPONENTS_VAULT_ROOT_PATH`             | Hashicorp vault root path. For diffing vaults. |
 | `DIRECTORY_COMPONENTS_VAULT_PROJECT`               | Hashicorp vault project. For diffing vaults.   |
 | `DIRECTORY_COMPONENTS_VAULT_IGNORE_SETTINGS_REGEX` | Settings to ignore when diffing vaults.        |
-
-- add env directory to demo/conf
-- add dev file to env
-- add below to env/dev file:
-SECRET_KEY=debug
-DEBUG=true
 
 ### Middleware
 
@@ -103,19 +96,12 @@ handler500 = 'directory_components.views.handler500'
 
 Without doing this the 500 and 400 pages would not receive context data provided by context processors
 
-## Auto update services dependency
-
-To automatically update the dependences of services that use this library call the following command:
-
-    $ make update
-
 ## Settings janitor
 
 Management commands are provided to assist in the maintenance of settings. Install by `pip install directory-components[janitor]` and then add the following to `settings.py`:
 
     if some_predicate_is_met:  # feature flagged so it's not used in prod
         INSTALLED_APPS.append('directory_components.janitor')
-
 
 ### Diff environments
 
@@ -173,7 +159,7 @@ Then run the following command:
 [code-climate-image]: https://codeclimate.com/github/uktrade/directory-components/badges/issue_count.svg
 [code-climate]: https://codeclimate.com/github/uktrade/directory-components
 
-[circle-ci-image]: https://circleci.com/gh/uktrade/directory-components/tree/master.svg?style=svg
+[circle-ci-image]: https://circleci.com/gh/uktrade/directory-components/tree/master.svg?style=shield
 [circle-ci]: https://circleci.com/gh/uktrade/directory-components/tree/master
 
 [codecov-image]: https://codecov.io/gh/uktrade/directory-components/branch/master/graph/badge.svg
