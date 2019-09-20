@@ -1,8 +1,18 @@
 # Changelog
 
-### 33.4.0
+## 34.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/300/files)
+
+### Fixed bugs
+- Revert to old hero using `background-image` style. `picture` element is not supported by IE
+
+### Breaking changes
+- `hero` template tag no longer takes the params `xlarge_image`, `large_image`, `medium_image`, `small_image`. Instead just use `image`
+
+## 33.4.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/296/files)
-## Implemented enhancements
+
+### Implemented enhancements
 - no ticket - change bullet point colour to #333
 
 ## 33.3.0
