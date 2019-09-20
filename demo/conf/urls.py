@@ -31,10 +31,10 @@ urlpatterns = [
         name='elements',
     ),
     url(
-        r'^details/$',
+        r'^details-accordions/$',
         views.DetailsView.as_view(),
-        {'template_name': 'demo/details.html'},
-        name='details',
+        {'template_name': 'demo/details-accordions.html'},
+        name='details-accordions',
     ),
     url(
         r'^key-facts/$',

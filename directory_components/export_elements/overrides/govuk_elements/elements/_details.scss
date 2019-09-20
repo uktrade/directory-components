@@ -1,47 +1,10 @@
 @import '!elements/details';
 
 details {
-  border-top: 2px solid $light-grey;
-  border-bottom: 2px solid $light-grey;
-}
+  margin-top: $spacing-3;
+  margin-bottom: $spacing-3;
 
-details summary {
-  display: block;
-  list-style-image: none;
-  margin-bottom: 0;
-  padding: 20px 0;
-
-  &::-webkit-details-marker {
-    display: none;
+  & > :not(summary) {
+    margin-left: 20px;
   }
-
-  &:after {
-    @include body-large-bold
-    display: block;
-    position: absolute;
-    right: $spacing-4;
-    top: $spacing-4;
-  }
-}
-
-@media (min-width: 641px) {
-  details summary {
-    padding-right: $spacing-2;
-  }
-
-  details[closed] {
-
-    summary:after {
-      content: '+';
-    }
-  }
-
-  details[open] {
-    padding-bottom: $spacing-3;
-
-    summary:after {
-      content: '–';
-    }
-  }
-
 }

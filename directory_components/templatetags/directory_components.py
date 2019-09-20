@@ -418,8 +418,8 @@ def key_facts(**kwargs):
     return kwargs
 
 
-@register.inclusion_tag('directory_components/details_list.html')
-def details_list(**kwargs):
+@register.inclusion_tag('directory_components/accordion_list.html')
+def accordion_list(**kwargs):
     return kwargs
 
 
