@@ -1,17 +1,19 @@
 
 <section data-ga-section="hero" class="great-hero-with-cta">
-  {% if large_image %}
+  {% if medium_image %}
   <picture>
     {% if xlarge_image %}
     <source media="(min-width: 1300px)" srcset="{{ xlarge_image }} 1200w">
     {% endif %}
 
+    {% if large_image %}
     <source media="(min-width: 1025px)" srcset="{{ large_image }} 1200w">
+    {% endif %}
 
     {# default #}
-    <source media="" srcset="{{ large_image }} 1200w">
+    <source media="" srcset="{{ medium_image }} 768w">
 
-    <img class="great-hero-image" alt="{{ img_alt }}" src="{{ large_image }} 1200w">
+    <img class="great-hero-image" alt="{{ img_alt }}" src="{{ medium_image }} 768w">
   </picture>
   {% endif %}
 
