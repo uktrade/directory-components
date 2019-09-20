@@ -1,22 +1,5 @@
 
-<section data-ga-section="hero" class="great-hero-with-cta">
-  {% if medium_image %}
-  <picture>
-    {% if xlarge_image %}
-    <source media="(min-width: 1300px)" srcset="{{ xlarge_image }} 1200w">
-    {% endif %}
-
-    {% if large_image %}
-    <source media="(min-width: 1025px)" srcset="{{ large_image }} 1200w">
-    {% endif %}
-
-    {# default #}
-    <source media="" srcset="{{ medium_image }} 768w">
-
-    <img class="great-hero-image" alt="{{ img_alt }}" src="{{ medium_image }} 768w">
-  </picture>
-  {% endif %}
-
+<section class="great-hero {% if not image %}great-hero-no-image{% endif %}" id="hero" {% if image %}style="background-image: url({{ image }})"{% endif %}>
   <div class="container padding-top-90-l padding-top-45 padding-bottom-45-l">
     <div class="great-hero-text width-half-xl width-two-thirds-l width-full">
       <h1 class="heading-xlarge {% if subheading %} margin-bottom-0 {% else %} margin-bottom-30 {% endif %} ">{{ heading }}</h1>
