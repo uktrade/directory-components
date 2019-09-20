@@ -1,5 +1,13 @@
 # Changelog
 
+
+## 34.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/301/files)
+
+### Fixed bugs
+- Removed trailing commas in javascript
+
+
 ## 34.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/300/files)
 

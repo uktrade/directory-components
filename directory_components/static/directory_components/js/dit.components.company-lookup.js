@@ -78,8 +78,8 @@ dit.components.lookup = (new function() {
 
     // Configure options.
     var opts = $.extend({
-      lookupOnCharacter: 4,   // (Integer) At what character input to trigger the request for data.
-      showNoneOfThese: false, // (Boolean) Show "none of these results" at the end.
+      lookupOnCharacter: 4,  // (Integer) At what character input to trigger the request for data.
+      showNoneOfThese: false // (Boolean) Show "none of these results" at the end.
     }, options || {});
 
     instance.options = opts
@@ -89,7 +89,7 @@ dit.components.lookup = (new function() {
       service: service, // Service that retrieves and stores the data
       $list: $("<ul class=\"SelectiveLookupDisplay\" style=\"display:none;\" id=\"" + popupId + "\" role=\"listbox\"></ul>"),
       $input: $input,
-      timer: null,
+      timer: null
     }
 
     // Will not have arguments if being inherited for prototype
@@ -304,11 +304,7 @@ dit.components.lookup = (new function() {
   function CompaniesHouseNameLookup($input, $field, url, options) {
     var instance = this;
     var service = new dit.data.Service(url);
-    SelectiveLookup.call(this,
-      $input,
-      service,
-      options,
-    );
+    SelectiveLookup.call(this, $input, service, options);
 
     // Some inner variable requirement.
     this._private.$field = $field || $input; // Allows a different form field to receive value.
@@ -344,9 +340,6 @@ dit.components.lookup = (new function() {
     return "term=" + escape(this._private.$input.val());
   }
   CompaniesHouseNameLookup.prototype.setContent = function() {
-    SelectiveLookup.prototype.setContent.call(this, {
-      text: "title",
-      value: "company_number"
-    });
+    SelectiveLookup.prototype.setContent.call(this, {text: "title", value: "company_number"});
   }
 });

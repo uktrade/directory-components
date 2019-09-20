@@ -1,4 +1,3 @@
-
 var dit = dit || {};
 
 // Responsive Functionality.
