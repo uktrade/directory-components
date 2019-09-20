@@ -1,5 +1,11 @@
 # Changelog
 
+## 35.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/303/files)
+
+### Implemented enhancements
+- Fix accordions details arrow not hiding in IE
+
 ## 35.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/302/files)
 
