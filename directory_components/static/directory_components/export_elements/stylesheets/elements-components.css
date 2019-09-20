@@ -1494,7 +1494,6 @@ main,
   .great-hero, .great-hero-with-cta {
     display: block; }
     .great-hero > .container, .great-hero-with-cta > .container {
-      height: 100%;
       z-index: 1;
       position: absolute;
       overflow: visible;

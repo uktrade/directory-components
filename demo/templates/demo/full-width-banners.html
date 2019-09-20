@@ -23,7 +23,7 @@
 {% static 'images/placeholder-1200x400.png' as placeholder_large %}
 {% static 'images/placeholder-768x376.png' as placeholder_medium %}
 
-{% hero xlarge_image=hero_xlarge hero_text="Full width banners" %}
+{% hero xlarge_image=hero_xlarge large_image=hero_large medium_image=hero_medium small_image=hero_small hero_text="Full width banners" %}
 
 <div class="container">
   {% breadcrumbs 'Full width banners' %}<a href="/">Home</a>{% endbreadcrumbs %}
@@ -70,7 +70,7 @@
       </tr>
     </table>
   </div>
-  <p><code>xlarge_image</code> must be provided and is the default image size.</p>
+  <p><code>medium_image</code> must be provided and is the default image size.</p>
 
   <h3 class="heading-medium">Subheadings</h3>
   <p>Hero title can also be split into heading and subheading.</p>

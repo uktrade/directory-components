@@ -1,23 +1,23 @@
 
-<section class="great-hero {% if not large_image %}great-hero-no-image{% endif %}" id="hero">
-  {% if large_image %}
+<section class="great-hero {% if not medium_image %}great-hero-no-image{% endif %}" id="hero">
+  {% if medium_image %}
   <picture>
     {% if xlarge_image %}
     <source media="(min-width: 1025px)" srcset="{{ xlarge_image }} 1200w">
     {% endif %}
 
-    {# default #}
+    {% if large_image %}
     <source media="(min-width: 769px)" srcset="{{ large_image }} 1024w">
-
-    {% if medium_image %}
-    <source media="(min-width: 641px)" srcset="{{ medium_image }} 768w">
     {% endif %}
+
+    {# default #}
+    <source media="(min-width: 641px)" srcset="{{ medium_image }} 768w">
 
     {% if small_image %}
     <source media="(max-width: 640px)" srcset="{{ small_image }} 640w">
     {% endif %}
 
-    <img class="great-hero-image" alt="{{ img_alt }}" src="{{ large_image }}">
+    <img class="great-hero-image" alt="{{ img_alt }}" src="{{ medium_image }}">
   </picture>
   {% endif %}
   <div class="container">
