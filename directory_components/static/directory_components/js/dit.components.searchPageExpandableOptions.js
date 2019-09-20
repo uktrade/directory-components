@@ -1,4 +1,3 @@
-
 dit.components.searchPageExpandableOptions = new function(){
     var self = this;
 

@@ -164,7 +164,7 @@ dit.tagging.base = new function() {
                 'action': action,
                 'type': type,
                 'element': element,
-                'value': value,
+                'value': value
             }
         }
 

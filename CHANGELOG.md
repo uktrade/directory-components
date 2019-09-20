@@ -10,6 +10,13 @@
 - `details_list` template tag has been renamed to `accordion_list`
 - `great-details-list` class has been renamed to `great-accordion-list`
 
+## 34.0.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/301/files)
+
+### Fixed bugs
+- Removed trailing commas in javascript
+
+
 ## 34.0.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/300/files)
 
