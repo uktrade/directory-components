@@ -373,6 +373,26 @@ def test_card_with_external_link():
     assert card_link['title'] == 'Opens in a new window'
 
 
+def test_card_no_padding_transparent():
+    card_content = {
+        'title': 'title',
+        'url': 'url',
+        'no_padding_card': True,
+        'transparent_card': True
+    }
+    string = (
+        "{{% load card from directory_components %}}"
+        "{{% card no_padding_card='{no_padding_card}' transparent_card='{transparent_card}' %}}"
+        ).format(**card_content)
+
+    template = Template(string)
+    context = Context({})
+
+    html = template.render(context)
+
+    assert 'card no-padding-card transparent-card' in html
+
+
 def test_message_box_default():
     box_content = {
         'heading': 'heading',

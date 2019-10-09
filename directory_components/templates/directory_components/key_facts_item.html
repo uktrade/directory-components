@@ -5,6 +5,9 @@
     <img class="great-key-facts-icon" src="{{ item.icon.url }}" alt="{{ item.image_alt }}">
   {% endif %}
   <div class="great-key-facts-text">
+    {% if item.subheading %}
+      <p class="subheading">{{ item.subheading }}</p>
+    {% endif %}
     <h3 class="heading-medium">{{ item.heading }}</h3>
     {{ item.content|add_export_elements_classes }}
   </div>
