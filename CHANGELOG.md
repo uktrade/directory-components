@@ -1,5 +1,11 @@
 # Changelog
 
+## 35.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/304)
+
+### Implemented enhancements
+- Add options for transparent background and no padding on card component - add subheading to key facts
+
 ## 35.0.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/303/files)
 
