@@ -83,6 +83,20 @@
       }
     }
   }
+
+  &.no-padding-card {
+    .card-inner {
+      padding: 0;
+    }
+    .card-image + .card-inner {
+      padding-top: 30px;
+    }
+  }
+
+  &.transparent-card {
+    background-color: transparent;
+  }
+
 }
 
 @media (max-width: 640px) {

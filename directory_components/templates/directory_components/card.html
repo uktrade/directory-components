@@ -1,7 +1,6 @@
 {% load i18n %}
 
-<div
-  class="card {% if title and not description and not html_content %}only-title{% endif %}"
+<div class="card{% if title and not description and not html_content %} only-title{% endif %}{% if no_padding_card %} no-padding-card{% endif %}{% if transparent_card %} transparent-card{% endif %}"
   {% if card_id %}id="{{ card_id }}"{% endif %}
 >
   {% if url %}
