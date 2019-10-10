@@ -1,5 +1,11 @@
 # Changelog
 
+## 35.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/306)
+
+### Implemented enhancements
+- add field to allow html content to be added inline with the other card-inner fields, alternative to html_content
+
 ## 35.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/304)
 
