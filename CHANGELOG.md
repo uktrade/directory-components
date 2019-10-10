@@ -1,5 +1,12 @@
 # Changelog
 
+
+## 35.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/305)
+
+### Implemented enhancements
+- add option for linked heading and full width image to key facts component
+
 ## 35.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/304)
 
