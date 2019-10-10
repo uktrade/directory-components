@@ -1291,8 +1291,10 @@ a.labelled-image-card {
         margin: 0; }
   .card.no-padding-card .card-inner, a.no-padding-card.labelled-card .card-inner, a.no-padding-card.labelled-image-card .card-inner {
     padding: 0; }
+    .card.no-padding-card .card-inner h3, a.no-padding-card.labelled-card .card-inner h3, a.no-padding-card.labelled-image-card .card-inner h3 {
+      margin-bottom: 10px; }
   .card.no-padding-card .card-image + .card-inner, a.no-padding-card.labelled-card .card-image + .card-inner, a.no-padding-card.labelled-image-card .card-image + .card-inner {
-    padding-top: 30px; }
+    padding-top: 20px; }
   .card.transparent-card, a.transparent-card.labelled-card, a.transparent-card.labelled-image-card {
     background-color: transparent; }
 

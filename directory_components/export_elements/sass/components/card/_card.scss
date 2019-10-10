@@ -87,9 +87,13 @@
   &.no-padding-card {
     .card-inner {
       padding: 0;
+
+      h3 {
+        margin-bottom: 10px;
+      }
     }
     .card-image + .card-inner {
-      padding-top: 30px;
+      padding-top: 20px;
     }
   }
 
