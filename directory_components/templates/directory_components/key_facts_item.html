@@ -4,11 +4,18 @@
   {% if item.icon %}
     <img class="great-key-facts-icon" src="{{ item.icon.url }}" alt="{{ item.image_alt }}">
   {% endif %}
+  {% if item.image %}
+    <img class="great-key-facts-image" src="{{ item.image.url }}" alt="{{ item.image_alt }}">
+  {% endif %}
   <div class="great-key-facts-text">
     {% if item.subheading %}
       <p class="subheading">{{ item.subheading }}</p>
     {% endif %}
-    <h3 class="heading-medium">{{ item.heading }}</h3>
+    {% if item.url %}
+      <h3 class="heading-medium"><a href="{{item.url}}" class="link">{{ item.heading }}</a></h3>
+    {% else %}
+      <h3 class="heading-medium">{{ item.heading }}</h3>
+    {% endif %}
     {{ item.content|add_export_elements_classes }}
   </div>
 </div>
