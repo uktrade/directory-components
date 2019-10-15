@@ -1,9 +1,13 @@
 # Changelog
 
+## 35.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/308)
+### Implemented enhancements
+- remove arrow from hero cta button
 ## 35.2.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/307)
 ### Fixed bugs
-    - changed padding and h3 margin for no-padding-card
+- changed padding and h3 margin for no-padding-card
 
 ## 35.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/306)
