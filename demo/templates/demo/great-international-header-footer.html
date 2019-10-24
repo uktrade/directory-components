@@ -1,6 +1,7 @@
 {% extends 'demo/base.html' %}
 {% load static %}
 {% load breadcrumbs hero international_header from directory_components %}
+{% load code from demo_tags %}
 
 {% block body_header %}
     {% international_header navigation_tree=navigation_tree site_section=header_section site_sub_section=header_sub_section  %}
@@ -36,11 +37,15 @@
         <p>The International Header can be applied to a page by adding the following component to the header block.</p>
     
         <div>
-          <pre><code>{% verbatim %}{% international_header
-        navigation_tree=my_navigation_tree
-        site_section='<site-></site->section'
-        site_sub_section='site-sub-section'
-%}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% international_header
+                  navigation_tree=my_navigation_tree
+                  site_section='<site-></site->section'
+                  site_sub_section='site-sub-section'
+          %}
+        {% endcode %}
+
+
         </div>
 
         <p>Click around the header shown to get an idea of how it works.</p>

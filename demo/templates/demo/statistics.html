@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load directory_components %}
+{% load code from demo_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -17,26 +18,38 @@
     <h1 class="heading-xlarge">Statistics</h1>
     <p>A grid of statistics:</p>
     {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
-    <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}{% endverbatim %}</code></pre>
+
+    {% code 'django' %}
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics %}
+    {% endcode %}
+
+
     <div class="margin-top-60">
       <p>You can also put the number first:</p>
       {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}
     </div>
-    <pre><code>{% verbatim %}{% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}{% endverbatim %}</code></pre>
-    <h2 class="heading-large">HTML markup</h2>
-    <pre><code>&lt;div class="statistics-card-grid flex-grid underline-active-blue"&gt;
 
-  &lt;figure class="padding-vertical-15 column-half column-third-l column-sixth-xl"&gt;
-    &lt;p class="active-blue-text statistic-number  bold-large"&gt;Statistic&lt;/p&gt;
-    &lt;figcaption&gt;
-      &lt;p class="statistic-heading font-xsmall"&gt;Heading&lt;/p&gt;
-    &lt;/figcaption&gt;
-    &lt;figcaption&gt;
-      &lt;p class="font-xsmall statistic-smallprint"&gt;Caption&lt;/p&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-      ... etc
-&lt;/div&gt;</code></pre>
+    {% code 'django' %}
+      {% statistics_card_grid statistics=view.statistics num_of_statistics=view.num_of_statistics number_first=True %}
+    {% endcode %}
+
+
+    <h2 class="heading-large">HTML markup</h2>
+    {% code 'html' %}
+      <div class="statistics-card-grid flex-grid underline-active-blue">
+
+        <figure class="padding-vertical-15 column-half column-third-l column-sixth-xl">
+          <p class="active-blue-text statistic-number  bold-large">Statistic</p>
+          <figcaption>
+            <p class="statistic-heading font-xsmall">Heading</p>
+          </figcaption>
+          <figcaption>
+            <p class="font-xsmall statistic-smallprint">Caption</p>
+          </figcaption>
+        </figure>
+            ... etc
+      </div>
+    {% endcode %}
   </div>
 </section>
 

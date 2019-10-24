@@ -2,8 +2,10 @@
 
 {% load view_instance_code from demo_tags %}
 {% load breadcrumbs from directory_components %}
+{% load code from demo_tags %}
 
 {% block css_layout_class %}forms{% endblock %}
+
 
 {% block content %}
 <div class="container">
@@ -14,79 +16,121 @@
   <div class="container">
     <h1 class="heading-xlarge">Form widgets</h1>
     <p>Forms are rendered thusly:</p>
-<pre><code>{% verbatim %}&lt;form&gt;
-  {{ form }}
-  &lt;input class="button" type="submit" value="Submit" /&gt;
-&lt;/form&gt;
-{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      <form>
+        {{ form }}
+        <input class="button" type="submit" value="Submit" />
+      </form>
+    {% endcode %}
+    <h2 class="heading-large">Form widgets examples</h2>
 
-      <h2 class="heading-large">Form widgets examples</h2>
+    <h3 class="heading-medium">Text fields</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ text_form }}
+          <input class="button margin-top-30" type="submit" value="Submit" />
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ text_form|view_instance_code }}
+        {% endcode %}
+      </div>
+    </article>
 
-        <h3 class="heading-medium">Text fields</h3>
-        <article class="grid-row">
-          <div class="column-one-half">
-            <form>
-              {{ text_form }}
-              <input class="button margin-top-30" type="submit" value="Submit" />
-            </form>
+    <h3 class="heading-medium">Checkboxes</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ checkbox_form }}
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit" />
           </div>
-          <div class="column-one-half">
-<pre><code>from directory_components import forms, fields
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ checkbox_form|view_instance_code }}
+        {% endcode %}
+      </div>
+    </article>
 
-{{ text_form|view_instance_code }}
-</code></pre>
-          </div>
-        </article>
+    <h3 class="heading-medium">Multiple choice checkboxes</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ multiple_choice_form }}
+          <input class="button" type="submit" value="Submit" />
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ multiple_choice_form|view_instance_code }}
+        {% endcode %}
+      </div>
+    </article>
 
-        <h3 class="heading-medium">Checkboxes</h3>
-        <article class="grid-row">
-          <div class="column-one-half">
-            <form>
-              {{ checkbox_form }}
-              <div class="form-group">
-                <input class="button" type="submit" value="Submit" />
-              </div>
-            </form>
-          </div>
-          <div class="column-one-half">
-<pre><code>from directory_components import forms, fields, widgets
+    <h3 class="heading-medium">Radios</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ radio_form }}
+          <input class="button" type="submit" value="Submit" />
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ radio_form|view_instance_code }}
+        {% endcode %}
+      </div>
+    </article>
 
-{{ checkbox_form|view_instance_code }}
-</code></pre>
-          </div>
-        </article>
+    <h3 class="heading-medium">Field with submit button</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ submit_button_form }}
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ submit_button_form|view_instance_code }}
+        {% endcode %}
+      </div>
+    </article>
 
-        <h3 class="heading-medium">Multiple choice checkboxes</h3>
-        <article class="grid-row">
-          <div class="column-one-half">
-            <form>
-              {{ multiple_choice_form }}
-              <input class="button" type="submit" value="Submit" />
-            </form>
-          </div>
-          <div class="column-one-half">
-<pre><code>from directory_components import forms, fields, widgets
+    <h3 class="heading-medium">Nested radio field</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ nested_radio_form }}
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ nested_radio_form.fields.nested_field.nested_form|view_instance_code }}
 
-{{ multiple_choice_form|view_instance_code }}
-</code></pre>
-          </div>
-        </article>
+          {{ nested_radio_form|view_instance_code }}
+        {% endcode %}
+      </div>
+    </article>
 
-        <h3 class="heading-medium">Radios</h3>
-        <article class="grid-row">
-          <div class="column-one-half">
-            <form>
-              {{ radio_form }}
-              <input class="button" type="submit" value="Submit" />
-            </form>
-          </div>
-          <div class="column-one-half">
-<pre><code>from directory_components import forms, fields, widgets
+    <h3 class="heading-medium">Multiselect autocomplete</h3>
+    <article class="grid-row">
+      <div class="column-one-half">
+        <form>
+          {{ multiple_autocomplete_form }}
+        </form>
+      </div>
+      <div class="column-one-half">
+        {% code 'python' False %}
+          {{ multiple_autocomplete_form|view_instance_code }}
+        {% endcode %}
+      </div>
+      {{ multiple_autocomplete_form.media }}
+    </article>
 
-{{ radio_form|view_instance_code }}
-</code></pre>
-          </div>
-        </article>
   </div>
 </section>
 

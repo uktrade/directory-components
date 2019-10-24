@@ -1,6 +1,7 @@
 {% extends 'directory_components/base.html' %}
 
 {% load static from staticfiles %}
+{% load code from demo_tags %}
 
 {% block body_header %}
     {% include 'demo/includes/header.html' %}
@@ -15,6 +16,7 @@
     <link href="{% static 'directory_components/export_elements/stylesheets/govuk-elements-styles.min.css' %}" media="all" rel="stylesheet" />
     <link href="{% static 'directory_components/export_elements/stylesheets/elements-components.min.css' %}" media="all" rel="stylesheet" />
     <link href="{% static 'css/demo.css' %}" media="all" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/pygments_default.css' %}" />
 {% endblock %}
 
 {% block feedback_reporter %}

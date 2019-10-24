@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load directory_components %}
+{% load code from demo_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -23,12 +24,14 @@
         </div>
       </div>
       <div class="column-half">
-        <pre><code>&lt;div class="fact-sheet"&gt;
-&lt;h3 class="highlight heading-medium background-grey white-text"&gt;Fact sheet&lt;/h3&gt;
-&lt;div class="fact-sheet-content background-white padding-45 wrap-tight"&gt;
-  [ html content ]
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+        {% code 'html' %}
+          <div class="fact-sheet">
+            <h3 class="highlight heading-medium background-grey white-text">Fact sheet</h3>
+            <div class="fact-sheet-content background-white padding-45 wrap-tight">
+              [ html content ]
+            </div>
+          </div>
+        {% endcode %}
       </div>
     </div>
   </div>

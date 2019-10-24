@@ -9,17 +9,16 @@ body {
 }
 
 pre {
-  background-color: #fcfbf9;
-  border: 1px solid #dfd5c5;
-  border-radius: 5px;
-  display: block;
-  margin: 30px 0;
-  padding: 15px;
   white-space: pre-wrap;
+  font-family: monospace
 }
 
-code {
-  white-space: pre-wrap;
+#content .container {
+  overflow: visible;
+}
+
+.highlight {
+  margin: 0;
 }
 
 .colour-examples p {

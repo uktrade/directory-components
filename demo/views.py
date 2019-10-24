@@ -273,6 +273,9 @@ class DemoFormView(TemplateView):
             checkbox_form=forms.CheckboxForm(),
             multiple_choice_form=forms.MultipleChoiceForm(),
             radio_form=forms.RadioForm(),
+            submit_button_form=forms.DemoFormWithSubmitButton(),
+            nested_radio_form=forms.DemoNestedForm(),
+            multiple_autocomplete_form=forms.MultiSelectAutoCompleteForm(),
             *args, **kwargs
         )
 

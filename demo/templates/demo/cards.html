@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load directory_components %}
+{% load code from demo_tags %}
 
 {% block css_layout_class %}components{% endblock css_layout_class %}
 
@@ -22,8 +23,11 @@
       <p>Cards stretch to fit their container. Grid columns collapse to one on smaller screens.</p>
       <p>Load these template tags to use cards:</p>
     </div>
-    <pre><code>{% verbatim %}{% load card labelled_card labelled_image_card from directory_components %}{% endverbatim %}</code></pre>
-
+    {% code 'django' %}
+      {% load card labelled_card labelled_image_card from directory_components %}
+    {% endcode %}
+    <br>
+    <br>
     <div class="width-two-thirds">
       <p>A custom ID can be assigned to the card which also creates IDs for the link and image with the suffixes <code>-link</code> and <code>-image</code> respectively. See examples below.</p>
     </div>
@@ -38,20 +42,26 @@
     <div class="flex-grid">
       <div class="column-half">
         {% cta_card image_url=card_image01 text="Read our market guide for Germany" %}
-        <pre><code>{% verbatim %}{% cta_card image_url=card_image01 text="Read our market guide for Germany" %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% cta_card image_url=card_image01 text="Read our market guide for Germany" %}
+        {% endcode %}
       </div>
       <div class="column-half">
         {% cta_card with_arrow=True image_url=card_image02 text="Tell us what help you need" %}
-        <pre><code>{% verbatim %}{% cta_card with_arrow=True image_url=card_image02 text="Tell us what help you need" %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% cta_card with_arrow=True image_url=card_image02 text="Tell us what help you need" %}
+        {% endcode %}
       </div>
     </div>
     <h3 class="heading-medium">HTML markup</h3>
-    <pre><code>&lt;div class="cta-card"&gt;
-  &lt;img src="/static/images/card_image01.jpg" alt=""&gt;
-  &lt;div class="link-container"&gt;
-    &lt;a class="cta-link " href=""&gt;&lt;span&gt;Read our market guide for Germany&lt;/span&gt;&lt;br&gt;&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    {% code 'html' %}
+      <div class="cta-card">
+        <img src="/static/images/card_image01.jpg" alt="">
+        <div class="link-container">
+          <a class="cta-link " href=""><span>Read our market guide for Germany</span></a>
+        </div>
+      </div>
+    {% endcode %}
   </div>
 </section>
 
@@ -63,14 +73,19 @@
         {% image_with_caption image_url=card_image01 main_caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor." sub_caption="Quis nostrud exercitation ullamco laboris" %}
       </div>
       <div class="column-half">
-        <pre><code>{% verbatim %}{% image_with_caption image_url=card_image01 main_caption="Main image caption" sub_caption="Secondary image caption" %}{% endverbatim %}</code></pre>
+      {% code 'django' %}
+        {% image_with_caption image_url=card_image01 main_caption="Main image caption" sub_caption="Secondary image caption" %}
+      {% endcode %}
       </div>
     </div>
     <div class="grid-row">
       <div class="column-half">
         <h2 class="heading-medium">Linked card with image and description</h2>
         {% card card_id='card-example-image-description' img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
-        <pre><code>{% verbatim %}{% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet...' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet...' %}
+        {% endcode %}
+
       </div>
 
       <div class="column-half">
@@ -78,7 +93,9 @@
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
         {% card card_id="card-example-image-title" img_src=card_image02 url='#' heading='Lorem ipsum' %}
-        <pre><code>{% verbatim %}{% card card_id="card-example-image-title" img_src=card_image02 url='#' heading='Lorem ipsum' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% card card_id="card-example-image-title" img_src=card_image02 url='#' heading='Lorem ipsum' %}
+        {% endcode %}
       </div>
     </div>
 
@@ -88,13 +105,19 @@
         {% static 'images/card_image01.jpg' as card_image01 %}
         {% static 'images/card_image02.jpg' as card_image02 %}
         {% card img_src=card_image02 img_alt='Card image description' title='Card title' html_content='<h4>Card title</h4><p>Cards can also have html content</p><a href="#" class="button button-blue">Button</a>' %}
-        <pre><code>{% verbatim %}{% card img_src=card_image02 title='Card title' html_content='...' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% card img_src=card_image02 title='Card title' html_content='...' %}
+        {% endcode %}
+
+
       </div>
 
       <div class="column-half">
         <h2 class="heading-medium">Linked card with title, description, no image</h2>
         {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
-        <pre><code>{% verbatim %}{% card url='#' title='Card title' description='Lorem ipsum...' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% card url='#' title='Card title' description='Lorem ipsum...' %}
+        {% endcode %}
       </div>
     </div>
 
@@ -102,13 +125,17 @@
       <div class="column-half">
         <h2 class="heading-medium">Labelled linked card with image, title and description</h2>
         {% labelled_card card_id="labelled-card-example-image-title-description" img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        <pre><code>{% verbatim %}{% labelled_card card_id="labelled-card-example-image-title-description" img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% labelled_card card_id="labelled-card-example-image-title-description" img_src=card_image02 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        {% endcode %}
       </div>
 
       <div class="column-half">
         <h2 class="heading-medium">Labelled linked card with title and description</h2>
         {% labelled_card url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
-        <pre><code>{% verbatim %}{% labelled_card url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% labelled_card url='#' title='Card title' description='Lorem ipsum dolor sit amet.' %}
+        {% endcode %}
       </div>
     </div>
 
@@ -116,14 +143,18 @@
       <div class="column-half">
         <h2 class="heading-medium">Labelled linked card with image and title</h2>
         {% labelled_image_card img_src=card_image02 img_alt='Card title' url='#' title='Card title' %}
-        <pre><code>{% verbatim %}{% labelled_image_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% labelled_image_card img_src=card_image02 img_alt='Card image description' url='#' title='Card title' %}
+        {% endcode %}
       </div>
 
       <div class="column-half">
         <h2 class="heading-medium">Labelled linked card with title (if no image is set)</h2>
         <p>This is so that if an image is missing the layout of card grids does not break.</p>
         {% labelled_image_card url='#' title='Card title' %}
-        <pre><code>{% verbatim %}{% labelled_image_card url='#' title='Card title' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% labelled_image_card url='#' title='Card title' %}
+        {% endcode %}
       </div>
     </div>
 
@@ -131,13 +162,17 @@
       <div class="column-half">
         <h2 class="heading-medium">Linked card with external link, opens in new window</h2>
         {% card card_id='card-example-image-description' img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' external_link=True %}
-        <pre><code>{% verbatim %}{% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet...' external_link=True %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% card card_id="card-example-image-description" img_src=card_image02 url='#' description='Lorem ipsum dolor sit amet...' external_link=True %}
+        {% endcode %}
       </div>
 
       <div class="column-half">
           <h2 class="heading-medium">Linked card with transparent background, subheading and no padding</h2>
           {% card url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' subheading='Article' no_padding_card=True transparent_card=True %}
-          <pre><code>{% verbatim %}{% card url='#' title='Card title' description='Lorem ipsum...' subheading='Article' no_padding_card=True transparent_card=True %}{% endverbatim %}</code></pre>
+          {% code 'django' %}
+            {% card url='#' title='Card title' description='Lorem ipsum...' subheading='Article' no_padding_card=True transparent_card=True %}
+          {% endcode %}
         </div>
     </div>
 

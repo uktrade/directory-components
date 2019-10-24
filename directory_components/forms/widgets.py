@@ -9,6 +9,8 @@ __all__ = [
     'ChoiceWidget',
     'PrettyIDsMixin',
     'RadioSelect',
+    'SelectMultipleAutocomplete',
+    'TextInputWithSubmitButton',
 ]
 
 
@@ -53,7 +55,7 @@ class PrettyIDsMixin:
             'type': self.input_type,
             'template_name': self.option_template_name,
             'wrap_label': True,
-            }
+        }
 
 
 class ChoiceWidget(PrettyIDsMixin, widgets.ChoiceWidget):
@@ -62,8 +64,7 @@ class ChoiceWidget(PrettyIDsMixin, widgets.ChoiceWidget):
 
 class RadioSelect(ChoiceWidget):
     template_name = 'directory_components/form_widgets/multiple_input.html'
-    option_template_name = (
-        'directory_components/form_widgets/radio_option.html')
+    option_template_name = 'directory_components/form_widgets/radio_option.html'
     css_class_name = 'select-multiple'
     input_type = 'radio'
 
@@ -83,16 +84,46 @@ class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
         return context
 
 
-class CheckboxSelectInlineLabelMultiple(
-    PrettyIDsMixin,
-    widgets.CheckboxSelectMultiple
-):
+class CheckboxSelectInlineLabelMultiple(PrettyIDsMixin, widgets.CheckboxSelectMultiple):
     template_name = 'directory_components/form_widgets/multiple_input.html'
-    option_template_name = (
-        'directory_components/form_widgets/checkbox_inline_multiple.html')
+    option_template_name = 'directory_components/form_widgets/checkbox_inline_multiple.html'
     css_class_name = 'select-multiple'
     input_type = 'checkbox'
 
     def __init__(self, attrs=None, use_nice_ids=False):
         super().__init__(attrs=attrs, use_nice_ids=use_nice_ids)
         self.attrs['class'] = self.attrs.get('class', self.css_class_name)
+
+
+class SelectMultipleAutocomplete(widgets.SelectMultiple):
+
+    container_css_classes = 'multi-select-autocomplete'
+
+    class Media:
+        css = {
+            'all': ('directory_components/js/vendor/accessible-autocomplete.min.css',)
+        }
+        js = (
+            'directory_components/js/vendor/accessible-autocomplete.min.js',
+            'directory_components/js/dit.components.multiselect-autocomplete.js',
+        )
+
+
+class RadioNestedWidget(RadioSelect):
+    option_template_name = 'directory_components/form_widgets/nested-radio.html'
+    container_css_classes = 'form-group radio-nested-container'
+
+    def create_option(self, *args, **kwargs):
+        return {
+            **super().create_option(*args, **kwargs),
+            'nested_form': self.nested_form,
+            'nested_form_choice': self.nested_form_choice,
+        }
+
+    def bind_nested_form(self, form):
+        self.nested_form = form
+
+
+class TextInputWithSubmitButton(forms.TextInput):
+    container_css_classes = 'text-input-with-submit-button-container'
+    template_name = 'directory_components/form_widgets/text-input-with-submit-button.html'
