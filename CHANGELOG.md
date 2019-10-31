@@ -7,6 +7,10 @@
 - Added TextInputWithSubmitButton widget
 - Added SelectMultipleAutocomplete widget
 
+## 35.3.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/311)
+### Fixed bugs
+- Fixed skip navigation on IE 11
 
 ## 35.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/308)

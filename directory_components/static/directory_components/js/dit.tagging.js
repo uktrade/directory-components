@@ -39,6 +39,7 @@ dit.tagging.base = new function() {
         }
 
         function addTaggingForVideos() {
+            $("#hero-campaign-section-watch-video-button").click(function() { sendVideoEvent($(this), 'play') });
             $('video')
                 .on('play', function() { sendVideoEvent($(this), 'play') })
                 .on('pause', function() { sendVideoEvent($(this), 'pause') })
