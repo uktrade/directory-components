@@ -4278,3 +4278,145 @@ body:not(.js-enabled) .expandable-fieldset button.filter-collapse {
 
 .great-details-list details:last-child {
   border-top: 0; }
+
+.multi-select-autocomplete > div {
+  padding-left: 10px;
+  border: 2px solid black; }
+
+.multi-select-autocomplete span {
+  display: inline-block;
+  margin-top: 10px; }
+
+.multi-select-autocomplete .autocomplete__wrapper {
+  height: 100%; }
+
+.multi-select-autocomplete .autocomplete__wrapper input {
+  border: none;
+  height: 100%;
+  margin-bottom: 10px;
+  padding: 10px; }
+
+.multi-select-autocomplete .autocomplete__menu {
+  overflow: hidden;
+  border-top: 2px solid black; }
+
+.multi-select-autocomplete .multi-select-autocomplete-selected-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  padding-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #333333;
+  background: #fafafa;
+  border-radius: 5px;
+  font-size: 16px;
+  font-size: 19px;
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  margin-top: 10px; }
+  .multi-select-autocomplete .multi-select-autocomplete-selected-item button {
+    border: none;
+    background: none;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 19px;
+    line-height: 1em; }
+
+.text-input-with-submit-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .text-input-with-submit-button-container .text-input-with-submit-button:active {
+    top: inherit; }
+  .text-input-with-submit-button-container .text-input-with-submit-button {
+    border: none;
+    background: #006ccc;
+    cursor: pointer;
+    color: #ffffff;
+    cursor: pointer; }
+  .text-input-with-submit-button-container input {
+    border-right: none; }
+
+.radio-nested-container {
+  margin-bottom: 50px; }
+  .radio-nested-container input[type=radio]:not(:checked) + label + .radio-nested {
+    display: none; }
+  .radio-nested-container > .form-group {
+    margin-bottom: -20px; }
+  .radio-nested-container .radio-nested {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-width: 4px;
+    margin-top: 45px;
+    margin-bottom: 0;
+    margin-left: -20px; }
+    .radio-nested-container .radio-nested .form-hint + .form-group {
+      margin-top: -5px; }
+    .radio-nested-container .radio-nested .form-hint {
+      padding-bottom: 0; }
+    .radio-nested-container .radio-nested .form-group {
+      margin-top: 10px;
+      margin-bottom: 0; }
+      .radio-nested-container .radio-nested .form-group > .form-label {
+        padding-left: 0;
+        font-weight: normal;
+        width: 100%; }
+      .radio-nested-container .radio-nested .form-group input[type=text],
+      .radio-nested-container .radio-nested .form-group input[type=number] {
+        position: inherit;
+        cursor: inherit;
+        left: inherit;
+        top: inherit;
+        height: inherit;
+        z-index: inherit;
+        zoom: inherit;
+        -webkit-filter: inherit;
+        filter: inherit;
+        opacity: inherit; }
+      .radio-nested-container .radio-nested .form-group input, .radio-nested-container .radio-nested .form-group select, .radio-nested-container .radio-nested .form-group textarea {
+        width: 100%; }
+    .radio-nested-container .radio-nested .form-group-error {
+      margin-left: -19px;
+      border-width: 4px; }
+
+.autocomplete__menu,
+.SelectiveLookupDisplay {
+  background-color: #fff;
+  border: #999 solid 1px;
+  max-height: 221px;
+  overflow: scroll;
+  z-index: 2;
+  padding-left: 0;
+  font-size: 16px;
+  margin-top: -1px;
+  margin-left: 1px;
+  font-family: "Roboto", arial, helvetica, sans-serif;
+  overflow-x: hidden; }
+  .autocomplete__menu li,
+  .SelectiveLookupDisplay li {
+    cursor: pointer;
+    border-top: #999 solid 1px;
+    padding: 12px 24px;
+    position: relative;
+    top: -1px; }
+    .autocomplete__menu li:focus,
+    .SelectiveLookupDisplay li:focus {
+      border-color: #ffbf47;
+      border-style: solid;
+      border-width: 4px 3px 3px 3px;
+      box-shadow: none;
+      outline: 0;
+      padding: 8px 22px;
+      -webkit-box-shadow: none; }
+    .autocomplete__menu li:hover, .autocomplete__menu li:focus,
+    .SelectiveLookupDisplay li:hover,
+    .SelectiveLookupDisplay li:focus {
+      background-color: #007ea3 !important;
+      color: white; }
+  .autocomplete__menu #company-lookup-name-not-in-companies-house,
+  .SelectiveLookupDisplay #company-lookup-name-not-in-companies-house {
+    border-top: 2px solid #999;
+    background: #dedede; }

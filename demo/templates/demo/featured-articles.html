@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load directory_components %}
+{% load code from demo_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -17,22 +18,23 @@
       <h1 class="heading-xlarge">Featured articles</h1>
       <p>This is a list of article previews with text and an image for the first item. The <code>items</code> param expects a list of dictionaries like this:</p>
     </div>
-
-    <pre><code>{
-    'title': 'Article title',
-    'url': '/article',
-    'type_of_article': 'Advice',
-    'teaser': 'This is some intro text',
-    'image': {
-        'url': '/link-to-the-image.jpeg',
-    },
-    'image_alt': 'Some descriptive image text',
-}</code></pre>
+    {% code 'python' %}
+      {
+        'title': 'Article title',
+        'url': '/article',
+        'type_of_article': 'Advice',
+        'teaser': 'This is some intro text',
+        'image': {
+            'url': '/link-to-the-image.jpeg',
+        },
+        'image_alt': 'Some descriptive image text',
+      }
+    {% endcode %}
 
     <p>Used below:</p>
-
-    <pre><code>{% verbatim %}{% featured_articles items=articles_list heading="What's new" %}{% endverbatim %}</code></pre>
-
+    {% code 'python' %}
+      {% featured_articles items=articles_list heading="What's new" %}
+    {% endcode %}
   </div>
 </section>
 
@@ -40,8 +42,9 @@
 
 <div class="container">
   <p><code>section_class</code> can be given to change the container style:</p>
-
-  <pre><code>{% verbatim %}{% featured_articles items=articles_list heading="What's new" section_class='underline-flag-red background-stone-30' %}{% endverbatim %}</code></pre>
+  {% code 'python' %}
+    {% featured_articles items=articles_list heading="What's new" section_class='underline-flag-red background-stone-30' %}
+  {% endcode %}
 </div>
 
 {% featured_articles items=articles_list heading="What's new" section_class='underline-flag-red background-stone-30' %}

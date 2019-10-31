@@ -1,6 +1,7 @@
 {% extends 'demo/base.html' %}
 {% load breadcrumbs ga360_data card from directory_components %}
 {% load static %}
+{% load code from demo_tags %}
 
 {% block head_js_ga360 %}
     {{ block.super }}
@@ -104,21 +105,29 @@
         <p class="width-two-thirds">
             This is as simple as extending the provided <code>GA360Mixin</code> in your view.
         </p>
-        <pre><code>class MyView(GA360Mixin, BaseView):
-# stuff</code></pre>
+
+        {% code 'python' %}
+            class MyView(GA360Mixin, BaseView):
+                # stuff
+                # more stuff
+        {% endcode %}
+
         <p class="width-two-thirds">
             Once added, the following object will be added to your context and therefore be available in your templates.
         </p>
 
-        <pre><code>ga360 = {
-    'page_id': '{page_type_from_cms}',
-    'business_unit': '{root_app_from_cms}', # eg 'invest/trade'
-    'site_section': '{site_section_from_cms}', # eg 'industries/guides'
-    'site_subsection': '{site_subsection_from_cms}', # eg 'contact/listingPage'
-    'site_language': '{language_of_page}',
-    'login_status': '{is_the_user_signed_in}',
-    'user_id': '{sso_user.id}'
-}</code></pre>
+        {% code 'python' %}
+            ga360 = {
+                'page_id': '{page_type_from_cms}',
+                'business_unit': '{root_app_from_cms}', # eg 'invest/trade'
+                'site_section': '{site_section_from_cms}', # eg 'industries/guides'
+                'site_subsection': '{site_subsection_from_cms}', # eg 'contact/listingPage'
+                'site_language': '{language_of_page}',
+                'login_status': '{is_the_user_signed_in}',
+                'user_id': '{sso_user.id}'
+            }
+        {% endcode %}
+
 
         <h3 class="heading-medium">Ensuring Response Contains Data</h3>
         <p class="width-two-thirds">
@@ -138,11 +147,14 @@
             The easiest way to do this is in <code>urls.py</code>
         </p>
 
-        <pre><code>url(
-    r"^some/path/$",
-    skip_ga360(View.as_view()),
-    name='some-path'
-)</code></pre>
+        {% code 'python' %}
+            url(
+                r"^some/path/$",
+                skip_ga360(View.as_view()),
+                name='some-path'
+            )
+        {% endcode %}
+
 
         <h3 class="heading-medium">Send Data to GTM</h3>
 
@@ -178,11 +190,13 @@
             and then call it's <code>init()</code>function.
         </p>
 
-        <pre><code>{% verbatim %}&lt;script src="{% static 'directory_components/js/dit.tagging.js' %}"&gt;&lt;/script&gt;
-&lt;script&gt;
-    dit.tagging.base.init();
-&lt;/script&gt;
-{% endverbatim %}</code></pre>
+        {% code 'html' %}
+            <script src="{% static 'directory_components/js/dit.tagging.js' %}"></script>
+            <script>
+                dit.tagging.base.init();
+            </script>
+        {% endcode %}
+
 
         <p class="width-two-thirds">
             As normal, if you are extending the <code>base.html</code> template then this will already have been done
@@ -194,13 +208,15 @@
             Every interaction event will contain the following fields.
         </p>
 
-        <pre><code>{
-    'event': 'gaEvent',  # always has this value - required for our analytics pipeline.
-    'action': '',  # the type of interaction taken by the user. eg. 'clickLink', 'submitForm'
-    'type': '',  # what kind of object the user interacted with. eg 'cta', 'searchForm'
-    'element': '',  # the region of the page where the link was found. eg 'hero', 'industries'
-    'value': '',  # data specific to this interaction. eg the link text.
-}</code></pre>
+        {% code 'python' %}
+            {
+                'event': 'gaEvent',  # always has this value - required for our analytics pipeline.
+                'action': '',  # the type of interaction taken by the user. eg. 'clickLink', 'submitForm'
+                'type': '',  # what kind of object the user interacted with. eg 'cta', 'searchForm'
+                'element': '',  # the region of the page where the link was found. eg 'hero', 'industries'
+                'value': '',  # data specific to this interaction. eg the link text.
+            }
+        {% endcode %}
 
         <p class="width-two-thirds">
             The code will attempt to populate these fields with sensible options, but you are free to overwrite these
@@ -208,9 +224,11 @@
             'ga360_data' tag.
         </p>
 
-        <pre><code>{% verbatim %}{% ga360_data '{target}' action='{action}' type='{type}' element='{element}' value='{value}' %}
-    # HTML Content
-{% end_ga360_data %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+            {% ga360_data '{target}' action='{action}' type='{type}' element='{element}' value='{value}' %}
+                # HTML Content
+            {% end_ga360_data %}
+        {% endcode %}
 
         <p class="width-two-thirds">
             This tag will overwrite the corresponding fields of any element matching the 'target' selector.
@@ -282,37 +300,54 @@
         </p>
 
         <h4 class="heading-small">Plain Link</h4>
-        <pre><code>&lt;a href="#"&gt;Click Me&lt;/a&gt;</code></pre>
+        {% code 'html' %}
+            <a href="#">Click Me</a>
+        {% endcode %}
+
         <a href="#">Click Me</a>
 
         <h4 class="heading-small">Link within a section</h4>
-        <pre><code>&lt;div data-ga-section="test-section"&gt;
-    &lt;a href="#"&gt;Click Me&lt;/a&gt;
-&lt;/div&gt;</code></pre>
+        {% code 'html' %}
+            <div data-ga-section="test-section">
+                <a href="#">Click Me</a>
+            </div>
+        {% endcode %}
+
         <div data-ga-section="test-section">
             <a href="#">Click Me</a>
         </div>
 
         <h4 class="heading-small">Link With Overwrites</h4>
-        <pre><code>{% verbatim %}{% ga360_data 'a' element="test-section" value="Special Click" %}
-    &lt;a href="#"&gt;Click Me&lt;/a&gt;
-{% end_ga360_data %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+            {% ga360_data 'a' element="test-section" value="Special Click" %}
+                <a href="#">Click Me</a>
+            {% end_ga360_data %}
+        {% endcode %}
+
         {% ga360_data 'a' element="test-section" value="Special Click" %}
             <a href="#">Click Me</a>
         {% end_ga360_data %}
 
         <h4 class="heading-small">CTA</h4>
-        <pre><code>&lt;a class="button"&gt;
-    &lt;span&gt;Click Me&lt;/span&gt;
-&lt;/a&gt;</code></pre>
+        {% code 'html' %}
+            <a class="button">
+                <span>Click Me</span>
+            </a>
+        {% endcode %}
+
+
         <a class="button">
             <span>Click Me</span>
         </a>
 
         <h4 class="heading-small">Card</h4>
-        <pre><code>{% verbatim %}&lt;div class="column-half"&gt;
-    {% card img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
-&lt;/div&gt;{% endverbatim %}</code></pre>
+        {% code 'django' %}
+            <div class="column-half">
+                {% card img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
+            </div>
+        {% endcode %}
+
+
         <div class="flex-grid">
             <div class="column-third">
                 {% card img_src=card_image01 img_alt='Card image description' url='#' title='Card title' description='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %}
@@ -320,15 +355,19 @@
         </div>
 
         <h4 class="heading-small">Form</h4>
-        <pre><code>{% verbatim %}{% ga360_data "form" include_form_data="True" %}
-    &lt;form action="/" class="form-group"&gt;
-        &lt;label class="form-label"&gt;
-            Name
-            &lt;input type="text" class="form-control"&gt;
-        &lt;/label&gt;
-        &lt;button type="submit" class="button margin-top-30"&gt;Submit&lt;/button&gt;
-    &lt;/form&gt;
-{% end_ga360_data %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+            {% ga360_data "form" include_form_data="True" %}
+                <form action="/" class="form-group">
+                    <label class="form-label">
+                        Name
+                        <input type="text" class="form-control">
+                    </label>
+                    <button type="submit" class="button margin-top-30">Submit</button>
+                </form>
+            {% end_ga360_data %}
+        {% endcode %}
+
+
         {% ga360_data "form" include_form_data="True" %}
             <form action="#" class="form-group">
                 <label class="form-label">

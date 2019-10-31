@@ -1,6 +1,7 @@
 {% extends 'demo/base.html' %}
 {% load static %}
 {% load breadcrumbs pagination from directory_components %}
+{% load code from demo_tags %}
 
 {% block head_css %}
   {{ block.super }}
@@ -20,28 +21,46 @@
     </div>
     <div class="grid-row">
       <div class="column-two-thirds">
-          <span class="font-medium">Pagination requires your page's view to create it's own Pagination object and pass this into the component. The view should include something like:</span>
-          <pre><code>{% verbatim %}objects_being_displayed = []
-page_size = 5
+          <p class="font-medium">Pagination requires your page's view to create it's own Pagination object and pass this into the component. The view should include something like:</p>
 
-@property
-def pagination(self):
-    paginator = Paginator(self.objects_being_displayed, self.page_size)
-    return paginator.page(current_page_num or 1){% endverbatim %}</code></pre>
+          {% code 'python' %}
+            objects_being_displayed = []
+            page_size = 5
+
+            @property
+            def pagination(self):
+                paginator = Paginator(
+                    self.objects_being_displayed,
+                    self.page_size
+                )
+                return paginator.page(current_page_num or 1)
+          {% endcode %}
+
           <h2 class="heading-large">Few results</h2>
-          <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
+          {% code 'django' %}
+            {% pagination pagination_page=pagination_page %}
+          {% endcode %}
+
           {% for pagination in pagination_page_few_pages %}
             {% pagination pagination_page=pagination %}
           {% endfor %}
 
           <h2 class="heading-large">Some results</h2>
-          <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
+          {% code 'django' %}
+            {% pagination pagination_page=pagination_page %}
+          {% endcode %}
+
+
           {% for pagination in pagination_page_some_pages %}
             {% pagination pagination_page=pagination %}
           {% endfor %}
 
           <h2 class="heading-large">Many results</h2>
-          <pre><code>{% verbatim %}{% pagination pagination_page=pagination_page %}{% endverbatim %}</code></pre>
+          {% code 'django' %}
+            {% pagination pagination_page=pagination_page %}
+          {% endcode %}
+
+
           {% for pagination in pagination_page_many_pages %}
             {% pagination pagination_page=pagination %}
           {% endfor %}

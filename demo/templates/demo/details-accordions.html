@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load directory_components %}
+{% load code from demo_tags %}
 
 {% block head_title %}directory-components{% endblock %}
 
@@ -22,42 +23,46 @@
         {% lorem 1 p %}
       </details>
       <h3 class="heading-small">HTML Markup</h3>
-      <pre><code>&lt;details closed>
-  &lt;summary>[summary]&lt;/summary>
-  [details]
-&lt;/details></pre></code>
+      {% code 'html' %}
+        <details closed>
+          <summary>[summary]</summary>
+          [details]
+        </details>
+      {% endcode %}
+
       <h2 class="heading-medium">Accordion list</h2>
       <p>This is a list of <code>details</code> elements each with a heading, text and optional icon. The <code>items</code> param expects a list of dictionaries like this:</p>
     </div>
-
-    <pre><code>{
-'heading': 'Heading',
-'content': '&lt;p>Some plain HTML.&lt;/p>'
-}</code></pre>
+    {% code 'python' %}
+      {
+        'heading': 'Heading',
+        'content': '<p>Some plain HTML.</p>'
+      }
+    {% endcode %}
 
     <p>A polyfill for IE and Edge is included in the base directory_components template.</p>
-
-    <pre><code>{% verbatim %}{% accordion_list items=details_list %}{% endverbatim %}</code></pre>
-
+    {% code 'django' %}
+      {% accordion_list items=details_list %}
+    {% endcode %}
     {% accordion_list items=details_list %}
-
     <h3 class="heading-small">HTML Markup</h3>
-    <pre><code>&lt;div class="great-accordion-list">
-  &lt;details closed class="great-accordion">
-    &lt;summary class="width-full">
-      &lt;span class="bold-small link">[summary]&lt;/span>
-    &lt;/summary>
-    [details]
-  &lt;/details>
-  &lt;details closed class="great-accordion">
-    &lt;summary class="width-full">
-      &lt;span class="bold-small link">[summary]&lt;/span>
-    &lt;/summary>
-    [details]
-  &lt;/details>
-  ... etc
-&lt;/div></pre></code>
-
+    {% code 'html' %}
+      <div class="great-accordion-list">
+        <details closed class="great-accordion">
+          <summary class="width-full">
+            <span class="bold-small link">[summary]</span>
+          </summary>
+          [details]
+        </details>
+        <details closed class="great-accordion">
+          <summary class="width-full">
+            <span class="bold-small link">[summary]</span>
+          </summary>
+          [details]
+        </details>
+        ... etc
+      </div>
+    {% endcode %}
   </div>
 </section>
 

@@ -1,5 +1,6 @@
 {% extends 'demo/base.html' %}
 {% load breadcrumbs key_facts from directory_components %}
+{% load code from demo_tags %}
 
 {% block content %}
 
@@ -13,17 +14,23 @@
       <div class="column-two-thirds">
         <h1 class="heading-xlarge">Key facts</h1>
         <p>This is a section with max 3 columns each with a heading, text and optional icon. The <code>items</code> param expects a list of dictionaries like this:</p>
-        <pre><code>{
-    'icon': {
-      'url': [icon url]
-    },
-    'heading': 'Heading',
-    'content': '&lt;p>Some HTML.&lt;/p>'
-}</code></pre>
+        {% code 'python' %}
+          {
+            'icon': {
+              'url': [icon url]
+            },
+            'heading': 'Heading',
+            'content': '<p>Some HTML.</p>'
+          }
+        {% endcode %}
       </div>
     </div>
     <p>An optional <code>section_class</code> can be added to style the container e.g.</p>
-    <pre><code>{% verbatim %}{% key_facts items=key_facts heading='With three items' section_class='background-stone-30' %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% key_facts items=key_facts heading='With three items' section_class='background-stone-30' %}
+    {% endcode %}
+
+
   </div>
 </section>
 
@@ -38,20 +45,22 @@
 <section>
   <div class="container">
     <h2 class="heading-large">HTML markup</h2>
-    <pre><code>&lt;section class="great-key-facts padding-top-60">
-    &lt;div class="container wrap-tight">
-      &lt;h2 class="heading-large margin-bottom-30">[heading]&lt;/h2>
-      &lt;div class="grid-row">
-        &lt;div class="great-key-facts-content column-third">
-          &lt;img class="great-key-facts-icon" src="[item.icon]" alt="">
-          &lt;div class="great-key-facts-text">
-            &lt;h3 class="heading-medium">[item.heading]&lt;/h3>
-            [item.content (markdown/HTML)]
-          &lt;/div>
-        &lt;/div>
-      &lt;/div>
-    &lt;/div>
-  &lt;/section></code></pre>
+    {% code 'html' %}
+      <section class="great-key-facts padding-top-60">
+          <div class="container wrap-tight">
+            <h2 class="heading-large margin-bottom-30">[heading]</h2>
+            <div class="grid-row">
+              <div class="great-key-facts-content column-third">
+                <img class="great-key-facts-icon" src="[item.icon]" alt="">
+                <div class="great-key-facts-text">
+                  <h3 class="heading-medium">[item.heading]</h3>
+                  [item.content (markdown/HTML)]
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    {% endcode %}
   </div>
 </section>
 

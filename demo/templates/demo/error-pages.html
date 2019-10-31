@@ -1,6 +1,7 @@
 {% extends 'demo/base.html' %}
 
 {% load breadcrumbs content_404 content_500 from directory_components %}
+{% load code from demo_tags %}
 
 {% block content %}
   <div class="container">
@@ -21,24 +22,24 @@
     <div class="container">
       <div class="width-two-thirds">
         <h2 class="heading-large">404 Error Content</h2>
-
-        <pre><code>{% verbatim %}{% load content_404 from directory_components %}
-{% content_404 feedback_url='/feedback/' home_page_url='/' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% load content_404 from directory_components %}
+          {% content_404 feedback_url='/feedback/' home_page_url='/' %}
+        {% endcode %}
       </div>
-
-    {% content_404 feedback_url='/feedback/' home_page_url='/' %}
-  </div>
+      {% content_404 feedback_url='/feedback/' home_page_url='/' %}
+    </div>
   </section>
 
   <section>
     <div class="container">
       <div class="width-two-thirds">
         <h2 class="heading-large">500 Error Content</h2>
-
-        <pre><code>{% verbatim %}{% load content_500 from directory_components %}
-{% content_500 feedback_url='/feedback/' home_page_url='/' %}{% endverbatim %}</code></pre>
+        {% code 'django' %}
+          {% load content_500 from directory_components %}
+          {% content_500 feedback_url='/feedback/' home_page_url='/' %}
+        {% endcode %}
       </div>
-
       {% content_500 feedback_url='/feedback/' home_page_url='/' %}
     </div>
   </section>

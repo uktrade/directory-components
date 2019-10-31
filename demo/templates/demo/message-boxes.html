@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load message_box message_box_with_icon error_box success_box breadcrumbs cta_box from directory_components %}
+{% load code from demo_tags %}
 
 {% block css_layout_class %}components{% endblock css_layout_class %}
 
@@ -20,17 +21,22 @@
       <p>Message boxes can have their text and border colours modified in various ways using <a href="{% url 'elements' %}" class="link">utility classes</a>.</p>
     </div>
     {% message_box heading="Complete" description="Your account has been created." heading_level='h3' %}
-    <pre><code>{% verbatim %}{% message_box heading="Complete" description="Your account has been created." heading_level='h3' %}{% endverbatim %}</code></pre>
-
+    {% code 'django' %}
+      {% message_box heading="Complete" description="Your account has been created." heading_level='h3' %}
+    {% endcode %}
     <p class="width-two-thirds">An example using custom classes for <code>box_class</code> and <code>heading_class</code>.</p>
     {% message_box heading_class='heading-large grey-text' box_class='border-thin width-two-thirds background-stone-30 border-stone grey-text' heading=".heading-large .grey-text" description=".width-two-thirds .background-stone-30 .border-stone .grey-text" heading_level='h3' %}
-    <pre><code>{% verbatim %}{% message_box heading_class='heading-large grey-text' box_class='width-two-thirds background-stone-30 border-stone grey-text' heading=".heading-large .grey-text" description=".width-two-thirds .background-stone-30 .border-stone .grey-text" heading_level='h3' %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% message_box heading_class='heading-large grey-text' box_class='width-two-thirds background-stone-30 border-stone grey-text' heading=".heading-large .grey-text" description=".width-two-thirds .background-stone-30 .border-stone .grey-text" heading_level='h3' %}
+    {% endcode %}
 
     <h3 class="heading-medium">HTML markup</h3>
-    <pre><code>&lt;div class="message-box padding-30 border-medium border-teal background-white"&gt;
-  &lt;h3 class="box-heading heading-medium teal-text"&gt;[heading text]&lt;/h3&gt;
-  &lt;p class="box-description"&gt;[description text]&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+    {% code 'html' %}
+      <div class="message-box padding-30 border-medium border-teal background-white">
+        <h3 class="box-heading heading-medium teal-text">[heading text]</h3>
+        <p class="box-description">[description text]</p>
+      </div>
+    {% endcode %}
 
     <div class="width-two-thirds">
       <h2 class="heading-large">Message box with icon</h2>
@@ -40,47 +46,63 @@
 
     <h4 class="heading-small"></h4>
     {% error_box heading="Error" description="Please try again" %}
-    <pre><code>{% verbatim %}{% error_box heading="Error" description="Please try again" %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% error_box heading="Error" description="Please try again" %}
+    {% endcode %}
 
     <h3 class="heading-medium">Success</h3>
     {% success_box heading="Success" description="Wonderful things have occurred" %}
-    <pre><code>{% verbatim %}{% success_box heading="Success" description="Wonderful things have occurred" %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% success_box heading="Success" description="Wonderful things have occurred" %}
+    {% endcode %}
+
 
     <h3 class="heading-medium">Custom</h3>
     <p class="width-two-thirds"><a href="{% url 'elements' %}#colour" class="link">Check the colours section</a> for possible values for <code>border_colour</code>.</p>
     {% message_box_with_icon icon="🗣" heading="Stop yelling" description="Why are you yelling."  border_colour="purple" heading_class='heading-xlarge purple-text' box_class='background-white purple-text' heading_level='h3' %}
-    <pre><code>{% verbatim %}{% message_box_with_icon icon="🗣" heading="Stop yelling" description="Why are you yelling."  border_colour="purple" heading_class='heading-xlarge purple-text' box_class='background-white purple-text' heading_level='h3' %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% message_box_with_icon icon="🗣" heading="Stop yelling" description="Why are you yelling."  border_colour="purple" heading_class='heading-xlarge purple-text' box_class='background-white purple-text' heading_level='h3' %}
+    {% endcode %}
 
     <h3 class="heading-medium">HTML markup</h3>
-    <pre><code>&lt;div class="message-box-with-icon border-medium border-teal width-full background-white"&gt;
-  &lt;div class="message-box-icon font-large white-text background-teal" aria-hidden="true"&gt;[icon]&lt;/div&gt;
-  &lt;div class="message-box-content padding-15 padding-30-m"&gt;
-    &lt;h3 class="box-heading heading-medium teal-text"&gt;[heading text]&lt;/h3&gt;
-    &lt;p class="box-description"&gt;[description text]&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    {% code 'django' %}
+      <div class="message-box-with-icon border-medium border-teal width-full background-white">
+        <div class="message-box-icon font-large white-text background-teal" aria-hidden="true">[icon]</div>
+        <div class="message-box-content padding-15 padding-30-m">
+          <h3 class="box-heading heading-medium teal-text">[heading text]</h3>
+          <p class="box-description">[description text]</p>
+        </div>
+      </div>
+    {% endcode %}
 
     <h2 class="heading-large">CTA boxes</h2>
     <p class="width-two-thirds">CTA boxes work in a similar way but have two columns - one for text and another for a button.</p>
     {% cta_box box_id='example-cta-box' heading='Need help?' description='If you need more information please get in touch.' button_text='Contact us' button_url='/' %}
-    <pre><code>{% verbatim %}{% cta_box box_id='example-cta-box' heading='Need help?' description='If you need more information please get in touch.' button_text='Contact us' button_url='/' %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% cta_box box_id='example-cta-box' heading='Need help?' description='If you need more information please get in touch.' button_text='Contact us' button_url='/' %}
+    {% endcode %}
 
     <p class="width-two-thirds">These can be modified with utility classes in the same way as message boxes.</p>
     {% cta_box heading_class='heading-large grey-text' box_class='border-stone border-thick background-white grey-text' button_class='button-arrow-large' box_id='example-cta-box-two' heading='.heading-large .grey-text' description='.border-stone .border-thick .background-white .grey-text' button_text='.button-arrow-large' button_url='/' %}
-    <pre><code>{% verbatim %}{% cta_box heading_class='heading-large grey-text' box_class='border-stone border-thick background-white grey-text' button_class='button-arrow-large' box_id='example-cta-box-two' heading='.heading-large .grey-text' description='.border-stone .border-thick .background-white .grey-text' button_text='.button-arrow-large' button_url='/' %}{% endverbatim %}</code></pre>
+    {% code 'django' %}
+      {% cta_box heading_class='heading-large grey-text' box_class='border-stone border-thick background-white grey-text' button_class='button-arrow-large' box_id='example-cta-box-two' heading='.heading-large .grey-text' description='.border-stone .border-thick .background-white .grey-text' button_text='.button-arrow-large' button_url='/' %}
+    {% endcode %}
+
 
     <h3 class="heading-medium">HTML markup</h3>
-    <pre><code>&lt;div id="example-cta-box" class="cta-box padding-45 background-stone-60"&gt;
-  &lt;div class="grid-row"&gt;
-    &lt;div class="column-half-m column-full"&gt;
-        &lt;h3 class="box-heading heading-medium"&gt;[heading text]&lt;/h3&gt;
-      &lt;p class="box-description"&gt;[description text]&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="column-quarter-xl column-half-m column-full button-container"&gt;
-      &lt;a id="example-cta-box-button" class="button button-blue" href="[button url]"&gt;[button text]&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    {% code 'html' %}
+      <div id="example-cta-box" class="cta-box padding-45 background-stone-60">
+        <div class="grid-row">
+          <div class="column-half-m column-full">
+              <h3 class="box-heading heading-medium">[heading text]</h3>
+            <p class="box-description">[description text]</p>
+          </div>
+          <div class="column-quarter-xl column-half-m column-full button-container">
+            <a id="example-cta-box-button" class="button button-blue" href="[button url]">[button text]</a>
+          </div>
+        </div>
+      </div>
+    {% endcode %}
 
   </div>
 </section>

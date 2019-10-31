@@ -1,4 +1,7 @@
+from django.forms import Textarea
+
 from directory_components import forms
+from directory_constants import choices
 
 
 class PrefixIdMixin:
@@ -161,3 +164,50 @@ class DemoFormErrors(PrefixIdMixin, forms.Form):
     def clean(self, *args, **kwargs):
         self.add_error(field=None, error=['Some non-field error', 'Some other non-field error'])
         super().clean(*args, **kwargs)
+
+
+class DemoFormWithSubmitButton(forms.Form):
+    term = forms.CharField(
+        label='',
+        widget=forms.TextInputWithSubmitButton,
+    )
+
+
+class DemoNestedFormDetails(forms.Form):
+    metric_name = forms.CharField()
+    more_details = forms.CharField(
+        label='more details',
+        widget=Textarea(attrs={'rows': 3}),
+    )
+
+
+class DemoNestedForm(forms.BindNestedFormMixin, forms.Form):
+    OTHER = 'OTHER'
+    nested_field = forms.RadioNested(
+        label='Select a metric',
+        help_text='Select "Other"',
+        choices=[
+            ('KG', 'Kilograms'),
+            ('HANDS', 'Hands'),
+            (OTHER, 'other')
+        ],
+        nested_form_class=DemoNestedFormDetails,
+        nested_form_choice=OTHER,
+    )
+    something_else = forms.IntegerField()
+
+
+class MultiSelectAutoCompleteForm(forms.Form):
+    regions = choices.EXPERTISE_REGION_CHOICES
+    industries = choices.INDUSTRIES
+    region = forms.MultipleChoiceField(
+        label='What region?',
+        help_text='For UK businesses only',
+        choices=regions,
+        widget=forms.SelectMultipleAutocomplete,
+    )
+    industry = forms.MultipleChoiceField(
+        label='What industry?',
+        choices=industries,
+        widget=forms.SelectMultipleAutocomplete,
+    )

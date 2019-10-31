@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'demo',
     'directory_components',
     'directory_components.janitor',
+    'django_pygments',
 ]
 
 MIDDLEWARE = [

@@ -3,6 +3,7 @@
 {% load static %}
 {% load demo_tags %}
 {% load directory_components %}
+{% load code from demo_tags %}
 
 {% block css_layout_class %}components{% endblock css_layout_class %}
 
@@ -21,20 +22,27 @@
         <h3 class="heading-medium">Two levels</h3>
         <p class="width-half">Specify the current page's label as the first argument of the tag, then include a single link in the body of the tag:</p>
 
-<pre><code>{% verbatim %}{% breadcrumbs 'Current page' %}
-  &lt;a href="http://www.example.com"&gt;Home&lt;/a&gt;
-{% endbreadcrumbs %}{% endverbatim %}
-</code></pre>
+        {% code 'django' %}
+          {% breadcrumbs 'Current page' %}
+            <a href="http://www.example.com">Home</a>
+          {% endbreadcrumbs %}
+        {% endcode %}
+
+        <br>
+        <br>
         <h4 class="heading-small">Output</h4>
         {% breadcrumbs 'Current page' %}
           <a href="http://www.example.com">Home</a>
         {% endbreadcrumbs %}
 
         <p>Context variables can also be used as the first argument and inside the tag:</p>
-<pre><code>{% verbatim %}{% breadcrumbs page.title %}
-  &lt;a href="{{ home_link }}"&gt;{{ home_label }}&lt;/a&gt;
-{% endbreadcrumbs %}{% endverbatim %}
-</code></pre>
+        {% code 'django' %}
+          {% breadcrumbs page.title %}
+            <a href="{{ home_link }}">{{ home_label }}</a>
+          {% endbreadcrumbs %}
+        {% endcode %}
+        <br>
+        <br>
         <h4 class="heading-small">Output</h4>
         {% breadcrumbs page.title %}
           <a href="{{ home_link }}">{{ home_label }}</a>
@@ -42,11 +50,14 @@
 
         <h3 class="heading-medium">Three levels</h3>
         <p class="width-half">Specify the Current page's label as the first argument of the tag, then include two links in the body of the tag:</p>
-<pre><code>{% verbatim %}{% breadcrumbs 'Current page' %}
-  &lt;a href="http://www.example.com"&gt;Home&lt;/a&gt;
-  &lt;a href="http://www.example.com/middle/"&gt;Middle label&lt;/a&gt;
-{% endbreadcrumbs %}{% endverbatim %}
-</code></pre>
+        {% code 'django' %}
+          {% breadcrumbs 'Current page' %}
+            <a href="http://www.example.com">Home</a>
+            <a href="http://www.example.com/middle/">Middle label</a>
+          {% endbreadcrumbs %}
+        {% endcode %}
+        <br>
+        <br>
         <h4 class="heading-small">Output</h4>
         {% breadcrumbs 'Current page' %}
           <a href="http://www.example.com">Home</a>
@@ -55,14 +66,17 @@
 
         <h3 class="heading-medium">More levels</h3>
         <p class="width-half">Similar to above, but include a number of links in the body of the tag.</p>
-<pre><code>{% verbatim %}{% breadcrumbs 'Current page' %}
-  &lt;a href="http://www.example.com/level1/"&gt;Level 1&lt;/a&gt;
-  &lt;a href="http://www.example.com/level2/"&gt;Level 2&lt;/a&gt;
-  &lt;a href="http://www.example.com/level3/"&gt;Level 3&lt;/a&gt;
-  &lt;a href="http://www.example.com/level4/"&gt;Level 4&lt;/a&gt;
-{% endbreadcrumbs %}{% endverbatim %}
-</code></pre>
-
+        {% code 'django' %}
+          {% breadcrumbs 'Current page' %}
+            <a href="http://www.example.com/level1/">Level 1</a>
+            <a href="http://www.example.com/level2/">Level 2</a>
+            <a href="http://www.example.com/level3/">Level 3</a>
+            <a href="http://www.example.com/level4/">Level 4</a>
+          {% endbreadcrumbs %}
+        {% endcode %}
+        <br>
+        <br>
+        <h4 class="heading-small">Output</h4>
         {% breadcrumbs 'Current page' %}
           <a href="http://www.example.com/level1/">Level 1</a>
           <a href="http://www.example.com/level2/">Level 2</a>
