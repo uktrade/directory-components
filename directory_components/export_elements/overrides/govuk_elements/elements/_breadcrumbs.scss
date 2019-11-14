@@ -11,8 +11,8 @@
   }
 
   li:after {
-    @include chevron(-45deg, $light-grey);
-    top: .45em;
+    @include chevron(-45deg, $grey);
+    top: .25em;
   }
 
   ol li:last-child:after {
