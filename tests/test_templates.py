@@ -32,7 +32,7 @@ def test_google_tag_manager():
         'directory_components/google_tag_manager_body.html', {}
     )
 
-    html = render_to_string('directory_components/base.html', {})
+    html = render_to_string('directory_components/base.html', {'services_urls': {'feedback': None}})
 
     assert expected_head in html
     assert expected_body in html

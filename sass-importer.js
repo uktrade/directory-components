@@ -21,11 +21,11 @@ module.exports = function(url, prev, done) {
   );
 
   const promises = includePaths.map(importPath =>
-    new Promise(success => resolve(url, {cwd: importPath})
+    new Promise((success, reject) => resolve(url, {cwd: importPath})
       .then(success)
-      .catch(() => {})
+      .catch(() => reject())
     )
   );
 
-  Promise.race(promises).then(done);
+  Promise.race(promises).then(done).catch(done);
 };

@@ -1227,7 +1227,7 @@ section.error-reporting {
 .error-reporting a {
   font-size: 16px;
   text-align: left;
-  color: #666666; }
+  color: #333333; }
 
 .card.only-title, a.only-title.labelled-card, a.only-title.labelled-image-card {
   height: auto; }

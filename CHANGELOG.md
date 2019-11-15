@@ -1,5 +1,14 @@
 # Changelog
 
+## 35.5.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/309)
+### Implemented enhancements
+- TT-1132 - Improved contrast of breadcrumbs and error reporting components
+- No ticket - Added error reporting component
+
+### Fixed bugs
+- No ticket - Fixed the sass importer hanging when file is not found
+
 ## 35.4.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/309)
 ### Implemented enhancements
