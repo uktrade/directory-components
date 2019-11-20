@@ -1,5 +1,13 @@
 # Changelog
 
+# Changelog
+
+## 35.6.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/314)
+
+### Fixed bugs
+- No ticket - Fix bad sass importing
+
 ## 35.6.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/313)
 ### Implemented enhancements
