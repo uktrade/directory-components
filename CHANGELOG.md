@@ -2,12 +2,17 @@
 
 # Changelog
 
-## 35.5.1
+## 35.6.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/314)
 
 ### Fixed bugs
 - No ticket - Fix bad sass importing
 
+## 35.6.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/313)
+### Implemented enhancements
+- TT-1132 - Improved contrast of breadcrumbs and error reporting components
+- No ticket - Added error reporting component
 
 ## 35.5.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/309)
