@@ -2,6 +2,14 @@
 
 # Changelog
 
+
+## 35.6.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/315)
+
+### Fixed bugs
+- No ticket - Fix bad details collapsed style
+
+
 ## 35.6.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/314)
 
