@@ -1,7 +1,11 @@
-# Changelog
+
 
 # Changelog
 
+## 35.7.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/316)
+### Implemented enhancements
+- No ticket - add smaller checkbox style
 
 ## 35.6.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/315)
