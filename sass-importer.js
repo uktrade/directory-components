@@ -9,7 +9,6 @@ const listDirectories = source =>
     .map(name => path.join(source, name))
     .filter(name => fs.lstatSync(source).isDirectory());
 
-
 module.exports = function(url, prev, done) {
   if (url.indexOf('!') === 0) {
     return {file: url.substr(1)};
@@ -20,11 +19,12 @@ module.exports = function(url, prev, done) {
     this.options.includePaths.split(':')
   );
 
+
   const promises = includePaths.map(importPath =>
-    new Promise((success, reject) => resolve(url, {cwd: importPath})
-      .then(success)
-      .catch(() => reject())
-    )
+    new Promise(success => resolve(url, {cwd: importPath})
+        .then(success)
+        .catch(() => {})
+      )
   );
 
   Promise.race(promises).then(done).catch(done);

@@ -41,7 +41,7 @@ details.great-accordion[open] summary:before {
 @media (min-width: 641px) {
   details.great-accordion summary {
     padding-right: 45px; }
-  details.great-accordion[closed] summary:after {
+  details.great-accordion:not([open]) summary:after {
     content: '+'; }
   details.great-accordion[open] {
     padding-bottom: 30px; }

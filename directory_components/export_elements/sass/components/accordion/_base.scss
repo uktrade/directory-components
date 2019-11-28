@@ -57,7 +57,7 @@ details.great-accordion[open] summary:before, {
     padding-right: $spacing-2;
   }
 
-  details.great-accordion[closed] {
+  details.great-accordion:not([open]) {
 
     summary:after {
       content: '+';
