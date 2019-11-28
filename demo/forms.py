@@ -57,6 +57,13 @@ class CheckboxForm(PrefixIdMixin, forms.Form):
             attrs={'id': 'checkbox-two'}
         )
     )
+    checkbox3 = forms.BooleanField(
+        label='Q3: Example of small checkbox',
+        widget=forms.CheckboxWithInlineLabel(
+            attrs={'id': 'checkbox-three'}
+        ),
+        container_css_classes='checkbox-small',
+    )
 
 
 class MultipleChoiceForm(PrefixIdMixin, forms.Form):
