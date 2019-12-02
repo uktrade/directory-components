@@ -2,6 +2,11 @@
 
 # Changelog
 
+## 35.7.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/317)
+### Implemented enhancements
+- No ticket - remove override border-radius styles on checkboxes
+
 ## 35.7.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/316)
 ### Implemented enhancements
