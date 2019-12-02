@@ -2138,8 +2138,6 @@ select.form-control::-ms-expand {
   color: #00549f; }
 
 .multiple-choice [type=checkbox] + label::before {
-  border-radius: 3px;
-  border: 2px solid #666666;
   background-color: #ffffff; }
 
 .checkbox-small .multiple-choice [type=checkbox] + label::after {
