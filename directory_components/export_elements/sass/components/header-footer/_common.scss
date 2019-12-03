@@ -71,8 +71,6 @@
 
 .great-domestic-international-links {
   @include float-clear;
-  height: 50px;
-  line-height: 50px;
   font-family: $brand-font;
 
   a {
@@ -110,7 +108,6 @@
 
     .great-domestic-international-links {
       display: table;
-      line-height: 50px;
       float: none;
       width: 100%;
       table-layout: fixed;
@@ -124,12 +121,14 @@
         height: auto;
 
         &:first-child {
-          padding: 10px 0 10px 15px;
+          padding: 15px;
+          padding-right: 0;
         }
 
         &:last-child {
           text-align: right;
-          padding: 10px 15px 10px 0;
+          padding: 15px;
+          padding-left: 0;
         }
       }
     }

@@ -138,8 +138,6 @@ details.great-accordion[open] summary:before {
   color: #1e1348; }
 
 .great-domestic-international-links {
-  height: 50px;
-  line-height: 50px;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
   .great-domestic-international-links:after {
     display: block;
@@ -180,7 +178,6 @@ details.great-accordion[open] summary:before {
       float: none; }
     .great-global-header-footer .great-domestic-international-links {
       display: table;
-      line-height: 50px;
       float: none;
       width: 100%;
       table-layout: fixed; }
@@ -192,10 +189,12 @@ details.great-accordion[open] summary:before {
         min-height: 50px;
         height: auto; }
         .great-global-header-footer .great-domestic-international-links a:first-child {
-          padding: 10px 0 10px 15px; }
+          padding: 15px;
+          padding-right: 0; }
         .great-global-header-footer .great-domestic-international-links a:last-child {
           text-align: right;
-          padding: 10px 15px 10px 0; } }
+          padding: 15px;
+          padding-left: 0; } }
 
 @media (max-width: 350px) {
   .great-global-header-footer .great-domestic-international-links > * {
