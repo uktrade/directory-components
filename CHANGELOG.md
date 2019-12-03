@@ -2,6 +2,11 @@
 
 # Changelog
 
+## 35.7.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/318)
+### Implemented enhancements
+- TT-1818 - Fix mobile header links height
+
 ## 35.7.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/317)
 ### Implemented enhancements
