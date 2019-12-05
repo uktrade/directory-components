@@ -63,6 +63,4 @@
 .great-sub-header {
   background-color: $mid-blue;
   @include desktopOnly;
-  position: sticky;
-  top: 0;
 }
