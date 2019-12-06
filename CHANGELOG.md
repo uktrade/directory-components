@@ -7,6 +7,11 @@
 ### Implemented enhancements
 - CI-606 - Make international header sub nav not sticky
 
+## 35.7.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/318)
+### Implemented enhancements
+- TT-1818 - Fix mobile header links height
+
 ## 35.7.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/317)
 ### Implemented enhancements
