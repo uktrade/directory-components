@@ -1147,10 +1147,7 @@ body.js-enabled .great-header-country-select {
       margin-bottom: 15px; } }
 
 .great-sub-header {
-  background-color: #00549f;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0; }
+  background-color: #00549f; }
   @media (max-width: 768px) {
     .great-sub-header {
       display: none; } }

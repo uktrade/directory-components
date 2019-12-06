@@ -2,6 +2,11 @@
 
 # Changelog
 
+## 35.8.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/319)
+### Implemented enhancements
+- CI-606 - Make international header sub nav not sticky
+
 ## 35.7.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/318)
 ### Implemented enhancements
