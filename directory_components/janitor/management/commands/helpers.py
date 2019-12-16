@@ -21,6 +21,14 @@ DEFAULT_UNSAFE_SETTINGS = [
 ]
 
 
+def list_vault_paths(client, root):
+    response = client.list(path=root)
+    for project in response['data']['keys']:
+        response = client.list(path=f'{root}/{project}')
+        for environment in response['data']['keys']:
+            yield f'{root}/{project}{environment}'
+
+
 def get_secrets_wizard(client, root):
     response = client.list(path=root)
     project = prompt_user_choice(
@@ -65,10 +73,14 @@ def get_secrets(client, path):
     return clean_secrets(response['data'])
 
 
+def write_secrets(client, path, secrets):
+    client.write(path=path, wrap_ttl=None, **secrets)
+
+
 def diff_dicts(dict_a, dict_b):
     return difflib.ndiff(
        pformat(dict_a).splitlines(),
-       pformat(dict_b).splitlines()
+       pformat(dict_b).splitlines(),
     )
 
 

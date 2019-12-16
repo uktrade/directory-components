@@ -103,11 +103,11 @@ Management commands are provided to assist in the maintenance of settings. Insta
     if some_predicate_is_met:  # feature flagged so it's not used in prod
         INSTALLED_APPS.append('directory_components.janitor')
 
-### Diff environments
+### Diff vaults
 
 You can diff the vaults of two environments by running the following.
 
-    manage.py environment_diff \
+    manage.py vault_diff \
         --token=<token> \
         --domain=<domain> \
         --root=<root> \
@@ -122,6 +122,24 @@ For simplicity once you set the `DIRECTORY_COMPONENTS_VAULT_DOMAIN`, `DIRECTORY_
         --environment_a=<environment_a> \
         --environment_b=<environment_b>
 
+### Update vaults
+
+You can batch update the vaults of all your environments by running the following
+
+    manage.py vault_update -- \
+        --token=<token> \
+        --domain=<domain> \
+        --root=<root> \
+        --mutator='path.to.function'
+
+`mutator` is the path to a function relative to the project root. The call signature is `secrets=dict, path=str`. The return dict will be uploaded to vault.
+
+
+For simplicity once you set the `DIRECTORY_COMPONENTS_VAULT_DOMAIN`, and `DIRECTORY_COMPONENTS_VAULT_ROOT_PATH` that simplifies to:
+
+    manage.py vault_update \
+        --token=<token> \
+        --mutator='path.to.function'
 
 ### Detect settings orphans
 
