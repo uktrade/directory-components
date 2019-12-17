@@ -27,7 +27,8 @@ def mock_get_secrets():
     patched.stop()
 
 
-def test_environment_diff(mock_get_secrets):
+@pytest.mark.parametrize('command', ['vault_diff', 'environment_diff'])
+def test_vault_diff(command, mock_get_secrets):
     mock_get_secrets.side_effect = [
         {'FOO': True, 'BAZ': True},
         {'BAR': False, 'BOX': False},
@@ -35,7 +36,7 @@ def test_environment_diff(mock_get_secrets):
     out = io.StringIO()
 
     call_command(
-        'environment_diff',
+        command,
         project='example-project',
         environment_a='example-environment-a',
         environment_b='example-environment-a',
@@ -50,8 +51,9 @@ def test_environment_diff(mock_get_secrets):
     assert green("+ {'BAR': False, 'BOX': False}") in result
 
 
+@pytest.mark.parametrize('command', ['vault_diff', 'environment_diff'])
 @mock.patch.object(helpers, 'get_secrets_wizard')
-def test_wizard(mock_get_secrets_wizard):
+def test_wizard(mock_get_secrets_wizard, command):
     mock_get_secrets_wizard.side_effect = [
         {'FOO': True, 'BAZ': True},
         {'BAR': False, 'BOX': False},
@@ -59,7 +61,7 @@ def test_wizard(mock_get_secrets_wizard):
     out = io.StringIO()
 
     call_command(
-        'environment_diff',
+        command,
         token='secret-token',
         domain='example.com',
         wizard=True,

@@ -136,3 +136,37 @@ def test_resolve_setting_name(value, expected):
         'DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON',
     ]
     assert helpers.resolve_setting_name(name=value, settings_keys=settings_keys) == expected
+
+
+def test_list_vault_paths():
+
+    def stub_list_vault_paths(path):
+        keys = {
+            '/root': ['project_a/', 'project_b/'],
+            '/root/project_a/': ['environment_a', 'environment_b'],
+            '/root/project_b/': ['environment_c', 'environment_d'],
+        }[path]
+        return {'data': {'keys': keys}}
+
+    mock_client = mock.Mock(list=mock.Mock(wraps=stub_list_vault_paths))
+
+    paths = list(helpers.list_vault_paths(client=mock_client, root='/root'))
+
+    assert mock_client.list.call_count == 3
+    assert mock_client.list.call_args_list == [
+        mock.call(path='/root'),
+        mock.call(path='/root/project_a/'),
+        mock.call(path='/root/project_b/'),
+    ]
+
+    assert paths == [
+        '/root/project_a/environment_a',
+        '/root/project_a/environment_b',
+        '/root/project_b/environment_c',
+        '/root/project_b/environment_d',
+    ]
+
+
+def tet_import_by_string():
+    imported = helpers.import_by_string('directory_components.janitor.management.commands.helpers')
+    assert imported is helpers

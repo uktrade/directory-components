@@ -2,6 +2,11 @@
 
 # Changelog
 
+## 35.9.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/320)
+### Implemented enhancements
+- TT-2225 - Add `vault_update` command for bulk updating vault values
+
 ## 35.8.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/319)
 ### Implemented enhancements
