@@ -41,12 +41,16 @@ class Command(BaseCommand):
         assert client.is_authenticated()
 
         for path in helpers.list_vault_paths(client=client, root=options['root']):
-            secrets = helpers.get_secrets(client=client, path=path)
-            new_secrets = options['mutator'](secrets=secrets.copy(), path=path)
-            if secrets != new_secrets:
-                diff_dict = helpers.diff_dicts(secrets, new_secrets)
-                diff = '\n'.join(helpers.colour_diff(diff_dict))
-                message = f'{diff}\nUpdate {path}'
-                if helpers.prompt_user_choice(message=message, options=['Yes', 'No']) == 'Yes':
-                    self.stdout.write(f'Updating {path}')
-                    helpers.write_secrets(client=client, path=path, secrets=new_secrets)
+            try:
+                secrets = helpers.get_secrets(client=client, path=path)
+            except Exception:
+                self.stdout.write(f'Error on {path}')
+            else:
+                new_secrets = options['mutator'](secrets=secrets.copy(), path=path)
+                if secrets != new_secrets:
+                    diff_dict = helpers.diff_dicts(secrets, new_secrets)
+                    diff = '\n'.join(helpers.colour_diff(diff_dict))
+                    message = f'{diff}\nUpdate {path}'
+                    if helpers.prompt_user_choice(message=message, options=['y', 'n']) == 'y':
+                        self.stdout.write(f'Updating {path}')
+                        helpers.write_secrets(client=client, path=path, secrets=new_secrets)

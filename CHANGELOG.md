@@ -1,6 +1,9 @@
-
-
 # Changelog
+
+## 35.9.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/321)
+### Fixed bugs
+- TT-2225 - Fix `vault_update` so obfuscations are not upload to vault
 
 ## 35.9.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/320)
