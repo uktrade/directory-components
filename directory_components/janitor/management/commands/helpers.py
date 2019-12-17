@@ -60,7 +60,8 @@ def clean_secrets(secrets):
         'DIRECTORY_COMPONENTS_VAULT_IGNORE_SETTINGS_REGEX',
         DEFAULT_UNSAFE_SETTINGS
     )
-    for key in secrets.copy():
+    secrets = secrets.copy()
+    for key in secrets:
         for entry in ignore_settings:
             if entry.match(key):
                 secrets[key] = '💀' * 5
@@ -70,7 +71,7 @@ def clean_secrets(secrets):
 
 def get_secrets(client, path):
     response = client.read(path=path)
-    return clean_secrets(response['data'])
+    return response['data']
 
 
 def write_secrets(client, path, secrets):
@@ -79,8 +80,8 @@ def write_secrets(client, path, secrets):
 
 def diff_dicts(dict_a, dict_b):
     return difflib.ndiff(
-       pformat(dict_a).splitlines(),
-       pformat(dict_b).splitlines(),
+       pformat(clean_secrets(dict_a)).splitlines(),
+       pformat(clean_secrets(dict_b)).splitlines(),
     )
 
 

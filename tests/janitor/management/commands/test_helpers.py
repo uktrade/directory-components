@@ -62,7 +62,7 @@ def test_get_secrets():
     result = helpers.get_secrets(client=mock_client, path='/root/foo')
 
     assert result == {
-        'API_KEY': '💀💀💀💀💀',
+        'API_KEY': '123',
         'BENIGN': True,
     }
     assert mock_client.read.call_count == 1
