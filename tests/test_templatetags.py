@@ -792,12 +792,12 @@ def test_breadcrumbs():
     rendered_html = template.render(Context())
 
     expected_html = (
-        '<nav aria-label="Breadcrumb" class="breadcrumbs">'
+        '<nav aria-label="Breadcrumb" class="breadcrumbs" id="breadcrumbs">'
         '<ol>'
-        '<li><a href="/foo"></a></li>'
-        '<li><a href="/bar"></a></li>'
-        '<li><a href="/baz"></a></li>'
-        '<li aria-current="page"><span>Current Page</span></li>'
+        '<li id="breadcrumb-none"><a href="/foo"></a></li>'
+        '<li id="breadcrumb-none"><a href="/bar"></a></li>'
+        '<li id="breadcrumb-none"><a href="/baz"></a></li>'
+        '<li aria-current="page" id="breadcrumb-current-page"><span>Current Page</span></li>'
         '</ol>'
         '</nav>'
     )
@@ -823,12 +823,12 @@ def test_breadcrumbs_context_variables():
     rendered_html = template.render(Context(context))
 
     expected_html = (
-        '<nav aria-label="Breadcrumb" class="breadcrumbs">'
+        '<nav aria-label="Breadcrumb" class="breadcrumbs" id="breadcrumbs">'
         '<ol>'
-        '<li><a href="/foo">Foo</a></li>'
-        '<li><a href="/bar">Bar</a></li>'
-        '<li><a href="/baz">Baz</a></li>'
-        '<li aria-current="page"><span>Current Page</span></li>'
+        '<li id="breadcrumb-foo"><a href="/foo">Foo</a></li>'
+        '<li id="breadcrumb-bar"><a href="/bar">Bar</a></li>'
+        '<li id="breadcrumb-baz"><a href="/baz">Baz</a></li>'
+        '<li aria-current="page" id="breadcrumb-current-page"><span>Current Page</span></li>'
         '</ol>'
         '</nav>'
     )

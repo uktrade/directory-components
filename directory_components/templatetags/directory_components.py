@@ -286,7 +286,7 @@ def breadcrumbs(parser, token):
 
 class Breadcrumbs(template.Node):
     template = """
-        <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <nav aria-label="Breadcrumb" class="breadcrumbs" id="breadcrumbs">
           <ol>
           </ol>
         </nav>
@@ -307,14 +307,16 @@ class Breadcrumbs(template.Node):
         for link in links:
             if not link.get('href'):
                 raise ValueError('Missing href in breadcrumb')
-            element = output_soup.new_tag('li')
+            slug = slugify(link.string)
+            element = output_soup.new_tag('li', id=f'breadcrumb-{slug}')
             element.append(link)
             output_soup.find('ol').append(element)
 
         # adding the current page
         current = template.Variable(self.bit).resolve(context)
+        slug = slugify(current)
         output_soup.find('ol').append(
-            f'<li aria-current="page"><span>{current}</span></li>'
+            f'<li aria-current="page" id="breadcrumb-{slug}"><span>{current}</span></li>'
         )
         return output_soup.decode(formatter=None)
 
