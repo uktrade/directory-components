@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.10.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/322)
+### Implemented enhancements
+- No ticket - Automate IDs for breadcrumbs
+
 ## 35.9.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/321)
 ### Fixed bugs
