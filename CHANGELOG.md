@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.10.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/322)
+### Implemented enhancements
+- XOT-1271 - allow button text to wrap and align text to center
+
 ## 35.9.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/321)
 ### Fixed bugs

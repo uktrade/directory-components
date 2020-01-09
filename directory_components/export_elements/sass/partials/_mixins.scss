@@ -76,7 +76,7 @@
 @mixin great-button($colour: $active-blue) {
   @include button-reset;
   font-size: 19px;
-  white-space: nowrap;
+  text-align: center;
   display: inline-block;
   font-weight: 700;
   font-family: $brand-font;
