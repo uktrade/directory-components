@@ -1233,7 +1233,7 @@ body {
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
   font-size: 19px;
-  white-space: nowrap;
+  text-align: center;
   display: inline-block;
   font-weight: 700;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana;
@@ -1272,7 +1272,7 @@ body {
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
   font-size: 19px;
-  white-space: nowrap;
+  text-align: center;
   display: inline-block;
   font-weight: 700;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana;
@@ -1327,7 +1327,7 @@ body {
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
   font-size: 19px;
-  white-space: nowrap;
+  text-align: center;
   display: inline-block;
   font-weight: 700;
   font-family: "Overpass", "Roboto", arial, helvetica, verdana;

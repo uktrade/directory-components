@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.10.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/323)
+### Implemented enhancements
+- XOT-1271 - allow button text to wrap and align text to center
+
 ## 35.9.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/321)
 ### Fixed bugs
@@ -22,7 +27,7 @@
 
 ## 35.7.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/317)
-### Implemented enhancements
+### Implemented enhancementscen
 - No ticket - remove override border-radius styles on checkboxes
 
 ## 35.7.0
