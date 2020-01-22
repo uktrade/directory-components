@@ -35,6 +35,24 @@ jobs:
             pip install flake8
             make flake8
 
+  sasslint:
+    docker:
+      - image: circleci/node:8.5.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      - run:
+          name: Install node modules
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
+      - run:
+          name: Run sass lint
+          command: node_modules/.bin/gulp lint:sass
+
   deploy_to_dev:
     docker:
       - image: circleci/python:3.6.6
@@ -52,10 +70,12 @@ workflows:
   test_and_deploy_to_dev:
     jobs:
       - flake8
+      - sasslint
       - test
       - deploy_to_dev:
           requires:
             - flake8
+            - sasslint
             - test
           filters:
             branches:
