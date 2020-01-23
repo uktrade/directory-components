@@ -8,14 +8,13 @@
   }
 
   .text-input-with-submit-button {
-    border: none;
+    border: 0;
     background: $active-blue;
     cursor: pointer;
     color: $white;
-    cursor: pointer;
   }
 
   input {
-    border-right: none;
+    border-right: 0;
   }
 }

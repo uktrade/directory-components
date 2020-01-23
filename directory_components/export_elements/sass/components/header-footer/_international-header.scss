@@ -28,10 +28,10 @@
   }
 
   .sub-nav-list {
+    @include underlineActiveHeaders($white);
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    @include underlineActiveHeaders($white);
   }
 
   .sub-nav-mobile-list {
@@ -61,6 +61,6 @@
 }
 
 .great-sub-header {
-  background-color: $mid-blue;
   @include desktopOnly;
+  background-color: $mid-blue;
 }

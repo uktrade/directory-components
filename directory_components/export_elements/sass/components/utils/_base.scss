@@ -56,9 +56,20 @@ $colours:
   }
 }
 
-.border-thick  { border-style: solid; border-width: 6px }
-.border-medium { border-style: solid; border-width: 4px }
-.border-thin   { border-style: solid; border-width: 2px }
+.border-thick  {
+  border-style: solid;
+  border-width: 6px;
+}
+
+.border-medium {
+  border-style: solid;
+  border-width: 4px;
+}
+
+.border-thin {
+  border-style: solid;
+  border-width: 2px;
+}
 
 // Section underline
 
@@ -174,8 +185,8 @@ $rules: padding, margin;
 // Layout
 
 .with-flag {
-  position: relative;
   @include container;
+  position: relative;
 
   &:after {
     bottom: -20px;
