@@ -38,8 +38,7 @@ rules:
   single-line-per-selector: 2
   no-color-keywords: 0
   trailing-semicolon: 0
-  mixin-name-format: 2
+  mixin-name-format: 0
   variable-name-format: 0
   no-important: 0
-  mixin-name-format: 0
   no-transition-all: 0

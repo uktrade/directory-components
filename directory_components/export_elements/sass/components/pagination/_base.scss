@@ -38,6 +38,7 @@
     ol {
       order: 2;
       display: flex;
+
       li {
         margin-right: 10px;
       }
@@ -45,8 +46,7 @@
 
     &.has-previous,
 
-    &.has-next,
-     {
+    &.has-next {
       > a {
         width: auto;
         padding-right: 10px;

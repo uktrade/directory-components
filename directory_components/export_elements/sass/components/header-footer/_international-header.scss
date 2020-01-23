@@ -22,7 +22,8 @@
   @include underlineActiveHeaders($great-red);
 }
 
-#great-international-header, .great-sub-header {
+#great-international-header,
+.great-sub-header {
   .sub-nav {
     @include headerContainer;
   }
@@ -38,7 +39,7 @@
     margin-left: $spacing-3;
 
     .link-heading {
-      padding: $spacing-4/2;
+      padding: $spacing-4 / 2;
     }
   }
 
