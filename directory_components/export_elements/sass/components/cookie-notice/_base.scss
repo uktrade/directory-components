@@ -6,7 +6,8 @@
   @include body-small;
   padding: 10px 0;
 
-  a:focus, button:focus {
+  a:focus,
+  button:focus {
     @include focus;
   }
 

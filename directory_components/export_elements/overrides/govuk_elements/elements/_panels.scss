@@ -1,8 +1,8 @@
 @import '!elements/panels';
 
 .panel {
-  @include box-sizing(border-box);
   @extend %contain-floats;
+  @include box-sizing(border-box);
   clear: both;
   border-left-style: solid;
   border-left-width: 4px;
@@ -22,8 +22,8 @@
 }
 
 %panel-vertical {
-  @include box-sizing(border-box);
   @extend %contain-floats;
+  @include box-sizing(border-box);
   clear: both;
   border-left-style: solid;
   border-color: $border-colour;

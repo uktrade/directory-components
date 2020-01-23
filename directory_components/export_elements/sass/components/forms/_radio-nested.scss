@@ -1,7 +1,7 @@
 .radio-nested-container {
   margin-bottom: 50px;
 
-  input[type=radio]:not(:checked) + label + .radio-nested {
+  input[type='radio']:not(:checked) + label + .radio-nested {
     display: none;
   }
 
@@ -30,9 +30,9 @@
       margin-bottom: 0;
 
       > .form-label {
-       padding-left: 0;
-       font-weight: normal;
-       width: 100%;
+        padding-left: 0;
+        font-weight: normal;
+        width: 100%;
       }
 
       // override .multiple-choice input which hides input boxes.
@@ -49,7 +49,9 @@
         opacity: inherit;
       }
 
-      input, select, textarea {
+      input,
+      select,
+      textarea {
         width: 100%;
       }
     }

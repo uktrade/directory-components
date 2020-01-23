@@ -8,13 +8,13 @@ $menu-item-vertical-spacing: 10px;
 $menu-margin-l: 30px;
 $menu-margin-s: 20px;
 
-@mixin desktopOnly() {
+@mixin desktopOnly {
   @media (max-width: 768px) {
     display: none;
   }
 }
 
-@mixin mobileOnly() {
+@mixin mobileOnly {
   display: none;
 
   @media (max-width: 768px) {
@@ -22,7 +22,7 @@ $menu-margin-s: 20px;
   }
 }
 
-@mixin headerContainer() {
+@mixin headerContainer {
   max-width: $menu-max-width;
   margin: 0 auto;
 
@@ -35,7 +35,8 @@ $menu-margin-s: 20px;
   }
 }
 
-.great-header, .great-sub-header {
+.great-header,
+.great-sub-header {
   // need to make sure it's not underneath anything
   position: relative;
   z-index: 5;
@@ -60,12 +61,12 @@ $menu-margin-s: 20px;
     position: relative;
 
     .container {
+      @include headerContainer;
       position: relative;
       display: flex;
       flex-wrap: wrap;
       align-content: center;
       padding: 0;
-      @include headerContainer;
     }
   }
 
@@ -76,9 +77,11 @@ $menu-margin-s: 20px;
     top: 25px;
     right: 0;
     display: flex;
+
     @media (max-width: 768px) {
       top: 10px;
     }
+
     li:last-child {
       margin-left: 10px;
     }
@@ -86,17 +89,17 @@ $menu-margin-s: 20px;
 
   .main-nav-container {
     &.mobile {
-      margin: 0;
       @include mobileOnly;
+      margin: 0;
     }
 
     &.desktop {
+      @include desktopOnly;
       background-color: transparent;
       display: flex;
       justify-content: flex-end;
       flex-grow: 1;
       align-self: flex-end;
-      @include desktopOnly;
 
       @media (max-width: 1260px) {
         margin-left: $menu-margin-l;

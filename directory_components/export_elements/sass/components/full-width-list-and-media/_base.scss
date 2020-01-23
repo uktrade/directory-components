@@ -1,29 +1,30 @@
+@import '../../partials/colours';
 
-@import "../../partials/colours";
-
-.full-width-list-with-media{
+.full-width-list-with-media {
   width: 100%;
   min-height: 500px;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+
   a {
     color: white;
   }
-  a:visited{
+
+  a:visited {
     color: white;
   }
-  a:active:focus{
+
+  a:active:focus {
     color: $great-blue;
   }
 
-  .list-item{
+  .list-item {
     border-top: 3px solid $great-red;
   }
 
-  .media{
-
+  .media {
     margin-top: auto;
     margin-bottom: auto;
 

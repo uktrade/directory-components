@@ -22,7 +22,10 @@
     text-decoration: none;
 
     &:hover .card-inner {
-      h3, h4, h5, h6 {
+      h3,
+      h4,
+      h5,
+      h6 {
         color: $light-blue;
       }
     }
@@ -39,13 +42,19 @@
         background: $focus-yellow;
       }
 
-      h3, h4, h5, h6 {
+      h3,
+      h4,
+      h5,
+      h6 {
         color: $mid-blue;
       }
     }
 
     .card-inner {
-      h3, h4, h5, h6 {
+      h3,
+      h4,
+      h5,
+      h6 {
         color: $active-blue;
         text-decoration: underline;
       }
@@ -66,7 +75,10 @@
   .card-inner {
     padding: 30px;
 
-    h3, h4, h5, h6 {
+    h3,
+    h4,
+    h5,
+    h6 {
       @include brand-large;
       margin: 0 0 30px;
     }
@@ -92,6 +104,7 @@
         margin-bottom: 10px;
       }
     }
+
     .card-image + .card-inner {
       padding-top: 20px;
     }
