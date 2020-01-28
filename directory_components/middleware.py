@@ -175,7 +175,6 @@ ga_schema = {
     },
     "required": [
         "business_unit",
-        "site_section",
         "login_status",
         "site_language",
         "user_id",
