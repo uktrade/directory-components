@@ -1,14 +1,14 @@
-
 @import 'header-footer/base';
 @import 'cookie-notice/base';
 @import 'skip-link/base';
+@import '../partials/colours';
 
 #header nav ul {
   margin: 0;
 }
 
 #header a.navigation:hover {
-  background-color: #00549f;
+  background-color: $mid-blue;
 }
 
 #menu ul li:first-child a {

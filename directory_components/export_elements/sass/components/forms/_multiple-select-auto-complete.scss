@@ -14,7 +14,7 @@
   }
 
   .autocomplete__wrapper input {
-    border: none;
+    border: 0;
     height: 100%;
     margin-bottom: 10px;
     padding: 10px;
@@ -34,14 +34,12 @@
     border: 1px solid $grey;
     background: $offwhite;
     border-radius: 5px;
-    font-size: 16px;
-    font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.31579;
     margin-top: 10px;
 
     button {
-      border: none;
+      border: 0;
       background: none;
       padding: 10px;
       padding-bottom: 5px;

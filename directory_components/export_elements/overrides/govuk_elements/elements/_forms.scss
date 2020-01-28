@@ -34,13 +34,8 @@ input[type='file'] {
 select.form-control {
   padding: 10px;
   /* add arrow */
-  background:
-    linear-gradient(45deg, transparent 50%, $black 50%),
-    linear-gradient(135deg, $black 50%, transparent 50%),
-    linear-gradient(to right, $white, $white);
-  background-position:
-    calc(100% - 23px) calc(1em),
-    calc(100% - 13px) calc(1em);
+  background: linear-gradient(45deg, transparent 50%, $black 50%), linear-gradient(135deg, $black 50%, transparent 50%), linear-gradient(to right, $white, $white);
+  background-position: calc(100% - 23px) calc(1em), calc(100% - 13px) calc(1em);
   background-size: 10px 10px;
   background-repeat: no-repeat;
 

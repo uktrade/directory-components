@@ -64,7 +64,8 @@
 }
 
 @media (min-width: 641px) {
-  .great-hero, .great-hero > .container {
+  .great-hero,
+  .great-hero > .container {
     min-height: 345px;
   }
 
