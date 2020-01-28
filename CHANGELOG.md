@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.11.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/325)
+### Implemented enhancements
+- MVP - add GA360 Context Processor
+
 ## 35.10.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/323)
 ### Implemented enhancements
