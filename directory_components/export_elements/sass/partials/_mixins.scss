@@ -214,7 +214,7 @@
   top: 5px;
 }
 
-@mixin container() {
+@mixin container {
   position: relative;
 
   &:after {

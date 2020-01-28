@@ -4,7 +4,7 @@ options:
 files:
   include: '**/*.s+(a|c)ss'
 rules:
-  no-color-literals: 2
+  no-color-literals: 0
   property-sort-order: 0
   clean-import-paths: 2
   quotes: 2
@@ -27,3 +27,18 @@ rules:
   no-mergeable-selectors: 2
   mixins-before-declarations: 1
   empty-line-between-blocks: 2
+  space-after-colon: 2
+  space-before-brace: 2
+  nesting-depth: 0
+  force-attribute-nesting: 0
+  attribute-quotes: 0
+  hex-notation: 0
+  placeholder-in-extend: 0
+  space-after-comma: 2
+  single-line-per-selector: 2
+  no-color-keywords: 0
+  trailing-semicolon: 0
+  mixin-name-format: 0
+  variable-name-format: 0
+  no-important: 0
+  no-transition-all: 0

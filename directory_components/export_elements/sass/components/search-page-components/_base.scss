@@ -1,7 +1,7 @@
 // Search page components
 
-@import "../../partials/_colours.scss";
-@import "../../partials/_spacings.scss";
+@import '../../partials/colours';
+@import '../../partials/spacings';
 
 .selected-filters-container {
   background-color: $stone-40;
@@ -16,11 +16,11 @@
     border-radius: 4px;
   }
 
-  .selected-filters-label{
+  .selected-filters-label {
     display: block;
   }
 
-  .clear-all-link{
+  .clear-all-link {
     display: block;
   }
 
@@ -43,7 +43,7 @@
 
   button.filter-collapse {
     background: transparent;
-    border: none;
+    border: 0;
     position: absolute;
     right: 0;
     top: 0;
@@ -61,7 +61,7 @@
   button.filter-collapse::after {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-    content: "";
+    content: '';
     border-style: solid;
     display: inline-block;
     position: relative;
@@ -74,13 +74,13 @@
 
   button.filter-collapse.checked::after {
     border-width: 0 2px 2px 0;
-    margin: 5px 0 0 0;
+    margin: 5px 0 0;
   }
 
 }
 
 body.js-enabled {
-  .expandable-fieldset{
+  .expandable-fieldset {
     button.filter-collapse.checked + .form-group {
       display: none;
     }
