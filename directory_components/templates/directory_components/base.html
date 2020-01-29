@@ -56,7 +56,7 @@
             <script src="{% static 'directory_components/js/dit.tagging.js' %}"></script>
             <script type="text/javascript">
                 window.dataLayer = window.dataLayer || [];
-                {% if ga360 %}
+                {% if (ga360 && (skip_ga360 == 'undefined' || !skip_ga360)) %}
                 window.dataLayer.push({
                     'businessUnit': '{{ ga360.business_unit }}',
                     'siteSection': '{{ ga360.site_section}}',
