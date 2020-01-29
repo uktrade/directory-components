@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 
 from directory_components.decorators import skip_ga360
 
@@ -9,6 +9,7 @@ def test_function(request, *args, **kwargs):
 
 
 def test_skip_360_adds_attribute_to_response():
-    response = test_function({})
+    request = HttpRequest()
+    response = test_function(request)
 
-    assert response.skip_ga360 is True
+    assert request.skip_ga360 is True
