@@ -153,6 +153,7 @@ def test_header_footer_processor(settings):
         'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
         'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
         'accessibility': 'https://exred.com/accessibility-statement/',
+        'cookie_preference_settings': 'https://exred.com/cookies/',
         'market_access': 'https://exred.com/report-trade-barrier/'
     }
 
