@@ -124,7 +124,6 @@ dit.components.cookieNotice = function() {
       setPreferencesCookie();
       displayCookieBannerAcceptAll(bannerClassName);
 
-      // dit.tagging.base.sendCookiePreferencesEvent('usage', true)
       window.dataLayer.push({
         'event': 'allowCookiePreferences',
         'value': [
