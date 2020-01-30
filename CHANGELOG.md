@@ -1,7 +1,7 @@
 # Changelog
 
 ## 35.12.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/326)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/327)
 ### Implemented enhancements
 - XOT-1290 - update cookie banner to gov.uk requirements
 
