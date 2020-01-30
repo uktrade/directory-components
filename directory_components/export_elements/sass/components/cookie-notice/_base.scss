@@ -81,9 +81,10 @@
   }
 
   @media (min-width: 641px) {
-   .button {
+    .button {
       min-width: 265px;
     }
+
     p {
       width: calc(100% - 50px);
       margin: 0;
