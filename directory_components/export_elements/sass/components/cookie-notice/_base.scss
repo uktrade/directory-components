@@ -32,12 +32,6 @@
     }
   }
 
-  p {
-    width: calc(100% - 50px);
-    float: left;
-    margin: 0;
-  }
-
   .container {
     overflow: hidden;
     padding: 3px 0; // avoid cutting off focus outline
@@ -85,4 +79,15 @@
     }
 
   }
+
+  @media (min-width: 641px) {
+   .button {
+      min-width: 265px;
+    }
+    p {
+      width: calc(100% - 50px);
+      margin: 0;
+    }
+  }
+
 }
