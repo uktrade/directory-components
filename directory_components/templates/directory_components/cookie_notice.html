@@ -2,7 +2,23 @@
 
 <div id="header-cookie-notice" class="cookie-notice" dir="ltr" data-ga-section="cookieNotice">
   <div class="container cookie-notice-container">
-    <p>{% trans 'Great.gov.uk uses cookies to make the site simpler.' %} <a class="link" href="{{ header_footer_urls.privacy_and_cookies }}">{% trans 'Find out more about cookies' %}</a>
-    </p>
+    <div class="grid-row">
+      <div class="cookie-initial">
+        <div class="column-half">
+          <h2 class="heading-medium margin-top-0 margin-bottom-15">{% trans 'Tell us whether you accept cookies' %}</h2>
+          <p>{% trans 'We use '%}<a class="link" href="{{ header_footer_urls.cookie_preference_settings }}">{% trans 'cookies to collect information' %}</a> {% trans 'about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.' %}
+          </p>
+        </div>
+        <div class="column-half">
+          <a href="#" class="button button-blue margin-top-45 margin-right-15 button-accept">{% trans 'Accept all cookies' %}</a>
+          <a href="{{ header_footer_urls.cookie_preference_settings }}" class="button button-blue margin-top-45">{% trans 'Set cookie preferences' %}</a>
+        </div>
+      </div>
+      <div class="cookie-confirmation">
+        <div class="column-full">
+          <p>{% trans "You've accepted all cookies.  You can "%}<a class="link" href="{{ header_footer_urls.cookie_preference_settings }}">{% trans 'change your settings' %}</a> {% trans 'at any time.' %}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

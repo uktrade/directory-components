@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-16 13:56+0000\n"
+"POT-Creation-Date: 2020-01-30 10:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,18 +20,48 @@ msgstr ""
 
 #: directory_components/templates/directory_components/card.html:12
 #: directory_components/templates/directory_components/cta_card.html:7
-#: directory_components/templates/directory_components/header_footer/footer_base.html:24
+#: directory_components/templates/directory_components/header_footer/footer_base.html:27
 #: directory_components/templates/directory_components/labelled_card.html:7
 #: directory_components/templates/directory_components/labelled_image_card.html:7
 msgid "Opens in a new window"
 msgstr ""
 
-#: directory_components/templates/directory_components/cookie_notice.html:5
-msgid "Great.gov.uk uses cookies to make the site simpler."
+#: directory_components/templates/directory_components/cookie_notice.html:8
+msgid "Tell us whether you accept cookies"
 msgstr ""
 
-#: directory_components/templates/directory_components/cookie_notice.html:5
-msgid "Find out more about cookies"
+#: directory_components/templates/directory_components/cookie_notice.html:9
+msgid "We use "
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:9
+msgid "cookies to collect information"
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:9
+msgid ""
+"about how you use great.gov.uk. We use this information to make the website "
+"work as well as possible and improve government services."
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:13
+msgid "Accept all cookies"
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:14
+msgid "Set cookie preferences"
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:19
+msgid "You've accepted all cookies.  You can "
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:19
+msgid "change your settings"
+msgstr ""
+
+#: directory_components/templates/directory_components/cookie_notice.html:19
+msgid "at any time."
 msgstr ""
 
 #: directory_components/templates/directory_components/header_footer/country_switcher.html:11
@@ -61,7 +91,7 @@ msgstr "Confidentialité et cookies"
 msgid "Terms and conditions"
 msgstr "Conditions générales"
 
-#: directory_components/templates/directory_components/header_footer/footer_base.html:24
+#: directory_components/templates/directory_components/header_footer/footer_base.html:27
 msgid "Department for International Trade on GOV.UK"
 msgstr "Department for International Trade sur GOV.UK"
 
