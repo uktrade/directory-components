@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.13.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/326)
+### Implemented enhancements
+- MVP - modify skip_ga360 to remove ga360 in-view javascript if true
+
 ## 35.12.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/328)
 ### Implemented enhancements

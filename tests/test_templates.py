@@ -7,6 +7,41 @@ from django.template.loader import render_to_string
 from directory_components import context_processors, forms, helpers
 
 
+def test_ga360_javascript(client, rf):
+    def soup_to_html(soup):
+        return soup.text.replace('\n', '').replace('  ', '').strip()
+
+    context = {
+        'ga360': {
+            'site_language': 'de',
+            'user_id': '123456',
+            'login_status': True,
+            'business_unit': 'Great.gov',
+        },
+        'services_urls': {'feedback': None}
+    }
+    html = BeautifulSoup(render_to_string(
+        'directory_components/base.html', context
+    ), 'html.parser')
+
+    expected = BeautifulSoup("""
+        <script type="text/javascript">
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'businessUnit': 'Great.gov',
+                'siteSection': '',
+                'siteSubsection': '',
+                'siteLanguage': 'de',
+                'userId': '123456',
+                'loginStatus': 'True',
+            });
+            dit.tagging.base.init();
+        </script>
+    """, 'html.parser')
+
+    assert soup_to_html(expected) in soup_to_html(html)
+
+
 def test_google_tag_manager_project_id():
     context = {
         'directory_components_analytics': {
