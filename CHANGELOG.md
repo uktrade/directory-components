@@ -5,6 +5,11 @@
 ### Implemented enhancements
 - MVP - modify skip_ga360 to remove ga360 in-view javascript if true
 
+## 35.12.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/328)
+### Implemented enhancements
+- XOT-1290 - make banner buttons equal width
+
 ## 35.12.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/327)
 ### Implemented enhancements

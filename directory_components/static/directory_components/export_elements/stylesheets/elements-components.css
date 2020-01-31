@@ -1633,10 +1633,6 @@ main,
   .cookie-notice.confirmation-message .cookie-confirmation,
   .cookie-notice.confirmation-message .cookie-close {
     display: block; }
-  .cookie-notice p {
-    width: calc(100% - 50px);
-    float: left;
-    margin: 0; }
   .cookie-notice .container {
     overflow: hidden;
     padding: 3px 0; }
@@ -1707,6 +1703,12 @@ main,
       top: -4px; }
     .cookie-notice .cookie-close:hover:before, .cookie-notice .cookie-close:hover:after {
       border-color: #2b8cc4; }
+  @media (min-width: 641px) {
+    .cookie-notice .button {
+      min-width: 265px; }
+    .cookie-notice p {
+      width: calc(100% - 50px);
+      margin: 0; } }
 
 #skip-link {
   font-weight: 400;

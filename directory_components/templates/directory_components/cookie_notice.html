@@ -4,14 +4,14 @@
   <div class="container cookie-notice-container">
     <div class="grid-row">
       <div class="cookie-initial">
+        <h2 class="heading-medium margin-top-0 margin-bottom-30 column-full">{% trans 'Tell us whether you accept cookies' %}</h2>
         <div class="column-half">
-          <h2 class="heading-medium margin-top-0 margin-bottom-15">{% trans 'Tell us whether you accept cookies' %}</h2>
           <p>{% trans 'We use '%}<a class="link" href="{{ header_footer_urls.cookie_preference_settings }}">{% trans 'cookies to collect information' %}</a> {% trans 'about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.' %}
           </p>
         </div>
         <div class="column-half">
-          <a href="#" class="button button-blue margin-top-45 margin-right-15 button-accept">{% trans 'Accept all cookies' %}</a>
-          <a href="{{ header_footer_urls.cookie_preference_settings }}" class="button button-blue margin-top-45">{% trans 'Set cookie preferences' %}</a>
+          <a href="#" class="button margin-top-30 margin-top-0-m  margin-right-15-m margin-bottom-30 margin-bottom-15-m button-accept">{% trans 'Accept all cookies' %}</a>
+          <a href="{{ header_footer_urls.cookie_preference_settings }}" class="button">{% trans 'Set cookie preferences' %}</a>
         </div>
       </div>
       <div class="cookie-confirmation">
