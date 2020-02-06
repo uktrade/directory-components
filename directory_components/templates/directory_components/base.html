@@ -50,6 +50,8 @@
 
         {% block head_js %}
             <script src="{% static 'directory_components/js/dit.components.cookie-notice.js' %}"></script>
+            <script src="{% static 'directory_components/js/reactComponents.js' %}"></script>
+
         {% endblock %}
 
         {% block head_js_ga360 %}
@@ -96,9 +98,7 @@
           <a id="skip-link" href="#content">Skip to main content</a>
         {% endblock %}
 
-        {% block cookie_notice %}
-            {% include 'directory_components/cookie_notice.html' %}
-        {% endblock %}
+        {% block cookie_notice %}{% endblock %}
 
         {% block body_header %}
             {% include 'directory_components/header_footer/domestic_header.html' %}
@@ -118,6 +118,17 @@
             {% include 'directory_components/header_footer/domestic_footer.html' %}
         {% endblock %}
 
-        {% block body_js %}{% endblock %}
+        {% block body_js %}
+          <script type="text/javascript">
+            var element = document.createElement('div');
+            document.body.appendChild(element);
+            reactComponents.CookiesModal({
+              element: element,
+              privacyCookiesUrl: '{{ header_footer_urls.privacy_and_cookies }}',
+              preferencesUrl: '{{ header_footer_urls.cookie_preference_settings }}',
+              isOpen: dit.components.cookieNotice.getPreferencesCookie() === null
+            })
+          </script>
+        {% endblock %}
     </body>
 </html>

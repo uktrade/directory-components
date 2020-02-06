@@ -158,6 +158,12 @@ urlpatterns = [
         views.BasePageView.as_view(),
         {'template_name': 'demo/error-pages.html'},
         name='error-pages'
+    ),
+    url(
+        r'^react-components/$',
+        views.BasePageView.as_view(),
+        {'template_name': 'demo/react-components.html'},
+        name='react-components'
     )
 ]
 
