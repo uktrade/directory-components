@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.14.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/331)
+### Bugs fixed
+- no ticket - Fix no ga360 handler
+
 ## 35.14.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/330)
 ### Implemented enhancements
