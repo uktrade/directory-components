@@ -184,14 +184,14 @@ ga_schema = {
 
 
 class CheckGATags(MiddlewareMixin):
-    def process_response(self, _, response):
+    def process_response(self, request, response):
 
         # Only check 2xx responses for google analytics.
         if not 200 <= response.status_code < 300:
             return response
 
         # Don't check views which should be skipped (see @skip_ga360 decorator)
-        if getattr(response._request, 'skip_ga360', False):
+        if getattr(request, 'skip_ga360', False):
             return response
 
         if not hasattr(response, 'context_data'):
