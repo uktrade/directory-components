@@ -117,16 +117,16 @@ dit.components.cookieNotice = function() {
     setCookie(cookiePreferencesName, 'true', { days: cookiePreferencesDurationDays });
   }
 
+  function getPreferencesCookie () {
+    return getCookie(cookiePreferencesName);
+  }
+
   function enableCookieBanner (bannerClassName, acceptButtonClassName) {
     displayCookieBanner(bannerClassName);
-    bindAcceptAllCookiesButton(acceptButtonClassName, function (e) {
-      e.preventDefault();
-      createPoliciesCookie(true, true, true);
-      setPreferencesCookie();
+    bindAcceptAllCookiesButton(acceptButtonClassName, function(event) {
+      acceptAllCookie(event);
       displayCookieBannerAcceptAll(bannerClassName);
-      return false;
-    });
-
+    })
   }
 
   function createCloseButton () {
@@ -141,12 +141,19 @@ dit.components.cookieNotice = function() {
     return $closeButton;
   }
 
+  function acceptAllCookies(event) {
+    event.preventDefault();
+    createPoliciesCookie(true, true, true);
+    setPreferencesCookie();
+    return false;
+  }
+
   function init (bannerClassName, acceptButtonClassName, cookiesPolicyUrl) {
     if (!bannerClassName) {
       throw 'Expected bannerClassName';
     }
 
-    var preferenceCookie = getCookie(cookiePreferencesName);
+    var preferenceCookie = getPreferencesCookie();
     var isCookiesPage = document.URL.indexOf(cookiesPolicyUrl) !== -1;
 
     if ((!preferenceCookie) && !isCookiesPage) {
@@ -159,10 +166,14 @@ dit.components.cookieNotice = function() {
     init: init,
     getPolicyOrDefault: getPolicyOrDefault,
     createPoliciesCookie: createPoliciesCookie,
-    setPreferencesCookie: setPreferencesCookie
+    setPreferencesCookie: setPreferencesCookie,
+    acceptAllCookies: acceptAllCookies,
+    getPreferencesCookie: getPreferencesCookie,
   };
 }();
 
-window.onload = function() {
-  dit.components.cookieNotice.init('.cookie-notice', '.button-accept', 'cookies');
+if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = dit.components.cookieNotice
+  }
 }

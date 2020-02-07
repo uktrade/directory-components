@@ -65,6 +65,24 @@ jobs:
             make install_requirements
             make publish
 
+  test_javascript:
+    docker:
+      - image: circleci/node:8.5.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      - run:
+          name: Install node modules
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
+      - run:
+          name: Run Javascript tests
+          command: npm test
+
 workflows:
   version: 2
   test_and_deploy_to_dev:
@@ -72,11 +90,13 @@ workflows:
       - flake8
       - sasslint
       - test
+      - test_javascript
       - deploy_to_dev:
           requires:
             - flake8
             - sasslint
             - test
+            - test_javascript
           filters:
             branches:
               only: master
