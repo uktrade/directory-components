@@ -191,7 +191,7 @@ class CheckGATags(MiddlewareMixin):
             return response
 
         # Don't check views which should be skipped (see @skip_ga360 decorator)
-        if getattr(response, 'skip_ga360', False):
+        if getattr(response._request, 'skip_ga360', False):
             return response
 
         if not hasattr(response, 'context_data'):

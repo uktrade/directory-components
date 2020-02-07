@@ -44,7 +44,7 @@ describe('CookiesModal', () => {
       component.find('[href="#"]').simulate('click', createEvent())
     })
 
-    expect(CookiesManager.acceptAllCookies).toHaveBeenCalled()
+    expect(CookiesManager.acceptAllCookiesAndShowSuccess).toHaveBeenCalled()
     expect(component.prop('isOpen')).toEqual(false)
   })
 

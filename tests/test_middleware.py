@@ -4,9 +4,10 @@ from directory_constants import choices
 import pytest
 
 from django.http import HttpResponse
+from django.conf import settings
 from django.urls import set_urlconf
 from django.utils import translation
-from django.conf import settings
+from django.test import RequestFactory
 
 from directory_components import middleware
 from directory_components.middleware import GADataMissingException
@@ -432,6 +433,7 @@ def dummy_valid_ga_360_response():
     response = HttpResponse()
     response.status_code = 200
     response.context_data = {'ga360': payload}
+    response._request = RequestFactory().get('/')
     return response
 
 
@@ -456,8 +458,9 @@ def test_check_ga_360_allows_redirects():
 
 def test_check_ga_360_allows_responses_marked_as_skip_ga360():
     response = HttpResponse()
+    response._request = RequestFactory().get('/')
+    response._request.skip_ga360 = True
     response.status_code = 200
-    response.skip_ga360 = True
     instance = middleware.CheckGATags()
 
     processed_response = instance.process_response({}, response)
@@ -467,6 +470,7 @@ def test_check_ga_360_allows_responses_marked_as_skip_ga360():
 
 def test_check_ga_360_rejects_responses_without_context_data():
     response = HttpResponse()
+    response._request = RequestFactory().get('/')
     response.status_code = 201
 
     instance = middleware.CheckGATags()

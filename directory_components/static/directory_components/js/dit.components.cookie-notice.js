@@ -9,6 +9,8 @@ dit.components.cookieNotice = function() {
   var cookiePreferencesDurationDays = 365;
   var cookiesPolicyName = 'cookies_policy';
   var cookiesPolicyDurationDays = 365;
+  var bannerClassName = '.cookie-notice';
+  var acceptButtonClassName = '.button-accept';
 
   function setCookie (name, value, options) {
     if (typeof options === 'undefined') {
@@ -85,31 +87,31 @@ dit.components.cookieNotice = function() {
     banner.classList.remove('block', 'confirmation-message');
   }
 
-  function displayCookieBannerAcceptAll (cookieBannerClassName) {
-    var banner = document.querySelectorAll(cookieBannerClassName)[0];
+  function displayCookieBannerAcceptAll () {
+    var banner = document.querySelectorAll(bannerClassName)[0];
     banner.classList.add('confirmation-message');
 
     var hideButton = document.querySelectorAll('.cookie-close')[0];
 
-      hideButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        hideCookieBanner(cookieBannerClassName);
-        }, false);
+    hideButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      hideCookieBanner(bannerClassName);
+      }, false);
 
-      hideButton.addEventListener('keydown', function(e) {
-        if(e.which === 13 || e.which === 32) {
-          hideCookieBanner(cookieBannerClassName);
-        }
-      });
+    hideButton.addEventListener('keydown', function(e) {
+      if(e.which === 13 || e.which === 32) {
+        hideCookieBanner(bannerClassName);
+      }
+    });
   }
 
-  function displayCookieBanner (className) {
-    var banner = document.querySelectorAll(className)[0];
+  function displayCookieBanner () {
+    var banner = document.querySelectorAll(bannerClassName)[0];
     banner.classList.add('block');
   }
 
-  function bindAcceptAllCookiesButton (className, callBack) {
-    var button = document.querySelectorAll(className)[0];
+  function bindAcceptAllCookiesButton (callBack) {
+    var button = document.querySelectorAll(acceptButtonClassName,)[0];
     button.addEventListener('click', callBack, false);
   }
 
@@ -121,11 +123,11 @@ dit.components.cookieNotice = function() {
     return getCookie(cookiePreferencesName);
   }
 
-  function enableCookieBanner (bannerClassName, acceptButtonClassName) {
-    displayCookieBanner(bannerClassName);
-    bindAcceptAllCookiesButton(acceptButtonClassName, function(event) {
+  function enableCookieBanner () {
+    displayCookieBanner();
+    bindAcceptAllCookiesButton(function(event) {
       acceptAllCookie(event);
-      displayCookieBannerAcceptAll(bannerClassName);
+      displayCookieBannerAcceptAll();
     })
   }
 
@@ -148,16 +150,19 @@ dit.components.cookieNotice = function() {
     return false;
   }
 
-  function init (bannerClassName, acceptButtonClassName, cookiesPolicyUrl) {
-    if (!bannerClassName) {
-      throw 'Expected bannerClassName';
-    }
+  function acceptAllCookiesAndShowSuccess(event) {
+    acceptAllCookies(event)
+    createCloseButton()
+    displayCookieBannerAcceptAll()
+    displayCookieBanner()
+  }
 
+  function init (cookiesPolicyUrl) {
     var preferenceCookie = getPreferencesCookie();
     var isCookiesPage = document.URL.indexOf(cookiesPolicyUrl) !== -1;
 
     if ((!preferenceCookie) && !isCookiesPage) {
-      enableCookieBanner(bannerClassName, acceptButtonClassName);
+      enableCookieBanner();
       createCloseButton();
     }
   }
@@ -167,7 +172,7 @@ dit.components.cookieNotice = function() {
     getPolicyOrDefault: getPolicyOrDefault,
     createPoliciesCookie: createPoliciesCookie,
     setPreferencesCookie: setPreferencesCookie,
-    acceptAllCookies: acceptAllCookies,
+    acceptAllCookiesAndShowSuccess: acceptAllCookiesAndShowSuccess,
     getPreferencesCookie: getPreferencesCookie,
   };
 }();

@@ -1,7 +1,12 @@
 # Changelog
 
+## 35.14.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/330)
+### Implemented enhancements
+- XOT-1296 - Improve cookies modal
+
 ## 35.14.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/327)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/329)
 ### Implemented enhancements
 - XOT-1296 - Add react cookies modal component
 
