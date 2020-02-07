@@ -10,9 +10,8 @@ const styles = {
   },
   synopsis: {
     fontSize: 19,
-    marginBottom: 30,
-    marginBottom: 30,
-    paddingTop: 45,
+    marginBottom: 45,
+    paddingTop: 25,
     textAlign: 'left',
   },
   buttonContainer: {
@@ -24,7 +23,9 @@ const styles = {
     lineHeight: '2em',
     fontSize: 19,
     cursor: 'pointer',
-    flexGrow: 1,
+    width: '50%',
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   modal: {
     content : {
@@ -39,6 +40,7 @@ const styles = {
       top: '50%',
       transform: 'translate(-50%, -50%)',
       width: 616,
+      height: 375,
     },
     overlay: {
       zIndex: 1000,
@@ -50,7 +52,7 @@ export function CookiesModal(props){
   const [isOpen, setIsOpen] = React.useState(props.isOpen)
 
   function hanleAcceptAllCookies(event) {
-    CookieManager.acceptAllCookies(event)
+    CookieManager.acceptAllCookiesAndShowSuccess(event)
     setIsOpen(false)
   }
 
@@ -65,7 +67,8 @@ export function CookiesModal(props){
         We use <a class="link" href={props.privacyCookiesUrl}>cookies to collect information</a> about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.
       </p>
       <div style={styles.buttonContainer}>
-        <a className="button" style={{...styles.button, marginRight: 20}} href="#" onClick={hanleAcceptAllCookies}>Accept all cookie</a>
+        <a className="button" style={styles.button} href="#" onClick={hanleAcceptAllCookies}>Accept all cookies</a>
+        <span style={{width: 20}}></span>
         <a className="button" style={styles.button} href={props.preferencesUrl}>Set cookie preferneces</a>
       </div>
     </Modal>

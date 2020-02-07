@@ -98,7 +98,9 @@
           <a id="skip-link" href="#content">Skip to main content</a>
         {% endblock %}
 
-        {% block cookie_notice %}{% endblock %}
+        {% block cookie_notice %}
+            {% include 'directory_components/cookie_notice.html' %}
+        {% endblock %}
 
         {% block body_header %}
             {% include 'directory_components/header_footer/domestic_header.html' %}
