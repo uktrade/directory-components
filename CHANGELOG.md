@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.15.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/332)
+### Bugs fixed
+- no ticket - Added mobile support for cookie modal
+
 ## 35.14.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/331)
 ### Bugs fixed
