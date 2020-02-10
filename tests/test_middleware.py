@@ -458,25 +458,25 @@ def test_check_ga_360_allows_redirects():
 
 def test_check_ga_360_allows_responses_marked_as_skip_ga360():
     response = HttpResponse()
-    response._request = RequestFactory().get('/')
-    response._request.skip_ga360 = True
+    request = RequestFactory().get('/')
+    request.skip_ga360 = True
     response.status_code = 200
     instance = middleware.CheckGATags()
 
-    processed_response = instance.process_response({}, response)
+    processed_response = instance.process_response(request, response)
 
     assert processed_response is not None
 
 
 def test_check_ga_360_rejects_responses_without_context_data():
     response = HttpResponse()
-    response._request = RequestFactory().get('/')
+    request = RequestFactory().get('/')
     response.status_code = 201
 
     instance = middleware.CheckGATags()
 
     with pytest.raises(GADataMissingException) as exception:
-        instance.process_response({}, response)
+        instance.process_response(request, response)
 
     assert 'No context data found' in str(exception.value)
 

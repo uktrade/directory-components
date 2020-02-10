@@ -53,11 +53,11 @@ describe('CookiesModal', () => {
     const component = shallow(<CookiesModal isOpen={true} {...defaultProps}  />)
 
     expect(component.containsMatchingElement(
-      <a class="link" href={defaultProps.privacyCookiesUrl}>cookies to collect information</a>
+      <a href={defaultProps.privacyCookiesUrl}>cookies to collect information</a>
     )).toEqual(true)
 
     expect(component.containsMatchingElement(
-      <a className="button" href={defaultProps.preferencesUrl}>Set cookie preferneces</a>
+      <a href={defaultProps.preferencesUrl}>Set cookie prefereneces</a>
     )).toEqual(true)
   })
 
