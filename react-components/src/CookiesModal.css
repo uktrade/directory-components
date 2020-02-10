@@ -13,37 +13,32 @@
 .button {
   cursor: pointer;
   font-size: 19px;
-  height: 52px;
-  line-height: 2em;
   margin-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
+  height: 52px;
+  padding: 0;
+  line-height: 52px;
+  font-weight: normal;
 }
 
-.modalOverlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  inset: 0px;
-  position: fixed;
+:global .ReactModal__Overlay {
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5)!important;
 }
-
-.modalContent {
+  
+:global .ReactModal__Content {
   background: #ffffff;
-  border-radius: 4px;
-  border: 1px solid rgb(204, 204, 204);
-  inset: 50% auto auto 50%;
-  left: 50%;
+  inset: 50%!important;
+  left: 50%!important;
+  top: 50%!important;
   margin-right: -50%;
   max-width: 616px;
-  min-height: 375px;
-  outline: currentcolor none medium;
-  overflow: auto;
-  padding: 30px;
-  position: absolute;
-  right: auto;
-  top: 50%;
+  padding: 30px!important;
   transform: translate(-50%, -50%);
   width: 350px;
+  bottom: auto;
+  right: auto;
+  top: 50%;
+  min-height: 500px;
 }
 
 .buttonSeperator {
@@ -52,11 +47,12 @@
 }
 
 @media (min-width: 376px) {
-  .modalContent {
-    padding-top: 54px;
-    padding-left: 52px;
-    padding-right: 52px;
+  :global .ReactModal__Content {
+    padding-top: 54px!important;
+    padding-left: 52px!important;
+    padding-right: 52px!important;
     width: auto;
+    min-height: 375px;
   }
 
   .buttonContainer {

@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.15.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/334)
+### Bugs fixed
+- no ticket - Fix trailing commas in javascript
+
 ## 35.15.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/333)
 ### Bugs fixed
