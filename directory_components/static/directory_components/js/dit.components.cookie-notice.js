@@ -111,7 +111,7 @@ dit.components.cookieNotice = function() {
   }
 
   function bindAcceptAllCookiesButton (callBack) {
-    var button = document.querySelectorAll(acceptButtonClassName,)[0];
+    var button = document.querySelectorAll(acceptButtonClassName)[0];
     button.addEventListener('click', callBack, false);
   }
 
@@ -173,7 +173,7 @@ dit.components.cookieNotice = function() {
     createPoliciesCookie: createPoliciesCookie,
     setPreferencesCookie: setPreferencesCookie,
     acceptAllCookiesAndShowSuccess: acceptAllCookiesAndShowSuccess,
-    getPreferencesCookie: getPreferencesCookie,
+    getPreferencesCookie: getPreferencesCookie
   };
 }();
 

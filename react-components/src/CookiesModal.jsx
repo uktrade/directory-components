@@ -17,8 +17,6 @@ export function CookiesModal(props){
   return (
     <Modal
       isOpen={isOpen}
-      className={styles.modalContent}
-      overlayClassName={styles.modalOverlay}
       contentLabel="Cookies consent manager"
     >
       <h2 className={`${styles.heading} heading-medium`}>Tell us whether you accept cookies</h2>
