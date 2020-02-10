@@ -28,7 +28,7 @@ export function CookiesModal(props){
       <div className={styles.buttonContainer}>
         <a className={`${styles.button} button`} href="#" onClick={hanleAcceptAllCookies}>Accept all cookies</a>
         <span className={styles.buttonSeperator}></span>
-        <a className={`${styles.button} button`} href={props.preferencesUrl}>Set cookie prefereneces</a>
+        <a className={`${styles.button} button`} href={props.preferencesUrl}>Set cookie preferences</a>
       </div>
     </Modal>
   )

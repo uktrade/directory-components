@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.15.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/333)
+### Bugs fixed
+- no ticket - Fix spelling mistake
+
 ## 35.15.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/332)
 ### Bugs fixed

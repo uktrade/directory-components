@@ -57,7 +57,7 @@ describe('CookiesModal', () => {
     )).toEqual(true)
 
     expect(component.containsMatchingElement(
-      <a href={defaultProps.preferencesUrl}>Set cookie prefereneces</a>
+      <a href={defaultProps.preferencesUrl}>Set cookie preferences</a>
     )).toEqual(true)
   })
 
