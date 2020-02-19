@@ -10,8 +10,9 @@ export function CookiesModal(props){
   const [isOpen, setIsOpen] = React.useState(props.isOpen)
 
   function hanleAcceptAllCookies(event) {
-    CookieManager.acceptAllCookiesAndShowSuccess(event)
-    setIsOpen(false)
+    CookieManager.acceptAllCookiesAndShowSuccess(event);
+    window.location.reload(false);
+    setIsOpen(false);
   }
 
   return (
@@ -26,7 +27,7 @@ export function CookiesModal(props){
       <div className={styles.buttonContainer}>
         <a className={`${styles.button} button`} href="#" onClick={hanleAcceptAllCookies}>Accept all cookies</a>
         <span className={styles.buttonSeperator}></span>
-        <a className={`${styles.button} button`} href={props.preferencesUrl}>Set cookie preferences</a>
+        <a className={`${styles.button} button`} href={props.preferencesUrl + window.location.search}>Set cookie preferences</a>
       </div>
     </Modal>
   )
