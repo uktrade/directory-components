@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.16.0
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/336)
+### Implemented enhancements
+- no ticket - preserve querystring on link to /cookies, preserve querystring and refresh page on accept all cookies
+
 ## 35.15.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/334)
 ### Bugs fixed
