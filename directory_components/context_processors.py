@@ -11,7 +11,10 @@ def ga360(request):
     is_logged_in = helpers.get_is_authenticated(request)
 
     context = {'ga360': {'site_language': translation.get_language()}}
-    context['ga360']['user_id'] = user.hashed_uuid if is_logged_in else None
+    if is_logged_in and hasattr(user, 'hashed_uuid'):
+        context['ga360']['user_id'] = user.hashed_uuid
+    else:
+        context['ga360']['user_id'] = None
     context['ga360']['login_status'] = is_logged_in
     if hasattr(settings, 'GA360_BUSINESS_UNIT'):
         context['ga360']['business_unit'] = settings.GA360_BUSINESS_UNIT
