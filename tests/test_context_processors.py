@@ -45,9 +45,26 @@ def sso_user():
 
 
 @pytest.fixture
+def admin_superuser():
+    return Mock(
+        id=1,
+        email='admin@example.com',
+        spec=['id', 'email'],
+        is_staff=True
+    )
+
+
+@pytest.fixture
 def request_logged_in(rf, sso_user):
     request = rf.get('/')
     request.sso_user = sso_user
+    return request
+
+
+@pytest.fixture
+def request_logged_in_admin(rf, admin_superuser):
+    request = rf.get('/')
+    request.user = admin_superuser
     return request
 
 
@@ -110,6 +127,18 @@ def test_ga360_context_processor_all_data(settings, request_logged_in):
         'business_unit': 'Test App',
         'site_language': 'de',
         'user_id': '1234',
+        'login_status': True
+    }
+
+
+@patch('django.utils.translation.get_language', Mock(return_value='de'))
+def test_ga360_context_processor_admin_all_data(settings, request_logged_in_admin):
+    settings.GA360_BUSINESS_UNIT = 'Test App'
+    context = context_processors.ga360(request_logged_in_admin)
+    assert context['ga360'] == {
+        'business_unit': 'Test App',
+        'site_language': 'de',
+        'user_id': None,
         'login_status': True
     }
 
