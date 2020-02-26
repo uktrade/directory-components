@@ -1,7 +1,7 @@
 # Changelog
 
 ## 35.17.0
- [Full Changelog](https://github.com/uktrade/directory-components/pull/XX)
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/337)
 ### Implemented enhancements
 - no ticket - Update GA360 context_processor to handle non-sso users 
 
