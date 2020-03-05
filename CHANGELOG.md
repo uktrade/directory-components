@@ -1,5 +1,11 @@
 # Changelog
 
+## 35.17.1
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/338)
+### Bugs fixed
+- no ticket - Remove "refreshing" alert
+
+
 ## 35.17.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/337)
 ### Implemented enhancements
