@@ -1,5 +1,11 @@
 # Changelog
 
+## 35.18.0
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/339)
+### Bugs fixed
+- no ticket - Change vault updater to account for vault backend upgrade
+
+
 ## 35.17.1
  [Full Changelog](https://github.com/uktrade/directory-components/pull/338)
 ### Bugs fixed

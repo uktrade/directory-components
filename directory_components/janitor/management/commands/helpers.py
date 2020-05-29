@@ -22,11 +22,11 @@ DEFAULT_UNSAFE_SETTINGS = [
 
 
 def list_vault_paths(client, root):
-    response = client.list(path=root)
+    response = client.list(path=f'{root}/metadata')
     for project in response['data']['keys']:
-        response = client.list(path=f'{root}/{project}')
+        response = client.list(path=f'{root}/metadata/{project}')
         for environment in response['data']['keys']:
-            yield f'{root}/{project}{environment}'
+            yield f'{root}/data/{project}{environment}'
 
 
 def get_secrets_wizard(client, root):
@@ -44,7 +44,7 @@ def get_secrets_wizard(client, root):
 
     return get_secrets(
         client=client,
-        path=f'{root}{project}{environment}',
+        path=f'{root}/data{project}{environment}',
     )
 
 
@@ -71,11 +71,11 @@ def clean_secrets(secrets):
 
 def get_secrets(client, path):
     response = client.read(path=path)
-    return response['data']
+    return response['data']['data']
 
 
 def write_secrets(client, path, secrets):
-    client.write(path=path, wrap_ttl=None, **secrets)
+    client.write(path=path, wrap_ttl=None, data=secrets)
 
 
 def diff_dicts(dict_a, dict_b):

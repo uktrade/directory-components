@@ -54,8 +54,10 @@ def test_get_secrets():
     mock_client = mock.Mock()
     mock_client.read.return_value = {
         'data': {
-            'API_KEY': '123',
-            'BENIGN': True,
+            'data': {
+                'API_KEY': '123',
+                'BENIGN': True,
+            }
         }
     }
 
@@ -76,8 +78,10 @@ def test_get_secrets_wizard(monkeypatch):
     monkeypatch.setitem(__builtins__, 'input', mock_input)
     mock_client.read.return_value = {
         'data': {
-            'API_KEY': '123',
-            'BENIGN': True,
+            'data': {
+                'API_KEY': '123',
+                'BENIGN': True,
+            }
         }
     }
     mock_client.list.side_effect = [
@@ -142,9 +146,9 @@ def test_list_vault_paths():
 
     def stub_list_vault_paths(path):
         keys = {
-            '/root': ['project_a/', 'project_b/'],
-            '/root/project_a/': ['environment_a', 'environment_b'],
-            '/root/project_b/': ['environment_c', 'environment_d'],
+            '/root/metadata': ['project_a/', 'project_b/'],
+            '/root/metadata/project_a/': ['environment_a', 'environment_b'],
+            '/root/metadata/project_b/': ['environment_c', 'environment_d'],
         }[path]
         return {'data': {'keys': keys}}
 
@@ -154,16 +158,16 @@ def test_list_vault_paths():
 
     assert mock_client.list.call_count == 3
     assert mock_client.list.call_args_list == [
-        mock.call(path='/root'),
-        mock.call(path='/root/project_a/'),
-        mock.call(path='/root/project_b/'),
+        mock.call(path='/root/metadata'),
+        mock.call(path='/root/metadata/project_a/'),
+        mock.call(path='/root/metadata/project_b/'),
     ]
 
     assert paths == [
-        '/root/project_a/environment_a',
-        '/root/project_a/environment_b',
-        '/root/project_b/environment_c',
-        '/root/project_b/environment_d',
+        '/root/data/project_a/environment_a',
+        '/root/data/project_a/environment_b',
+        '/root/data/project_b/environment_c',
+        '/root/data/project_b/environment_d',
     ]
 
 
