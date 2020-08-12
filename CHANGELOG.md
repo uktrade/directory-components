@@ -1,5 +1,12 @@
 # Changelog
 
+## 35.19.0
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/340)
+### Bugs fixed
+- GAA-25 - replace teal-text with grey-text
+- GAA-14 - make mobile/desktop ids unique
+
+
 ## 35.18.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/339)
 ### Bugs fixed
