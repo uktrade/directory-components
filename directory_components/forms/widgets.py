@@ -67,6 +67,7 @@ class RadioSelect(ChoiceWidget):
     option_template_name = 'directory_components/form_widgets/radio_option.html'
     css_class_name = 'select-multiple'
     input_type = 'radio'
+    is_grouped = True
 
 
 class CheckboxWithInlineLabel(forms.widgets.CheckboxInput):
@@ -89,11 +90,12 @@ class CheckboxSelectInlineLabelMultiple(PrettyIDsMixin, widgets.CheckboxSelectMu
     option_template_name = 'directory_components/form_widgets/checkbox_inline_multiple.html'
     css_class_name = 'select-multiple'
     input_type = 'checkbox'
+    is_grouped = True
+
 
     def __init__(self, attrs=None, use_nice_ids=False):
         super().__init__(attrs=attrs, use_nice_ids=use_nice_ids)
         self.attrs['class'] = self.attrs.get('class', self.css_class_name)
-
 
 class SelectMultipleAutocomplete(widgets.SelectMultiple):
 
@@ -112,6 +114,7 @@ class SelectMultipleAutocomplete(widgets.SelectMultiple):
 class RadioNestedWidget(RadioSelect):
     option_template_name = 'directory_components/form_widgets/nested-radio.html'
     container_css_classes = 'form-group radio-nested-container'
+    is_grouped = True
 
     def create_option(self, *args, **kwargs):
         return {
@@ -122,7 +125,6 @@ class RadioNestedWidget(RadioSelect):
 
     def bind_nested_form(self, form):
         self.nested_form = form
-
 
 class TextInputWithSubmitButton(forms.TextInput):
     container_css_classes = 'text-input-with-submit-button-container'
