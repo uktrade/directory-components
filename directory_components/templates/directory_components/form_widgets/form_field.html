@@ -1,10 +1,24 @@
 <div class="{{ field.css_classes }}" id="{{ field.id_for_label }}-container">
-  {% if field.label %}{{ field.label_tag }}{% endif %}
+  {% if field.field.widget.is_grouped %}
+    <fieldset>
+      {% if field.label %}
+        <legend>
+          {{ field.label_tag }}
+        </legend>
+      {% endif %}
+  {% else %}
+    {% if field.label %}
+      {{ field.label_tag }}
+    {% endif %}
+  {% endif %}
   {% if field.errors %}
-    <div class="error-message">{{ field.errors }}</div>
+    <div class="error-message" role="alert" aria-atomic="true">{{ field.errors }}</div>
   {% endif %}
   {% if field.help_text %}
     <span class="form-hint">{{ field.help_text }}</span>
   {% endif %}
   {{ field }}
+  {% if field.field.widget.is_grouped %}
+    </fieldset>
+  {% endif %}
 </div>
