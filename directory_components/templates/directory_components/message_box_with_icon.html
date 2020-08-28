@@ -3,7 +3,7 @@
   <div class="message-box-content padding-15 padding-30-m">
     {% block content %}
     {% if heading %}
-      <{{ heading_level|default:'h3' }} class="box-heading heading-medium {{ heading_class|default:'teal-text' }}">{{ heading }}</{{ heading_level|default:'h3' }}>
+      <{{ heading_level|default:'h3' }} class="box-heading heading-medium {{ heading_class|default:'grey-text' }}">{{ heading }}</{{ heading_level|default:'h3' }}>
     {% endif %}
     <p class="box-description">{{ description }}</p>
     {% endblock %}

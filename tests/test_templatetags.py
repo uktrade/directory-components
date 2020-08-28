@@ -494,7 +494,7 @@ def test_success_box():
     html = template.render(context)
     soup = BeautifulSoup(html, 'html.parser')
 
-    box_heading = soup.select('h3.teal-text')[0]
+    box_heading = soup.select('h3.grey-text')[0]
     assert box_heading.string == 'heading'
 
     box = soup.select('.message-box-with-icon')[0]

@@ -138,17 +138,17 @@ def test_urls_exist_in_international_footer(url, settings):
 @pytest.mark.parametrize('title,element_id,url', (
     (
         'Advice',
-        'header-advice',
+        'header-advice-desktop',
         urls.domestic.ADVICE,
     ),
     (
         'Markets',
-        'header-markets',
+        'header-markets-desktop',
         urls.domestic.MARKETS,
     ),
     (
         'News and events',
-        'header-news',
+        'header-news-desktop',
         urls.domestic.GREAT_DOMESTIC_NEWS,
     ),
 ))
