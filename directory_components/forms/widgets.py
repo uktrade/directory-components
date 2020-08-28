@@ -41,7 +41,7 @@ class PrettyIDsMixin:
                     option_attrs['id'],
                     self.id_separator,
                     slugify(label.lower())
-                    )
+                )
             else:
                 option_attrs['id'] = self.id_for_label(
                     option_attrs['id'], index)
@@ -92,10 +92,10 @@ class CheckboxSelectInlineLabelMultiple(PrettyIDsMixin, widgets.CheckboxSelectMu
     input_type = 'checkbox'
     is_grouped = True
 
-
     def __init__(self, attrs=None, use_nice_ids=False):
         super().__init__(attrs=attrs, use_nice_ids=use_nice_ids)
         self.attrs['class'] = self.attrs.get('class', self.css_class_name)
+
 
 class SelectMultipleAutocomplete(widgets.SelectMultiple):
 
@@ -125,6 +125,7 @@ class RadioNestedWidget(RadioSelect):
 
     def bind_nested_form(self, form):
         self.nested_form = form
+
 
 class TextInputWithSubmitButton(forms.TextInput):
     container_css_classes = 'text-input-with-submit-button-container'
