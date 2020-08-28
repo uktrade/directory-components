@@ -1,7 +1,7 @@
 # Changelog
 
 ## 35.20.0
-
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/341)
 ### Bugs fixed
 - GAA-12 - Add role to form errors
 - GAA-1  - Add fieldset and legend around multiple checkboxes
