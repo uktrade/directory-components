@@ -245,7 +245,7 @@ details.great-accordion[open] summary:before {
       background-size: 20px;
       padding: 0; }
       .great-header-search-wrapper form button:focus, .great-header-search-wrapper form button:focus:active {
-        outline: #ffbf47 solid 3px;
+        outline: #ffbf47 solid 4px;
         outline-offset: 0; }
       .great-header-search-wrapper form button:active {
         background-color: #ffbf47; }
@@ -418,7 +418,7 @@ details.great-accordion[open] summary:before {
   padding: 0;
   cursor: pointer; }
   .country-selector-activator:focus, .country-selector-activator:focus:active {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .country-selector-activator:focus:active {
     color: #1e1348;
@@ -458,7 +458,7 @@ body.js-enabled .close-button {
   width: 20px;
   height: 20px; }
   body.js-enabled .close-button:focus, body.js-enabled .close-button:focus:active {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   body.js-enabled .close-button:focus:active {
     background: #ffbf47; }
@@ -572,7 +572,7 @@ body.js-enabled .great-header-country-select {
   padding: 0;
   padding-left: 5px; }
   .great-header-form button:focus, .great-header-form button:focus:active {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .great-header-form button:focus:active {
     background: #ffbf47;
@@ -587,7 +587,7 @@ body.js-enabled .great-header-country-select {
     z-index: 6; }
   .great-header a:focus,
   .great-sub-header a:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
     .great-header a:focus:active,
     .great-sub-header a:focus:active {
@@ -797,7 +797,7 @@ body.js-enabled .great-header-country-select {
       padding: 10px 45px 10px 10px;
       cursor: pointer; }
       .js-mobile-button:focus {
-        outline: #ffbf47 solid 3px;
+        outline: #ffbf47 solid 4px;
         outline-offset: 0; }
       .js-mobile-button.ready {
         display: block; }
@@ -839,7 +839,7 @@ body.js-enabled .great-header-country-select {
           margin: 0 0 10px 10px;
           width: 20px; }
         .js-mobile-button .burger-icon:focus {
-          outline: #ffbf47 solid 3px;
+          outline: #ffbf47 solid 4px;
           outline-offset: 0; }
       .js-mobile-button.expanded {
         background-color: #006ccc; }
@@ -873,7 +873,7 @@ body.js-enabled .great-header-country-select {
     z-index: 6; }
   .great-header a:focus,
   .great-sub-header a:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
     .great-header a:focus:active,
     .great-sub-header a:focus:active {
@@ -1083,7 +1083,7 @@ body.js-enabled .great-header-country-select {
       padding: 10px 45px 10px 10px;
       cursor: pointer; }
       .js-mobile-button:focus {
-        outline: #ffbf47 solid 3px;
+        outline: #ffbf47 solid 4px;
         outline-offset: 0; }
       .js-mobile-button.ready {
         display: block; }
@@ -1125,7 +1125,7 @@ body.js-enabled .great-header-country-select {
           margin: 0 0 10px 10px;
           width: 20px; }
         .js-mobile-button .burger-icon:focus {
-          outline: #ffbf47 solid 3px;
+          outline: #ffbf47 solid 4px;
           outline-offset: 0; }
       .js-mobile-button.expanded {
         background-color: #006ccc; }
@@ -1390,7 +1390,7 @@ a.labelled-card, a.labelled-image-card {
     a.labelled-image-card:focus .card-header h3,
     a.labelled-card:focus .card-inner,
     a.labelled-image-card:focus .card-inner {
-      outline: #ffbf47 solid 3px;
+      outline: #ffbf47 solid 4px;
       outline-offset: 0;
       outline-offset: -3px; }
     
@@ -1482,7 +1482,7 @@ a.cta-link:active:focus {
     display: inline-block;
     padding: 15px; }
   .cta-link:focus span {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .cta-link:hover span {
     background-color: #005fb3; }
@@ -1621,7 +1621,7 @@ main,
       font-size: 19px; } }
   .cookie-notice a:focus,
   .cookie-notice button:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .cookie-notice .cookie-initial {
     display: block; }
@@ -1728,7 +1728,7 @@ main,
     #skip-link {
       font-size: 16px; } }
   #skip-link:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0;
     background-color: #ffbf47;
     color: #132965;

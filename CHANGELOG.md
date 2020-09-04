@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.22.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/342)
+### Bugs fixed
+- GAA-27 - Form field outline increase width
+
 ## 35.21.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/343)
 ### Bugs fixed

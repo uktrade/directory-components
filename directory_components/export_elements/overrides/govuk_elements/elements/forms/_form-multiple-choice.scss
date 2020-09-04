@@ -24,6 +24,12 @@
     }
   }
 
+  [type=checkbox]:focus + label {
+    &::before {
+      box-shadow: 0 0 0 4px $focus-yellow;
+    }
+  }
+
   .checkbox-small & {
     [type=checkbox] + label {
       &::after {
