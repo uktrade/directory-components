@@ -9,6 +9,8 @@
   {% else %}
     {% if field.label %}
       {{ field.label_tag }}
+    {% elif field.field.widget.hidden_label %}
+      <label class="visually-hidden" for="{{field.id_for_label}}">{{ field.field.widget.hidden_label }}</label>
     {% endif %}
   {% endif %}
   {% if field.errors %}

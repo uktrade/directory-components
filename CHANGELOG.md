@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.21.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/343)
+### Bugs fixed
+ - GAA-8 - Add hidden label to search field
+ 
 ## 35.20.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/341)
 ### Bugs fixed

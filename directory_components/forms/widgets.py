@@ -11,6 +11,7 @@ __all__ = [
     'RadioSelect',
     'SelectMultipleAutocomplete',
     'TextInputWithSubmitButton',
+    'SearchWidget',
 ]
 
 
@@ -56,6 +57,15 @@ class PrettyIDsMixin:
             'template_name': self.option_template_name,
             'wrap_label': True,
         }
+
+
+class SearchWidget(forms.widgets.TextInput):
+    hidden_label = ''
+
+    def __init__(self, hidden_label='', *args, **kwargs):
+
+        self.hidden_label = hidden_label
+        super().__init__(*args, **kwargs)
 
 
 class ChoiceWidget(PrettyIDsMixin, widgets.ChoiceWidget):
