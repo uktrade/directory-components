@@ -1325,7 +1325,7 @@ body {
     color: #000000;
     background-color: #ffbf47; }
   .button:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .button:hover {
     background-color: #005fb3; }
@@ -1367,7 +1367,7 @@ body {
     color: #000000;
     background-color: #ffbf47; }
   .button-ghost-blue:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .button-ghost-blue:hover {
     background-color: #005fb3; }
@@ -1381,7 +1381,7 @@ body {
   .button-ghost-blue:hover, .button-ghost-blue:focus {
     background-color: #006ccc; }
   .button-ghost-blue:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .button-ghost-blue:focus:active, .button-ghost-blue:active {
     color: #000000;
@@ -1422,7 +1422,7 @@ body {
     color: #000000;
     background-color: #ffbf47; }
   .button-ghost-white:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .button-ghost-white:hover {
     background-color: #005fb3; }
@@ -1436,7 +1436,7 @@ body {
   .button-ghost-white:hover, .button-ghost-white:focus {
     background-color: #ffffff; }
   .button-ghost-white:focus {
-    outline: #ffbf47 solid 3px;
+    outline: #ffbf47 solid 4px;
     outline-offset: 0; }
   .button-ghost-white:focus:active, .button-ghost-white:active {
     color: #000000;
@@ -2067,7 +2067,7 @@ ul.select-multiple {
 select:focus,
 input:focus,
 a:focus {
-  outline: #ffbf47 solid 3px;
+  outline: #ffbf47 solid 4px;
   outline-offset: 0; }
 
 a:focus:active {
@@ -2218,6 +2218,10 @@ select.form-control::-ms-expand {
 
 .multiple-choice [type=checkbox] + label::before {
   background-color: #ffffff; }
+
+.multiple-choice [type=checkbox]:focus + label::before {
+  -webkit-box-shadow: 0 0 0 4px #ffbf47;
+  box-shadow: 0 0 0 4px #ffbf47; }
 
 .checkbox-small .multiple-choice [type=checkbox] + label::after {
   border-width: 0 0 3px 3px;
