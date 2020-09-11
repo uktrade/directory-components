@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.24.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/345)
+### Bugs fixed
+- GAA-20 - anchor tag fix for screen readers
+
 ## 35.23.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/344)
 ### Bugs fixed
