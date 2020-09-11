@@ -28,9 +28,6 @@
         {% if title or heading %}
           <h3 class="heading-large">{% firstof title heading %}</h3>
         {% endif %}
-        {% if description %}
-          <p class="description">{{ description }}</p>
-        {% endif %}
         {% if html_snippet %}
         {{ html_snippet|add_export_elements_classes }}
         {% endif %}
@@ -39,5 +36,8 @@
     </div>
   {% if url %}
   </a>
+  {% endif %}
+  {% if description %}
+    <p class="description">{{ description }}</p>
   {% endif %}
 </div>
