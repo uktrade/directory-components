@@ -1,5 +1,12 @@
 # Changelog
 
+## 35.19.0
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/341)
+### Bugs fixed
+- GAA-32 - Added alt text for image with caption component
+
+
+
 ## 35.18.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/339)
 ### Bugs fixed
