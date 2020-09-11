@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.23.0
+ [Full Changelog](https://github.com/uktrade/directory-components/pull/344)
+### Bugs fixed
+- GAA-32 - Added alt text for image with caption component
+
 ## 35.22.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/342)
 ### Bugs fixed
@@ -22,7 +27,6 @@
 - No ticket - Fix gulp dependencies
 - GAA-25 - replace teal-text with grey-text
 - GAA-14 - make mobile/desktop ids unique
-
 
 ## 35.18.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/339)

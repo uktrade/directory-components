@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='35.22.0',
+    version='35.23.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -22,7 +22,7 @@ setup(
         'test': [
             'lorem==0.1.1',
             'ansicolors==1.1.8',
-            'codecov==2.0.9',
+            'codecov==2.1.9',
             'flake8==3.7.8',
             'pytest-cov==2.6.1',
             'pytest-django==3.3.0',
