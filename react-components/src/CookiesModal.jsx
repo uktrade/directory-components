@@ -37,8 +37,10 @@ export function CookiesModal(props){
     >
       <h2 className={`${styles.heading} heading-medium`}>Tell us whether you accept cookies</h2>
       <p className={`${styles.synopsis} body-text`} >
-        We use <a className="link" href={props.privacyCookiesUrl}
-        ref={(_firstLink) => (firstLink = _firstLink)}
+        We use <a
+          className="link"
+          href={props.privacyCookiesUrl}
+          ref={(_firstLink) => (firstLink = _firstLink)}
         >cookies to collect information</a> about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.
       </p>
       <div className={styles.buttonContainer}>
