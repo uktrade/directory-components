@@ -7,13 +7,28 @@ import CookieManager from '../../directory_components/static/directory_component
 import styles from './CookiesModal.css'
 
 export function CookiesModal(props){
+  let firstLink;
   const [isOpen, setIsOpen] = React.useState(props.isOpen)
+  const [focusTrap, setFocusTrap] = React.useState(false)
 
   function hanleAcceptAllCookies(event) {
     CookieManager.acceptAllCookiesAndShowSuccess(event);
     window.location.reload(false);
     setIsOpen(false);
   }
+
+  React.useEffect(() => {
+    document.body.addEventListener('focusin', (evt)=>{
+      if(focusTrap) {
+        let modal = evt.target.closest('.ReactModal__Content');
+        if(!modal || (modal == evt.target)) {
+          firstLink.focus();
+        }
+      } else {
+        setFocusTrap(true); // We can turn the trap on after the first change of focus.
+      }
+    })
+  });
 
   return (
     <Modal
@@ -22,7 +37,9 @@ export function CookiesModal(props){
     >
       <h2 className={`${styles.heading} heading-medium`}>Tell us whether you accept cookies</h2>
       <p className={`${styles.synopsis} body-text`} >
-        We use <a className="link" href={props.privacyCookiesUrl}>cookies to collect information</a> about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.
+        We use <a className="link" href={props.privacyCookiesUrl}
+        ref={(_firstLink) => (firstLink = _firstLink)}
+        >cookies to collect information</a> about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.
       </p>
       <div className={styles.buttonContainer}>
         <a className={`${styles.button} button`} href="#" onClick={hanleAcceptAllCookies}>Accept all cookies</a>

@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.25.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/346)
+### Bugs fixed
+- GAA-09 - Force focus into cookie modal
+
 ## 35.24.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/345)
 ### Bugs fixed
