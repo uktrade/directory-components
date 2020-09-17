@@ -6,10 +6,10 @@ import CookieManager from '../../directory_components/static/directory_component
 
 import styles from './CookiesModal.css'
 
-export function CookiesModal(props){
+export function CookiesModal(props) {
   let firstLink;
   const [isOpen, setIsOpen] = React.useState(props.isOpen)
-  const [focusTrap, setFocusTrap] = React.useState(false)
+  const focusTrap = React.useRef(false);
 
   function hanleAcceptAllCookies(event) {
     CookieManager.acceptAllCookiesAndShowSuccess(event);
@@ -17,18 +17,23 @@ export function CookiesModal(props){
     setIsOpen(false);
   }
 
-  React.useEffect(() => {
-    document.body.addEventListener('focusin', (evt)=>{
-      if(focusTrap) {
-        let modal = evt.target.closest('.ReactModal__Content');
-        if(!modal || (modal == evt.target)) {
-          firstLink.focus();
-        }
-      } else {
-        setFocusTrap(true); // We can turn the trap on after the first change of focus.
+  const handleFocusChange = (evt) => {
+    if (focusTrap.current) {
+      let modal = evt.target.closest('.ReactModal__Content');
+      if (!modal || (modal == evt.target)) {
+        firstLink.focus();
       }
-    })
-  });
+    } else {
+      focusTrap.current = true;
+    }
+  }
+
+  React.useEffect(() => {
+    document.body.addEventListener('focusin', handleFocusChange);
+    return () => {
+      document.body.removeEventListener('focusin', handleFocusChange);
+    };
+  }, []);
 
   return (
     <Modal
