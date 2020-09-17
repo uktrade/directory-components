@@ -26,7 +26,9 @@
 
   [type=checkbox]:focus + label {
     &::before {
+      border-width: 4px;
       box-shadow: 0 0 0 4px $focus-yellow;
+      margin: -2px;
     }
   }
 

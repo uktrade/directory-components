@@ -16,5 +16,9 @@
 
   input {
     border-right: 0;
+
+    &:focus {
+      margin: -2px 0 -2px 0;
+    }
   }
 }

@@ -15,8 +15,13 @@ ul.select-multiple {
 
 select:focus,
 input:focus,
-a:focus {
+a:focus, {
   @include focus;
+}
+
+.form-control:focus {
+  border-width: 4px;
+  margin: -2px;
 }
 
 a:focus:active {
