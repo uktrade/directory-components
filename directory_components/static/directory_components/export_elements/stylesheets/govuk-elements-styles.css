@@ -2070,6 +2070,10 @@ a:focus {
   outline: #ffbf47 solid 4px;
   outline-offset: 0; }
 
+.form-control:focus {
+  border-width: 4px;
+  margin: -2px; }
+
 a:focus:active {
   background-color: #ffbf47; }
 
@@ -2220,8 +2224,10 @@ select.form-control::-ms-expand {
   background-color: #ffffff; }
 
 .multiple-choice [type=checkbox]:focus + label::before {
+  border-width: 4px;
   -webkit-box-shadow: 0 0 0 4px #ffbf47;
-  box-shadow: 0 0 0 4px #ffbf47; }
+  box-shadow: 0 0 0 4px #ffbf47;
+  margin: -2px; }
 
 .checkbox-small .multiple-choice [type=checkbox] + label::after {
   border-width: 0 0 3px 3px;

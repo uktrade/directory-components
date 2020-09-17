@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.26.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/348)
+### Bugs fixed
+- GAA-27 - Change form element focus border to 4px
+
 ## 35.25.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/346)
 ### Bugs fixed

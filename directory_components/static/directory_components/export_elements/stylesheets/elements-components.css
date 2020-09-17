@@ -4391,6 +4391,8 @@ body:not(.js-enabled) .expandable-fieldset button.filter-collapse {
     color: #ffffff; }
   .text-input-with-submit-button-container input {
     border-right: 0; }
+    .text-input-with-submit-button-container input:focus {
+      margin: -2px 0 -2px 0; }
 
 .radio-nested-container {
   margin-bottom: 50px; }
