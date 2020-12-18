@@ -1,7 +1,7 @@
 # Changelog
 
 ## 35.27.0
-  [Full Changelog]()
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/349)
 ### Bugs fixed
 - GBAU-889 - Fix focus error in console
 
