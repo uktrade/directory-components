@@ -20,7 +20,7 @@ export function CookiesModal(props) {
   const handleFocusChange = (evt) => {
     if (focusTrap.current) {
       let modal = evt.target.closest('.ReactModal__Content');
-      if (!modal || (modal == evt.target)) {
+      if ((!modal || (modal == evt.target)) && firstLink) {
         firstLink.focus();
       }
     } else {
