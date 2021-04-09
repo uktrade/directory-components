@@ -54,6 +54,8 @@ def cookie_notice(request):
 
 
 def header_footer_processor(request):
+    magna_header = settings.MAGNA_HEADER or False
+
     advice_urls = {
         'create_an_export_plan': urls.domestic.ADVICE_CREATE_AN_EXPORT_PLAN,
         'find_an_export_market': urls.domestic.ADVICE_FIND_AN_EXPORT_MARKET,
@@ -86,7 +88,7 @@ def header_footer_processor(request):
         'market_access': urls.domestic.HOME / 'report-trade-barrier'
     }
     header_footer_urls = {**header_footer_urls, **advice_urls}
-    return {'header_footer_urls': header_footer_urls}
+    return {'magna_header': magna_header, 'header_footer_urls': header_footer_urls}
 
 
 def invest_header_footer_processor(request):
