@@ -2,8 +2,8 @@
     &.great-header {
 
         &.expanded:before {
-            content: "";
-            background: rgba(0,0,0,.5);
+            content: '';
+            background: rgba(0, 0, 0, .5);
             position: fixed;
             top: 0;
             right: 0;
@@ -42,11 +42,12 @@
                 border-bottom: 0;
             }
 
-            a, button {
+            a,
+            button {
                 background: none;
                 border: 0;
                 color: #fff;
-                font-family: Overpass,Arial,Helvetica,Verdana;
+                font-family: Overpass, Arial, Helvetica, Verdana;
                 font-size: 18px;
                 letter-spacing: 0;
                 line-height: 16px;
