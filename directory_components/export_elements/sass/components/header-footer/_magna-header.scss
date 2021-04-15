@@ -1,11 +1,11 @@
-@import "../../partials/mixins";
-@import "../../partials/colours";
+@import '../../partials/mixins';
+@import '../../partials/colours';
 
 @mixin burger-icon-line {
 	background-color: $white;
 	transition: all 0.2s ease;
 	clear: right;
-	content: "";
+	content: '';
 	float: right;
 	height: 2px;
 	margin: 0 0 10px 10px;
@@ -16,7 +16,7 @@
 	&.great-header {
         &.expanded {
             &:before {
-                content: "";
+                content: '';
                 background: rgba(0, 0, 0, 0.5);
                 position: fixed;
                 top: 0;
@@ -103,8 +103,8 @@
                 &.new:after {
                     background: #eb4f4d;
                     border-radius: 4px;
-                    content: "new";
-                    font-family: 'FS Lucas',Arial,Helvetica,Verdana;
+                    content: 'new';
+                    font-family: 'FS Lucas', Arial, Helvetica, Verdana;
                     font-size: 16px;
                     padding: 5px 12px;
                     font-weight: 700;
@@ -203,6 +203,7 @@
 		}
 
 		&.mobile-only {
+
 			@media (min-width: 768px) {
 				display: none;
 			}
@@ -213,18 +214,18 @@
         background: #006ccc;
         color: #fff;
         display: none;
-        font-family: Overpass,Arial,Helvetica,Verdana;
+        font-family: Overpass, Arial, Helvetica, Verdana;
         font-size: 20px;
         padding: 15px 20px;
     }
-
+    
     &.signed-in {
         .great-header-search-wrapper form {
             @media (min-width: 768px) {
                 margin-right: 118px;
             }
         }
-    
+        
         &#great-domestic-header .main-nav.desktop {
             margin-right: 376px;
         }

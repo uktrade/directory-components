@@ -26,7 +26,7 @@ rules:
   force-pseudo-nesting: 0
   no-mergeable-selectors: 2
   mixins-before-declarations: 1
-  empty-line-between-blocks: 2
+  empty-line-between-blocks: 1
   space-after-colon: 2
   space-before-brace: 2
   nesting-depth: 0
