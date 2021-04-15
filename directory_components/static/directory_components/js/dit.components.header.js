@@ -64,7 +64,7 @@ dit.components.header = new (function() {
       updateMenuPosition();
 
       $(window).resize(function() {
-        if (isDesktop) {
+        if (window.innerWidth >= 768) {
           updateMenuPosition();
         }
       });

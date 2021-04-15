@@ -67,9 +67,9 @@
 
 		.main-nav.mobile.expanded {
 			background: #4b426d;
-			padding: 20px;
+			padding: 0 20px 0;
             z-index: 1;
-
+            
             @media (max-width: 768px) {
                 margin-top: 0;
                 position: absolute;
@@ -98,7 +98,22 @@
 				line-height: 16px;
 				padding: 20px 0;
 				font-weight: 100;
-				text-decoration: none;
+                text-decoration: none;
+                
+                &.new:after {
+                    background: #eb4f4d;
+                    border-radius: 4px;
+                    content: "new";
+                    font-family: 'FS Lucas',Arial,Helvetica,Verdana;
+                    font-size: 16px;
+                    padding: 5px 12px;
+                    font-weight: 700;
+                    line-height: 20px;
+                    position: absolute;
+                    top: 13px;
+                    right: 0;
+                    display: inline-block;
+                }
 			}
 		}
 	}
@@ -180,7 +195,7 @@
 			height: 40px;
 			padding-top: 5px;
 			padding-bottom: 5px;
-			top: 59px;
+			top: 60px;
 
 			.burger-icon {
 				top: 18px;
