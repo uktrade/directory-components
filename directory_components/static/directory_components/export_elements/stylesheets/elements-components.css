@@ -902,6 +902,13 @@ body.js-enabled .great-header-country-select {
   font-size: 20px;
   padding: 15px 20px; }
 
+@media (min-width: 768px) {
+  .magna-header.signed-in .great-header-search-wrapper form {
+    margin-right: 118px; } }
+
+.magna-header.signed-in#great-domestic-header .main-nav.desktop {
+  margin-right: 376px; }
+
 .great-domestic-international-links a {
   color: #666666; }
 

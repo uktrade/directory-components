@@ -202,4 +202,16 @@
         font-size: 20px;
         padding: 15px 20px;
     }
+
+    &.signed-in {
+        .great-header-search-wrapper form {
+            @media (min-width: 768px) {
+                margin-right: 118px;
+            }
+        }
+    
+        &#great-domestic-header .main-nav.desktop {
+            margin-right: 376px;
+        }
+    }
 }
