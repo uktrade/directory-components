@@ -43,6 +43,32 @@ dit.components.header = new (function() {
     $(self.HEADER).addClass("expanded");
 
     self.moveFocusToMenuButton();
+
+    var mobileMenuButton = document.querySelector("#mobile-menu-button");
+    var mobileNavMenu = document.querySelector(
+      ".magna-header .main-nav-container.mobile"
+    );
+    var isDesktop = window.innerWidth >= 768;
+    var shouldUpdateMenuPosition =
+      mobileMenuButton && mobileNavMenu && isDesktop;
+
+    function updateMenuPosition() {
+      var box = mobileMenuButton.getBoundingClientRect();
+      mobileNavMenu.style.position = "absolute";
+      mobileNavMenu.style.top = "100px";
+      mobileNavMenu.style.width = "290px";
+      mobileNavMenu.style.left = box.right - 290 + "px";
+    }
+
+    if (shouldUpdateMenuPosition) {
+      updateMenuPosition();
+
+      $(window).resize(function() {
+        if (isDesktop) {
+          updateMenuPosition();
+        }
+      });
+    }
   };
 
   self.closeMenu = function() {
@@ -56,6 +82,9 @@ dit.components.header = new (function() {
     $(self.HEADER).removeClass("expanded");
 
     self.moveFocusToMenuButton();
+
+    document.querySelector(".magna-header .main-nav-container.mobile").style =
+      "";
   };
 
   self.moveFocusToMenuButton = function() {

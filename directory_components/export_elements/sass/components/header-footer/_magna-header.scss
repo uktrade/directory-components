@@ -1,60 +1,205 @@
+@import "../../partials/mixins";
+@import "../../partials/colours";
+
+@mixin burger-icon-line {
+	background-color: $white;
+	transition: all 0.2s ease;
+	clear: right;
+	content: "";
+	float: right;
+	height: 2px;
+	margin: 0 0 10px 10px;
+	width: 20px;
+}
+
 .magna-header {
-    &.great-header {
+	&.great-header {
+        &.expanded {
+            &:before {
+                content: "";
+                background: rgba(0, 0, 0, 0.5);
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+            }
 
-        &.expanded:before {
-            content: '';
-            background: rgba(0, 0, 0, .5);
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .js-mobile-button.expanded {
-            z-index: 1;
-        }
-
-        .mobile-only {
-            display: none;
-    
-            @media (max-width: 768px) {
+            .user-greeting {
                 display: block;
             }
         }
 
-        .main-nav.mobile.expanded {
-            background: #4b426d;
-            padding: 20px;
-            margin-top: -14px;
+        &.signed-out {
+            .main-nav.mobile.expanded {
+                @media (max-width: 768px) {
+                    margin-top: -14px;
+                }
+            }
+        }
+
+        &.signed-in {
+            .main-nav-container.mobile {
+                @media (max-width: 768px) {
+                    margin-top: -14px;
+                }
+            }
+        }
+        
+		.js-mobile-button.expanded {
+			z-index: 1;
+		}
+
+		.mobile-only {
+			display: none;
+
+			@media (max-width: 768px) {
+				display: block;
+			}
+        }
+        
+        .main-nav-container.mobile {
+            display: block;
             z-index: 1;
+            position: relative;
         }
 
-        .main-nav.mobile .nav-list {
-            margin: 0;
-        }
+		.main-nav.mobile.expanded {
+			background: #4b426d;
+			padding: 20px;
+            z-index: 1;
 
-        .main-nav.mobile .nav-list li {
-            border-bottom: 1px solid #635a7f;
-
-            &:last-child {
-                border-bottom: 0;
+            @media (max-width: 768px) {
+                margin-top: 0;
+                position: absolute;
             }
+		}
 
-            a,
-            button {
-                background: none;
-                border: 0;
-                color: #fff;
-                font-family: Overpass, Arial, Helvetica, Verdana;
-                font-size: 18px;
-                letter-spacing: 0;
-                line-height: 16px;
-                padding: 20px 0;
-                font-weight: 100;
-                text-decoration: none;
-            }
-        }
+		.main-nav.mobile .nav-list {
+			margin: 0;
+		}
+
+		.main-nav.mobile .nav-list li {
+			border-bottom: 1px solid #635a7f;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			a,
+			button {
+				background: none;
+				border: 0;
+				color: #fff;
+				font-family: Overpass, Arial, Helvetica, Verdana;
+				font-size: 18px;
+				letter-spacing: 0;
+				line-height: 16px;
+				padding: 20px 0;
+				font-weight: 100;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.js-mobile-button {
+		display: none;
+
+		@include button-reset;
+
+		height: 50px;
+		position: absolute;
+		top: 45px;
+		right: 0;
+		color: $white;
+		background-color: $great-blue;
+		border: 2px solid $white;
+		padding: 10px 45px 10px 10px;
+		cursor: pointer;
+
+		&:focus {
+			@include focus;
+		}
+
+		&.ready {
+			display: block;
+		}
+
+		.burger-icon {
+			// The three burger lines are formed using the span, and its before and after.
+			@include burger-icon-line;
+
+			position: absolute;
+			right: 10px;
+			top: 22px;
+			transition: background-color 0.2s ease;
+			background-color: transparent;
+
+			&:before {
+				@include burger-icon-line;
+				margin-top: -6px;
+			}
+
+			&:after {
+				@include burger-icon-line;
+			}
+
+			&:focus {
+				@include focus;
+			}
+		}
+
+		// When expanded, the icon changes to an 'X', by rotating the top and bottom lines, and removing the middle one.
+		&.expanded {
+			background-color: $active-blue;
+			z-index: 1;
+
+			.burger-icon {
+				background-color: transparent;
+
+				&:before,
+				&:after {
+					width: 25px;
+					margin-right: -3px;
+				}
+
+				&:before {
+					transform: rotate(45deg);
+					margin-top: 0;
+				}
+
+				&:after {
+					transform: rotate(-45deg);
+					margin-top: -12px;
+				}
+			}
+		}
+
+		@media (min-width: 768px) {
+			height: 40px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			top: 59px;
+
+			.burger-icon {
+				top: 18px;
+			}
+		}
+
+		&.mobile-only {
+			@media (min-width: 768px) {
+				display: none;
+			}
+		}
+    }
+    
+    .user-greeting {
+        background: #006ccc;
+        color: #fff;
+        display: none;
+        font-family: Overpass,Arial,Helvetica,Verdana;
+        font-size: 20px;
+        padding: 15px 20px;
     }
 }

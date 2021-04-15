@@ -1,7 +1,9 @@
 {% load static %}
 
-<header id="great-domestic-header" class="great-header magna-header" dir="ltr" data-ga-section="header">
-  {% include 'directory_components/header_footer/global_header.html' with header_class="domestic" %}
+<header id="great-domestic-header" class="great-header magna-header {% if sso_is_logged_in %}signed-in{% else %}signed-out{% endif %}" dir="ltr" data-ga-section="header">
+  {% if not sso_is_logged_in %}
+    {% include 'directory_components/header_footer/global_header.html' with header_class="domestic" %}
+  {% endif %}
   <div class="menu">
     <div class="container">
       {% block header_logo %}
@@ -15,7 +17,7 @@
       </ul>
       {% endblock %}
 
-      {% include 'directory_components/header_footer/mobile_menu_button.html' %}
+      {% include 'directory_components/header_footer/magna_mobile_menu_button.html' %}
 
       {% include 'directory_components/header_footer/magna_header_nav.html' with device_type='desktop' js_tag=false %}
       {% include 'directory_components/header_footer/search.html' %}

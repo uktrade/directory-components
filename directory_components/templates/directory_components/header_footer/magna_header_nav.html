@@ -1,8 +1,28 @@
 {% load i18n %}
 
 <div class="main-nav-container {{ device_type }}">
-  <nav id="{{ id }}" class="main-nav {{ device_type }} expanded" aria-label="{% trans 'Main menu' %}">
+  {% if sso_is_logged_in and device_type == 'mobile' %}
+  <div class="user-greeting">Hi</div>
+  {% endif %}
+  <nav id="{{ id }}" class="main-nav {{ device_type }} expanded {% if sso_is_logged_in %}signed-in{% endif %}" aria-label="{% trans 'Main menu' %}">
     <ul class="grid-row nav-list">
+      {% if sso_is_logged_in %}
+      <li class="menu-item" data-js-menu-item-container>
+        <a href="/" class="link-heading mobile-only" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Home</a>
+      </li>
+
+      <li class="menu-item" data-js-menu-item-container>
+        <a href="/learn/categories" class="link-heading new" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Learn to export</a>
+      </li>
+
+      <li class="menu-item" data-js-menu-item-container>
+        <a href="/where-to-export" class="link-heading new" id="header-where-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Where to export</a>
+      </li>
+
+      <li class="menu-item" data-js-menu-item-container>
+        <a href="/export-plan/dashboard" class="link-heading new" id="header-make-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Make an export plan</a>
+      </li>
+      {% else %}
       <li class="menu-item" data-js-menu-item-container>
         <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
       </li>
@@ -14,13 +34,23 @@
       <li class="menu-item" data-js-menu-item-container>
         <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Services</a>
       </li>
+      {% endif %}
 
       {% if features.NEWS_SECTION_ON %}
         <li class="menu-item" data-js-menu-item-container>
           <a href="{{ header_footer_urls.domestic_news }}" class="link-heading" id="header-news-{{ device_type }}" {% if js_tag %}data-js-menu-index=3{% endif %}>News and events</a>
         </li>
       {% endif %}
+
+      {% if sso_is_logged_in %}
+      <li class="menu-item" data-js-menu-item-container>
+        <a href="{{ sso_logout_url }}" class="link-heading {% if device_type != 'mobile' %}mobile-only{% endif %} margin-bottom-15" id="sign_out_button_{{ device_type }}">Sign out</a>
+      </li>
+      {% endif %}
     </ul>
+
+    {% if not sso_is_logged_in %}
     <a href="/login" class="button button-blue margin-top-15 mobile-only">Sign in</a>
+    {% endif %}
   </nav>
 </div>
