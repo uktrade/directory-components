@@ -4,15 +4,15 @@
   <nav id="{{ id }}" class="main-nav {{ device_type }} expanded" aria-label="{% trans 'Main menu' %}">
     <ul class="grid-row nav-list">
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Link 1</a>
+        <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Link 2</a>
+        <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Markets</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Link 3</a>
+        <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Services</a>
       </li>
 
       {% if features.NEWS_SECTION_ON %}
@@ -21,5 +21,6 @@
         </li>
       {% endif %}
     </ul>
+    <a href="/login" class="button button-blue margin-top-15 mobile-only">Sign in</a>
   </nav>
 </div>

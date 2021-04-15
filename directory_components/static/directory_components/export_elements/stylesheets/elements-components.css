@@ -734,6 +734,50 @@ body.js-enabled .great-header-country-select {
         margin: 0;
         line-height: 1; } }
 
+.magna-header.great-header.expanded:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1; }
+
+.magna-header.great-header .js-mobile-button.expanded {
+  z-index: 1; }
+
+.magna-header.great-header .mobile-only {
+  display: none; }
+  @media (max-width: 768px) {
+    .magna-header.great-header .mobile-only {
+      display: block; } }
+
+.magna-header.great-header .main-nav.mobile.expanded {
+  background: #4b426d;
+  padding: 20px;
+  margin-top: -14px;
+  z-index: 1; }
+
+.magna-header.great-header .main-nav.mobile .nav-list {
+  margin: 0; }
+
+.magna-header.great-header .main-nav.mobile .nav-list li {
+  border-bottom: 1px solid #635a7f; }
+  .magna-header.great-header .main-nav.mobile .nav-list li:last-child {
+    border-bottom: 0; }
+  .magna-header.great-header .main-nav.mobile .nav-list li a, .magna-header.great-header .main-nav.mobile .nav-list li button {
+    background: none;
+    border: 0;
+    color: #fff;
+    font-family: Overpass,Arial,Helvetica,Verdana;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 16px;
+    padding: 20px 0;
+    font-weight: 100;
+    text-decoration: none; }
+
 .great-domestic-international-links a {
   color: #666666; }
 

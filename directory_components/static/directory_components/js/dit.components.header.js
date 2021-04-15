@@ -1,7 +1,7 @@
 var dit = dit || {};
 dit.components = dit.components || {};
 
-dit.components.header = (new function() {
+dit.components.header = new (function() {
   var self = this;
 
   self.MENU_BUTTON = "#mobile-menu-button";
@@ -11,20 +11,21 @@ dit.components.header = (new function() {
   self.SUB_MENU_ITEMS_TAG = "js-sub-menu-index";
   self.MENU_ITEM_CONTAINER = "[data-js-menu-item-container]";
   self.SUB_MENU = "[data-js-sub-menu]";
+  self.HEADER = ".magna-header";
 
   self.dataAttributeSelector = function(dataAttributeName) {
     return "[data-" + dataAttributeName + "]";
   };
 
   self.showButton = function() {
-    $('#mobile-menu-button').addClass('ready');
+    $("#mobile-menu-button").addClass("ready");
   };
 
   self.toggleMenu = function() {
-    var nav = $('#great-header-mobile-nav');
-    var isCurrentlyExpanded = nav.attr('aria-expanded');
+    var nav = $("#great-header-mobile-nav");
+    var isCurrentlyExpanded = nav.attr("aria-expanded");
 
-    if (isCurrentlyExpanded === 'true') {
+    if (isCurrentlyExpanded === "true") {
       self.closeMenu();
     } else {
       self.openMenu();
@@ -32,17 +33,27 @@ dit.components.header = (new function() {
   };
 
   self.openMenu = function() {
-    $(self.MENU_BUTTON).addClass('expanded').attr('aria-expanded', 'true');
-    $(self.MOBILE_NAV).addClass('expanded').attr('aria-expanded', 'true');
-    $(self.SEARCH_WRAPPER).addClass('hidden');
+    $(self.MENU_BUTTON)
+      .addClass("expanded")
+      .attr("aria-expanded", "true");
+    $(self.MOBILE_NAV)
+      .addClass("expanded")
+      .attr("aria-expanded", "true");
+    $(self.SEARCH_WRAPPER).addClass("hidden");
+    $(self.HEADER).addClass("expanded");
 
     self.moveFocusToMenuButton();
   };
 
   self.closeMenu = function() {
-    $(self.MENU_BUTTON).removeClass('expanded').attr('aria-expanded', 'false');
-    $(self.MOBILE_NAV).removeClass('expanded').attr('aria-expanded', 'false');
-    $(self.SEARCH_WRAPPER).removeClass('hidden');
+    $(self.MENU_BUTTON)
+      .removeClass("expanded")
+      .attr("aria-expanded", "false");
+    $(self.MOBILE_NAV)
+      .removeClass("expanded")
+      .attr("aria-expanded", "false");
+    $(self.SEARCH_WRAPPER).removeClass("hidden");
+    $(self.HEADER).removeClass("expanded");
 
     self.moveFocusToMenuButton();
   };
@@ -52,25 +63,30 @@ dit.components.header = (new function() {
   };
 
   self.getMenuItem = function(tag, index) {
-    return $('[data-' + tag + '=' + index + ']');
+    return $("[data-" + tag + "=" + index + "]");
   };
 
   self.getSubMenuItem = function(container, tag, index) {
-    return container.find('[data-' + tag + '=' + index + ']').first();
+    return container.find("[data-" + tag + "=" + index + "]").first();
   };
 
   self.moveFocusToFirstMenuItem = function() {
     self.getMenuItem(self.MENU_ITEMS_TAG, 0).focus();
   };
-  
+
   self.moveFocusToSubMenu = function(target) {
     var mainMenuItemContainer = $(target).closest(self.MENU_ITEM_CONTAINER);
-    mainMenuItemContainer.find(self.dataAttributeSelector(self.SUB_MENU_ITEMS_TAG)).first().focus();
+    mainMenuItemContainer
+      .find(self.dataAttributeSelector(self.SUB_MENU_ITEMS_TAG))
+      .first()
+      .focus();
   };
 
   self.moveFocusToMainMenu = function(target) {
     var mainMenuItemContainer = $(target).closest(self.MENU_ITEM_CONTAINER);
-    var mainMenuItem = mainMenuItemContainer.find(self.dataAttributeSelector(self.MENU_ITEMS_TAG)).first();
+    var mainMenuItem = mainMenuItemContainer
+      .find(self.dataAttributeSelector(self.MENU_ITEMS_TAG))
+      .first();
     mainMenuItem.focus();
     return mainMenuItem;
   };
@@ -78,19 +94,21 @@ dit.components.header = (new function() {
   self.moveFocusToPreviousMenuItem = function(target) {
     var currentIndex = parseInt($(target).data(self.MENU_ITEMS_TAG));
     if (currentIndex === 0) {
-      self.closeMenu()
+      self.closeMenu();
     } else {
       self.getMenuItem(self.MENU_ITEMS_TAG, currentIndex - 1).focus();
     }
   };
-  
+
   self.moveFocusToPreviousSubMenuItem = function(target) {
     var currentIndex = parseInt($(target).data(self.SUB_MENU_ITEMS_TAG));
     if (currentIndex === 0) {
       self.moveFocusToMainMenu(target);
     } else {
       var subMenu = $(target).closest(self.SUB_MENU);
-      self.getSubMenuItem(subMenu, self.SUB_MENU_ITEMS_TAG, currentIndex - 1).focus();
+      self
+        .getSubMenuItem(subMenu, self.SUB_MENU_ITEMS_TAG, currentIndex - 1)
+        .focus();
     }
   };
 
@@ -101,14 +119,18 @@ dit.components.header = (new function() {
       nextItem.focus();
     } else {
       // at the end of the menu, loop back to the top
-     self.moveFocusToFirstMenuItem();
+      self.moveFocusToFirstMenuItem();
     }
   };
-  
+
   self.moveFocusToNextSubMenuItem = function(target) {
     var currentIndex = parseInt($(target).data(self.SUB_MENU_ITEMS_TAG));
     var subMenu = $(target).closest(self.SUB_MENU);
-    var nextItem = self.getSubMenuItem(subMenu, self.SUB_MENU_ITEMS_TAG, currentIndex + 1);
+    var nextItem = self.getSubMenuItem(
+      subMenu,
+      self.SUB_MENU_ITEMS_TAG,
+      currentIndex + 1
+    );
     if (nextItem.length) {
       nextItem.focus();
     } else {
@@ -119,15 +141,20 @@ dit.components.header = (new function() {
   };
 
   self.handleMenuButtonKeyDownEvents = function(event) {
-      if (event.key === "Escape" || event.key === "ArrowUp" || event.key === "Esc" || event.key === "Up") {
-        self.closeMenu();
-        event.preventDefault();
-      }
-      if (event.key === "ArrowDown" || event.key === "Down") {
-        self.openMenu();
-        self.moveFocusToFirstMenuItem();
-        event.preventDefault();
-      }
+    if (
+      event.key === "Escape" ||
+      event.key === "ArrowUp" ||
+      event.key === "Esc" ||
+      event.key === "Up"
+    ) {
+      self.closeMenu();
+      event.preventDefault();
+    }
+    if (event.key === "ArrowDown" || event.key === "Down") {
+      self.openMenu();
+      self.moveFocusToFirstMenuItem();
+      event.preventDefault();
+    }
   };
 
   self.handleMenuItemKeyDownEvents = function(event) {
@@ -148,7 +175,7 @@ dit.components.header = (new function() {
       event.preventDefault();
     }
   };
-  
+
   self.handleSubMenuItemKeyDownEvents = function(event) {
     if (event.key === "Escape" || event.key === "Esc") {
       self.closeMenu();
@@ -170,14 +197,18 @@ dit.components.header = (new function() {
 
   self.setupEventListeners = function() {
     $(self.MENU_BUTTON)
-        .on("click", self.toggleMenu)
-        .on("keydown", self.handleMenuButtonKeyDownEvents);
+      .on("click", self.toggleMenu)
+      .on("keydown", self.handleMenuButtonKeyDownEvents);
 
-    $(self.dataAttributeSelector(self.MENU_ITEMS_TAG))
-        .on("keydown", self.handleMenuItemKeyDownEvents);
+    $(self.dataAttributeSelector(self.MENU_ITEMS_TAG)).on(
+      "keydown",
+      self.handleMenuItemKeyDownEvents
+    );
 
-    $(self.dataAttributeSelector(self.SUB_MENU_ITEMS_TAG))
-        .on("keydown", self.handleSubMenuItemKeyDownEvents);
+    $(self.dataAttributeSelector(self.SUB_MENU_ITEMS_TAG)).on(
+      "keydown",
+      self.handleSubMenuItemKeyDownEvents
+    );
   };
 
   self.init = function() {
@@ -186,8 +217,8 @@ dit.components.header = (new function() {
     // menu should start closed
     self.closeMenu();
     self.showButton();
-  }
-});
+  };
+})();
 
 $(document).ready(function() {
   dit.components.header.init();
