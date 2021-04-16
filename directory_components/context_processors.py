@@ -60,7 +60,8 @@ def header_footer_processor(request):
         'home': urls.magna.HOME,
         'where_to_export': urls.magna.WHERE_TO_EXPORT,
         'learn_to_export': urls.magna.LEARN_TO_EXPORT,
-        'exportplan_dashboard': urls.magna.EXPORT_PLAN_DASHBOARD
+        'exportplan_dashboard': urls.magna.EXPORT_PLAN_DASHBOARD,
+        'magna_search': urls.magna.SEARCH
     }
 
     advice_urls = {
