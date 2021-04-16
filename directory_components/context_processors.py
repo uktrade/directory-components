@@ -61,7 +61,13 @@ def header_footer_processor(request):
         'where_to_export': urls.magna.WHERE_TO_EXPORT,
         'learn_to_export': urls.magna.LEARN_TO_EXPORT,
         'exportplan_dashboard': urls.magna.EXPORT_PLAN_DASHBOARD,
-        'magna_search': urls.magna.SEARCH
+        'magna_search': urls.magna.SEARCH,
+        'magna_privacy_and_cookies': urls.magna.PRIVACY_AND_COOKIES,
+        'magna_terms_and_conditions': urls.magna.TERMS_AND_CONDITIONS,
+        'magna_accessibility': urls.magna.ACCESSIBILITY,
+        'magna_cookie_preference_settings': urls.magna.COOKIE_PREFERENCE_SETTINGS,
+        'magna_contact_us': urls.magna.CONTACT_US,
+        'magna_performance': urls.magna.PERFORMANCE_DASHBOARD,
     }
 
     advice_urls = {

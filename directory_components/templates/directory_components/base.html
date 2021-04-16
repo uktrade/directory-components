@@ -104,9 +104,9 @@
 
         {% block body_header %}
             {% if magna_header %}
-            {% include 'directory_components/header_footer/magna_header.html' %}
+                {% include 'directory_components/header_footer/magna_header.html' %}
             {% else %}
-            {% include 'directory_components/header_footer/domestic_header.html' %}
+                {% include 'directory_components/header_footer/domestic_header.html' %}
             {% endif %}
         {% endblock %}
 
@@ -121,7 +121,12 @@
         {% endblock %}
 
         {% block body_footer %}
-            {% include 'directory_components/header_footer/domestic_footer.html' %}
+            {% if magna_header %}
+                {% include 'directory_components/header_footer/magna_footer.html' %}
+            {% else %}
+                {% include 'directory_components/header_footer/domestic_footer.html' %}
+            {% endif %}
+            
         {% endblock %}
 
         {% block body_js %}
