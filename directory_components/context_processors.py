@@ -56,6 +56,13 @@ def cookie_notice(request):
 def header_footer_processor(request):
     magna_header = settings.MAGNA_HEADER or False
 
+    magna_urls = {
+        'home': urls.magna.HOME,
+        'where_to_export': urls.magna.WHERE_TO_EXPORT,
+        'learn_to_export': urls.magna.LEARN_TO_EXPORT,
+        'exportplan_dashboard': urls.magna.EXPORT_PLAN_DASHBOARD
+    }
+
     advice_urls = {
         'create_an_export_plan': urls.domestic.ADVICE_CREATE_AN_EXPORT_PLAN,
         'find_an_export_market': urls.domestic.ADVICE_FIND_AN_EXPORT_MARKET,
@@ -87,7 +94,7 @@ def header_footer_processor(request):
         'industries': urls.international.ABOUT_UK_INDUSTRIES,
         'market_access': urls.domestic.HOME / 'report-trade-barrier'
     }
-    header_footer_urls = {**header_footer_urls, **advice_urls}
+    header_footer_urls = {**header_footer_urls, **advice_urls, **magna_urls}
     return {'magna_header': magna_header, 'header_footer_urls': header_footer_urls}
 
 
