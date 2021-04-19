@@ -1,5 +1,10 @@
 # Changelog
 
+## 36.0.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/350)
+### feature
+- GP2-2256- Added logic to load magna header based on feature flag
+
 ## 35.27.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/349)
 ### Bugs fixed
