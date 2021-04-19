@@ -57,10 +57,10 @@ def header_footer_processor(request):
     magna_header = settings.MAGNA_HEADER or False
 
     magna_urls = {
-        'home': urls.magna.HOME,
-        'where_to_export': urls.magna.WHERE_TO_EXPORT,
-        'learn_to_export': urls.magna.LEARN_TO_EXPORT,
-        'exportplan_dashboard': urls.magna.EXPORT_PLAN_DASHBOARD,
+        'magna_home': urls.magna.HOME,
+        'magna_where_to_export': urls.magna.WHERE_TO_EXPORT,
+        'magna_learn_to_export': urls.magna.LEARN_TO_EXPORT,
+        'magna_exportplan_dashboard': urls.magna.EXPORT_PLAN_DASHBOARD,
         'magna_search': urls.magna.SEARCH,
         'magna_privacy_and_cookies': urls.magna.PRIVACY_AND_COOKIES,
         'magna_terms_and_conditions': urls.magna.TERMS_AND_CONDITIONS,
@@ -68,6 +68,9 @@ def header_footer_processor(request):
         'magna_cookie_preference_settings': urls.magna.COOKIE_PREFERENCE_SETTINGS,
         'magna_contact_us': urls.magna.CONTACT_US,
         'magna_performance': urls.magna.PERFORMANCE_DASHBOARD,
+        'magna_advice': urls.magna.ADVICE,
+        'magna_markets': urls.magna.MARKETS,
+        'magna_services': urls.magna.SERVICES,
     }
 
     advice_urls = {

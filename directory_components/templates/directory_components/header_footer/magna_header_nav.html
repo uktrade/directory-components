@@ -8,46 +8,46 @@
     <ul class="grid-row nav-list">
       {% if sso_is_logged_in %}
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.home }}" class="link-heading mobile-only" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Home</a>
+        <a href="{{ header_footer_urls.magna_home }}" class="link-heading mobile-only" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Home</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.learn_to_export }}" class="link-heading new" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Learn to export</a>
+        <a href="{{ header_footer_urls.magna_learn_to_export }}" class="link-heading new" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Learn to export</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.where_to_export }}" class="link-heading new" id="header-where-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Where to export</a>
+        <a href="{{ header_footer_urls.magna_where_to_export }}" class="link-heading new" id="header-where-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Where to export</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.exportplan_dashboard }}" class="link-heading new" id="header-make-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Make an export plan</a>
+        <a href="{{ header_footer_urls.magna_exportplan_dashboard }}" class="link-heading new" id="header-make-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Make an export plan</a>
       </li>
 
       {% if device_type == 'mobile' %}
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
+        <a href="{{ header_footer_urls.magna_advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Markets</a>
+        <a href="{{ header_footer_urls.magna_markets }}" class="link-heading" id="header-markets-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Markets</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Services</a>
+        <a href="{{ header_footer_urls.magna_services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Services</a>
       </li>
       {% endif %}
       
       {% else %}
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
+        <a href="{{ header_footer_urls.magna_advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.markets }}" class="link-heading" id="header-markets-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Markets</a>
+        <a href="{{ header_footer_urls.magna_markets }}" class="link-heading" id="header-markets-{{ device_type }}" {% if js_tag %}data-js-menu-index=1{% endif %}>Markets</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Services</a>
+        <a href="{{ header_footer_urls.magna_services }}" class="link-heading" id="header-services-{{ device_type }}" {% if js_tag %}data-js-menu-index=2{% endif %}>Services</a>
       </li>
       {% endif %}
 

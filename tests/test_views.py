@@ -3,7 +3,8 @@ import pytest
 from django.urls import reverse
 
 
-def test_robots(client):
+def test_robots(client, settings):
+    settings.MAGNA_HEADER = False
     url = reverse('robots')
 
     response = client.get(url)
@@ -12,7 +13,8 @@ def test_robots(client):
     assert response.template_name == ['robots.txt']
 
 
-def test_handler404(client):
+def test_handler404(client, settings):
+    settings.MAGNA_HEADER = False
     url = reverse('404')
 
     response = client.get(url)
