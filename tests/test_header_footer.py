@@ -1,4 +1,3 @@
-import pdb
 from bs4 import BeautifulSoup
 from directory_constants import urls
 import pytest
@@ -278,6 +277,7 @@ def test_international_footer_ids_match_urls_and_text(
     assert element.attrs['href'] == url
     if title:
         assert element.string == title
+
 
 @pytest.mark.parametrize('title,element_id,url', (
     (
