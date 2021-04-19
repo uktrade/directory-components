@@ -1,8 +1,10 @@
+import pdb
 from bs4 import BeautifulSoup
 from directory_constants import urls
 import pytest
 
 from django.template.loader import render_to_string
+from django.test import override_settings
 
 from directory_components import context_processors
 
@@ -56,7 +58,7 @@ def test_header_logged_out(template_name):
     assert context['sso_logout_url'] not in html
 
 
-def test_header_domestic_news_section_off(settings):
+def test_header_domestic_news_section_off():
     context = {
         'features': {'NEWS_SECTION_ON': False},
         **context_processors.header_footer_processor(None),
@@ -269,6 +271,42 @@ def test_international_footer_ids_match_urls_and_text(
     html = render_to_string(
         'directory_components/header_footer/international_footer.html',
         context
+    )
+    soup = BeautifulSoup(html, 'html.parser')
+
+    element = soup.find(id=element_id)
+    assert element.attrs['href'] == url
+    if title:
+        assert element.string == title
+
+@pytest.mark.parametrize('title,element_id,url', (
+    (
+        'Advice',
+        'header-advice-desktop',
+        urls.magna.ADVICE,
+    ),
+    (
+        'Markets',
+        'header-markets-desktop',
+        urls.magna.MARKETS,
+    ),
+    (
+        'Services',
+        'header-services-desktop',
+        urls.magna.SERVICES,
+    ),
+))
+@override_settings(MAGNA_URL=True)
+def test_magna_header_ids_match_urls_and_text(
+    title, element_id, url, settings
+):
+    context = {
+        **context_processors.header_footer_processor(None),
+        **context_processors.urls_processor(None),
+    }
+
+    html = render_to_string(
+        'directory_components/header_footer/magna_header.html', context
     )
     soup = BeautifulSoup(html, 'html.parser')
 

@@ -153,37 +153,50 @@ def test_ga360_context_processor_no_data(request_logged_out):
 
 
 def test_header_footer_processor(settings):
-
+    
     context = context_processors.header_footer_processor(None)
-
     assert context['header_footer_urls'] == {
-        'create_an_export_plan': 'https://exred.com/advice/create-an-export-plan/',
-        'find_an_export_market': 'https://exred.com/advice/find-an-export-market/',
-        'define_route_to_market': 'https://exred.com/advice/define-route-to-market/',
-        'get_export_finance_and_funding': 'https://exred.com/advice/get-export-finance-and-funding/',
-        'manage_payment_for_export_orders': 'https://exred.com/advice/manage-payment-for-export-orders/',
-        'prepare_to_do_business_in_a_foreign_country': 'https://exred.com/advice/prepare-to-do-business-in-a-foreign-country/',  # noqa
-        'manage_legal_and_ethical_compliance': 'https://exred.com/advice/manage-legal-and-ethical-compliance/',
-        'prepare_for_export_procedures_and_logistics': 'https://exred.com/advice/prepare-for-export-procedures-and-logistics/',  # noqa
         'about': 'https://exred.com/about/',
-        'dit': urls.domestic.DIT,
+        'dit': 'https://www.gov.uk/government/organisations/department-for-international-trade',
+        'get_finance': 'https://exred.com/get-finance/', 
+        'ukef': 'https://exred.com/get-finance/', 
+        'performance': 'https://exred.com/performance-dashboard/', 
+        'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/', 
+        'terms_and_conditions': 'https://exred.com/terms-and-conditions/', 
+        'accessibility': 'https://exred.com/accessibility-statement/',
+        'cookie_preference_settings': 'https://exred.com/cookies/',
+        'fas': 'https://international.com/international/trade/',
         'advice': 'https://exred.com/advice/',
         'markets': 'https://exred.com/markets/',
         'search': 'https://exred.com/search/',
-        'services': 'https://exred.com/services/',
-        'domestic_news': 'https://exred.com/news/',
-        'fas': 'https://international.com/international/trade/',
-        'how_to_do_business_with_the_uk': 'https://international.com/international/content/how-to-do-business-with-the-uk/',  # noqa
-        'industries': 'https://international.com/international/content/industries/',
+        'services': 'https://exred.com/services/', 
+        'domestic_news': 'https://exred.com/news/', 
         'international_news': 'https://international.com/international/content/news/',
-        'get_finance': 'https://exred.com/get-finance/',
-        'ukef': 'https://exred.com/get-finance/',
-        'performance': 'https://exred.com/performance-dashboard/',
-        'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
-        'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
-        'accessibility': 'https://exred.com/accessibility-statement/',
-        'cookie_preference_settings': 'https://exred.com/cookies/',
-        'market_access': 'https://exred.com/report-trade-barrier/'
+        'how_to_do_business_with_the_uk': 'https://international.com/international/content/how-to-do-business-with-the-uk/', 
+        'industries': 'https://international.com/international/content/industries/',
+        'market_access': 'https://exred.com/report-trade-barrier/',
+        'create_an_export_plan': 'https://exred.com/advice/create-an-export-plan/', 
+        'find_an_export_market': 'https://exred.com/advice/find-an-export-market/',
+        'define_route_to_market': 'https://exred.com/advice/define-route-to-market/', 
+        'get_export_finance_and_funding': 'https://exred.com/advice/get-export-finance-and-funding/',
+        'manage_payment_for_export_orders': 'https://exred.com/advice/manage-payment-for-export-orders/',
+        'prepare_to_do_business_in_a_foreign_country': 'https://exred.com/advice/prepare-to-do-business-in-a-foreign-country/', 
+        'manage_legal_and_ethical_compliance': 'https://exred.com/advice/manage-legal-and-ethical-compliance/',
+        'prepare_for_export_procedures_and_logistics': 'https://exred.com/advice/prepare-for-export-procedures-and-logistics/', 
+        'magna_home': 'https://greatcms.com', 
+        'magna_where_to_export': 'https://greatcms.com/where-to-export/', 
+        'magna_learn_to_export': 'https://greatcms.com/learn/categories/', 
+        'magna_exportplan_dashboard': 'https://greatcms.com/export-plan/dashboard/',
+        'magna_search': 'https://greatcms.com/search/', 
+        'magna_privacy_and_cookies': 'https://greatcms.com/privacy-and-cookies/', 
+        'magna_terms_and_conditions': 'https://greatcms.com/terms-and-conditions/', 
+        'magna_accessibility': 'https://greatcms.com/accessibility-statement/', 
+        'magna_cookie_preference_settings': 'https://greatcms.com/cookies/', 
+        'magna_contact_us': 'https://greatcms.com/contact-us/', 
+        'magna_performance': 'https://greatcms.com/performance-dashboard/',
+        'magna_advice': 'https://greatcms.com/advice/', 
+        'magna_markets': 'https://greatcms.com/markets/', 
+        'magna_services': 'https://greatcms.com/services/'
     }
 
 
