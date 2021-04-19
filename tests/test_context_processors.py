@@ -2,7 +2,6 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from directory_constants import urls
 from directory_components import context_processors
 
 
@@ -153,16 +152,16 @@ def test_ga360_context_processor_no_data(request_logged_out):
 
 
 def test_header_footer_processor(settings):
-    
+
     context = context_processors.header_footer_processor(None)
     assert context['header_footer_urls'] == {
         'about': 'https://exred.com/about/',
         'dit': 'https://www.gov.uk/government/organisations/department-for-international-trade',
-        'get_finance': 'https://exred.com/get-finance/', 
-        'ukef': 'https://exred.com/get-finance/', 
-        'performance': 'https://exred.com/performance-dashboard/', 
-        'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/', 
-        'terms_and_conditions': 'https://exred.com/terms-and-conditions/', 
+        'get_finance': 'https://exred.com/get-finance/',
+        'ukef': 'https://exred.com/get-finance/',
+        'performance': 'https://exred.com/performance-dashboard/',
+        'privacy_and_cookies': 'https://exred.com/privacy-and-cookies/',
+        'terms_and_conditions': 'https://exred.com/terms-and-conditions/',
         'accessibility': 'https://exred.com/accessibility-statement/',
         'cookie_preference_settings': 'https://exred.com/cookies/',
         'fas': 'https://international.com/international/trade/',
