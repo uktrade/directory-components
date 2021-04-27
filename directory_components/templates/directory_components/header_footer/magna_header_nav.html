@@ -1,14 +1,14 @@
 {% load i18n %}
 
 <div class="main-nav-container {{ device_type }}">
-  {% if sso_is_logged_in and device_type == 'mobile' %}
-  <div class="user-greeting">Hi</div>
+  {% if sso_is_logged_in and request.user.first_name and device_type == 'mobile' %}
+  <div class="user-greeting">Hi {{ request.user.first_name }}</div>
   {% endif %}
   <nav id="{{ id }}" class="main-nav {{ device_type }} expanded {% if sso_is_logged_in %}signed-in{% endif %}" aria-label="{% trans 'Main menu' %}">
     <ul class="grid-row nav-list">
       {% if sso_is_logged_in %}
       <li class="menu-item" data-js-menu-item-container>
-        <a href="{{ header_footer_urls.magna_home }}" class="link-heading mobile-only" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Home</a>
+        <a href="{{ header_footer_urls.magna_home }}" class="link-heading {% if device_type != 'mobile' %}mobile-only{% endif %}" id="header-learn-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Home</a>
       </li>
 
       <li class="menu-item" data-js-menu-item-container>
@@ -24,6 +24,9 @@
       </li>
 
       {% if device_type == 'mobile' %}
+      <li class="menu-item" data-js-menu-item-container>
+        <a href="{{ header_footer_urls.magna_account }}" class="link-heading" id="header-home-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Account</a>
+      </li>
       <li class="menu-item" data-js-menu-item-container>
         <a href="{{ header_footer_urls.magna_advice }}" class="link-heading" id="header-advice-{{ device_type }}" {% if js_tag %}data-js-menu-index=0{% endif %}>Advice</a>
       </li>
