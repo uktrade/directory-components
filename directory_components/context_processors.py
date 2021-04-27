@@ -68,9 +68,11 @@ def header_footer_processor(request):
         'magna_cookie_preference_settings': urls.magna.COOKIE_PREFERENCE_SETTINGS,
         'magna_contact_us': urls.magna.CONTACT_US,
         'magna_performance': urls.magna.PERFORMANCE_DASHBOARD,
+        'magna_account': urls.magna.ACCOUNT,
         'magna_advice': urls.magna.ADVICE,
         'magna_markets': urls.magna.MARKETS,
         'magna_services': urls.magna.SERVICES,
+        'magna_international': urls.magna.INTERNATIONAL,
     }
 
     advice_urls = {

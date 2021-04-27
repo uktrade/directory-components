@@ -1,5 +1,11 @@
 # Changelog
 
+## 36.1.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/354)
+### feature
+- GP2-2332- Minor tweak for Magna URLS 
+
+
 ## 36.0.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/350)
 ### feature
