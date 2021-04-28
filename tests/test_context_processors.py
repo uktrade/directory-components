@@ -191,7 +191,7 @@ def test_header_footer_processor(settings):
         'magna_terms_and_conditions': 'https://greatcms.com/terms-and-conditions/',
         'magna_accessibility': 'https://greatcms.com/accessibility-statement/',
         'magna_cookie_preference_settings': 'https://greatcms.com/cookies/',
-        'magna_contact_us': 'https://greatcms.com/contact-us/',
+        'magna_contact_us': 'https://greatcms.com/contact/',
         'magna_performance': 'https://greatcms.com/performance-dashboard/',
         'magna_account': 'https://greatcms.com/profile/',
         'magna_advice': 'https://greatcms.com/advice/',

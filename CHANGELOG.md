@@ -1,5 +1,12 @@
 # Changelog
 
+
+## 36.2.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/354)
+### feature
+- GP2-2358- Upgraded directory-constants package 
+
+
 ## 36.1.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/354)
 ### feature
