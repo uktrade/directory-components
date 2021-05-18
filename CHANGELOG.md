@@ -1,5 +1,9 @@
 # Changelog
 
+## 36.3.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/356)
+### feature
+- GP2-2380 - Sign out via JS through Magna
 
 ## 36.2.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/354)

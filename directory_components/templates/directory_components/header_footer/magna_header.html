@@ -26,4 +26,26 @@
     {% include 'directory_components/header_footer/magna_header_nav.html' with id='great-header-mobile-nav' device_type='mobile' js_tag=True %}
 
   </div>
+
+  <script>
+    var sign_out_endpoint = '{{ header_footer_urls.magna_home }}api/business-logout/'
+    var signOutButton = document.getElementById('sign_out_button_mobile');
+
+    if (signOutButton) {
+      signOutButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        fetch(sign_out_endpoint, {
+          method: 'post',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+          body: JSON.stringify({})
+        }).then(function() {
+          window.location = '{{ header_footer_urls.magna_home }}';
+        });
+      });
+    }
+  </script>
 </header>
