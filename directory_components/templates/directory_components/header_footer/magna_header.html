@@ -39,12 +39,11 @@
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}',
             'X-Requested-With': 'XMLHttpRequest',
           },
           body: JSON.stringify({})
         }).then(function() {
-          window.location = '/';
+          window.location = '{{ header_footer_urls.magna_home }}';
         });
       });
     }
