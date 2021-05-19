@@ -1,5 +1,10 @@
 # Changelog
 
+## 36.3.1
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/357)
+### feature
+- No ticket - Revert to previous logout link
+
 ## 36.3.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/356)
 ### feature
