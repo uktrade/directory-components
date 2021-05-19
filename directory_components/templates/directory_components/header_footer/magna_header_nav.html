@@ -4,7 +4,7 @@
   {% if sso_is_logged_in and request.user.first_name and device_type == 'mobile' %}
   <div class="user-greeting">Hi {{ request.user.first_name }}</div>
   {% endif %}
-  <nav id="{{ id }}" class="main-nav {{ device_type }} expanded {% if sso_is_logged_in %}signed-in{% endif %}" aria-label="{% trans 'Main menu' %}">
+  <nav id="{{ id }}" class="main-nav {{ device_type }} {% if sso_is_logged_in %}signed-in{% endif %}" aria-label="{% trans 'Main menu' %}">
     <ul class="grid-row nav-list">
       {% if sso_is_logged_in %}
       <li class="menu-item" data-js-menu-item-container>
