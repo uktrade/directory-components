@@ -284,6 +284,16 @@ details.great-accordion[open] summary:before {
     float: left; }
   .great-footer-logo-container img:last-child {
     float: right; }
+  .great-footer-logo-container img:nth-child(2) {
+    margin-right: -52px;
+    position: relative;
+    bottom: -3px; }
+    @media (max-width: 410px) {
+      .great-footer-logo-container img:nth-child(2) {
+        bottom: -17px; } }
+    @media (max-width: 640px) {
+      .great-footer-logo-container img:nth-child(2) {
+        margin-right: -46px; } }
 
 .great-footer {
   font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
@@ -989,6 +999,11 @@ body.js-enabled .great-header-country-select {
       height: 60px;
       margin: 25px 0; } }
 
+.great-header-logo--international {
+  height: 100px;
+  margin-top: 0;
+  margin-left: -57px; }
+
 .js-mobile-button {
   display: none; }
   @media (max-width: 768px) {
@@ -1274,6 +1289,11 @@ body.js-enabled .great-header-country-select {
     .great-header-logo {
       height: 60px;
       margin: 25px 0; } }
+
+.great-header-logo--international {
+  height: 100px;
+  margin-top: 0;
+  margin-left: -57px; }
 
 .js-mobile-button {
   display: none; }

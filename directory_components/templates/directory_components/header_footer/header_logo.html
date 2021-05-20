@@ -1,7 +1,7 @@
 {% load ga360_data from directory_components %}
 
 {% ga360_data "a" value="logo" %}
-  <a id="great-header-logo" class="great-header-logo" href="{{ url }}">
+  <a id="great-header-logo" class="great-header-logo {% if isInternational %}great-header-logo--international{% endif %}" href="{{ url }}">
     {% block header_logo %}
       <img src="{{ image_source }}" alt="{{ image_alt_text }}">
     {% endblock %}
