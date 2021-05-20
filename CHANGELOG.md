@@ -1,5 +1,10 @@
 # Changelog
 
+## 37.1.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/359)
+### feature
+- No ticket - Fixes international mobile menu issue
+
 ## 37.0.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/358)
 ### feature
