@@ -1,6 +1,6 @@
 # Changelog
 
-## 36.4.0
+## 37.0.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/358)
 ### feature
 - GP2-2754 - Remove great branding from header
