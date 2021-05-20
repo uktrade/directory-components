@@ -1,5 +1,12 @@
 # Changelog
 
+## 37.0.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/358)
+### feature
+- GP2-2754 - Remove great branding from header
+- GP2-2755 - Remove great branding from footer
+- GP2-2711 - Update international logo
+
 ## 36.3.1
   [Full Changelog](https://github.com/uktrade/directory-components/pull/357)
 ### feature

@@ -17,6 +17,20 @@
   img:last-child {
     float: right;
   }
+
+  img:nth-child(2) {
+    margin-right: -52px;
+    position: relative;
+    bottom: -3px;
+
+    @media (max-width: 410px) {
+      bottom: -17px;
+    }
+
+    @media (max-width: 640px) {
+      margin-right: -46px;
+    }
+  }
 }
 
 .great-footer {

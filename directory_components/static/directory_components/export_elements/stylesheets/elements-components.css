@@ -284,6 +284,16 @@ details.great-accordion[open] summary:before {
     float: left; }
   .great-footer-logo-container img:last-child {
     float: right; }
+  .great-footer-logo-container img:nth-child(2) {
+    margin-right: -52px;
+    position: relative;
+    bottom: -3px; }
+    @media (max-width: 410px) {
+      .great-footer-logo-container img:nth-child(2) {
+        bottom: -17px; } }
+    @media (max-width: 640px) {
+      .great-footer-logo-container img:nth-child(2) {
+        margin-right: -46px; } }
 
 .great-footer {
   font-family: "Overpass", "Roboto", arial, helvetica, verdana; }
@@ -735,7 +745,7 @@ body.js-enabled .great-header-country-select {
         line-height: 1; } }
 
 .magna-header.great-header.expanded:before {
-  content: "";
+  content: '';
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -769,6 +779,13 @@ body.js-enabled .great-header-country-select {
   z-index: 1;
   position: relative; }
 
+@media (min-width: 768px) and (max-width: 1115px) {
+  .magna-header.great-header .main-nav-container.desktop {
+    margin-left: 5px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end; } }
+
 .magna-header.great-header .main-nav.mobile.expanded {
   background: #4b426d;
   padding: 0 20px 0;
@@ -801,8 +818,8 @@ body.js-enabled .great-header-country-select {
     .magna-header.great-header .main-nav.mobile .nav-list li button.new:after {
       background: #eb4f4d;
       border-radius: 4px;
-      content: "new";
-      font-family: 'FS Lucas',Arial,Helvetica,Verdana;
+      content: 'new';
+      font-family: 'FS Lucas', Arial, Helvetica, Verdana;
       font-size: 16px;
       padding: 5px 12px;
       font-weight: 700;
@@ -811,6 +828,28 @@ body.js-enabled .great-header-country-select {
       top: 13px;
       right: 0;
       display: inline-block; }
+
+@media (min-width: 768px) and (max-width: 912px) {
+  .magna-header.great-header .great-header-search-container {
+    margin-right: 0; }
+  .magna-header.great-header .link-heading {
+    padding: 15px 10px; } }
+
+@media (min-width: 768px) and (max-width: 1115px) {
+  .magna-header .main-nav-container.desktop.signed-in {
+    margin-left: 5px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end; } }
+
+@media (min-width: 1025px) and (max-width: 1150px) {
+  .magna-header {
+    height: 180px; }
+    .magna-header nav {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; } }
 
 .magna-header .js-mobile-button {
   display: none;
@@ -845,7 +884,7 @@ body.js-enabled .great-header-country-select {
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     clear: right;
-    content: "";
+    content: '';
     float: right;
     height: 2px;
     margin: 0 0 10px 10px;
@@ -861,7 +900,7 @@ body.js-enabled .great-header-country-select {
       -webkit-transition: all 0.2s ease;
       transition: all 0.2s ease;
       clear: right;
-      content: "";
+      content: '';
       float: right;
       height: 2px;
       margin: 0 0 10px 10px;
@@ -872,7 +911,7 @@ body.js-enabled .great-header-country-select {
       -webkit-transition: all 0.2s ease;
       transition: all 0.2s ease;
       clear: right;
-      content: "";
+      content: '';
       float: right;
       height: 2px;
       margin: 0 0 10px 10px;
@@ -896,7 +935,7 @@ body.js-enabled .great-header-country-select {
         -webkit-transform: rotate(-45deg);
         transform: rotate(-45deg);
         margin-top: -12px; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .magna-header .js-mobile-button {
       height: 40px;
       padding-top: 5px;
@@ -904,7 +943,7 @@ body.js-enabled .great-header-country-select {
       top: 60px; }
       .magna-header .js-mobile-button .burger-icon {
         top: 18px; } }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .magna-header .js-mobile-button.mobile-only {
       display: none; } }
 
@@ -912,11 +951,11 @@ body.js-enabled .great-header-country-select {
   background: #006ccc;
   color: #fff;
   display: none;
-  font-family: Overpass,Arial,Helvetica,Verdana;
+  font-family: Overpass, Arial, Helvetica, Verdana;
   font-size: 20px;
   padding: 15px 20px; }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .magna-header.signed-in .great-header-search-wrapper form {
     margin-right: 118px; } }
 
@@ -959,6 +998,11 @@ body.js-enabled .great-header-country-select {
     .great-header-logo {
       height: 60px;
       margin: 25px 0; } }
+
+.great-header-logo--international {
+  height: 100px;
+  margin-top: 0;
+  margin-left: -57px; }
 
 .js-mobile-button {
   display: none; }
@@ -1245,6 +1289,11 @@ body.js-enabled .great-header-country-select {
     .great-header-logo {
       height: 60px;
       margin: 25px 0; } }
+
+.great-header-logo--international {
+  height: 100px;
+  margin-top: 0;
+  margin-left: -57px; }
 
 .js-mobile-button {
   display: none; }
