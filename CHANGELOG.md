@@ -4,6 +4,7 @@
   [Full Changelog](https://github.com/uktrade/directory-components/pull/359)
 ### feature
 - No ticket - Fixes international mobile menu issue
+- No ticket - Remove dit logo from domestic footers
 
 ## 37.0.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/358)
