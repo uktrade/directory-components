@@ -925,7 +925,7 @@ body.js-enabled .great-header-country-select {
         -webkit-transform: rotate(-45deg);
         transform: rotate(-45deg);
         margin-top: -12px; }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .magna-header .js-mobile-button {
       height: 40px;
       padding-top: 5px;
@@ -933,7 +933,7 @@ body.js-enabled .great-header-country-select {
       top: 60px; }
       .magna-header .js-mobile-button .burger-icon {
         top: 18px; } }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .magna-header .js-mobile-button.mobile-only {
       display: none; } }
 
@@ -945,7 +945,7 @@ body.js-enabled .great-header-country-select {
   font-size: 20px;
   padding: 15px 20px; }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .magna-header.signed-in .great-header-search-wrapper form {
     margin-right: 118px; } }
 

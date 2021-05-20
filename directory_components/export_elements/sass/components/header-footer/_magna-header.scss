@@ -224,7 +224,7 @@
 			}
 		}
 
-		@media (min-width: 768px) {
+		@media (min-width: 769px) {
 			height: 40px;
 			padding-top: 5px;
 			padding-bottom: 5px;
@@ -237,7 +237,7 @@
 
 		&.mobile-only {
 
-			@media (min-width: 768px) {
+			@media (min-width: 769px) {
 				display: none;
 			}
 		}
@@ -254,7 +254,7 @@
     
     &.signed-in {
         .great-header-search-wrapper form {
-            @media (min-width: 768px) {
+            @media (min-width: 769px) {
                 margin-right: 118px;
             }
         }
