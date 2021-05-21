@@ -83,8 +83,10 @@ dit.components.header = new (function() {
 
     self.moveFocusToMenuButton();
 
-    document.querySelector(".magna-header .main-nav-container.mobile").style =
-      "";
+    if (document.querySelector(".magna-header .main-nav-container.mobile")) {
+      document.querySelector(".magna-header .main-nav-container.mobile").style =
+        "";
+    }
   };
 
   self.moveFocusToMenuButton = function() {
