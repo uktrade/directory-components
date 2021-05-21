@@ -1,5 +1,11 @@
 # Changelog
 
+## 37.2.0
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/360)
+### feature
+- GP2-2711 - Updates invest header logo
+- GP2-2784 - Fixes header and footer domestic issues
+
 ## 37.1.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/359)
 ### feature

@@ -3,6 +3,6 @@
 {% load i18n %}
 
 {% block header_logo %}
-  {% static 'directory_components/images/invest.svg' as logo_image_url %}
-  {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.great_international image_source=logo_image_url image_alt_text='Great Britain and Northern Ireland' %}
+  {% static 'directory_components/images/great.png' as logo_image_url %}
+  {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.great_international image_source=logo_image_url image_alt_text='Great Britain and Northern Ireland' isInternational=True %}
 {% endblock %}
