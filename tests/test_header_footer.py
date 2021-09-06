@@ -99,7 +99,7 @@ def test_urls_exist_in_domestic_header(url, settings):
 
 @pytest.mark.parametrize('url', [
     urls.international.HOME,
-    urls.domestic.CONTACT_US,
+    urls.international.CONTACT_US,
     urls.domestic.PRIVACY_AND_COOKIES,
     urls.domestic.TERMS_AND_CONDITIONS,
     urls.domestic.ACCESSIBILITY,
@@ -119,7 +119,7 @@ def test_urls_exist_in_domestic_footer(url, settings):
 
 @pytest.mark.parametrize('url', [
     urls.domestic.HOME,
-    urls.domestic.CONTACT_US,
+    urls.international.CONTACT_US,
     urls.domestic.PRIVACY_AND_COOKIES,
     urls.domestic.TERMS_AND_CONDITIONS,
     urls.domestic.ACCESSIBILITY,
@@ -180,7 +180,7 @@ def test_domestic_header_ids_match_urls_and_text(
     (
         'Contact us',
         'footer-contact',
-        urls.domestic.CONTACT_US,
+        urls.international.CONTACT_US,
     ),
     (
         'Privacy and cookies',
@@ -231,7 +231,7 @@ def test_domestic_footer_ids_match_urls_and_text(
     (
         'Contact us',
         'footer-contact',
-        urls.domestic.CONTACT_US,
+        urls.international.CONTACT_US,
     ),
     (
         'Privacy and cookies',
