@@ -1,5 +1,11 @@
 # Changelog
 
+## 37.2.1
+  [Full Changelog](https://github.com/uktrade/directory-components/pull/361)
+### feature
+- GP2-3281 - Update contact us URL for international use
+
+
 ## 37.2.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/360)
 ### feature
