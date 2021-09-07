@@ -108,7 +108,7 @@ def test_404_links(settings):
     html = render_to_string('404.html', context)
 
     assert urls.domestic.HOME in html
-    assert urls.international.CONTACT_US in html
+    assert urls.domestic.CONTACT_US in html
 
 
 def test_404_content(settings):
