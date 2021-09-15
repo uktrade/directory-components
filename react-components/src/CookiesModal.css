@@ -10,59 +10,57 @@
   text-align: left;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   font-size: 19px;
   margin-bottom: 0;
-  height: 52px;
-  padding: 0;
-  line-height: 52px;
+  margin-top: 1em;
+  min-height: 52px;
+  padding: 10px;
+  line-height: normal;
   font-weight: normal;
 }
 
-:global .ReactModal__Overlay {
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5)!important;
-}
-  
-:global .ReactModal__Content {
-  background: #ffffff;
-  inset: 50%!important;
-  left: 50%!important;
-  top: 50%!important;
-  margin-right: -50%;
-  max-width: 616px;
-  padding: 30px!important;
-  transform: translate(-50%, -50%);
-  width: 350px;
-  bottom: auto;
-  right: auto;
-  top: 50%;
-  min-height: 500px;
-}
-
-.buttonSeperator {
-  display: inline-block;
-  width: 20px;
-}
-
-@media (min-width: 376px) {
-  :global .ReactModal__Content {
-    padding-top: 54px!important;
-    padding-left: 52px!important;
-    padding-right: 52px!important;
-    width: auto;
-    min-height: 375px;
-  }
-
+@media (min-width: 640px) {
   .buttonContainer {
-    display: flex;
+    flex-direction: row;
   }
-  .synopsis {
-    margin-top: 25px;
-    margin-bottom: 45px;
-  }
+
   .button {
-    width: 50%;
+    flex: 1;
   }
+
+  .button:not(:last-child) {
+    margin-right: 1em;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
+  outline: none;
 }

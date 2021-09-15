@@ -39,20 +39,21 @@ export function CookiesModal(props) {
     <Modal
       isOpen={isOpen}
       contentLabel="Cookies consent manager"
+      className={styles.modal}
+      overlayClassName={styles.overlay}
     >
-      <h2 className={`${styles.heading} heading-medium`}>Tell us whether you accept cookies</h2>
-      <p className={`${styles.synopsis} body-text`} >
-        We use <a
-          className="link"
-          href={props.privacyCookiesUrl}
-          ref={(_firstLink) => (firstLink = _firstLink)}
-        >cookies to collect information</a> about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.
-      </p>
-      <div className={styles.buttonContainer}>
-        <a className={`${styles.button} button`} href="#" onClick={hanleAcceptAllCookies}>Accept all cookies</a>
-        <span className={styles.buttonSeperator}></span>
-        <a className={`${styles.button} button`} href={props.preferencesUrl + window.location.search}>Set cookie preferences</a>
-      </div>
+        <h2 className={`${styles.heading} heading-medium`}>Tell us whether you accept cookies</h2>
+        <p className={`${styles.synopsis} body-text`} >
+          We use <a
+            className="link"
+            href={props.privacyCookiesUrl}
+            ref={(_firstLink) => (firstLink = _firstLink)}
+          >cookies to collect information</a> about how you use great.gov.uk. We use this information to make the website work as well as possible and improve government services.
+        </p>
+        <div className={styles.buttonContainer}>
+          <a className={`${styles.button} button`} href="#" onClick={hanleAcceptAllCookies}>Accept all cookies</a>
+          <a className={`${styles.button} button`} href={props.preferencesUrl + window.location.search}>Set cookie preferences</a>
+        </div>
     </Modal>
   )
 }

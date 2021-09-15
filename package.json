@@ -11,7 +11,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest react-components/tests/",
-    "build": "webpack --config react-components/webpack.config.js --mode production "
+    "build": "webpack --config react-components/webpack.config.js --mode production",
+    "build:dev": "webpack --watch --config react-components/webpack.config.js --mode production"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
