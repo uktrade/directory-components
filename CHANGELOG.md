@@ -1,5 +1,10 @@
 # Changelog
 
+## 37.2.2
+[Full Changelog](https://github.com/uktrade/directory-components/pull/362)
+### feature
+- HOTFIX - fix cookie banner styles for mobile devices
+
 ## 37.2.1
   [Full Changelog](https://github.com/uktrade/directory-components/pull/361)
 ### feature
