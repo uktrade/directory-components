@@ -1,5 +1,7 @@
 # Changelog
-
+## 37.3.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/363)
+update-d-constants
 ## 37.2.2
 [Full Changelog](https://github.com/uktrade/directory-components/pull/362)
 ### feature
