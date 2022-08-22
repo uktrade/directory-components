@@ -37,7 +37,7 @@ jobs:
 
   sasslint:
     docker:
-      - image: cimg/node:8.5.0
+      - image: circleci/node:8.5.0
     steps:
       - checkout
       - restore_cache:
@@ -51,7 +51,9 @@ jobs:
             - "node_modules"
       - run:
           name: Run sass lint
-          command: node_modules/.bin/gulp lint:sass
+          command: |
+            npm rebuild node-sass
+            node_modules/.bin/gulp lint:sass
 
   deploy_to_dev:
     docker:
@@ -67,7 +69,7 @@ jobs:
 
   test_javascript:
     docker:
-      - image: cimg/node:8.5.0
+      - image: circleci/node:8.5.0
     steps:
       - checkout
       - restore_cache:
@@ -81,7 +83,9 @@ jobs:
             - "node_modules"
       - run:
           name: Run Javascript tests
-          command: npm test
+          command: |
+            npm rebuild node-sass
+            npm test
 
 workflows:
   version: 2

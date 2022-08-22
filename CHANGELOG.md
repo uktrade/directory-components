@@ -1,7 +1,7 @@
 # Changelog
 
 ## 38.0.0
-[Full Changelog](https://github.com/uktrade/directory-components/pull/364)
+[Full Changelog](https://github.com/uktrade/directory-components/pull/365)
 * GLS-390 - dependencies update
 
 ## 37.3.0
