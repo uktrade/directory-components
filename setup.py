@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='37.3.0',
+    version='38.0.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for International Trade',
@@ -13,9 +13,9 @@ setup(
     long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
-        'django>=1.11,<3.0a1',
+        'django>=1.11,<4.0.0',
         'beautifulsoup4>=4.6.0,<5.0.0',
-        'directory-constants>=21.0.2,<22.0',
+        'directory-constants>=21.0.2,<23.0.0',
         'jsonschema>=3.0.1,<4.0.0',
     ],
     extras_require={
@@ -23,7 +23,7 @@ setup(
             'lorem==0.1.1',
             'ansicolors==1.1.8',
             'codecov==2.1.9',
-            'flake8==3.7.8',
+            'flake8==5.0.4',
             'pytest-cov==2.6.1',
             'pytest-django==3.3.0',
             'pytest-sugar',
@@ -55,11 +55,13 @@ setup(
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.1',
+        'Framework :: Django :: 3.2',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
 )

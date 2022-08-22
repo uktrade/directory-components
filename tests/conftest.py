@@ -16,6 +16,7 @@ def pytest_configure():
         MIDDLEWARE=[
             'directory_components.middleware.ForceDefaultLocale',
         ],
+        SECRET_KEY='asdfqweewafasdfasdf',
         SESSION_ENGINE='django.contrib.sessions.backends.cache',
         ROOT_URLCONF='tests.urls',
         SSO_PROXY_LOGIN_URL='http://login.com',

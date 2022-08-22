@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.9
     steps:
       - checkout
       - restore_cache:
@@ -24,7 +24,7 @@ jobs:
 
   flake8:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.9
     steps:
       - checkout
       - run:
@@ -51,11 +51,13 @@ jobs:
             - "node_modules"
       - run:
           name: Run sass lint
-          command: node_modules/.bin/gulp lint:sass
+          command: |
+            npm rebuild node-sass
+            node_modules/.bin/gulp lint:sass
 
   deploy_to_dev:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.9
     steps:
       - checkout
       - run:
@@ -81,7 +83,9 @@ jobs:
             - "node_modules"
       - run:
           name: Run Javascript tests
-          command: npm test
+          command: |
+            npm rebuild node-sass
+            npm test
 
 workflows:
   version: 2

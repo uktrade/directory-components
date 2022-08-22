@@ -1,4 +1,9 @@
 # Changelog
+
+## 38.0.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/365)
+* GLS-390 - dependencies update
+
 ## 37.3.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/363)
 update-d-constants
@@ -45,13 +50,13 @@ update-d-constants
 ## 36.2.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/354)
 ### feature
-- GP2-2358- Upgraded directory-constants package 
+- GP2-2358- Upgraded directory-constants package
 
 
 ## 36.1.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/354)
 ### feature
-- GP2-2332- Minor tweak for Magna URLS 
+- GP2-2332- Minor tweak for Magna URLS
 
 
 ## 36.0.0
@@ -93,7 +98,7 @@ update-d-constants
   [Full Changelog](https://github.com/uktrade/directory-components/pull/343)
 ### Bugs fixed
  - GAA-8 - Add hidden label to search field
- 
+
 ## 35.20.0
   [Full Changelog](https://github.com/uktrade/directory-components/pull/341)
 ### Bugs fixed
@@ -122,7 +127,7 @@ update-d-constants
 ## 35.17.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/337)
 ### Implemented enhancements
-- no ticket - Update GA360 context_processor to handle non-sso users 
+- no ticket - Update GA360 context_processor to handle non-sso users
 
 ## 35.16.0
  [Full Changelog](https://github.com/uktrade/directory-components/pull/336)
