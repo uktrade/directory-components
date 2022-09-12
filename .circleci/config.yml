@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.9.13
     steps:
       - checkout
       - restore_cache:
@@ -24,7 +24,7 @@ jobs:
 
   flake8:
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.9.13
     steps:
       - checkout
       - run:
@@ -57,7 +57,7 @@ jobs:
 
   deploy_to_dev:
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.9.13
     steps:
       - checkout
       - run:
