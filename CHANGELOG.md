@@ -1,5 +1,9 @@
 # Changelog
 
+## 38.2.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/367)
+* KLS-115 - update directory-constants version
+
 ## 38.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/366)
 * GLS-390 - Pin Python version as 3.9.13 for CI
