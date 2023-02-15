@@ -1,5 +1,8 @@
 # Changelog
 
+## 38.2.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/368)
+* KLS-399 - update directory-constants version to 22.0.2
 ## 38.2.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/367)
 * KLS-115 - update directory-constants version
