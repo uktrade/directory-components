@@ -38,7 +38,7 @@ setup(
             'lorem==0.1.1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
-            'whitenoise==3.3.1',
+            'whitenoise==6.0.0',
             'django-pygments==0.3.0',
         ],
         'janitor': [
