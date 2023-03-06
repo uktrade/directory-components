@@ -6,8 +6,8 @@
   <div class="menu">
     <div class="container">
       {% block header_logo %}
-        {% static 'directory_components/images/dit-logo.png' as logo_image_url %}
-        {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.exred image_source=logo_image_url image_alt_text='Department for International Trade' %}
+        {% static 'directory_components/images/dbt-logo-red.svg' as logo_image_url %}
+        {% include 'directory_components/header_footer/header_logo.html' with url=services_urls.exred image_source=logo_image_url image_alt_text='Department for Business and Trade' %}
       {% endblock %}
 
       {% block login_state %}

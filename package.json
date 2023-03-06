@@ -4,10 +4,10 @@
   "engines": {
     "node": "8.5.0"
   },
-  "description": "Wrapper around govuk-elements for DIT specific needs",
+  "description": "Wrapper around govuk-elements for DBT specific needs",
   "main": "index.js",
   "private": true,
-  "author": "DIT",
+  "author": "DBT",
   "license": "MIT",
   "scripts": {
     "test": "jest react-components/tests/",
