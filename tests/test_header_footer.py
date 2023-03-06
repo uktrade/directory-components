@@ -198,7 +198,7 @@ def test_domestic_header_ids_match_urls_and_text(
         urls.domestic.PERFORMANCE_DASHBOARD,
     ),
     (
-        'Department for International Trade on GOV.UK',
+        'Department for Business and Trade on GOV.UK',
         'footer-dit',
         urls.domestic.DIT
     ),
@@ -249,7 +249,7 @@ def test_domestic_footer_ids_match_urls_and_text(
         urls.domestic.ACCESSIBILITY
     ),
     (
-        'Department for International Trade on GOV.UK',
+        'Department for Business and Trade on GOV.UK',
         'footer-dit',
         urls.domestic.DIT
     ),

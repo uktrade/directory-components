@@ -92,8 +92,8 @@ msgid "Terms and conditions"
 msgstr "AGB"
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:27
-msgid "Department for International Trade on GOV.UK"
-msgstr "Department for International Trade auf GOV.UK"
+msgid "Department for Business and Trade on GOV.UK"
+msgstr "Department for Business and Trade auf GOV.UK"
 
 #: directory_components/templates/directory_components/header_footer/global_header.html:8
 msgid "For UK businesses"
@@ -104,8 +104,8 @@ msgid "For international businesses"
 msgstr "Für internationale Unternehmen"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:8
-msgid "Department for International Trade"
-msgstr "Ministerium für internationalen Handel (DIT)"
+msgid "Department for Business and Trade"
+msgstr "Ministerium für internationalen Handel (DBT)"
 
 #: directory_components/templates/directory_components/header_footer/international_footer.html:12
 msgid "Great Britain and Northern Ireland"
