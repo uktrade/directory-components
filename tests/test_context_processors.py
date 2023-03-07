@@ -156,7 +156,7 @@ def test_header_footer_processor(settings):
     context = context_processors.header_footer_processor(None)
     assert context['header_footer_urls'] == {
         'about': 'https://exred.com/about/',
-        'dit': 'https://www.gov.uk/government/organisations/department-for-international-trade',
+        'dit': 'https://www.gov.uk/government/organisations/department-for-business-and-trade',
         'get_finance': 'https://exred.com/get-finance/',
         'ukef': 'https://exred.com/get-finance/',
         'performance': 'https://exred.com/performance-dashboard/',
