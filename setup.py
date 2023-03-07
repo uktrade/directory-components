@@ -15,7 +15,7 @@ setup(
     install_requires=[
         'django>=1.11,<4.0.0',
         'beautifulsoup4>=4.6.0,<5.0.0',
-        'directory-constants>=23.0.0',
+        'directory-constants>=23.0.0,<24.0.0',
         'jsonschema>=3.0.1,<4.0.0',
     ],
     extras_require={
