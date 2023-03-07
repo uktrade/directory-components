@@ -91,7 +91,7 @@ msgid "Terms and conditions"
 msgstr "条款与条件"
 
 #: directory_components/templates/directory_components/header_footer/footer_base.html:27
-msgid "Department for International Trade on GOV.UK"
+msgid "Department for Business and Trade on GOV.UK"
 msgstr "国际贸易部位于 GOV.UK"
 
 #: directory_components/templates/directory_components/header_footer/global_header.html:8

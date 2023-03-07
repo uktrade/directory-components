@@ -24,7 +24,7 @@
         </li>
         {% block footer_performance_link %}{% endblock %}
         <li>
-            <a id="footer-dit" href="{{ header_footer_urls.dit }}" title="{% trans 'Opens in a new window' %}" rel="noopener noreferrer" target="_blank">{% trans 'Department for International Trade on GOV.UK' %}</a>
+            <a id="footer-dit" href="{{ header_footer_urls.dit }}" title="{% trans 'Opens in a new window' %}" rel="noopener noreferrer" target="_blank">{% trans 'Department for Business and Trade on GOV.UK' %}</a>
         </li>
         {% block footer_domestic_international_link %}{% endblock %}
     </ul>
@@ -33,7 +33,7 @@
   <div class="great-global-header-footer {% block global_footer_class %}{% endblock %}">
     <div class="container">
         {% block global_footer_logo %}
-            <img id="great-global-footer-logo" class="great-global-header-footer-logo" alt="Department for International Trade" height="21" src="{% static 'directory_components/images/dit-logo.svg' %}">
+            <img id="great-global-footer-logo" class="great-global-header-footer-logo" alt="Department for Business and Trade" height="30" src="{% static 'directory_components/images/dbt-red-footer-logo.svg' %}">
         {% endblock %}
         <p id="great-footer-copyright" class="great-footer-copyright">&copy; Crown copyright {% now "Y" %}. All rights reserved.</p>
     </div>

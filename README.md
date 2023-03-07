@@ -6,7 +6,7 @@
 [![pypi-image]][pypi]
 [![semver-image]][semver]
 
-**Reusable components used across the GREAT platform for the Department for International Trade.**
+**Reusable components used across the GREAT platform for the Department for Business and Trade.**
 
 ---
 

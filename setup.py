@@ -3,10 +3,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='38.2.1',
+    version='39.0.0',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
-    author='Department for International Trade',
+    author='Department for Business and Trade',
     description='Shared components library for Great services.',
     packages=find_packages(exclude=['tests.*', 'tests', 'scripts', 'demo.*', '*.css.map']),
     long_description=open('README.md').read(),
