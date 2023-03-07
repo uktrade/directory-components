@@ -1,5 +1,7 @@
 # Changelog
 
+## 39.0.1
+Error in logo chosen in magma and great header component fixed (red => white)
 ## 39.0.0
 Change of logos and department name to Department of business and trade
 ## 38.2.1
