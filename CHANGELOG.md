@@ -1,5 +1,6 @@
 # Changelog
-
+## 39.0.2
+Changed footer margin top to 10px
 ## 39.0.1
 Error in logo chosen in magma and great header component fixed (red => white)
 ## 39.0.0
