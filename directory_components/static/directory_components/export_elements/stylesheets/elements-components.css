@@ -344,7 +344,7 @@ details.great-accordion[open] summary:before {
     .great-footer-links .great-footer-site-links li:first-child {
       margin-bottom: 15px; }
     .great-footer-links .great-footer-domestic-international-link {
-      margin-top: 15px;
+      margin-top: 10px;
       text-align: left;
       width: 100%; }
   .great-global-header-footer .great-footer-copyright {
