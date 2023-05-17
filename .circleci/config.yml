@@ -19,7 +19,7 @@ jobs:
       - run:
           command: |
             . .venv/bin/activate
-            make pytest -- --cov=. --cov-config=.coveragerc --cov-report=html
+            make pytest_codecov -- --codecov-token=${CODECOV_TOKEN}
             codecov
 
   flake8:
