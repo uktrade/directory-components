@@ -1,7 +1,7 @@
 # Changelog
 
 ## 38.1.0
-[Full Changelog])
+[Full Changelog](https://github.com/uktrade/directory-components/pull/368)
 * KLS-569 - update Django support to 4.2.1
 ## 39.0.2
 KLS-457 - Changed footer margin top to 15px in domestic SOO
