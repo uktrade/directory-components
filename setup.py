@@ -13,14 +13,14 @@ setup(
     long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
-        'django>=1.11,<=4.1.9',
+        'django>=1.11,<=4.2',
         'beautifulsoup4>=4.6.0,<5.0.0',
         'directory-constants>=23.0.0,<24.0.0',
         'jsonschema>=3.0.1,<4.0.0',
     ],
     extras_require={
         'test': [
-             "lorem==0.1.1",
+            "lorem==0.1.1",
             "ansicolors==1.1.8",
             "gitdb==4.0.10",
             "gitpython==3.1.31",
