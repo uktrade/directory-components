@@ -1,165 +1,165 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from demo import views
 
 urlpatterns = [
-    url(
+    re_path(
         r'^$',
         views.IndexPageView.as_view(),
         {'template_name': 'demo/index.html'},
         name='index',
     ),
-    url(
+    re_path(
         r'^404/$',
         views.Trigger404View.as_view(),
         name='404',
     ),
-    url(
+    re_path(
         r'^500/$',
         views.Trigger500ErrorView.as_view(),
         name='500',
     ),
-    url(
+    re_path(
         r'^great-domestic-header-footer/$',
         views.DomesticHeaderFooterView.as_view(),
         name='great-domestic-header-footer',
     ),
-    url(
+    re_path(
         r'^elements/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/elements.html'},
         name='elements',
     ),
-    url(
+    re_path(
         r'^details-accordions/$',
         views.DetailsView.as_view(),
         {'template_name': 'demo/details-accordions.html'},
         name='details-accordions',
     ),
-    url(
+    re_path(
         r'^key-facts/$',
         views.KeyFactsView.as_view(),
         {'template_name': 'demo/key-facts.html'},
         name='key-facts',
     ),
-    url(
+    re_path(
         r'^featured-articles/$',
         views.FeaturedArticlesView.as_view(),
         {'template_name': 'demo/featured-articles.html'},
         name='featured-articles',
     ),
-    url(
+    re_path(
         r'^statistics/$',
         views.DemoStatsView.as_view(),
         {'template_name': 'demo/statistics.html'},
         name='statistics',
     ),
-    url(
+    re_path(
         r'^widgets/$',
         views.DemoFormView.as_view(),
         name='widgets',
     ),
-    url(
+    re_path(
         r'^form-errors/$',
         views.DemoFormErrorsView.as_view(),
         name='form-errors',
     ),
-    url(
+    re_path(
         r'^components/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/components.html'},
         name='components',
     ),
-    url(
+    re_path(
         r'^buttons/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/buttons.html'},
         name='buttons',
     ),
-    url(
+    re_path(
         r'^full-width-banners/$',
         views.FullWidthBannersView.as_view(),
         {'template_name': 'demo/full-width-banners.html'},
         name='full-width-banners',
     ),
-    url(
+    re_path(
         r'^banners/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/banners.html'},
         name='banners',
     ),
-    url(
+    re_path(
         r'^message-boxes/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/message-boxes.html'},
         name='message-boxes',
     ),
-    url(
+    re_path(
         r'^cards/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/cards.html'},
         name='cards',
     ),
-    url(
+    re_path(
         r'^breadcrumbs/$',
         views.BreadcrumbsDemoPageView.as_view(),
         {'template_name': 'demo/breadcrumbs.html'},
         name='breadcrumbs',
     ),
-    url(
+    re_path(
         r'^search-page-components/$',
         views.SearchPageComponentsDemoPageView.as_view(),
         {'template_name': 'demo/search-page-components.html'},
         name='search-page-components',
     ),
-    url(
+    re_path(
         r'^fact-sheet/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/fact-sheet.html'},
         name='fact-sheet',
     ),
-    url(
+    re_path(
         r'^responsive/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/responsive.html'},
         name='responsive',
     ),
-    url(
+    re_path(
         r'^template-tags/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/cms.html'},
         name='cms-tags',
     ),
-    url(
+    re_path(
         r'^great-international-header-footer/$',
         views.InternationalHeaderView.as_view(),
         {'template_name': 'demo/great-international-header-footer.html'},
         name='great-international-header-footer',
     ),
-    url(
+    re_path(
         r'^invest-header/$',
         views.InvestHeaderView.as_view(),
         {'template_name': 'demo/invest-header.html'},
         name='invest-header',
     ),
-    url(
+    re_path(
         r'^google-tag-manager/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/google-tag-manager.html'},
         name='google-tag-manager',
     ),
-    url(
+    re_path(
         r'^pagination/$',
         views.DemoPaginationView.as_view(),
         name='pagination',
     ),
-    url(
+    re_path(
         r'^error-pages/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/error-pages.html'},
         name='error-pages'
     ),
-    url(
+    re_path(
         r'^react-components/$',
         views.BasePageView.as_view(),
         {'template_name': 'demo/react-components.html'},

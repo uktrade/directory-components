@@ -1,10 +1,10 @@
-from django.conf.urls import url, include
+from django.urls import re_path, include
 
 import tests.urls
 
 
 urlpatterns = [
-    url(
+    re_path(
         r'^components/',
         include(tests.urls.urlpatterns)
     )
