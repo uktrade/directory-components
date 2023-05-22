@@ -22,10 +22,9 @@ setup(
         'test': [
             'lorem==0.1.1',
             'ansicolors==1.1.8',
-            'codecov==2.1.9',
             'flake8==5.0.4',
             'pytest-cov==2.6.1',
-            'pytest-django==3.3.0',
+            'pytest-django==3.10.0',
             'pytest-sugar',
             "pytest==6.2.1",
             "pytest-codecov==0.5.1",
