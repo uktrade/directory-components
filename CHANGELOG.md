@@ -1,7 +1,7 @@
 # Changelog
 ## 39.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/374)
-* KLS-622 - Bump Django to 4.2
+* KLS-622 - Bump Django to 4.2 from 3.1.9
 ## 39.0.2
 KLS-457 - Changed footer margin top to 15px in domestic SOO
 ## 39.0.2
