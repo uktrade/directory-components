@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.urls import include, re_path
 from django.views import View
 from django.views.generic.base import RedirectView
 
@@ -7,7 +7,7 @@ import demo.views
 
 
 admin_urls = [
-    url(
+    re_path(
         r"^thing/$",
         RedirectView.as_view(url='/login/'),
         name='thing'
@@ -15,38 +15,38 @@ admin_urls = [
 ]
 
 urlpatterns = [
-    url(
+    re_path(
         r'^$',
         View.as_view(),
         name='index',
     ),
-    url(r'^admin/', include(admin_urls)),
-    url(
+    re_path(r'^admin/', include(admin_urls)),
+    re_path(
         r"^robots\.txt$",
         directory_components.views.RobotsView.as_view(),
         name='robots'
     ),
-    url(
+    re_path(
         r'^404/$',
         demo.views.Trigger404View.as_view(),
         name='404',
     ),
-    url(
+    re_path(
         r'^500/$',
         demo.views.Trigger500ErrorView.as_view(),
         name='500',
     ),
-    url(
+    re_path(
         r"^sitemap\.txt$",
         View.as_view(),
         name='sitemap'
     ),
-    url(
+    re_path(
         r"^some/path/$",
         View.as_view(),
         name='some-path'
     ),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
+    re_path(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
 handler404 = 'directory_components.views.handler404'

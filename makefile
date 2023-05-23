@@ -14,6 +14,23 @@ pytest:
 	-Wignore::DeprecationWarning \
 	-vv
 
+pytest_single:
+	ENV_FILES='test,dev' \
+	pytest \
+	    $(ARGUMENTS)
+		--junit-xml=./results/pytest_unit_report.xml \
+		--cov-config=.coveragerc \
+		--cov-report=html \
+		--cov=. \
+
+pytest_codecov:
+	ENV_FILES='test,dev' \
+	pytest \
+		--cov-config=.coveragerc \
+		--cov-report=term \
+		--cov=. \
+		--codecov \
+		$(ARGUMENTS)
 
 flake8:
 	flake8 . \

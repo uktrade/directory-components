@@ -42,6 +42,18 @@ class NoCacheMiddlware(MiddlewareMixin):
         return response
 
 
+def get_raw_uri(request):
+    """
+    Return an absolute URI from variables available in this request. Skip
+    allowed hosts protection, so may return insecure URI.
+    """
+    return '{scheme}://{host}{path}'.format(
+        scheme=request.scheme,
+        host=request._get_raw_host(),
+        path=request.get_full_path(),
+    )
+
+
 class AbstractPrefixUrlMiddleware(abc.ABC, MiddlewareMixin):
 
     @property
@@ -70,7 +82,7 @@ class AbstractPrefixUrlMiddleware(abc.ABC, MiddlewareMixin):
     @staticmethod
     def get_redirect_domain(request):
         if settings.URL_PREFIX_DOMAIN:
-            if not request.get_raw_uri().startswith(
+            if not get_raw_uri(request).startswith(
                     settings.URL_PREFIX_DOMAIN
             ):
                 return settings.URL_PREFIX_DOMAIN
