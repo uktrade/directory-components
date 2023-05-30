@@ -1,4 +1,7 @@
 # Changelog
+## 39.1.1
+[Full Changelog](https://github.com/uktrade/directory-components/pull/376)
+* KLS-705 - Bump directory-constants to 23.1.0
 ## 39.1.0
 [Full Changelog](https://github.com/uktrade/directory-components/pull/374)
 * KLS-622 - Bump Django to 4.2 from 3.1.9
