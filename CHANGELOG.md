@@ -1,6 +1,6 @@
 # Changelog
 ## 39.1.3
-[Full Changelog]()
+[Full Changelog](https://github.com/uktrade/directory-components/pull/377)
 * KLS-1009 - Bump jquery to 3.5.0
 ## 39.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/376)
