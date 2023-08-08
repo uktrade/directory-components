@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='directory_components',
-    version='39.1.2',
+    version='39.1.3',
     url='https://github.com/uktrade/directory-components',
     license='MIT',
     author='Department for Business and Trade',
@@ -61,8 +61,8 @@ setup(
             'lorem==0.1.1',
             'django-environ==0.4.5',
             'gunicorn==19.5.0',
-            'whitenoise==3.3.1',
-            'django-pygments==0.3.0',
+            'whitenoise==6.5.0',
+            'django-pygments==0.5',
         ],
         'janitor': [
             'hvac>=0.9.5,<1.0.0',
