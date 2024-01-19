@@ -1,4 +1,7 @@
 # Changelog
+## 40.1.0
+[Full Changelog](https://github.com/uktrade/directory-components/pull/381/
+* KLS-1822 - Bump Django to 4.2.8
 ## 39.1.4
 [Full Changelog](https://github.com/uktrade/directory-components/pull/378)
 * KLS-1229 - Bump jquery to 3.7.1
