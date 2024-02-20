@@ -1,4 +1,10 @@
 # Changelog
+
+## 40.2.2
+[Full Changelog]() (20-02-2024)
+* KLS-1948 - Bump Minimum Django to 4.2.10
+
+# Changelog
 ## 40.1.1
 [Full Changelog](https://github.com/uktrade/directory-components/pull/382) (22-01-2024)
 * KLS-1864 - Bump Minimum Django to 4.2.7
