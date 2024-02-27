@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.2.3
+[Full Changelog]() (27-02-2024)
+* POLS-94 Add codeowners file
+
 ## 40.2.2
 [Full Changelog]() (20-02-2024)
 * KLS-1948 - Bump Minimum Django to 4.2.10
