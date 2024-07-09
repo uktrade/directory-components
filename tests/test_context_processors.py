@@ -245,3 +245,19 @@ def test_feature_returns_expected_features(settings):
             'COMPANIES_HOUSE_OAUTH2_ENABLED': True,
         }
     }
+
+
+def test_sentry_returns_expected_features(settings):
+    settings.APP_ENVIRONMENT = 'TEST'
+    settings.SENTRY_DSN = 'test.com'
+    settings.SENTRY_BROWSER_TRACES_SAMPLE_RATE = 30
+
+    actual = context_processors.sentry_processor(None)
+
+    assert actual == {
+        'sentry': {
+            'APP_ENVIRONMENT': 'TEST',
+            'SENTRY_DSN': 'test.com',
+            'SENTRY_BROWSER_TRACES_SAMPLE_RATE': 30,
+        }
+    }
