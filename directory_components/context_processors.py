@@ -143,3 +143,13 @@ def urls_processor(request):
 
 def feature_flags(request):
     return {'features': settings.FEATURE_FLAGS}
+
+
+def sentry_processor(request):
+    return {
+        'sentry': {
+            'APP_ENVIRONMENT': settings.APP_ENVIRONMENT,
+            'SENTRY_DSN': settings.SENTRY_DSN,
+            'SENTRY_BROWSER_TRACES_SAMPLE_RATE': settings.SENTRY_BROWSER_TRACES_SAMPLE_RATE,
+        }
+    }
