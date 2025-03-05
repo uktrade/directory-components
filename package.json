@@ -58,7 +58,7 @@
       "node_modules"
     ],
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+      "\\.[jt]sx?$": "babel-jest"
     },
     "setupFiles": [
       "./react-components/setup-jest.js"
