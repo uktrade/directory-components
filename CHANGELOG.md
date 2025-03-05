@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.2.4
+[Full Changelog]() (05-03-2025)
+* GRTLV-632 Add new field class property to access explicit widget classes via the field object
+
 ## 40.2.3
 [Full Changelog]() (27-02-2024)
 * POLS-94 Add codeowners file

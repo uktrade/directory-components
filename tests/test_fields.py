@@ -74,6 +74,7 @@ def test_explicit_widget_attrs(field_class):
 
     assert field.widget.attrs['class'] == ' form-control'
     assert field_explicit_attrs.widget.attrs['class'] == 'a-class form-control'
+    assert field_explicit_attrs.widget_css_classes == 'a-class form-control'
 
 
 @pytest.mark.parametrize('field_class', field_classes)
